@@ -1741,11 +1741,6 @@ html[data-theme="dark"] .detail-preview.logo-preview-dark {
   background: #17383b;
 }
 
-.detail-preview.variation-preview-contrast,
-html[data-theme="dark"] .detail-preview.variation-preview-contrast {
-  background: #343330;
-}
-
 .detail-facts {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));

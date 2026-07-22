@@ -39,7 +39,7 @@ import {
   X,
   type LucideIcon
 } from "lucide-react";
-import type { LogoFormatType } from "@awalogo/core";
+import { usesDarkLogoPreview, type LogoFormatType } from "@awalogo/core";
 import type { InstitutionCategory } from "@awalogo/institutions";
 import {
   availableInstitutionCategories,
@@ -83,15 +83,6 @@ const categoryIcons: Partial<Record<InstitutionCategory, LucideIcon>> = {
   "switching-processing": RefreshCw,
   "stockbroker": ChartLine
 };
-const darkPreviewSlugs = new Set([
-  "busha-digital-light",
-  "grey",
-  "union-bank-of",
-  "meristem-securities",
-  "cardinalstone-securities",
-  "chapel-hill-denham",
-  "investnaija"
-]);
 const formatIcons: Record<LogoFormatType, LucideIcon> = {
   svg: FileCode2,
   png: FileImage,
@@ -659,7 +650,7 @@ function App() {
                   style={{ animationDelay: `${(index % 12) * 30}ms` }}
                   aria-label={`View ${displayName} details`}
                 >
-                  <span className={`tile-preview${logo && darkPreviewSlugs.has(logo.slug) ? " logo-preview-dark" : ""}`}>
+                  <span className={`tile-preview${logo && usesDarkLogoPreview(logo.slug) ? " logo-preview-dark" : ""}`}>
                     {logo ? <img src={previewUrl(logo)} alt="" /> : (
                       <span className="pending-preview" aria-hidden="true">
                         <span className="pending-monogram">{getInstitutionInitials(displayName)}</span>
@@ -1405,7 +1396,7 @@ function DetailSheet({
               );
             })}
           </div>
-          <div className={`detail-preview${darkPreviewSlugs.has(activeLogo.slug) ? " logo-preview-dark" : ""}`}>
+          <div className={`detail-preview${usesDarkLogoPreview(activeLogo.slug) ? " logo-preview-dark" : ""}`}>
             <img src={previewUrl(activeLogo)} alt="" />
           </div>
         </div>

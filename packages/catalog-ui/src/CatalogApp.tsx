@@ -36,7 +36,7 @@ import {
   X,
   type LucideIcon
 } from "lucide-react";
-import type { LogoFormatType } from "@awalogo/core";
+import { usesDarkLogoPreview, type LogoFormatType } from "@awalogo/core";
 import type { InstitutionCategory } from "@awalogo/institutions";
 import {
   availableInstitutionCategories,
@@ -190,15 +190,6 @@ const categoryIcons: Partial<Record<InstitutionCategory, LucideIcon>> = {
   "switching-processing": RefreshCw,
   "stockbroker": ChartLine
 };
-const darkPreviewSlugs = new Set([
-  "busha-digital-light",
-  "grey",
-  "union-bank-of",
-  "meristem-securities",
-  "cardinalstone-securities",
-  "chapel-hill-denham",
-  "investnaija"
-]);
 const formatIcons: Record<LogoFormatType, LucideIcon> = {
   svg: FileCode2,
   png: FileImage,
@@ -717,7 +708,7 @@ export function CatalogApp({
                   aria-label={`View ${displayName} details`}
                   title={pluginMode ? displayName : undefined}
                 >
-                  <span className={`tile-preview${darkPreviewSlugs.has(logo.slug) ? " logo-preview-dark" : ""}`}>
+                  <span className={`tile-preview${usesDarkLogoPreview(logo.slug) ? " logo-preview-dark" : ""}`}>
                     <img src={previewUrl(logo)} alt="" />
                   </span>
                   <span className="tile-copy">
@@ -1470,7 +1461,7 @@ function DetailSheet({
               );
             })}
           </div>
-          <div className={`detail-preview${darkPreviewSlugs.has(activeLogo.slug) ? " logo-preview-dark" : ""}${activeVariation.id.includes("light") ? " variation-preview-contrast" : ""}`}>
+          <div className={`detail-preview${usesDarkLogoPreview(activeLogo.slug) ? " logo-preview-dark" : ""}`}>
             <img src={previewUrl(activeLogo)} alt="" />
           </div>
         </div>

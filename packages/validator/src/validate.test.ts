@@ -1,8 +1,18 @@
 import { describe, expect, it } from "vitest";
-import { institutionLogoLinks, logoCatalog } from "../../logos/src";
+import { darkLogoPreviewAssetIds, institutionLogoLinks, logoCatalog } from "../../logos/src";
 import { validateCatalog } from "./validate";
 
 describe("logo catalog validation", () => {
+  it("keeps preview contrast entries linked to catalog assets", () => {
+    const assetIds = new Set(logoCatalog.flatMap((logo) => [
+      logo.slug,
+      ...(logo.variations ?? []).map((variation) => `${logo.slug}-${variation.id}`)
+    ]));
+
+    expect(new Set(darkLogoPreviewAssetIds).size).toBe(darkLogoPreviewAssetIds.length);
+    expect(darkLogoPreviewAssetIds.every((assetId) => assetIds.has(assetId))).toBe(true);
+  });
+
   it("contains the seed and reviewed promotion catalog", () => {
     expect(logoCatalog).toHaveLength(205);
     expect(logoCatalog.map((logo) => logo.slug)).toEqual(expect.arrayContaining([

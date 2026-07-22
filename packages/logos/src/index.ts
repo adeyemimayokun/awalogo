@@ -1,5 +1,6 @@
 export { logoCatalog } from "./catalog";
 export { institutionLogoLinks } from "./institution-links";
+export { darkLogoPreviewAssetIds, usesDarkLogoPreview } from "./preview";
 export {
   logoCatalogSchema,
   logoCategories,
