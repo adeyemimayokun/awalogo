@@ -5,11 +5,12 @@ type GitRef = { object: { sha: string } };
 type GitCommit = { tree: { sha: string } };
 type GitBlob = { sha: string };
 type PullRequest = { html_url: string; number: number };
+type RepositoryIssue = { html_url: string; number: number };
 
 export type FileChange = { path: string; content: Buffer | null };
 
 function repository(): { owner: string; repo: string } {
-  const [owner, repo] = (process.env.GITHUB_REPOSITORY ?? "adeyemimayokun/nigerian-bank-logos").split("/");
+  const [owner, repo] = (process.env.GITHUB_REPOSITORY ?? "adeyemimayokun/awalogo").split("/");
   if (!owner || !repo) throw new Error("GITHUB_REPOSITORY must use owner/repository format");
   return { owner, repo };
 }
@@ -44,6 +45,22 @@ export async function readRepositoryJson<T>(path: string): Promise<T> {
   const file = await github<GitHubContent>(`/repos/${owner}/${repo}/contents/${path}?ref=${encodeURIComponent(branch)}`);
   if (file.encoding !== "base64") throw new Error(`Unsupported GitHub encoding for ${path}`);
   return JSON.parse(Buffer.from(file.content.replace(/\n/g, ""), "base64").toString("utf8")) as T;
+}
+
+export async function createRepositoryIssue(options: {
+  title: string;
+  body: string;
+  labels?: string[];
+}): Promise<RepositoryIssue> {
+  const { owner, repo } = repository();
+  return github<RepositoryIssue>(`/repos/${owner}/${repo}/issues`, {
+    method: "POST",
+    body: JSON.stringify({
+      title: options.title,
+      body: options.body,
+      labels: options.labels ?? []
+    })
+  });
 }
 
 function branchName(action: string, slug: string): string {

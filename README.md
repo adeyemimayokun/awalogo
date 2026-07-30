@@ -147,6 +147,12 @@ logos, add variations, and prepare removals as reviewable pull requests. See
 [docs/admin-cms.md](./docs/admin-cms.md) for OAuth, repository-token, and
 deployment configuration.
 
+Website visitors can request a missing logo without a GitHub account. The
+server privately delivers their contact email to maintainers and creates a
+public tracking issue without exposing it. See
+[docs/logo-request-submissions.md](./docs/logo-request-submissions.md) for
+Resend and deployment configuration.
+
 ## License
 
 Code and tooling are MIT licensed.
