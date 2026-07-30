@@ -5,11 +5,26 @@ type GitRef = { object: { sha: string } };
 type GitCommit = { tree: { sha: string } };
 type GitBlob = { sha: string };
 type PullRequest = { html_url: string; number: number };
+type RepositoryIssue = { html_url: string; number: number };
+export type RepositoryIssueData = {
+  html_url: string;
+  number: number;
+  title: string;
+  body: string | null;
+  state: "open" | "closed";
+  state_reason?: "completed" | "not_planned" | "reopened" | null;
+  labels: Array<string | { name?: string | null }>;
+  user?: { login?: string | null } | null;
+  created_at: string;
+  updated_at: string;
+  closed_at: string | null;
+  pull_request?: unknown;
+};
 
 export type FileChange = { path: string; content: Buffer | null };
 
 function repository(): { owner: string; repo: string } {
-  const [owner, repo] = (process.env.GITHUB_REPOSITORY ?? "adeyemimayokun/nigerian-bank-logos").split("/");
+  const [owner, repo] = (process.env.GITHUB_REPOSITORY ?? "adeyemimayokun/awalogo").split("/");
   if (!owner || !repo) throw new Error("GITHUB_REPOSITORY must use owner/repository format");
   return { owner, repo };
 }
@@ -44,6 +59,77 @@ export async function readRepositoryJson<T>(path: string): Promise<T> {
   const file = await github<GitHubContent>(`/repos/${owner}/${repo}/contents/${path}?ref=${encodeURIComponent(branch)}`);
   if (file.encoding !== "base64") throw new Error(`Unsupported GitHub encoding for ${path}`);
   return JSON.parse(Buffer.from(file.content.replace(/\n/g, ""), "base64").toString("utf8")) as T;
+}
+
+export async function createRepositoryIssue(options: {
+  title: string;
+  body: string;
+  labels?: string[];
+}): Promise<RepositoryIssue> {
+  const { owner, repo } = repository();
+  return github<RepositoryIssue>(`/repos/${owner}/${repo}/issues`, {
+    method: "POST",
+    body: JSON.stringify({
+      title: options.title,
+      body: options.body,
+      labels: options.labels ?? []
+    })
+  });
+}
+
+export async function listRepositoryIssues(): Promise<RepositoryIssueData[]> {
+  const { owner, repo } = repository();
+  const issues: RepositoryIssueData[] = [];
+  for (let page = 1; page <= 10; page += 1) {
+    const batch = await github<RepositoryIssueData[]>(
+      `/repos/${owner}/${repo}/issues?state=all&sort=created&direction=desc&per_page=100&page=${page}`
+    );
+    issues.push(...batch);
+    if (batch.length < 100) break;
+  }
+  return issues;
+}
+
+export async function readRepositoryIssue(issueNumber: number): Promise<RepositoryIssueData> {
+  const { owner, repo } = repository();
+  return github<RepositoryIssueData>(`/repos/${owner}/${repo}/issues/${issueNumber}`);
+}
+
+export async function ensureRepositoryLabel(options: {
+  name: string;
+  color: string;
+  description: string;
+}): Promise<void> {
+  const { owner, repo } = repository();
+  const labels = await github<Array<{ name: string }>>(`/repos/${owner}/${repo}/labels?per_page=100`);
+  if (labels.some((label) => label.name.toLowerCase() === options.name.toLowerCase())) return;
+
+  try {
+    await github(`/repos/${owner}/${repo}/labels`, {
+      method: "POST",
+      body: JSON.stringify(options)
+    });
+  } catch (error) {
+    // A concurrent request may have created the label after the list call.
+    if (!(error instanceof Error) || !error.message.includes("(422)")) throw error;
+  }
+}
+
+export async function updateRepositoryIssue(options: {
+  issueNumber: number;
+  labels: string[];
+  state: "open" | "closed";
+  stateReason: "completed" | "not_planned" | "reopened";
+}): Promise<RepositoryIssueData> {
+  const { owner, repo } = repository();
+  return github<RepositoryIssueData>(`/repos/${owner}/${repo}/issues/${options.issueNumber}`, {
+    method: "PATCH",
+    body: JSON.stringify({
+      labels: options.labels,
+      state: options.state,
+      state_reason: options.stateReason
+    })
+  });
 }
 
 function branchName(action: string, slug: string): string {

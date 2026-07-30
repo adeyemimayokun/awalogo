@@ -9,3 +9,5 @@ packages/institutions/staging/
 *.log
 *.tsbuildinfo
 .vercel
+.env.local
+.env.*.local

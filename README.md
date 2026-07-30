@@ -147,6 +147,20 @@ logos, add variations, and prepare removals as reviewable pull requests. See
 [docs/admin-cms.md](./docs/admin-cms.md) for OAuth, repository-token, and
 deployment configuration.
 
+Website visitors can request a missing logo without a GitHub account. The
+server privately delivers their contact email to maintainers and creates a
+public tracking issue without exposing it. See
+[docs/logo-request-submissions.md](./docs/logo-request-submissions.md) for
+Resend and deployment configuration.
+
+Official company submissions use the same private workflow. Branded HTML and
+plain-text templates cover visitor confirmations, maintainer review messages,
+and one-time logo availability notifications. See
+[docs/email-templates.md](./docs/email-templates.md) for the template inventory
+and automatic publication workflow. Opted-in requesters are matched against
+live catalog names and aliases by a daily Vercel cron; ambiguous names stay in
+the private maintainer queue for review.
+
 ## License
 
 Code and tooling are MIT licensed.

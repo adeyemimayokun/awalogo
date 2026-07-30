@@ -4,6 +4,12 @@
   "installCommand": "pnpm install --frozen-lockfile",
   "buildCommand": "pnpm build:web",
   "outputDirectory": "apps/web/dist",
+  "crons": [
+    {
+      "path": "/api/cron/logo-notifications",
+      "schedule": "15 5 * * *"
+    }
+  ],
   "rewrites": [
     { "source": "/docs", "destination": "/index.html" },
     { "source": "/docs/:path*", "destination": "/index.html" },

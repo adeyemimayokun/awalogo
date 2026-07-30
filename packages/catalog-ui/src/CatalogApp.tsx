@@ -46,7 +46,6 @@ import {
   type LogoCatalogItem
 } from "./catalog-data";
 import { compareCatalogResults, searchScore, type CatalogSortDirection } from "./catalog-search";
-import { buildCompanyLogoSubmissionUrl, buildLogoRequestUrl } from "./logo-request";
 import type { LogoAsset } from "./logo-data";
 import { SiteFooter, SiteHeader, type ThemeMode } from "./SiteChrome";
 import "./styles.css";
@@ -477,7 +476,7 @@ export function CatalogApp({
 
   function completeLogoRequest() {
     setProjectPanel(null);
-    setToast("Submission prepared on GitHub");
+    setToast("Thanks, your submission was received");
   }
 
   async function convertRaster(source: string, formatType: LogoFormatType): Promise<Blob | null> {
@@ -857,7 +856,7 @@ export function ProjectInfoSheet({
       : isChangelog
         ? "New assets, features, and catalog improvements."
         : isRequest
-          ? "Tell us which financial brand is missing."
+          ? "Tell us what logo is missing. No GitHub account needed."
           : "Logo ownership and acceptable use.";
 
   return (
@@ -945,6 +944,9 @@ function CompanyLogoSubmissionForm({ onSubmitted }: { onSubmitted: () => void })
   const [brandGuidelinesUrl, setBrandGuidelinesUrl] = useState("");
   const [notes, setNotes] = useState("");
   const [rightsConfirmed, setRightsConfirmed] = useState(false);
+  const [websiteConfirm, setWebsiteConfirm] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submittedIssue, setSubmittedIssue] = useState<{ number: number; url: string } | null | undefined>();
   const [error, setError] = useState("");
 
   function isValidUrl(value: string) {
@@ -955,7 +957,15 @@ function CompanyLogoSubmissionForm({ onSubmitted }: { onSubmitted: () => void })
     }
   }
 
-  function submitLogo(event: FormEvent<HTMLFormElement>) {
+  function isValidHttpsUrl(value: string) {
+    try {
+      return new URL(value).protocol === "https:";
+    } catch {
+      return false;
+    }
+  }
+
+  async function submitLogo(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (companyName.trim().length < 2) {
       setError("Enter your company name.");
@@ -969,12 +979,12 @@ function CompanyLogoSubmissionForm({ onSubmitted }: { onSubmitted: () => void })
       setError("Enter a valid work email address.");
       return;
     }
-    if (logoAssetUrl.trim() && !isValidUrl(logoAssetUrl.trim())) {
-      setError("Enter a complete logo or brand-kit URL, or leave it blank to attach the file on GitHub.");
+    if (logoAssetUrl.trim() && !isValidHttpsUrl(logoAssetUrl.trim())) {
+      setError("Enter a complete HTTPS logo or brand-kit link, or leave it blank.");
       return;
     }
-    if (brandGuidelinesUrl.trim() && !isValidUrl(brandGuidelinesUrl.trim())) {
-      setError("Enter a complete brand guidelines URL beginning with http:// or https://.");
+    if (brandGuidelinesUrl.trim() && !isValidHttpsUrl(brandGuidelinesUrl.trim())) {
+      setError("Enter a complete brand guidelines URL beginning with https://.");
       return;
     }
     if (!rightsConfirmed) {
@@ -983,30 +993,76 @@ function CompanyLogoSubmissionForm({ onSubmitted }: { onSubmitted: () => void })
     }
 
     setError("");
-    const submissionUrl = buildCompanyLogoSubmissionUrl({
-      companyName,
-      officialWebsite,
-      workEmail,
-      category,
-      submitterRole,
-      logoFormat,
-      logoAssetUrl,
-      brandGuidelinesUrl,
-      notes,
-      rightsConfirmed
-    });
-    const link = document.createElement("a");
-    link.href = submissionUrl;
-    link.target = "_blank";
-    link.rel = "noreferrer";
-    document.body.appendChild(link);
-    link.click();
-    link.remove();
-    onSubmitted();
+    setIsSubmitting(true);
+    try {
+      const response = await fetch("/api/company-logo-submissions", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          submissionId: crypto.randomUUID(),
+          companyName,
+          officialWebsite,
+          workEmail,
+          category,
+          submitterRole,
+          logoFormat,
+          logoAssetUrl,
+          brandGuidelinesUrl,
+          notes,
+          rightsConfirmed,
+          websiteConfirm
+        })
+      });
+      const result = await response.json().catch(() => null) as {
+        error?: string;
+        issue?: { number: number; url: string } | null;
+      } | null;
+      if (!response.ok) {
+        throw new Error(result?.error || "We could not send the logo submission. Please try again.");
+      }
+      setSubmittedIssue(result?.issue ?? null);
+    } catch (submissionError) {
+      setError(submissionError instanceof Error
+        ? submissionError.message
+        : "We could not send the logo submission. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  }
+
+  if (submittedIssue !== undefined) {
+    return (
+      <div className="request-success" role="status">
+        <span className="request-success-icon" aria-hidden="true">
+          <Check size={22} strokeWidth={2} />
+        </span>
+        <div>
+          <h3>Thanks, the artwork is in review.</h3>
+          <p>We’ve sent a confirmation to your work email. A maintainer will contact you if anything else is needed.</p>
+        </div>
+        <div className="request-success-actions">
+          {submittedIssue ? (
+            <a href={submittedIssue.url} target="_blank" rel="noreferrer">
+              View submission <ArrowUpRight aria-hidden="true" size={14} strokeWidth={1.8} />
+            </a>
+          ) : null}
+          <button className="project-sheet-action" type="button" onClick={onSubmitted}>Done</button>
+        </div>
+      </div>
+    );
   }
 
   return (
     <form className="logo-request-form" onSubmit={submitLogo} noValidate>
+      <label className="request-honeypot" hidden>
+        Leave this field empty
+        <input
+          value={websiteConfirm}
+          onChange={(event) => setWebsiteConfirm(event.target.value)}
+          tabIndex={-1}
+          autoComplete="off"
+        />
+      </label>
       <label className="request-field">
         <span>Company name <strong aria-hidden="true">*</strong></span>
         <input
@@ -1036,9 +1092,10 @@ function CompanyLogoSubmissionForm({ onSubmitted }: { onSubmitted: () => void })
       </label>
 
       <label className="request-field">
-        <span>Work email (public) <strong aria-hidden="true">*</strong></span>
+        <span>Work email (private) <strong aria-hidden="true">*</strong></span>
         <input
           type="email"
+          required
           value={workEmail}
           onChange={(event) => {
             setWorkEmail(event.target.value);
@@ -1049,6 +1106,7 @@ function CompanyLogoSubmissionForm({ onSubmitted }: { onSubmitted: () => void })
           aria-describedby="company-email-notice"
           aria-invalid={error.startsWith("Enter a valid work email")}
         />
+        <small id="company-email-notice">Only awalogo maintainers can see this. We’ll send the submission confirmation here.</small>
       </label>
 
       <div className="request-field-row">
@@ -1141,9 +1199,18 @@ function CompanyLogoSubmissionForm({ onSubmitted }: { onSubmitted: () => void })
       {error ? <p className="request-error" role="alert">{error}</p> : null}
 
       <div className="request-submit-row">
-        <p id="company-email-notice">The work email will appear in the public GitHub issue. Attach the logo there when no public asset URL is available.</p>
-        <button className="project-sheet-action" type="submit">
-          Continue on GitHub <ArrowUpRight aria-hidden="true" size={15} strokeWidth={1.8} />
+        <p>No GitHub account needed. The artwork and contact details go directly to the awalogo maintainers.</p>
+        <button className="project-sheet-action" type="submit" disabled={isSubmitting}>
+          {isSubmitting ? (
+            <>
+              <RefreshCw className="request-loading-icon" aria-hidden="true" size={15} strokeWidth={1.8} />
+              Sending…
+            </>
+          ) : (
+            <>
+              Send submission <Send aria-hidden="true" size={15} strokeWidth={1.8} />
+            </>
+          )}
         </button>
       </div>
     </form>
@@ -1161,14 +1228,19 @@ function LogoRequestForm({
   const [officialWebsite, setOfficialWebsite] = useState("");
   const [email, setEmail] = useState("");
   const [category, setCategory] = useState("Finance app");
-  const [notes, setNotes] = useState("");
-  const [notificationConsent, setNotificationConsent] = useState(false);
+  const [logoFormat, setLogoFormat] = useState<"SVG" | "PNG" | "WebP">("SVG");
+  const [logoAssetUrl, setLogoAssetUrl] = useState("");
+  const [notifyWhenAvailable, setNotifyWhenAvailable] = useState(false);
+  const [websiteConfirm, setWebsiteConfirm] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submittedIssue, setSubmittedIssue] = useState<{ number: number; url: string } | null | undefined>();
+  const [notificationQueued, setNotificationQueued] = useState(false);
   const [error, setError] = useState("");
 
-  function submitRequest(event: FormEvent<HTMLFormElement>) {
+  async function submitRequest(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (institutionName.trim().length < 2) {
-      setError("Enter the institution or product name.");
+      setError("Enter the company or product name.");
       return;
     }
     if (officialWebsite.trim()) {
@@ -1180,34 +1252,97 @@ function LogoRequestForm({
         return;
       }
     }
-    if (email.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) {
-      setError("Enter a valid email address or leave the field blank.");
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) {
+      setError("Enter a valid email address.");
       return;
+    }
+    if (logoAssetUrl.trim()) {
+      try {
+        const url = new URL(logoAssetUrl.trim());
+        if (url.protocol !== "https:") throw new Error();
+      } catch {
+        setError("Paste a complete sharing link beginning with https://, or leave the field blank.");
+        return;
+      }
     }
 
     setError("");
-    const requestUrl = buildLogoRequestUrl({
-      institutionName,
-      officialWebsite,
-      email,
-      category,
-      notes,
-      notificationConsent
-    });
-    const link = document.createElement("a");
-    link.href = requestUrl;
-    link.target = "_blank";
-    link.rel = "noreferrer";
-    document.body.appendChild(link);
-    link.click();
-    link.remove();
-    onSubmitted();
+    setIsSubmitting(true);
+    try {
+      const response = await fetch("/api/logo-requests", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          submissionId: crypto.randomUUID(),
+          institutionName,
+          officialWebsite,
+          email,
+          category,
+          logoFormat,
+          logoAssetUrl,
+          notifyWhenAvailable,
+          websiteConfirm
+        })
+      });
+      const result = await response.json().catch(() => null) as {
+        error?: string;
+        issue?: { number: number; url: string } | null;
+        notification?: "queued" | "not-requested";
+      } | null;
+      if (!response.ok) {
+        throw new Error(result?.error || "We could not send your request. Please try again.");
+      }
+      setNotificationQueued(result?.notification === "queued");
+      setSubmittedIssue(result?.issue ?? null);
+    } catch (requestError) {
+      setError(requestError instanceof Error
+        ? requestError.message
+        : "We could not send your request. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  }
+
+  if (submittedIssue !== undefined) {
+    return (
+      <div className="request-success" role="status">
+        <span className="request-success-icon" aria-hidden="true">
+          <Check size={22} strokeWidth={2} />
+        </span>
+        <div>
+          <h3>Thanks, your request is in.</h3>
+          <p>
+            {notificationQueued
+              ? "We’ve sent a confirmation to your email. Your notification is active, and we’ll email you automatically once the logo is live."
+              : "We’ve sent a confirmation to your email. We’ll review the logo and contact you only when needed."}
+          </p>
+        </div>
+        <div className="request-success-actions">
+          {submittedIssue ? (
+            <a href={submittedIssue.url} target="_blank" rel="noreferrer">
+              View request <ArrowUpRight aria-hidden="true" size={14} strokeWidth={1.8} />
+            </a>
+          ) : null}
+          <button className="project-sheet-action" type="button" onClick={onSubmitted}>Done</button>
+        </div>
+      </div>
+    );
   }
 
   return (
     <form className="logo-request-form" onSubmit={submitRequest} noValidate>
+      <label className="request-honeypot" hidden>
+        Leave this field empty
+        <input
+          value={websiteConfirm}
+          onChange={(event) => setWebsiteConfirm(event.target.value)}
+          tabIndex={-1}
+          autoComplete="off"
+        />
+      </label>
+
       <label className="request-field">
-        <span>Institution or product name <strong aria-hidden="true">*</strong></span>
+        <span>Company or product name <strong aria-hidden="true">*</strong></span>
         <input
           autoFocus
           value={institutionName}
@@ -1223,7 +1358,7 @@ function LogoRequestForm({
 
       <div className="request-field-row">
         <label className="request-field">
-          <span>Category</span>
+          <span>Type of company</span>
           <select value={category} onChange={(event) => setCategory(event.target.value)}>
             <option>Bank</option>
             <option>Finance app</option>
@@ -1235,7 +1370,7 @@ function LogoRequestForm({
           </select>
         </label>
         <label className="request-field">
-          <span>Official website</span>
+          <span>Company website (optional)</span>
           <input
             type="url"
             value={officialWebsite}
@@ -1251,9 +1386,10 @@ function LogoRequestForm({
       </div>
 
       <label className="request-field">
-        <span>Email address (optional, public)</span>
+        <span>Your email address <strong aria-hidden="true">*</strong></span>
         <input
           type="email"
+          required
           value={email}
           onChange={(event) => {
             setEmail(event.target.value);
@@ -1261,39 +1397,69 @@ function LogoRequestForm({
           }}
           placeholder="name@example.com"
           autoComplete="email"
-          aria-describedby="logo-request-email-notice"
+          aria-describedby="logo-request-email-privacy"
           aria-invalid={error.startsWith("Enter a valid email")}
         />
+        <small id="logo-request-email-privacy">Only awalogo maintainers can see this. We may use it to ask a question about your request.</small>
       </label>
 
-      <label className="request-field">
-        <span>Notes</span>
-        <textarea
-          value={notes}
-          onChange={(event) => setNotes(event.target.value)}
-          placeholder="Where can maintainers find the current brand artwork?"
-          rows={3}
-        />
-      </label>
+      <div className="request-field-row request-artwork-row">
+        <label className="request-field">
+          <span>Logo file type</span>
+          <select
+            value={logoFormat}
+            onChange={(event) => setLogoFormat(event.target.value as "SVG" | "PNG" | "WebP")}
+          >
+            <option>SVG</option>
+            <option>PNG</option>
+            <option>WebP</option>
+          </select>
+        </label>
+        <label className="request-field">
+          <span>Link to the logo file (optional)</span>
+          <input
+            type="url"
+            value={logoAssetUrl}
+            onChange={(event) => {
+              setLogoAssetUrl(event.target.value);
+              setError("");
+            }}
+            placeholder="https://drive.google.com/..."
+            inputMode="url"
+            aria-describedby="logo-request-drive-notice"
+            aria-invalid={error.startsWith("Paste a complete sharing link")}
+          />
+          <small id="logo-request-drive-notice">Paste a Google Drive, Dropbox, or OneDrive link and make sure anyone with the link can view it.</small>
+        </label>
+      </div>
 
       <label className="request-consent">
         <input
           type="checkbox"
-          checked={notificationConsent}
-          onChange={(event) => setNotificationConsent(event.target.checked)}
+          checked={notifyWhenAvailable}
+          onChange={(event) => setNotifyWhenAvailable(event.target.checked)}
         />
         <span>
-          <strong>Notify me when it is added</strong>
-          <small>I consent to updates through the GitHub issue. GitHub controls delivery, and I can unsubscribe at any time.</small>
+          <strong>Notify me when this logo is available</strong>
+          <small>We’ll send one email after it has been added to awalogo.</small>
         </span>
       </label>
 
       {error ? <p className="request-error" role="alert">{error}</p> : null}
 
       <div className="request-submit-row">
-        <p id="logo-request-email-notice">Any email entered will appear in the public GitHub issue. You can review the request before submitting it.</p>
-        <button className="project-sheet-action" type="submit">
-          Continue on GitHub <ArrowUpRight aria-hidden="true" size={15} strokeWidth={1.8} />
+        <p>No GitHub account needed. Your request goes directly to the awalogo maintainers.</p>
+        <button className="project-sheet-action" type="submit" disabled={isSubmitting}>
+          {isSubmitting ? (
+            <>
+              <RefreshCw className="request-loading-icon" aria-hidden="true" size={15} strokeWidth={1.8} />
+              Sending…
+            </>
+          ) : (
+            <>
+              Send request <Send aria-hidden="true" size={15} strokeWidth={1.8} />
+            </>
+          )}
         </button>
       </div>
     </form>

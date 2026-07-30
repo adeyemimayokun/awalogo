@@ -1,15 +1,23 @@
 import { useEffect, useMemo, useState, type FormEvent } from "react";
 import {
   ArrowLeft,
+  BellRing,
+  Building2,
   Check,
+  ChevronRight,
+  ClipboardList,
   ExternalLink,
   FileCode2,
   GitFork,
   ImagePlus,
+  Inbox,
+  Link2,
   LoaderCircle,
   LogOut,
   Plus,
+  RefreshCw,
   Search,
+  Send,
   ShieldCheck,
   Trash2,
   Upload,
@@ -33,6 +41,69 @@ type Logo = {
 };
 type CatalogResponse = { catalog: Logo[]; variations: Record<string, Variation[]>; lockedSlugs: string[] };
 type MutationResult = { pullRequest: { number: number; url: string } };
+type NotificationQueueItem = {
+  segmentId: string;
+  requestKey: string;
+  requestedName: string;
+  status: "ready" | "ambiguous" | "unmatched";
+  matches: Array<{ slug: string; name: string }>;
+  createdAt?: string;
+};
+type NotificationQueueResponse = {
+  queue: NotificationQueueItem[];
+  summary: {
+    total: number;
+    ready: number;
+    ambiguous: number;
+    unmatched: number;
+  };
+};
+type NotificationDispatchResult = {
+  processedSegments: number;
+  notified: number;
+  skippedUnsubscribed: number;
+  failed: number;
+};
+type RequestStatus = "new" | "reviewing" | "sourcing" | "ready" | "published" | "declined";
+type RequestType = "logo-request" | "company-submission";
+type AdminRequest = {
+  number: number;
+  title: string;
+  institutionName: string;
+  requestType: RequestType;
+  status: RequestStatus;
+  category: string;
+  officialWebsite: string | null;
+  assetFormat: string | null;
+  assetUrl: string | null;
+  brandGuidelinesUrl: string | null;
+  submitterRole: string | null;
+  notificationRequested: boolean;
+  githubUrl: string;
+  authorLogin: string | null;
+  createdAt: string;
+  updatedAt: string;
+  closedAt: string | null;
+};
+type RequestDashboardResponse = {
+  requests: AdminRequest[];
+  summary: {
+    total: number;
+    new: number;
+    active: number;
+    published: number;
+    declined: number;
+  };
+};
+
+const requestStatuses: Array<{ value: RequestStatus; label: string; shortLabel: string }> = [
+  { value: "new", label: "New", shortLabel: "New" },
+  { value: "reviewing", label: "In review", shortLabel: "Review" },
+  { value: "sourcing", label: "Sourcing asset", shortLabel: "Sourcing" },
+  { value: "ready", label: "Ready to publish", shortLabel: "Ready" },
+  { value: "published", label: "Published", shortLabel: "Published" },
+  { value: "declined", label: "Declined", shortLabel: "Declined" }
+];
 
 const categories = [
   ["commercial-bank", "Commercial bank"],
@@ -134,12 +205,17 @@ export function AdminApp() {
   const [auth, setAuth] = useState<"loading" | "signed-out" | "signed-in">("loading");
   const [session, setSession] = useState<Session | null>(null);
   const [data, setData] = useState<CatalogResponse | null>(null);
-  const [mode, setMode] = useState<"manage" | "add">("manage");
+  const [notificationData, setNotificationData] = useState<NotificationQueueResponse | null>(null);
+  const [requestData, setRequestData] = useState<RequestDashboardResponse | null>(null);
+  const [notificationLoading, setNotificationLoading] = useState(false);
+  const [requestLoading, setRequestLoading] = useState(false);
+  const [mode, setMode] = useState<"requests" | "manage" | "add" | "notify">("requests");
   const [selectedSlug, setSelectedSlug] = useState("");
   const [query, setQuery] = useState("");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const [result, setResult] = useState<MutationResult | null>(null);
+  const [emailNotice, setEmailNotice] = useState("");
 
   useEffect(() => {
     const previousTitle = document.title;
@@ -154,6 +230,30 @@ export function AdminApp() {
     setSelectedSlug((current) => current || next.catalog[0]?.slug || "");
   }
 
+  async function loadNotificationQueue() {
+    setNotificationLoading(true);
+    try {
+      setNotificationData(await api<NotificationQueueResponse>("/api/admin/logo-notifications"));
+    } catch (caught) {
+      setError(caught instanceof Error ? caught.message : "The notification queue could not be loaded");
+    } finally {
+      setNotificationLoading(false);
+    }
+  }
+
+  async function loadRequests() {
+    setRequestLoading(true);
+    try {
+      const next = await api<RequestDashboardResponse>("/api/admin/requests");
+      if (!Array.isArray(next.requests) || !next.summary) throw new Error("The request API returned an invalid response");
+      setRequestData(next);
+    } catch (caught) {
+      setError(caught instanceof Error ? caught.message : "Requests could not be loaded");
+    } finally {
+      setRequestLoading(false);
+    }
+  }
+
   useEffect(() => {
     api<{ user: Session }>("/api/auth/session")
       .then(async ({ user }) => {
@@ -163,6 +263,11 @@ export function AdminApp() {
       })
       .catch(() => setAuth("signed-out"));
   }, []);
+
+  useEffect(() => {
+    if (auth === "signed-in" && mode === "notify") void loadNotificationQueue();
+    if (auth === "signed-in" && mode === "requests") void loadRequests();
+  }, [auth, mode]);
 
   const filtered = useMemo(() => {
     const normalized = query.toLowerCase().trim();
@@ -175,6 +280,7 @@ export function AdminApp() {
     setBusy(true);
     setError("");
     setResult(null);
+    setEmailNotice("");
     try {
       const next = await api<MutationResult>("/api/admin/mutate", {
         method: "POST",
@@ -186,6 +292,92 @@ export function AdminApp() {
       return true;
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : "The request failed");
+      return false;
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  async function notifyLogoLive(payload: Record<string, unknown>) {
+    setBusy(true);
+    setError("");
+    setResult(null);
+    setEmailNotice("");
+    try {
+      await api<{ ok: true }>("/api/admin/notify-logo-live", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+      setEmailNotice("The logo availability email was sent.");
+      return true;
+    } catch (caught) {
+      setError(caught instanceof Error ? caught.message : "The email could not be sent");
+      return false;
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  async function dispatchNotificationQueue(payload: Record<string, unknown> = {}) {
+    setBusy(true);
+    setError("");
+    setResult(null);
+    setEmailNotice("");
+    try {
+      const { result: dispatch } = await api<{ ok: true; result: NotificationDispatchResult }>(
+        "/api/admin/logo-notifications",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        }
+      );
+      setEmailNotice(
+        dispatch.notified > 0
+          ? `${dispatch.notified} availability ${dispatch.notified === 1 ? "email was" : "emails were"} sent.`
+          : "The queue is up to date. No availability emails were ready to send."
+      );
+      await loadNotificationQueue();
+      return true;
+    } catch (caught) {
+      setError(caught instanceof Error ? caught.message : "The notification run failed");
+      return false;
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  async function updateRequestStatus(issueNumber: number, status: RequestStatus) {
+    setBusy(true);
+    setError("");
+    setResult(null);
+    setEmailNotice("");
+    try {
+      const { request: updated } = await api<{ request: AdminRequest }>("/api/admin/requests", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ issueNumber, status })
+      });
+      setRequestData((current) => {
+        if (!current) return current;
+        const requests = current.requests.map((request) => request.number === updated.number ? updated : request);
+        return {
+          requests,
+          summary: {
+            total: requests.length,
+            new: requests.filter((request) => request.status === "new").length,
+            active: requests.filter((request) => ["reviewing", "sourcing", "ready"].includes(request.status)).length,
+            published: requests.filter((request) => request.status === "published").length,
+            declined: requests.filter((request) => request.status === "declined").length
+          }
+        };
+      });
+      const label = requestStatuses.find((option) => option.value === status)?.label ?? status;
+      setEmailNotice(`Request #${issueNumber} moved to ${label}.`);
+      return true;
+    } catch (caught) {
+      setError(caught instanceof Error ? caught.message : "The request status could not be updated");
       return false;
     } finally {
       setBusy(false);
@@ -230,19 +422,47 @@ export function AdminApp() {
       </header>
 
       <nav className="admin-tabs" aria-label="Admin sections">
+        <button className={mode === "requests" ? "active" : ""} onClick={() => setMode("requests")}><ClipboardList size={16} /> Requests</button>
         <button className={mode === "manage" ? "active" : ""} onClick={() => setMode("manage")}><FileCode2 size={16} /> Manage logos</button>
         <button className={mode === "add" ? "active" : ""} onClick={() => setMode("add")}><Plus size={16} /> Add logo</button>
-        <span>{data?.catalog.length ?? 0} managed entries</span>
+        <button className={mode === "notify" ? "active" : ""} onClick={() => setMode("notify")}><BellRing size={16} /> Notifications</button>
+        <span>{mode === "requests" ? `${requestData?.summary.total ?? 0} requests` : `${data?.catalog.length ?? 0} managed entries`}</span>
       </nav>
 
-      {error || result ? (
+      {error || result || emailNotice ? (
         <div className={`admin-banner${error ? " error" : " success"}`}>
-          {error ? <><X size={17} /><span>{error}</span></> : <><Check size={17} /><span>Pull request #{result?.pullRequest.number} created</span><a href={result?.pullRequest.url} target="_blank" rel="noreferrer">Review PR <ExternalLink size={14} /></a></>}
-          <button type="button" aria-label="Dismiss" onClick={() => { setError(""); setResult(null); }}><X size={15} /></button>
+          {error ? (
+            <><X size={17} /><span>{error}</span></>
+          ) : result ? (
+            <><Check size={17} /><span>Pull request #{result.pullRequest.number} created</span><a href={result.pullRequest.url} target="_blank" rel="noreferrer">Review PR <ExternalLink size={14} /></a></>
+          ) : (
+            <><Check size={17} /><span>{emailNotice}</span></>
+          )}
+          <button type="button" aria-label="Dismiss" onClick={() => { setError(""); setResult(null); setEmailNotice(""); }}><X size={15} /></button>
         </div>
       ) : null}
 
-      {mode === "add" ? <AddLogoForm busy={busy} onSubmit={mutate} /> : (
+      {mode === "requests" ? (
+        <RequestWorkspace
+          data={requestData}
+          loading={requestLoading}
+          busy={busy}
+          onRefresh={loadRequests}
+          onUpdateStatus={updateRequestStatus}
+        />
+      ) : mode === "add" ? (
+        <AddLogoForm busy={busy} onSubmit={mutate} />
+      ) : mode === "notify" ? (
+        <LogoNotificationWorkspace
+          busy={busy}
+          logos={data?.catalog ?? []}
+          data={notificationData}
+          loading={notificationLoading}
+          onRefresh={loadNotificationQueue}
+          onDispatch={dispatchNotificationQueue}
+          onManualSubmit={notifyLogoLive}
+        />
+      ) : (
         <main className="admin-workspace">
           <aside className="admin-catalog">
             <label className="admin-search"><Search size={16} /><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search catalog" /></label>
@@ -271,8 +491,466 @@ export function AdminApp() {
           ) : <section className="admin-empty">Select a logo</section>}
         </main>
       )}
-      {busy ? <div className="admin-busy" role="status"><LoaderCircle className="spin" /><span>Preparing assets and pull request</span></div> : null}
+      {busy ? <div className="admin-busy" role="status"><LoaderCircle className="spin" /><span>Working on your request</span></div> : null}
     </div>
+  );
+}
+
+function formatRequestDate(value: string): string {
+  return new Intl.DateTimeFormat("en-NG", {
+    day: "2-digit",
+    month: "short",
+    year: "numeric"
+  }).format(new Date(value));
+}
+
+function RequestStatusBadge({ status }: { status: RequestStatus }) {
+  const label = requestStatuses.find((option) => option.value === status)?.shortLabel ?? status;
+  return <span className={`request-status ${status}`}>{label}</span>;
+}
+
+function RequestWorkspace({
+  data,
+  loading,
+  busy,
+  onRefresh,
+  onUpdateStatus
+}: {
+  data: RequestDashboardResponse | null;
+  loading: boolean;
+  busy: boolean;
+  onRefresh: () => Promise<void>;
+  onUpdateStatus: (issueNumber: number, status: RequestStatus) => Promise<boolean>;
+}) {
+  const [query, setQuery] = useState("");
+  const [statusFilter, setStatusFilter] = useState<"all" | RequestStatus>("all");
+  const [typeFilter, setTypeFilter] = useState<"all" | RequestType>("all");
+  const [selectedNumber, setSelectedNumber] = useState<number | null>(null);
+  const [draftStatus, setDraftStatus] = useState<RequestStatus>("new");
+
+  const filtered = useMemo(() => {
+    const normalized = query.trim().toLowerCase();
+    return (data?.requests ?? []).filter((request) => {
+      if (statusFilter !== "all" && request.status !== statusFilter) return false;
+      if (typeFilter !== "all" && request.requestType !== typeFilter) return false;
+      return !normalized || [
+        request.institutionName,
+        request.category,
+        request.title,
+        String(request.number)
+      ].some((value) => value.toLowerCase().includes(normalized));
+    });
+  }, [data, query, statusFilter, typeFilter]);
+
+  const selected = (data?.requests ?? []).find((request) => request.number === selectedNumber)
+    ?? filtered[0]
+    ?? null;
+
+  useEffect(() => {
+    if (selected && selected.number !== selectedNumber) setSelectedNumber(selected.number);
+  }, [selected, selectedNumber]);
+
+  useEffect(() => {
+    if (selected) setDraftStatus(selected.status);
+  }, [selected?.number, selected?.status]);
+
+  const workflowStatuses = requestStatuses.filter((status) => status.value !== "declined");
+  const currentWorkflowIndex = workflowStatuses.findIndex((status) => status.value === selected?.status);
+
+  return (
+    <main className="request-workspace">
+      <header className="request-heading">
+        <div>
+          <p className="admin-kicker">Request operations</p>
+          <h1>Request dashboard</h1>
+          <p>Review community requests, verify supplied assets, and keep publication status current.</p>
+        </div>
+        <button type="button" onClick={() => void onRefresh()} disabled={loading || busy}>
+          <RefreshCw className={loading ? "spin" : ""} size={15} /> Refresh
+        </button>
+      </header>
+
+      <section className="request-summary" aria-label="Request workload summary">
+        <div><span>All requests</span><strong>{data?.summary.total ?? 0}</strong></div>
+        <div><span>New</span><strong>{data?.summary.new ?? 0}</strong></div>
+        <div><span>In progress</span><strong>{data?.summary.active ?? 0}</strong></div>
+        <div><span>Published</span><strong>{data?.summary.published ?? 0}</strong></div>
+      </section>
+
+      <section className="request-toolbar" aria-label="Request filters">
+        <label className="request-search">
+          <Search size={16} aria-hidden="true" />
+          <input
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+            placeholder="Search by institution, category, or issue"
+          />
+        </label>
+        <label>
+          <span>Type</span>
+          <select value={typeFilter} onChange={(event) => setTypeFilter(event.target.value as "all" | RequestType)}>
+            <option value="all">All request types</option>
+            <option value="logo-request">Logo requests</option>
+            <option value="company-submission">Company submissions</option>
+          </select>
+        </label>
+        <label>
+          <span>Status</span>
+          <select value={statusFilter} onChange={(event) => setStatusFilter(event.target.value as "all" | RequestStatus)}>
+            <option value="all">All statuses</option>
+            {requestStatuses.map((status) => <option key={status.value} value={status.value}>{status.label}</option>)}
+          </select>
+        </label>
+      </section>
+
+      <section className="request-board">
+        <div className="request-list-pane">
+          <div className="request-list-header">
+            <span>{filtered.length} {filtered.length === 1 ? "request" : "requests"}</span>
+            <span>Newest first</span>
+          </div>
+          {loading && !data ? (
+            <div className="request-list-empty"><LoaderCircle className="spin" size={17} /> Loading requests</div>
+          ) : filtered.length ? (
+            <div className="request-list">
+              {filtered.map((request) => (
+                <button
+                  type="button"
+                  key={request.number}
+                  className={request.number === selected?.number ? "active" : ""}
+                  onClick={() => setSelectedNumber(request.number)}
+                >
+                  <span className="request-type-icon" aria-hidden="true">
+                    {request.requestType === "company-submission" ? <Building2 size={16} /> : <Inbox size={16} />}
+                  </span>
+                  <span className="request-row-copy">
+                    <strong>{request.institutionName}</strong>
+                    <small>{request.requestType === "company-submission" ? "Company submission" : "Logo request"} · #{request.number}</small>
+                  </span>
+                  <RequestStatusBadge status={request.status} />
+                  <time dateTime={request.createdAt}>{formatRequestDate(request.createdAt)}</time>
+                  <ChevronRight className="request-row-arrow" size={16} aria-hidden="true" />
+                </button>
+              ))}
+            </div>
+          ) : (
+            <div className="request-list-empty"><Search size={17} /> No requests match these filters</div>
+          )}
+        </div>
+
+        <aside className="request-detail-pane" aria-label="Selected request details">
+          {selected ? (
+            <>
+              <header className="request-detail-header">
+                <div>
+                  <div className="request-detail-eyebrow">
+                    <RequestStatusBadge status={selected.status} />
+                    <span>Issue #{selected.number}</span>
+                  </div>
+                  <h2>{selected.institutionName}</h2>
+                  <p>{selected.requestType === "company-submission" ? "Official company submission" : "Community logo request"}</p>
+                </div>
+                <a href={selected.githubUrl} target="_blank" rel="noreferrer" title="Open request in GitHub">
+                  <ExternalLink size={16} /><span>GitHub</span>
+                </a>
+              </header>
+
+              <section className="request-progress" aria-label="Publication workflow">
+                <div className="request-section-label">Publication workflow</div>
+                <ol>
+                  {workflowStatuses.map((status, index) => (
+                    <li
+                      key={status.value}
+                      className={[
+                        selected.status === "declined" ? "" : index < currentWorkflowIndex ? "complete" : "",
+                        status.value === selected.status ? "current" : ""
+                      ].filter(Boolean).join(" ")}
+                    >
+                      <span>{index < currentWorkflowIndex && selected.status !== "declined" ? <Check size={12} /> : index + 1}</span>
+                      <small>{status.shortLabel}</small>
+                    </li>
+                  ))}
+                </ol>
+              </section>
+
+              <section className="request-status-editor">
+                <label>
+                  <span>Update status</span>
+                  <select value={draftStatus} onChange={(event) => setDraftStatus(event.target.value as RequestStatus)}>
+                    {requestStatuses.map((status) => <option key={status.value} value={status.value}>{status.label}</option>)}
+                  </select>
+                </label>
+                <button
+                  type="button"
+                  disabled={busy || draftStatus === selected.status}
+                  onClick={() => void onUpdateStatus(selected.number, draftStatus)}
+                >
+                  <Check size={15} /> Save status
+                </button>
+              </section>
+
+              <section className="request-metadata">
+                <div><span>Category</span><strong>{selected.category}</strong></div>
+                <div><span>Requested format</span><strong>{selected.assetFormat ?? "Not supplied"}</strong></div>
+                <div><span>Submitted</span><strong>{formatRequestDate(selected.createdAt)}</strong></div>
+                <div><span>Last updated</span><strong>{formatRequestDate(selected.updatedAt)}</strong></div>
+                {selected.submitterRole ? <div><span>Submitter role</span><strong>{selected.submitterRole}</strong></div> : null}
+                <div>
+                  <span>Availability email</span>
+                  <strong>{selected.notificationRequested ? "Requested" : "Not requested"}</strong>
+                </div>
+              </section>
+
+              <section className="request-links">
+                <div className="request-section-label">Sources and files</div>
+                {selected.officialWebsite ? (
+                  <a href={selected.officialWebsite} target="_blank" rel="noreferrer"><Link2 size={15} /><span><small>Official website</small>{selected.officialWebsite}</span><ExternalLink size={14} /></a>
+                ) : null}
+                {selected.assetUrl ? (
+                  <a href={selected.assetUrl} target="_blank" rel="noreferrer"><FileCode2 size={15} /><span><small>Submitted asset</small>{selected.assetUrl}</span><ExternalLink size={14} /></a>
+                ) : null}
+                {selected.brandGuidelinesUrl ? (
+                  <a href={selected.brandGuidelinesUrl} target="_blank" rel="noreferrer"><Link2 size={15} /><span><small>Brand guidelines</small>{selected.brandGuidelinesUrl}</span><ExternalLink size={14} /></a>
+                ) : null}
+                {!selected.officialWebsite && !selected.assetUrl && !selected.brandGuidelinesUrl ? (
+                  <div className="request-link-empty">No public links were supplied.</div>
+                ) : null}
+              </section>
+
+              <div className="request-privacy-note">
+                <ShieldCheck size={16} aria-hidden="true" />
+                <span><strong>Private by design.</strong> Requester email addresses stay in the email service and are never returned by this dashboard.</span>
+              </div>
+            </>
+          ) : (
+            <div className="request-detail-empty"><ClipboardList size={20} /><span>Select a request to review it</span></div>
+          )}
+        </aside>
+      </section>
+    </main>
+  );
+}
+
+function LogoNotificationWorkspace({
+  busy,
+  logos,
+  data,
+  loading,
+  onRefresh,
+  onDispatch,
+  onManualSubmit
+}: {
+  busy: boolean;
+  logos: Logo[];
+  data: NotificationQueueResponse | null;
+  loading: boolean;
+  onRefresh: () => Promise<void>;
+  onDispatch: (payload?: Record<string, unknown>) => Promise<boolean>;
+  onManualSubmit: (payload: Record<string, unknown>) => Promise<boolean>;
+}) {
+  return (
+    <main className="admin-form-page notification-workspace">
+      <div className="admin-page-heading notification-heading">
+        <div>
+          <p className="admin-kicker">Automatic publication email</p>
+          <h1>Logo notifications</h1>
+          <p className="admin-page-description">
+            Exact name and alias matches send automatically each day. Review unmatched requests here.
+          </p>
+        </div>
+        <div className="notification-heading-actions">
+          <button type="button" onClick={() => void onRefresh()} disabled={loading || busy}>
+            <RefreshCw className={loading ? "spin" : ""} size={15} /> Refresh
+          </button>
+          <button type="button" className="primary" onClick={() => void onDispatch()} disabled={loading || busy}>
+            <Send size={15} /> Run automatic check
+          </button>
+        </div>
+      </div>
+
+      <section className="notification-summary" aria-label="Notification queue summary">
+        <div><strong>{data?.summary.total ?? 0}</strong><span>Pending requests</span></div>
+        <div><strong>{data?.summary.ready ?? 0}</strong><span>Ready to send</span></div>
+        <div><strong>{(data?.summary.unmatched ?? 0) + (data?.summary.ambiguous ?? 0)}</strong><span>Need review</span></div>
+      </section>
+
+      <section className="notification-queue">
+        <div className="admin-section-heading">
+          <div>
+            <h2>Private notification queue</h2>
+            <p>Requester email addresses remain in Resend and are never shown here.</p>
+          </div>
+        </div>
+        {loading && !data ? (
+          <div className="admin-inline-empty"><LoaderCircle className="spin" size={16} /> Loading notification queue</div>
+        ) : data?.queue.length ? (
+          <div className="notification-list">
+            {data.queue.map((item) => (
+              <NotificationQueueRow
+                key={item.segmentId}
+                item={item}
+                logos={logos}
+                busy={busy}
+                onDispatch={onDispatch}
+              />
+            ))}
+          </div>
+        ) : (
+          <div className="admin-inline-empty"><Check size={16} /> No logo notifications are waiting</div>
+        )}
+      </section>
+
+      <details className="manual-notification">
+        <summary>Send a one-off availability email</summary>
+        <LogoLiveNotificationForm
+          busy={busy}
+          logos={logos}
+          onSubmit={onManualSubmit}
+        />
+      </details>
+    </main>
+  );
+}
+
+function NotificationQueueRow({
+  item,
+  logos,
+  busy,
+  onDispatch
+}: {
+  item: NotificationQueueItem;
+  logos: Logo[];
+  busy: boolean;
+  onDispatch: (payload?: Record<string, unknown>) => Promise<boolean>;
+}) {
+  const [selectedSlug, setSelectedSlug] = useState(item.matches[0]?.slug ?? "");
+  const readyMatch = item.status === "ready" ? item.matches[0] : null;
+
+  return (
+    <article className="notification-row">
+      <div className="notification-request">
+        <span className={`notification-status ${item.status}`}>
+          {item.status === "ready" ? "Ready" : item.status === "ambiguous" ? "Review" : "Unmatched"}
+        </span>
+        <strong>{item.requestedName}</strong>
+        <small>{item.requestKey}</small>
+      </div>
+      {readyMatch ? (
+        <div className="notification-match">
+          <span>Matched catalog entry</span>
+          <strong>{readyMatch.name}</strong>
+        </div>
+      ) : (
+        <label className="notification-match">
+          <span>Choose the live catalog entry</span>
+          <select value={selectedSlug} onChange={(event) => setSelectedSlug(event.target.value)}>
+            <option value="">Select a logo</option>
+            {logos.map((logo) => <option key={logo.slug} value={logo.slug}>{logo.name}</option>)}
+          </select>
+        </label>
+      )}
+      <button
+        type="button"
+        disabled={busy || (!readyMatch && !selectedSlug)}
+        onClick={() => void onDispatch({
+          segmentId: item.segmentId,
+          logoSlug: readyMatch?.slug ?? selectedSlug
+        })}
+      >
+        <Send size={14} /> Send now
+      </button>
+    </article>
+  );
+}
+
+function LogoLiveNotificationForm({
+  busy,
+  logos,
+  onSubmit
+}: {
+  busy: boolean;
+  logos: Logo[];
+  onSubmit: (payload: Record<string, unknown>) => Promise<boolean>;
+}) {
+  const [slug, setSlug] = useState(logos[0]?.slug ?? "");
+  const [recipientEmail, setRecipientEmail] = useState("");
+  const [logoUrl, setLogoUrl] = useState("https://awalogo.com/");
+  const [submissionId, setSubmissionId] = useState("");
+  const selected = logos.find((logo) => logo.slug === slug);
+
+  useEffect(() => {
+    if (!slug && logos[0]) setSlug(logos[0].slug);
+  }, [logos, slug]);
+
+  async function submit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (!selected) return;
+    const sent = await onSubmit({
+      institutionName: selected.name,
+      recipientEmail,
+      logoUrl,
+      submissionId
+    });
+    if (sent) {
+      setRecipientEmail("");
+      setSubmissionId("");
+    }
+  }
+
+  return (
+    <section className="manual-notification-panel">
+      <div className="admin-page-heading">
+        <p className="admin-kicker">Publication email</p>
+        <h1>Notify a requester</h1>
+        <p className="admin-page-description">Send the one-time availability email after a requested logo is live on awalogo.</p>
+      </div>
+      <form className="admin-form-grid" onSubmit={submit}>
+        <section className="admin-form-section">
+          <h2>Live logo</h2>
+          <div className="admin-fields two">
+            <label>
+              <span>Catalog entry</span>
+              <select value={slug} onChange={(event) => setSlug(event.target.value)} required>
+                {logos.map((logo) => <option key={logo.slug} value={logo.slug}>{logo.name}</option>)}
+              </select>
+            </label>
+            <label>
+              <span>Recipient email</span>
+              <input
+                type="email"
+                required
+                value={recipientEmail}
+                onChange={(event) => setRecipientEmail(event.target.value)}
+                placeholder="requester@example.com"
+                autoComplete="off"
+              />
+            </label>
+            <label>
+              <span>Public logo URL</span>
+              <input
+                type="url"
+                required
+                value={logoUrl}
+                onChange={(event) => setLogoUrl(event.target.value)}
+                placeholder="https://awalogo.com/"
+              />
+            </label>
+            <label>
+              <span>Submission ID (optional)</span>
+              <input
+                value={submissionId}
+                onChange={(event) => setSubmissionId(event.target.value)}
+                placeholder="UUID from the request email"
+              />
+            </label>
+          </div>
+        </section>
+        <div className="admin-submit-row">
+          <span>Use the private recipient address from the original maintainer email.</span>
+          <button disabled={busy || !selected} type="submit"><Send size={17} /> Send availability email</button>
+        </div>
+      </form>
+    </section>
   );
 }
 
