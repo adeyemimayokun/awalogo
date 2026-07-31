@@ -6,9 +6,9 @@ export default function handler(request: VercelRequest, response: VercelResponse
   if (request.method !== "GET") return methodNotAllowed(response, ["GET"]);
   response.setHeader("Cache-Control", "no-store");
   const session = readSession(request);
-  if (!session || !isAllowedAdmin(session.login)) {
+  if (!session || (!session.local && !isAllowedAdmin(session.login))) {
     response.status(401).json({ authenticated: false });
     return;
   }
-  response.status(200).json({ authenticated: true, user: { login: session.login, avatarUrl: session.avatarUrl } });
+  response.status(200).json({ authenticated: true, user: { login: session.login, avatarUrl: session.avatarUrl, local: session.local ?? false } });
 }

@@ -27,6 +27,10 @@ export default async function handler(request: VercelRequest, response: VercelRe
       body: `${prepared.body}\n\nSubmitted by @${admin.login}.`,
       changes: prepared.changes
     });
+    if (pullRequest.local) {
+      response.status(201).json({ ok: true, localPreview: true });
+      return;
+    }
     response.status(201).json({ ok: true, pullRequest: { number: pullRequest.number, url: pullRequest.html_url } });
   } catch (error) {
     if (error instanceof ZodError) {

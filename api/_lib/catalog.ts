@@ -16,8 +16,8 @@ export const mutationSchema = z.discriminatedUnion("operation", [
     category: z.enum(["commercial-bank", "microfinance-bank", "merchant-bank", "payment-bank", "fintech", "other"]),
     aliases: z.array(z.string().trim().min(1).max(100)).max(20),
     website: z.string().url(),
-    sourceUrl: z.string().url(),
-    sourceType: z.enum(["official-brand-page", "official-website", "annual-report", "verified-pdf", "other-official"]),
+    sourceUrl: z.string().url().optional(),
+    sourceType: z.enum(["official-brand-page", "official-website", "annual-report", "verified-pdf", "other-official", "community-catalog"]),
     svgBase64: svgUpload
   }),
   mutationBase.extend({ operation: z.literal("remove-logo"), slug, confirmation: z.string() }),
@@ -129,6 +129,9 @@ export async function buildMutationChanges(
 
   if (mutation.operation === "add-logo") {
     if (catalog.some((entry) => entry.slug === mutation.slug)) throw new Error(`Logo "${mutation.slug}" already exists`);
+    if (mutation.sourceType !== "community-catalog" && !mutation.sourceUrl) {
+      throw new Error("An official source URL is required for official logo sources");
+    }
     const svg = decodeSvg(mutation.svgBase64);
     const rendered = await renderedFormats(svg);
     const entry = logoEntrySchema.parse({
@@ -137,7 +140,7 @@ export async function buildMutationChanges(
       category: mutation.category,
       aliases: mutation.aliases,
       website: mutation.website,
-      source_url: mutation.sourceUrl,
+      source_url: mutation.sourceUrl ?? mutation.website,
       source_type: mutation.sourceType,
       source_path: `sources/${mutation.slug}.svg`,
       svg_path: `assets/${mutation.slug}.svg`,
@@ -213,7 +216,7 @@ export async function buildMutationChanges(
   return {
     changes,
     title: `CMS: ${actionLabel} ${mutation.slug}`,
-    body: `Created by the secured logo CMS.\n\n- Operation: \`${mutation.operation}\`\n- Institution: \`${mutation.slug}\`\n\nPlease verify the official source and rendered assets before merging.`
+    body: `Created by the secured logo CMS.\n\n- Operation: \`${mutation.operation}\`\n- Institution: \`${mutation.slug}\`${mutation.operation === "add-logo" && mutation.sourceType === "community-catalog" ? "\n- Provenance: `community-catalog` (official logo source unavailable)" : ""}\n\nPlease verify the source classification and rendered assets before merging.`
   };
 }
 

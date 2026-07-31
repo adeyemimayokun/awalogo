@@ -9,7 +9,27 @@ export type AdminSession = {
   login: string;
   avatarUrl: string;
   exp: number;
+  local?: boolean;
 };
+
+function isLocalAdminRequest(request: VercelRequest): boolean {
+  const host = request.headers.host ?? "";
+  const localHost = /^(?:127\.0\.0\.1|localhost|\[::1\])(?::\d+)?$/i.test(host);
+  return process.env.AWALOGO_LOCAL_ADMIN_BYPASS === "1" &&
+    !process.env.VERCEL &&
+    localHost &&
+    request.headers["x-awalogo-local-admin"] === "1";
+}
+
+function localAdminSession(request: VercelRequest): AdminSession | null {
+  if (!isLocalAdminRequest(request)) return null;
+  return {
+    login: "local-admin",
+    avatarUrl: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23c9e45d'/%3E%3Cpath d='M9 16h14M16 9v14' stroke='%23292a27' stroke-width='2'/%3E%3C/svg%3E",
+    exp: Math.floor(Date.now() / 1000) + SESSION_DURATION_SECONDS,
+    local: true
+  };
+}
 
 function requiredEnv(name: string): string {
   const value = process.env[name];
@@ -66,6 +86,8 @@ export function issueSession(response: VercelResponse, login: string, avatarUrl:
 }
 
 export function readSession(request: VercelRequest): AdminSession | null {
+  const localSession = localAdminSession(request);
+  if (localSession) return localSession;
   const token = parseCookies(request)[SESSION_COOKIE];
   if (!token) return null;
   const [payload, suppliedSignature] = token.split(".");
@@ -86,7 +108,7 @@ export function readSession(request: VercelRequest): AdminSession | null {
 
 export function requireAdmin(request: VercelRequest, response: VercelResponse): AdminSession | null {
   const session = readSession(request);
-  if (!session || !isAllowedAdmin(session.login)) {
+  if (!session || (!session.local && !isAllowedAdmin(session.login))) {
     response.status(401).json({ error: "Admin authentication required" });
     return null;
   }

@@ -44,4 +44,38 @@ describe("CMS catalog mutations", () => {
       svgBase64: unsafe
     }, [], {}, structuredClone(manifest))).rejects.toThrow("unsafe embedded content");
   });
+
+  it("keeps community-supplied artwork visibly pending when no official logo source exists", async () => {
+    const result = await buildMutationChanges({
+      operation: "add-logo",
+      name: "Community Finance",
+      slug: "community-finance",
+      category: "fintech",
+      aliases: [],
+      website: "https://community.example",
+      sourceType: "community-catalog",
+      svgBase64: safeSvg
+    }, [], {}, structuredClone(manifest));
+
+    const catalog = JSON.parse(result.changes.find((change) => change.path.endsWith("promoted-catalog.json"))!.content!.toString());
+    expect(catalog[0]).toMatchObject({
+      source_type: "community-catalog",
+      source_url: "https://community.example",
+      status: "needs-review"
+    });
+    expect(result.body).toContain("official logo source unavailable");
+  });
+
+  it("requires a source URL when an official source classification is selected", async () => {
+    await expect(buildMutationChanges({
+      operation: "add-logo",
+      name: "Missing Source Finance",
+      slug: "missing-source-finance",
+      category: "fintech",
+      aliases: [],
+      website: "https://example.com",
+      sourceType: "official-website",
+      svgBase64: safeSvg
+    }, [], {}, structuredClone(manifest))).rejects.toThrow("official source URL is required");
+  });
 });
