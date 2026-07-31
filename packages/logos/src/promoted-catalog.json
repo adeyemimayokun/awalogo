@@ -7226,5 +7226,49 @@
     "added_at": "2026-07-15",
     "updated_at": "2026-07-15",
     "status": "needs-review"
+  },
+  {
+    "name": "Paga",
+    "slug": "paga",
+    "category": "fintech",
+    "categories": [
+      "remittance-imto",
+      "mobile-money-operator"
+    ],
+    "aliases": [
+      "paga",
+      "pagatech"
+    ],
+    "website": "https://www.mypaga.com/",
+    "source_url": "https://www.mypaga.com/",
+    "source_type": "community-catalog",
+    "source_path": "sources/paga.svg",
+    "svg_path": "assets/paga.svg",
+    "formats": [
+      {
+        "type": "svg",
+        "path": "assets/paga.svg",
+        "mime_type": "image/svg+xml",
+        "width": null,
+        "height": null
+      },
+      {
+        "type": "png",
+        "path": "assets/paga.png",
+        "mime_type": "image/png",
+        "width": null,
+        "height": null
+      },
+      {
+        "type": "webp",
+        "path": "assets/paga.webp",
+        "mime_type": "image/webp",
+        "width": null,
+        "height": null
+      }
+    ],
+    "added_at": "2026-07-31",
+    "updated_at": "2026-07-31",
+    "status": "needs-review"
   }
 ]

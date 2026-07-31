@@ -10,7 +10,7 @@ describe("institution catalog", () => {
     expect(catalogItems.length).toBeLessThan(expectedDirectorySize);
     expect(catalogItems.flatMap((item) => item.institutions)).toHaveLength(expectedDirectorySize);
     expect(institutionCount).toBe(catalogItems.length);
-    expect(canonicalLogoCount).toBe(205);
+    expect(canonicalLogoCount).toBe(206);
   });
 
   it("includes unmatched fintech research as unverified candidates", () => {
