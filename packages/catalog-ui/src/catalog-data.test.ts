@@ -23,7 +23,7 @@ describe("institution catalog", () => {
       new Set(sourceRecords.map((institution) => institution.slug))
     );
     expect(institutionCount).toBe(catalogItems.length);
-    expect(canonicalLogoCount).toBe(205);
+    expect(canonicalLogoCount).toBe(206);
   });
 
   it("only exposes categories represented by available logo assets", () => {
