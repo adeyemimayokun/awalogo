@@ -3221,38 +3221,6 @@
     "status": "verified"
   },
   {
-    "name": "Pagatech",
-    "slug": "pagatech",
-    "category": "fintech",
-    "aliases": [
-      "Pagatech Limited"
-    ],
-    "website": "https://www.mypaga.com/",
-    "source_url": "https://framerusercontent.com/images/A4sIYAftMOui9peI9v5jM9DUAM.png?width=324&height=96",
-    "source_type": "official-website",
-    "source_path": "sources/pagatech.png",
-    "svg_path": null,
-    "formats": [
-      {
-        "type": "png",
-        "path": "assets/pagatech.png",
-        "mime_type": "image/png",
-        "width": null,
-        "height": null
-      },
-      {
-        "type": "webp",
-        "path": "assets/pagatech.webp",
-        "mime_type": "image/webp",
-        "width": null,
-        "height": null
-      }
-    ],
-    "added_at": "2026-07-13",
-    "updated_at": "2026-07-13",
-    "status": "verified"
-  },
-  {
     "name": "Remita Payment Service",
     "slug": "remita-payment-service",
     "category": "other",
