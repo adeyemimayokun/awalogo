@@ -34,19 +34,33 @@ function serializeNotification(notification: RepositoryNotification) {
 
 export default async function handler(request: VercelRequest, response: VercelResponse): Promise<void> {
   if (request.method !== "GET" && request.method !== "PATCH") return methodNotAllowed(response, ["GET", "PATCH"]);
-  if (!requireAdmin(request, response)) return;
+  const admin = requireAdmin(request, response);
+  if (!admin) return;
+  response.setHeader("Cache-Control", "no-store");
 
   try {
     if (request.method === "PATCH") {
       const update = updateSchema.parse(request.body);
-      await markRepositoryNotificationRead(update.id);
+      await markRepositoryNotificationRead(update.id, admin.githubToken);
     }
-    const notifications = await listRepositoryNotifications();
+    const notifications = await listRepositoryNotifications(admin.githubToken);
     response.status(200).json({
       notifications: notifications.map(serializeNotification),
-      localPreview: isLocalRepositoryMode()
+      localPreview: isLocalRepositoryMode(),
+      integration: { available: true }
     });
   } catch (error) {
-    jsonError(response, error);
+    if (request.method === "GET") {
+      response.status(200).json({
+        notifications: [],
+        localPreview: isLocalRepositoryMode(),
+        integration: {
+          available: false,
+          message: "GitHub notifications are unavailable. Configure the admin token with access to account notifications."
+        }
+      });
+      return;
+    }
+    jsonError(response, error, 503);
   }
 }

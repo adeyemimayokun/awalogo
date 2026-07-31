@@ -1,4 +1,8 @@
-import type { Institution, InstitutionCategory } from "@awalogo/institutions";
+import {
+  institutionCategories,
+  type Institution,
+  type InstitutionCategory
+} from "@awalogo/institutions";
 import communityCandidatesJson from "../../../packages/institutions/data/community-candidates.json";
 import foreignAuthorizedJson from "../../../packages/institutions/exports/foreign-authorized-ng.json";
 import institutionsJson from "../../../packages/institutions/exports/institutions-ng.json";
@@ -21,6 +25,7 @@ const institutions = [
   ...communityCandidatesJson
 ] as Institution[];
 const logosBySlug = new Map(logos.map((logo) => [logo.slug, logo]));
+const institutionCategorySet = new Set<string>(institutionCategories);
 const categoryOverrides: Partial<Record<InstitutionCategory, string>> = {
   "crypto-vasp": "Crypto / VASP",
   "development-finance-institution": "Development finance",
@@ -119,7 +124,12 @@ const institutionItems: CatalogItem[] = institutions.map((institution) => {
     institutions: [institution],
     logo,
     displayName,
-    categories: institution.categories
+    categories: [...new Set([
+      ...institution.categories,
+      ...((logo?.categories ?? []).filter((category): category is InstitutionCategory =>
+        institutionCategorySet.has(category)
+      ))
+    ])]
   };
 });
 

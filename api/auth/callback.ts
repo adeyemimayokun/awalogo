@@ -44,7 +44,7 @@ export default async function handler(request: VercelRequest, response: VercelRe
       return;
     }
 
-    issueSession(response, user.login, user.avatar_url);
+    issueSession(response, user.login, user.avatar_url, token.access_token);
     response.redirect(302, "/admin");
   } catch (error) {
     jsonError(response, error);

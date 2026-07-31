@@ -180,17 +180,18 @@ function repository(): { owner: string; repo: string } {
   return { owner, repo };
 }
 
-function token(): string {
-  if (!process.env.GITHUB_ADMIN_TOKEN) throw new Error("Missing required environment variable: GITHUB_ADMIN_TOKEN");
-  return process.env.GITHUB_ADMIN_TOKEN;
+function token(sessionToken?: string): string {
+  const value = sessionToken ?? process.env.GITHUB_ADMIN_TOKEN;
+  if (!value) throw new Error("GitHub repository access is not connected");
+  return value;
 }
 
-async function github<T>(path: string, init: RequestInit = {}): Promise<T> {
+async function github<T>(path: string, init: RequestInit = {}, sessionToken?: string): Promise<T> {
   const response = await fetch(`https://api.github.com${path}`, {
     ...init,
     headers: {
       Accept: "application/vnd.github+json",
-      Authorization: `Bearer ${token()}`,
+      Authorization: `Bearer ${token(sessionToken)}`,
       "Content-Type": "application/json",
       "User-Agent": "awalogo-cms",
       "X-GitHub-Api-Version": "2022-11-28",
@@ -205,7 +206,7 @@ async function github<T>(path: string, init: RequestInit = {}): Promise<T> {
   return response.json() as Promise<T>;
 }
 
-export async function readRepositoryJson<T>(path: string): Promise<T> {
+export async function readRepositoryJson<T>(path: string, sessionToken?: string): Promise<T> {
   if (isLocalRepositoryMode()) {
     const content = await readRepositoryFile(path);
     if (!content) throw new Error(`Local repository file was removed: ${path}`);
@@ -213,7 +214,11 @@ export async function readRepositoryJson<T>(path: string): Promise<T> {
   }
   const { owner, repo } = repository();
   const branch = process.env.GITHUB_DEFAULT_BRANCH ?? "main";
-  const file = await github<GitHubContent>(`/repos/${owner}/${repo}/contents/${path}?ref=${encodeURIComponent(branch)}`);
+  const file = await github<GitHubContent>(
+    `/repos/${owner}/${repo}/contents/${path}?ref=${encodeURIComponent(branch)}`,
+    {},
+    sessionToken
+  );
   if (file.encoding !== "base64") throw new Error(`Unsupported GitHub encoding for ${path}`);
   return JSON.parse(Buffer.from(file.content.replace(/\n/g, ""), "base64").toString("utf8")) as T;
 }
@@ -222,6 +227,7 @@ export async function createRepositoryIssue(options: {
   title: string;
   body: string;
   labels?: string[];
+  sessionToken?: string;
 }): Promise<RepositoryIssue> {
   if (isLocalRepositoryMode()) {
     const number = Math.max(0, ...localIssues.keys()) + 1;
@@ -248,10 +254,10 @@ export async function createRepositoryIssue(options: {
       body: options.body,
       labels: options.labels ?? []
     })
-  });
+  }, options.sessionToken);
 }
 
-export async function listRepositoryIssues(label: string): Promise<RepositoryIssue[]> {
+export async function listRepositoryIssues(label: string, sessionToken?: string): Promise<RepositoryIssue[]> {
   if (isLocalRepositoryMode()) {
     return [...localIssues.values()]
       .filter((issue) => issue.labels.some((item) => item.name === label))
@@ -259,22 +265,29 @@ export async function listRepositoryIssues(label: string): Promise<RepositoryIss
   }
   const { owner, repo } = repository();
   const issues = await github<RepositoryIssue[]>(
-    `/repos/${owner}/${repo}/issues?state=all&labels=${encodeURIComponent(label)}&sort=created&direction=desc&per_page=100`
+    `/repos/${owner}/${repo}/issues?state=all&labels=${encodeURIComponent(label)}&sort=created&direction=desc&per_page=100`,
+    {},
+    sessionToken
   );
   return issues.filter((issue) => !issue.pull_request);
 }
 
 export async function updateRepositoryIssue(options: {
   number: number;
-  labels: string[];
+  body?: string | null;
+  labels?: string[];
   state: "open" | "closed";
+  sessionToken?: string;
 }): Promise<RepositoryIssue> {
   if (isLocalRepositoryMode()) {
     const current = localIssues.get(options.number);
     if (!current) throw new Error(`Logo request #${options.number} was not found`);
     const updated: RepositoryIssue = {
       ...current,
-      labels: options.labels.map((name) => ({ name })),
+      body: options.body === undefined ? current.body : options.body,
+      labels: options.labels === undefined
+        ? current.labels
+        : options.labels.map((name) => ({ name })),
       state: options.state,
       updated_at: new Date().toISOString()
     };
@@ -282,30 +295,37 @@ export async function updateRepositoryIssue(options: {
     return updated;
   }
   const { owner, repo } = repository();
+  const body: Record<string, unknown> = { state: options.state };
+  if (options.body !== undefined) body.body = options.body;
+  if (options.labels !== undefined) body.labels = options.labels;
   return github<RepositoryIssue>(`/repos/${owner}/${repo}/issues/${options.number}`, {
     method: "PATCH",
-    body: JSON.stringify({ labels: options.labels, state: options.state })
-  });
+    body: JSON.stringify(body)
+  }, options.sessionToken);
 }
 
-export async function listRepositoryNotifications(): Promise<RepositoryNotification[]> {
+export async function listRepositoryNotifications(sessionToken?: string): Promise<RepositoryNotification[]> {
   if (isLocalRepositoryMode()) {
     return [...localNotifications.values()].sort((left, right) => right.updated_at.localeCompare(left.updated_at));
   }
   const { owner, repo } = repository();
   const fullName = `${owner}/${repo}`.toLowerCase();
-  const notifications = await github<RepositoryNotification[]>("/notifications?all=true&participating=false&per_page=100");
+  const notifications = await github<RepositoryNotification[]>(
+    "/notifications?all=true&participating=false&per_page=100",
+    {},
+    sessionToken
+  );
   return notifications.filter((notification) => notification.repository.full_name.toLowerCase() === fullName);
 }
 
-export async function markRepositoryNotificationRead(id: string): Promise<void> {
+export async function markRepositoryNotificationRead(id: string, sessionToken?: string): Promise<void> {
   if (isLocalRepositoryMode()) {
     const current = localNotifications.get(id);
     if (!current) throw new Error(`Notification ${id} was not found`);
     localNotifications.set(id, { ...current, unread: false });
     return;
   }
-  await github<void>(`/notifications/threads/${encodeURIComponent(id)}`, { method: "PATCH" });
+  await github<void>(`/notifications/threads/${encodeURIComponent(id)}`, { method: "PATCH" }, sessionToken);
 }
 
 function branchName(action: string, slug: string): string {
@@ -319,6 +339,7 @@ export async function createCatalogPullRequest(options: {
   title: string;
   body: string;
   changes: FileChange[];
+  sessionToken?: string;
 }): Promise<PullRequest> {
   if (isLocalRepositoryMode()) {
     for (const change of options.changes) localChanges.set(change.path, change.content);
@@ -326,33 +347,41 @@ export async function createCatalogPullRequest(options: {
   }
   const { owner, repo } = repository();
   const base = process.env.GITHUB_DEFAULT_BRANCH ?? "main";
-  const ref = await github<GitRef>(`/repos/${owner}/${repo}/git/ref/heads/${encodeURIComponent(base)}`);
-  const commit = await github<GitCommit>(`/repos/${owner}/${repo}/git/commits/${ref.object.sha}`);
+  const ref = await github<GitRef>(
+    `/repos/${owner}/${repo}/git/ref/heads/${encodeURIComponent(base)}`,
+    {},
+    options.sessionToken
+  );
+  const commit = await github<GitCommit>(
+    `/repos/${owner}/${repo}/git/commits/${ref.object.sha}`,
+    {},
+    options.sessionToken
+  );
 
   const entries = await Promise.all(options.changes.map(async (change) => {
     if (change.content === null) return { path: change.path, mode: "100644", type: "blob", sha: null };
     const blob = await github<GitBlob>(`/repos/${owner}/${repo}/git/blobs`, {
       method: "POST",
       body: JSON.stringify({ content: change.content.toString("base64"), encoding: "base64" })
-    });
+    }, options.sessionToken);
     return { path: change.path, mode: "100644", type: "blob", sha: blob.sha };
   }));
 
   const tree = await github<GitBlob>(`/repos/${owner}/${repo}/git/trees`, {
     method: "POST",
     body: JSON.stringify({ base_tree: commit.tree.sha, tree: entries })
-  });
+  }, options.sessionToken);
   const nextCommit = await github<GitBlob>(`/repos/${owner}/${repo}/git/commits`, {
     method: "POST",
     body: JSON.stringify({ message: options.title, tree: tree.sha, parents: [ref.object.sha] })
-  });
+  }, options.sessionToken);
   const head = branchName(options.action, options.slug);
   await github(`/repos/${owner}/${repo}/git/refs`, {
     method: "POST",
     body: JSON.stringify({ ref: `refs/heads/${head}`, sha: nextCommit.sha })
-  });
+  }, options.sessionToken);
   return github<PullRequest>(`/repos/${owner}/${repo}/pulls`, {
     method: "POST",
     body: JSON.stringify({ title: options.title, body: options.body, head, base })
-  });
+  }, options.sessionToken);
 }

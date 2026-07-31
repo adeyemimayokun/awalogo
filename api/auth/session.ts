@@ -10,5 +10,13 @@ export default function handler(request: VercelRequest, response: VercelResponse
     response.status(401).json({ authenticated: false });
     return;
   }
-  response.status(200).json({ authenticated: true, user: { login: session.login, avatarUrl: session.avatarUrl, local: session.local ?? false } });
+  response.status(200).json({
+    authenticated: true,
+    user: {
+      login: session.login,
+      avatarUrl: session.avatarUrl,
+      local: session.local ?? false,
+      repositoryAccess: Boolean(session.local || session.githubToken)
+    }
+  });
 }

@@ -1,4 +1,11 @@
-import { createHmac, randomBytes, timingSafeEqual } from "node:crypto";
+import {
+  createCipheriv,
+  createDecipheriv,
+  createHash,
+  createHmac,
+  randomBytes,
+  timingSafeEqual
+} from "node:crypto";
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 
 const SESSION_COOKIE = "nbl_admin_session";
@@ -9,6 +16,7 @@ export type AdminSession = {
   login: string;
   avatarUrl: string;
   exp: number;
+  githubToken?: string;
   local?: boolean;
 };
 
@@ -54,6 +62,41 @@ function signature(payload: string): string {
   return createHmac("sha256", secret).update(payload).digest("base64url");
 }
 
+function sessionKey(): Buffer {
+  return createHash("sha256").update(requiredEnv("ADMIN_SESSION_SECRET")).digest();
+}
+
+function sealSession(session: AdminSession): string {
+  const iv = randomBytes(12);
+  const cipher = createCipheriv("aes-256-gcm", sessionKey(), iv);
+  const ciphertext = Buffer.concat([
+    cipher.update(JSON.stringify(session), "utf8"),
+    cipher.final()
+  ]);
+  return [
+    "v2",
+    iv.toString("base64url"),
+    ciphertext.toString("base64url"),
+    cipher.getAuthTag().toString("base64url")
+  ].join(".");
+}
+
+function openSession(value: string): AdminSession | null {
+  const [, encodedIv, encodedCiphertext, encodedTag] = value.split(".");
+  if (!encodedIv || !encodedCiphertext || !encodedTag) return null;
+  try {
+    const decipher = createDecipheriv("aes-256-gcm", sessionKey(), Buffer.from(encodedIv, "base64url"));
+    decipher.setAuthTag(Buffer.from(encodedTag, "base64url"));
+    const plaintext = Buffer.concat([
+      decipher.update(Buffer.from(encodedCiphertext, "base64url")),
+      decipher.final()
+    ]);
+    return JSON.parse(plaintext.toString("utf8")) as AdminSession;
+  } catch {
+    return null;
+  }
+}
+
 function secureCookie(): boolean {
   return process.env.NODE_ENV === "production" || Boolean(process.env.VERCEL);
 }
@@ -75,14 +118,14 @@ function appendCookie(response: VercelResponse, value: string): void {
   response.setHeader("Set-Cookie", [...cookies, value]);
 }
 
-export function issueSession(response: VercelResponse, login: string, avatarUrl: string): void {
+export function issueSession(response: VercelResponse, login: string, avatarUrl: string, githubToken?: string): void {
   const session: AdminSession = {
     login,
     avatarUrl,
-    exp: Math.floor(Date.now() / 1000) + SESSION_DURATION_SECONDS
+    exp: Math.floor(Date.now() / 1000) + SESSION_DURATION_SECONDS,
+    githubToken
   };
-  const payload = Buffer.from(JSON.stringify(session)).toString("base64url");
-  appendCookie(response, cookie(SESSION_COOKIE, `${payload}.${signature(payload)}`, SESSION_DURATION_SECONDS));
+  appendCookie(response, cookie(SESSION_COOKIE, sealSession(session), SESSION_DURATION_SECONDS));
 }
 
 export function readSession(request: VercelRequest): AdminSession | null {
@@ -90,6 +133,12 @@ export function readSession(request: VercelRequest): AdminSession | null {
   if (localSession) return localSession;
   const token = parseCookies(request)[SESSION_COOKIE];
   if (!token) return null;
+  if (token.startsWith("v2.")) {
+    const session = openSession(token);
+    if (!session?.login || !session.avatarUrl || session.exp <= Math.floor(Date.now() / 1000)) return null;
+    return session;
+  }
+
   const [payload, suppliedSignature] = token.split(".");
   if (!payload || !suppliedSignature) return null;
 

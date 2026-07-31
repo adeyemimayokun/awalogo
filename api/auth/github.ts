@@ -10,7 +10,7 @@ export default function handler(request: VercelRequest, response: VercelResponse
     const params = new URLSearchParams({
       client_id: oauthClientId(),
       redirect_uri: callback,
-      scope: "read:user",
+      scope: "read:user public_repo notifications",
       state
     });
     response.redirect(302, `https://github.com/login/oauth/authorize?${params.toString()}`);

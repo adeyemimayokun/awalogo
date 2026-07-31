@@ -14,7 +14,7 @@ describe("CMS catalog mutations", () => {
       operation: "add-logo",
       name: "Example Finance",
       slug: "example-finance",
-      category: "fintech",
+      categories: ["fintech", "finance-app"],
       aliases: ["Example"],
       website: "https://example.com",
       sourceUrl: "https://example.com/brand",
@@ -27,7 +27,12 @@ describe("CMS catalog mutations", () => {
     expect(paths).toContain("packages/logos/src/assets/example-finance.png");
     expect(paths).toContain("packages/logos/src/assets/example-finance.webp");
     const catalog = JSON.parse(result.changes.find((change) => change.path.endsWith("promoted-catalog.json"))!.content!.toString());
-    expect(catalog[0]).toMatchObject({ slug: "example-finance", status: "needs-review" });
+    expect(catalog[0]).toMatchObject({
+      slug: "example-finance",
+      category: "fintech",
+      categories: ["fintech", "finance-app"],
+      status: "needs-review"
+    });
   });
 
   it("rejects SVG files with executable content", async () => {
@@ -36,7 +41,7 @@ describe("CMS catalog mutations", () => {
       operation: "add-logo",
       name: "Unsafe Finance",
       slug: "unsafe-finance",
-      category: "fintech",
+      categories: ["fintech"],
       aliases: [],
       website: "https://example.com",
       sourceUrl: "https://example.com/brand",
@@ -50,7 +55,7 @@ describe("CMS catalog mutations", () => {
       operation: "add-logo",
       name: "Community Finance",
       slug: "community-finance",
-      category: "fintech",
+      categories: ["fintech"],
       aliases: [],
       website: "https://community.example",
       sourceType: "community-catalog",
@@ -71,7 +76,7 @@ describe("CMS catalog mutations", () => {
       operation: "add-logo",
       name: "Missing Source Finance",
       slug: "missing-source-finance",
-      category: "fintech",
+      categories: ["fintech"],
       aliases: [],
       website: "https://example.com",
       sourceType: "official-website",

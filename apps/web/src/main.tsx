@@ -11,6 +11,7 @@ const AdminApp = lazy(() => import("@awalogo/catalog-ui/admin").then((module) =>
 const isAdminRoute = window.location.pathname.startsWith("/admin");
 const isDocsRoute = window.location.pathname === "/docs" || window.location.pathname.startsWith("/docs/");
 const isCatalogRoute = window.location.pathname === "/";
+const analyticsEnabled = import.meta.env.PROD && import.meta.env.VITE_ENABLE_VERCEL_ANALYTICS === "true";
 if (isAdminRoute) document.documentElement.dataset.admin = "true";
 
 createRoot(document.getElementById("root")!).render(
@@ -26,6 +27,6 @@ createRoot(document.getElementById("root")!).render(
     ) : (
       <NotFoundApp aboutMarkdown={aboutMarkdown} />
     )}
-    <Analytics />
+    {analyticsEnabled ? <Analytics /> : null}
   </>
 );

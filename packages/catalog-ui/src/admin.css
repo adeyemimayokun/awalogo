@@ -1020,6 +1020,12 @@ body:has(.admin-loading) {
   color: var(--admin-danger);
 }
 
+.admin-inline-message.warning {
+  border-color: #d8d2a5;
+  background: #fffdf0;
+  color: #615916;
+}
+
 .admin-queue-loading {
   display: grid;
   gap: 1px;
@@ -1872,6 +1878,146 @@ body:has(.admin-loading) {
   text-transform: uppercase;
 }
 
+.admin-category-picker {
+  position: relative;
+  min-width: 0;
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.admin-category-picker > legend {
+  margin-bottom: 7px;
+  color: #62645e;
+  font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+.admin-category-picker details {
+  position: relative;
+}
+
+.admin-category-picker summary {
+  display: flex;
+  width: 100%;
+  height: 42px;
+  cursor: pointer;
+  list-style: none;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  border: 1px solid #cfd2ca;
+  border-radius: var(--admin-radius);
+  background: #ffffff;
+  color: var(--admin-ink);
+  font-size: 12px;
+  padding: 0 11px;
+}
+
+.admin-category-picker summary::-webkit-details-marker {
+  display: none;
+}
+
+.admin-category-picker details[open] summary {
+  border-color: #718433;
+  box-shadow: 0 0 0 2px rgb(201 228 93 / 28%);
+}
+
+.admin-category-picker summary svg {
+  flex: 0 0 auto;
+  transition: transform 150ms var(--admin-ease);
+}
+
+.admin-category-picker details[open] summary svg {
+  transform: rotate(180deg);
+}
+
+.admin-category-options {
+  position: absolute;
+  z-index: 30;
+  top: calc(100% + 6px);
+  display: grid;
+  width: 100%;
+  max-height: 300px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 4px;
+  overflow: auto;
+  overscroll-behavior: contain;
+  border: 1px solid var(--admin-line-strong);
+  border-radius: var(--admin-radius);
+  background: #ffffff;
+  box-shadow: 0 14px 34px rgb(39 41 36 / 14%);
+  padding: 8px;
+}
+
+.admin-category-options label {
+  display: grid;
+  min-width: 0;
+  min-height: 36px;
+  cursor: pointer;
+  grid-template-columns: 16px minmax(0, 1fr) 16px;
+  align-items: center;
+  gap: 7px;
+  border: 1px solid transparent;
+  border-radius: var(--admin-radius);
+  padding: 0 8px;
+}
+
+.admin-category-options label:hover {
+  background: var(--admin-subtle);
+}
+
+.admin-category-options label.selected {
+  border-color: #a8bb50;
+  background: var(--admin-accent-soft);
+}
+
+.admin-category-options label > span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.admin-category-options input {
+  width: 14px;
+  height: 14px;
+  accent-color: #829c1f;
+}
+
+.admin-category-selection {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 7px;
+}
+
+.admin-category-selection button {
+  display: inline-flex;
+  min-height: 26px;
+  cursor: pointer;
+  align-items: center;
+  gap: 5px;
+  border: 1px solid var(--admin-line);
+  border-radius: var(--admin-radius);
+  background: #ffffff;
+  color: #565951;
+  font-size: 10px;
+  padding: 4px 7px;
+}
+
+.admin-category-selection button:hover {
+  border-color: #9daf4e;
+  color: var(--admin-ink);
+}
+
+.admin-category-picker > small {
+  display: block;
+  margin-top: 7px;
+  color: var(--admin-muted);
+  font-size: 10px;
+}
+
 .admin-fields input,
 .admin-fields select,
 .admin-dialog input {
@@ -2027,6 +2173,12 @@ body:has(.admin-loading) {
   border-color: #d4aaa6;
   background: var(--admin-danger-soft);
   color: #812d27;
+}
+
+.admin-banner.access {
+  border-color: #d8d2a5;
+  background: #fffdf0;
+  color: #615916;
 }
 
 .admin-banner a {
@@ -2696,6 +2848,10 @@ body:has(.admin-loading) {
   .admin-source-toggle {
     width: 100%;
     min-width: 0;
+  }
+
+  .admin-category-options {
+    grid-template-columns: 1fr;
   }
 
   .admin-submit-row {

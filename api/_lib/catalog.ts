@@ -1,7 +1,12 @@
 import { createHash } from "node:crypto";
 import sharp from "sharp";
 import { z } from "zod";
-import { logoCatalogSchema, logoEntrySchema, logoVariationSchema } from "../../packages/logos/src/schema.js";
+import {
+  institutionCategorySchema,
+  logoCatalogSchema,
+  logoEntrySchema,
+  logoVariationSchema
+} from "./catalog-schema.js";
 import type { FileChange } from "./github.js";
 
 const slug = z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/);
@@ -13,7 +18,7 @@ export const mutationSchema = z.discriminatedUnion("operation", [
     operation: z.literal("add-logo"),
     name: z.string().trim().min(2).max(100),
     slug,
-    category: z.enum(["commercial-bank", "microfinance-bank", "merchant-bank", "payment-bank", "fintech", "other"]),
+    categories: z.array(institutionCategorySchema).min(1).max(12),
     aliases: z.array(z.string().trim().min(1).max(100)).max(20),
     website: z.string().url(),
     sourceUrl: z.string().url().optional(),
@@ -83,6 +88,18 @@ function formats(fileStem: string) {
   ];
 }
 
+function legacyLogoCategory(categories: string[]): "commercial-bank" | "microfinance-bank" | "merchant-bank" | "payment-bank" | "fintech" | "other" {
+  if (categories.includes("commercial-bank")) return "commercial-bank";
+  if (categories.includes("microfinance-bank")) return "microfinance-bank";
+  if (categories.includes("merchant-bank")) return "merchant-bank";
+  if (categories.includes("payment-service-bank")) return "payment-bank";
+  if (categories.some((category) => [
+    "fintech", "crypto-vasp", "digital-lender", "mobile-money-operator",
+    "finance-app", "crowdfunding-platform", "robo-adviser", "digital-broker"
+  ].includes(category))) return "fintech";
+  return "other";
+}
+
 function fileChanges(fileStem: string, svg: Buffer, png: Buffer, webp: Buffer): FileChange[] {
   return [
     { path: `${ROOT}sources/${fileStem}.svg`, content: svg },
@@ -137,7 +154,8 @@ export async function buildMutationChanges(
     const entry = logoEntrySchema.parse({
       name: mutation.name,
       slug: mutation.slug,
-      category: mutation.category,
+      category: legacyLogoCategory(mutation.categories),
+      categories: mutation.categories,
       aliases: mutation.aliases,
       website: mutation.website,
       source_url: mutation.sourceUrl ?? mutation.website,

@@ -19,18 +19,25 @@ const statusLabels: Record<Exclude<RequestStatus, "pending">, string> = {
   completed: "request-completed",
   rejected: "request-rejected"
 };
-const managedStatusLabels = new Set(Object.values(statusLabels));
+const statusMarker = /(?:\n\n)?<!--\s*awalogo-request-status:\s*(pending|in-review|needs-info|approved|completed|rejected)\s*-->/i;
 const updateSchema = z.object({
   number: z.number().int().positive(),
   status: z.enum(requestStatuses)
 });
 
 function issueStatus(issue: RepositoryIssue): RequestStatus {
+  const markedStatus = issue.body?.match(statusMarker)?.[1] as RequestStatus | undefined;
+  if (markedStatus && requestStatuses.includes(markedStatus)) return markedStatus;
   const labels = new Set(issue.labels.map((label) => label.name));
   for (const [status, label] of Object.entries(statusLabels) as Array<[Exclude<RequestStatus, "pending">, string]>) {
     if (labels.has(label)) return status;
   }
   return issue.state === "closed" ? "completed" : "pending";
+}
+
+function bodyWithStatus(body: string | null, status: RequestStatus): string {
+  const content = (body ?? "").replace(statusMarker, "").trimEnd();
+  return `${content}${content ? "\n\n" : ""}<!-- awalogo-request-status: ${status} -->`;
 }
 
 function issueSection(body: string | null, heading: string): string {
@@ -64,14 +71,17 @@ function serializeIssue(issue: RepositoryIssue) {
 
 export default async function handler(request: VercelRequest, response: VercelResponse): Promise<void> {
   if (request.method !== "GET" && request.method !== "PATCH") return methodNotAllowed(response, ["GET", "PATCH"]);
-  if (!requireAdmin(request, response)) return;
+  const admin = requireAdmin(request, response);
+  if (!admin) return;
+  response.setHeader("Cache-Control", "no-store");
 
   try {
-    const issues = await listRepositoryIssues("logo-request");
+    const issues = await listRepositoryIssues("logo-request", admin.githubToken);
     if (request.method === "GET") {
       response.status(200).json({
         requests: issues.map(serializeIssue),
-        localPreview: isLocalRepositoryMode()
+        localPreview: isLocalRepositoryMode(),
+        integration: { available: true }
       });
       return;
     }
@@ -82,17 +92,25 @@ export default async function handler(request: VercelRequest, response: VercelRe
       response.status(404).json({ error: `Logo request #${update.number} was not found` });
       return;
     }
-    const labels = current.labels
-      .map((label) => label.name)
-      .filter((label) => !managedStatusLabels.has(label));
-    if (update.status !== "pending") labels.push(statusLabels[update.status]);
     const updated = await updateRepositoryIssue({
       number: update.number,
-      labels,
-      state: update.status === "completed" || update.status === "rejected" ? "closed" : "open"
+      body: bodyWithStatus(current.body, update.status),
+      state: update.status === "completed" || update.status === "rejected" ? "closed" : "open",
+      sessionToken: admin.githubToken
     });
     response.status(200).json({ request: serializeIssue(updated), localPreview: isLocalRepositoryMode() });
   } catch (error) {
-    jsonError(response, error);
+    if (request.method === "GET") {
+      response.status(200).json({
+        requests: [],
+        localPreview: isLocalRepositoryMode(),
+        integration: {
+          available: false,
+          message: "GitHub logo requests are unavailable. Configure the admin token with read access to repository issues."
+        }
+      });
+      return;
+    }
+    jsonError(response, error, 503);
   }
 }

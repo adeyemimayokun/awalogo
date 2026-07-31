@@ -4,6 +4,7 @@ import {
   ArrowDownToLine,
   Bell,
   Check,
+  ChevronDown,
   ClipboardList,
   ExternalLink,
   FileCode2,
@@ -19,21 +20,25 @@ import {
   Search,
   Send,
   ShieldCheck,
+  TriangleAlert,
   Trash2,
   Upload,
   X
 } from "lucide-react";
+import type { InstitutionCategory } from "@awalogo/institutions";
 import awalogoLogoUrl from "./assets/awalogo-logo.svg";
+import { availableInstitutionCategories, categoryLabel } from "./catalog-data";
 import { logos as bundledLogos } from "./logo-data";
 import "./admin.css";
 
-type Session = { login: string; avatarUrl: string; local?: boolean };
+type Session = { login: string; avatarUrl: string; local?: boolean; repositoryAccess?: boolean };
 type Format = { type: string; path: string };
 type Variation = { id: string; name: string; source_url?: string; svg_path: string | null; formats: Format[]; preview_url?: string };
 type Logo = {
   name: string;
   slug: string;
   category: string;
+  categories?: string[];
   website: string;
   source_url: string;
   svg_path: string | null;
@@ -43,6 +48,7 @@ type Logo = {
 };
 type CatalogResponse = { catalog: Logo[]; variations: Record<string, Variation[]>; lockedSlugs: string[]; localPreview?: boolean };
 type MutationResult = { pullRequest?: { number: number; url: string }; localPreview?: boolean };
+type IntegrationState = { available: boolean; message?: string };
 type AdminMode = "requests" | "manage" | "add" | "notifications";
 type LogoRequestStatus = "pending" | "in-review" | "needs-info" | "approved" | "completed" | "rejected";
 type LogoRequest = {
@@ -68,15 +74,6 @@ type AdminNotification = {
   updatedAt: string;
   url: string;
 };
-
-const categories = [
-  ["commercial-bank", "Commercial bank"],
-  ["microfinance-bank", "Microfinance bank"],
-  ["merchant-bank", "Merchant bank"],
-  ["payment-bank", "Payment service bank"],
-  ["fintech", "Fintech"],
-  ["other", "Other"]
-] as const;
 
 const sourceTypes = [
   ["official-brand-page", "Official brand page"],
@@ -108,6 +105,12 @@ function fileToBase64(file: File): Promise<string> {
 
 function slugify(value: string): string {
   return value.toLowerCase().trim().replace(/&/g, " and ").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+}
+
+function logoCategorySummary(logo: Logo): string {
+  return logo.categories?.length
+    ? logo.categories.map((category) => categoryLabel(category as InstitutionCategory)).join(" · ")
+    : logo.category.replaceAll("-", " ");
 }
 
 function svgDataUrl(svg: string): string {
@@ -361,6 +364,14 @@ export function AdminApp() {
         </div>
       </header>
 
+      {!session?.local && !session?.repositoryAccess ? (
+        <div className="admin-banner access" role="status">
+          <TriangleAlert size={17} />
+          <span>Reconnect GitHub to create catalog pull requests and manage repository activity.</span>
+          <a href="/api/auth/github">Reconnect GitHub <ExternalLink size={14} /></a>
+        </div>
+      ) : null}
+
       {error || result ? (
         <div className={`admin-banner${error ? " error" : " success"}`} role={error ? "alert" : "status"}>
           {error ? <><X size={17} /><span>{error}</span></> : result?.localPreview ? (
@@ -386,7 +397,7 @@ export function AdminApp() {
               {filtered.map((logo) => (
                 <button key={logo.slug} aria-current={logo.slug === selectedSlug ? "true" : undefined} className={logo.slug === selectedSlug ? "active" : ""} onClick={() => setSelectedSlug(logo.slug)}>
                   <span className="admin-list-preview">{logoPreview(logo.slug, logo.preview_url) ? <img src={logoPreview(logo.slug, logo.preview_url)!} alt="" /> : <ImagePlus size={16} />}</span>
-                  <span><strong>{logo.name}</strong><small>{logo.category.replaceAll("-", " ")}</small></span>
+                  <span><strong>{logo.name}</strong><small>{logoCategorySummary(logo)}</small></span>
                   <b title="Logo variations">{(data?.variations[logo.slug] ?? []).length}</b>
                 </button>
               ))}
@@ -399,7 +410,7 @@ export function AdminApp() {
                 <div>
                   <p className={`admin-status ${selected.status}`}>{selected.status.replace("-", " ")}</p>
                   <h1>{selected.name}</h1>
-                  <p className="admin-logo-meta"><span>{selected.slug}</span><span>{selected.category.replaceAll("-", " ")}</span></p>
+                  <p className="admin-logo-meta"><span>{selected.slug}</span><span>{logoCategorySummary(selected)}</span></p>
                 </div>
                 <a href={selected.website} target="_blank" rel="noreferrer">Official website <ExternalLink size={14} /></a>
               </div>
@@ -445,6 +456,7 @@ function RequestsManager() {
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState<number | null>(null);
   const [error, setError] = useState("");
+  const [integrationMessage, setIntegrationMessage] = useState("");
   const [query, setQuery] = useState("");
   const [status, setStatus] = useState<LogoRequestStatus | "all">("all");
   const [category, setCategory] = useState("all");
@@ -454,8 +466,9 @@ function RequestsManager() {
     setLoading(true);
     setError("");
     try {
-      const response = await api<{ requests: LogoRequest[] }>("/api/admin/requests");
+      const response = await api<{ requests: LogoRequest[]; integration?: IntegrationState }>("/api/admin/requests");
       setRequests(response.requests);
+      setIntegrationMessage(response.integration?.available === false ? response.integration.message ?? "GitHub requests are unavailable." : "");
       return response.requests;
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : "Could not load requests");
@@ -524,6 +537,7 @@ function RequestsManager() {
         <label className="admin-filter"><span>Type</span><select value={category} onChange={(event) => setCategory(event.target.value)}><option value="all">All request types</option>{requestCategories.map((value) => <option key={value} value={value}>{value}</option>)}</select></label>
         <label className="admin-filter"><span>Status</span><select value={status} onChange={(event) => setStatus(event.target.value as LogoRequestStatus | "all")}><option value="all">All statuses</option>{requestStatusOptions.map(([value, label]) => <option key={value} value={value}>{label}</option>)}</select></label>
       </div>
+      {integrationMessage ? <div className="admin-inline-message warning" role="status"><TriangleAlert size={17} /> {integrationMessage}</div> : null}
       {error ? <div className="admin-inline-message error" role="alert"><X size={17} /> {error}</div> : null}
       {loading ? <AdminQueueLoading /> : (
         <section className="admin-request-split">
@@ -573,6 +587,7 @@ function NotificationsManager({ onUnreadChange }: { onUnreadChange: (count: numb
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState("");
   const [error, setError] = useState("");
+  const [integrationMessage, setIntegrationMessage] = useState("");
   const [filter, setFilter] = useState<"all" | "unread">("all");
   const [checking, setChecking] = useState(false);
   const [checkMessage, setCheckMessage] = useState("");
@@ -581,8 +596,9 @@ function NotificationsManager({ onUnreadChange }: { onUnreadChange: (count: numb
     setLoading(true);
     setError("");
     try {
-      const response = await api<{ notifications: AdminNotification[] }>("/api/admin/notifications");
+      const response = await api<{ notifications: AdminNotification[]; integration?: IntegrationState }>("/api/admin/notifications");
       setNotifications(response.notifications);
+      setIntegrationMessage(response.integration?.available === false ? response.integration.message ?? "GitHub notifications are unavailable." : "");
       onUnreadChange(response.notifications.filter((item) => item.unread).length);
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : "Could not load notifications");
@@ -651,6 +667,7 @@ function NotificationsManager({ onUnreadChange }: { onUnreadChange: (count: numb
         </div>
       </div>
       {checkMessage ? <div className="admin-check-message" role="status"><Check size={15} /> {checkMessage}</div> : null}
+      {integrationMessage ? <div className="admin-inline-message warning" role="status"><TriangleAlert size={17} /> {integrationMessage}</div> : null}
       {error ? <div className="admin-inline-message error" role="alert"><X size={17} /> {error}</div> : null}
       {loading ? <AdminQueueLoading /> : visible.length ? (
         <div className="admin-notification-list">
@@ -682,11 +699,64 @@ function AdminQueueEmpty({ icon, title, detail }: { icon: ReactNode; title: stri
   return <div className="admin-queue-empty">{icon}<strong>{title}</strong><p>{detail}</p></div>;
 }
 
+function CategoryMultiSelect({
+  value,
+  onChange
+}: {
+  value: InstitutionCategory[];
+  onChange: (categories: InstitutionCategory[]) => void;
+}) {
+  function toggle(category: InstitutionCategory) {
+    onChange(value.includes(category)
+      ? value.filter((item) => item !== category)
+      : [...value, category]);
+  }
+
+  return (
+    <fieldset className="admin-category-picker">
+      <legend>Categories</legend>
+      <details>
+        <summary>
+          <span>{value.length ? `${value.length} categor${value.length === 1 ? "y" : "ies"} selected` : "Select categories"}</span>
+          <ChevronDown size={16} aria-hidden="true" />
+        </summary>
+        <div className="admin-category-options" role="group" aria-label="Institution categories">
+          {availableInstitutionCategories.map((category) => {
+            const selected = value.includes(category);
+            return (
+              <label className={selected ? "selected" : ""} key={category}>
+                <input
+                  type="checkbox"
+                  checked={selected}
+                  onChange={() => toggle(category)}
+                />
+                <span>{categoryLabel(category)}</span>
+                {selected ? <Check size={15} aria-hidden="true" /> : null}
+              </label>
+            );
+          })}
+        </div>
+      </details>
+      {value.length ? (
+        <div className="admin-category-selection" aria-live="polite">
+          {value.map((category) => (
+            <button type="button" key={category} onClick={() => toggle(category)} title={`Remove ${categoryLabel(category)}`}>
+              {categoryLabel(category)}
+              <X size={12} aria-hidden="true" />
+            </button>
+          ))}
+        </div>
+      ) : <small>Select at least one category used by the public catalog.</small>}
+    </fieldset>
+  );
+}
+
 function AddLogoForm({ busy, onBack, onSubmit }: { busy: boolean; onBack: () => void; onSubmit: (payload: Record<string, unknown>) => Promise<boolean> }) {
   const [name, setName] = useState("");
   const [slug, setSlug] = useState("");
   const [manualSlug, setManualSlug] = useState(false);
   const [file, setFile] = useState<File | null>(null);
+  const [selectedCategories, setSelectedCategories] = useState<InstitutionCategory[]>([]);
   const [officialSourceUnavailable, setOfficialSourceUnavailable] = useState(false);
 
   async function submit(event: FormEvent<HTMLFormElement>) {
@@ -697,14 +767,21 @@ function AddLogoForm({ busy, onBack, onSubmit }: { busy: boolean; onBack: () => 
       operation: "add-logo",
       name,
       slug,
-      category: form.get("category"),
+      categories: selectedCategories,
       aliases: String(form.get("aliases") ?? "").split(",").map((value) => value.trim()).filter(Boolean),
       website: form.get("website"),
       sourceUrl: String(form.get("sourceUrl") ?? "").trim() || undefined,
       sourceType: officialSourceUnavailable ? "community-catalog" : form.get("sourceType"),
       svgBase64: await fileToBase64(file)
     });
-    if (ok) { event.currentTarget.reset(); setName(""); setSlug(""); setFile(null); setOfficialSourceUnavailable(false); }
+    if (ok) {
+      event.currentTarget.reset();
+      setName("");
+      setSlug("");
+      setFile(null);
+      setSelectedCategories([]);
+      setOfficialSourceUnavailable(false);
+    }
   }
 
   return (
@@ -720,7 +797,7 @@ function AddLogoForm({ busy, onBack, onSubmit }: { busy: boolean; onBack: () => 
           <div className="admin-fields two">
             <label><span>Name</span><input required value={name} onChange={(event) => { setName(event.target.value); if (!manualSlug) setSlug(slugify(event.target.value)); }} placeholder="Access Bank" /></label>
             <label><span>Slug</span><input required pattern="[a-z0-9]+(?:-[a-z0-9]+)*" value={slug} onChange={(event) => { setManualSlug(true); setSlug(event.target.value); }} placeholder="access-bank" /></label>
-            <label><span>Category</span><select name="category" required>{categories.map(([value, label]) => <option key={value} value={value}>{label}</option>)}</select></label>
+            <CategoryMultiSelect value={selectedCategories} onChange={setSelectedCategories} />
             <label><span>Aliases</span><input name="aliases" placeholder="Access, Access Bank Plc" /></label>
           </div>
         </section>
@@ -744,7 +821,7 @@ function AddLogoForm({ busy, onBack, onSubmit }: { busy: boolean; onBack: () => 
           </div>
         </section>
         <section className="admin-form-section asset"><div><h2>Logo asset</h2><p>PNG and WebP derivatives are generated automatically.</p></div><UploadField file={file} onFile={setFile} /></section>
-        <div className="admin-submit-row"><span>New entries are submitted as needs-review.</span><button disabled={busy || !file} type="submit"><GitFork size={17} /> Create pull request</button></div>
+        <div className="admin-submit-row"><span>New entries are submitted as needs-review.</span><button disabled={busy || !file || !selectedCategories.length} type="submit"><GitFork size={17} /> Create pull request</button></div>
       </form>
     </main>
   );

@@ -6,5 +6,9 @@
     "module": "NodeNext",
     "moduleResolution": "NodeNext"
   },
-  "include": ["./**/*.ts", "../packages/logos/src/schema.ts"]
+  "include": [
+    "./**/*.ts",
+    "../packages/logos/src/promoted-catalog.json",
+    "../packages/logos/src/variations.json"
+  ]
 }
