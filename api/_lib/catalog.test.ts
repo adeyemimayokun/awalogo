@@ -8,6 +8,29 @@ const manifest = {
   source_sha256: {} as Record<string, string>
 };
 
+function existingLogo(name: string, slug: string) {
+  return {
+    name,
+    slug,
+    category: "fintech",
+    categories: ["fintech"],
+    aliases: [],
+    website: `https://${slug}.example`,
+    source_url: `https://${slug}.example/brand`,
+    source_type: "official-website",
+    source_path: `sources/${slug}.svg`,
+    svg_path: `assets/${slug}.svg`,
+    formats: [
+      { type: "svg", path: `assets/${slug}.svg`, mime_type: "image/svg+xml", width: null, height: null },
+      { type: "png", path: `assets/${slug}.png`, mime_type: "image/png", width: null, height: null },
+      { type: "webp", path: `assets/${slug}.webp`, mime_type: "image/webp", width: null, height: null }
+    ],
+    added_at: "2026-07-01",
+    updated_at: "2026-07-01",
+    status: "verified"
+  };
+}
+
 describe("CMS catalog mutations", () => {
   it("creates normalized source and derivative changes for a new logo", async () => {
     const result = await buildMutationChanges({
@@ -33,6 +56,40 @@ describe("CMS catalog mutations", () => {
       categories: ["fintech", "finance-app"],
       status: "needs-review"
     });
+  });
+
+  it("writes manifest hashes in the same catalog order as the format generator", async () => {
+    const inputManifest = {
+      ...manifest,
+      source_sha256: {
+        "zulu-finance": "zulu-hash",
+        flutterwave: "flutterwave-hash",
+        moniepoint: "moniepoint-hash",
+        opay: "opay-hash",
+        "alpha-finance": "alpha-hash"
+      }
+    };
+    const result = await buildMutationChanges({
+      operation: "add-logo",
+      name: "Middle Finance",
+      slug: "middle-finance",
+      categories: ["fintech"],
+      aliases: [],
+      website: "https://middle.example",
+      sourceUrl: "https://middle.example/brand",
+      sourceType: "official-brand-page",
+      svgBase64: safeSvg
+    }, [existingLogo("Zulu Finance", "zulu-finance"), existingLogo("Alpha Finance", "alpha-finance")], {}, inputManifest);
+
+    const nextManifest = JSON.parse(result.changes.find((change) => change.path.endsWith("formats-manifest.json"))!.content!.toString());
+    expect(Object.keys(nextManifest.source_sha256)).toEqual([
+      "moniepoint",
+      "opay",
+      "flutterwave",
+      "alpha-finance",
+      "middle-finance",
+      "zulu-finance"
+    ]);
   });
 
   it("rejects SVG files with executable content", async () => {

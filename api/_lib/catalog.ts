@@ -43,6 +43,8 @@ type LogoVariation = z.infer<typeof logoVariationSchema>;
 type Variations = Record<string, LogoVariation[]>;
 type FormatManifest = { version: number; render_settings: unknown; source_sha256: Record<string, string> };
 
+const CORE_LOGO_SLUGS = ["moniepoint", "opay", "flutterwave"] as const;
+
 const ROOT = "packages/logos/src/";
 const CATALOG_PATH = `${ROOT}promoted-catalog.json`;
 const VARIATIONS_PATH = `${ROOT}variations.json`;
@@ -132,6 +134,23 @@ function variationPaths(variation: LogoVariation): string[] {
   return [variation.source_path, ...variation.formats.map((format) => format.path)];
 }
 
+function canonicalizeManifestHashes(manifest: FormatManifest, catalog: LogoEntry[], variations: Variations): void {
+  const ordered: Record<string, string> = {};
+  const appendLogo = (logoSlug: string) => {
+    const logoHash = manifest.source_sha256[logoSlug];
+    if (logoHash) ordered[logoSlug] = logoHash;
+    for (const variation of variations[logoSlug] ?? []) {
+      const key = `${logoSlug}/${variation.id}`;
+      const variationHash = manifest.source_sha256[key];
+      if (variationHash) ordered[key] = variationHash;
+    }
+  };
+
+  CORE_LOGO_SLUGS.forEach(appendLogo);
+  catalog.forEach((entry) => appendLogo(entry.slug));
+  manifest.source_sha256 = ordered;
+}
+
 export async function buildMutationChanges(
   mutation: CatalogMutation,
   inputCatalog: unknown,
@@ -174,7 +193,7 @@ export async function buildMutationChanges(
   }
 
   if (mutation.operation === "add-variation") {
-    if (!catalog.some((entry) => entry.slug === mutation.slug) && !["moniepoint", "opay", "flutterwave"].includes(mutation.slug)) {
+    if (!catalog.some((entry) => entry.slug === mutation.slug) && !CORE_LOGO_SLUGS.includes(mutation.slug as typeof CORE_LOGO_SLUGS[number])) {
       throw new Error(`Logo "${mutation.slug}" does not exist`);
     }
     const existing = variations[mutation.slug] ?? [];
@@ -225,6 +244,7 @@ export async function buildMutationChanges(
     changes.push(...deletionChanges(variationPaths(removed), allReferencedPaths(catalog, variations)));
   }
 
+  canonicalizeManifestHashes(manifest, catalog, variations);
   changes.push(
     { path: CATALOG_PATH, content: prettyJson(catalog) },
     { path: VARIATIONS_PATH, content: prettyJson(variations) },

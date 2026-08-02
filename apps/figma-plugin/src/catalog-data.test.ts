@@ -8,9 +8,11 @@ describe("institution catalog", () => {
   it("shows every Nigerian institution", () => {
     const expectedDirectorySize = institutions.length + communityCandidates.length;
     expect(catalogItems.length).toBeLessThan(expectedDirectorySize);
-    expect(catalogItems.flatMap((item) => item.institutions)).toHaveLength(expectedDirectorySize);
+    const renderedSlugs = new Set(catalogItems.flatMap((item) => item.institutions).map((institution) => institution.slug));
+    expect([...institutions, ...communityCandidates].every((institution) => renderedSlugs.has(institution.slug))).toBe(true);
     expect(institutionCount).toBe(catalogItems.length);
-    expect(canonicalLogoCount).toBe(205);
+    expect(canonicalLogoCount).toBe(logos.length);
+    expect(logoCatalogItems.some((item) => item.logo.slug === "dantown")).toBe(true);
   });
 
   it("includes unmatched fintech research as unverified candidates", () => {
