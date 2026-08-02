@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { buildMutationChanges } from "./catalog.js";
+import { buildMutationChanges, mutationSchema } from "./catalog.js";
 
 const safeSvg = Buffer.from('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="#111" d="M2 2h20v20H2z"/></svg>').toString("base64");
 const manifest = {
@@ -42,7 +42,8 @@ describe("CMS catalog mutations", () => {
       website: "https://example.com",
       sourceUrl: "https://example.com/brand",
       sourceType: "official-brand-page",
-      svgBase64: safeSvg
+      svgBase64: safeSvg,
+      variations: []
     }, [], {}, structuredClone(manifest));
 
     const paths = result.changes.map((change) => change.path);
@@ -56,6 +57,78 @@ describe("CMS catalog mutations", () => {
       categories: ["fintech", "finance-app"],
       status: "needs-review"
     });
+  });
+
+  it("adds every staged variation to the same catalog change set", async () => {
+    const result = await buildMutationChanges({
+      operation: "add-logo",
+      name: "Variant Finance",
+      slug: "variant-finance",
+      categories: ["fintech"],
+      aliases: [],
+      website: "https://variant.example",
+      sourceUrl: "https://variant.example/brand",
+      sourceType: "official-brand-page",
+      svgBase64: safeSvg,
+      variations: [
+        { id: "symbol", name: "Symbol", svgBase64: safeSvg },
+        { id: "light-wordmark", name: "Light wordmark", sourceUrl: "https://variant.example/light", svgBase64: safeSvg }
+      ]
+    }, [], {}, structuredClone(manifest));
+
+    const paths = result.changes.map((change) => change.path);
+    expect(paths).toEqual(expect.arrayContaining([
+      "packages/logos/src/assets/variant-finance-symbol.svg",
+      "packages/logos/src/assets/variant-finance-symbol.png",
+      "packages/logos/src/assets/variant-finance-symbol.webp",
+      "packages/logos/src/assets/variant-finance-light-wordmark.svg"
+    ]));
+    const variations = JSON.parse(result.changes.find((change) => change.path.endsWith("variations.json"))!.content!.toString());
+    expect(variations["variant-finance"]).toMatchObject([
+      { id: "light-wordmark", source_url: "https://variant.example/light" },
+      { id: "symbol", source_url: "https://variant.example/brand" }
+    ]);
+    const nextManifest = JSON.parse(result.changes.find((change) => change.path.endsWith("formats-manifest.json"))!.content!.toString());
+    expect(nextManifest.source_sha256).toHaveProperty("variant-finance/symbol");
+    expect(nextManifest.source_sha256).toHaveProperty("variant-finance/light-wordmark");
+    expect(result.body).toContain("Variations: `2`");
+  });
+
+  it("rejects duplicate variation IDs before processing uploads", () => {
+    expect(() => mutationSchema.parse({
+      operation: "add-logo",
+      name: "Duplicate Finance",
+      slug: "duplicate-finance",
+      categories: ["fintech"],
+      aliases: [],
+      website: "https://duplicate.example",
+      sourceUrl: "https://duplicate.example/brand",
+      sourceType: "official-brand-page",
+      svgBase64: safeSvg,
+      variations: [
+        { id: "symbol", name: "Symbol", svgBase64: safeSvg },
+        { id: "symbol", name: "Second symbol", svgBase64: safeSvg }
+      ]
+    })).toThrow("Variation IDs must be unique");
+  });
+
+  it("rejects oversized multi-asset submissions before rendering", () => {
+    const largeUpload = "A".repeat(1_500_000);
+    expect(() => mutationSchema.parse({
+      operation: "add-logo",
+      name: "Large Finance",
+      slug: "large-finance",
+      categories: ["fintech"],
+      aliases: [],
+      website: "https://large.example",
+      sourceUrl: "https://large.example/brand",
+      sourceType: "official-brand-page",
+      svgBase64: largeUpload,
+      variations: [
+        { id: "symbol", name: "Symbol", svgBase64: largeUpload },
+        { id: "wordmark", name: "Wordmark", svgBase64: largeUpload }
+      ]
+    })).toThrow("under 3.5 MB combined");
   });
 
   it("writes manifest hashes in the same catalog order as the format generator", async () => {
@@ -78,7 +151,8 @@ describe("CMS catalog mutations", () => {
       website: "https://middle.example",
       sourceUrl: "https://middle.example/brand",
       sourceType: "official-brand-page",
-      svgBase64: safeSvg
+      svgBase64: safeSvg,
+      variations: []
     }, [existingLogo("Zulu Finance", "zulu-finance"), existingLogo("Alpha Finance", "alpha-finance")], {}, inputManifest);
 
     const nextManifest = JSON.parse(result.changes.find((change) => change.path.endsWith("formats-manifest.json"))!.content!.toString());
@@ -103,7 +177,8 @@ describe("CMS catalog mutations", () => {
       website: "https://example.com",
       sourceUrl: "https://example.com/brand",
       sourceType: "official-website",
-      svgBase64: unsafe
+      svgBase64: unsafe,
+      variations: []
     }, [], {}, structuredClone(manifest))).rejects.toThrow("unsafe embedded content");
   });
 
@@ -116,7 +191,8 @@ describe("CMS catalog mutations", () => {
       aliases: [],
       website: "https://community.example",
       sourceType: "community-catalog",
-      svgBase64: safeSvg
+      svgBase64: safeSvg,
+      variations: []
     }, [], {}, structuredClone(manifest));
 
     const catalog = JSON.parse(result.changes.find((change) => change.path.endsWith("promoted-catalog.json"))!.content!.toString());
@@ -137,7 +213,8 @@ describe("CMS catalog mutations", () => {
       aliases: [],
       website: "https://example.com",
       sourceType: "official-website",
-      svgBase64: safeSvg
+      svgBase64: safeSvg,
+      variations: []
     }, [], {}, structuredClone(manifest))).rejects.toThrow("official source URL is required");
   });
 });

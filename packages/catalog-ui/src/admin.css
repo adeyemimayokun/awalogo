@@ -1855,6 +1855,110 @@ body:has(.admin-loading) {
   gap: 28px;
 }
 
+.admin-secondary-action {
+  display: inline-flex;
+  min-height: 38px;
+  cursor: pointer;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 7px;
+  border: 1px solid var(--admin-line);
+  border-radius: var(--admin-radius);
+  background: #ffffff;
+  color: var(--admin-ink);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 0 12px;
+}
+
+.admin-secondary-action:hover:not(:disabled) {
+  border-color: var(--admin-line-strong);
+  background: var(--admin-subtle);
+}
+
+.admin-secondary-action:disabled {
+  cursor: not-allowed;
+  opacity: .45;
+}
+
+.admin-variation-draft-list {
+  border-top: 1px solid var(--admin-line);
+}
+
+.admin-variation-draft {
+  padding: 18px 0;
+}
+
+.admin-variation-draft + .admin-variation-draft {
+  border-top: 1px solid var(--admin-line);
+}
+
+.admin-variation-draft > header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.admin-variation-draft > header > div {
+  display: grid;
+  gap: 3px;
+}
+
+.admin-variation-draft > header span {
+  color: var(--admin-muted);
+  font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+  font-size: 9px;
+  text-transform: uppercase;
+}
+
+.admin-variation-draft > header strong {
+  font-size: 12px;
+}
+
+.admin-variation-draft > header button {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  cursor: pointer;
+  place-items: center;
+  border: 1px solid transparent;
+  border-radius: var(--admin-radius);
+  background: transparent;
+  color: var(--admin-muted);
+}
+
+.admin-variation-draft > header button:hover {
+  border-color: #e2bab6;
+  background: var(--admin-danger-soft);
+  color: #8c332b;
+}
+
+.admin-variation-draft-content {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 280px;
+  align-items: stretch;
+  gap: 18px;
+}
+
+.admin-variation-draft-content .admin-upload {
+  min-height: 118px;
+}
+
+.admin-field-wide {
+  grid-column: 1 / -1;
+}
+
+.admin-field-error {
+  color: #9d3028;
+  font-size: 10px;
+}
+
+.admin-submit-warning {
+  color: #9d3028;
+}
+
 .admin-fields {
   display: grid;
   gap: 14px;
@@ -2839,6 +2943,14 @@ body:has(.admin-loading) {
   .admin-fields.two,
   .admin-form-section.asset {
     grid-template-columns: 1fr;
+  }
+
+  .admin-variation-draft-content {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-variation-draft-content .admin-upload {
+    min-height: 150px;
   }
 
   .admin-form-section-heading {

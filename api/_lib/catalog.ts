@@ -12,6 +12,12 @@ import type { FileChange } from "./github.js";
 const slug = z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/);
 const svgUpload = z.string().min(20).max(1_500_000);
 const mutationBase = z.object({ operation: z.string() });
+const stagedVariationSchema = z.object({
+  id: slug,
+  name: z.string().trim().min(2).max(80),
+  sourceUrl: z.string().url().optional(),
+  svgBase64: svgUpload
+});
 
 export const mutationSchema = z.discriminatedUnion("operation", [
   mutationBase.extend({
@@ -23,7 +29,8 @@ export const mutationSchema = z.discriminatedUnion("operation", [
     website: z.string().url(),
     sourceUrl: z.string().url().optional(),
     sourceType: z.enum(["official-brand-page", "official-website", "annual-report", "verified-pdf", "other-official", "community-catalog"]),
-    svgBase64: svgUpload
+    svgBase64: svgUpload,
+    variations: z.array(stagedVariationSchema).max(12).default([])
   }),
   mutationBase.extend({ operation: z.literal("remove-logo"), slug, confirmation: z.string() }),
   mutationBase.extend({
@@ -35,7 +42,17 @@ export const mutationSchema = z.discriminatedUnion("operation", [
     svgBase64: svgUpload
   }),
   mutationBase.extend({ operation: z.literal("remove-variation"), slug, variationId: slug, confirmation: z.string() })
-]);
+]).superRefine((mutation, context) => {
+  if (mutation.operation !== "add-logo") return;
+  const variationIds = mutation.variations.map((variation) => variation.id);
+  if (new Set(variationIds).size !== variationIds.length) {
+    context.addIssue({ code: "custom", path: ["variations"], message: "Variation IDs must be unique" });
+  }
+  const encodedSize = mutation.svgBase64.length + mutation.variations.reduce((total, variation) => total + variation.svgBase64.length, 0);
+  if (encodedSize > 3_500_000) {
+    context.addIssue({ code: "custom", path: ["variations"], message: "Primary logo and variations must be under 3.5 MB combined" });
+  }
+});
 
 export type CatalogMutation = z.infer<typeof mutationSchema>;
 type LogoEntry = z.infer<typeof logoEntrySchema>;
@@ -165,6 +182,7 @@ export async function buildMutationChanges(
 
   if (mutation.operation === "add-logo") {
     if (catalog.some((entry) => entry.slug === mutation.slug)) throw new Error(`Logo "${mutation.slug}" already exists`);
+    if (variations[mutation.slug]?.length) throw new Error(`Variation metadata for "${mutation.slug}" already exists`);
     if (mutation.sourceType !== "community-catalog" && !mutation.sourceUrl) {
       throw new Error("An official source URL is required for official logo sources");
     }
@@ -190,6 +208,27 @@ export async function buildMutationChanges(
     catalog.sort((a, b) => a.name.localeCompare(b.name));
     manifest.source_sha256[mutation.slug] = createHash("sha256").update(svg).digest("hex");
     changes.push(...fileChanges(mutation.slug, svg, rendered.png, rendered.webp));
+
+    const stagedVariations: LogoVariation[] = [];
+    for (const variation of mutation.variations) {
+      const fileStem = `${mutation.slug}-${variation.id}`;
+      const variationSvg = decodeSvg(variation.svgBase64);
+      const variationRendered = await renderedFormats(variationSvg);
+      stagedVariations.push(logoVariationSchema.parse({
+        id: variation.id,
+        name: variation.name,
+        source_url: variation.sourceUrl ?? mutation.sourceUrl ?? mutation.website,
+        source_path: `sources/${fileStem}.svg`,
+        svg_path: `assets/${fileStem}.svg`,
+        formats: formats(fileStem)
+      }));
+      manifest.source_sha256[`${mutation.slug}/${variation.id}`] = createHash("sha256").update(variationSvg).digest("hex");
+      changes.push(...fileChanges(fileStem, variationSvg, variationRendered.png, variationRendered.webp));
+    }
+    if (stagedVariations.length) {
+      stagedVariations.sort((a, b) => a.name.localeCompare(b.name));
+      variations[mutation.slug] = stagedVariations;
+    }
   }
 
   if (mutation.operation === "add-variation") {
@@ -254,7 +293,7 @@ export async function buildMutationChanges(
   return {
     changes,
     title: `CMS: ${actionLabel} ${mutation.slug}`,
-    body: `Created by the secured logo CMS.\n\n- Operation: \`${mutation.operation}\`\n- Institution: \`${mutation.slug}\`${mutation.operation === "add-logo" && mutation.sourceType === "community-catalog" ? "\n- Provenance: `community-catalog` (official logo source unavailable)" : ""}\n\nPlease verify the source classification and rendered assets before merging.`
+    body: `Created by the secured logo CMS.\n\n- Operation: \`${mutation.operation}\`\n- Institution: \`${mutation.slug}\`${mutation.operation === "add-logo" ? `\n- Variations: \`${mutation.variations.length}\`` : ""}${mutation.operation === "add-logo" && mutation.sourceType === "community-catalog" ? "\n- Provenance: `community-catalog` (official logo source unavailable)" : ""}\n\nPlease verify the source classification and rendered assets before merging.`
   };
 }
 
