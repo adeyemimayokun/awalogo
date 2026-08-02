@@ -744,16 +744,6 @@ function CategoryMultiSelect({
           })}
         </div>
       </details>
-      {value.length ? (
-        <div className="admin-category-selection" aria-live="polite">
-          {value.map((category) => (
-            <button type="button" key={category} onClick={() => toggle(category)} title={`Remove ${categoryLabel(category)}`}>
-              {categoryLabel(category)}
-              <X size={12} aria-hidden="true" />
-            </button>
-          ))}
-        </div>
-      ) : <small>Select at least one category used by the public catalog.</small>}
     </fieldset>
   );
 }
@@ -836,6 +826,16 @@ function AddLogoForm({ busy, onBack, onSubmit }: { busy: boolean; onBack: () => 
             <CategoryMultiSelect value={selectedCategories} onChange={setSelectedCategories} />
             <label><span>Aliases</span><input name="aliases" placeholder="Access, Access Bank Plc" /></label>
           </div>
+          {selectedCategories.length ? (
+            <div className="admin-category-selection" aria-live="polite">
+              {selectedCategories.map((category) => (
+                <button type="button" key={category} onClick={() => setSelectedCategories((current) => current.filter((item) => item !== category))} title={`Remove ${categoryLabel(category)}`}>
+                  {categoryLabel(category)}
+                  <X size={12} aria-hidden="true" />
+                </button>
+              ))}
+            </div>
+          ) : <small className="admin-category-empty-note">Select at least one category used by the public catalog.</small>}
         </section>
         <section className="admin-form-section">
           <div className="admin-form-section-heading">

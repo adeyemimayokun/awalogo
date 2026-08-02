@@ -2093,7 +2093,9 @@ body:has(.admin-loading) {
   display: flex;
   flex-wrap: wrap;
   gap: 5px;
-  margin-top: 7px;
+  border-top: 1px solid var(--admin-line);
+  margin-top: 14px;
+  padding-top: 12px;
 }
 
 .admin-category-selection button {
@@ -2115,11 +2117,13 @@ body:has(.admin-loading) {
   color: var(--admin-ink);
 }
 
-.admin-category-picker > small {
+.admin-category-empty-note {
   display: block;
-  margin-top: 7px;
+  border-top: 1px solid var(--admin-line);
+  margin-top: 14px;
   color: var(--admin-muted);
   font-size: 10px;
+  padding-top: 12px;
 }
 
 .admin-fields input,
