@@ -36,8 +36,12 @@ packages/catalog-ui    Shared catalog components, search, and asset adapters
 packages/logos         Typed catalog, official sources, generated formats, sourcing queue
 packages/institutions  Institution data, regulator imports, and CSV/JSON exports
 packages/validator     Catalog and SVG validation scripts
+brand                  Brand guidelines, tokens, logo variants, and channel assets
 docs                   Product, contribution, and release notes
 ```
+
+The complete identity system and reusable asset pool are documented in
+[`brand/README.md`](./brand/README.md).
 
 ## Local Setup
 
