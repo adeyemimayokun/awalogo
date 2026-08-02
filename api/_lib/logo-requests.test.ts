@@ -21,9 +21,9 @@ describe("public logo requests", () => {
     const issue = buildPublicIssue(validRequest);
 
     expect(issue.title).toBe("Logo request: Example Finance");
-    expect(issue.body).toContain("https://drive.google.com/file/d/example/view");
+    expect(issue.body).not.toContain("https://drive.google.com/file/d/example/view");
     expect(issue.body).not.toContain("designer@example.com");
-    expect(issue.body).toContain("contact details are withheld");
+    expect(issue.body).toContain("asset links are withheld");
     expect(issue.body).toContain("Availability notification");
     expect(issue.body).toContain("Requested.");
   });

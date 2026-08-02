@@ -52,7 +52,7 @@ const localIssues = new Map<number, RepositoryIssue>([
     ].join("\n"),
     created_at: "2026-07-29T09:22:00.000Z",
     html_url: "https://github.com/adeyemimayokun/awalogo/issues/104",
-    labels: [{ name: "logo-request" }],
+    labels: [],
     number: 104,
     state: "open",
     title: "Logo request: Nomba",
@@ -258,18 +258,30 @@ export async function createRepositoryIssue(options: {
 }
 
 export async function listRepositoryIssues(label: string, sessionToken?: string): Promise<RepositoryIssue[]> {
+  const isMatchingIssue = (issue: RepositoryIssue) =>
+    issue.labels.some((item) => item.name === label) ||
+    (label === "logo-request" && (
+      /^(?:Logo request|Company logo submission):\s*/i.test(issue.title) ||
+      issue.body?.includes("awalogo-submission-id:")
+    ));
   if (isLocalRepositoryMode()) {
     return [...localIssues.values()]
-      .filter((issue) => issue.labels.some((item) => item.name === label))
+      .filter(isMatchingIssue)
       .sort((left, right) => right.created_at.localeCompare(left.created_at));
   }
   const { owner, repo } = repository();
-  const issues = await github<RepositoryIssue[]>(
-    `/repos/${owner}/${repo}/issues?state=all&labels=${encodeURIComponent(label)}&sort=created&direction=desc&per_page=100`,
-    {},
-    sessionToken
-  );
-  return issues.filter((issue) => !issue.pull_request);
+  const issues: RepositoryIssue[] = [];
+  const labelQuery = label === "logo-request" ? "" : `&labels=${encodeURIComponent(label)}`;
+  for (let page = 1; page <= 100; page += 1) {
+    const batch = await github<RepositoryIssue[]>(
+      `/repos/${owner}/${repo}/issues?state=all${labelQuery}&sort=created&direction=desc&per_page=100&page=${page}`,
+      {},
+      sessionToken
+    );
+    issues.push(...batch.filter((issue) => !issue.pull_request && isMatchingIssue(issue)));
+    if (batch.length < 100) break;
+  }
+  return issues;
 }
 
 export async function updateRepositoryIssue(options: {
