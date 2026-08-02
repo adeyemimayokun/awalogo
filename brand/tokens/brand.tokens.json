@@ -1,0 +1,48 @@
+{
+  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "brand": {
+    "name": "awalogo",
+    "tagline": "Nigerian financial logos, ready to use.",
+    "color": {
+      "ink": { "$type": "color", "$value": "#111411" },
+      "surface": { "$type": "color", "$value": "#242925" },
+      "lime": { "$type": "color", "$value": "#D8EF55" },
+      "limeDeep": { "$type": "color", "$value": "#B8D93D" },
+      "paper": { "$type": "color", "$value": "#F7F7F2" },
+      "white": { "$type": "color", "$value": "#FFFFFF" },
+      "muted": { "$type": "color", "$value": "#686A64" },
+      "line": { "$type": "color", "$value": "#E1E4DD" }
+    },
+    "font": {
+      "sans": {
+        "$type": "fontFamily",
+        "$value": ["system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "sans-serif"]
+      },
+      "mono": {
+        "$type": "fontFamily",
+        "$value": ["ui-monospace", "SFMono-Regular", "Menlo", "Consolas", "monospace"]
+      }
+    },
+    "radius": {
+      "small": { "$type": "dimension", "$value": { "value": 4, "unit": "px" } },
+      "default": { "$type": "dimension", "$value": { "value": 6, "unit": "px" } },
+      "large": { "$type": "dimension", "$value": { "value": 8, "unit": "px" } }
+    },
+    "space": {
+      "1": { "$type": "dimension", "$value": { "value": 4, "unit": "px" } },
+      "2": { "$type": "dimension", "$value": { "value": 8, "unit": "px" } },
+      "3": { "$type": "dimension", "$value": { "value": 12, "unit": "px" } },
+      "4": { "$type": "dimension", "$value": { "value": 16, "unit": "px" } },
+      "6": { "$type": "dimension", "$value": { "value": 24, "unit": "px" } },
+      "8": { "$type": "dimension", "$value": { "value": 32, "unit": "px" } },
+      "12": { "$type": "dimension", "$value": { "value": 48, "unit": "px" } },
+      "16": { "$type": "dimension", "$value": { "value": 64, "unit": "px" } }
+    },
+    "motion": {
+      "fast": { "$type": "duration", "$value": { "value": 160, "unit": "ms" } },
+      "default": { "$type": "duration", "$value": { "value": 240, "unit": "ms" } },
+      "campaign": { "$type": "duration", "$value": { "value": 500, "unit": "ms" } },
+      "easeOut": { "$type": "cubicBezier", "$value": [0.16, 1, 0.3, 1] }
+    }
+  }
+}

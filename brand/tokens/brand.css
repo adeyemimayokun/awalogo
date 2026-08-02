@@ -1,0 +1,31 @@
+:root {
+  --awalogo-ink: #111411;
+  --awalogo-surface: #242925;
+  --awalogo-lime: #d8ef55;
+  --awalogo-lime-deep: #b8d93d;
+  --awalogo-paper: #f7f7f2;
+  --awalogo-white: #ffffff;
+  --awalogo-muted: #686a64;
+  --awalogo-line: #e1e4dd;
+
+  --awalogo-font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --awalogo-font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+
+  --awalogo-radius-sm: 4px;
+  --awalogo-radius-md: 6px;
+  --awalogo-radius-lg: 8px;
+
+  --awalogo-space-1: 4px;
+  --awalogo-space-2: 8px;
+  --awalogo-space-3: 12px;
+  --awalogo-space-4: 16px;
+  --awalogo-space-6: 24px;
+  --awalogo-space-8: 32px;
+  --awalogo-space-12: 48px;
+  --awalogo-space-16: 64px;
+
+  --awalogo-motion-fast: 160ms;
+  --awalogo-motion-default: 240ms;
+  --awalogo-motion-campaign: 500ms;
+  --awalogo-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
