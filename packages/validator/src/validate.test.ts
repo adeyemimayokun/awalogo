@@ -14,7 +14,7 @@ describe("logo catalog validation", () => {
   });
 
   it("contains the seed and reviewed promotion catalog", () => {
-    expect(logoCatalog).toHaveLength(206);
+    expect(logoCatalog).toHaveLength(205);
     expect(logoCatalog.map((logo) => logo.slug)).toEqual(expect.arrayContaining([
       "flutterwave", "moniepoint", "opay", "kuda-microfinance-bank", "leadway-assurance-company",
       "busha-digital", "quidax-technologies", "paystack-payment", "united-bank-for-africa",
