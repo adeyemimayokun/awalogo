@@ -23,7 +23,7 @@ describe("institution catalog", () => {
       new Set(sourceRecords.map((institution) => institution.slug))
     );
     expect(institutionCount).toBe(catalogItems.length);
-    expect(canonicalLogoCount).toBe(206);
+    expect(canonicalLogoCount).toBe(205);
   });
 
   it("only exposes categories represented by available logo assets", () => {
@@ -60,6 +60,17 @@ describe("institution catalog", () => {
       expect(item?.institution.verification_status).toBe("community-candidate");
       expect(item?.logo?.status).toBe("verified");
     }
+  });
+
+  it("publishes Paga through its current canonical asset", () => {
+    const paga = logoCatalogItems.find((item) => item.logo.slug === "paga");
+
+    expect(paga?.displayName).toBe("Paga");
+    expect(paga?.logo.svg).toContain("<svg");
+    expect(paga?.institutions.map((institution) => institution.slug)).toEqual(expect.arrayContaining([
+      "paga-remit",
+      "pagatech"
+    ]));
   });
 
   it("merges related Flutterwave institutions into the common brand entry", () => {
