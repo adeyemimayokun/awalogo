@@ -256,6 +256,7 @@ export function AdminApp() {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const [result, setResult] = useState<MutationResult | null>(null);
+  const [addFormVersion, setAddFormVersion] = useState(0);
 
   useEffect(() => {
     const previousTitle = document.title;
@@ -304,6 +305,9 @@ export function AdminApp() {
       });
       setResult(next);
       await loadCatalog();
+      if (payload.operation === "add-logo") {
+        setAddFormVersion((version) => version + 1);
+      }
       return true;
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : "The request failed");
@@ -385,7 +389,7 @@ export function AdminApp() {
         </div>
       ) : null}
 
-      {mode === "add" ? <AddLogoForm busy={busy} onBack={() => setMode("manage")} onSubmit={mutate} /> :
+      {mode === "add" ? <AddLogoForm key={addFormVersion} busy={busy} onBack={() => setMode("manage")} onSubmit={mutate} /> :
       mode === "requests" ? <RequestsManager /> :
       mode === "notifications" ? <NotificationsManager onUnreadChange={setUnreadNotifications} /> : (
         <main className="admin-workspace">
@@ -763,6 +767,10 @@ function AddLogoForm({ busy, onBack, onSubmit }: { busy: boolean; onBack: () => 
   const [officialSourceUnavailable, setOfficialSourceUnavailable] = useState(false);
   const [variationDrafts, setVariationDrafts] = useState<VariationDraft[]>([]);
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "auto" });
+  }, []);
+
   const duplicateVariationIds = new Set(variationDrafts
     .map((variation) => variation.id)
     .filter((id, index, ids) => id && ids.indexOf(id) !== index));
@@ -798,7 +806,7 @@ function AddLogoForm({ busy, onBack, onSubmit }: { busy: boolean; onBack: () => 
       sourceUrl: variation.sourceUrl.trim() || undefined,
       svgBase64: await fileToBase64(variation.file!)
     })));
-    const ok = await onSubmit({
+    await onSubmit({
       operation: "add-logo",
       name,
       slug,
@@ -810,16 +818,6 @@ function AddLogoForm({ busy, onBack, onSubmit }: { busy: boolean; onBack: () => 
       svgBase64: await fileToBase64(file),
       variations
     });
-    if (ok) {
-      event.currentTarget.reset();
-      setName("");
-      setSlug("");
-      setManualSlug(false);
-      setFile(null);
-      setSelectedCategories([]);
-      setOfficialSourceUnavailable(false);
-      setVariationDrafts([]);
-    }
   }
 
   return (
