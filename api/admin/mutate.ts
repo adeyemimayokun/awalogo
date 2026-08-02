@@ -5,7 +5,7 @@ import { buildMutationChanges, catalogPaths, mutationSchema } from "../_lib/cata
 import { createCatalogPullRequest, readRepositoryJson } from "../_lib/github.js";
 import { jsonError, methodNotAllowed, requireSameOrigin } from "../_lib/http.js";
 
-export const config = { api: { bodyParser: { sizeLimit: "2mb" } } };
+export const config = { api: { bodyParser: { sizeLimit: "4mb" } } };
 
 export default async function handler(request: VercelRequest, response: VercelResponse): Promise<void> {
   if (request.method !== "POST") return methodNotAllowed(response, ["POST"]);
