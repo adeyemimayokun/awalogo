@@ -56,6 +56,7 @@ type LogoRequest = {
   institution: string;
   category: string;
   website: string | null;
+  email: string | null;
   assetUrl: string | null;
   notifyWhenAvailable: boolean;
   status: LogoRequestStatus;
@@ -564,6 +565,7 @@ function RequestsManager() {
                 <dl className="admin-request-details">
                   <div><dt>Submitted</dt><dd>{shortDate(selectedRequest.submittedAt)}</dd></div>
                   <div><dt>Availability notice</dt><dd>{selectedRequest.notifyWhenAvailable ? "Requested" : "Not requested"}</dd></div>
+                  <div><dt>Requester email</dt><dd>{selectedRequest.email ? <a href={`mailto:${selectedRequest.email}`}>{selectedRequest.email}</a> : "Not available"}</dd></div>
                   <div><dt>Official website</dt><dd>{selectedRequest.website ? <a href={selectedRequest.website} target="_blank" rel="noreferrer">{selectedRequest.website.replace(/^https?:\/\//, "")} <ExternalLink size={13} /></a> : "Not provided"}</dd></div>
                   <div><dt>Submitted asset</dt><dd>{selectedRequest.assetUrl ? <a href={selectedRequest.assetUrl} target="_blank" rel="noreferrer">Review asset <ExternalLink size={13} /></a> : "Not provided"}</dd></div>
                 </dl>

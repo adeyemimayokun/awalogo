@@ -8,6 +8,7 @@ import {
   updateRepositoryIssue
 } from "../_lib/github.js";
 import { jsonError, methodNotAllowed } from "../_lib/http.js";
+import { readPrivateRequestMetadata } from "../_lib/request-metadata.js";
 
 const requestStatuses = ["pending", "in-review", "needs-info", "approved", "completed", "rejected"] as const;
 type RequestStatus = typeof requestStatuses[number];
@@ -48,18 +49,31 @@ function issueSection(body: string | null, heading: string): string {
 
 function cleanAssetUrl(value: string): string | null {
   const cleaned = value.replace(/^-\s*Public drive link:\s*/i, "").trim();
-  return !cleaned || cleaned === "Not provided" ? null : cleaned;
+  if (!cleaned || cleaned === "Not provided") return null;
+  try {
+    const url = new URL(cleaned);
+    return url.protocol === "https:" ? url.href : null;
+  } catch {
+    return null;
+  }
 }
 
 function serializeIssue(issue: RepositoryIssue) {
-  const institution = issueSection(issue.body, "Institution") || issue.title.replace(/^Logo request:\s*/i, "");
+  const privateMetadata = readPrivateRequestMetadata(issue.body);
+  const institution = issueSection(issue.body, "Institution") ||
+    issueSection(issue.body, "Company") ||
+    issue.title.replace(/^(?:Logo request|Company logo submission):\s*/i, "");
   return {
     number: issue.number,
     institution,
     category: issueSection(issue.body, "Category") || "Other",
     website: issueSection(issue.body, "Official website") || null,
-    assetUrl: cleanAssetUrl(issueSection(issue.body, "Submitted logo artwork")),
-    notifyWhenAvailable: issueSection(issue.body, "Availability notification").startsWith("Requested"),
+    email: privateMetadata?.email ?? (issueSection(issue.body, "Work email") || null),
+    assetUrl: privateMetadata?.logoAssetUrl ||
+      cleanAssetUrl(issueSection(issue.body, "Submitted logo artwork")) ||
+      cleanAssetUrl(issueSection(issue.body, "Official logo or brand-kit URL")),
+    notifyWhenAvailable: privateMetadata?.notifyWhenAvailable ??
+      issueSection(issue.body, "Availability notification").startsWith("Requested"),
     status: issueStatus(issue),
     state: issue.state,
     submittedAt: issue.created_at,

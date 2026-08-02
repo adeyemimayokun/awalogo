@@ -58,6 +58,8 @@ describe("admin request status updates", () => {
     await requestsHandler(request("GET"), listed);
     expect((listed.body as { requests: Array<{ number: number; status: string }> }).requests)
       .toContainEqual(expect.objectContaining({ number: 104, status: "needs-info" }));
+    expect((listed.body as { requests: Array<{ number: number }> }).requests)
+      .toContainEqual(expect.objectContaining({ number: 104 }));
   });
 
   it("reopens a resolved request when its status changes back to pending", async () => {

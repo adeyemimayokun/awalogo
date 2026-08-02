@@ -45,7 +45,9 @@ export function buildPublicIssue(request: PublicLogoRequest): { title: string; b
       request.officialWebsite,
       "",
       "## Submitted logo artwork",
-      `- Public drive link: ${request.logoAssetUrl || "Not provided"}`,
+      request.logoAssetUrl
+        ? "A private sharing link was supplied to the maintainers."
+        : "Not provided.",
       "",
       "## Availability notification",
       request.notifyWhenAvailable
@@ -53,7 +55,7 @@ export function buildPublicIssue(request: PublicLogoRequest): { title: string; b
         : "Not requested.",
       "",
       "---",
-      "Submitted through awalogo.com. Contributor contact details are withheld from this public request."
+      "Submitted through awalogo.com. Contributor contact details and supplied asset links are withheld from this public request."
     ].join("\n")
   };
 }
