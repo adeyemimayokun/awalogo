@@ -1,5 +1,49 @@
 [
   {
+    "name": "3Line Card Management",
+    "slug": "3line-card-management",
+    "category": "other",
+    "categories": [
+      "card-scheme",
+      "payment-terminal-service-provider",
+      "super-agent"
+    ],
+    "aliases": [
+      "3Line"
+    ],
+    "website": "https://www.3lineng.com/",
+    "source_url": "https://www.3lineng.com/",
+    "source_type": "community-catalog",
+    "source_path": "sources/3line-card-management.svg",
+    "svg_path": "assets/3line-card-management.svg",
+    "formats": [
+      {
+        "type": "svg",
+        "path": "assets/3line-card-management.svg",
+        "mime_type": "image/svg+xml",
+        "width": null,
+        "height": null
+      },
+      {
+        "type": "png",
+        "path": "assets/3line-card-management.png",
+        "mime_type": "image/png",
+        "width": null,
+        "height": null
+      },
+      {
+        "type": "webp",
+        "path": "assets/3line-card-management.webp",
+        "mime_type": "image/webp",
+        "width": null,
+        "height": null
+      }
+    ],
+    "added_at": "2026-08-03",
+    "updated_at": "2026-08-03",
+    "status": "needs-review"
+  },
+  {
     "name": "9 Payment Service Bank",
     "slug": "9-payment-service-bank",
     "category": "payment-bank",
@@ -144,6 +188,36 @@
     "status": "verified"
   },
   {
+    "name": "advansio",
+    "slug": "advansio",
+    "category": "fintech",
+    "aliases": [],
+    "website": "https://advansio.com/",
+    "source_url": "https://advansio.com/img/sticky-logo.png",
+    "source_type": "official-website",
+    "source_path": "sources/advansio.png",
+    "svg_path": null,
+    "formats": [
+      {
+        "type": "png",
+        "path": "assets/advansio.png",
+        "mime_type": "image/png",
+        "width": null,
+        "height": null
+      },
+      {
+        "type": "webp",
+        "path": "assets/advansio.webp",
+        "mime_type": "image/webp",
+        "width": null,
+        "height": null
+      }
+    ],
+    "added_at": "2026-08-02",
+    "updated_at": "2026-08-02",
+    "status": "verified"
+  },
+  {
     "name": "AELLA",
     "slug": "aella-financial-solutions",
     "category": "fintech",
@@ -254,6 +328,45 @@
     "status": "verified"
   },
   {
+    "name": "AFRIEX",
+    "slug": "afriex",
+    "category": "other",
+    "aliases": [
+      "AFRIEX INC"
+    ],
+    "website": "https://www.afriex.com/",
+    "source_url": "https://cdn.prod.website-files.com/62ce94ab2b9c3a3597a7acd4/62d51c5a0476b26365bfe38c_Afriex%20i.svg",
+    "source_type": "official-website",
+    "source_path": "sources/afriex.svg",
+    "svg_path": "assets/afriex.svg",
+    "formats": [
+      {
+        "type": "svg",
+        "path": "assets/afriex.svg",
+        "mime_type": "image/svg+xml",
+        "width": null,
+        "height": null
+      },
+      {
+        "type": "png",
+        "path": "assets/afriex.png",
+        "mime_type": "image/png",
+        "width": null,
+        "height": null
+      },
+      {
+        "type": "webp",
+        "path": "assets/afriex.webp",
+        "mime_type": "image/webp",
+        "width": null,
+        "height": null
+      }
+    ],
+    "added_at": "2026-08-02",
+    "updated_at": "2026-08-02",
+    "status": "needs-review"
+  },
+  {
     "name": "Afrinvest",
     "slug": "afrinvest-securities",
     "category": "other",
@@ -291,6 +404,43 @@
     ],
     "added_at": "2026-07-14",
     "updated_at": "2026-07-14",
+    "status": "verified"
+  },
+  {
+    "name": "AjoCard",
+    "slug": "ajocard",
+    "category": "fintech",
+    "aliases": [],
+    "website": "https://ajocard.com/",
+    "source_url": "https://ajocard.com/_next/static/media/ajocard-logo.a7bbab22.svg",
+    "source_type": "official-website",
+    "source_path": "sources/ajocard.svg",
+    "svg_path": "assets/ajocard.svg",
+    "formats": [
+      {
+        "type": "svg",
+        "path": "assets/ajocard.svg",
+        "mime_type": "image/svg+xml",
+        "width": null,
+        "height": null
+      },
+      {
+        "type": "png",
+        "path": "assets/ajocard.png",
+        "mime_type": "image/png",
+        "width": null,
+        "height": null
+      },
+      {
+        "type": "webp",
+        "path": "assets/ajocard.webp",
+        "mime_type": "image/webp",
+        "width": null,
+        "height": null
+      }
+    ],
+    "added_at": "2026-08-02",
+    "updated_at": "2026-08-02",
     "status": "verified"
   },
   {
@@ -361,6 +511,43 @@
     ],
     "added_at": "2026-07-13",
     "updated_at": "2026-07-13",
+    "status": "verified"
+  },
+  {
+    "name": "Anchor",
+    "slug": "anchor",
+    "category": "fintech",
+    "aliases": [],
+    "website": "https://getanchor.co/company/about-us.html",
+    "source_url": "https://getanchor.co/images/anchor-logo-white.svg",
+    "source_type": "official-website",
+    "source_path": "sources/anchor.svg",
+    "svg_path": "assets/anchor.svg",
+    "formats": [
+      {
+        "type": "svg",
+        "path": "assets/anchor.svg",
+        "mime_type": "image/svg+xml",
+        "width": null,
+        "height": null
+      },
+      {
+        "type": "png",
+        "path": "assets/anchor.png",
+        "mime_type": "image/png",
+        "width": null,
+        "height": null
+      },
+      {
+        "type": "webp",
+        "path": "assets/anchor.webp",
+        "mime_type": "image/webp",
+        "width": null,
+        "height": null
+      }
+    ],
+    "added_at": "2026-08-02",
+    "updated_at": "2026-08-02",
     "status": "verified"
   },
   {
@@ -1105,6 +1292,43 @@
     "status": "verified"
   },
   {
+    "name": "Cleva",
+    "slug": "cleva",
+    "category": "other",
+    "aliases": [],
+    "website": "https://www.getcleva.com/",
+    "source_url": "https://www.getcleva.com/_next/static/media/cleva-logo.465e8a1e.svg",
+    "source_type": "official-website",
+    "source_path": "sources/cleva.svg",
+    "svg_path": "assets/cleva.svg",
+    "formats": [
+      {
+        "type": "svg",
+        "path": "assets/cleva.svg",
+        "mime_type": "image/svg+xml",
+        "width": null,
+        "height": null
+      },
+      {
+        "type": "png",
+        "path": "assets/cleva.png",
+        "mime_type": "image/png",
+        "width": null,
+        "height": null
+      },
+      {
+        "type": "webp",
+        "path": "assets/cleva.webp",
+        "mime_type": "image/webp",
+        "width": null,
+        "height": null
+      }
+    ],
+    "added_at": "2026-08-02",
+    "updated_at": "2026-08-02",
+    "status": "verified"
+  },
+  {
     "name": "Confiance Insurance Brokers",
     "slug": "confiance-insurance-brokers",
     "category": "other",
@@ -1201,6 +1425,36 @@
     "added_at": "2026-07-13",
     "updated_at": "2026-07-13",
     "status": "verified"
+  },
+  {
+    "name": "CoralPay",
+    "slug": "coralpay",
+    "category": "other",
+    "aliases": [],
+    "website": "https://customersupport.coralpay.com/portal/en/home",
+    "source_url": "https://contacts.zoho.com/file?ot=8&t=serviceorg&ID=798870174",
+    "source_type": "official-website",
+    "source_path": "sources/coralpay.png",
+    "svg_path": null,
+    "formats": [
+      {
+        "type": "png",
+        "path": "assets/coralpay.png",
+        "mime_type": "image/png",
+        "width": null,
+        "height": null
+      },
+      {
+        "type": "webp",
+        "path": "assets/coralpay.webp",
+        "mime_type": "image/webp",
+        "width": null,
+        "height": null
+      }
+    ],
+    "added_at": "2026-08-02",
+    "updated_at": "2026-08-02",
+    "status": "needs-review"
   },
   {
     "name": "Cordros",
@@ -2359,6 +2613,36 @@
     "status": "needs-review"
   },
   {
+    "name": "FlexiPay",
+    "slug": "flexipay",
+    "category": "fintech",
+    "aliases": [],
+    "website": "https://flexipay.ng/",
+    "source_url": "https://app.flexipay.ng/flexipay.png",
+    "source_type": "official-website",
+    "source_path": "sources/flexipay.png",
+    "svg_path": null,
+    "formats": [
+      {
+        "type": "png",
+        "path": "assets/flexipay.png",
+        "mime_type": "image/png",
+        "width": null,
+        "height": null
+      },
+      {
+        "type": "webp",
+        "path": "assets/flexipay.webp",
+        "mime_type": "image/webp",
+        "width": null,
+        "height": null
+      }
+    ],
+    "added_at": "2026-08-02",
+    "updated_at": "2026-08-02",
+    "status": "verified"
+  },
+  {
     "name": "Fliqpay",
     "slug": "fliqpay",
     "category": "fintech",
@@ -2571,6 +2855,45 @@
     "added_at": "2026-07-14",
     "updated_at": "2026-07-14",
     "status": "verified"
+  },
+  {
+    "name": "Global Accelerex",
+    "slug": "global-accelerex",
+    "category": "other",
+    "aliases": [
+      "Global Accelerex Limited"
+    ],
+    "website": "https://www.globalaccelerex.com/",
+    "source_url": "https://www.globalaccelerex.com/images/Global-Accelerex-logo.png",
+    "source_type": "official-website",
+    "source_path": "sources/global-accelerex.jpg",
+    "svg_path": null,
+    "formats": [
+      {
+        "type": "png",
+        "path": "assets/global-accelerex.png",
+        "mime_type": "image/png",
+        "width": null,
+        "height": null
+      },
+      {
+        "type": "webp",
+        "path": "assets/global-accelerex.webp",
+        "mime_type": "image/webp",
+        "width": null,
+        "height": null
+      },
+      {
+        "type": "jpeg",
+        "path": "assets/global-accelerex.jpg",
+        "mime_type": "image/jpeg",
+        "width": null,
+        "height": null
+      }
+    ],
+    "added_at": "2026-08-02",
+    "updated_at": "2026-08-02",
+    "status": "needs-review"
   },
   {
     "name": "Globus Bank",
@@ -3546,6 +3869,46 @@
     "status": "verified"
   },
   {
+    "name": "KLUMP",
+    "slug": "klump-technology-company",
+    "category": "fintech",
+    "aliases": [
+      "KLUMP",
+      "KLUMP TECHNOLOGY COMPANY LIMITED"
+    ],
+    "website": "https://useklump.com/",
+    "source_url": "https://useklump.com/",
+    "source_type": "official-website",
+    "source_path": "sources/klump-technology-company.svg",
+    "svg_path": "assets/klump-technology-company.svg",
+    "formats": [
+      {
+        "type": "svg",
+        "path": "assets/klump-technology-company.svg",
+        "mime_type": "image/svg+xml",
+        "width": null,
+        "height": null
+      },
+      {
+        "type": "png",
+        "path": "assets/klump-technology-company.png",
+        "mime_type": "image/png",
+        "width": null,
+        "height": null
+      },
+      {
+        "type": "webp",
+        "path": "assets/klump-technology-company.webp",
+        "mime_type": "image/webp",
+        "width": null,
+        "height": null
+      }
+    ],
+    "added_at": "2026-08-02",
+    "updated_at": "2026-08-02",
+    "status": "verified"
+  },
+  {
     "name": "Kora Payments",
     "slug": "kora-payments",
     "category": "other",
@@ -3619,6 +3982,43 @@
     ],
     "added_at": "2026-07-13",
     "updated_at": "2026-07-13",
+    "status": "verified"
+  },
+  {
+    "name": "Ladda",
+    "slug": "ladda",
+    "category": "other",
+    "aliases": [],
+    "website": "https://www.getladda.com/",
+    "source_url": "https://www.getladda.com/",
+    "source_type": "official-website",
+    "source_path": "sources/ladda.svg",
+    "svg_path": "assets/ladda.svg",
+    "formats": [
+      {
+        "type": "svg",
+        "path": "assets/ladda.svg",
+        "mime_type": "image/svg+xml",
+        "width": null,
+        "height": null
+      },
+      {
+        "type": "png",
+        "path": "assets/ladda.png",
+        "mime_type": "image/png",
+        "width": null,
+        "height": null
+      },
+      {
+        "type": "webp",
+        "path": "assets/ladda.webp",
+        "mime_type": "image/webp",
+        "width": null,
+        "height": null
+      }
+    ],
+    "added_at": "2026-08-02",
+    "updated_at": "2026-08-02",
     "status": "verified"
   },
   {
@@ -3759,6 +4159,83 @@
     "status": "verified"
   },
   {
+    "name": "LEMFI",
+    "slug": "lemfi",
+    "category": "other",
+    "aliases": [],
+    "website": "https://www.lemfi.com/en-ng/",
+    "source_url": "https://www.lemfi.com/en-ng/",
+    "source_type": "official-website",
+    "source_path": "sources/lemfi.svg",
+    "svg_path": "assets/lemfi.svg",
+    "formats": [
+      {
+        "type": "svg",
+        "path": "assets/lemfi.svg",
+        "mime_type": "image/svg+xml",
+        "width": null,
+        "height": null
+      },
+      {
+        "type": "png",
+        "path": "assets/lemfi.png",
+        "mime_type": "image/png",
+        "width": null,
+        "height": null
+      },
+      {
+        "type": "webp",
+        "path": "assets/lemfi.webp",
+        "mime_type": "image/webp",
+        "width": null,
+        "height": null
+      }
+    ],
+    "added_at": "2026-08-02",
+    "updated_at": "2026-08-02",
+    "status": "verified"
+  },
+  {
+    "name": "LENDSQR WEB",
+    "slug": "essential-finance",
+    "category": "fintech",
+    "aliases": [
+      "ESSENTIAL FINANCE LIMITED",
+      "LENDSQR WEB"
+    ],
+    "website": "https://lendsqr.com/",
+    "source_url": "https://raw.githubusercontent.com/PaystackHQ/nigerialogos/master/public/logos/lendsqr/lendsqr.svg",
+    "source_type": "community-catalog",
+    "source_path": "sources/essential-finance.svg",
+    "svg_path": "assets/essential-finance.svg",
+    "formats": [
+      {
+        "type": "svg",
+        "path": "assets/essential-finance.svg",
+        "mime_type": "image/svg+xml",
+        "width": null,
+        "height": null
+      },
+      {
+        "type": "png",
+        "path": "assets/essential-finance.png",
+        "mime_type": "image/png",
+        "width": null,
+        "height": null
+      },
+      {
+        "type": "webp",
+        "path": "assets/essential-finance.webp",
+        "mime_type": "image/webp",
+        "width": null,
+        "height": null
+      }
+    ],
+    "added_at": "2026-08-02",
+    "updated_at": "2026-08-02",
+    "status": "needs-review"
+  },
+  {
     "name": "Lotus Bank",
     "slug": "lotus-bank",
     "category": "other",
@@ -3796,6 +4273,43 @@
     "added_at": "2026-07-13",
     "updated_at": "2026-07-13",
     "status": "verified"
+  },
+  {
+    "name": "Mercurie",
+    "slug": "mercurie",
+    "category": "other",
+    "aliases": [],
+    "website": "https://mercurie.ng/",
+    "source_url": "https://raw.githubusercontent.com/PaystackHQ/nigerialogos/master/public/logos/mercurie/mercurie.svg",
+    "source_type": "community-catalog",
+    "source_path": "sources/mercurie.svg",
+    "svg_path": "assets/mercurie.svg",
+    "formats": [
+      {
+        "type": "svg",
+        "path": "assets/mercurie.svg",
+        "mime_type": "image/svg+xml",
+        "width": null,
+        "height": null
+      },
+      {
+        "type": "png",
+        "path": "assets/mercurie.png",
+        "mime_type": "image/png",
+        "width": null,
+        "height": null
+      },
+      {
+        "type": "webp",
+        "path": "assets/mercurie.webp",
+        "mime_type": "image/webp",
+        "width": null,
+        "height": null
+      }
+    ],
+    "added_at": "2026-08-02",
+    "updated_at": "2026-08-02",
+    "status": "needs-review"
   },
   {
     "name": "Meristem",
@@ -3901,6 +4415,38 @@
     "added_at": "2026-07-13",
     "updated_at": "2026-07-13",
     "status": "verified"
+  },
+  {
+    "name": "MoneyMaster Payment Service Bank",
+    "slug": "moneymaster-payment-service-bank",
+    "category": "payment-bank",
+    "aliases": [
+      "MoneyMaster Payment Service Bank Limited"
+    ],
+    "website": "https://moneymasterpsb.com/",
+    "source_url": "https://moneymasterpsb.com/wp-content/uploads/2022/07/mmpsb-logo.png",
+    "source_type": "official-website",
+    "source_path": "sources/moneymaster-payment-service-bank.png",
+    "svg_path": null,
+    "formats": [
+      {
+        "type": "png",
+        "path": "assets/moneymaster-payment-service-bank.png",
+        "mime_type": "image/png",
+        "width": null,
+        "height": null
+      },
+      {
+        "type": "webp",
+        "path": "assets/moneymaster-payment-service-bank.webp",
+        "mime_type": "image/webp",
+        "width": null,
+        "height": null
+      }
+    ],
+    "added_at": "2026-08-02",
+    "updated_at": "2026-08-02",
+    "status": "needs-review"
   },
   {
     "name": "Monnify",
@@ -4270,6 +4816,36 @@
     "status": "verified"
   },
   {
+    "name": "nomba",
+    "slug": "nomba",
+    "category": "other",
+    "aliases": [],
+    "website": "https://nomba.com/",
+    "source_url": "https://nomba.com/favicon.png",
+    "source_type": "official-website",
+    "source_path": "sources/nomba.png",
+    "svg_path": null,
+    "formats": [
+      {
+        "type": "png",
+        "path": "assets/nomba.png",
+        "mime_type": "image/png",
+        "width": null,
+        "height": null
+      },
+      {
+        "type": "webp",
+        "path": "assets/nomba.webp",
+        "mime_type": "image/webp",
+        "width": null,
+        "height": null
+      }
+    ],
+    "added_at": "2026-08-02",
+    "updated_at": "2026-08-02",
+    "status": "needs-review"
+  },
+  {
     "name": "Noor Takaful",
     "slug": "noor-takaful",
     "category": "other",
@@ -4339,6 +4915,43 @@
     "added_at": "2026-07-13",
     "updated_at": "2026-07-13",
     "status": "verified"
+  },
+  {
+    "name": "Novacrust",
+    "slug": "novacrust",
+    "category": "other",
+    "aliases": [],
+    "website": "https://novacrust.com/",
+    "source_url": "https://novacrust.com/about-us#inline-logo",
+    "source_type": "official-website",
+    "source_path": "sources/novacrust.svg",
+    "svg_path": "assets/novacrust.svg",
+    "formats": [
+      {
+        "type": "svg",
+        "path": "assets/novacrust.svg",
+        "mime_type": "image/svg+xml",
+        "width": null,
+        "height": null
+      },
+      {
+        "type": "png",
+        "path": "assets/novacrust.png",
+        "mime_type": "image/png",
+        "width": null,
+        "height": null
+      },
+      {
+        "type": "webp",
+        "path": "assets/novacrust.webp",
+        "mime_type": "image/webp",
+        "width": null,
+        "height": null
+      }
+    ],
+    "added_at": "2026-08-02",
+    "updated_at": "2026-08-02",
+    "status": "needs-review"
   },
   {
     "name": "NPF Pension Managers",
@@ -4923,6 +5536,45 @@
     "status": "verified"
   },
   {
+    "name": "Payaza Africa",
+    "slug": "payaza-africa",
+    "category": "other",
+    "aliases": [
+      "PAYAZA AFRICA LIMITED"
+    ],
+    "website": "https://payaza.africa/",
+    "source_url": "https://payaza.africa/dynamic-images/new-payaza-logo.svg",
+    "source_type": "official-website",
+    "source_path": "sources/payaza-africa.svg",
+    "svg_path": "assets/payaza-africa.svg",
+    "formats": [
+      {
+        "type": "svg",
+        "path": "assets/payaza-africa.svg",
+        "mime_type": "image/svg+xml",
+        "width": null,
+        "height": null
+      },
+      {
+        "type": "png",
+        "path": "assets/payaza-africa.png",
+        "mime_type": "image/png",
+        "width": null,
+        "height": null
+      },
+      {
+        "type": "webp",
+        "path": "assets/payaza-africa.webp",
+        "mime_type": "image/webp",
+        "width": null,
+        "height": null
+      }
+    ],
+    "added_at": "2026-08-02",
+    "updated_at": "2026-08-02",
+    "status": "verified"
+  },
+  {
     "name": "Payfixy",
     "slug": "payfixy",
     "category": "other",
@@ -5469,6 +6121,36 @@
     "status": "verified"
   },
   {
+    "name": "Ratefy",
+    "slug": "ratefy",
+    "category": "other",
+    "aliases": [],
+    "website": "https://ratefy.co/",
+    "source_url": "https://ratefy.co/ratefy-icon.png",
+    "source_type": "official-website",
+    "source_path": "sources/ratefy.png",
+    "svg_path": null,
+    "formats": [
+      {
+        "type": "png",
+        "path": "assets/ratefy.png",
+        "mime_type": "image/png",
+        "width": null,
+        "height": null
+      },
+      {
+        "type": "webp",
+        "path": "assets/ratefy.webp",
+        "mime_type": "image/webp",
+        "width": null,
+        "height": null
+      }
+    ],
+    "added_at": "2026-08-02",
+    "updated_at": "2026-08-02",
+    "status": "verified"
+  },
+  {
     "name": "Regency Alliance Insurance",
     "slug": "regency-alliance-insurance",
     "category": "other",
@@ -6012,6 +6694,43 @@
     "status": "verified"
   },
   {
+    "name": "Spleet",
+    "slug": "spleet",
+    "category": "other",
+    "aliases": [],
+    "website": "https://spleet.africa/",
+    "source_url": "https://raw.githubusercontent.com/PaystackHQ/nigerialogos/master/public/logos/spleet/spleet.svg",
+    "source_type": "community-catalog",
+    "source_path": "sources/spleet.svg",
+    "svg_path": "assets/spleet.svg",
+    "formats": [
+      {
+        "type": "svg",
+        "path": "assets/spleet.svg",
+        "mime_type": "image/svg+xml",
+        "width": null,
+        "height": null
+      },
+      {
+        "type": "png",
+        "path": "assets/spleet.png",
+        "mime_type": "image/png",
+        "width": null,
+        "height": null
+      },
+      {
+        "type": "webp",
+        "path": "assets/spleet.webp",
+        "mime_type": "image/webp",
+        "width": null,
+        "height": null
+      }
+    ],
+    "added_at": "2026-08-02",
+    "updated_at": "2026-08-02",
+    "status": "needs-review"
+  },
+  {
     "name": "Stanbic IBTC Bank",
     "slug": "stanbic-ibtc-bank",
     "category": "commercial-bank",
@@ -6286,6 +7005,43 @@
     "status": "verified"
   },
   {
+    "name": "Suregifts",
+    "slug": "suregifts",
+    "category": "fintech",
+    "aliases": [],
+    "website": "https://www.suregifts.com.ng/",
+    "source_url": "https://www.suregifts.com.ng/register/personal#inline-logo",
+    "source_type": "official-website",
+    "source_path": "sources/suregifts.svg",
+    "svg_path": "assets/suregifts.svg",
+    "formats": [
+      {
+        "type": "svg",
+        "path": "assets/suregifts.svg",
+        "mime_type": "image/svg+xml",
+        "width": null,
+        "height": null
+      },
+      {
+        "type": "png",
+        "path": "assets/suregifts.png",
+        "mime_type": "image/png",
+        "width": null,
+        "height": null
+      },
+      {
+        "type": "webp",
+        "path": "assets/suregifts.webp",
+        "mime_type": "image/webp",
+        "width": null,
+        "height": null
+      }
+    ],
+    "added_at": "2026-08-02",
+    "updated_at": "2026-08-02",
+    "status": "needs-review"
+  },
+  {
     "name": "SYCAMORE",
     "slug": "sycamore-integrated-solutions",
     "category": "fintech",
@@ -6550,6 +7306,73 @@
     "status": "needs-review"
   },
   {
+    "name": "ThriveAgric",
+    "slug": "thriveagric",
+    "category": "other",
+    "aliases": [],
+    "website": "https://www.thriveagric.com/",
+    "source_url": "https://raw.githubusercontent.com/PaystackHQ/nigerialogos/master/public/logos/thrive_agric/thrive_agric.svg",
+    "source_type": "community-catalog",
+    "source_path": "sources/thriveagric.svg",
+    "svg_path": "assets/thriveagric.svg",
+    "formats": [
+      {
+        "type": "svg",
+        "path": "assets/thriveagric.svg",
+        "mime_type": "image/svg+xml",
+        "width": null,
+        "height": null
+      },
+      {
+        "type": "png",
+        "path": "assets/thriveagric.png",
+        "mime_type": "image/png",
+        "width": null,
+        "height": null
+      },
+      {
+        "type": "webp",
+        "path": "assets/thriveagric.webp",
+        "mime_type": "image/webp",
+        "width": null,
+        "height": null
+      }
+    ],
+    "added_at": "2026-08-02",
+    "updated_at": "2026-08-02",
+    "status": "needs-review"
+  },
+  {
+    "name": "Timon",
+    "slug": "timon",
+    "category": "other",
+    "aliases": [],
+    "website": "https://www.usetimon.com/",
+    "source_url": "https://www.usetimon.com/logo.png",
+    "source_type": "official-website",
+    "source_path": "sources/timon.png",
+    "svg_path": null,
+    "formats": [
+      {
+        "type": "png",
+        "path": "assets/timon.png",
+        "mime_type": "image/png",
+        "width": null,
+        "height": null
+      },
+      {
+        "type": "webp",
+        "path": "assets/timon.webp",
+        "mime_type": "image/webp",
+        "width": null,
+        "height": null
+      }
+    ],
+    "added_at": "2026-08-02",
+    "updated_at": "2026-08-02",
+    "status": "verified"
+  },
+  {
     "name": "Trove",
     "slug": "trove-finance",
     "category": "other",
@@ -6618,6 +7441,47 @@
     "added_at": "2026-07-14",
     "updated_at": "2026-07-14",
     "status": "needs-review"
+  },
+  {
+    "name": "UMBA MOBILE",
+    "slug": "umba-digital-solutions",
+    "category": "fintech",
+    "aliases": [
+      "UMBA DIGITAL SOLUTIONS LIMITED",
+      "UMBA MOBILE",
+      "UMBA WEB"
+    ],
+    "website": "https://www.umba.com/nigeria",
+    "source_url": "https://www.umba.com/images/Umba-mfb-white.svg",
+    "source_type": "official-website",
+    "source_path": "sources/umba-digital-solutions.svg",
+    "svg_path": "assets/umba-digital-solutions.svg",
+    "formats": [
+      {
+        "type": "svg",
+        "path": "assets/umba-digital-solutions.svg",
+        "mime_type": "image/svg+xml",
+        "width": null,
+        "height": null
+      },
+      {
+        "type": "png",
+        "path": "assets/umba-digital-solutions.png",
+        "mime_type": "image/png",
+        "width": null,
+        "height": null
+      },
+      {
+        "type": "webp",
+        "path": "assets/umba-digital-solutions.webp",
+        "mime_type": "image/webp",
+        "width": null,
+        "height": null
+      }
+    ],
+    "added_at": "2026-08-02",
+    "updated_at": "2026-08-02",
+    "status": "verified"
   },
   {
     "name": "Union Bank",
@@ -6912,6 +7776,36 @@
     "status": "needs-review"
   },
   {
+    "name": "VerifyMe",
+    "slug": "verifyme",
+    "category": "fintech",
+    "aliases": [],
+    "website": "https://verifyme.ng/",
+    "source_url": "https://verifyme.ng/web-images/d2/logo-full-verifyme.png",
+    "source_type": "official-website",
+    "source_path": "sources/verifyme.png",
+    "svg_path": null,
+    "formats": [
+      {
+        "type": "png",
+        "path": "assets/verifyme.png",
+        "mime_type": "image/png",
+        "width": null,
+        "height": null
+      },
+      {
+        "type": "webp",
+        "path": "assets/verifyme.webp",
+        "mime_type": "image/webp",
+        "width": null,
+        "height": null
+      }
+    ],
+    "added_at": "2026-08-02",
+    "updated_at": "2026-08-02",
+    "status": "verified"
+  },
+  {
     "name": "Veritas Glanvills Pensions",
     "slug": "veritas-glanvills-pensions",
     "category": "other",
@@ -7056,6 +7950,43 @@
     "added_at": "2026-07-14",
     "updated_at": "2026-07-14",
     "status": "needs-review"
+  },
+  {
+    "name": "Wealth.ng",
+    "slug": "wealth-ng",
+    "category": "other",
+    "aliases": [],
+    "website": "https://wealth.ng/wealth/intro",
+    "source_url": "https://wealth.ng/wealth/intro",
+    "source_type": "official-website",
+    "source_path": "sources/wealth-ng.svg",
+    "svg_path": "assets/wealth-ng.svg",
+    "formats": [
+      {
+        "type": "svg",
+        "path": "assets/wealth-ng.svg",
+        "mime_type": "image/svg+xml",
+        "width": null,
+        "height": null
+      },
+      {
+        "type": "png",
+        "path": "assets/wealth-ng.png",
+        "mime_type": "image/png",
+        "width": null,
+        "height": null
+      },
+      {
+        "type": "webp",
+        "path": "assets/wealth-ng.webp",
+        "mime_type": "image/webp",
+        "width": null,
+        "height": null
+      }
+    ],
+    "added_at": "2026-08-02",
+    "updated_at": "2026-08-02",
+    "status": "verified"
   },
   {
     "name": "Wema Bank",
@@ -7278,569 +8209,6 @@
     "status": "needs-review"
   },
   {
-    "name": "Zenith Bank",
-    "slug": "zenith-bank",
-    "category": "commercial-bank",
-    "aliases": [
-      "Zenith Bank Plc"
-    ],
-    "website": "https://www.zenithbank.com/",
-    "source_url": "https://selfservice.zenithbank.com/logo.gif",
-    "source_type": "official-website",
-    "source_path": "sources/zenith-bank.svg",
-    "svg_path": "assets/zenith-bank.svg",
-    "formats": [
-      {
-        "type": "svg",
-        "path": "assets/zenith-bank.svg",
-        "mime_type": "image/svg+xml",
-        "width": null,
-        "height": null
-      },
-      {
-        "type": "png",
-        "path": "assets/zenith-bank.png",
-        "mime_type": "image/png",
-        "width": null,
-        "height": null
-      },
-      {
-        "type": "webp",
-        "path": "assets/zenith-bank.webp",
-        "mime_type": "image/webp",
-        "width": null,
-        "height": null
-      }
-    ],
-    "added_at": "2026-07-14",
-    "updated_at": "2026-07-14",
-    "status": "verified"
-  },
-  {
-    "name": "3Line Card Management",
-    "slug": "3line-card-management",
-    "category": "other",
-    "aliases": [
-      "3Line Card Management Limited"
-    ],
-    "website": "https://www.3lineng.com/",
-    "source_url": "https://www.3lineng.com/_next/image?url=%2Flogo.png&w=256&q=75",
-    "source_type": "official-website",
-    "source_path": "sources/3line-card-management.png",
-    "svg_path": null,
-    "formats": [
-      {
-        "type": "png",
-        "path": "assets/3line-card-management.png",
-        "mime_type": "image/png",
-        "width": null,
-        "height": null
-      },
-      {
-        "type": "webp",
-        "path": "assets/3line-card-management.webp",
-        "mime_type": "image/webp",
-        "width": null,
-        "height": null
-      }
-    ],
-    "added_at": "2026-08-02",
-    "updated_at": "2026-08-02",
-    "status": "verified"
-  },
-  {
-    "name": "advansio",
-    "slug": "advansio",
-    "category": "fintech",
-    "aliases": [],
-    "website": "https://advansio.com/",
-    "source_url": "https://advansio.com/img/sticky-logo.png",
-    "source_type": "official-website",
-    "source_path": "sources/advansio.png",
-    "svg_path": null,
-    "formats": [
-      {
-        "type": "png",
-        "path": "assets/advansio.png",
-        "mime_type": "image/png",
-        "width": null,
-        "height": null
-      },
-      {
-        "type": "webp",
-        "path": "assets/advansio.webp",
-        "mime_type": "image/webp",
-        "width": null,
-        "height": null
-      }
-    ],
-    "added_at": "2026-08-02",
-    "updated_at": "2026-08-02",
-    "status": "verified"
-  },
-  {
-    "name": "AjoCard",
-    "slug": "ajocard",
-    "category": "fintech",
-    "aliases": [],
-    "website": "https://ajocard.com/",
-    "source_url": "https://ajocard.com/_next/static/media/ajocard-logo.a7bbab22.svg",
-    "source_type": "official-website",
-    "source_path": "sources/ajocard.svg",
-    "svg_path": "assets/ajocard.svg",
-    "formats": [
-      {
-        "type": "svg",
-        "path": "assets/ajocard.svg",
-        "mime_type": "image/svg+xml",
-        "width": null,
-        "height": null
-      },
-      {
-        "type": "png",
-        "path": "assets/ajocard.png",
-        "mime_type": "image/png",
-        "width": null,
-        "height": null
-      },
-      {
-        "type": "webp",
-        "path": "assets/ajocard.webp",
-        "mime_type": "image/webp",
-        "width": null,
-        "height": null
-      }
-    ],
-    "added_at": "2026-08-02",
-    "updated_at": "2026-08-02",
-    "status": "verified"
-  },
-  {
-    "name": "Anchor",
-    "slug": "anchor",
-    "category": "fintech",
-    "aliases": [],
-    "website": "https://getanchor.co/company/about-us.html",
-    "source_url": "https://getanchor.co/images/anchor-logo-white.svg",
-    "source_type": "official-website",
-    "source_path": "sources/anchor.svg",
-    "svg_path": "assets/anchor.svg",
-    "formats": [
-      {
-        "type": "svg",
-        "path": "assets/anchor.svg",
-        "mime_type": "image/svg+xml",
-        "width": null,
-        "height": null
-      },
-      {
-        "type": "png",
-        "path": "assets/anchor.png",
-        "mime_type": "image/png",
-        "width": null,
-        "height": null
-      },
-      {
-        "type": "webp",
-        "path": "assets/anchor.webp",
-        "mime_type": "image/webp",
-        "width": null,
-        "height": null
-      }
-    ],
-    "added_at": "2026-08-02",
-    "updated_at": "2026-08-02",
-    "status": "verified"
-  },
-  {
-    "name": "Cleva",
-    "slug": "cleva",
-    "category": "other",
-    "aliases": [],
-    "website": "https://www.getcleva.com/",
-    "source_url": "https://www.getcleva.com/_next/static/media/cleva-logo.465e8a1e.svg",
-    "source_type": "official-website",
-    "source_path": "sources/cleva.svg",
-    "svg_path": "assets/cleva.svg",
-    "formats": [
-      {
-        "type": "svg",
-        "path": "assets/cleva.svg",
-        "mime_type": "image/svg+xml",
-        "width": null,
-        "height": null
-      },
-      {
-        "type": "png",
-        "path": "assets/cleva.png",
-        "mime_type": "image/png",
-        "width": null,
-        "height": null
-      },
-      {
-        "type": "webp",
-        "path": "assets/cleva.webp",
-        "mime_type": "image/webp",
-        "width": null,
-        "height": null
-      }
-    ],
-    "added_at": "2026-08-02",
-    "updated_at": "2026-08-02",
-    "status": "verified"
-  },
-  {
-    "name": "FlexiPay",
-    "slug": "flexipay",
-    "category": "fintech",
-    "aliases": [],
-    "website": "https://flexipay.ng/",
-    "source_url": "https://app.flexipay.ng/flexipay.png",
-    "source_type": "official-website",
-    "source_path": "sources/flexipay.png",
-    "svg_path": null,
-    "formats": [
-      {
-        "type": "png",
-        "path": "assets/flexipay.png",
-        "mime_type": "image/png",
-        "width": null,
-        "height": null
-      },
-      {
-        "type": "webp",
-        "path": "assets/flexipay.webp",
-        "mime_type": "image/webp",
-        "width": null,
-        "height": null
-      }
-    ],
-    "added_at": "2026-08-02",
-    "updated_at": "2026-08-02",
-    "status": "verified"
-  },
-  {
-    "name": "KLUMP",
-    "slug": "klump-technology-company",
-    "category": "fintech",
-    "aliases": [
-      "KLUMP",
-      "KLUMP TECHNOLOGY COMPANY LIMITED"
-    ],
-    "website": "https://useklump.com/",
-    "source_url": "https://useklump.com/",
-    "source_type": "official-website",
-    "source_path": "sources/klump-technology-company.svg",
-    "svg_path": "assets/klump-technology-company.svg",
-    "formats": [
-      {
-        "type": "svg",
-        "path": "assets/klump-technology-company.svg",
-        "mime_type": "image/svg+xml",
-        "width": null,
-        "height": null
-      },
-      {
-        "type": "png",
-        "path": "assets/klump-technology-company.png",
-        "mime_type": "image/png",
-        "width": null,
-        "height": null
-      },
-      {
-        "type": "webp",
-        "path": "assets/klump-technology-company.webp",
-        "mime_type": "image/webp",
-        "width": null,
-        "height": null
-      }
-    ],
-    "added_at": "2026-08-02",
-    "updated_at": "2026-08-02",
-    "status": "verified"
-  },
-  {
-    "name": "Ladda",
-    "slug": "ladda",
-    "category": "other",
-    "aliases": [],
-    "website": "https://www.getladda.com/",
-    "source_url": "https://www.getladda.com/",
-    "source_type": "official-website",
-    "source_path": "sources/ladda.svg",
-    "svg_path": "assets/ladda.svg",
-    "formats": [
-      {
-        "type": "svg",
-        "path": "assets/ladda.svg",
-        "mime_type": "image/svg+xml",
-        "width": null,
-        "height": null
-      },
-      {
-        "type": "png",
-        "path": "assets/ladda.png",
-        "mime_type": "image/png",
-        "width": null,
-        "height": null
-      },
-      {
-        "type": "webp",
-        "path": "assets/ladda.webp",
-        "mime_type": "image/webp",
-        "width": null,
-        "height": null
-      }
-    ],
-    "added_at": "2026-08-02",
-    "updated_at": "2026-08-02",
-    "status": "verified"
-  },
-  {
-    "name": "LEMFI",
-    "slug": "lemfi",
-    "category": "other",
-    "aliases": [],
-    "website": "https://www.lemfi.com/en-ng/",
-    "source_url": "https://www.lemfi.com/en-ng/",
-    "source_type": "official-website",
-    "source_path": "sources/lemfi.svg",
-    "svg_path": "assets/lemfi.svg",
-    "formats": [
-      {
-        "type": "svg",
-        "path": "assets/lemfi.svg",
-        "mime_type": "image/svg+xml",
-        "width": null,
-        "height": null
-      },
-      {
-        "type": "png",
-        "path": "assets/lemfi.png",
-        "mime_type": "image/png",
-        "width": null,
-        "height": null
-      },
-      {
-        "type": "webp",
-        "path": "assets/lemfi.webp",
-        "mime_type": "image/webp",
-        "width": null,
-        "height": null
-      }
-    ],
-    "added_at": "2026-08-02",
-    "updated_at": "2026-08-02",
-    "status": "verified"
-  },
-  {
-    "name": "Payaza Africa",
-    "slug": "payaza-africa",
-    "category": "other",
-    "aliases": [
-      "PAYAZA AFRICA LIMITED"
-    ],
-    "website": "https://payaza.africa/",
-    "source_url": "https://payaza.africa/dynamic-images/new-payaza-logo.svg",
-    "source_type": "official-website",
-    "source_path": "sources/payaza-africa.svg",
-    "svg_path": "assets/payaza-africa.svg",
-    "formats": [
-      {
-        "type": "svg",
-        "path": "assets/payaza-africa.svg",
-        "mime_type": "image/svg+xml",
-        "width": null,
-        "height": null
-      },
-      {
-        "type": "png",
-        "path": "assets/payaza-africa.png",
-        "mime_type": "image/png",
-        "width": null,
-        "height": null
-      },
-      {
-        "type": "webp",
-        "path": "assets/payaza-africa.webp",
-        "mime_type": "image/webp",
-        "width": null,
-        "height": null
-      }
-    ],
-    "added_at": "2026-08-02",
-    "updated_at": "2026-08-02",
-    "status": "verified"
-  },
-  {
-    "name": "Ratefy",
-    "slug": "ratefy",
-    "category": "other",
-    "aliases": [],
-    "website": "https://ratefy.co/",
-    "source_url": "https://ratefy.co/ratefy-icon.png",
-    "source_type": "official-website",
-    "source_path": "sources/ratefy.png",
-    "svg_path": null,
-    "formats": [
-      {
-        "type": "png",
-        "path": "assets/ratefy.png",
-        "mime_type": "image/png",
-        "width": null,
-        "height": null
-      },
-      {
-        "type": "webp",
-        "path": "assets/ratefy.webp",
-        "mime_type": "image/webp",
-        "width": null,
-        "height": null
-      }
-    ],
-    "added_at": "2026-08-02",
-    "updated_at": "2026-08-02",
-    "status": "verified"
-  },
-  {
-    "name": "Timon",
-    "slug": "timon",
-    "category": "other",
-    "aliases": [],
-    "website": "https://www.usetimon.com/",
-    "source_url": "https://www.usetimon.com/logo.png",
-    "source_type": "official-website",
-    "source_path": "sources/timon.png",
-    "svg_path": null,
-    "formats": [
-      {
-        "type": "png",
-        "path": "assets/timon.png",
-        "mime_type": "image/png",
-        "width": null,
-        "height": null
-      },
-      {
-        "type": "webp",
-        "path": "assets/timon.webp",
-        "mime_type": "image/webp",
-        "width": null,
-        "height": null
-      }
-    ],
-    "added_at": "2026-08-02",
-    "updated_at": "2026-08-02",
-    "status": "verified"
-  },
-  {
-    "name": "UMBA MOBILE",
-    "slug": "umba-digital-solutions",
-    "category": "fintech",
-    "aliases": [
-      "UMBA DIGITAL SOLUTIONS LIMITED",
-      "UMBA MOBILE",
-      "UMBA WEB"
-    ],
-    "website": "https://www.umba.com/nigeria",
-    "source_url": "https://www.umba.com/images/Umba-mfb-white.svg",
-    "source_type": "official-website",
-    "source_path": "sources/umba-digital-solutions.svg",
-    "svg_path": "assets/umba-digital-solutions.svg",
-    "formats": [
-      {
-        "type": "svg",
-        "path": "assets/umba-digital-solutions.svg",
-        "mime_type": "image/svg+xml",
-        "width": null,
-        "height": null
-      },
-      {
-        "type": "png",
-        "path": "assets/umba-digital-solutions.png",
-        "mime_type": "image/png",
-        "width": null,
-        "height": null
-      },
-      {
-        "type": "webp",
-        "path": "assets/umba-digital-solutions.webp",
-        "mime_type": "image/webp",
-        "width": null,
-        "height": null
-      }
-    ],
-    "added_at": "2026-08-02",
-    "updated_at": "2026-08-02",
-    "status": "verified"
-  },
-  {
-    "name": "VerifyMe",
-    "slug": "verifyme",
-    "category": "fintech",
-    "aliases": [],
-    "website": "https://verifyme.ng/",
-    "source_url": "https://verifyme.ng/web-images/d2/logo-full-verifyme.png",
-    "source_type": "official-website",
-    "source_path": "sources/verifyme.png",
-    "svg_path": null,
-    "formats": [
-      {
-        "type": "png",
-        "path": "assets/verifyme.png",
-        "mime_type": "image/png",
-        "width": null,
-        "height": null
-      },
-      {
-        "type": "webp",
-        "path": "assets/verifyme.webp",
-        "mime_type": "image/webp",
-        "width": null,
-        "height": null
-      }
-    ],
-    "added_at": "2026-08-02",
-    "updated_at": "2026-08-02",
-    "status": "verified"
-  },
-  {
-    "name": "Wealth.ng",
-    "slug": "wealth-ng",
-    "category": "other",
-    "aliases": [],
-    "website": "https://wealth.ng/wealth/intro",
-    "source_url": "https://wealth.ng/wealth/intro",
-    "source_type": "official-website",
-    "source_path": "sources/wealth-ng.svg",
-    "svg_path": "assets/wealth-ng.svg",
-    "formats": [
-      {
-        "type": "svg",
-        "path": "assets/wealth-ng.svg",
-        "mime_type": "image/svg+xml",
-        "width": null,
-        "height": null
-      },
-      {
-        "type": "png",
-        "path": "assets/wealth-ng.png",
-        "mime_type": "image/png",
-        "width": null,
-        "height": null
-      },
-      {
-        "type": "webp",
-        "path": "assets/wealth-ng.webp",
-        "mime_type": "image/webp",
-        "width": null,
-        "height": null
-      }
-    ],
-    "added_at": "2026-08-02",
-    "updated_at": "2026-08-02",
-    "status": "verified"
-  },
-  {
     "name": "ZEDVANCE BUSINESS",
     "slug": "zedvance-finance",
     "category": "fintech",
@@ -7882,398 +8250,42 @@
     "status": "verified"
   },
   {
-    "name": "Global Accelerex",
-    "slug": "global-accelerex",
-    "category": "other",
+    "name": "Zenith Bank",
+    "slug": "zenith-bank",
+    "category": "commercial-bank",
     "aliases": [
-      "Global Accelerex Limited"
+      "Zenith Bank Plc"
     ],
-    "website": "https://www.globalaccelerex.com/",
-    "source_url": "https://www.globalaccelerex.com/images/Global-Accelerex-logo.png",
+    "website": "https://www.zenithbank.com/",
+    "source_url": "https://selfservice.zenithbank.com/logo.gif",
     "source_type": "official-website",
-    "source_path": "sources/global-accelerex.jpg",
-    "svg_path": null,
-    "formats": [
-      {
-        "type": "png",
-        "path": "assets/global-accelerex.png",
-        "mime_type": "image/png",
-        "width": null,
-        "height": null
-      },
-      {
-        "type": "webp",
-        "path": "assets/global-accelerex.webp",
-        "mime_type": "image/webp",
-        "width": null,
-        "height": null
-      },
-      {
-        "type": "jpeg",
-        "path": "assets/global-accelerex.jpg",
-        "mime_type": "image/jpeg",
-        "width": null,
-        "height": null
-      }
-    ],
-    "added_at": "2026-08-02",
-    "updated_at": "2026-08-02",
-    "status": "needs-review"
-  },
-  {
-    "name": "CoralPay",
-    "slug": "coralpay",
-    "category": "other",
-    "aliases": [],
-    "website": "https://customersupport.coralpay.com/portal/en/home",
-    "source_url": "https://contacts.zoho.com/file?ot=8&t=serviceorg&ID=798870174",
-    "source_type": "official-website",
-    "source_path": "sources/coralpay.png",
-    "svg_path": null,
-    "formats": [
-      {
-        "type": "png",
-        "path": "assets/coralpay.png",
-        "mime_type": "image/png",
-        "width": null,
-        "height": null
-      },
-      {
-        "type": "webp",
-        "path": "assets/coralpay.webp",
-        "mime_type": "image/webp",
-        "width": null,
-        "height": null
-      }
-    ],
-    "added_at": "2026-08-02",
-    "updated_at": "2026-08-02",
-    "status": "needs-review"
-  },
-  {
-    "name": "MoneyMaster Payment Service Bank",
-    "slug": "moneymaster-payment-service-bank",
-    "category": "payment-bank",
-    "aliases": [
-      "MoneyMaster Payment Service Bank Limited"
-    ],
-    "website": "https://moneymasterpsb.com/",
-    "source_url": "https://moneymasterpsb.com/wp-content/uploads/2022/07/mmpsb-logo.png",
-    "source_type": "official-website",
-    "source_path": "sources/moneymaster-payment-service-bank.png",
-    "svg_path": null,
-    "formats": [
-      {
-        "type": "png",
-        "path": "assets/moneymaster-payment-service-bank.png",
-        "mime_type": "image/png",
-        "width": null,
-        "height": null
-      },
-      {
-        "type": "webp",
-        "path": "assets/moneymaster-payment-service-bank.webp",
-        "mime_type": "image/webp",
-        "width": null,
-        "height": null
-      }
-    ],
-    "added_at": "2026-08-02",
-    "updated_at": "2026-08-02",
-    "status": "needs-review"
-  },
-  {
-    "name": "Suregifts",
-    "slug": "suregifts",
-    "category": "fintech",
-    "aliases": [],
-    "website": "https://www.suregifts.com.ng/",
-    "source_url": "https://www.suregifts.com.ng/register/personal#inline-logo",
-    "source_type": "official-website",
-    "source_path": "sources/suregifts.svg",
-    "svg_path": "assets/suregifts.svg",
+    "source_path": "sources/zenith-bank.svg",
+    "svg_path": "assets/zenith-bank.svg",
     "formats": [
       {
         "type": "svg",
-        "path": "assets/suregifts.svg",
+        "path": "assets/zenith-bank.svg",
         "mime_type": "image/svg+xml",
         "width": null,
         "height": null
       },
       {
         "type": "png",
-        "path": "assets/suregifts.png",
+        "path": "assets/zenith-bank.png",
         "mime_type": "image/png",
         "width": null,
         "height": null
       },
       {
         "type": "webp",
-        "path": "assets/suregifts.webp",
+        "path": "assets/zenith-bank.webp",
         "mime_type": "image/webp",
         "width": null,
         "height": null
       }
     ],
-    "added_at": "2026-08-02",
-    "updated_at": "2026-08-02",
-    "status": "needs-review"
-  },
-  {
-    "name": "AFRIEX",
-    "slug": "afriex",
-    "category": "other",
-    "aliases": [
-      "AFRIEX INC"
-    ],
-    "website": "https://www.afriex.com/",
-    "source_url": "https://cdn.prod.website-files.com/62ce94ab2b9c3a3597a7acd4/62d51c5a0476b26365bfe38c_Afriex%20i.svg",
-    "source_type": "official-website",
-    "source_path": "sources/afriex.svg",
-    "svg_path": "assets/afriex.svg",
-    "formats": [
-      {
-        "type": "svg",
-        "path": "assets/afriex.svg",
-        "mime_type": "image/svg+xml",
-        "width": null,
-        "height": null
-      },
-      {
-        "type": "png",
-        "path": "assets/afriex.png",
-        "mime_type": "image/png",
-        "width": null,
-        "height": null
-      },
-      {
-        "type": "webp",
-        "path": "assets/afriex.webp",
-        "mime_type": "image/webp",
-        "width": null,
-        "height": null
-      }
-    ],
-    "added_at": "2026-08-02",
-    "updated_at": "2026-08-02",
-    "status": "needs-review"
-  },
-  {
-    "name": "nomba",
-    "slug": "nomba",
-    "category": "other",
-    "aliases": [],
-    "website": "https://nomba.com/",
-    "source_url": "https://nomba.com/favicon.png",
-    "source_type": "official-website",
-    "source_path": "sources/nomba.png",
-    "svg_path": null,
-    "formats": [
-      {
-        "type": "png",
-        "path": "assets/nomba.png",
-        "mime_type": "image/png",
-        "width": null,
-        "height": null
-      },
-      {
-        "type": "webp",
-        "path": "assets/nomba.webp",
-        "mime_type": "image/webp",
-        "width": null,
-        "height": null
-      }
-    ],
-    "added_at": "2026-08-02",
-    "updated_at": "2026-08-02",
-    "status": "needs-review"
-  },
-  {
-    "name": "Novacrust",
-    "slug": "novacrust",
-    "category": "other",
-    "aliases": [],
-    "website": "https://novacrust.com/",
-    "source_url": "https://novacrust.com/about-us#inline-logo",
-    "source_type": "official-website",
-    "source_path": "sources/novacrust.svg",
-    "svg_path": "assets/novacrust.svg",
-    "formats": [
-      {
-        "type": "svg",
-        "path": "assets/novacrust.svg",
-        "mime_type": "image/svg+xml",
-        "width": null,
-        "height": null
-      },
-      {
-        "type": "png",
-        "path": "assets/novacrust.png",
-        "mime_type": "image/png",
-        "width": null,
-        "height": null
-      },
-      {
-        "type": "webp",
-        "path": "assets/novacrust.webp",
-        "mime_type": "image/webp",
-        "width": null,
-        "height": null
-      }
-    ],
-    "added_at": "2026-08-02",
-    "updated_at": "2026-08-02",
-    "status": "needs-review"
-  },
-  {
-    "name": "Mercurie",
-    "slug": "mercurie",
-    "category": "other",
-    "aliases": [],
-    "website": "https://mercurie.ng/",
-    "source_url": "https://raw.githubusercontent.com/PaystackHQ/nigerialogos/master/public/logos/mercurie/mercurie.svg",
-    "source_type": "community-catalog",
-    "source_path": "sources/mercurie.svg",
-    "svg_path": "assets/mercurie.svg",
-    "formats": [
-      {
-        "type": "svg",
-        "path": "assets/mercurie.svg",
-        "mime_type": "image/svg+xml",
-        "width": null,
-        "height": null
-      },
-      {
-        "type": "png",
-        "path": "assets/mercurie.png",
-        "mime_type": "image/png",
-        "width": null,
-        "height": null
-      },
-      {
-        "type": "webp",
-        "path": "assets/mercurie.webp",
-        "mime_type": "image/webp",
-        "width": null,
-        "height": null
-      }
-    ],
-    "added_at": "2026-08-02",
-    "updated_at": "2026-08-02",
-    "status": "needs-review"
-  },
-  {
-    "name": "LENDSQR WEB",
-    "slug": "essential-finance",
-    "category": "fintech",
-    "aliases": [
-      "ESSENTIAL FINANCE LIMITED",
-      "LENDSQR WEB"
-    ],
-    "website": "https://lendsqr.com/",
-    "source_url": "https://raw.githubusercontent.com/PaystackHQ/nigerialogos/master/public/logos/lendsqr/lendsqr.svg",
-    "source_type": "community-catalog",
-    "source_path": "sources/essential-finance.svg",
-    "svg_path": "assets/essential-finance.svg",
-    "formats": [
-      {
-        "type": "svg",
-        "path": "assets/essential-finance.svg",
-        "mime_type": "image/svg+xml",
-        "width": null,
-        "height": null
-      },
-      {
-        "type": "png",
-        "path": "assets/essential-finance.png",
-        "mime_type": "image/png",
-        "width": null,
-        "height": null
-      },
-      {
-        "type": "webp",
-        "path": "assets/essential-finance.webp",
-        "mime_type": "image/webp",
-        "width": null,
-        "height": null
-      }
-    ],
-    "added_at": "2026-08-02",
-    "updated_at": "2026-08-02",
-    "status": "needs-review"
-  },
-  {
-    "name": "Spleet",
-    "slug": "spleet",
-    "category": "other",
-    "aliases": [],
-    "website": "https://spleet.africa/",
-    "source_url": "https://raw.githubusercontent.com/PaystackHQ/nigerialogos/master/public/logos/spleet/spleet.svg",
-    "source_type": "community-catalog",
-    "source_path": "sources/spleet.svg",
-    "svg_path": "assets/spleet.svg",
-    "formats": [
-      {
-        "type": "svg",
-        "path": "assets/spleet.svg",
-        "mime_type": "image/svg+xml",
-        "width": null,
-        "height": null
-      },
-      {
-        "type": "png",
-        "path": "assets/spleet.png",
-        "mime_type": "image/png",
-        "width": null,
-        "height": null
-      },
-      {
-        "type": "webp",
-        "path": "assets/spleet.webp",
-        "mime_type": "image/webp",
-        "width": null,
-        "height": null
-      }
-    ],
-    "added_at": "2026-08-02",
-    "updated_at": "2026-08-02",
-    "status": "needs-review"
-  },
-  {
-    "name": "ThriveAgric",
-    "slug": "thriveagric",
-    "category": "other",
-    "aliases": [],
-    "website": "https://www.thriveagric.com/",
-    "source_url": "https://raw.githubusercontent.com/PaystackHQ/nigerialogos/master/public/logos/thrive_agric/thrive_agric.svg",
-    "source_type": "community-catalog",
-    "source_path": "sources/thriveagric.svg",
-    "svg_path": "assets/thriveagric.svg",
-    "formats": [
-      {
-        "type": "svg",
-        "path": "assets/thriveagric.svg",
-        "mime_type": "image/svg+xml",
-        "width": null,
-        "height": null
-      },
-      {
-        "type": "png",
-        "path": "assets/thriveagric.png",
-        "mime_type": "image/png",
-        "width": null,
-        "height": null
-      },
-      {
-        "type": "webp",
-        "path": "assets/thriveagric.webp",
-        "mime_type": "image/webp",
-        "width": null,
-        "height": null
-      }
-    ],
-    "added_at": "2026-08-02",
-    "updated_at": "2026-08-02",
-    "status": "needs-review"
+    "added_at": "2026-07-14",
+    "updated_at": "2026-07-14",
+    "status": "verified"
   }
 ]
