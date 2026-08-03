@@ -14,15 +14,23 @@ import {
 } from "../../institutions/src";
 import { logoCatalog } from "../src/catalog";
 import { institutionLogoLinks } from "../src/institution-links";
+import { sourcingManifestSchema, type SourcingManifest } from "../src/sourcing-schema";
+import websiteOverridesJson from "../sourcing/website-overrides.json";
 
 const packageRoot = join(dirname(fileURLToPath(import.meta.url)), "..");
 const sourcingRoot = join(packageRoot, "sourcing");
-const candidatesRoot = join(sourcingRoot, "web-candidates");
-const cachePath = join(sourcingRoot, "web-discovery-cache.json");
-const reportPath = join(sourcingRoot, "web-discovery-report.json");
-const discoveryVersion = 2;
 const options = parseOptions(process.argv.slice(2));
+const campaignMode = Boolean(options.manifest);
+const candidateDirectoryName = campaignMode ? "fintech-web-candidates" : "web-candidates";
+const candidatesRoot = join(sourcingRoot, candidateDirectoryName);
+const cachePath = join(sourcingRoot, campaignMode ? "fintech-web-discovery-cache.json" : "web-discovery-cache.json");
+const reportPath = join(sourcingRoot, campaignMode ? "fintech-web-discovery-report.json" : "web-discovery-report.json");
+const discoveryVersion = 3;
 const userAgent = "Mozilla/5.0 (compatible; Awalogo/0.1; +https://awalogo.com/)";
+const websiteOverrides = websiteOverridesJson as Record<string, string>;
+const campaignManifest = options.manifest
+  ? sourcingManifestSchema.parse(JSON.parse(await readFile(options.manifest, "utf8")))
+  : null;
 
 const blockedHosts = [
   "facebook.com", "instagram.com", "linkedin.com", "twitter.com", "x.com", "youtube.com",
@@ -74,6 +82,9 @@ type PendingCard = {
   slug: string;
   display_name: string;
   institutions: Institution[];
+  source_category?: string;
+  release_batch?: number;
+  batch_name?: string;
 };
 
 await mkdir(candidatesRoot, { recursive: true });
@@ -99,6 +110,9 @@ const reportEntries = pendingCards.map((card) => ({
   card_slug: card.slug,
   display_name: card.display_name,
   institution_slugs: card.institutions.map((entry) => entry.slug),
+  source_category: card.source_category ?? null,
+  release_batch: card.release_batch ?? null,
+  batch_name: card.batch_name ?? null,
   ...(cache[card.slug] ?? {
     searched_at: null,
     query: null,
@@ -112,6 +126,8 @@ const reportEntries = pendingCards.map((card) => ({
 const searched = reportEntries.filter((entry) => entry.searched_at);
 const output = {
   generated_at: new Date().toISOString(),
+  source_manifest: options.manifest ? relativeToPackage(options.manifest) : null,
+  category_filter: options.category,
   policy: "Internet discoveries are review candidates. A logo is not verified until its institution-owned source and artwork are confirmed.",
   summary: {
     pending_cards: pendingCards.length,
@@ -128,9 +144,9 @@ await writeFile(reportPath, JSON.stringify(output, null, 2) + "\n");
 console.log(`\nDiscovered ${output.summary.candidate_files} candidates for ${output.summary.cards_with_candidates} of ${searched.length} searched cards.`);
 
 async function discoverCard(card: PendingCard): Promise<CacheEntry> {
-  const query = `\"${card.display_name}\" Nigeria official`;
+  const query = `\"${card.display_name}\" Nigeria official logo brand`;
   await rm(join(candidatesRoot, card.slug), { recursive: true, force: true });
-  const knownWebsite = card.institutions.map((entry) => entry.website).find(Boolean) ?? null;
+  const knownWebsite = card.institutions.map((entry) => entry.website ?? websiteOverrides[entry.slug]).find(Boolean) ?? null;
   let searchResults: SearchResult[] = [];
   let website = knownWebsite;
   let websiteScore = knownWebsite ? 100 : 0;
@@ -491,7 +507,7 @@ async function saveCandidate(candidate: SiteCandidate, slug: string, index: numb
     return {
       ...candidate,
       source_url: candidate.source_url.startsWith("data:") ? candidate.url : candidate.source_url,
-      local_path: `web-candidates/${slug}/${fileName}`,
+      local_path: `${candidateDirectoryName}/${slug}/${fileName}`,
       sha256: createHash("sha256").update(bytes).digest("hex"),
       ...dimensions
     };
@@ -535,6 +551,7 @@ function isSafeSvg(value: string): boolean {
 
 function buildPendingCards(): PendingCard[] {
   const all = [...institutions, ...foreignAuthorizedInstitutions, ...communityCandidates];
+  if (campaignManifest) return buildManifestCards(campaignManifest, all);
   const accepted = new Set(logoCatalog.flatMap((logo) => [logo.slug, logo.name, ...logo.aliases]).map(normalize));
   const pending = all.filter((institution) => {
     const linked = institution.logo_slug ?? institutionLogoLinks[institution.slug];
@@ -559,6 +576,41 @@ function buildPendingCards(): PendingCard[] {
     const displayName = preferred.brand_name === "N/A" ? preferred.legal_name ?? preferred.slug : preferred.brand_name;
     return { slug: preferred.slug, display_name: displayName, institutions: records };
   }).sort((a, b) => a.display_name.localeCompare(b.display_name));
+}
+
+function buildManifestCards(manifest: SourcingManifest, all: Institution[]): PendingCard[] {
+  const bySlug = new Map(all.map((entry) => [entry.slug, entry]));
+  const selectedEntries = manifest.entries.filter((entry) => matchesCategory(entry, options.category));
+  const cards = new Map<string, PendingCard>();
+  for (const entry of selectedEntries) {
+    if (!entry.institution_slug) continue;
+    const institution = bySlug.get(entry.institution_slug);
+    if (!institution) throw new Error(`Manifest institution not found: ${entry.institution_slug}`);
+    const existing = cards.get(institution.slug);
+    if (existing) {
+      existing.institutions.push(institution);
+      continue;
+    }
+    cards.set(institution.slug, {
+      slug: institution.slug,
+      display_name: entry.source_name,
+      institutions: [institution],
+      source_category: entry.source_category,
+      release_batch: entry.release_batch,
+      batch_name: entry.batch_name
+    });
+  }
+  return [...cards.values()].sort((a, b) =>
+    (a.release_batch ?? 0) - (b.release_batch ?? 0) || a.display_name.localeCompare(b.display_name)
+  );
+}
+
+function matchesCategory(entry: SourcingManifest["entries"][number], filter: string | null): boolean {
+  if (!filter) return true;
+  const normalizedFilter = filter.toLowerCase().trim();
+  return String(entry.release_batch) === normalizedFilter ||
+    entry.source_category.toLowerCase().includes(normalizedFilter) ||
+    entry.batch_name.toLowerCase().includes(normalizedFilter);
 }
 
 function verificationRank(institution: Institution): number {
@@ -625,18 +677,42 @@ async function readJson<T>(path: string, fallback: T): Promise<T> {
   return JSON.parse(await readFile(path, "utf8")) as T;
 }
 
-function parseOptions(args: string[]): { limit: number; offset: number; concurrency: number; delay: number; refresh: boolean } {
+function parseOptions(args: string[]): {
+  limit: number;
+  offset: number;
+  concurrency: number;
+  delay: number;
+  refresh: boolean;
+  manifest: string | null;
+  category: string | null;
+} {
   const value = (name: string, fallback: number) => {
     const index = args.indexOf(name);
     return index >= 0 ? Number(args[index + 1]) : fallback;
   };
+  const stringValue = (name: string) => {
+    const index = args.indexOf(name);
+    return index >= 0 ? args[index + 1] : null;
+  };
+  const manifest = stringValue("--manifest");
   return {
     limit: value("--limit", Number.POSITIVE_INFINITY),
     offset: value("--offset", 0),
     concurrency: Math.max(1, value("--concurrency", 3)),
     delay: Math.max(0, value("--delay", 350)),
-    refresh: args.includes("--refresh")
+    refresh: args.includes("--refresh"),
+    manifest: manifest ? (manifest.startsWith("/") ? manifest : join(repositoryRoot(), manifest)) : null,
+    category: stringValue("--category")
   };
+}
+
+function repositoryRoot(): string {
+  return join(packageRoot, "../..");
+}
+
+function relativeToPackage(path: string): string {
+  const prefix = `${packageRoot}/`;
+  return path.startsWith(prefix) ? path.slice(prefix.length) : path;
 }
 
 async function mapWithConcurrency<T, R>(values: T[], limit: number, mapper: (value: T, index: number) => Promise<R>): Promise<R[]> {

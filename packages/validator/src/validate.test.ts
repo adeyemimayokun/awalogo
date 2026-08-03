@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { darkLogoPreviewAssetIds, institutionLogoLinks, logoCatalog } from "../../logos/src";
 import promotedCatalog from "../../logos/src/promoted-catalog.json";
-import { validateCatalog } from "./validate";
+import { validateCatalog, validateFintechSourcingManifest } from "./validate";
 
 describe("logo catalog validation", () => {
   it("keeps preview contrast entries linked to catalog assets", () => {
@@ -31,7 +31,13 @@ describe("logo catalog validation", () => {
       "ab-microfinance-bank-nigeria", "hilal-takaful", "xca-insurance-brokers",
       "citizens-pensions", "fcmb-pensions", "guaranty-trust-pension-managers",
       "npf-pension-managers", "premium-pension", "veritas-glanvills-pensions",
-      "cardinal-stone-pensions", "parthian-pensions"
+      "cardinal-stone-pensions", "parthian-pensions",
+      "3line-card-management", "advansio", "ajocard", "anchor", "cleva", "flexipay",
+      "klump-technology-company", "ladda", "lemfi", "payaza-africa", "ratefy", "timon",
+      "umba-digital-solutions", "verifyme", "wealth-ng", "zedvance-finance",
+      "global-accelerex", "coralpay", "moneymaster-payment-service-bank", "suregifts",
+      "afriex", "nomba", "novacrust", "mercurie", "essential-finance", "spleet", "thriveagric",
+      "dantown"
     ]));
   });
 
@@ -50,6 +56,7 @@ describe("logo catalog validation", () => {
 
   it("has no validation issues", () => {
     expect(validateCatalog()).toEqual([]);
+    expect(validateFintechSourcingManifest()).toEqual([]);
   });
 
   it("provides PNG and WebP for every accepted logo and preserves available SVGs", () => {

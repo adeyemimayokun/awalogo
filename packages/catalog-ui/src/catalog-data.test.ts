@@ -7,8 +7,12 @@ import {
   availableLogoCount,
   canonicalLogoCount,
   catalogItems,
+  explorerCatalogItems,
   institutionCount,
-  logoCatalogItems
+  logoCatalogItems,
+  manifestCatalogItems,
+  manifestEntryCount,
+  manifestPendingCount
 } from "./catalog-data";
 import { logos } from "./logo-data";
 
@@ -25,13 +29,25 @@ describe("institution catalog", () => {
     expect(logoCatalogItems.some((item) => item.logo.slug === "dantown")).toBe(true);
   });
 
-  it("only exposes categories represented by available logo assets", () => {
-    const logoCategories = new Set(logoCatalogItems.flatMap((item) => item.categories));
+  it("only exposes categories represented by explorer entries", () => {
+    const explorerCategories = new Set(explorerCatalogItems.flatMap((item) => item.categories));
 
-    expect(new Set(availableInstitutionCategories)).toEqual(logoCategories);
+    expect(new Set(availableInstitutionCategories)).toEqual(explorerCategories);
     expect(availableInstitutionCategories.every((category) =>
-      logoCatalogItems.some((item) => item.categories.includes(category))
+      explorerCatalogItems.some((item) => item.categories.includes(category))
     )).toBe(true);
+  });
+
+  it("keeps all campaign entries in research while hiding unresolved logos from the explorer", () => {
+    expect(manifestEntryCount).toBe(340);
+    expect(manifestCatalogItems).toHaveLength(340);
+    expect(manifestPendingCount).toBe(313);
+    expect(manifestCatalogItems.filter((item) => item.logo !== null)).toHaveLength(27);
+    expect(explorerCatalogItems).toHaveLength(availableLogoCount);
+    expect(explorerCatalogItems.every((item) => item.logo !== null)).toBe(true);
+    expect(explorerCatalogItems.some((item) =>
+      item.institutions.some((institution) => institution.slug === "passpoint")
+    )).toBe(false);
   });
 
   it("includes foreign-authorized operators in the searchable directory", () => {
@@ -50,6 +66,15 @@ describe("institution catalog", () => {
     expect(candidate?.institution.verification_status).toBe("community-candidate");
     expect(candidate?.institution.regulatory_status).toBe("unverified");
     expect(candidate?.logo).toBeNull();
+  });
+
+  it("exposes sourced unverified fintech logos in the explorer", () => {
+    const nomba = explorerCatalogItems.find((item) =>
+      item.institutions.some((institution) => institution.slug === "nomba")
+    );
+
+    expect(nomba?.logo?.slug).toBe("nomba");
+    expect(nomba?.logo?.status).toBe("needs-review");
   });
 
   it("links newly verified fintech discoveries to official assets", () => {
@@ -114,7 +139,7 @@ describe("institution catalog", () => {
     expect(pending?.logo).toBeNull();
   });
 
-  it("exposes a logo-only catalog for the public explorer", () => {
+  it("keeps a logo-only subset for asset operations", () => {
     expect(logoCatalogItems).toHaveLength(availableLogoCount);
     expect(logoCatalogItems.every((item) => item.logo !== null)).toBe(true);
   });

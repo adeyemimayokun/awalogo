@@ -1,473 +1,468 @@
 {
-  "compared_at": "2026-07-14",
+  "compared_at": "2026-08-02",
   "source_file": "docs/research/nigerian-fintech-companies.md",
-  "source_entries": 342,
-  "unique_source_names": 340,
-  "matched_existing_entries": 82,
+  "source_entries": 392,
+  "unique_source_names": 392,
+  "matched_existing_entries": 81,
   "matched_existing_unique_names": 81,
-  "added_community_candidates": 259,
-  "duplicate_source_entries_collapsed": 2,
+  "added_community_candidates": 311,
+  "duplicate_source_entries_collapsed": 0,
   "master_records_unchanged": 1751,
-  "community_candidates_total": 299,
+  "community_candidates_total": 351,
   "matched": [
     {
       "source_name": "Fintellia",
-      "source_category": "Fintech Infrastructure, BaaS and TechFin",
+      "source_category": "Fintech Infrastructure / BaaS / Tech-Fin",
       "institution_slug": "fintellia"
     },
     {
       "source_name": "Qrios",
-      "source_category": "Fintech Infrastructure, BaaS and TechFin",
+      "source_category": "Fintech Infrastructure / BaaS / Tech-Fin",
       "institution_slug": "qrios-networks"
     },
     {
       "source_name": "OnePipe",
-      "source_category": "Fintech Infrastructure, BaaS and TechFin",
+      "source_category": "Fintech Infrastructure / BaaS / Tech-Fin",
       "institution_slug": "onepipe-io-services"
     },
     {
       "source_name": "3Line",
-      "source_category": "Fintech Infrastructure, BaaS and TechFin",
+      "source_category": "Fintech Infrastructure / BaaS / Tech-Fin",
       "institution_slug": "3line-card-management"
     },
     {
       "source_name": "Mono",
-      "source_category": "Fintech Infrastructure, BaaS and TechFin",
+      "source_category": "Fintech Infrastructure / BaaS / Tech-Fin",
       "institution_slug": "mono"
     },
     {
-      "source_name": "Akilaph",
-      "source_category": "Fintech Infrastructure, BaaS and TechFin",
-      "institution_slug": "akilaah-solution"
-    },
-    {
-      "source_name": "PawaPay",
-      "source_category": "Payments Processing, Switching and Infrastructure",
-      "institution_slug": "pawapay"
-    },
-    {
-      "source_name": "Zest",
-      "source_category": "Payments Processing, Switching and Infrastructure",
-      "institution_slug": "zest-payments-limited-stanbic-financial-services-limited"
-    },
-    {
-      "source_name": "C24",
-      "source_category": "Payments Processing, Switching and Infrastructure",
-      "institution_slug": "c24"
-    },
-    {
-      "source_name": "E-Settlement",
-      "source_category": "Payments Processing, Switching and Infrastructure",
-      "institution_slug": "e-settlement"
-    },
-    {
-      "source_name": "Onafriq",
-      "source_category": "Payments Processing, Switching and Infrastructure",
-      "institution_slug": "onafriq"
-    },
-    {
-      "source_name": "Itex",
-      "source_category": "Payments Processing, Switching and Infrastructure",
-      "institution_slug": "itex-integrated-services"
-    },
-    {
-      "source_name": "Accelerex",
-      "source_category": "Payments Processing, Switching and Infrastructure",
-      "institution_slug": "global-accelerex"
-    },
-    {
-      "source_name": "eTranzact",
-      "source_category": "Payments Processing, Switching and Infrastructure",
-      "institution_slug": "etranzact-international"
-    },
-    {
-      "source_name": "PayU",
-      "source_category": "Payments Processing, Switching and Infrastructure",
-      "institution_slug": "payu-payments"
-    },
-    {
-      "source_name": "Monnify",
-      "source_category": "Payments Processing, Switching and Infrastructure",
-      "institution_slug": "monnify"
-    },
-    {
-      "source_name": "Kora",
-      "source_category": "Payments Processing, Switching and Infrastructure",
-      "institution_slug": "kora-payments"
-    },
-    {
-      "source_name": "Interswitch",
-      "source_category": "Payments Processing, Switching and Infrastructure",
-      "institution_slug": "interswitch"
-    },
-    {
-      "source_name": "Remita",
-      "source_category": "Payments Processing, Switching and Infrastructure",
-      "institution_slug": "remita-payment-service"
-    },
-    {
-      "source_name": "eTops",
-      "source_category": "Payments Processing, Switching and Infrastructure",
-      "institution_slug": "etop"
-    },
-    {
-      "source_name": "Payaza",
-      "source_category": "Payments Processing, Switching and Infrastructure",
-      "institution_slug": "payaza-africa"
-    },
-    {
-      "source_name": "Xpress",
-      "source_category": "Payments Processing, Switching and Infrastructure",
-      "institution_slug": "xpress-payments-solution"
-    },
-    {
-      "source_name": "Fincra",
-      "source_category": "Payments Processing, Switching and Infrastructure",
-      "institution_slug": "fincra-technologies"
-    },
-    {
-      "source_name": "Arca",
-      "source_category": "Payments Processing, Switching and Infrastructure",
-      "institution_slug": "arca-payments-company"
-    },
-    {
-      "source_name": "Cellulant",
-      "source_category": "Payments Processing, Switching and Infrastructure",
-      "institution_slug": "cellulant"
-    },
-    {
-      "source_name": "9PSB",
-      "source_category": "Mobile Money, PSB, Agency and Informal Banking",
+      "source_name": "9 Payment Service Bank",
+      "source_category": "Mobile Money / PUB / Agency & Informal Banking",
       "institution_slug": "9-payment-service-bank"
     },
     {
-      "source_name": "MoMo PSB",
-      "source_category": "Mobile Money, PSB, Agency and Informal Banking",
-      "institution_slug": "momo-payment-service-bank"
-    },
-    {
-      "source_name": "Hope Bank",
-      "source_category": "Mobile Money, PSB, Agency and Informal Banking",
+      "source_name": "Hope Payment Service Bank",
+      "source_category": "Mobile Money / PUB / Agency & Informal Banking",
       "institution_slug": "hope-payment-service-bank"
     },
     {
-      "source_name": "Fortis Mobile Money",
-      "source_category": "Mobile Money, PSB, Agency and Informal Banking",
-      "institution_slug": "fortis-mobile-money"
+      "source_name": "Moneymaster payment service bank ltd.",
+      "source_category": "Mobile Money / PUB / Agency & Informal Banking",
+      "institution_slug": "moneymaster-payment-service-bank"
     },
     {
-      "source_name": "KongaPay",
-      "source_category": "Consumer Payments, Digital Wallets and Super Apps",
-      "institution_slug": "kongapay-technologies"
-    },
-    {
-      "source_name": "Nairabox",
-      "source_category": "Consumer Payments, Digital Wallets and Super Apps",
-      "institution_slug": "orcom-and-orcom-business-support"
-    },
-    {
-      "source_name": "Quickteller",
-      "source_category": "Consumer Payments, Digital Wallets and Super Apps",
-      "institution_slug": "xtra-mfs"
-    },
-    {
-      "source_name": "NowNow",
-      "source_category": "Consumer Payments, Digital Wallets and Super Apps",
-      "institution_slug": "nownow-digital-systems"
-    },
-    {
-      "source_name": "Eyowo",
-      "source_category": "Consumer Payments, Digital Wallets and Super Apps",
-      "institution_slug": "eyowo-integrated-payments"
-    },
-    {
-      "source_name": "CredPal",
-      "source_category": "Consumer Payments, Digital Wallets and Super Apps",
-      "institution_slug": "crednet-technologies"
+      "source_name": "Akilaah",
+      "source_category": "Mobile Money / PUB / Agency & Informal Banking",
+      "institution_slug": "akilaah-solution"
     },
     {
       "source_name": "Klump",
-      "source_category": "Spend Management, Merchant Solutions, BNPL and Loyalty",
+      "source_category": "Spend Management / Merchant Solutions / BNPL & Loyalty",
       "institution_slug": "klump-technology-company"
     },
     {
       "source_name": "Duplo",
-      "source_category": "Spend Management, Merchant Solutions, BNPL and Loyalty",
+      "source_category": "Spend Management / Merchant Solutions / BNPL & Loyalty",
       "institution_slug": "duplo"
     },
     {
       "source_name": "Shekel Mobility",
-      "source_category": "Spend Management, Merchant Solutions, BNPL and Loyalty",
+      "source_category": "Spend Management / Merchant Solutions / BNPL & Loyalty",
       "institution_slug": "shekel-mobility"
     },
     {
-      "source_name": "VendyZ",
-      "source_category": "Spend Management, Merchant Solutions, BNPL and Loyalty",
-      "institution_slug": "vendy"
-    },
-    {
       "source_name": "Moneta",
-      "source_category": "Spend Management, Merchant Solutions, BNPL and Loyalty",
+      "source_category": "Spend Management / Merchant Solutions / BNPL & Loyalty",
       "institution_slug": "moneta-technology"
     },
     {
       "source_name": "Sproutly",
-      "source_category": "Spend Management, Merchant Solutions, BNPL and Loyalty",
+      "source_category": "Spend Management / Merchant Solutions / BNPL & Loyalty",
       "institution_slug": "sproutly-tech"
     },
     {
       "source_name": "Traction",
-      "source_category": "Spend Management, Merchant Solutions, BNPL and Loyalty",
+      "source_category": "Spend Management / Merchant Solutions / BNPL & Loyalty",
       "institution_slug": "traction-payments"
     },
     {
-      "source_name": "Optimus",
-      "source_category": "Spend Management, Merchant Solutions, BNPL and Loyalty",
-      "institution_slug": "optimus-by-afrinvest"
-    },
-    {
       "source_name": "Vale",
-      "source_category": "Personal Finance, Wealth and Asset Management",
+      "source_category": "Personal Finance, Wealth & Asset Management",
       "institution_slug": "vale-finance"
     },
     {
-      "source_name": "SavingsBox",
-      "source_category": "Personal Finance, Wealth and Asset Management",
-      "institution_slug": "savings-box-global-impact"
+      "source_name": "Optimus",
+      "source_category": "Personal Finance, Wealth & Asset Management",
+      "institution_slug": "optimus-by-afrinvest"
     },
     {
-      "source_name": "PiggyVest",
-      "source_category": "Personal Finance, Wealth and Asset Management",
+      "source_name": "Cowrywise",
+      "source_category": "Personal Finance, Wealth & Asset Management",
+      "institution_slug": "cowrywise-financial-technology"
+    },
+    {
+      "source_name": "Piggyvest",
+      "source_category": "Personal Finance, Wealth & Asset Management",
       "institution_slug": "piggyvest"
     },
     {
       "source_name": "Rise",
-      "source_category": "Personal Finance, Wealth and Asset Management",
+      "source_category": "Personal Finance, Wealth & Asset Management",
       "institution_slug": "risevest"
     },
     {
       "source_name": "Trove",
-      "source_category": "Digital Insurance, Pensions, Health-Tech and HR",
+      "source_category": "Personal Finance, Wealth & Asset Management",
       "institution_slug": "trove-finance"
     },
     {
-      "source_name": "Pay-U",
-      "source_category": "Digital Insurance, Pensions, Health-Tech and HR",
-      "institution_slug": "payu-payments"
+      "source_name": "Bamboo",
+      "source_category": "Personal Finance, Wealth & Asset Management",
+      "institution_slug": "bamboo-system-technology"
     },
     {
-      "source_name": "Tangerine APT Pensions",
-      "source_category": "Digital Insurance, Pensions, Health-Tech and HR",
-      "institution_slug": "tangerine-apt-pensions"
+      "source_name": "I-invest",
+      "source_category": "Personal Finance, Wealth & Asset Management",
+      "institution_slug": "i-invest"
     },
     {
       "source_name": "SeamlessHR",
-      "source_category": "Digital Insurance, Pensions, Health-Tech and HR",
+      "source_category": "Digital Insurance, Pensions, Health-Tech & HR",
       "institution_slug": "seamlesshr-com"
     },
     {
-      "source_name": "XchangeBox",
-      "source_category": "Crowdfunding, Agritech and Proptech",
-      "institution_slug": "xchange-box-solutions"
+      "source_name": "Pay U",
+      "source_category": "Digital Insurance, Pensions, Health-Tech & HR",
+      "institution_slug": "payu-payments"
     },
     {
-      "source_name": "hX Africa",
-      "source_category": "Crowdfunding, Agritech and Proptech",
-      "institution_slug": "housingexchange-ng"
-    },
-    {
-      "source_name": "cNGN",
-      "source_category": "Crowdfunding, Agritech and Proptech",
-      "institution_slug": "wrapped-cbdc"
-    },
-    {
-      "source_name": "Yellow Card",
-      "source_category": "Crypto and Web3",
-      "institution_slug": "yellowcard"
-    },
-    {
-      "source_name": "Quidax",
-      "source_category": "Crypto and Web3",
-      "institution_slug": "quidax-technologies"
-    },
-    {
-      "source_name": "Busha",
-      "source_category": "Crypto and Web3",
-      "institution_slug": "busha-digital"
-    },
-    {
-      "source_name": "Advancly",
-      "source_category": "Digital Lenders and Credit Infrastructure",
-      "institution_slug": "advancly-technologies"
-    },
-    {
-      "source_name": "Clan",
-      "source_category": "Digital Lenders and Credit Infrastructure",
-      "institution_slug": "creditclan-tech"
-    },
-    {
-      "source_name": "M-Cash",
-      "source_category": "Digital Lenders and Credit Infrastructure",
-      "institution_slug": "inchoi-technology"
-    },
-    {
-      "source_name": "Renmoney",
-      "source_category": "Digital Lenders and Credit Infrastructure",
-      "institution_slug": "renmoney-microfinance-bank"
-    },
-    {
-      "source_name": "Umba",
-      "source_category": "Digital Lenders and Credit Infrastructure",
-      "institution_slug": "umba-digital-solutions"
-    },
-    {
-      "source_name": "KwikPay",
-      "source_category": "Digital Lenders and Credit Infrastructure",
-      "institution_slug": "trafalgar-association"
-    },
-    {
-      "source_name": "Branch",
-      "source_category": "Digital Lenders and Credit Infrastructure",
-      "institution_slug": "branch-international-financial"
-    },
-    {
-      "source_name": "Kiakia",
-      "source_category": "Digital Lenders and Credit Infrastructure",
-      "institution_slug": "kiakia-bits"
-    },
-    {
-      "source_name": "Lendsqr",
-      "source_category": "Digital Lenders and Credit Infrastructure",
-      "institution_slug": "essential-finance"
-    },
-    {
-      "source_name": "Indicina",
-      "source_category": "Digital Lenders and Credit Infrastructure",
-      "institution_slug": "indicina"
-    },
-    {
-      "source_name": "Kuda",
-      "source_category": "Digital Banks",
-      "institution_slug": "kuda-microfinance-bank"
-    },
-    {
-      "source_name": "Mintyn",
-      "source_category": "Digital Banks",
-      "institution_slug": "mint-finex-microfinance-bank"
-    },
-    {
-      "source_name": "PalmPay",
-      "source_category": "Digital Banks",
-      "institution_slug": "palmpay"
-    },
-    {
-      "source_name": "Corebank",
-      "source_category": "Digital Banks",
-      "institution_slug": "corestepmicrofinance-banklimited"
-    },
-    {
-      "source_name": "Sterling",
-      "source_category": "Digital Banks",
-      "institution_slug": "sterling-bank"
+      "source_name": "Fairmoney",
+      "source_category": "Digital Banks (Consumer & Business)",
+      "institution_slug": "fairmoney-microfinance-bank"
     },
     {
       "source_name": "Moniepoint",
-      "source_category": "Digital Banks",
+      "source_category": "Digital Banks (Consumer & Business)",
       "institution_slug": "moniepoint-microfinance-bank"
     },
     {
-      "source_name": "OPay",
-      "source_category": "Digital Banks",
-      "institution_slug": "opay-digital-services"
+      "source_name": "Carbon",
+      "source_category": "Digital Banks (Consumer & Business)",
+      "institution_slug": "carbon-microfinance-bank"
+    },
+    {
+      "source_name": "aella",
+      "source_category": "Digital Banks (Consumer & Business)",
+      "institution_slug": "aella-financial-solutions"
+    },
+    {
+      "source_name": "VFD",
+      "source_category": "Digital Banks (Consumer & Business)",
+      "institution_slug": "vfd-microfinance-bank"
+    },
+    {
+      "source_name": "Sterling",
+      "source_category": "Digital Banks (Consumer & Business)",
+      "institution_slug": "sterling-bank"
+    },
+    {
+      "source_name": "Palmpay",
+      "source_category": "Digital Banks (Consumer & Business)",
+      "institution_slug": "palmpay"
+    },
+    {
+      "source_name": "CoreBank",
+      "source_category": "Digital Banks (Consumer & Business)",
+      "institution_slug": "corestepmicrofinance-banklimited"
+    },
+    {
+      "source_name": "MINTYN",
+      "source_category": "Digital Banks (Consumer & Business)",
+      "institution_slug": "mint-finex-microfinance-bank"
     },
     {
       "source_name": "Sparkle",
-      "source_category": "Digital Banks",
+      "source_category": "Digital Banks (Consumer & Business)",
       "institution_slug": "sparkle-microfinance-bank"
     },
     {
       "source_name": "ALAT",
-      "source_category": "Digital Banks",
+      "source_category": "Digital Banks (Consumer & Business)",
       "institution_slug": "alat-by-wema"
     },
     {
-      "source_name": "FairMoney",
-      "source_category": "Digital Banks",
-      "institution_slug": "fairmoney-microfinance-bank"
+      "source_name": "opay",
+      "source_category": "Digital Banks (Consumer & Business)",
+      "institution_slug": "opay-digital-services"
     },
     {
-      "source_name": "Carbon",
-      "source_category": "Digital Banks",
-      "institution_slug": "carbon-microfinance-bank"
-    },
-    {
-      "source_name": "VFD",
-      "source_category": "Digital Banks",
-      "institution_slug": "vfd-microfinance-bank"
-    },
-    {
-      "source_name": "RoutePay",
-      "source_category": "FX, B2B and Cross-Border Payments and Remittances",
-      "institution_slug": "routepay-fintech"
-    },
-    {
-      "source_name": "Afriex",
-      "source_category": "FX, B2B and Cross-Border Payments and Remittances",
-      "institution_slug": "afriex"
+      "source_name": "Brass",
+      "source_category": "Digital Banks (Consumer & Business)",
+      "institution_slug": "brass"
     },
     {
       "source_name": "Grey",
-      "source_category": "FX, B2B and Cross-Border Payments and Remittances",
+      "source_category": "FX / B2B & Cross-Border Payments / Remittances",
       "institution_slug": "grey"
+    },
+    {
+      "source_name": "afriex",
+      "source_category": "FX / B2B & Cross-Border Payments / Remittances",
+      "institution_slug": "afriex"
+    },
+    {
+      "source_name": "Sycamore",
+      "source_category": "Digital Lenders & Credit Infrastructure",
+      "institution_slug": "sycamore-integrated-solutions"
+    },
+    {
+      "source_name": "advancly",
+      "source_category": "Digital Lenders & Credit Infrastructure",
+      "institution_slug": "advancly-technologies"
+    },
+    {
+      "source_name": "Clan",
+      "source_category": "Digital Lenders & Credit Infrastructure",
+      "institution_slug": "creditclan-tech"
+    },
+    {
+      "source_name": "Zedvance",
+      "source_category": "Digital Lenders & Credit Infrastructure",
+      "institution_slug": "zedvance-finance"
+    },
+    {
+      "source_name": "Umba",
+      "source_category": "Digital Lenders & Credit Infrastructure",
+      "institution_slug": "umba-digital-solutions"
+    },
+    {
+      "source_name": "KwikPay",
+      "source_category": "Digital Lenders & Credit Infrastructure",
+      "institution_slug": "trafalgar-association"
+    },
+    {
+      "source_name": "branch",
+      "source_category": "Digital Lenders & Credit Infrastructure",
+      "institution_slug": "branch-international-financial"
+    },
+    {
+      "source_name": "Kiakia",
+      "source_category": "Digital Lenders & Credit Infrastructure",
+      "institution_slug": "kiakia-bits"
+    },
+    {
+      "source_name": "obtainly",
+      "source_category": "Digital Lenders & Credit Infrastructure",
+      "institution_slug": "suplias-technologies"
+    },
+    {
+      "source_name": "lendsqr",
+      "source_category": "Digital Lenders & Credit Infrastructure",
+      "institution_slug": "essential-finance"
+    },
+    {
+      "source_name": "indicina",
+      "source_category": "Digital Lenders & Credit Infrastructure",
+      "institution_slug": "indicina"
+    },
+    {
+      "source_name": "cNGN",
+      "source_category": "Crypto & Web3",
+      "institution_slug": "wrapped-cbdc"
+    },
+    {
+      "source_name": "Busha",
+      "source_category": "Crypto & Web3",
+      "institution_slug": "busha-digital"
+    },
+    {
+      "source_name": "Quidax",
+      "source_category": "Crypto & Web3",
+      "institution_slug": "quidax-technologies"
+    },
+    {
+      "source_name": "YellowCard",
+      "source_category": "Crypto & Web3",
+      "institution_slug": "yellowcard"
+    },
+    {
+      "source_name": "xchangeBOX",
+      "source_category": "Crowdfunding, Agritech & Proptech",
+      "institution_slug": "xchange-box-solutions"
+    },
+    {
+      "source_name": "HXafrica",
+      "source_category": "Crowdfunding, Agritech & Proptech",
+      "institution_slug": "housingexchange-ng"
+    },
+    {
+      "source_name": "DgnRavePay",
+      "source_category": "Consumer Payment / Digital Wallet / Super App",
+      "institution_slug": "dgnravepay"
+    },
+    {
+      "source_name": "Zap",
+      "source_category": "Consumer Payment / Digital Wallet / Super App",
+      "institution_slug": "zap"
+    },
+    {
+      "source_name": "KongaPay",
+      "source_category": "Consumer Payment / Digital Wallet / Super App",
+      "institution_slug": "kongapay-technologies"
+    },
+    {
+      "source_name": "Nairabox",
+      "source_category": "Consumer Payment / Digital Wallet / Super App",
+      "institution_slug": "orcom-and-orcom-business-support"
+    },
+    {
+      "source_name": "Quickteller",
+      "source_category": "Consumer Payment / Digital Wallet / Super App",
+      "institution_slug": "xtra-mfs"
+    },
+    {
+      "source_name": "Pocket app",
+      "source_category": "Consumer Payment / Digital Wallet / Super App",
+      "institution_slug": "abeg-technologies"
+    },
+    {
+      "source_name": "NowNow",
+      "source_category": "Consumer Payment / Digital Wallet / Super App",
+      "institution_slug": "nownow-digital-systems"
+    },
+    {
+      "source_name": "CredPal",
+      "source_category": "Consumer Payment / Digital Wallet / Super App",
+      "institution_slug": "crednet-technologies"
+    },
+    {
+      "source_name": "pawaPay",
+      "source_category": "Payments Processing, Switching & Infrastructure",
+      "institution_slug": "pawapay"
+    },
+    {
+      "source_name": "ZEST",
+      "source_category": "Payments Processing, Switching & Infrastructure",
+      "institution_slug": "zest-payments-limited-stanbic-financial-services-limited"
+    },
+    {
+      "source_name": "C24",
+      "source_category": "Payments Processing, Switching & Infrastructure",
+      "institution_slug": "c24"
+    },
+    {
+      "source_name": "E-Settlement",
+      "source_category": "Payments Processing, Switching & Infrastructure",
+      "institution_slug": "e-settlement"
+    },
+    {
+      "source_name": "onafriq",
+      "source_category": "Payments Processing, Switching & Infrastructure",
+      "institution_slug": "onafriq"
+    },
+    {
+      "source_name": "itex",
+      "source_category": "Payments Processing, Switching & Infrastructure",
+      "institution_slug": "itex-integrated-services"
+    },
+    {
+      "source_name": "Accelerex",
+      "source_category": "Payments Processing, Switching & Infrastructure",
+      "institution_slug": "global-accelerex"
+    },
+    {
+      "source_name": "Kora",
+      "source_category": "Payments Processing, Switching & Infrastructure",
+      "institution_slug": "kora-payments"
+    },
+    {
+      "source_name": "Interswitch",
+      "source_category": "Payments Processing, Switching & Infrastructure",
+      "institution_slug": "interswitch"
+    },
+    {
+      "source_name": "remita",
+      "source_category": "Payments Processing, Switching & Infrastructure",
+      "institution_slug": "remita-payment-service"
+    },
+    {
+      "source_name": "eTOP",
+      "source_category": "Payments Processing, Switching & Infrastructure",
+      "institution_slug": "etop"
+    },
+    {
+      "source_name": "Payaza",
+      "source_category": "Payments Processing, Switching & Infrastructure",
+      "institution_slug": "payaza-africa"
+    },
+    {
+      "source_name": "Fincra",
+      "source_category": "Payments Processing, Switching & Infrastructure",
+      "institution_slug": "fincra-technologies"
+    },
+    {
+      "source_name": "arca",
+      "source_category": "Payments Processing, Switching & Infrastructure",
+      "institution_slug": "arca-payments-company"
+    },
+    {
+      "source_name": "Cellulant",
+      "source_category": "Payments Processing, Switching & Infrastructure",
+      "institution_slug": "cellulant"
+    },
+    {
+      "source_name": "Paystack",
+      "source_category": "Payments Processing, Switching & Infrastructure",
+      "institution_slug": "paystack-payment"
     }
   ],
   "added": [
     {
-      "slug": "4tendar",
-      "brand_name": "4Tendar",
-      "primary_category": "digital-lender",
-      "categories": [
-        "digital-lender",
-        "fintech"
-      ],
-      "source_headings": [
-        "Digital Lenders and Credit Infrastructure"
-      ]
-    },
-    {
-      "slug": "accede",
-      "brand_name": "Accede",
-      "primary_category": "digital-lender",
-      "categories": [
-        "digital-lender",
-        "fintech"
-      ],
-      "source_headings": [
-        "Digital Lenders and Credit Infrastructure"
-      ]
-    },
-    {
-      "slug": "accrue",
-      "brand_name": "Accrue",
-      "primary_category": "remittance-imto",
-      "categories": [
-        "remittance-imto",
-        "fintech"
-      ],
-      "source_headings": [
-        "FX, B2B and Cross-Border Payments and Remittances"
-      ]
-    },
-    {
-      "slug": "advansio",
-      "brand_name": "Advansio",
+      "slug": "udo",
+      "brand_name": "-$udo",
       "primary_category": "fintech",
       "categories": [
         "fintech",
         "payment-solution-service-provider"
       ],
       "source_headings": [
-        "Fintech Infrastructure, BaaS and TechFin"
+        "Fintech Infrastructure / BaaS / Tech-Fin"
+      ]
+    },
+    {
+      "slug": "acceede",
+      "brand_name": "acceede",
+      "primary_category": "digital-lender",
+      "categories": [
+        "digital-lender",
+        "fintech"
+      ],
+      "source_headings": [
+        "Digital Lenders & Credit Infrastructure"
+      ]
+    },
+    {
+      "slug": "accure",
+      "brand_name": "Accure",
+      "primary_category": "remittance-imto",
+      "categories": [
+        "remittance-imto",
+        "fintech"
+      ],
+      "source_headings": [
+        "FX / B2B & Cross-Border Payments / Remittances"
+      ]
+    },
+    {
+      "slug": "advansio",
+      "brand_name": "advansio",
+      "primary_category": "fintech",
+      "categories": [
+        "fintech",
+        "payment-solution-service-provider"
+      ],
+      "source_headings": [
+        "Fintech Infrastructure / BaaS / Tech-Fin"
       ]
     },
     {
@@ -479,7 +474,7 @@
         "fintech"
       ],
       "source_headings": [
-        "Crowdfunding, Agritech and Proptech"
+        "Crowdfunding, Agritech & Proptech"
       ]
     },
     {
@@ -491,7 +486,7 @@
         "fintech"
       ],
       "source_headings": [
-        "Consumer Payments, Digital Wallets and Super Apps"
+        "Consumer Payment / Digital Wallet / Super App"
       ]
     },
     {
@@ -504,7 +499,7 @@
         "fintech"
       ],
       "source_headings": [
-        "Mobile Money, PSB, Agency and Informal Banking"
+        "Mobile Money / PUB / Agency & Informal Banking"
       ]
     },
     {
@@ -517,7 +512,7 @@
         "fintech"
       ],
       "source_headings": [
-        "Personal Finance, Wealth and Asset Management"
+        "Personal Finance, Wealth & Asset Management"
       ]
     },
     {
@@ -529,19 +524,31 @@
         "fintech"
       ],
       "source_headings": [
-        "Digital Banks"
+        "Digital Banks (Consumer & Business)"
+      ]
+    },
+    {
+      "slug": "alawee",
+      "brand_name": "Alawee",
+      "primary_category": "fintech",
+      "categories": [
+        "fintech",
+        "payment-solution-service-provider"
+      ],
+      "source_headings": [
+        "Fintech Infrastructure / BaaS / Tech-Fin"
       ]
     },
     {
       "slug": "alerzo",
-      "brand_name": "Alerzo",
+      "brand_name": "alerzo",
       "primary_category": "fintech",
       "categories": [
         "fintech",
         "finance-app"
       ],
       "source_headings": [
-        "Spend Management, Merchant Solutions, BNPL and Loyalty"
+        "Spend Management / Merchant Solutions / BNPL & Loyalty"
       ]
     },
     {
@@ -553,7 +560,7 @@
         "payment-solution-service-provider"
       ],
       "source_headings": [
-        "Fintech Infrastructure, BaaS and TechFin"
+        "Fintech Infrastructure / BaaS / Tech-Fin"
       ]
     },
     {
@@ -565,31 +572,43 @@
         "finance-app"
       ],
       "source_headings": [
-        "Spend Management, Merchant Solutions, BNPL and Loyalty"
+        "Spend Management / Merchant Solutions / BNPL & Loyalty"
       ]
     },
     {
-      "slug": "assetrix",
-      "brand_name": "Assetrix",
+      "slug": "asewallet",
+      "brand_name": "Asewallet",
+      "primary_category": "finance-app",
+      "categories": [
+        "finance-app",
+        "fintech"
+      ],
+      "source_headings": [
+        "Consumer Payment / Digital Wallet / Super App"
+      ]
+    },
+    {
+      "slug": "assetrica",
+      "brand_name": "Assetrica",
       "primary_category": "crowdfunding-platform",
       "categories": [
         "crowdfunding-platform",
         "fintech"
       ],
       "source_headings": [
-        "Crowdfunding, Agritech and Proptech"
+        "Crowdfunding, Agritech & Proptech"
       ]
     },
     {
-      "slug": "autosend",
-      "brand_name": "Autosend",
+      "slug": "autospend",
+      "brand_name": "Autospend",
       "primary_category": "fintech",
       "categories": [
         "fintech",
         "finance-app"
       ],
       "source_headings": [
-        "Spend Management, Merchant Solutions, BNPL and Loyalty"
+        "Spend Management / Merchant Solutions / BNPL & Loyalty"
       ]
     },
     {
@@ -601,19 +620,19 @@
         "finance-app"
       ],
       "source_headings": [
-        "Digital Insurance, Pensions, Health-Tech and HR"
+        "Digital Insurance, Pensions, Health-Tech & HR"
       ]
     },
     {
       "slug": "aza-finance",
-      "brand_name": "AZA Finance",
+      "brand_name": "AZA FInance",
       "primary_category": "remittance-imto",
       "categories": [
         "remittance-imto",
         "fintech"
       ],
       "source_headings": [
-        "FX, B2B and Cross-Border Payments and Remittances"
+        "FX / B2B & Cross-Border Payments / Remittances"
       ]
     },
     {
@@ -625,7 +644,7 @@
         "fintech"
       ],
       "source_headings": [
-        "Digital Lenders and Credit Infrastructure"
+        "Digital Lenders & Credit Infrastructure"
       ]
     },
     {
@@ -637,19 +656,7 @@
         "finance-app"
       ],
       "source_headings": [
-        "Spend Management, Merchant Solutions, BNPL and Loyalty"
-      ]
-    },
-    {
-      "slug": "baobab",
-      "brand_name": "Baobab",
-      "primary_category": "finance-app",
-      "categories": [
-        "finance-app",
-        "fintech"
-      ],
-      "source_headings": [
-        "Digital Banks"
+        "Spend Management / Merchant Solutions / BNPL & Loyalty"
       ]
     },
     {
@@ -661,31 +668,31 @@
         "finance-app"
       ],
       "source_headings": [
-        "Digital Insurance, Pensions, Health-Tech and HR"
+        "Digital Insurance, Pensions, Health-Tech & HR"
       ]
     },
     {
       "slug": "bfree",
-      "brand_name": "BFree",
+      "brand_name": "Bfree",
       "primary_category": "digital-lender",
       "categories": [
         "digital-lender",
         "fintech"
       ],
       "source_headings": [
-        "Digital Lenders and Credit Infrastructure"
+        "Digital Lenders & Credit Infrastructure"
       ]
     },
     {
-      "slug": "billmopay",
-      "brand_name": "BillmoPay",
+      "slug": "bilmapay",
+      "brand_name": "BilmaPay",
       "primary_category": "finance-app",
       "categories": [
         "finance-app",
         "fintech"
       ],
       "source_headings": [
-        "Consumer Payments, Digital Wallets and Super Apps"
+        "Consumer Payment / Digital Wallet / Super App"
       ]
     },
     {
@@ -697,7 +704,7 @@
         "fintech"
       ],
       "source_headings": [
-        "Crypto and Web3"
+        "Crypto & Web3"
       ]
     },
     {
@@ -709,7 +716,7 @@
         "fintech"
       ],
       "source_headings": [
-        "Crypto and Web3"
+        "Crypto & Web3"
       ]
     },
     {
@@ -721,32 +728,31 @@
         "finance-app"
       ],
       "source_headings": [
-        "Spend Management, Merchant Solutions, BNPL and Loyalty"
+        "Spend Management / Merchant Solutions / BNPL & Loyalty"
       ]
     },
     {
-      "slug": "bizpend",
-      "brand_name": "Bizpend",
-      "primary_category": "finance-app",
+      "slug": "bizspend",
+      "brand_name": "Bizspend",
+      "primary_category": "fintech",
       "categories": [
-        "finance-app",
-        "investment-manager",
-        "fintech"
+        "fintech",
+        "finance-app"
       ],
       "source_headings": [
-        "Personal Finance, Wealth and Asset Management"
+        "Spend Management / Merchant Solutions / BNPL & Loyalty"
       ]
     },
     {
       "slug": "bloc",
-      "brand_name": "Bloc",
+      "brand_name": "bloc",
       "primary_category": "fintech",
       "categories": [
         "fintech",
         "payment-solution-service-provider"
       ],
       "source_headings": [
-        "Fintech Infrastructure, BaaS and TechFin"
+        "Fintech Infrastructure / BaaS / Tech-Fin"
       ]
     },
     {
@@ -758,7 +764,7 @@
         "fintech"
       ],
       "source_headings": [
-        "Crypto and Web3"
+        "Crypto & Web3"
       ]
     },
     {
@@ -770,7 +776,7 @@
         "payment-solution-service-provider"
       ],
       "source_headings": [
-        "Fintech Infrastructure, BaaS and TechFin"
+        "Fintech Infrastructure / BaaS / Tech-Fin"
       ]
     },
     {
@@ -782,19 +788,19 @@
         "fintech"
       ],
       "source_headings": [
-        "Consumer Payments, Digital Wallets and Super Apps"
+        "Consumer Payment / Digital Wallet / Super App"
       ]
     },
     {
       "slug": "bordawave",
-      "brand_name": "BordaWave",
+      "brand_name": "Bordawave",
       "primary_category": "remittance-imto",
       "categories": [
         "remittance-imto",
         "fintech"
       ],
       "source_headings": [
-        "FX, B2B and Cross-Border Payments and Remittances"
+        "FX / B2B & Cross-Border Payments / Remittances"
       ]
     },
     {
@@ -806,7 +812,19 @@
         "fintech"
       ],
       "source_headings": [
-        "FX, B2B and Cross-Border Payments and Remittances"
+        "FX / B2B & Cross-Border Payments / Remittances"
+      ]
+    },
+    {
+      "slug": "bountip",
+      "brand_name": "Bountip",
+      "primary_category": "fintech",
+      "categories": [
+        "fintech",
+        "finance-app"
+      ],
+      "source_headings": [
+        "Spend Management / Merchant Solutions / BNPL & Loyalty"
       ]
     },
     {
@@ -818,7 +836,19 @@
         "fintech"
       ],
       "source_headings": [
-        "FX, B2B and Cross-Border Payments and Remittances"
+        "FX / B2B & Cross-Border Payments / Remittances"
+      ]
+    },
+    {
+      "slug": "browpay",
+      "brand_name": "Browpay",
+      "primary_category": "fintech",
+      "categories": [
+        "fintech",
+        "finance-app"
+      ],
+      "source_headings": [
+        "Spend Management / Merchant Solutions / BNPL & Loyalty"
       ]
     },
     {
@@ -830,7 +860,7 @@
         "fintech"
       ],
       "source_headings": [
-        "Crowdfunding, Agritech and Proptech"
+        "Crowdfunding, Agritech & Proptech"
       ]
     },
     {
@@ -842,48 +872,48 @@
         "finance-app"
       ],
       "source_headings": [
-        "Spend Management, Merchant Solutions, BNPL and Loyalty"
+        "Spend Management / Merchant Solutions / BNPL & Loyalty"
       ]
     },
     {
-      "slug": "canza-finance",
-      "brand_name": "Canza Finance",
-      "primary_category": "crowdfunding-platform",
-      "categories": [
-        "crowdfunding-platform",
-        "fintech"
-      ],
-      "source_headings": [
-        "Crowdfunding, Agritech and Proptech"
-      ]
-    },
-    {
-      "slug": "carbin-africa",
-      "brand_name": "Carbin Africa",
+      "slug": "bumpa",
+      "brand_name": "bumpa",
       "primary_category": "fintech",
       "categories": [
         "fintech",
         "finance-app"
       ],
       "source_headings": [
-        "Spend Management, Merchant Solutions, BNPL and Loyalty"
+        "Spend Management / Merchant Solutions / BNPL & Loyalty"
       ]
     },
     {
-      "slug": "cardify",
-      "brand_name": "Cardify",
-      "primary_category": "finance-app",
+      "slug": "cansa-finance",
+      "brand_name": "Cansa finance",
+      "primary_category": "crypto-vasp",
       "categories": [
-        "finance-app",
+        "crypto-vasp",
         "fintech"
       ],
       "source_headings": [
-        "Consumer Payments, Digital Wallets and Super Apps"
+        "Crypto & Web3"
       ]
     },
     {
-      "slug": "cardvorte",
-      "brand_name": "CardVorte",
+      "slug": "carbin-africa",
+      "brand_name": "Carbin.Africa",
+      "primary_category": "fintech",
+      "categories": [
+        "fintech",
+        "finance-app"
+      ],
+      "source_headings": [
+        "Spend Management / Merchant Solutions / BNPL & Loyalty"
+      ]
+    },
+    {
+      "slug": "cardforte",
+      "brand_name": "CardForte",
       "primary_category": "switching-processing",
       "categories": [
         "switching-processing",
@@ -891,7 +921,19 @@
         "fintech"
       ],
       "source_headings": [
-        "Payments Processing, Switching and Infrastructure"
+        "Payments Processing, Switching & Infrastructure"
+      ]
+    },
+    {
+      "slug": "cardiff",
+      "brand_name": "Cardiff",
+      "primary_category": "finance-app",
+      "categories": [
+        "finance-app",
+        "fintech"
+      ],
+      "source_headings": [
+        "Consumer Payment / Digital Wallet / Super App"
       ]
     },
     {
@@ -903,7 +945,7 @@
         "fintech"
       ],
       "source_headings": [
-        "Digital Lenders and Credit Infrastructure"
+        "Digital Lenders & Credit Infrastructure"
       ]
     },
     {
@@ -916,12 +958,12 @@
         "fintech"
       ],
       "source_headings": [
-        "Personal Finance, Wealth and Asset Management"
+        "Personal Finance, Wealth & Asset Management"
       ]
     },
     {
       "slug": "cashbuddy",
-      "brand_name": "CashBuddy",
+      "brand_name": "cashbuddy",
       "primary_category": "switching-processing",
       "categories": [
         "switching-processing",
@@ -929,7 +971,7 @@
         "fintech"
       ],
       "source_headings": [
-        "Payments Processing, Switching and Infrastructure"
+        "Payments Processing, Switching & Infrastructure"
       ]
     },
     {
@@ -941,12 +983,24 @@
         "fintech"
       ],
       "source_headings": [
-        "Consumer Payments, Digital Wallets and Super Apps"
+        "Consumer Payment / Digital Wallet / Super App"
       ]
     },
     {
-      "slug": "centiiv",
-      "brand_name": "Centiiv",
+      "slug": "cdcare",
+      "brand_name": "cdCare",
+      "primary_category": "fintech",
+      "categories": [
+        "fintech",
+        "finance-app"
+      ],
+      "source_headings": [
+        "Spend Management / Merchant Solutions / BNPL & Loyalty"
+      ]
+    },
+    {
+      "slug": "centric",
+      "brand_name": "Centric",
       "primary_category": "switching-processing",
       "categories": [
         "switching-processing",
@@ -954,32 +1008,19 @@
         "fintech"
       ],
       "source_headings": [
-        "Payments Processing, Switching and Infrastructure"
+        "Payments Processing, Switching & Infrastructure"
       ]
     },
     {
-      "slug": "cexipay",
-      "brand_name": "Cexipay",
-      "primary_category": "finance-app",
+      "slug": "chipper",
+      "brand_name": "Chipper",
+      "primary_category": "remittance-imto",
       "categories": [
-        "finance-app",
+        "remittance-imto",
         "fintech"
       ],
       "source_headings": [
-        "Consumer Payments, Digital Wallets and Super Apps"
-      ]
-    },
-    {
-      "slug": "chamani",
-      "brand_name": "Chamani",
-      "primary_category": "finance-app",
-      "categories": [
-        "finance-app",
-        "investment-manager",
-        "fintech"
-      ],
-      "source_headings": [
-        "Personal Finance, Wealth and Asset Management"
+        "FX / B2B & Cross-Border Payments / Remittances"
       ]
     },
     {
@@ -991,7 +1032,32 @@
         "finance-app"
       ],
       "source_headings": [
-        "Digital Insurance, Pensions, Health-Tech and HR"
+        "Digital Insurance, Pensions, Health-Tech & HR"
+      ]
+    },
+    {
+      "slug": "clane",
+      "brand_name": "Clane",
+      "primary_category": "switching-processing",
+      "categories": [
+        "switching-processing",
+        "payment-solution-service-provider",
+        "fintech"
+      ],
+      "source_headings": [
+        "Payments Processing, Switching & Infrastructure"
+      ]
+    },
+    {
+      "slug": "cleva",
+      "brand_name": "Cleva",
+      "primary_category": "remittance-imto",
+      "categories": [
+        "remittance-imto",
+        "fintech"
+      ],
+      "source_headings": [
+        "FX / B2B & Cross-Border Payments / Remittances"
       ]
     },
     {
@@ -1003,7 +1069,7 @@
         "fintech"
       ],
       "source_headings": [
-        "Crowdfunding, Agritech and Proptech"
+        "Crowdfunding, Agritech & Proptech"
       ]
     },
     {
@@ -1015,12 +1081,12 @@
         "finance-app"
       ],
       "source_headings": [
-        "Spend Management, Merchant Solutions, BNPL and Loyalty"
+        "Spend Management / Merchant Solutions / BNPL & Loyalty"
       ]
     },
     {
-      "slug": "corepay",
-      "brand_name": "CorePay",
+      "slug": "coralpay",
+      "brand_name": "CoralPay",
       "primary_category": "switching-processing",
       "categories": [
         "switching-processing",
@@ -1028,7 +1094,7 @@
         "fintech"
       ],
       "source_headings": [
-        "Payments Processing, Switching and Infrastructure"
+        "Payments Processing, Switching & Infrastructure"
       ]
     },
     {
@@ -1040,43 +1106,67 @@
         "fintech"
       ],
       "source_headings": [
-        "Digital Lenders and Credit Infrastructure"
+        "Digital Lenders & Credit Infrastructure"
       ]
     },
     {
-      "slug": "crediflex",
-      "brand_name": "CrediFlex",
+      "slug": "credifex",
+      "brand_name": "CrediFex",
       "primary_category": "digital-lender",
       "categories": [
         "digital-lender",
         "fintech"
       ],
       "source_headings": [
-        "Digital Lenders and Credit Infrastructure"
+        "Digital Lenders & Credit Infrastructure"
       ]
     },
     {
-      "slug": "credit-direct",
-      "brand_name": "Credit Direct",
+      "slug": "creditchek",
+      "brand_name": "CreditChek",
       "primary_category": "digital-lender",
       "categories": [
         "digital-lender",
         "fintech"
       ],
       "source_headings": [
-        "Digital Lenders and Credit Infrastructure"
+        "Digital Lenders & Credit Infrastructure"
       ]
     },
     {
-      "slug": "crowdyvest",
-      "brand_name": "Crowdyvest",
+      "slug": "creditdirect",
+      "brand_name": "CreditDirect",
+      "primary_category": "digital-lender",
+      "categories": [
+        "digital-lender",
+        "fintech"
+      ],
+      "source_headings": [
+        "Digital Lenders & Credit Infrastructure"
+      ]
+    },
+    {
+      "slug": "crisscross",
+      "brand_name": "Crisscross",
+      "primary_category": "remittance-imto",
+      "categories": [
+        "remittance-imto",
+        "fintech"
+      ],
+      "source_headings": [
+        "FX / B2B & Cross-Border Payments / Remittances"
+      ]
+    },
+    {
+      "slug": "crodyvest",
+      "brand_name": "Crodyvest",
       "primary_category": "crowdfunding-platform",
       "categories": [
         "crowdfunding-platform",
         "fintech"
       ],
       "source_headings": [
-        "Crowdfunding, Agritech and Proptech"
+        "Crowdfunding, Agritech & Proptech"
       ]
     },
     {
@@ -1088,7 +1178,7 @@
         "finance-app"
       ],
       "source_headings": [
-        "Digital Insurance, Pensions, Health-Tech and HR"
+        "Digital Insurance, Pensions, Health-Tech & HR"
       ]
     },
     {
@@ -1100,12 +1190,24 @@
         "fintech"
       ],
       "source_headings": [
-        "Crypto and Web3"
+        "Crypto & Web3"
       ]
     },
     {
-      "slug": "democratised",
-      "brand_name": "Democratised",
+      "slug": "debtrecuva",
+      "brand_name": "DebtRecuva",
+      "primary_category": "digital-lender",
+      "categories": [
+        "digital-lender",
+        "fintech"
+      ],
+      "source_headings": [
+        "Digital Lenders & Credit Infrastructure"
+      ]
+    },
+    {
+      "slug": "democratized",
+      "brand_name": "Democratized",
       "primary_category": "finance-app",
       "categories": [
         "finance-app",
@@ -1113,7 +1215,19 @@
         "fintech"
       ],
       "source_headings": [
-        "Personal Finance, Wealth and Asset Management"
+        "Personal Finance, Wealth & Asset Management"
+      ]
+    },
+    {
+      "slug": "desola",
+      "brand_name": "DeSola",
+      "primary_category": "finance-app",
+      "categories": [
+        "finance-app",
+        "fintech"
+      ],
+      "source_headings": [
+        "Consumer Payment / Digital Wallet / Super App"
       ]
     },
     {
@@ -1125,19 +1239,7 @@
         "payment-solution-service-provider"
       ],
       "source_headings": [
-        "Fintech Infrastructure, BaaS and TechFin"
-      ]
-    },
-    {
-      "slug": "digimoney",
-      "brand_name": "Digimoney",
-      "primary_category": "finance-app",
-      "categories": [
-        "finance-app",
-        "fintech"
-      ],
-      "source_headings": [
-        "Consumer Payments, Digital Wallets and Super Apps"
+        "Fintech Infrastructure / BaaS / Tech-Fin"
       ]
     },
     {
@@ -1149,7 +1251,7 @@
         "payment-solution-service-provider"
       ],
       "source_headings": [
-        "Fintech Infrastructure, BaaS and TechFin"
+        "Fintech Infrastructure / BaaS / Tech-Fin"
       ]
     },
     {
@@ -1161,7 +1263,7 @@
         "fintech"
       ],
       "source_headings": [
-        "Crowdfunding, Agritech and Proptech"
+        "Crowdfunding, Agritech & Proptech"
       ]
     },
     {
@@ -1173,31 +1275,44 @@
         "finance-app"
       ],
       "source_headings": [
-        "Spend Management, Merchant Solutions, BNPL and Loyalty"
+        "Spend Management / Merchant Solutions / BNPL & Loyalty"
+      ]
+    },
+    {
+      "slug": "dot",
+      "brand_name": "DOT",
+      "primary_category": "switching-processing",
+      "categories": [
+        "switching-processing",
+        "payment-solution-service-provider",
+        "fintech"
+      ],
+      "source_headings": [
+        "Payments Processing, Switching & Infrastructure"
       ]
     },
     {
       "slug": "dropp",
-      "brand_name": "Dropp",
+      "brand_name": "Dropp.",
       "primary_category": "fintech",
       "categories": [
         "fintech",
         "finance-app"
       ],
       "source_headings": [
-        "Spend Management, Merchant Solutions, BNPL and Loyalty"
+        "Spend Management / Merchant Solutions / BNPL & Loyalty"
       ]
     },
     {
       "slug": "earnipay",
-      "brand_name": "Earnipay",
+      "brand_name": "earnipay",
       "primary_category": "fintech",
       "categories": [
         "fintech",
         "finance-app"
       ],
       "source_headings": [
-        "Spend Management, Merchant Solutions, BNPL and Loyalty"
+        "Spend Management / Merchant Solutions / BNPL & Loyalty"
       ]
     },
     {
@@ -1209,7 +1324,7 @@
         "finance-app"
       ],
       "source_headings": [
-        "Spend Management, Merchant Solutions, BNPL and Loyalty"
+        "Spend Management / Merchant Solutions / BNPL & Loyalty"
       ]
     },
     {
@@ -1221,12 +1336,12 @@
         "finance-app"
       ],
       "source_headings": [
-        "Digital Insurance, Pensions, Health-Tech and HR"
+        "Digital Insurance, Pensions, Health-Tech & HR"
       ]
     },
     {
       "slug": "errandpay",
-      "brand_name": "ErrandPay",
+      "brand_name": "errandpay",
       "primary_category": "switching-processing",
       "categories": [
         "switching-processing",
@@ -1234,19 +1349,45 @@
         "fintech"
       ],
       "source_headings": [
-        "Payments Processing, Switching and Infrastructure"
+        "Payments Processing, Switching & Infrastructure"
       ]
     },
     {
-      "slug": "evea",
-      "brand_name": "Evea",
+      "slug": "esca",
+      "brand_name": "Esca",
+      "primary_category": "finance-app",
+      "categories": [
+        "finance-app",
+        "investment-manager",
+        "fintech"
+      ],
+      "source_headings": [
+        "Personal Finance, Wealth & Asset Management"
+      ]
+    },
+    {
+      "slug": "etransact",
+      "brand_name": "etransact",
+      "primary_category": "switching-processing",
+      "categories": [
+        "switching-processing",
+        "payment-solution-service-provider",
+        "fintech"
+      ],
+      "source_headings": [
+        "Payments Processing, Switching & Infrastructure"
+      ]
+    },
+    {
+      "slug": "eved",
+      "brand_name": "eved",
       "primary_category": "fintech",
       "categories": [
         "fintech",
         "finance-app"
       ],
       "source_headings": [
-        "Digital Insurance, Pensions, Health-Tech and HR"
+        "Spend Management / Merchant Solutions / BNPL & Loyalty"
       ]
     },
     {
@@ -1258,7 +1399,7 @@
         "fintech"
       ],
       "source_headings": [
-        "Consumer Payments, Digital Wallets and Super Apps"
+        "Consumer Payment / Digital Wallet / Super App"
       ]
     },
     {
@@ -1271,7 +1412,7 @@
         "fintech"
       ],
       "source_headings": [
-        "Personal Finance, Wealth and Asset Management"
+        "Personal Finance, Wealth & Asset Management"
       ]
     },
     {
@@ -1283,7 +1424,7 @@
         "fintech"
       ],
       "source_headings": [
-        "FX, B2B and Cross-Border Payments and Remittances"
+        "FX / B2B & Cross-Border Payments / Remittances"
       ]
     },
     {
@@ -1295,7 +1436,7 @@
         "fintech"
       ],
       "source_headings": [
-        "Consumer Payments, Digital Wallets and Super Apps"
+        "Consumer Payment / Digital Wallet / Super App"
       ]
     },
     {
@@ -1308,7 +1449,7 @@
         "fintech"
       ],
       "source_headings": [
-        "Mobile Money, PSB, Agency and Informal Banking"
+        "Mobile Money / PUB / Agency & Informal Banking"
       ]
     },
     {
@@ -1320,7 +1461,7 @@
         "fintech"
       ],
       "source_headings": [
-        "Digital Lenders and Credit Infrastructure"
+        "Digital Lenders & Credit Infrastructure"
       ]
     },
     {
@@ -1332,7 +1473,7 @@
         "fintech"
       ],
       "source_headings": [
-        "FX, B2B and Cross-Border Payments and Remittances"
+        "FX / B2B & Cross-Border Payments / Remittances"
       ]
     },
     {
@@ -1345,19 +1486,7 @@
         "fintech"
       ],
       "source_headings": [
-        "Mobile Money, PSB, Agency and Informal Banking"
-      ]
-    },
-    {
-      "slug": "fincap",
-      "brand_name": "Fincap",
-      "primary_category": "remittance-imto",
-      "categories": [
-        "remittance-imto",
-        "fintech"
-      ],
-      "source_headings": [
-        "FX, B2B and Cross-Border Payments and Remittances"
+        "Mobile Money / PUB / Agency & Informal Banking"
       ]
     },
     {
@@ -1370,7 +1499,7 @@
         "fintech"
       ],
       "source_headings": [
-        "Personal Finance, Wealth and Asset Management"
+        "Personal Finance, Wealth & Asset Management"
       ]
     },
     {
@@ -1382,7 +1511,7 @@
         "payment-solution-service-provider"
       ],
       "source_headings": [
-        "Fintech Infrastructure, BaaS and TechFin"
+        "Fintech Infrastructure / BaaS / Tech-Fin"
       ]
     },
     {
@@ -1394,7 +1523,7 @@
         "finance-app"
       ],
       "source_headings": [
-        "Spend Management, Merchant Solutions, BNPL and Loyalty"
+        "Spend Management / Merchant Solutions / BNPL & Loyalty"
       ]
     },
     {
@@ -1406,43 +1535,104 @@
         "finance-app"
       ],
       "source_headings": [
-        "Spend Management, Merchant Solutions, BNPL and Loyalty"
+        "Spend Management / Merchant Solutions / BNPL & Loyalty"
       ]
     },
     {
-      "slug": "foodly",
-      "brand_name": "Foodly",
+      "slug": "flick",
+      "brand_name": "Flick",
+      "primary_category": "fintech",
+      "categories": [
+        "fintech",
+        "payment-solution-service-provider"
+      ],
+      "source_headings": [
+        "Fintech Infrastructure / BaaS / Tech-Fin"
+      ]
+    },
+    {
+      "slug": "flincap",
+      "brand_name": "Flincap",
+      "primary_category": "remittance-imto",
+      "categories": [
+        "remittance-imto",
+        "fintech"
+      ],
+      "source_headings": [
+        "FX / B2B & Cross-Border Payments / Remittances"
+      ]
+    },
+    {
+      "slug": "flowafric",
+      "brand_name": "FlowAfric",
+      "primary_category": "finance-app",
+      "categories": [
+        "finance-app",
+        "fintech"
+      ],
+      "source_headings": [
+        "Consumer Payment / Digital Wallet / Super App"
+      ]
+    },
+    {
+      "slug": "flutterwave",
+      "brand_name": "Flutterwave",
+      "primary_category": "switching-processing",
+      "categories": [
+        "switching-processing",
+        "payment-solution-service-provider",
+        "fintech"
+      ],
+      "source_headings": [
+        "Payments Processing, Switching & Infrastructure"
+      ]
+    },
+    {
+      "slug": "foomly",
+      "brand_name": "foomly",
       "primary_category": "fintech",
       "categories": [
         "fintech",
         "finance-app"
       ],
       "source_headings": [
-        "Spend Management, Merchant Solutions, BNPL and Loyalty"
+        "Spend Management / Merchant Solutions / BNPL & Loyalty"
+      ]
+    },
+    {
+      "slug": "frexmfbank",
+      "brand_name": "FrexMFBank",
+      "primary_category": "finance-app",
+      "categories": [
+        "finance-app",
+        "fintech"
+      ],
+      "source_headings": [
+        "Digital Banks (Consumer & Business)"
       ]
     },
     {
       "slug": "frontedge",
-      "brand_name": "FrontEdge",
+      "brand_name": "frontEdge",
       "primary_category": "remittance-imto",
       "categories": [
         "remittance-imto",
         "fintech"
       ],
       "source_headings": [
-        "FX, B2B and Cross-Border Payments and Remittances"
+        "FX / B2B & Cross-Border Payments / Remittances"
       ]
     },
     {
       "slug": "fxbud",
-      "brand_name": "FXBUD",
+      "brand_name": "Fxbud",
       "primary_category": "remittance-imto",
       "categories": [
         "remittance-imto",
         "fintech"
       ],
       "source_headings": [
-        "FX, B2B and Cross-Border Payments and Remittances"
+        "FX / B2B & Cross-Border Payments / Remittances"
       ]
     },
     {
@@ -1454,7 +1644,7 @@
         "fintech"
       ],
       "source_headings": [
-        "Consumer Payments, Digital Wallets and Super Apps"
+        "Consumer Payment / Digital Wallet / Super App"
       ]
     },
     {
@@ -1466,19 +1656,31 @@
         "finance-app"
       ],
       "source_headings": [
-        "Spend Management, Merchant Solutions, BNPL and Loyalty"
+        "Spend Management / Merchant Solutions / BNPL & Loyalty"
       ]
     },
     {
-      "slug": "gigbanc",
-      "brand_name": "GIGbanc",
+      "slug": "gexipay",
+      "brand_name": "Gexipay",
       "primary_category": "finance-app",
       "categories": [
         "finance-app",
         "fintech"
       ],
       "source_headings": [
-        "Digital Banks"
+        "Consumer Payment / Digital Wallet / Super App"
+      ]
+    },
+    {
+      "slug": "gigbanc",
+      "brand_name": "Gigbanc",
+      "primary_category": "finance-app",
+      "categories": [
+        "finance-app",
+        "fintech"
+      ],
+      "source_headings": [
+        "Digital Banks (Consumer & Business)"
       ]
     },
     {
@@ -1491,31 +1693,43 @@
         "fintech"
       ],
       "source_headings": [
-        "Mobile Money, PSB, Agency and Informal Banking"
+        "Mobile Money / PUB / Agency & Informal Banking"
+      ]
+    },
+    {
+      "slug": "go-money",
+      "brand_name": "Go money",
+      "primary_category": "finance-app",
+      "categories": [
+        "finance-app",
+        "fintech"
+      ],
+      "source_headings": [
+        "Digital Banks (Consumer & Business)"
       ]
     },
     {
       "slug": "gonana",
       "brand_name": "Gonana",
-      "primary_category": "crowdfunding-platform",
+      "primary_category": "crypto-vasp",
       "categories": [
-        "crowdfunding-platform",
+        "crypto-vasp",
         "fintech"
       ],
       "source_headings": [
-        "Crowdfunding, Agritech and Proptech"
+        "Crypto & Web3"
       ]
     },
     {
       "slug": "graph",
-      "brand_name": "Graph",
-      "primary_category": "digital-lender",
+      "brand_name": "Graph.",
+      "primary_category": "remittance-imto",
       "categories": [
-        "digital-lender",
+        "remittance-imto",
         "fintech"
       ],
       "source_headings": [
-        "Digital Lenders and Credit Infrastructure"
+        "FX / B2B & Cross-Border Payments / Remittances"
       ]
     },
     {
@@ -1528,7 +1742,7 @@
         "fintech"
       ],
       "source_headings": [
-        "Payments Processing, Switching and Infrastructure"
+        "Payments Processing, Switching & Infrastructure"
       ]
     },
     {
@@ -1541,7 +1755,7 @@
         "fintech"
       ],
       "source_headings": [
-        "Personal Finance, Wealth and Asset Management"
+        "Personal Finance, Wealth & Asset Management"
       ]
     },
     {
@@ -1553,19 +1767,19 @@
         "payment-solution-service-provider"
       ],
       "source_headings": [
-        "Fintech Infrastructure, BaaS and TechFin"
+        "Fintech Infrastructure / BaaS / Tech-Fin"
       ]
     },
     {
-      "slug": "hadia",
-      "brand_name": "Hadia",
+      "slug": "hadi",
+      "brand_name": "Hadi.",
       "primary_category": "digital-lender",
       "categories": [
         "digital-lender",
         "fintech"
       ],
       "source_headings": [
-        "Digital Lenders and Credit Infrastructure"
+        "Digital Lenders & Credit Infrastructure"
       ]
     },
     {
@@ -1578,19 +1792,7 @@
         "fintech"
       ],
       "source_headings": [
-        "Personal Finance, Wealth and Asset Management"
-      ]
-    },
-    {
-      "slug": "hick",
-      "brand_name": "Hick",
-      "primary_category": "fintech",
-      "categories": [
-        "fintech",
-        "payment-solution-service-provider"
-      ],
-      "source_headings": [
-        "Fintech Infrastructure, BaaS and TechFin"
+        "Personal Finance, Wealth & Asset Management"
       ]
     },
     {
@@ -1602,31 +1804,31 @@
         "fintech"
       ],
       "source_headings": [
-        "Crowdfunding, Agritech and Proptech"
+        "Crowdfunding, Agritech & Proptech"
       ]
     },
     {
       "slug": "houseafrica",
-      "brand_name": "HouseAfrica",
+      "brand_name": "houseafrica",
       "primary_category": "crowdfunding-platform",
       "categories": [
         "crowdfunding-platform",
         "fintech"
       ],
       "source_headings": [
-        "Crowdfunding, Agritech and Proptech"
+        "Crowdfunding, Agritech & Proptech"
       ]
     },
     {
-      "slug": "housemata",
-      "brand_name": "Housemata",
+      "slug": "housmata",
+      "brand_name": "housmata",
       "primary_category": "crowdfunding-platform",
       "categories": [
         "crowdfunding-platform",
         "fintech"
       ],
       "source_headings": [
-        "Crowdfunding, Agritech and Proptech"
+        "Crowdfunding, Agritech & Proptech"
       ]
     },
     {
@@ -1638,19 +1840,32 @@
         "finance-app"
       ],
       "source_headings": [
-        "Digital Insurance, Pensions, Health-Tech and HR"
+        "Digital Insurance, Pensions, Health-Tech & HR"
       ]
     },
     {
       "slug": "hyves",
       "brand_name": "Hyves",
+      "primary_category": "mobile-money-operator",
+      "categories": [
+        "mobile-money-operator",
+        "finance-app",
+        "fintech"
+      ],
+      "source_headings": [
+        "Mobile Money / PUB / Agency & Informal Banking"
+      ]
+    },
+    {
+      "slug": "ikript",
+      "brand_name": "Ikript",
       "primary_category": "fintech",
       "categories": [
         "fintech",
         "payment-solution-service-provider"
       ],
       "source_headings": [
-        "Fintech Infrastructure, BaaS and TechFin"
+        "Fintech Infrastructure / BaaS / Tech-Fin"
       ]
     },
     {
@@ -1662,19 +1877,19 @@
         "payment-solution-service-provider"
       ],
       "source_headings": [
-        "Fintech Infrastructure, BaaS and TechFin"
+        "Fintech Infrastructure / BaaS / Tech-Fin"
       ]
     },
     {
-      "slug": "innovectives",
-      "brand_name": "Innovectives",
+      "slug": "invectives",
+      "brand_name": "Invectives",
       "primary_category": "fintech",
       "categories": [
         "fintech",
         "payment-solution-service-provider"
       ],
       "source_headings": [
-        "Fintech Infrastructure, BaaS and TechFin"
+        "Fintech Infrastructure / BaaS / Tech-Fin"
       ]
     },
     {
@@ -1686,31 +1901,43 @@
         "fintech"
       ],
       "source_headings": [
-        "Digital Lenders and Credit Infrastructure"
+        "Digital Lenders & Credit Infrastructure"
       ]
     },
     {
       "slug": "ireva",
-      "brand_name": "IREVA",
+      "brand_name": "iREVA",
       "primary_category": "crowdfunding-platform",
       "categories": [
         "crowdfunding-platform",
         "fintech"
       ],
       "source_headings": [
-        "Crowdfunding, Agritech and Proptech"
+        "Crowdfunding, Agritech & Proptech"
       ]
     },
     {
       "slug": "ivorypay",
-      "brand_name": "IvoryPay",
+      "brand_name": "ivorypay",
+      "primary_category": "crypto-vasp",
+      "categories": [
+        "crypto-vasp",
+        "fintech"
+      ],
+      "source_headings": [
+        "Crypto & Web3"
+      ]
+    },
+    {
+      "slug": "jema-pay",
+      "brand_name": "JEMA PAY",
       "primary_category": "finance-app",
       "categories": [
         "finance-app",
         "fintech"
       ],
       "source_headings": [
-        "Consumer Payments, Digital Wallets and Super Apps"
+        "Consumer Payment / Digital Wallet / Super App"
       ]
     },
     {
@@ -1722,31 +1949,31 @@
         "fintech"
       ],
       "source_headings": [
-        "Consumer Payments, Digital Wallets and Super Apps"
+        "Consumer Payment / Digital Wallet / Super App"
       ]
     },
     {
       "slug": "jupit",
       "brand_name": "Jupit",
-      "primary_category": "finance-app",
+      "primary_category": "crypto-vasp",
       "categories": [
-        "finance-app",
+        "crypto-vasp",
         "fintech"
       ],
       "source_headings": [
-        "Consumer Payments, Digital Wallets and Super Apps"
+        "Crypto & Web3"
       ]
     },
     {
       "slug": "kashbuk",
-      "brand_name": "Kashbuk",
+      "brand_name": "kashbuk",
       "primary_category": "fintech",
       "categories": [
         "fintech",
         "finance-app"
       ],
       "source_headings": [
-        "Digital Insurance, Pensions, Health-Tech and HR"
+        "Spend Management / Merchant Solutions / BNPL & Loyalty"
       ]
     },
     {
@@ -1758,31 +1985,31 @@
         "fintech"
       ],
       "source_headings": [
-        "Crowdfunding, Agritech and Proptech"
-      ]
-    },
-    {
-      "slug": "kedete",
-      "brand_name": "Kedete",
-      "primary_category": "digital-lender",
-      "categories": [
-        "digital-lender",
-        "fintech"
-      ],
-      "source_headings": [
-        "Digital Lenders and Credit Infrastructure"
+        "Crowdfunding, Agritech & Proptech"
       ]
     },
     {
       "slug": "kegow",
-      "brand_name": "Kegow",
+      "brand_name": "kegow",
       "primary_category": "finance-app",
       "categories": [
         "finance-app",
         "fintech"
       ],
       "source_headings": [
-        "Consumer Payments, Digital Wallets and Super Apps"
+        "Consumer Payment / Digital Wallet / Super App"
+      ]
+    },
+    {
+      "slug": "klasha",
+      "brand_name": "Klasha",
+      "primary_category": "remittance-imto",
+      "categories": [
+        "remittance-imto",
+        "fintech"
+      ],
+      "source_headings": [
+        "FX / B2B & Cross-Border Payments / Remittances"
       ]
     },
     {
@@ -1795,7 +2022,7 @@
         "fintech"
       ],
       "source_headings": [
-        "Mobile Money, PSB, Agency and Informal Banking"
+        "Mobile Money / PUB / Agency & Informal Banking"
       ]
     },
     {
@@ -1808,7 +2035,19 @@
         "fintech"
       ],
       "source_headings": [
-        "Personal Finance, Wealth and Asset Management"
+        "Personal Finance, Wealth & Asset Management"
+      ]
+    },
+    {
+      "slug": "kredete",
+      "brand_name": "Kredete",
+      "primary_category": "digital-lender",
+      "categories": [
+        "digital-lender",
+        "fintech"
+      ],
+      "source_headings": [
+        "Digital Lenders & Credit Infrastructure"
       ]
     },
     {
@@ -1820,19 +2059,31 @@
         "fintech"
       ],
       "source_headings": [
-        "Digital Banks"
+        "Digital Banks (Consumer & Business)"
       ]
     },
     {
-      "slug": "kwikpik",
-      "brand_name": "Kwikpik",
+      "slug": "kuda-mfb",
+      "brand_name": "Kuda MFB",
       "primary_category": "finance-app",
       "categories": [
         "finance-app",
         "fintech"
       ],
       "source_headings": [
-        "Consumer Payments, Digital Wallets and Super Apps"
+        "Digital Banks (Consumer & Business)"
+      ]
+    },
+    {
+      "slug": "kwikpik",
+      "brand_name": "Kwikpik.",
+      "primary_category": "finance-app",
+      "categories": [
+        "finance-app",
+        "fintech"
+      ],
+      "source_headings": [
+        "Consumer Payment / Digital Wallet / Super App"
       ]
     },
     {
@@ -1845,7 +2096,7 @@
         "fintech"
       ],
       "source_headings": [
-        "Personal Finance, Wealth and Asset Management"
+        "Personal Finance, Wealth & Asset Management"
       ]
     },
     {
@@ -1857,19 +2108,43 @@
         "fintech"
       ],
       "source_headings": [
-        "Crowdfunding, Agritech and Proptech"
+        "Crowdfunding, Agritech & Proptech"
       ]
     },
     {
       "slug": "leatherback",
-      "brand_name": "Leatherback",
-      "primary_category": "finance-app",
+      "brand_name": "leatherback",
+      "primary_category": "remittance-imto",
       "categories": [
-        "finance-app",
+        "remittance-imto",
         "fintech"
       ],
       "source_headings": [
-        "Digital Banks"
+        "FX / B2B & Cross-Border Payments / Remittances"
+      ]
+    },
+    {
+      "slug": "ledig",
+      "brand_name": "LEDiG",
+      "primary_category": "crypto-vasp",
+      "categories": [
+        "crypto-vasp",
+        "fintech"
+      ],
+      "source_headings": [
+        "Crypto & Web3"
+      ]
+    },
+    {
+      "slug": "lemfi",
+      "brand_name": "LEMFI",
+      "primary_category": "remittance-imto",
+      "categories": [
+        "remittance-imto",
+        "fintech"
+      ],
+      "source_headings": [
+        "FX / B2B & Cross-Border Payments / Remittances"
       ]
     },
     {
@@ -1881,31 +2156,19 @@
         "fintech"
       ],
       "source_headings": [
-        "Digital Banks"
-      ]
-    },
-    {
-      "slug": "lendastack",
-      "brand_name": "Lendastack",
-      "primary_category": "digital-lender",
-      "categories": [
-        "digital-lender",
-        "fintech"
-      ],
-      "source_headings": [
-        "Digital Lenders and Credit Infrastructure"
+        "Digital Banks (Consumer & Business)"
       ]
     },
     {
       "slug": "lendha",
-      "brand_name": "Lendha",
+      "brand_name": "lendha",
       "primary_category": "digital-lender",
       "categories": [
         "digital-lender",
         "fintech"
       ],
       "source_headings": [
-        "Digital Lenders and Credit Infrastructure"
+        "Digital Lenders & Credit Infrastructure"
       ]
     },
     {
@@ -1917,43 +2180,79 @@
         "fintech"
       ],
       "source_headings": [
-        "Digital Lenders and Credit Infrastructure"
+        "Digital Lenders & Credit Infrastructure"
       ]
     },
     {
-      "slug": "lendor-credit",
-      "brand_name": "Lendor Credit",
+      "slug": "lendocredit",
+      "brand_name": "Lendocredit",
       "primary_category": "digital-lender",
       "categories": [
         "digital-lender",
         "fintech"
       ],
       "source_headings": [
-        "Digital Lenders and Credit Infrastructure"
+        "Digital Lenders & Credit Infrastructure"
       ]
     },
     {
-      "slug": "lobby-ai",
-      "brand_name": "Lobby.ai",
-      "primary_category": "fintech",
+      "slug": "lendstack",
+      "brand_name": "lendstack",
+      "primary_category": "digital-lender",
       "categories": [
-        "fintech",
-        "finance-app"
+        "digital-lender",
+        "fintech"
       ],
       "source_headings": [
-        "Digital Insurance, Pensions, Health-Tech and HR"
+        "Digital Lenders & Credit Infrastructure"
+      ]
+    },
+    {
+      "slug": "litefi",
+      "brand_name": "LiteFi",
+      "primary_category": "digital-lender",
+      "categories": [
+        "digital-lender",
+        "fintech"
+      ],
+      "source_headings": [
+        "Digital Lenders & Credit Infrastructure"
       ]
     },
     {
       "slug": "lopsim",
-      "brand_name": "Lopsim",
+      "brand_name": "lopsim",
       "primary_category": "fintech",
       "categories": [
         "fintech",
         "payment-solution-service-provider"
       ],
       "source_headings": [
-        "Fintech Infrastructure, BaaS and TechFin"
+        "Fintech Infrastructure / BaaS / Tech-Fin"
+      ]
+    },
+    {
+      "slug": "lorapay",
+      "brand_name": "Lorapay",
+      "primary_category": "fintech",
+      "categories": [
+        "fintech",
+        "finance-app"
+      ],
+      "source_headings": [
+        "Spend Management / Merchant Solutions / BNPL & Loyalty"
+      ]
+    },
+    {
+      "slug": "loubby-ai",
+      "brand_name": "Loubby AI",
+      "primary_category": "fintech",
+      "categories": [
+        "fintech",
+        "finance-app"
+      ],
+      "source_headings": [
+        "Digital Insurance, Pensions, Health-Tech & HR"
       ]
     },
     {
@@ -1965,7 +2264,7 @@
         "finance-app"
       ],
       "source_headings": [
-        "Spend Management, Merchant Solutions, BNPL and Loyalty"
+        "Spend Management / Merchant Solutions / BNPL & Loyalty"
       ]
     },
     {
@@ -1977,7 +2276,7 @@
         "fintech"
       ],
       "source_headings": [
-        "Crypto and Web3"
+        "Crypto & Web3"
       ]
     },
     {
@@ -1989,7 +2288,7 @@
         "fintech"
       ],
       "source_headings": [
-        "FX, B2B and Cross-Border Payments and Remittances"
+        "FX / B2B & Cross-Border Payments / Remittances"
       ]
     },
     {
@@ -2001,7 +2300,7 @@
         "payment-solution-service-provider"
       ],
       "source_headings": [
-        "Fintech Infrastructure, BaaS and TechFin"
+        "Fintech Infrastructure / BaaS / Tech-Fin"
       ]
     },
     {
@@ -2013,7 +2312,7 @@
         "fintech"
       ],
       "source_headings": [
-        "Digital Lenders and Credit Infrastructure"
+        "Digital Lenders & Credit Infrastructure"
       ]
     },
     {
@@ -2025,7 +2324,7 @@
         "fintech"
       ],
       "source_headings": [
-        "Consumer Payments, Digital Wallets and Super Apps"
+        "Consumer Payment / Digital Wallet / Super App"
       ]
     },
     {
@@ -2038,31 +2337,31 @@
         "fintech"
       ],
       "source_headings": [
-        "Personal Finance, Wealth and Asset Management"
+        "Personal Finance, Wealth & Asset Management"
       ]
     },
     {
       "slug": "mida",
-      "brand_name": "Mida",
+      "brand_name": "mida",
       "primary_category": "digital-lender",
       "categories": [
         "digital-lender",
         "fintech"
       ],
       "source_headings": [
-        "Digital Lenders and Credit Infrastructure"
+        "Digital Lenders & Credit Infrastructure"
       ]
     },
     {
-      "slug": "middleman",
-      "brand_name": "Middleman",
+      "slug": "midddleman",
+      "brand_name": "midddleman",
       "primary_category": "fintech",
       "categories": [
         "fintech",
         "finance-app"
       ],
       "source_headings": [
-        "Spend Management, Merchant Solutions, BNPL and Loyalty"
+        "Spend Management / Merchant Solutions / BNPL & Loyalty"
       ]
     },
     {
@@ -2074,24 +2373,24 @@
         "fintech"
       ],
       "source_headings": [
-        "Digital Lenders and Credit Infrastructure"
+        "Digital Lenders & Credit Infrastructure"
       ]
     },
     {
-      "slug": "monapp",
-      "brand_name": "Monapp",
-      "primary_category": "digital-lender",
+      "slug": "mkobo",
+      "brand_name": "Mkobo",
+      "primary_category": "finance-app",
       "categories": [
-        "digital-lender",
+        "finance-app",
         "fintech"
       ],
       "source_headings": [
-        "Digital Lenders and Credit Infrastructure"
+        "Digital Banks (Consumer & Business)"
       ]
     },
     {
-      "slug": "moneymaster-psb",
-      "brand_name": "MoneyMaster PSB",
+      "slug": "momo",
+      "brand_name": "Momo",
       "primary_category": "mobile-money-operator",
       "categories": [
         "mobile-money-operator",
@@ -2099,7 +2398,19 @@
         "fintech"
       ],
       "source_headings": [
-        "Mobile Money, PSB, Agency and Informal Banking"
+        "Mobile Money / PUB / Agency & Informal Banking"
+      ]
+    },
+    {
+      "slug": "monapp",
+      "brand_name": "monapp",
+      "primary_category": "digital-lender",
+      "categories": [
+        "digital-lender",
+        "fintech"
+      ],
+      "source_headings": [
+        "Digital Lenders & Credit Infrastructure"
       ]
     },
     {
@@ -2112,7 +2423,7 @@
         "fintech"
       ],
       "source_headings": [
-        "Personal Finance, Wealth and Asset Management"
+        "Personal Finance, Wealth & Asset Management"
       ]
     },
     {
@@ -2125,7 +2436,7 @@
         "fintech"
       ],
       "source_headings": [
-        "Personal Finance, Wealth and Asset Management"
+        "Personal Finance, Wealth & Asset Management"
       ]
     },
     {
@@ -2137,7 +2448,20 @@
         "fintech"
       ],
       "source_headings": [
-        "FX, B2B and Cross-Border Payments and Remittances"
+        "FX / B2B & Cross-Border Payments / Remittances"
+      ]
+    },
+    {
+      "slug": "monify",
+      "brand_name": "monify",
+      "primary_category": "switching-processing",
+      "categories": [
+        "switching-processing",
+        "payment-solution-service-provider",
+        "fintech"
+      ],
+      "source_headings": [
+        "Payments Processing, Switching & Infrastructure"
       ]
     },
     {
@@ -2150,7 +2474,7 @@
         "fintech"
       ],
       "source_headings": [
-        "Personal Finance, Wealth and Asset Management"
+        "Personal Finance, Wealth & Asset Management"
       ]
     },
     {
@@ -2163,19 +2487,55 @@
         "fintech"
       ],
       "source_headings": [
-        "Personal Finance, Wealth and Asset Management"
+        "Personal Finance, Wealth & Asset Management"
       ]
     },
     {
-      "slug": "motor",
-      "brand_name": "Motor",
+      "slug": "monirates",
+      "brand_name": "Monirates",
+      "primary_category": "remittance-imto",
+      "categories": [
+        "remittance-imto",
+        "fintech"
+      ],
+      "source_headings": [
+        "FX / B2B & Cross-Border Payments / Remittances"
+      ]
+    },
+    {
+      "slug": "motor-africa",
+      "brand_name": "Motor Africa",
       "primary_category": "fintech",
       "categories": [
         "fintech",
         "finance-app"
       ],
       "source_headings": [
-        "Spend Management, Merchant Solutions, BNPL and Loyalty"
+        "Spend Management / Merchant Solutions / BNPL & Loyalty"
+      ]
+    },
+    {
+      "slug": "move",
+      "brand_name": "Move",
+      "primary_category": "digital-lender",
+      "categories": [
+        "digital-lender",
+        "fintech"
+      ],
+      "source_headings": [
+        "Digital Lenders & Credit Infrastructure"
+      ]
+    },
+    {
+      "slug": "moza",
+      "brand_name": "moza",
+      "primary_category": "fintech",
+      "categories": [
+        "fintech",
+        "finance-app"
+      ],
+      "source_headings": [
+        "Spend Management / Merchant Solutions / BNPL & Loyalty"
       ]
     },
     {
@@ -2187,43 +2547,79 @@
         "fintech"
       ],
       "source_headings": [
-        "Crypto and Web3"
+        "Crypto & Web3"
       ]
     },
     {
       "slug": "mustard-ng",
       "brand_name": "Mustard.ng",
-      "primary_category": "crowdfunding-platform",
+      "primary_category": "crypto-vasp",
       "categories": [
-        "crowdfunding-platform",
+        "crypto-vasp",
         "fintech"
       ],
       "source_headings": [
-        "Crowdfunding, Agritech and Proptech"
+        "Crypto & Web3"
+      ]
+    },
+    {
+      "slug": "mutigate",
+      "brand_name": "Mutigate",
+      "primary_category": "remittance-imto",
+      "categories": [
+        "remittance-imto",
+        "fintech"
+      ],
+      "source_headings": [
+        "FX / B2B & Cross-Border Payments / Remittances"
+      ]
+    },
+    {
+      "slug": "mydove",
+      "brand_name": "mydove",
+      "primary_category": "remittance-imto",
+      "categories": [
+        "remittance-imto",
+        "fintech"
+      ],
+      "source_headings": [
+        "FX / B2B & Cross-Border Payments / Remittances"
       ]
     },
     {
       "slug": "naira4yuan",
-      "brand_name": "Naira4Yuan",
+      "brand_name": "Naira4yuan",
       "primary_category": "remittance-imto",
       "categories": [
         "remittance-imto",
         "fintech"
       ],
       "source_headings": [
-        "FX, B2B and Cross-Border Payments and Remittances"
+        "FX / B2B & Cross-Border Payments / Remittances"
+      ]
+    },
+    {
+      "slug": "nearpays",
+      "brand_name": "Nearpays",
+      "primary_category": "finance-app",
+      "categories": [
+        "finance-app",
+        "fintech"
+      ],
+      "source_headings": [
+        "Consumer Payment / Digital Wallet / Super App"
       ]
     },
     {
       "slug": "nilos",
-      "brand_name": "Nilos",
+      "brand_name": "nilos",
       "primary_category": "remittance-imto",
       "categories": [
         "remittance-imto",
         "fintech"
       ],
       "source_headings": [
-        "FX, B2B and Cross-Border Payments and Remittances"
+        "FX / B2B & Cross-Border Payments / Remittances"
       ]
     },
     {
@@ -2235,19 +2631,31 @@
         "finance-app"
       ],
       "source_headings": [
-        "Spend Management, Merchant Solutions, BNPL and Loyalty"
+        "Spend Management / Merchant Solutions / BNPL & Loyalty"
       ]
     },
     {
       "slug": "nomba",
-      "brand_name": "Nomba",
+      "brand_name": "nomba",
       "primary_category": "remittance-imto",
       "categories": [
         "remittance-imto",
         "fintech"
       ],
       "source_headings": [
-        "FX, B2B and Cross-Border Payments and Remittances"
+        "FX / B2B & Cross-Border Payments / Remittances"
+      ]
+    },
+    {
+      "slug": "noun",
+      "brand_name": "noun",
+      "primary_category": "finance-app",
+      "categories": [
+        "finance-app",
+        "fintech"
+      ],
+      "source_headings": [
+        "Consumer Payment / Digital Wallet / Super App"
       ]
     },
     {
@@ -2259,31 +2667,7 @@
         "fintech"
       ],
       "source_headings": [
-        "FX, B2B and Cross-Border Payments and Remittances"
-      ]
-    },
-    {
-      "slug": "nown",
-      "brand_name": "Nown",
-      "primary_category": "finance-app",
-      "categories": [
-        "finance-app",
-        "fintech"
-      ],
-      "source_headings": [
-        "Consumer Payments, Digital Wallets and Super Apps"
-      ]
-    },
-    {
-      "slug": "obtainment",
-      "brand_name": "Obtainment",
-      "primary_category": "digital-lender",
-      "categories": [
-        "digital-lender",
-        "fintech"
-      ],
-      "source_headings": [
-        "Digital Lenders and Credit Infrastructure"
+        "FX / B2B & Cross-Border Payments / Remittances"
       ]
     },
     {
@@ -2295,12 +2679,12 @@
         "finance-app"
       ],
       "source_headings": [
-        "Digital Insurance, Pensions, Health-Tech and HR"
+        "Digital Insurance, Pensions, Health-Tech & HR"
       ]
     },
     {
-      "slug": "onus",
-      "brand_name": "Onus",
+      "slug": "on-us",
+      "brand_name": "on.us",
       "primary_category": "switching-processing",
       "categories": [
         "switching-processing",
@@ -2308,55 +2692,55 @@
         "fintech"
       ],
       "source_headings": [
-        "Payments Processing, Switching and Infrastructure"
-      ]
-    },
-    {
-      "slug": "orapay",
-      "brand_name": "Orapay",
-      "primary_category": "fintech",
-      "categories": [
-        "fintech",
-        "finance-app"
-      ],
-      "source_headings": [
-        "Spend Management, Merchant Solutions, BNPL and Loyalty"
+        "Payments Processing, Switching & Infrastructure"
       ]
     },
     {
       "slug": "orda-africa",
-      "brand_name": "Orda Africa",
+      "brand_name": "Orda.africa",
       "primary_category": "fintech",
       "categories": [
         "fintech",
         "finance-app"
       ],
       "source_headings": [
-        "Spend Management, Merchant Solutions, BNPL and Loyalty"
+        "Spend Management / Merchant Solutions / BNPL & Loyalty"
       ]
     },
     {
       "slug": "oval",
       "brand_name": "Oval",
-      "primary_category": "digital-lender",
+      "primary_category": "remittance-imto",
       "categories": [
-        "digital-lender",
+        "remittance-imto",
         "fintech"
       ],
       "source_headings": [
-        "Digital Lenders and Credit Infrastructure"
+        "FX / B2B & Cross-Border Payments / Remittances"
       ]
     },
     {
-      "slug": "paddy-cover",
-      "brand_name": "Paddy Cover",
+      "slug": "paddycover",
+      "brand_name": "PaddyCover",
       "primary_category": "fintech",
       "categories": [
         "fintech",
         "finance-app"
       ],
       "source_headings": [
-        "Digital Insurance, Pensions, Health-Tech and HR"
+        "Digital Insurance, Pensions, Health-Tech & HR"
+      ]
+    },
+    {
+      "slug": "paga",
+      "brand_name": "Paga",
+      "primary_category": "finance-app",
+      "categories": [
+        "finance-app",
+        "fintech"
+      ],
+      "source_headings": [
+        "Consumer Payment / Digital Wallet / Super App"
       ]
     },
     {
@@ -2368,19 +2752,19 @@
         "payment-solution-service-provider"
       ],
       "source_headings": [
-        "Fintech Infrastructure, BaaS and TechFin"
+        "Fintech Infrastructure / BaaS / Tech-Fin"
       ]
     },
     {
-      "slug": "page-financials",
-      "brand_name": "Page Financials",
+      "slug": "page",
+      "brand_name": "Page",
       "primary_category": "digital-lender",
       "categories": [
         "digital-lender",
         "fintech"
       ],
       "source_headings": [
-        "Digital Lenders and Credit Infrastructure"
+        "Digital Lenders & Credit Infrastructure"
       ]
     },
     {
@@ -2392,7 +2776,7 @@
         "finance-app"
       ],
       "source_headings": [
-        "Digital Insurance, Pensions, Health-Tech and HR"
+        "Digital Insurance, Pensions, Health-Tech & HR"
       ]
     },
     {
@@ -2404,7 +2788,7 @@
         "finance-app"
       ],
       "source_headings": [
-        "Digital Insurance, Pensions, Health-Tech and HR"
+        "Digital Insurance, Pensions, Health-Tech & HR"
       ]
     },
     {
@@ -2416,7 +2800,19 @@
         "payment-solution-service-provider"
       ],
       "source_headings": [
-        "Fintech Infrastructure, BaaS and TechFin"
+        "Fintech Infrastructure / BaaS / Tech-Fin"
+      ]
+    },
+    {
+      "slug": "payable",
+      "brand_name": "Payable",
+      "primary_category": "finance-app",
+      "categories": [
+        "finance-app",
+        "fintech"
+      ],
+      "source_headings": [
+        "Consumer Payment / Digital Wallet / Super App"
       ]
     },
     {
@@ -2429,7 +2825,7 @@
         "fintech"
       ],
       "source_headings": [
-        "Mobile Money, PSB, Agency and Informal Banking"
+        "Mobile Money / PUB / Agency & Informal Banking"
       ]
     },
     {
@@ -2441,43 +2837,31 @@
         "finance-app"
       ],
       "source_headings": [
-        "Spend Management, Merchant Solutions, BNPL and Loyalty"
-      ]
-    },
-    {
-      "slug": "paymable",
-      "brand_name": "Paymable",
-      "primary_category": "finance-app",
-      "categories": [
-        "finance-app",
-        "fintech"
-      ],
-      "source_headings": [
-        "Consumer Payments, Digital Wallets and Super Apps"
+        "Spend Management / Merchant Solutions / BNPL & Loyalty"
       ]
     },
     {
       "slug": "paymyrent",
-      "brand_name": "PayMyRent",
+      "brand_name": "paymyrent",
       "primary_category": "crowdfunding-platform",
       "categories": [
         "crowdfunding-platform",
         "fintech"
       ],
       "source_headings": [
-        "Crowdfunding, Agritech and Proptech"
+        "Crowdfunding, Agritech & Proptech"
       ]
     },
     {
       "slug": "paypaddi",
-      "brand_name": "Paypaddi",
+      "brand_name": "paypaddi",
       "primary_category": "finance-app",
       "categories": [
         "finance-app",
         "fintech"
       ],
       "source_headings": [
-        "Consumer Payments, Digital Wallets and Super Apps"
+        "Consumer Payment / Digital Wallet / Super App"
       ]
     },
     {
@@ -2490,7 +2874,7 @@
         "fintech"
       ],
       "source_headings": [
-        "Personal Finance, Wealth and Asset Management"
+        "Personal Finance, Wealth & Asset Management"
       ]
     },
     {
@@ -2502,7 +2886,7 @@
         "finance-app"
       ],
       "source_headings": [
-        "Digital Insurance, Pensions, Health-Tech and HR"
+        "Digital Insurance, Pensions, Health-Tech & HR"
       ]
     },
     {
@@ -2514,7 +2898,20 @@
         "fintech"
       ],
       "source_headings": [
-        "Consumer Payments, Digital Wallets and Super Apps"
+        "Consumer Payment / Digital Wallet / Super App"
+      ]
+    },
+    {
+      "slug": "payu-gpo",
+      "brand_name": "PayU GPO",
+      "primary_category": "switching-processing",
+      "categories": [
+        "switching-processing",
+        "payment-solution-service-provider",
+        "fintech"
+      ],
+      "source_headings": [
+        "Payments Processing, Switching & Infrastructure"
       ]
     },
     {
@@ -2526,7 +2923,7 @@
         "fintech"
       ],
       "source_headings": [
-        "Consumer Payments, Digital Wallets and Super Apps"
+        "Consumer Payment / Digital Wallet / Super App"
       ]
     },
     {
@@ -2538,7 +2935,7 @@
         "fintech"
       ],
       "source_headings": [
-        "FX, B2B and Cross-Border Payments and Remittances"
+        "FX / B2B & Cross-Border Payments / Remittances"
       ]
     },
     {
@@ -2550,7 +2947,19 @@
         "fintech"
       ],
       "source_headings": [
-        "Digital Lenders and Credit Infrastructure"
+        "Digital Lenders & Credit Infrastructure"
+      ]
+    },
+    {
+      "slug": "peppa-io",
+      "brand_name": "Peppa.io",
+      "primary_category": "fintech",
+      "categories": [
+        "fintech",
+        "finance-app"
+      ],
+      "source_headings": [
+        "Spend Management / Merchant Solutions / BNPL & Loyalty"
       ]
     },
     {
@@ -2562,7 +2971,20 @@
         "fintech"
       ],
       "source_headings": [
-        "Digital Lenders and Credit Infrastructure"
+        "Digital Lenders & Credit Infrastructure"
+      ]
+    },
+    {
+      "slug": "pinowo",
+      "brand_name": "Pinowo",
+      "primary_category": "finance-app",
+      "categories": [
+        "finance-app",
+        "investment-manager",
+        "fintech"
+      ],
+      "source_headings": [
+        "Personal Finance, Wealth & Asset Management"
       ]
     },
     {
@@ -2574,19 +2996,19 @@
         "fintech"
       ],
       "source_headings": [
-        "Digital Lenders and Credit Infrastructure"
+        "Digital Lenders & Credit Infrastructure"
       ]
     },
     {
       "slug": "pouchfi",
       "brand_name": "PouchFi",
-      "primary_category": "crowdfunding-platform",
+      "primary_category": "crypto-vasp",
       "categories": [
-        "crowdfunding-platform",
+        "crypto-vasp",
         "fintech"
       ],
       "source_headings": [
-        "Crowdfunding, Agritech and Proptech"
+        "Crypto & Web3"
       ]
     },
     {
@@ -2598,7 +3020,20 @@
         "payment-solution-service-provider"
       ],
       "source_headings": [
-        "Fintech Infrastructure, BaaS and TechFin"
+        "Fintech Infrastructure / BaaS / Tech-Fin"
+      ]
+    },
+    {
+      "slug": "press",
+      "brand_name": "Press",
+      "primary_category": "switching-processing",
+      "categories": [
+        "switching-processing",
+        "payment-solution-service-provider",
+        "fintech"
+      ],
+      "source_headings": [
+        "Payments Processing, Switching & Infrastructure"
       ]
     },
     {
@@ -2610,55 +3045,67 @@
         "fintech"
       ],
       "source_headings": [
-        "Digital Lenders and Credit Infrastructure"
+        "Digital Lenders & Credit Infrastructure"
       ]
     },
     {
       "slug": "prestmit",
-      "brand_name": "Prestmit",
-      "primary_category": "finance-app",
+      "brand_name": "prestmit",
+      "primary_category": "crypto-vasp",
       "categories": [
-        "finance-app",
+        "crypto-vasp",
         "fintech"
       ],
       "source_headings": [
-        "Consumer Payments, Digital Wallets and Super Apps"
+        "Crypto & Web3"
       ]
     },
     {
-      "slug": "prime-bills",
-      "brand_name": "Prime Bills",
+      "slug": "primebiller",
+      "brand_name": "PrimeBiller",
       "primary_category": "finance-app",
       "categories": [
         "finance-app",
         "fintech"
       ],
       "source_headings": [
-        "Consumer Payments, Digital Wallets and Super Apps"
+        "Consumer Payment / Digital Wallet / Super App"
       ]
     },
     {
       "slug": "prospa",
-      "brand_name": "Prospa",
+      "brand_name": "prospa",
       "primary_category": "finance-app",
       "categories": [
         "finance-app",
         "fintech"
       ],
       "source_headings": [
-        "Digital Banks"
+        "Digital Banks (Consumer & Business)"
       ]
     },
     {
       "slug": "pryme",
-      "brand_name": "Pryme",
+      "brand_name": "pryme",
       "primary_category": "finance-app",
       "categories": [
         "finance-app",
         "fintech"
       ],
       "source_headings": [
-        "Digital Banks"
+        "Digital Banks (Consumer & Business)"
+      ]
+    },
+    {
+      "slug": "px",
+      "brand_name": "PX",
+      "primary_category": "finance-app",
+      "categories": [
+        "finance-app",
+        "fintech"
+      ],
+      "source_headings": [
+        "Consumer Payment / Digital Wallet / Super App"
       ]
     },
     {
@@ -2670,19 +3117,32 @@
         "payment-solution-service-provider"
       ],
       "source_headings": [
-        "Fintech Infrastructure, BaaS and TechFin"
+        "Fintech Infrastructure / BaaS / Tech-Fin"
       ]
     },
     {
-      "slug": "quickinvoice",
-      "brand_name": "QuickInvoice",
+      "slug": "qorepay",
+      "brand_name": "QorePay",
+      "primary_category": "switching-processing",
+      "categories": [
+        "switching-processing",
+        "payment-solution-service-provider",
+        "fintech"
+      ],
+      "source_headings": [
+        "Payments Processing, Switching & Infrastructure"
+      ]
+    },
+    {
+      "slug": "quick-invoice",
+      "brand_name": "Quick invoice",
       "primary_category": "fintech",
       "categories": [
         "fintech",
         "finance-app"
       ],
       "source_headings": [
-        "Spend Management, Merchant Solutions, BNPL and Loyalty"
+        "Spend Management / Merchant Solutions / BNPL & Loyalty"
       ]
     },
     {
@@ -2694,12 +3154,36 @@
         "finance-app"
       ],
       "source_headings": [
-        "Digital Insurance, Pensions, Health-Tech and HR"
+        "Spend Management / Merchant Solutions / BNPL & Loyalty"
       ]
     },
     {
-      "slug": "readycash",
-      "brand_name": "ReadyCash",
+      "slug": "ratefy",
+      "brand_name": "Ratefy",
+      "primary_category": "remittance-imto",
+      "categories": [
+        "remittance-imto",
+        "fintech"
+      ],
+      "source_headings": [
+        "FX / B2B & Cross-Border Payments / Remittances"
+      ]
+    },
+    {
+      "slug": "ravenbank",
+      "brand_name": "RavenBank",
+      "primary_category": "finance-app",
+      "categories": [
+        "finance-app",
+        "fintech"
+      ],
+      "source_headings": [
+        "Digital Banks (Consumer & Business)"
+      ]
+    },
+    {
+      "slug": "readycash-by-parkway",
+      "brand_name": "Readycash by parkway",
       "primary_category": "mobile-money-operator",
       "categories": [
         "mobile-money-operator",
@@ -2707,19 +3191,7 @@
         "fintech"
       ],
       "source_headings": [
-        "Mobile Money, PSB, Agency and Informal Banking"
-      ]
-    },
-    {
-      "slug": "recital",
-      "brand_name": "Recital",
-      "primary_category": "fintech",
-      "categories": [
-        "fintech",
-        "finance-app"
-      ],
-      "source_headings": [
-        "Spend Management, Merchant Solutions, BNPL and Loyalty"
+        "Mobile Money / PUB / Agency & Informal Banking"
       ]
     },
     {
@@ -2731,7 +3203,7 @@
         "finance-app"
       ],
       "source_headings": [
-        "Digital Insurance, Pensions, Health-Tech and HR"
+        "Digital Insurance, Pensions, Health-Tech & HR"
       ]
     },
     {
@@ -2743,24 +3215,36 @@
         "finance-app"
       ],
       "source_headings": [
-        "Digital Insurance, Pensions, Health-Tech and HR"
+        "Digital Insurance, Pensions, Health-Tech & HR"
       ]
     },
     {
-      "slug": "rex-microfinance-bank",
-      "brand_name": "Rex Microfinance Bank",
-      "primary_category": "finance-app",
+      "slug": "relyr",
+      "brand_name": "Relyr",
+      "primary_category": "remittance-imto",
       "categories": [
-        "finance-app",
+        "remittance-imto",
         "fintech"
       ],
       "source_headings": [
-        "Digital Banks"
+        "FX / B2B & Cross-Border Payments / Remittances"
+      ]
+    },
+    {
+      "slug": "renmoney-mfb",
+      "brand_name": "Renmoney MFB",
+      "primary_category": "digital-lender",
+      "categories": [
+        "digital-lender",
+        "fintech"
+      ],
+      "source_headings": [
+        "Digital Lenders & Credit Infrastructure"
       ]
     },
     {
       "slug": "riby",
-      "brand_name": "RIBY",
+      "brand_name": "Riby",
       "primary_category": "mobile-money-operator",
       "categories": [
         "mobile-money-operator",
@@ -2768,7 +3252,7 @@
         "fintech"
       ],
       "source_headings": [
-        "Mobile Money, PSB, Agency and Informal Banking"
+        "Mobile Money / PUB / Agency & Informal Banking"
       ]
     },
     {
@@ -2780,7 +3264,7 @@
         "finance-app"
       ],
       "source_headings": [
-        "Spend Management, Merchant Solutions, BNPL and Loyalty"
+        "Spend Management / Merchant Solutions / BNPL & Loyalty"
       ]
     },
     {
@@ -2792,36 +3276,24 @@
         "fintech"
       ],
       "source_headings": [
-        "Consumer Payments, Digital Wallets and Super Apps"
+        "Consumer Payment / Digital Wallet / Super App"
       ]
     },
     {
-      "slug": "sasewallet",
-      "brand_name": "Sasewallet",
+      "slug": "satsapp",
+      "brand_name": "SatsApp",
       "primary_category": "finance-app",
       "categories": [
         "finance-app",
         "fintech"
       ],
       "source_headings": [
-        "Consumer Payments, Digital Wallets and Super Apps"
-      ]
-    },
-    {
-      "slug": "sats-app",
-      "brand_name": "Sats App",
-      "primary_category": "finance-app",
-      "categories": [
-        "finance-app",
-        "fintech"
-      ],
-      "source_headings": [
-        "Consumer Payments, Digital Wallets and Super Apps"
+        "Consumer Payment / Digital Wallet / Super App"
       ]
     },
     {
       "slug": "savetobuy",
-      "brand_name": "SaveToBuy",
+      "brand_name": "SavetoBuy",
       "primary_category": "finance-app",
       "categories": [
         "finance-app",
@@ -2829,7 +3301,7 @@
         "fintech"
       ],
       "source_headings": [
-        "Personal Finance, Wealth and Asset Management"
+        "Personal Finance, Wealth & Asset Management"
       ]
     },
     {
@@ -2842,19 +3314,20 @@
         "fintech"
       ],
       "source_headings": [
-        "Personal Finance, Wealth and Asset Management"
+        "Personal Finance, Wealth & Asset Management"
       ]
     },
     {
-      "slug": "scheduled",
-      "brand_name": "Scheduled",
-      "primary_category": "digital-lender",
+      "slug": "savinsbox",
+      "brand_name": "SavinsBox",
+      "primary_category": "finance-app",
       "categories": [
-        "digital-lender",
+        "finance-app",
+        "investment-manager",
         "fintech"
       ],
       "source_headings": [
-        "Digital Lenders and Credit Infrastructure"
+        "Personal Finance, Wealth & Asset Management"
       ]
     },
     {
@@ -2866,12 +3339,12 @@
         "payment-solution-service-provider"
       ],
       "source_headings": [
-        "Fintech Infrastructure, BaaS and TechFin"
+        "Fintech Infrastructure / BaaS / Tech-Fin"
       ]
     },
     {
       "slug": "seerbit",
-      "brand_name": "SeerBit",
+      "brand_name": "SEERBIT",
       "primary_category": "switching-processing",
       "categories": [
         "switching-processing",
@@ -2879,20 +3352,43 @@
         "fintech"
       ],
       "source_headings": [
-        "Payments Processing, Switching and Infrastructure"
+        "Payments Processing, Switching & Infrastructure"
       ]
     },
     {
       "slug": "selar",
       "brand_name": "Selar",
-      "primary_category": "finance-app",
+      "primary_category": "fintech",
       "categories": [
-        "finance-app",
-        "investment-manager",
+        "fintech",
+        "finance-app"
+      ],
+      "source_headings": [
+        "Spend Management / Merchant Solutions / BNPL & Loyalty"
+      ]
+    },
+    {
+      "slug": "send-app",
+      "brand_name": "Send app",
+      "primary_category": "remittance-imto",
+      "categories": [
+        "remittance-imto",
         "fintech"
       ],
       "source_headings": [
-        "Personal Finance, Wealth and Asset Management"
+        "FX / B2B & Cross-Border Payments / Remittances"
+      ]
+    },
+    {
+      "slug": "sendova",
+      "brand_name": "SendOva",
+      "primary_category": "remittance-imto",
+      "categories": [
+        "remittance-imto",
+        "fintech"
+      ],
+      "source_headings": [
+        "FX / B2B & Cross-Border Payments / Remittances"
       ]
     },
     {
@@ -2904,31 +3400,31 @@
         "fintech"
       ],
       "source_headings": [
-        "FX, B2B and Cross-Border Payments and Remittances"
-      ]
-    },
-    {
-      "slug": "sendva",
-      "brand_name": "Sendva",
-      "primary_category": "remittance-imto",
-      "categories": [
-        "remittance-imto",
-        "fintech"
-      ],
-      "source_headings": [
-        "FX, B2B and Cross-Border Payments and Remittances"
+        "FX / B2B & Cross-Border Payments / Remittances"
       ]
     },
     {
       "slug": "sendwave",
-      "brand_name": "Sendwave",
+      "brand_name": "SENDWAVE",
       "primary_category": "remittance-imto",
       "categories": [
         "remittance-imto",
         "fintech"
       ],
       "source_headings": [
-        "FX, B2B and Cross-Border Payments and Remittances"
+        "FX / B2B & Cross-Border Payments / Remittances"
+      ]
+    },
+    {
+      "slug": "shecluded",
+      "brand_name": "shecluded",
+      "primary_category": "digital-lender",
+      "categories": [
+        "digital-lender",
+        "fintech"
+      ],
+      "source_headings": [
+        "Digital Lenders & Credit Infrastructure"
       ]
     },
     {
@@ -2940,7 +3436,7 @@
         "finance-app"
       ],
       "source_headings": [
-        "Spend Management, Merchant Solutions, BNPL and Loyalty"
+        "Spend Management / Merchant Solutions / BNPL & Loyalty"
       ]
     },
     {
@@ -2953,7 +3449,7 @@
         "fintech"
       ],
       "source_headings": [
-        "Mobile Money, PSB, Agency and Informal Banking"
+        "Mobile Money / PUB / Agency & Informal Banking"
       ]
     },
     {
@@ -2965,19 +3461,19 @@
         "fintech"
       ],
       "source_headings": [
-        "Digital Lenders and Credit Infrastructure"
+        "Digital Lenders & Credit Infrastructure"
       ]
     },
     {
-      "slug": "social-lender",
-      "brand_name": "Social Lender",
+      "slug": "sociallender",
+      "brand_name": "SocialLender",
       "primary_category": "digital-lender",
       "categories": [
         "digital-lender",
         "fintech"
       ],
       "source_headings": [
-        "Digital Lenders and Credit Infrastructure"
+        "Digital Lenders & Credit Infrastructure"
       ]
     },
     {
@@ -2989,12 +3485,12 @@
         "fintech"
       ],
       "source_headings": [
-        "Digital Banks"
+        "Digital Banks (Consumer & Business)"
       ]
     },
     {
       "slug": "softpay",
-      "brand_name": "SoftPay",
+      "brand_name": "SoftPAY",
       "primary_category": "switching-processing",
       "categories": [
         "switching-processing",
@@ -3002,43 +3498,44 @@
         "fintech"
       ],
       "source_headings": [
-        "Payments Processing, Switching and Infrastructure"
+        "Payments Processing, Switching & Infrastructure"
       ]
     },
     {
       "slug": "softway-finance",
       "brand_name": "Softway Finance",
-      "primary_category": "fintech",
+      "primary_category": "mobile-money-operator",
       "categories": [
-        "fintech",
-        "payment-solution-service-provider"
+        "mobile-money-operator",
+        "finance-app",
+        "fintech"
       ],
       "source_headings": [
-        "Fintech Infrastructure, BaaS and TechFin"
+        "Mobile Money / PUB / Agency & Informal Banking"
       ]
     },
     {
       "slug": "space",
       "brand_name": "Space",
-      "primary_category": "digital-lender",
+      "primary_category": "remittance-imto",
       "categories": [
-        "digital-lender",
+        "remittance-imto",
         "fintech"
       ],
       "source_headings": [
-        "Digital Lenders and Credit Infrastructure"
+        "FX / B2B & Cross-Border Payments / Remittances"
       ]
     },
     {
       "slug": "spacepointe",
-      "brand_name": "SpacePointe",
+      "brand_name": "Spacepointe",
       "primary_category": "fintech",
       "categories": [
         "fintech",
         "finance-app"
       ],
       "source_headings": [
-        "Spend Management, Merchant Solutions, BNPL and Loyalty"
+        "Spend Management / Merchant Solutions / BNPL & Loyalty"
       ]
     },
     {
@@ -3050,7 +3547,7 @@
         "fintech"
       ],
       "source_headings": [
-        "Consumer Payments, Digital Wallets and Super Apps"
+        "Consumer Payment / Digital Wallet / Super App"
       ]
     },
     {
@@ -3062,7 +3559,7 @@
         "fintech"
       ],
       "source_headings": [
-        "Crowdfunding, Agritech and Proptech"
+        "Crowdfunding, Agritech & Proptech"
       ]
     },
     {
@@ -3074,7 +3571,7 @@
         "fintech"
       ],
       "source_headings": [
-        "Crowdfunding, Agritech and Proptech"
+        "Crowdfunding, Agritech & Proptech"
       ]
     },
     {
@@ -3086,7 +3583,7 @@
         "fintech"
       ],
       "source_headings": [
-        "Consumer Payments, Digital Wallets and Super Apps"
+        "Consumer Payment / Digital Wallet / Super App"
       ]
     },
     {
@@ -3098,43 +3595,31 @@
         "fintech"
       ],
       "source_headings": [
-        "Crypto and Web3"
+        "Crypto & Web3"
       ]
     },
     {
       "slug": "stacs",
-      "brand_name": "Stacs",
+      "brand_name": "stacs",
       "primary_category": "digital-lender",
       "categories": [
         "digital-lender",
         "fintech"
       ],
       "source_headings": [
-        "Digital Lenders and Credit Infrastructure"
+        "Digital Lenders & Credit Infrastructure"
       ]
     },
     {
       "slug": "straitpay",
-      "brand_name": "StraitPay",
+      "brand_name": "straitPay",
       "primary_category": "remittance-imto",
       "categories": [
         "remittance-imto",
         "fintech"
       ],
       "source_headings": [
-        "FX, B2B and Cross-Border Payments and Remittances"
-      ]
-    },
-    {
-      "slug": "sudo",
-      "brand_name": "Sudo",
-      "primary_category": "fintech",
-      "categories": [
-        "fintech",
-        "payment-solution-service-provider"
-      ],
-      "source_headings": [
-        "Fintech Infrastructure, BaaS and TechFin"
+        "FX / B2B & Cross-Border Payments / Remittances"
       ]
     },
     {
@@ -3146,7 +3631,19 @@
         "finance-app"
       ],
       "source_headings": [
-        "Spend Management, Merchant Solutions, BNPL and Loyalty"
+        "Spend Management / Merchant Solutions / BNPL & Loyalty"
+      ]
+    },
+    {
+      "slug": "switch",
+      "brand_name": "Switch",
+      "primary_category": "remittance-imto",
+      "categories": [
+        "remittance-imto",
+        "fintech"
+      ],
+      "source_headings": [
+        "FX / B2B & Cross-Border Payments / Remittances"
       ]
     },
     {
@@ -3158,12 +3655,36 @@
         "fintech"
       ],
       "source_headings": [
-        "Crypto and Web3"
+        "Crypto & Web3"
       ]
     },
     {
-      "slug": "tenbox",
-      "brand_name": "Tenbox",
+      "slug": "tangerine-apt",
+      "brand_name": "Tangerine APT",
+      "primary_category": "fintech",
+      "categories": [
+        "fintech",
+        "finance-app"
+      ],
+      "source_headings": [
+        "Digital Insurance, Pensions, Health-Tech & HR"
+      ]
+    },
+    {
+      "slug": "tendar",
+      "brand_name": "tendar",
+      "primary_category": "digital-lender",
+      "categories": [
+        "digital-lender",
+        "fintech"
+      ],
+      "source_headings": [
+        "Digital Lenders & Credit Infrastructure"
+      ]
+    },
+    {
+      "slug": "tendboxx",
+      "brand_name": "Tendboxx",
       "primary_category": "finance-app",
       "categories": [
         "finance-app",
@@ -3171,7 +3692,20 @@
         "fintech"
       ],
       "source_headings": [
-        "Personal Finance, Wealth and Asset Management"
+        "Personal Finance, Wealth & Asset Management"
+      ]
+    },
+    {
+      "slug": "thamani",
+      "brand_name": "Thamani",
+      "primary_category": "finance-app",
+      "categories": [
+        "finance-app",
+        "investment-manager",
+        "fintech"
+      ],
+      "source_headings": [
+        "Personal Finance, Wealth & Asset Management"
       ]
     },
     {
@@ -3183,7 +3717,7 @@
         "fintech"
       ],
       "source_headings": [
-        "Crowdfunding, Agritech and Proptech"
+        "Crowdfunding, Agritech & Proptech"
       ]
     },
     {
@@ -3195,7 +3729,7 @@
         "fintech"
       ],
       "source_headings": [
-        "Consumer Payments, Digital Wallets and Super Apps"
+        "Consumer Payment / Digital Wallet / Super App"
       ]
     },
     {
@@ -3208,55 +3742,79 @@
         "fintech"
       ],
       "source_headings": [
-        "Mobile Money, PSB, Agency and Informal Banking"
+        "Mobile Money / PUB / Agency & Informal Banking"
       ]
     },
     {
-      "slug": "tribapay",
-      "brand_name": "Tribapay",
-      "primary_category": "finance-app",
-      "categories": [
-        "finance-app",
-        "fintech"
-      ],
-      "source_headings": [
-        "Consumer Payments, Digital Wallets and Super Apps"
-      ]
-    },
-    {
-      "slug": "tribease",
-      "brand_name": "Tribease",
+      "slug": "tradeet",
+      "brand_name": "Tradeet",
       "primary_category": "fintech",
       "categories": [
         "fintech",
         "finance-app"
       ],
       "source_headings": [
-        "Spend Management, Merchant Solutions, BNPL and Loyalty"
+        "Spend Management / Merchant Solutions / BNPL & Loyalty"
       ]
     },
     {
-      "slug": "trust-mfb",
-      "brand_name": "Trust MFB",
+      "slug": "tradelenda",
+      "brand_name": "TradeLenda",
+      "primary_category": "digital-lender",
+      "categories": [
+        "digital-lender",
+        "fintech"
+      ],
+      "source_headings": [
+        "Digital Lenders & Credit Infrastructure"
+      ]
+    },
+    {
+      "slug": "tribapay",
+      "brand_name": "tribapay",
       "primary_category": "finance-app",
       "categories": [
         "finance-app",
         "fintech"
       ],
       "source_headings": [
-        "Digital Banks"
+        "Consumer Payment / Digital Wallet / Super App"
+      ]
+    },
+    {
+      "slug": "tribease",
+      "brand_name": "tribease",
+      "primary_category": "fintech",
+      "categories": [
+        "fintech",
+        "finance-app"
+      ],
+      "source_headings": [
+        "Spend Management / Merchant Solutions / BNPL & Loyalty"
+      ]
+    },
+    {
+      "slug": "tride",
+      "brand_name": "Tride",
+      "primary_category": "fintech",
+      "categories": [
+        "fintech",
+        "finance-app"
+      ],
+      "source_headings": [
+        "Spend Management / Merchant Solutions / BNPL & Loyalty"
       ]
     },
     {
       "slug": "trustbank",
-      "brand_name": "TrustBank",
+      "brand_name": "trustBank",
       "primary_category": "crypto-vasp",
       "categories": [
         "crypto-vasp",
         "fintech"
       ],
       "source_headings": [
-        "Crypto and Web3"
+        "Crypto & Web3"
       ]
     },
     {
@@ -3268,31 +3826,55 @@
         "fintech"
       ],
       "source_headings": [
-        "Crowdfunding, Agritech and Proptech"
+        "Crowdfunding, Agritech & Proptech"
+      ]
+    },
+    {
+      "slug": "trusted-transfers",
+      "brand_name": "Trusted Transfers",
+      "primary_category": "remittance-imto",
+      "categories": [
+        "remittance-imto",
+        "fintech"
+      ],
+      "source_headings": [
+        "FX / B2B & Cross-Border Payments / Remittances"
       ]
     },
     {
       "slug": "tsb-epay",
-      "brand_name": "TSB ePay",
+      "brand_name": "TSB-epay",
       "primary_category": "finance-app",
       "categories": [
         "finance-app",
         "fintech"
       ],
       "source_headings": [
-        "Consumer Payments, Digital Wallets and Super Apps"
+        "Consumer Payment / Digital Wallet / Super App"
       ]
     },
     {
       "slug": "ule-homes",
-      "brand_name": "ULE Homes",
+      "brand_name": "ULÉ HOMES",
       "primary_category": "crowdfunding-platform",
       "categories": [
         "crowdfunding-platform",
         "fintech"
       ],
       "source_headings": [
-        "Crowdfunding, Agritech and Proptech"
+        "Crowdfunding, Agritech & Proptech"
+      ]
+    },
+    {
+      "slug": "ultra",
+      "brand_name": "Ultra",
+      "primary_category": "crypto-vasp",
+      "categories": [
+        "crypto-vasp",
+        "fintech"
+      ],
+      "source_headings": [
+        "Crypto & Web3"
       ]
     },
     {
@@ -3304,7 +3886,20 @@
         "finance-app"
       ],
       "source_headings": [
-        "Spend Management, Merchant Solutions, BNPL and Loyalty"
+        "Spend Management / Merchant Solutions / BNPL & Loyalty"
+      ]
+    },
+    {
+      "slug": "up",
+      "brand_name": "UP",
+      "primary_category": "switching-processing",
+      "categories": [
+        "switching-processing",
+        "payment-solution-service-provider",
+        "fintech"
+      ],
+      "source_headings": [
+        "Payments Processing, Switching & Infrastructure"
       ]
     },
     {
@@ -3316,7 +3911,19 @@
         "fintech"
       ],
       "source_headings": [
-        "Consumer Payments, Digital Wallets and Super Apps"
+        "Consumer Payment / Digital Wallet / Super App"
+      ]
+    },
+    {
+      "slug": "veloremit",
+      "brand_name": "veloRemit",
+      "primary_category": "remittance-imto",
+      "categories": [
+        "remittance-imto",
+        "fintech"
+      ],
+      "source_headings": [
+        "FX / B2B & Cross-Border Payments / Remittances"
       ]
     },
     {
@@ -3328,19 +3935,31 @@
         "fintech"
       ],
       "source_headings": [
-        "Crowdfunding, Agritech and Proptech"
+        "Crowdfunding, Agritech & Proptech"
+      ]
+    },
+    {
+      "slug": "vend",
+      "brand_name": "Vend",
+      "primary_category": "digital-lender",
+      "categories": [
+        "digital-lender",
+        "fintech"
+      ],
+      "source_headings": [
+        "Digital Lenders & Credit Infrastructure"
       ]
     },
     {
       "slug": "vendex",
-      "brand_name": "Vendex",
+      "brand_name": "vendex",
       "primary_category": "fintech",
       "categories": [
         "fintech",
         "finance-app"
       ],
       "source_headings": [
-        "Spend Management, Merchant Solutions, BNPL and Loyalty"
+        "Spend Management / Merchant Solutions / BNPL & Loyalty"
       ]
     },
     {
@@ -3352,7 +3971,7 @@
         "payment-solution-service-provider"
       ],
       "source_headings": [
-        "Fintech Infrastructure, BaaS and TechFin"
+        "Fintech Infrastructure / BaaS / Tech-Fin"
       ]
     },
     {
@@ -3364,12 +3983,12 @@
         "fintech"
       ],
       "source_headings": [
-        "FX, B2B and Cross-Border Payments and Remittances"
+        "FX / B2B & Cross-Border Payments / Remittances"
       ]
     },
     {
       "slug": "vesicash",
-      "brand_name": "Vesicash",
+      "brand_name": "vesicash",
       "primary_category": "switching-processing",
       "categories": [
         "switching-processing",
@@ -3377,33 +3996,19 @@
         "fintech"
       ],
       "source_headings": [
-        "Payments Processing, Switching and Infrastructure"
+        "Payments Processing, Switching & Infrastructure"
       ]
     },
     {
-      "slug": "voleremit",
-      "brand_name": "VoleRemit",
+      "slug": "waza",
+      "brand_name": "Waza",
       "primary_category": "remittance-imto",
       "categories": [
         "remittance-imto",
         "fintech"
       ],
       "source_headings": [
-        "FX, B2B and Cross-Border Payments and Remittances"
-      ]
-    },
-    {
-      "slug": "waza",
-      "brand_name": "Waza",
-      "primary_category": "finance-app",
-      "categories": [
-        "finance-app",
-        "fintech",
-        "remittance-imto"
-      ],
-      "source_headings": [
-        "Digital Banks",
-        "FX, B2B and Cross-Border Payments and Remittances"
+        "FX / B2B & Cross-Border Payments / Remittances"
       ]
     },
     {
@@ -3416,19 +4021,7 @@
         "fintech"
       ],
       "source_headings": [
-        "Personal Finance, Wealth and Asset Management"
-      ]
-    },
-    {
-      "slug": "webtrecova",
-      "brand_name": "WebtRecova",
-      "primary_category": "digital-lender",
-      "categories": [
-        "digital-lender",
-        "fintech"
-      ],
-      "source_headings": [
-        "Digital Lenders and Credit Infrastructure"
+        "Personal Finance, Wealth & Asset Management"
       ]
     },
     {
@@ -3440,19 +4033,19 @@
         "fintech"
       ],
       "source_headings": [
-        "Crypto and Web3"
+        "Crypto & Web3"
       ]
     },
     {
       "slug": "wirepay",
-      "brand_name": "Wirepay",
+      "brand_name": "wirepay",
       "primary_category": "remittance-imto",
       "categories": [
         "remittance-imto",
         "fintech"
       ],
       "source_headings": [
-        "FX, B2B and Cross-Border Payments and Remittances"
+        "FX / B2B & Cross-Border Payments / Remittances"
       ]
     },
     {
@@ -3464,7 +4057,7 @@
         "payment-solution-service-provider"
       ],
       "source_headings": [
-        "Fintech Infrastructure, BaaS and TechFin"
+        "Fintech Infrastructure / BaaS / Tech-Fin"
       ]
     },
     {
@@ -3477,19 +4070,31 @@
         "fintech"
       ],
       "source_headings": [
-        "Payments Processing, Switching and Infrastructure"
+        "Payments Processing, Switching & Infrastructure"
       ]
     },
     {
-      "slug": "xedla",
-      "brand_name": "Xedla",
+      "slug": "wyowo",
+      "brand_name": "Wyowo",
+      "primary_category": "finance-app",
+      "categories": [
+        "finance-app",
+        "fintech"
+      ],
+      "source_headings": [
+        "Consumer Payment / Digital Wallet / Super App"
+      ]
+    },
+    {
+      "slug": "xelda",
+      "brand_name": "Xelda",
       "primary_category": "fintech",
       "categories": [
         "fintech",
         "finance-app"
       ],
       "source_headings": [
-        "Spend Management, Merchant Solutions, BNPL and Loyalty"
+        "Spend Management / Merchant Solutions / BNPL & Loyalty"
       ]
     },
     {
@@ -3501,7 +4106,7 @@
         "fintech"
       ],
       "source_headings": [
-        "Crypto and Web3"
+        "Crypto & Web3"
       ]
     },
     {
@@ -3513,12 +4118,24 @@
         "payment-solution-service-provider"
       ],
       "source_headings": [
-        "Fintech Infrastructure, BaaS and TechFin"
+        "Fintech Infrastructure / BaaS / Tech-Fin"
+      ]
+    },
+    {
+      "slug": "yunite",
+      "brand_name": "Yunite",
+      "primary_category": "finance-app",
+      "categories": [
+        "finance-app",
+        "fintech"
+      ],
+      "source_headings": [
+        "Digital Banks (Consumer & Business)"
       ]
     },
     {
       "slug": "zainpay",
-      "brand_name": "Zainpay",
+      "brand_name": "zainpay",
       "primary_category": "switching-processing",
       "categories": [
         "switching-processing",
@@ -3526,12 +4143,12 @@
         "fintech"
       ],
       "source_headings": [
-        "Payments Processing, Switching and Infrastructure"
+        "Payments Processing, Switching & Infrastructure"
       ]
     },
     {
-      "slug": "zaira",
-      "brand_name": "Zaira",
+      "slug": "zairaa",
+      "brand_name": "Zairaa",
       "primary_category": "finance-app",
       "categories": [
         "finance-app",
@@ -3539,7 +4156,7 @@
         "fintech"
       ],
       "source_headings": [
-        "Personal Finance, Wealth and Asset Management"
+        "Personal Finance, Wealth & Asset Management"
       ]
     },
     {
@@ -3551,19 +4168,32 @@
         "fintech"
       ],
       "source_headings": [
-        "FX, B2B and Cross-Border Payments and Remittances"
+        "FX / B2B & Cross-Border Payments / Remittances"
       ]
     },
     {
-      "slug": "zole",
-      "brand_name": "Zole",
+      "slug": "zoleapp",
+      "brand_name": "Zoleapp",
       "primary_category": "remittance-imto",
       "categories": [
         "remittance-imto",
         "fintech"
       ],
       "source_headings": [
-        "FX, B2B and Cross-Border Payments and Remittances"
+        "FX / B2B & Cross-Border Payments / Remittances"
+      ]
+    },
+    {
+      "slug": "zone",
+      "brand_name": "ZONE",
+      "primary_category": "switching-processing",
+      "categories": [
+        "switching-processing",
+        "payment-solution-service-provider",
+        "fintech"
+      ],
+      "source_headings": [
+        "Payments Processing, Switching & Infrastructure"
       ]
     },
     {
@@ -3575,7 +4205,7 @@
         "fintech"
       ],
       "source_headings": [
-        "Consumer Payments, Digital Wallets and Super Apps"
+        "Consumer Payment / Digital Wallet / Super App"
       ]
     }
   ]

@@ -36,14 +36,15 @@ import {
   X,
   type LucideIcon
 } from "lucide-react";
-import { usesDarkLogoPreview, type LogoFormatType } from "@awalogo/core";
+import { getCatalogLogoBadge, usesDarkLogoPreview, type LogoFormatType } from "@awalogo/core";
 import type { InstitutionCategory } from "@awalogo/institutions";
 import {
   availableInstitutionCategories,
   availableLogoCount,
   categoryLabel,
+  explorerCatalogItems,
   logoCatalogItems,
-  type LogoCatalogItem
+  type CatalogItem
 } from "./catalog-data";
 import { compareCatalogResults, searchScore, type CatalogSortDirection } from "./catalog-search";
 import { buildCompanyLogoSubmissionUrl } from "./logo-request";
@@ -198,7 +199,7 @@ const formatIcons: Record<LogoFormatType, LucideIcon> = {
 };
 const categoryCounts = new Map(availableInstitutionCategories.map((category) => [
   category,
-  logoCatalogItems.filter((item) => item.categories.includes(category)).length
+  explorerCatalogItems.filter((item) => item.categories.includes(category)).length
 ]));
 const availableFormatCount = new Set(logoCatalogItems.flatMap((item) =>
   item.logo.formats.map((format) => format.type)
@@ -209,6 +210,10 @@ const dateFormatter = new Intl.DateTimeFormat("en-NG", {
   year: "numeric",
   timeZone: "Africa/Lagos"
 });
+const latestLogoAddedAt = explorerCatalogItems.reduce((latest, item) => {
+  const addedAt = item.logo?.added_at;
+  return addedAt && addedAt > latest ? addedAt : latest;
+}, "");
 
 function formatDate(date: string) {
   return dateFormatter.format(new Date(`${date}T00:00:00+01:00`));
@@ -224,6 +229,17 @@ function getAvailableFormats(logo: LogoAsset) {
 
 function getCategorySummary(categories: InstitutionCategory[]) {
   return categories.map(categoryLabel).join(" · ");
+}
+
+function getInstitutionInitials(name: string) {
+  const words = name
+    .replace(/[^a-zA-Z0-9 ]+/g, " ")
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean)
+  if (words.length === 0) return "NG";
+  if (words.length === 1) return words[0].slice(0, 2).toUpperCase();
+  return `${words[0][0]}${words[1][0]}`.toUpperCase();
 }
 
 function previewUrl(logo: LogoAsset) {
@@ -295,7 +311,7 @@ export function CatalogApp({
   const [query, setQuery] = useState("");
   const [selectedCategories, setSelectedCategories] = useState<InstitutionCategory[]>([]);
   const [draftCategories, setDraftCategories] = useState<InstitutionCategory[]>([]);
-  const [selectedItem, setSelectedItem] = useState<LogoCatalogItem | null>(null);
+  const [selectedItem, setSelectedItem] = useState<CatalogItem | null>(null);
   const [selectedFormat, setSelectedFormat] = useState<LogoFormatType>("svg");
   const [pageSize, setPageSize] = useState<number>(DEFAULT_PAGE_SIZE);
   const [currentPage, setCurrentPage] = useState(1);
@@ -353,7 +369,7 @@ export function CatalogApp({
 
   useEffect(() => setCurrentPage(1), [selectedCategories, query, sortDirection, pageSize]);
 
-  const filteredItems = useMemo(() => logoCatalogItems
+  const filteredItems = useMemo(() => explorerCatalogItems
     .map((item) => ({ item, score: searchScore(item, query) }))
     .filter(({ item, score }) => {
       const categoryMatches = selectedCategories.length === 0 ||
@@ -427,8 +443,8 @@ export function CatalogApp({
     }
   }
 
-  function openDetails(item: LogoCatalogItem) {
-    setSelectedFormat(item.logo.formats[0]?.type ?? "png");
+  function openDetails(item: CatalogItem) {
+    setSelectedFormat(item.logo?.formats[0]?.type ?? "png");
     setSelectedItem(item);
   }
 
@@ -620,7 +636,7 @@ export function CatalogApp({
             >
               <LayoutGrid aria-hidden="true" size={15} strokeWidth={1.75} />
               <span>All categories</span>
-              <small>{availableLogoCount.toLocaleString("en-NG")}</small>
+              <small>{explorerCatalogItems.length.toLocaleString("en-NG")}</small>
               <span className="capsule-check">{pickerCategories.length === 0 ? <Check aria-hidden="true" size={13} /> : null}</span>
             </button>
             {availableInstitutionCategories.map((category) => {
@@ -656,7 +672,7 @@ export function CatalogApp({
       <div className="results-summary">
         <span aria-live="polite">{filteredItems.length.toLocaleString("en-NG")} {filteredItems.length === 1 ? "result" : "results"}</span>
         <div className="results-tools">
-          <span>{availableLogoCount.toLocaleString("en-NG")} logo-linked institutions</span>
+          <span>{availableLogoCount.toLocaleString("en-NG")} available logos</span>
           <div className="sort-control" role="group" aria-label="Sort institutions alphabetically">
             <button
               className={sortDirection === "asc" ? "active" : ""}
@@ -698,26 +714,34 @@ export function CatalogApp({
           <section className="logo-grid" aria-label="Financial institutions">
             {visibleItems.map((item, index) => {
               const { logo, displayName, categories } = item;
+              const logoBadge = getCatalogLogoBadge(logo, latestLogoAddedAt);
               return (
                 <button
-                  className="logo-tile"
+                  className={`logo-tile${logo ? "" : " logo-pending"}${logoBadge ? ` logo-${logoBadge}` : ""}`}
                   key={item.institution.slug}
                   type="button"
                   onClick={() => openDetails(item)}
                   style={{ animationDelay: `${(index % 12) * 30}ms` }}
-                  aria-label={`View ${displayName} details`}
+                  aria-label={`View ${displayName} details${logoBadge === "unverified" ? ", unverified logo" : logoBadge === "new" ? ", newly added logo" : ""}`}
                   title={pluginMode ? displayName : undefined}
                 >
-                  <span className={`tile-preview${usesDarkLogoPreview(logo.slug) ? " logo-preview-dark" : ""}`}>
-                    <img src={previewUrl(logo)} alt="" />
+                  <span className={`tile-preview${logo && usesDarkLogoPreview(logo.slug) ? " logo-preview-dark" : ""}`}>
+                    {logoBadge === "unverified" ? <span className="unverified-tag" aria-hidden="true">Unverified</span> : null}
+                    {logoBadge === "new" ? <span className="new-tag" aria-hidden="true">New</span> : null}
+                    {logo ? <img src={previewUrl(logo)} alt="" /> : (
+                      <span className="pending-preview" aria-hidden="true">
+                        <span className="pending-monogram">{getInstitutionInitials(displayName)}</span>
+                        <span>Awaiting verified asset</span>
+                      </span>
+                    )}
                   </span>
                   <span className="tile-copy">
                     <strong>{displayName}</strong>
                   </span>
                   <span className="tile-meta">
-                    <span>{getAvailableFormats(logo)}</span>
-                    <time dateTime={logo.added_at}>
-                      {formatDate(logo.added_at)}
+                    <span className={logo ? "" : "pending-badge"}>{logo ? getAvailableFormats(logo) : "Asset pending"}</span>
+                    <time dateTime={logo?.added_at ?? item.institution.added_at}>
+                      {formatDate(logo?.added_at ?? item.institution.added_at)}
                     </time>
                   </span>
                 </button>
@@ -806,6 +830,11 @@ export function CatalogApp({
           onCopy={copyLogo}
           onDownload={downloadLogo}
           onInsert={insertLogo}
+          onRequest={() => {
+            setQuery(selectedItem.displayName);
+            setSelectedItem(null);
+            setProjectPanel("request");
+          }}
         />
       ) : null}
 
@@ -1384,9 +1413,10 @@ function DetailSheet({
   onFormatChange,
   onCopy,
   onDownload,
-  onInsert
+  onInsert,
+  onRequest
 }: {
-  item: LogoCatalogItem;
+  item: CatalogItem;
   selectedFormat: LogoFormatType;
   pluginMode: boolean;
   onClose: () => void;
@@ -1394,12 +1424,61 @@ function DetailSheet({
   onCopy: (logo: LogoAsset, format: LogoFormatType, dimensions?: LogoDimensions) => void;
   onDownload: (logo: LogoAsset, format: LogoFormatType) => void;
   onInsert: (logo: LogoAsset, format: LogoFormatType, dimensions: LogoDimensions) => void;
+  onRequest: () => void;
 }) {
   const { logo, displayName, categories } = item;
   const [selectedVariationId, setSelectedVariationId] = useState("primary");
   const [dimensions, setDimensions] = useState<LogoDimensions>({ width: 512, height: 512 });
   const [aspectRatio, setAspectRatio] = useState(1);
   const [aspectLocked, setAspectLocked] = useState(true);
+  if (!logo) {
+    const institutionSource = item.institution.sources[0]?.url;
+    return (
+      <div className="detail-backdrop" onMouseDown={onClose}>
+        <aside className="detail-sheet" aria-label={`${displayName} details`} onMouseDown={(event) => event.stopPropagation()}>
+          <div className="sheet-handle" aria-hidden="true" />
+          <header className="detail-header">
+            <div>
+              <span className="verified-label pending"><span aria-hidden="true" /> Asset pending</span>
+              <h2>{displayName}</h2>
+              <p>{getCategorySummary(categories)}</p>
+            </div>
+            <button className="close-button" type="button" onClick={onClose} aria-label="Close details" title="Close">×</button>
+          </header>
+
+          <div className="detail-media pending-detail-media">
+            <div className="detail-preview pending-detail-preview">
+              <span className="pending-monogram large" aria-hidden="true">{getInstitutionInitials(displayName)}</span>
+              <span>Awaiting a verified official source</span>
+            </div>
+          </div>
+
+          <dl className="detail-facts">
+            <div>
+              <dt>Logo status</dt>
+              <dd>Pending verified asset</dd>
+            </div>
+            <div>
+              <dt>Institution added</dt>
+              <dd>{formatDate(item.institution.added_at)}</dd>
+            </div>
+            {institutionSource ? (
+              <div className="source-row">
+                <dt>Institution source</dt>
+                <dd><a href={institutionSource} target="_blank" rel="noreferrer">{getSourceDomain(institutionSource)}</a></dd>
+              </div>
+            ) : null}
+          </dl>
+
+          <div className="detail-actions single">
+            <button className="insert-button" type="button" onClick={onRequest}>
+              <MessageSquarePlus aria-hidden="true" size={15} strokeWidth={1.8} /> Request verified logo
+            </button>
+          </div>
+        </aside>
+      </div>
+    );
+  }
   const websiteUrl = logo.website;
   const variationAssets: Array<{ id: string; label: string; asset: LogoAsset }> = [
     {
@@ -1489,7 +1568,7 @@ function DetailSheet({
         <header className="detail-header">
           <div>
             <span className={`verified-label${logo.status === "verified" ? "" : " community"}`}>
-              <span aria-hidden="true" /> {logo.status === "verified" ? "Verified source" : logo.status === "deprecated" ? "Deprecated asset" : "Community source"}
+              <span aria-hidden="true" /> {logo.status === "verified" ? "Verified source" : logo.status === "deprecated" ? "Deprecated asset" : "Unverified"}
             </span>
             <h2>{displayName}</h2>
             <p>{getCategorySummary(categories)}</p>

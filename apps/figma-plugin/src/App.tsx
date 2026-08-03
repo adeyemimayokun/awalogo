@@ -39,13 +39,13 @@ import {
   X,
   type LucideIcon
 } from "lucide-react";
-import { usesDarkLogoPreview, type LogoFormatType } from "@awalogo/core";
+import { getCatalogLogoBadge, usesDarkLogoPreview, type LogoFormatType } from "@awalogo/core";
 import type { InstitutionCategory } from "@awalogo/institutions";
 import {
   availableInstitutionCategories,
   availableLogoCount,
   categoryLabel,
-  logoCatalogItems,
+  explorerCatalogItems,
   type CatalogItem
 } from "./catalog-data";
 import { searchScore } from "./catalog-search";
@@ -91,7 +91,7 @@ const formatIcons: Record<LogoFormatType, LucideIcon> = {
 };
 const categoryCounts = new Map(availableInstitutionCategories.map((category) => [
   category,
-  logoCatalogItems.filter((item) => item.categories.includes(category)).length
+  explorerCatalogItems.filter((item) => item.categories.includes(category)).length
 ]));
 const dateFormatter = new Intl.DateTimeFormat("en-NG", {
   day: "numeric",
@@ -99,6 +99,10 @@ const dateFormatter = new Intl.DateTimeFormat("en-NG", {
   year: "numeric",
   timeZone: "Africa/Lagos"
 });
+const latestLogoAddedAt = explorerCatalogItems.reduce((latest, item) => {
+  const addedAt = item.logo?.added_at;
+  return addedAt && addedAt > latest ? addedAt : latest;
+}, "");
 
 function formatDate(date: string) {
   return dateFormatter.format(new Date(`${date}T00:00:00+01:00`));
@@ -259,7 +263,7 @@ function App() {
 
   useEffect(() => setVisibleLimit(PAGE_SIZE), [selectedCategories, query]);
 
-  const filteredItems = useMemo(() => logoCatalogItems
+  const filteredItems = useMemo(() => explorerCatalogItems
     .map((item) => ({ item, score: searchScore(item, query) }))
     .filter(({ item, score }) => {
       const categoryMatches = selectedCategories.length === 0 ||
@@ -278,7 +282,7 @@ function App() {
         .includes(normalizedQuery))
       : availableInstitutionCategories;
   }, [categoryQuery]);
-  const draftResultCount = useMemo(() => logoCatalogItems.filter((item) => {
+  const draftResultCount = useMemo(() => explorerCatalogItems.filter((item) => {
     const categoryMatches = draftCategories.length === 0 ||
       draftCategories.some((category) => item.categories.includes(category));
     return categoryMatches && Number.isFinite(searchScore(item, query));
@@ -568,7 +572,7 @@ function App() {
                     >
                       <LayoutGrid aria-hidden="true" size={16} strokeWidth={1.75} />
                       <span>All categories</span>
-                      <small>{availableLogoCount.toLocaleString("en-NG")}</small>
+                      <small>{explorerCatalogItems.length.toLocaleString("en-NG")}</small>
                       <span className="category-option-check" aria-hidden="true">
                         {draftCategories.length === 0 ? <Check size={14} strokeWidth={2} /> : null}
                       </span>
@@ -624,7 +628,7 @@ function App() {
 
       <div className="results-summary" id="catalog-results" aria-live="polite">
         <span>{filteredItems.length.toLocaleString("en-NG")} {filteredItems.length === 1 ? "result" : "results"}</span>
-        <span>{availableLogoCount.toLocaleString("en-NG")} logo-linked institutions</span>
+        <span>{availableLogoCount.toLocaleString("en-NG")} available logos</span>
       </div>
 
       {filteredItems.length === 0 ? (
@@ -641,16 +645,19 @@ function App() {
           <section className="logo-grid" aria-label="Financial institutions">
             {visibleItems.map((item, index) => {
               const { logo, displayName, categories } = item;
+              const logoBadge = getCatalogLogoBadge(logo, latestLogoAddedAt);
               return (
                 <button
-                  className={`logo-tile${logo ? "" : " logo-pending"}`}
+                  className={`logo-tile${logo ? "" : " logo-pending"}${logoBadge ? ` logo-${logoBadge}` : ""}`}
                   key={item.institution.slug}
                   type="button"
                   onClick={() => openDetails(item)}
                   style={{ animationDelay: `${(index % 12) * 30}ms` }}
-                  aria-label={`View ${displayName} details`}
+                  aria-label={`View ${displayName} details${logoBadge === "unverified" ? ", unverified logo" : logoBadge === "new" ? ", newly added logo" : ""}`}
                 >
                   <span className={`tile-preview${logo && usesDarkLogoPreview(logo.slug) ? " logo-preview-dark" : ""}`}>
+                    {logoBadge === "unverified" ? <span className="unverified-tag" aria-hidden="true">Unverified</span> : null}
+                    {logoBadge === "new" ? <span className="new-tag" aria-hidden="true">New</span> : null}
                     {logo ? <img src={previewUrl(logo)} alt="" /> : (
                       <span className="pending-preview" aria-hidden="true">
                         <span className="pending-monogram">{getInstitutionInitials(displayName)}</span>
@@ -1348,7 +1355,7 @@ function DetailSheet({
         <header className="detail-header">
           <div>
             <span className={`verified-label${logo.status === "verified" ? "" : " community"}`}>
-              <span aria-hidden="true" /> {logo.status === "verified" ? "Verified source" : logo.status === "deprecated" ? "Deprecated asset" : "Community source"}
+              <span aria-hidden="true" /> {logo.status === "verified" ? "Verified source" : logo.status === "deprecated" ? "Deprecated asset" : "Unverified"}
             </span>
             <h2>{displayName}</h2>
             <p>{getCategorySummary(categories)}</p>

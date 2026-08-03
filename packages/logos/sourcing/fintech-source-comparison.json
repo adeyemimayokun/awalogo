@@ -1,0 +1,2311 @@
+{
+  "snapshot_date": "2026-08-02",
+  "source_entries": 392,
+  "unique_source_names": 392,
+  "available_count": 52,
+  "missing_count": 340,
+  "available": [
+    {
+      "source_name": "9 Payment Service Bank",
+      "institution_slug": "9-payment-service-bank",
+      "logo_slug": "9-payment-service-bank"
+    },
+    {
+      "source_name": "aella",
+      "institution_slug": "aella-financial-solutions",
+      "logo_slug": "aella-financial-solutions"
+    },
+    {
+      "source_name": "ALAT",
+      "institution_slug": "alat-by-wema",
+      "logo_slug": "alat-by-wema"
+    },
+    {
+      "source_name": "Bamboo",
+      "institution_slug": "bamboo-system-technology",
+      "logo_slug": "bamboo-system-technology"
+    },
+    {
+      "source_name": "branch",
+      "institution_slug": "branch-international-financial",
+      "logo_slug": "branch-international-financial"
+    },
+    {
+      "source_name": "Brass",
+      "institution_slug": "brass",
+      "logo_slug": "brass"
+    },
+    {
+      "source_name": "Busha",
+      "institution_slug": "busha-digital",
+      "logo_slug": "busha-digital"
+    },
+    {
+      "source_name": "Carbon",
+      "institution_slug": "carbon-microfinance-bank",
+      "logo_slug": "carbon-microfinance-bank"
+    },
+    {
+      "source_name": "Cowrywise",
+      "institution_slug": "cowrywise-financial-technology",
+      "logo_slug": "cowrywise-financial-technology"
+    },
+    {
+      "source_name": "CredPal",
+      "institution_slug": "crednet-technologies",
+      "logo_slug": "crednet-technologies"
+    },
+    {
+      "source_name": "errandpay",
+      "institution_slug": "errandpay",
+      "logo_slug": "errandpay"
+    },
+    {
+      "source_name": "Fairmoney",
+      "institution_slug": "fairmoney-microfinance-bank",
+      "logo_slug": "fairmoney-microfinance-bank"
+    },
+    {
+      "source_name": "Fincra",
+      "institution_slug": "fincra-technologies",
+      "logo_slug": "fincra-technologies"
+    },
+    {
+      "source_name": "Fintellia",
+      "institution_slug": "fintellia",
+      "logo_slug": "fintellia"
+    },
+    {
+      "source_name": "Flutterwave",
+      "institution_slug": "flutterwave",
+      "logo_slug": "flutterwave"
+    },
+    {
+      "source_name": "Grey",
+      "institution_slug": "grey",
+      "logo_slug": "grey"
+    },
+    {
+      "source_name": "Hope Payment Service Bank",
+      "institution_slug": "hope-payment-service-bank",
+      "logo_slug": "hope-payment-service-bank"
+    },
+    {
+      "source_name": "I-invest",
+      "institution_slug": "i-invest",
+      "logo_slug": "i-invest"
+    },
+    {
+      "source_name": "indicina",
+      "institution_slug": "indicina",
+      "logo_slug": "indicina"
+    },
+    {
+      "source_name": "Interswitch",
+      "institution_slug": "interswitch",
+      "logo_slug": "interswitch"
+    },
+    {
+      "source_name": "Kiakia",
+      "institution_slug": "kiakia-bits",
+      "logo_slug": "kiakia-bits"
+    },
+    {
+      "source_name": "Kora",
+      "institution_slug": "kora-payments",
+      "logo_slug": "kora-payments"
+    },
+    {
+      "source_name": "Kuda MFB",
+      "institution_slug": "kuda-microfinance-bank",
+      "logo_slug": "kuda-microfinance-bank"
+    },
+    {
+      "source_name": "MINTYN",
+      "institution_slug": "mint-finex-microfinance-bank",
+      "logo_slug": "mint-finex-microfinance-bank"
+    },
+    {
+      "source_name": "Momo",
+      "institution_slug": "momo-payment-service-bank",
+      "logo_slug": "momo-payment-service-bank"
+    },
+    {
+      "source_name": "Moniepoint",
+      "institution_slug": "moniepoint-microfinance-bank",
+      "logo_slug": "moniepoint"
+    },
+    {
+      "source_name": "monify",
+      "institution_slug": "monnify",
+      "logo_slug": "monnify"
+    },
+    {
+      "source_name": "Mono",
+      "institution_slug": "mono",
+      "logo_slug": "mono"
+    },
+    {
+      "source_name": "onafriq",
+      "institution_slug": "onafriq",
+      "logo_slug": "onafriq"
+    },
+    {
+      "source_name": "OnePipe",
+      "institution_slug": "onepipe-io-services",
+      "logo_slug": "onepipe-io-services"
+    },
+    {
+      "source_name": "opay",
+      "institution_slug": "opay-digital-services",
+      "logo_slug": "opay"
+    },
+    {
+      "source_name": "Optimus",
+      "institution_slug": "optimus-by-afrinvest",
+      "logo_slug": "optimus-by-afrinvest"
+    },
+    {
+      "source_name": "Paga",
+      "institution_slug": "paga",
+      "logo_slug": "paga"
+    },
+    {
+      "source_name": "Page",
+      "institution_slug": "paga",
+      "logo_slug": "paga"
+    },
+    {
+      "source_name": "Palmpay",
+      "institution_slug": "palmpay",
+      "logo_slug": "palmpay"
+    },
+    {
+      "source_name": "pawaPay",
+      "institution_slug": "pawapay",
+      "logo_slug": "pawapay"
+    },
+    {
+      "source_name": "Paystack",
+      "institution_slug": "paystack-payment",
+      "logo_slug": "paystack-payment"
+    },
+    {
+      "source_name": "Piggyvest",
+      "institution_slug": "piggyvest",
+      "logo_slug": "piggyvest"
+    },
+    {
+      "source_name": "Pocket app",
+      "institution_slug": "abeg-technologies",
+      "logo_slug": "abeg-technologies"
+    },
+    {
+      "source_name": "Quickteller",
+      "institution_slug": "xtra-mfs",
+      "logo_slug": "quickteller"
+    },
+    {
+      "source_name": "Quidax",
+      "institution_slug": "quidax-technologies",
+      "logo_slug": "quidax-technologies"
+    },
+    {
+      "source_name": "Reliance HMO",
+      "institution_slug": "reliance-hmo",
+      "logo_slug": "reliance-hmo"
+    },
+    {
+      "source_name": "remita",
+      "institution_slug": "remita-payment-service",
+      "logo_slug": "remita-payment-service"
+    },
+    {
+      "source_name": "Rise",
+      "institution_slug": "risevest",
+      "logo_slug": "risevest"
+    },
+    {
+      "source_name": "Sparkle",
+      "institution_slug": "sparkle-microfinance-bank",
+      "logo_slug": "sparkle-microfinance-bank"
+    },
+    {
+      "source_name": "Sterling",
+      "institution_slug": "sterling-bank",
+      "logo_slug": "sterling-bank"
+    },
+    {
+      "source_name": "Sycamore",
+      "institution_slug": "sycamore-integrated-solutions",
+      "logo_slug": "sycamore-integrated-solutions"
+    },
+    {
+      "source_name": "Trove",
+      "institution_slug": "trove-finance",
+      "logo_slug": "trove-finance"
+    },
+    {
+      "source_name": "VFD",
+      "institution_slug": "vfd-microfinance-bank",
+      "logo_slug": "vfd-microfinance-bank"
+    },
+    {
+      "source_name": "YellowCard",
+      "institution_slug": "yellowcard",
+      "logo_slug": "yellowcard"
+    },
+    {
+      "source_name": "Youverify",
+      "institution_slug": "youverify",
+      "logo_slug": "youverify"
+    },
+    {
+      "source_name": "Zap",
+      "institution_slug": "zap",
+      "logo_slug": "zap"
+    }
+  ],
+  "missing": [
+    {
+      "source_name": "-$udo",
+      "source_category": "Fintech Infrastructure / BaaS / Tech-Fin",
+      "institution_slug": "udo",
+      "release_batch": 1
+    },
+    {
+      "source_name": "3Line",
+      "source_category": "Fintech Infrastructure / BaaS / Tech-Fin",
+      "institution_slug": "3line-card-management",
+      "release_batch": 1
+    },
+    {
+      "source_name": "Accelerex",
+      "source_category": "Payments Processing, Switching & Infrastructure",
+      "institution_slug": "global-accelerex",
+      "release_batch": 1
+    },
+    {
+      "source_name": "advansio",
+      "source_category": "Fintech Infrastructure / BaaS / Tech-Fin",
+      "institution_slug": "advansio",
+      "release_batch": 1
+    },
+    {
+      "source_name": "AjoCard",
+      "source_category": "Mobile Money / PUB / Agency & Informal Banking",
+      "institution_slug": "ajocard",
+      "release_batch": 1
+    },
+    {
+      "source_name": "Akilaah",
+      "source_category": "Mobile Money / PUB / Agency & Informal Banking",
+      "institution_slug": "akilaah-solution",
+      "release_batch": 1
+    },
+    {
+      "source_name": "Alawee",
+      "source_category": "Fintech Infrastructure / BaaS / Tech-Fin",
+      "institution_slug": "alawee",
+      "release_batch": 1
+    },
+    {
+      "source_name": "Anchor",
+      "source_category": "Fintech Infrastructure / BaaS / Tech-Fin",
+      "institution_slug": "anchor",
+      "release_batch": 1
+    },
+    {
+      "source_name": "arca",
+      "source_category": "Payments Processing, Switching & Infrastructure",
+      "institution_slug": "arca-payments-company",
+      "release_batch": 1
+    },
+    {
+      "source_name": "bloc",
+      "source_category": "Fintech Infrastructure / BaaS / Tech-Fin",
+      "institution_slug": "bloc",
+      "release_batch": 1
+    },
+    {
+      "source_name": "Bluum",
+      "source_category": "Fintech Infrastructure / BaaS / Tech-Fin",
+      "institution_slug": "bluum",
+      "release_batch": 1
+    },
+    {
+      "source_name": "C24",
+      "source_category": "Payments Processing, Switching & Infrastructure",
+      "institution_slug": "c24",
+      "release_batch": 1
+    },
+    {
+      "source_name": "CardForte",
+      "source_category": "Payments Processing, Switching & Infrastructure",
+      "institution_slug": "cardforte",
+      "release_batch": 1
+    },
+    {
+      "source_name": "cashbuddy",
+      "source_category": "Payments Processing, Switching & Infrastructure",
+      "institution_slug": "cashbuddy",
+      "release_batch": 1
+    },
+    {
+      "source_name": "Cellulant",
+      "source_category": "Payments Processing, Switching & Infrastructure",
+      "institution_slug": "cellulant",
+      "release_batch": 1
+    },
+    {
+      "source_name": "Centric",
+      "source_category": "Payments Processing, Switching & Infrastructure",
+      "institution_slug": "centric",
+      "release_batch": 1
+    },
+    {
+      "source_name": "Clane",
+      "source_category": "Payments Processing, Switching & Infrastructure",
+      "institution_slug": "clane",
+      "release_batch": 1
+    },
+    {
+      "source_name": "CoralPay",
+      "source_category": "Payments Processing, Switching & Infrastructure",
+      "institution_slug": "coralpay",
+      "release_batch": 1
+    },
+    {
+      "source_name": "Digicore",
+      "source_category": "Fintech Infrastructure / BaaS / Tech-Fin",
+      "institution_slug": "digicore",
+      "release_batch": 1
+    },
+    {
+      "source_name": "Dojah",
+      "source_category": "Fintech Infrastructure / BaaS / Tech-Fin",
+      "institution_slug": "dojah",
+      "release_batch": 1
+    },
+    {
+      "source_name": "DOT",
+      "source_category": "Payments Processing, Switching & Infrastructure",
+      "institution_slug": "dot",
+      "release_batch": 1
+    },
+    {
+      "source_name": "E-Settlement",
+      "source_category": "Payments Processing, Switching & Infrastructure",
+      "institution_slug": "e-settlement",
+      "release_batch": 1
+    },
+    {
+      "source_name": "eTOP",
+      "source_category": "Payments Processing, Switching & Infrastructure",
+      "institution_slug": "etop",
+      "release_batch": 1
+    },
+    {
+      "source_name": "etransact",
+      "source_category": "Payments Processing, Switching & Infrastructure",
+      "institution_slug": "etransact",
+      "release_batch": 1
+    },
+    {
+      "source_name": "FaziPay",
+      "source_category": "Mobile Money / PUB / Agency & Informal Banking",
+      "institution_slug": "fazipay",
+      "release_batch": 1
+    },
+    {
+      "source_name": "Fetswallet",
+      "source_category": "Mobile Money / PUB / Agency & Informal Banking",
+      "institution_slug": "fetswallet",
+      "release_batch": 1
+    },
+    {
+      "source_name": "Fintava",
+      "source_category": "Fintech Infrastructure / BaaS / Tech-Fin",
+      "institution_slug": "fintava",
+      "release_batch": 1
+    },
+    {
+      "source_name": "Flick",
+      "source_category": "Fintech Infrastructure / BaaS / Tech-Fin",
+      "institution_slug": "flick",
+      "release_batch": 1
+    },
+    {
+      "source_name": "Gigmile",
+      "source_category": "Mobile Money / PUB / Agency & Informal Banking",
+      "institution_slug": "gigmile",
+      "release_batch": 1
+    },
+    {
+      "source_name": "GreenPay",
+      "source_category": "Payments Processing, Switching & Infrastructure",
+      "institution_slug": "greenpay",
+      "release_batch": 1
+    },
+    {
+      "source_name": "Grupp",
+      "source_category": "Fintech Infrastructure / BaaS / Tech-Fin",
+      "institution_slug": "grupp",
+      "release_batch": 1
+    },
+    {
+      "source_name": "Hyves",
+      "source_category": "Mobile Money / PUB / Agency & Informal Banking",
+      "institution_slug": "hyves",
+      "release_batch": 1
+    },
+    {
+      "source_name": "Ikript",
+      "source_category": "Fintech Infrastructure / BaaS / Tech-Fin",
+      "institution_slug": "ikript",
+      "release_batch": 1
+    },
+    {
+      "source_name": "Inlaks",
+      "source_category": "Fintech Infrastructure / BaaS / Tech-Fin",
+      "institution_slug": "inlaks",
+      "release_batch": 1
+    },
+    {
+      "source_name": "Invectives",
+      "source_category": "Fintech Infrastructure / BaaS / Tech-Fin",
+      "institution_slug": "invectives",
+      "release_batch": 1
+    },
+    {
+      "source_name": "itex",
+      "source_category": "Payments Processing, Switching & Infrastructure",
+      "institution_slug": "itex-integrated-services",
+      "release_batch": 1
+    },
+    {
+      "source_name": "Kolomoni",
+      "source_category": "Mobile Money / PUB / Agency & Informal Banking",
+      "institution_slug": "kolomoni",
+      "release_batch": 1
+    },
+    {
+      "source_name": "lopsim",
+      "source_category": "Fintech Infrastructure / BaaS / Tech-Fin",
+      "institution_slug": "lopsim",
+      "release_batch": 1
+    },
+    {
+      "source_name": "Maplerad",
+      "source_category": "Fintech Infrastructure / BaaS / Tech-Fin",
+      "institution_slug": "maplerad",
+      "release_batch": 1
+    },
+    {
+      "source_name": "Moneymaster payment service bank ltd.",
+      "source_category": "Mobile Money / PUB / Agency & Informal Banking",
+      "institution_slug": "moneymaster-payment-service-bank",
+      "release_batch": 1
+    },
+    {
+      "source_name": "on.us",
+      "source_category": "Payments Processing, Switching & Infrastructure",
+      "institution_slug": "on-us",
+      "release_batch": 1
+    },
+    {
+      "source_name": "Pagaengine",
+      "source_category": "Fintech Infrastructure / BaaS / Tech-Fin",
+      "institution_slug": "pagaengine",
+      "release_batch": 1
+    },
+    {
+      "source_name": "Passpoint",
+      "source_category": "Fintech Infrastructure / BaaS / Tech-Fin",
+      "institution_slug": "passpoint",
+      "release_batch": 1
+    },
+    {
+      "source_name": "Payaza",
+      "source_category": "Payments Processing, Switching & Infrastructure",
+      "institution_slug": "payaza-africa",
+      "release_batch": 1
+    },
+    {
+      "source_name": "Payhive",
+      "source_category": "Mobile Money / PUB / Agency & Informal Banking",
+      "institution_slug": "payhive",
+      "release_batch": 1
+    },
+    {
+      "source_name": "PayU GPO",
+      "source_category": "Payments Processing, Switching & Infrastructure",
+      "institution_slug": "payu-gpo",
+      "release_batch": 1
+    },
+    {
+      "source_name": "Prembly",
+      "source_category": "Fintech Infrastructure / BaaS / Tech-Fin",
+      "institution_slug": "prembly",
+      "release_batch": 1
+    },
+    {
+      "source_name": "Press",
+      "source_category": "Payments Processing, Switching & Infrastructure",
+      "institution_slug": "press",
+      "release_batch": 1
+    },
+    {
+      "source_name": "Qore",
+      "source_category": "Fintech Infrastructure / BaaS / Tech-Fin",
+      "institution_slug": "qore",
+      "release_batch": 1
+    },
+    {
+      "source_name": "QorePay",
+      "source_category": "Payments Processing, Switching & Infrastructure",
+      "institution_slug": "qorepay",
+      "release_batch": 1
+    },
+    {
+      "source_name": "Qrios",
+      "source_category": "Fintech Infrastructure / BaaS / Tech-Fin",
+      "institution_slug": "qrios-networks",
+      "release_batch": 1
+    },
+    {
+      "source_name": "Readycash by parkway",
+      "source_category": "Mobile Money / PUB / Agency & Informal Banking",
+      "institution_slug": "readycash-by-parkway",
+      "release_batch": 1
+    },
+    {
+      "source_name": "Riby",
+      "source_category": "Mobile Money / PUB / Agency & Informal Banking",
+      "institution_slug": "riby",
+      "release_batch": 1
+    },
+    {
+      "source_name": "Seamfix",
+      "source_category": "Fintech Infrastructure / BaaS / Tech-Fin",
+      "institution_slug": "seamfix",
+      "release_batch": 1
+    },
+    {
+      "source_name": "SEERBIT",
+      "source_category": "Payments Processing, Switching & Infrastructure",
+      "institution_slug": "seerbit",
+      "release_batch": 1
+    },
+    {
+      "source_name": "SmartTeller",
+      "source_category": "Mobile Money / PUB / Agency & Informal Banking",
+      "institution_slug": "smartteller",
+      "release_batch": 1
+    },
+    {
+      "source_name": "SoftPAY",
+      "source_category": "Payments Processing, Switching & Infrastructure",
+      "institution_slug": "softpay",
+      "release_batch": 1
+    },
+    {
+      "source_name": "Softway Finance",
+      "source_category": "Mobile Money / PUB / Agency & Informal Banking",
+      "institution_slug": "softway-finance",
+      "release_batch": 1
+    },
+    {
+      "source_name": "Toju",
+      "source_category": "Mobile Money / PUB / Agency & Informal Banking",
+      "institution_slug": "toju",
+      "release_batch": 1
+    },
+    {
+      "source_name": "UP",
+      "source_category": "Payments Processing, Switching & Infrastructure",
+      "institution_slug": "up",
+      "release_batch": 1
+    },
+    {
+      "source_name": "VerifyMe",
+      "source_category": "Fintech Infrastructure / BaaS / Tech-Fin",
+      "institution_slug": "verifyme",
+      "release_batch": 1
+    },
+    {
+      "source_name": "vesicash",
+      "source_category": "Payments Processing, Switching & Infrastructure",
+      "institution_slug": "vesicash",
+      "release_batch": 1
+    },
+    {
+      "source_name": "Woodcore",
+      "source_category": "Fintech Infrastructure / BaaS / Tech-Fin",
+      "institution_slug": "woodcore",
+      "release_batch": 1
+    },
+    {
+      "source_name": "Woven",
+      "source_category": "Payments Processing, Switching & Infrastructure",
+      "institution_slug": "woven",
+      "release_batch": 1
+    },
+    {
+      "source_name": "zainpay",
+      "source_category": "Payments Processing, Switching & Infrastructure",
+      "institution_slug": "zainpay",
+      "release_batch": 1
+    },
+    {
+      "source_name": "ZEST",
+      "source_category": "Payments Processing, Switching & Infrastructure",
+      "institution_slug": "zest-payments-limited-stanbic-financial-services-limited",
+      "release_batch": 1
+    },
+    {
+      "source_name": "ZONE",
+      "source_category": "Payments Processing, Switching & Infrastructure",
+      "institution_slug": "zone",
+      "release_batch": 1
+    },
+    {
+      "source_name": "Afribenki",
+      "source_category": "Consumer Payment / Digital Wallet / Super App",
+      "institution_slug": "afribenki",
+      "release_batch": 2
+    },
+    {
+      "source_name": "Aku",
+      "source_category": "Digital Banks (Consumer & Business)",
+      "institution_slug": "aku",
+      "release_batch": 2
+    },
+    {
+      "source_name": "alerzo",
+      "source_category": "Spend Management / Merchant Solutions / BNPL & Loyalty",
+      "institution_slug": "alerzo",
+      "release_batch": 2
+    },
+    {
+      "source_name": "Arobo",
+      "source_category": "Spend Management / Merchant Solutions / BNPL & Loyalty",
+      "institution_slug": "arobo",
+      "release_batch": 2
+    },
+    {
+      "source_name": "Asewallet",
+      "source_category": "Consumer Payment / Digital Wallet / Super App",
+      "institution_slug": "asewallet",
+      "release_batch": 2
+    },
+    {
+      "source_name": "Autospend",
+      "source_category": "Spend Management / Merchant Solutions / BNPL & Loyalty",
+      "institution_slug": "autospend",
+      "release_batch": 2
+    },
+    {
+      "source_name": "Bankoto",
+      "source_category": "Spend Management / Merchant Solutions / BNPL & Loyalty",
+      "institution_slug": "bankoto",
+      "release_batch": 2
+    },
+    {
+      "source_name": "BilmaPay",
+      "source_category": "Consumer Payment / Digital Wallet / Super App",
+      "institution_slug": "bilmapay",
+      "release_batch": 2
+    },
+    {
+      "source_name": "BizFlex",
+      "source_category": "Spend Management / Merchant Solutions / BNPL & Loyalty",
+      "institution_slug": "bizflex",
+      "release_batch": 2
+    },
+    {
+      "source_name": "Bizspend",
+      "source_category": "Spend Management / Merchant Solutions / BNPL & Loyalty",
+      "institution_slug": "bizspend",
+      "release_batch": 2
+    },
+    {
+      "source_name": "Boldswitch",
+      "source_category": "Consumer Payment / Digital Wallet / Super App",
+      "institution_slug": "boldswitch",
+      "release_batch": 2
+    },
+    {
+      "source_name": "Bountip",
+      "source_category": "Spend Management / Merchant Solutions / BNPL & Loyalty",
+      "institution_slug": "bountip",
+      "release_batch": 2
+    },
+    {
+      "source_name": "Browpay",
+      "source_category": "Spend Management / Merchant Solutions / BNPL & Loyalty",
+      "institution_slug": "browpay",
+      "release_batch": 2
+    },
+    {
+      "source_name": "Bujeti",
+      "source_category": "Spend Management / Merchant Solutions / BNPL & Loyalty",
+      "institution_slug": "bujeti",
+      "release_batch": 2
+    },
+    {
+      "source_name": "bumpa",
+      "source_category": "Spend Management / Merchant Solutions / BNPL & Loyalty",
+      "institution_slug": "bumpa",
+      "release_batch": 2
+    },
+    {
+      "source_name": "Carbin.Africa",
+      "source_category": "Spend Management / Merchant Solutions / BNPL & Loyalty",
+      "institution_slug": "carbin-africa",
+      "release_batch": 2
+    },
+    {
+      "source_name": "Cardiff",
+      "source_category": "Consumer Payment / Digital Wallet / Super App",
+      "institution_slug": "cardiff",
+      "release_batch": 2
+    },
+    {
+      "source_name": "Cashir",
+      "source_category": "Consumer Payment / Digital Wallet / Super App",
+      "institution_slug": "cashir",
+      "release_batch": 2
+    },
+    {
+      "source_name": "cdCare",
+      "source_category": "Spend Management / Merchant Solutions / BNPL & Loyalty",
+      "institution_slug": "cdcare",
+      "release_batch": 2
+    },
+    {
+      "source_name": "Coconut",
+      "source_category": "Spend Management / Merchant Solutions / BNPL & Loyalty",
+      "institution_slug": "coconut",
+      "release_batch": 2
+    },
+    {
+      "source_name": "CoreBank",
+      "source_category": "Digital Banks (Consumer & Business)",
+      "institution_slug": "corestepmicrofinance-banklimited",
+      "release_batch": 2
+    },
+    {
+      "source_name": "DeSola",
+      "source_category": "Consumer Payment / Digital Wallet / Super App",
+      "institution_slug": "desola",
+      "release_batch": 2
+    },
+    {
+      "source_name": "DgnRavePay",
+      "source_category": "Consumer Payment / Digital Wallet / Super App",
+      "institution_slug": "dgnravepay",
+      "release_batch": 2
+    },
+    {
+      "source_name": "Doroki",
+      "source_category": "Spend Management / Merchant Solutions / BNPL & Loyalty",
+      "institution_slug": "doroki",
+      "release_batch": 2
+    },
+    {
+      "source_name": "Dropp.",
+      "source_category": "Spend Management / Merchant Solutions / BNPL & Loyalty",
+      "institution_slug": "dropp",
+      "release_batch": 2
+    },
+    {
+      "source_name": "Duplo",
+      "source_category": "Spend Management / Merchant Solutions / BNPL & Loyalty",
+      "institution_slug": "duplo",
+      "release_batch": 2
+    },
+    {
+      "source_name": "earnipay",
+      "source_category": "Spend Management / Merchant Solutions / BNPL & Loyalty",
+      "institution_slug": "earnipay",
+      "release_batch": 2
+    },
+    {
+      "source_name": "EasySpend",
+      "source_category": "Spend Management / Merchant Solutions / BNPL & Loyalty",
+      "institution_slug": "easyspend",
+      "release_batch": 2
+    },
+    {
+      "source_name": "eved",
+      "source_category": "Spend Management / Merchant Solutions / BNPL & Loyalty",
+      "institution_slug": "eved",
+      "release_batch": 2
+    },
+    {
+      "source_name": "EverTry",
+      "source_category": "Consumer Payment / Digital Wallet / Super App",
+      "institution_slug": "evertry",
+      "release_batch": 2
+    },
+    {
+      "source_name": "FalconPay",
+      "source_category": "Consumer Payment / Digital Wallet / Super App",
+      "institution_slug": "falconpay",
+      "release_batch": 2
+    },
+    {
+      "source_name": "Flex",
+      "source_category": "Spend Management / Merchant Solutions / BNPL & Loyalty",
+      "institution_slug": "flex",
+      "release_batch": 2
+    },
+    {
+      "source_name": "FlexiPay",
+      "source_category": "Spend Management / Merchant Solutions / BNPL & Loyalty",
+      "institution_slug": "flexipay",
+      "release_batch": 2
+    },
+    {
+      "source_name": "FlowAfric",
+      "source_category": "Consumer Payment / Digital Wallet / Super App",
+      "institution_slug": "flowafric",
+      "release_batch": 2
+    },
+    {
+      "source_name": "foomly",
+      "source_category": "Spend Management / Merchant Solutions / BNPL & Loyalty",
+      "institution_slug": "foomly",
+      "release_batch": 2
+    },
+    {
+      "source_name": "FrexMFBank",
+      "source_category": "Digital Banks (Consumer & Business)",
+      "institution_slug": "frexmfbank",
+      "release_batch": 2
+    },
+    {
+      "source_name": "Gameporte",
+      "source_category": "Consumer Payment / Digital Wallet / Super App",
+      "institution_slug": "gameporte",
+      "release_batch": 2
+    },
+    {
+      "source_name": "Genesis360",
+      "source_category": "Spend Management / Merchant Solutions / BNPL & Loyalty",
+      "institution_slug": "genesis360",
+      "release_batch": 2
+    },
+    {
+      "source_name": "Gexipay",
+      "source_category": "Consumer Payment / Digital Wallet / Super App",
+      "institution_slug": "gexipay",
+      "release_batch": 2
+    },
+    {
+      "source_name": "Gigbanc",
+      "source_category": "Digital Banks (Consumer & Business)",
+      "institution_slug": "gigbanc",
+      "release_batch": 2
+    },
+    {
+      "source_name": "Go money",
+      "source_category": "Digital Banks (Consumer & Business)",
+      "institution_slug": "go-money",
+      "release_batch": 2
+    },
+    {
+      "source_name": "JEMA PAY",
+      "source_category": "Consumer Payment / Digital Wallet / Super App",
+      "institution_slug": "jema-pay",
+      "release_batch": 2
+    },
+    {
+      "source_name": "JumiaPay",
+      "source_category": "Consumer Payment / Digital Wallet / Super App",
+      "institution_slug": "jumiapay",
+      "release_batch": 2
+    },
+    {
+      "source_name": "kashbuk",
+      "source_category": "Spend Management / Merchant Solutions / BNPL & Loyalty",
+      "institution_slug": "kashbuk",
+      "release_batch": 2
+    },
+    {
+      "source_name": "kegow",
+      "source_category": "Consumer Payment / Digital Wallet / Super App",
+      "institution_slug": "kegow",
+      "release_batch": 2
+    },
+    {
+      "source_name": "Klump",
+      "source_category": "Spend Management / Merchant Solutions / BNPL & Loyalty",
+      "institution_slug": "klump-technology-company",
+      "release_batch": 2
+    },
+    {
+      "source_name": "KongaPay",
+      "source_category": "Consumer Payment / Digital Wallet / Super App",
+      "institution_slug": "kongapay-technologies",
+      "release_batch": 2
+    },
+    {
+      "source_name": "Kredi",
+      "source_category": "Digital Banks (Consumer & Business)",
+      "institution_slug": "kredi",
+      "release_batch": 2
+    },
+    {
+      "source_name": "Kwikpik.",
+      "source_category": "Consumer Payment / Digital Wallet / Super App",
+      "institution_slug": "kwikpik",
+      "release_batch": 2
+    },
+    {
+      "source_name": "Lenco",
+      "source_category": "Digital Banks (Consumer & Business)",
+      "institution_slug": "lenco",
+      "release_batch": 2
+    },
+    {
+      "source_name": "Lorapay",
+      "source_category": "Spend Management / Merchant Solutions / BNPL & Loyalty",
+      "institution_slug": "lorapay",
+      "release_batch": 2
+    },
+    {
+      "source_name": "Loystar",
+      "source_category": "Spend Management / Merchant Solutions / BNPL & Loyalty",
+      "institution_slug": "loystar",
+      "release_batch": 2
+    },
+    {
+      "source_name": "Mercurie",
+      "source_category": "Consumer Payment / Digital Wallet / Super App",
+      "institution_slug": "mercurie",
+      "release_batch": 2
+    },
+    {
+      "source_name": "midddleman",
+      "source_category": "Spend Management / Merchant Solutions / BNPL & Loyalty",
+      "institution_slug": "midddleman",
+      "release_batch": 2
+    },
+    {
+      "source_name": "Mkobo",
+      "source_category": "Digital Banks (Consumer & Business)",
+      "institution_slug": "mkobo",
+      "release_batch": 2
+    },
+    {
+      "source_name": "Moneta",
+      "source_category": "Spend Management / Merchant Solutions / BNPL & Loyalty",
+      "institution_slug": "moneta-technology",
+      "release_batch": 2
+    },
+    {
+      "source_name": "Motor Africa",
+      "source_category": "Spend Management / Merchant Solutions / BNPL & Loyalty",
+      "institution_slug": "motor-africa",
+      "release_batch": 2
+    },
+    {
+      "source_name": "moza",
+      "source_category": "Spend Management / Merchant Solutions / BNPL & Loyalty",
+      "institution_slug": "moza",
+      "release_batch": 2
+    },
+    {
+      "source_name": "Nairabox",
+      "source_category": "Consumer Payment / Digital Wallet / Super App",
+      "institution_slug": "orcom-and-orcom-business-support",
+      "release_batch": 2
+    },
+    {
+      "source_name": "Nearpays",
+      "source_category": "Consumer Payment / Digital Wallet / Super App",
+      "institution_slug": "nearpays",
+      "release_batch": 2
+    },
+    {
+      "source_name": "Nine",
+      "source_category": "Spend Management / Merchant Solutions / BNPL & Loyalty",
+      "institution_slug": "nine",
+      "release_batch": 2
+    },
+    {
+      "source_name": "noun",
+      "source_category": "Consumer Payment / Digital Wallet / Super App",
+      "institution_slug": "noun",
+      "release_batch": 2
+    },
+    {
+      "source_name": "NowNow",
+      "source_category": "Consumer Payment / Digital Wallet / Super App",
+      "institution_slug": "nownow-digital-systems",
+      "release_batch": 2
+    },
+    {
+      "source_name": "Orda.africa",
+      "source_category": "Spend Management / Merchant Solutions / BNPL & Loyalty",
+      "institution_slug": "orda-africa",
+      "release_batch": 2
+    },
+    {
+      "source_name": "Payable",
+      "source_category": "Consumer Payment / Digital Wallet / Super App",
+      "institution_slug": "payable",
+      "release_batch": 2
+    },
+    {
+      "source_name": "Payla",
+      "source_category": "Spend Management / Merchant Solutions / BNPL & Loyalty",
+      "institution_slug": "payla",
+      "release_batch": 2
+    },
+    {
+      "source_name": "paypaddi",
+      "source_category": "Consumer Payment / Digital Wallet / Super App",
+      "institution_slug": "paypaddi",
+      "release_batch": 2
+    },
+    {
+      "source_name": "Payrit",
+      "source_category": "Consumer Payment / Digital Wallet / Super App",
+      "institution_slug": "payrit",
+      "release_batch": 2
+    },
+    {
+      "source_name": "Paywise",
+      "source_category": "Consumer Payment / Digital Wallet / Super App",
+      "institution_slug": "paywise",
+      "release_batch": 2
+    },
+    {
+      "source_name": "Peppa.io",
+      "source_category": "Spend Management / Merchant Solutions / BNPL & Loyalty",
+      "institution_slug": "peppa-io",
+      "release_batch": 2
+    },
+    {
+      "source_name": "PrimeBiller",
+      "source_category": "Consumer Payment / Digital Wallet / Super App",
+      "institution_slug": "primebiller",
+      "release_batch": 2
+    },
+    {
+      "source_name": "prospa",
+      "source_category": "Digital Banks (Consumer & Business)",
+      "institution_slug": "prospa",
+      "release_batch": 2
+    },
+    {
+      "source_name": "pryme",
+      "source_category": "Digital Banks (Consumer & Business)",
+      "institution_slug": "pryme",
+      "release_batch": 2
+    },
+    {
+      "source_name": "PX",
+      "source_category": "Consumer Payment / Digital Wallet / Super App",
+      "institution_slug": "px",
+      "release_batch": 2
+    },
+    {
+      "source_name": "Quick invoice",
+      "source_category": "Spend Management / Merchant Solutions / BNPL & Loyalty",
+      "institution_slug": "quick-invoice",
+      "release_batch": 2
+    },
+    {
+      "source_name": "RansePay",
+      "source_category": "Spend Management / Merchant Solutions / BNPL & Loyalty",
+      "institution_slug": "ransepay",
+      "release_batch": 2
+    },
+    {
+      "source_name": "RavenBank",
+      "source_category": "Digital Banks (Consumer & Business)",
+      "institution_slug": "ravenbank",
+      "release_batch": 2
+    },
+    {
+      "source_name": "Sabi",
+      "source_category": "Spend Management / Merchant Solutions / BNPL & Loyalty",
+      "institution_slug": "sabi",
+      "release_batch": 2
+    },
+    {
+      "source_name": "Sapa",
+      "source_category": "Consumer Payment / Digital Wallet / Super App",
+      "institution_slug": "sapa",
+      "release_batch": 2
+    },
+    {
+      "source_name": "SatsApp",
+      "source_category": "Consumer Payment / Digital Wallet / Super App",
+      "institution_slug": "satsapp",
+      "release_batch": 2
+    },
+    {
+      "source_name": "Selar",
+      "source_category": "Spend Management / Merchant Solutions / BNPL & Loyalty",
+      "institution_slug": "selar",
+      "release_batch": 2
+    },
+    {
+      "source_name": "Shekel Mobility",
+      "source_category": "Spend Management / Merchant Solutions / BNPL & Loyalty",
+      "institution_slug": "shekel-mobility",
+      "release_batch": 2
+    },
+    {
+      "source_name": "SmallSmall",
+      "source_category": "Spend Management / Merchant Solutions / BNPL & Loyalty",
+      "institution_slug": "smallsmall",
+      "release_batch": 2
+    },
+    {
+      "source_name": "Sofri",
+      "source_category": "Digital Banks (Consumer & Business)",
+      "institution_slug": "sofri",
+      "release_batch": 2
+    },
+    {
+      "source_name": "Spacepointe",
+      "source_category": "Spend Management / Merchant Solutions / BNPL & Loyalty",
+      "institution_slug": "spacepointe",
+      "release_batch": 2
+    },
+    {
+      "source_name": "Speso",
+      "source_category": "Consumer Payment / Digital Wallet / Super App",
+      "institution_slug": "speso",
+      "release_batch": 2
+    },
+    {
+      "source_name": "Sproutly",
+      "source_category": "Spend Management / Merchant Solutions / BNPL & Loyalty",
+      "institution_slug": "sproutly-tech",
+      "release_batch": 2
+    },
+    {
+      "source_name": "Squareme",
+      "source_category": "Consumer Payment / Digital Wallet / Super App",
+      "institution_slug": "squareme",
+      "release_batch": 2
+    },
+    {
+      "source_name": "Suregifts",
+      "source_category": "Spend Management / Merchant Solutions / BNPL & Loyalty",
+      "institution_slug": "suregifts",
+      "release_batch": 2
+    },
+    {
+      "source_name": "Timon",
+      "source_category": "Consumer Payment / Digital Wallet / Super App",
+      "institution_slug": "timon",
+      "release_batch": 2
+    },
+    {
+      "source_name": "Traction",
+      "source_category": "Spend Management / Merchant Solutions / BNPL & Loyalty",
+      "institution_slug": "traction-payments",
+      "release_batch": 2
+    },
+    {
+      "source_name": "Tradeet",
+      "source_category": "Spend Management / Merchant Solutions / BNPL & Loyalty",
+      "institution_slug": "tradeet",
+      "release_batch": 2
+    },
+    {
+      "source_name": "tribapay",
+      "source_category": "Consumer Payment / Digital Wallet / Super App",
+      "institution_slug": "tribapay",
+      "release_batch": 2
+    },
+    {
+      "source_name": "tribease",
+      "source_category": "Spend Management / Merchant Solutions / BNPL & Loyalty",
+      "institution_slug": "tribease",
+      "release_batch": 2
+    },
+    {
+      "source_name": "Tride",
+      "source_category": "Spend Management / Merchant Solutions / BNPL & Loyalty",
+      "institution_slug": "tride",
+      "release_batch": 2
+    },
+    {
+      "source_name": "TSB-epay",
+      "source_category": "Consumer Payment / Digital Wallet / Super App",
+      "institution_slug": "tsb-epay",
+      "release_batch": 2
+    },
+    {
+      "source_name": "Univas",
+      "source_category": "Spend Management / Merchant Solutions / BNPL & Loyalty",
+      "institution_slug": "univas",
+      "release_batch": 2
+    },
+    {
+      "source_name": "Velcro",
+      "source_category": "Consumer Payment / Digital Wallet / Super App",
+      "institution_slug": "velcro",
+      "release_batch": 2
+    },
+    {
+      "source_name": "vendex",
+      "source_category": "Spend Management / Merchant Solutions / BNPL & Loyalty",
+      "institution_slug": "vendex",
+      "release_batch": 2
+    },
+    {
+      "source_name": "Wyowo",
+      "source_category": "Consumer Payment / Digital Wallet / Super App",
+      "institution_slug": "wyowo",
+      "release_batch": 2
+    },
+    {
+      "source_name": "Xelda",
+      "source_category": "Spend Management / Merchant Solutions / BNPL & Loyalty",
+      "institution_slug": "xelda",
+      "release_batch": 2
+    },
+    {
+      "source_name": "Yunite",
+      "source_category": "Digital Banks (Consumer & Business)",
+      "institution_slug": "yunite",
+      "release_batch": 2
+    },
+    {
+      "source_name": "Zynopay",
+      "source_category": "Consumer Payment / Digital Wallet / Super App",
+      "institution_slug": "zynopay",
+      "release_batch": 2
+    },
+    {
+      "source_name": "Accure",
+      "source_category": "FX / B2B & Cross-Border Payments / Remittances",
+      "institution_slug": "accure",
+      "release_batch": 3
+    },
+    {
+      "source_name": "afriex",
+      "source_category": "FX / B2B & Cross-Border Payments / Remittances",
+      "institution_slug": "afriex",
+      "release_batch": 3
+    },
+    {
+      "source_name": "AZA FInance",
+      "source_category": "FX / B2B & Cross-Border Payments / Remittances",
+      "institution_slug": "aza-finance",
+      "release_batch": 3
+    },
+    {
+      "source_name": "Bordawave",
+      "source_category": "FX / B2B & Cross-Border Payments / Remittances",
+      "institution_slug": "bordawave",
+      "release_batch": 3
+    },
+    {
+      "source_name": "BoundlessPay",
+      "source_category": "FX / B2B & Cross-Border Payments / Remittances",
+      "institution_slug": "boundlesspay",
+      "release_batch": 3
+    },
+    {
+      "source_name": "BridgePay",
+      "source_category": "FX / B2B & Cross-Border Payments / Remittances",
+      "institution_slug": "bridgepay",
+      "release_batch": 3
+    },
+    {
+      "source_name": "Chipper",
+      "source_category": "FX / B2B & Cross-Border Payments / Remittances",
+      "institution_slug": "chipper",
+      "release_batch": 3
+    },
+    {
+      "source_name": "Cleva",
+      "source_category": "FX / B2B & Cross-Border Payments / Remittances",
+      "institution_slug": "cleva",
+      "release_batch": 3
+    },
+    {
+      "source_name": "Crisscross",
+      "source_category": "FX / B2B & Cross-Border Payments / Remittances",
+      "institution_slug": "crisscross",
+      "release_batch": 3
+    },
+    {
+      "source_name": "FalconLite",
+      "source_category": "FX / B2B & Cross-Border Payments / Remittances",
+      "institution_slug": "falconlite",
+      "release_batch": 3
+    },
+    {
+      "source_name": "Feedxpay",
+      "source_category": "FX / B2B & Cross-Border Payments / Remittances",
+      "institution_slug": "feedxpay",
+      "release_batch": 3
+    },
+    {
+      "source_name": "Flincap",
+      "source_category": "FX / B2B & Cross-Border Payments / Remittances",
+      "institution_slug": "flincap",
+      "release_batch": 3
+    },
+    {
+      "source_name": "frontEdge",
+      "source_category": "FX / B2B & Cross-Border Payments / Remittances",
+      "institution_slug": "frontedge",
+      "release_batch": 3
+    },
+    {
+      "source_name": "Fxbud",
+      "source_category": "FX / B2B & Cross-Border Payments / Remittances",
+      "institution_slug": "fxbud",
+      "release_batch": 3
+    },
+    {
+      "source_name": "Graph.",
+      "source_category": "FX / B2B & Cross-Border Payments / Remittances",
+      "institution_slug": "graph",
+      "release_batch": 3
+    },
+    {
+      "source_name": "Klasha",
+      "source_category": "FX / B2B & Cross-Border Payments / Remittances",
+      "institution_slug": "klasha",
+      "release_batch": 3
+    },
+    {
+      "source_name": "leatherback",
+      "source_category": "FX / B2B & Cross-Border Payments / Remittances",
+      "institution_slug": "leatherback",
+      "release_batch": 3
+    },
+    {
+      "source_name": "LEMFI",
+      "source_category": "FX / B2B & Cross-Border Payments / Remittances",
+      "institution_slug": "lemfi",
+      "release_batch": 3
+    },
+    {
+      "source_name": "MANSA",
+      "source_category": "FX / B2B & Cross-Border Payments / Remittances",
+      "institution_slug": "mansa",
+      "release_batch": 3
+    },
+    {
+      "source_name": "MonieWorld",
+      "source_category": "FX / B2B & Cross-Border Payments / Remittances",
+      "institution_slug": "monieworld",
+      "release_batch": 3
+    },
+    {
+      "source_name": "Monirates",
+      "source_category": "FX / B2B & Cross-Border Payments / Remittances",
+      "institution_slug": "monirates",
+      "release_batch": 3
+    },
+    {
+      "source_name": "Mutigate",
+      "source_category": "FX / B2B & Cross-Border Payments / Remittances",
+      "institution_slug": "mutigate",
+      "release_batch": 3
+    },
+    {
+      "source_name": "mydove",
+      "source_category": "FX / B2B & Cross-Border Payments / Remittances",
+      "institution_slug": "mydove",
+      "release_batch": 3
+    },
+    {
+      "source_name": "Naira4yuan",
+      "source_category": "FX / B2B & Cross-Border Payments / Remittances",
+      "institution_slug": "naira4yuan",
+      "release_batch": 3
+    },
+    {
+      "source_name": "nilos",
+      "source_category": "FX / B2B & Cross-Border Payments / Remittances",
+      "institution_slug": "nilos",
+      "release_batch": 3
+    },
+    {
+      "source_name": "nomba",
+      "source_category": "FX / B2B & Cross-Border Payments / Remittances",
+      "institution_slug": "nomba",
+      "release_batch": 3
+    },
+    {
+      "source_name": "Novacrust",
+      "source_category": "FX / B2B & Cross-Border Payments / Remittances",
+      "institution_slug": "novacrust",
+      "release_batch": 3
+    },
+    {
+      "source_name": "Oval",
+      "source_category": "FX / B2B & Cross-Border Payments / Remittances",
+      "institution_slug": "oval",
+      "release_batch": 3
+    },
+    {
+      "source_name": "PCX",
+      "source_category": "FX / B2B & Cross-Border Payments / Remittances",
+      "institution_slug": "pcx",
+      "release_batch": 3
+    },
+    {
+      "source_name": "Ratefy",
+      "source_category": "FX / B2B & Cross-Border Payments / Remittances",
+      "institution_slug": "ratefy",
+      "release_batch": 3
+    },
+    {
+      "source_name": "Relyr",
+      "source_category": "FX / B2B & Cross-Border Payments / Remittances",
+      "institution_slug": "relyr",
+      "release_batch": 3
+    },
+    {
+      "source_name": "Send app",
+      "source_category": "FX / B2B & Cross-Border Payments / Remittances",
+      "institution_slug": "send-app",
+      "release_batch": 3
+    },
+    {
+      "source_name": "SendOva",
+      "source_category": "FX / B2B & Cross-Border Payments / Remittances",
+      "institution_slug": "sendova",
+      "release_batch": 3
+    },
+    {
+      "source_name": "SendSprint",
+      "source_category": "FX / B2B & Cross-Border Payments / Remittances",
+      "institution_slug": "sendsprint",
+      "release_batch": 3
+    },
+    {
+      "source_name": "SENDWAVE",
+      "source_category": "FX / B2B & Cross-Border Payments / Remittances",
+      "institution_slug": "sendwave",
+      "release_batch": 3
+    },
+    {
+      "source_name": "Space",
+      "source_category": "FX / B2B & Cross-Border Payments / Remittances",
+      "institution_slug": "space",
+      "release_batch": 3
+    },
+    {
+      "source_name": "straitPay",
+      "source_category": "FX / B2B & Cross-Border Payments / Remittances",
+      "institution_slug": "straitpay",
+      "release_batch": 3
+    },
+    {
+      "source_name": "Switch",
+      "source_category": "FX / B2B & Cross-Border Payments / Remittances",
+      "institution_slug": "switch",
+      "release_batch": 3
+    },
+    {
+      "source_name": "Trusted Transfers",
+      "source_category": "FX / B2B & Cross-Border Payments / Remittances",
+      "institution_slug": "trusted-transfers",
+      "release_batch": 3
+    },
+    {
+      "source_name": "veloRemit",
+      "source_category": "FX / B2B & Cross-Border Payments / Remittances",
+      "institution_slug": "veloremit",
+      "release_batch": 3
+    },
+    {
+      "source_name": "Verto",
+      "source_category": "FX / B2B & Cross-Border Payments / Remittances",
+      "institution_slug": "verto",
+      "release_batch": 3
+    },
+    {
+      "source_name": "Waza",
+      "source_category": "FX / B2B & Cross-Border Payments / Remittances",
+      "institution_slug": "waza",
+      "release_batch": 3
+    },
+    {
+      "source_name": "wirepay",
+      "source_category": "FX / B2B & Cross-Border Payments / Remittances",
+      "institution_slug": "wirepay",
+      "release_batch": 3
+    },
+    {
+      "source_name": "Zilla",
+      "source_category": "FX / B2B & Cross-Border Payments / Remittances",
+      "institution_slug": "zilla",
+      "release_batch": 3
+    },
+    {
+      "source_name": "Zoleapp",
+      "source_category": "FX / B2B & Cross-Border Payments / Remittances",
+      "institution_slug": "zoleapp",
+      "release_batch": 3
+    },
+    {
+      "source_name": "acceede",
+      "source_category": "Digital Lenders & Credit Infrastructure",
+      "institution_slug": "acceede",
+      "release_batch": 4
+    },
+    {
+      "source_name": "advancly",
+      "source_category": "Digital Lenders & Credit Infrastructure",
+      "institution_slug": "advancly-technologies",
+      "release_batch": 4
+    },
+    {
+      "source_name": "BainesCredit",
+      "source_category": "Digital Lenders & Credit Infrastructure",
+      "institution_slug": "bainescredit",
+      "release_batch": 4
+    },
+    {
+      "source_name": "Bfree",
+      "source_category": "Digital Lenders & Credit Infrastructure",
+      "institution_slug": "bfree",
+      "release_batch": 4
+    },
+    {
+      "source_name": "Carrot",
+      "source_category": "Digital Lenders & Credit Infrastructure",
+      "institution_slug": "carrot",
+      "release_batch": 4
+    },
+    {
+      "source_name": "Clan",
+      "source_category": "Digital Lenders & Credit Infrastructure",
+      "institution_slug": "creditclan-tech",
+      "release_batch": 4
+    },
+    {
+      "source_name": "Credbevy",
+      "source_category": "Digital Lenders & Credit Infrastructure",
+      "institution_slug": "credbevy",
+      "release_batch": 4
+    },
+    {
+      "source_name": "CrediFex",
+      "source_category": "Digital Lenders & Credit Infrastructure",
+      "institution_slug": "credifex",
+      "release_batch": 4
+    },
+    {
+      "source_name": "CreditChek",
+      "source_category": "Digital Lenders & Credit Infrastructure",
+      "institution_slug": "creditchek",
+      "release_batch": 4
+    },
+    {
+      "source_name": "CreditDirect",
+      "source_category": "Digital Lenders & Credit Infrastructure",
+      "institution_slug": "creditdirect",
+      "release_batch": 4
+    },
+    {
+      "source_name": "DebtRecuva",
+      "source_category": "Digital Lenders & Credit Infrastructure",
+      "institution_slug": "debtrecuva",
+      "release_batch": 4
+    },
+    {
+      "source_name": "FedaCash",
+      "source_category": "Digital Lenders & Credit Infrastructure",
+      "institution_slug": "fedacash",
+      "release_batch": 4
+    },
+    {
+      "source_name": "Hadi.",
+      "source_category": "Digital Lenders & Credit Infrastructure",
+      "institution_slug": "hadi",
+      "release_batch": 4
+    },
+    {
+      "source_name": "Invessa",
+      "source_category": "Digital Lenders & Credit Infrastructure",
+      "institution_slug": "invessa",
+      "release_batch": 4
+    },
+    {
+      "source_name": "Kredete",
+      "source_category": "Digital Lenders & Credit Infrastructure",
+      "institution_slug": "kredete",
+      "release_batch": 4
+    },
+    {
+      "source_name": "KwikPay",
+      "source_category": "Digital Lenders & Credit Infrastructure",
+      "institution_slug": "trafalgar-association",
+      "release_batch": 4
+    },
+    {
+      "source_name": "lendha",
+      "source_category": "Digital Lenders & Credit Infrastructure",
+      "institution_slug": "lendha",
+      "release_batch": 4
+    },
+    {
+      "source_name": "Lendigo",
+      "source_category": "Digital Lenders & Credit Infrastructure",
+      "institution_slug": "lendigo",
+      "release_batch": 4
+    },
+    {
+      "source_name": "Lendocredit",
+      "source_category": "Digital Lenders & Credit Infrastructure",
+      "institution_slug": "lendocredit",
+      "release_batch": 4
+    },
+    {
+      "source_name": "lendsqr",
+      "source_category": "Digital Lenders & Credit Infrastructure",
+      "institution_slug": "essential-finance",
+      "release_batch": 4
+    },
+    {
+      "source_name": "lendstack",
+      "source_category": "Digital Lenders & Credit Infrastructure",
+      "institution_slug": "lendstack",
+      "release_batch": 4
+    },
+    {
+      "source_name": "LiteFi",
+      "source_category": "Digital Lenders & Credit Infrastructure",
+      "institution_slug": "litefi",
+      "release_batch": 4
+    },
+    {
+      "source_name": "Maxim",
+      "source_category": "Digital Lenders & Credit Infrastructure",
+      "institution_slug": "maxim",
+      "release_batch": 4
+    },
+    {
+      "source_name": "mida",
+      "source_category": "Digital Lenders & Credit Infrastructure",
+      "institution_slug": "mida",
+      "release_batch": 4
+    },
+    {
+      "source_name": "Migo",
+      "source_category": "Digital Lenders & Credit Infrastructure",
+      "institution_slug": "migo",
+      "release_batch": 4
+    },
+    {
+      "source_name": "monapp",
+      "source_category": "Digital Lenders & Credit Infrastructure",
+      "institution_slug": "monapp",
+      "release_batch": 4
+    },
+    {
+      "source_name": "Move",
+      "source_category": "Digital Lenders & Credit Infrastructure",
+      "institution_slug": "move",
+      "release_batch": 4
+    },
+    {
+      "source_name": "obtainly",
+      "source_category": "Digital Lenders & Credit Infrastructure",
+      "institution_slug": "suplias-technologies",
+      "release_batch": 4
+    },
+    {
+      "source_name": "PebbleScore",
+      "source_category": "Digital Lenders & Credit Infrastructure",
+      "institution_slug": "pebblescore",
+      "release_batch": 4
+    },
+    {
+      "source_name": "Periculum",
+      "source_category": "Digital Lenders & Credit Infrastructure",
+      "institution_slug": "periculum",
+      "release_batch": 4
+    },
+    {
+      "source_name": "Poolside",
+      "source_category": "Digital Lenders & Credit Infrastructure",
+      "institution_slug": "poolside",
+      "release_batch": 4
+    },
+    {
+      "source_name": "PressPayNG",
+      "source_category": "Digital Lenders & Credit Infrastructure",
+      "institution_slug": "presspayng",
+      "release_batch": 4
+    },
+    {
+      "source_name": "Renmoney MFB",
+      "source_category": "Digital Lenders & Credit Infrastructure",
+      "institution_slug": "renmoney-mfb",
+      "release_batch": 4
+    },
+    {
+      "source_name": "shecluded",
+      "source_category": "Digital Lenders & Credit Infrastructure",
+      "institution_slug": "shecluded",
+      "release_batch": 4
+    },
+    {
+      "source_name": "SnapCash",
+      "source_category": "Digital Lenders & Credit Infrastructure",
+      "institution_slug": "snapcash",
+      "release_batch": 4
+    },
+    {
+      "source_name": "SocialLender",
+      "source_category": "Digital Lenders & Credit Infrastructure",
+      "institution_slug": "sociallender",
+      "release_batch": 4
+    },
+    {
+      "source_name": "stacs",
+      "source_category": "Digital Lenders & Credit Infrastructure",
+      "institution_slug": "stacs",
+      "release_batch": 4
+    },
+    {
+      "source_name": "tendar",
+      "source_category": "Digital Lenders & Credit Infrastructure",
+      "institution_slug": "tendar",
+      "release_batch": 4
+    },
+    {
+      "source_name": "TradeLenda",
+      "source_category": "Digital Lenders & Credit Infrastructure",
+      "institution_slug": "tradelenda",
+      "release_batch": 4
+    },
+    {
+      "source_name": "Umba",
+      "source_category": "Digital Lenders & Credit Infrastructure",
+      "institution_slug": "umba-digital-solutions",
+      "release_batch": 4
+    },
+    {
+      "source_name": "Vend",
+      "source_category": "Digital Lenders & Credit Infrastructure",
+      "institution_slug": "vend",
+      "release_batch": 4
+    },
+    {
+      "source_name": "Zedvance",
+      "source_category": "Digital Lenders & Credit Infrastructure",
+      "institution_slug": "zedvance-finance",
+      "release_batch": 4
+    },
+    {
+      "source_name": "AjoWise",
+      "source_category": "Personal Finance, Wealth & Asset Management",
+      "institution_slug": "ajowise",
+      "release_batch": 5
+    },
+    {
+      "source_name": "CashBox",
+      "source_category": "Personal Finance, Wealth & Asset Management",
+      "institution_slug": "cashbox",
+      "release_batch": 5
+    },
+    {
+      "source_name": "Democratized",
+      "source_category": "Personal Finance, Wealth & Asset Management",
+      "institution_slug": "democratized",
+      "release_batch": 5
+    },
+    {
+      "source_name": "Esca",
+      "source_category": "Personal Finance, Wealth & Asset Management",
+      "institution_slug": "esca",
+      "release_batch": 5
+    },
+    {
+      "source_name": "Expense AI",
+      "source_category": "Personal Finance, Wealth & Asset Management",
+      "institution_slug": "expense-ai",
+      "release_batch": 5
+    },
+    {
+      "source_name": "Finstaq",
+      "source_category": "Personal Finance, Wealth & Asset Management",
+      "institution_slug": "finstaq",
+      "release_batch": 5
+    },
+    {
+      "source_name": "Grownee",
+      "source_category": "Personal Finance, Wealth & Asset Management",
+      "institution_slug": "grownee",
+      "release_batch": 5
+    },
+    {
+      "source_name": "Herconomy",
+      "source_category": "Personal Finance, Wealth & Asset Management",
+      "institution_slug": "herconomy",
+      "release_batch": 5
+    },
+    {
+      "source_name": "KoloPay",
+      "source_category": "Personal Finance, Wealth & Asset Management",
+      "institution_slug": "kolopay",
+      "release_batch": 5
+    },
+    {
+      "source_name": "Ladda",
+      "source_category": "Personal Finance, Wealth & Asset Management",
+      "institution_slug": "ladda",
+      "release_batch": 5
+    },
+    {
+      "source_name": "Microvest",
+      "source_category": "Personal Finance, Wealth & Asset Management",
+      "institution_slug": "microvest",
+      "release_batch": 5
+    },
+    {
+      "source_name": "Monibac",
+      "source_category": "Personal Finance, Wealth & Asset Management",
+      "institution_slug": "monibac",
+      "release_batch": 5
+    },
+    {
+      "source_name": "Monietab",
+      "source_category": "Personal Finance, Wealth & Asset Management",
+      "institution_slug": "monietab",
+      "release_batch": 5
+    },
+    {
+      "source_name": "Moniger",
+      "source_category": "Personal Finance, Wealth & Asset Management",
+      "institution_slug": "moniger",
+      "release_batch": 5
+    },
+    {
+      "source_name": "Monimoore",
+      "source_category": "Personal Finance, Wealth & Asset Management",
+      "institution_slug": "monimoore",
+      "release_batch": 5
+    },
+    {
+      "source_name": "Paypaxe",
+      "source_category": "Personal Finance, Wealth & Asset Management",
+      "institution_slug": "paypaxe",
+      "release_batch": 5
+    },
+    {
+      "source_name": "Pinowo",
+      "source_category": "Personal Finance, Wealth & Asset Management",
+      "institution_slug": "pinowo",
+      "release_batch": 5
+    },
+    {
+      "source_name": "SavetoBuy",
+      "source_category": "Personal Finance, Wealth & Asset Management",
+      "institution_slug": "savetobuy",
+      "release_batch": 5
+    },
+    {
+      "source_name": "Savey",
+      "source_category": "Personal Finance, Wealth & Asset Management",
+      "institution_slug": "savey",
+      "release_batch": 5
+    },
+    {
+      "source_name": "SavinsBox",
+      "source_category": "Personal Finance, Wealth & Asset Management",
+      "institution_slug": "savinsbox",
+      "release_batch": 5
+    },
+    {
+      "source_name": "Tendboxx",
+      "source_category": "Personal Finance, Wealth & Asset Management",
+      "institution_slug": "tendboxx",
+      "release_batch": 5
+    },
+    {
+      "source_name": "Thamani",
+      "source_category": "Personal Finance, Wealth & Asset Management",
+      "institution_slug": "thamani",
+      "release_batch": 5
+    },
+    {
+      "source_name": "Vale",
+      "source_category": "Personal Finance, Wealth & Asset Management",
+      "institution_slug": "vale-finance",
+      "release_batch": 5
+    },
+    {
+      "source_name": "Wealth.ng",
+      "source_category": "Personal Finance, Wealth & Asset Management",
+      "institution_slug": "wealth-ng",
+      "release_batch": 5
+    },
+    {
+      "source_name": "Zairaa",
+      "source_category": "Personal Finance, Wealth & Asset Management",
+      "institution_slug": "zairaa",
+      "release_batch": 5
+    },
+    {
+      "source_name": "Awabah",
+      "source_category": "Digital Insurance, Pensions, Health-Tech & HR",
+      "institution_slug": "awabah",
+      "release_batch": 6
+    },
+    {
+      "source_name": "Bettalyfe",
+      "source_category": "Digital Insurance, Pensions, Health-Tech & HR",
+      "institution_slug": "bettalyfe",
+      "release_batch": 6
+    },
+    {
+      "source_name": "Clafiya",
+      "source_category": "Digital Insurance, Pensions, Health-Tech & HR",
+      "institution_slug": "clafiya",
+      "release_batch": 6
+    },
+    {
+      "source_name": "CubeCover",
+      "source_category": "Digital Insurance, Pensions, Health-Tech & HR",
+      "institution_slug": "cubecover",
+      "release_batch": 6
+    },
+    {
+      "source_name": "Ensuram",
+      "source_category": "Digital Insurance, Pensions, Health-Tech & HR",
+      "institution_slug": "ensuram",
+      "release_batch": 6
+    },
+    {
+      "source_name": "HumanManager",
+      "source_category": "Digital Insurance, Pensions, Health-Tech & HR",
+      "institution_slug": "humanmanager",
+      "release_batch": 6
+    },
+    {
+      "source_name": "Loubby AI",
+      "source_category": "Digital Insurance, Pensions, Health-Tech & HR",
+      "institution_slug": "loubby-ai",
+      "release_batch": 6
+    },
+    {
+      "source_name": "Octamile",
+      "source_category": "Digital Insurance, Pensions, Health-Tech & HR",
+      "institution_slug": "octamile",
+      "release_batch": 6
+    },
+    {
+      "source_name": "PaddyCover",
+      "source_category": "Digital Insurance, Pensions, Health-Tech & HR",
+      "institution_slug": "paddycover",
+      "release_batch": 6
+    },
+    {
+      "source_name": "PaidHR",
+      "source_category": "Digital Insurance, Pensions, Health-Tech & HR",
+      "institution_slug": "paidhr",
+      "release_batch": 6
+    },
+    {
+      "source_name": "ParkPay",
+      "source_category": "Digital Insurance, Pensions, Health-Tech & HR",
+      "institution_slug": "parkpay",
+      "release_batch": 6
+    },
+    {
+      "source_name": "Pay U",
+      "source_category": "Digital Insurance, Pensions, Health-Tech & HR",
+      "institution_slug": "payu-payments",
+      "release_batch": 6
+    },
+    {
+      "source_name": "Payrise",
+      "source_category": "Digital Insurance, Pensions, Health-Tech & HR",
+      "institution_slug": "payrise",
+      "release_batch": 6
+    },
+    {
+      "source_name": "Recurr",
+      "source_category": "Digital Insurance, Pensions, Health-Tech & HR",
+      "institution_slug": "recurr",
+      "release_batch": 6
+    },
+    {
+      "source_name": "SeamlessHR",
+      "source_category": "Digital Insurance, Pensions, Health-Tech & HR",
+      "institution_slug": "seamlesshr-com",
+      "release_batch": 6
+    },
+    {
+      "source_name": "Tangerine APT",
+      "source_category": "Digital Insurance, Pensions, Health-Tech & HR",
+      "institution_slug": "tangerine-apt",
+      "release_batch": 6
+    },
+    {
+      "source_name": "BitGifty",
+      "source_category": "Crypto & Web3",
+      "institution_slug": "bitgifty",
+      "release_batch": 7
+    },
+    {
+      "source_name": "Bitmama",
+      "source_category": "Crypto & Web3",
+      "institution_slug": "bitmama",
+      "release_batch": 7
+    },
+    {
+      "source_name": "Blockradar",
+      "source_category": "Crypto & Web3",
+      "institution_slug": "blockradar",
+      "release_batch": 7
+    },
+    {
+      "source_name": "Cansa finance",
+      "source_category": "Crypto & Web3",
+      "institution_slug": "cansa-finance",
+      "release_batch": 7
+    },
+    {
+      "source_name": "cNGN",
+      "source_category": "Crypto & Web3",
+      "institution_slug": "wrapped-cbdc",
+      "release_batch": 7
+    },
+    {
+      "source_name": "Cwallet",
+      "source_category": "Crypto & Web3",
+      "institution_slug": "cwallet",
+      "release_batch": 7
+    },
+    {
+      "source_name": "Gonana",
+      "source_category": "Crypto & Web3",
+      "institution_slug": "gonana",
+      "release_batch": 7
+    },
+    {
+      "source_name": "ivorypay",
+      "source_category": "Crypto & Web3",
+      "institution_slug": "ivorypay",
+      "release_batch": 7
+    },
+    {
+      "source_name": "Jupit",
+      "source_category": "Crypto & Web3",
+      "institution_slug": "jupit",
+      "release_batch": 7
+    },
+    {
+      "source_name": "LEDiG",
+      "source_category": "Crypto & Web3",
+      "institution_slug": "ledig",
+      "release_batch": 7
+    },
+    {
+      "source_name": "Luno",
+      "source_category": "Crypto & Web3",
+      "institution_slug": "luno",
+      "release_batch": 7
+    },
+    {
+      "source_name": "Mular",
+      "source_category": "Crypto & Web3",
+      "institution_slug": "mular",
+      "release_batch": 7
+    },
+    {
+      "source_name": "Mustard.ng",
+      "source_category": "Crypto & Web3",
+      "institution_slug": "mustard-ng",
+      "release_batch": 7
+    },
+    {
+      "source_name": "PouchFi",
+      "source_category": "Crypto & Web3",
+      "institution_slug": "pouchfi",
+      "release_batch": 7
+    },
+    {
+      "source_name": "prestmit",
+      "source_category": "Crypto & Web3",
+      "institution_slug": "prestmit",
+      "release_batch": 7
+    },
+    {
+      "source_name": "StableStack",
+      "source_category": "Crypto & Web3",
+      "institution_slug": "stablestack",
+      "release_batch": 7
+    },
+    {
+      "source_name": "Syarpa",
+      "source_category": "Crypto & Web3",
+      "institution_slug": "syarpa",
+      "release_batch": 7
+    },
+    {
+      "source_name": "trustBank",
+      "source_category": "Crypto & Web3",
+      "institution_slug": "trustbank",
+      "release_batch": 7
+    },
+    {
+      "source_name": "Ultra",
+      "source_category": "Crypto & Web3",
+      "institution_slug": "ultra",
+      "release_batch": 7
+    },
+    {
+      "source_name": "Wicrypt",
+      "source_category": "Crypto & Web3",
+      "institution_slug": "wicrypt",
+      "release_batch": 7
+    },
+    {
+      "source_name": "Yesa",
+      "source_category": "Crypto & Web3",
+      "institution_slug": "yesa",
+      "release_batch": 7
+    },
+    {
+      "source_name": "AFEX",
+      "source_category": "Crowdfunding, Agritech & Proptech",
+      "institution_slug": "afex",
+      "release_batch": 8
+    },
+    {
+      "source_name": "Assetrica",
+      "source_category": "Crowdfunding, Agritech & Proptech",
+      "institution_slug": "assetrica",
+      "release_batch": 8
+    },
+    {
+      "source_name": "Buckstrybe",
+      "source_category": "Crowdfunding, Agritech & Proptech",
+      "institution_slug": "buckstrybe",
+      "release_batch": 8
+    },
+    {
+      "source_name": "CoBuildit",
+      "source_category": "Crowdfunding, Agritech & Proptech",
+      "institution_slug": "cobuildit",
+      "release_batch": 8
+    },
+    {
+      "source_name": "Crodyvest",
+      "source_category": "Crowdfunding, Agritech & Proptech",
+      "institution_slug": "crodyvest",
+      "release_batch": 8
+    },
+    {
+      "source_name": "Donate-ng",
+      "source_category": "Crowdfunding, Agritech & Proptech",
+      "institution_slug": "donate-ng",
+      "release_batch": 8
+    },
+    {
+      "source_name": "Hiyalo",
+      "source_category": "Crowdfunding, Agritech & Proptech",
+      "institution_slug": "hiyalo",
+      "release_batch": 8
+    },
+    {
+      "source_name": "houseafrica",
+      "source_category": "Crowdfunding, Agritech & Proptech",
+      "institution_slug": "houseafrica",
+      "release_batch": 8
+    },
+    {
+      "source_name": "housmata",
+      "source_category": "Crowdfunding, Agritech & Proptech",
+      "institution_slug": "housmata",
+      "release_batch": 8
+    },
+    {
+      "source_name": "HXafrica",
+      "source_category": "Crowdfunding, Agritech & Proptech",
+      "institution_slug": "housingexchange-ng",
+      "release_batch": 8
+    },
+    {
+      "source_name": "iREVA",
+      "source_category": "Crowdfunding, Agritech & Proptech",
+      "institution_slug": "ireva",
+      "release_batch": 8
+    },
+    {
+      "source_name": "Keble",
+      "source_category": "Crowdfunding, Agritech & Proptech",
+      "institution_slug": "keble",
+      "release_batch": 8
+    },
+    {
+      "source_name": "Lantan",
+      "source_category": "Crowdfunding, Agritech & Proptech",
+      "institution_slug": "lantan",
+      "release_batch": 8
+    },
+    {
+      "source_name": "paymyrent",
+      "source_category": "Crowdfunding, Agritech & Proptech",
+      "institution_slug": "paymyrent",
+      "release_batch": 8
+    },
+    {
+      "source_name": "Spleet",
+      "source_category": "Crowdfunding, Agritech & Proptech",
+      "institution_slug": "spleet",
+      "release_batch": 8
+    },
+    {
+      "source_name": "Spruce",
+      "source_category": "Crowdfunding, Agritech & Proptech",
+      "institution_slug": "spruce",
+      "release_batch": 8
+    },
+    {
+      "source_name": "ThriveAgric",
+      "source_category": "Crowdfunding, Agritech & Proptech",
+      "institution_slug": "thriveagric",
+      "release_batch": 8
+    },
+    {
+      "source_name": "Trustcrow",
+      "source_category": "Crowdfunding, Agritech & Proptech",
+      "institution_slug": "trustcrow",
+      "release_batch": 8
+    },
+    {
+      "source_name": "ULÉ HOMES",
+      "source_category": "Crowdfunding, Agritech & Proptech",
+      "institution_slug": "ule-homes",
+      "release_batch": 8
+    },
+    {
+      "source_name": "Venco",
+      "source_category": "Crowdfunding, Agritech & Proptech",
+      "institution_slug": "venco",
+      "release_batch": 8
+    },
+    {
+      "source_name": "xchangeBOX",
+      "source_category": "Crowdfunding, Agritech & Proptech",
+      "institution_slug": "xchange-box-solutions",
+      "release_batch": 8
+    }
+  ]
+}

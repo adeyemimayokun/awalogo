@@ -90,7 +90,16 @@
   { "institution_slug": "crednet-technologies", "candidate_path": "candidates/crednet-technologies-01.svg" },
   { "institution_slug": "interswitch", "candidate_path": "candidates/interswitch-02.svg" },
   { "institution_slug": "kiakia-bits", "candidate_path": "candidates/kiakia-bits-01.png" },
-  { "institution_slug": "pagatech", "candidate_path": "candidates/pagatech-01.png" },
+  {
+    "institution_slug": "paga",
+    "candidate_path": "preserved/paga.svg",
+    "source_url": "https://www.mypaga.com/",
+    "source_type": "community-catalog",
+    "status": "needs-review",
+    "website": "https://www.mypaga.com/",
+    "added_at": "2026-07-31",
+    "updated_at": "2026-07-31"
+  },
   { "institution_slug": "remita-payment-service", "candidate_path": "candidates/remita-payment-service-01.svg" },
   { "institution_slug": "renmoney-microfinance-bank", "candidate_path": "candidates/renmoney-microfinance-bank-01.svg" },
   {
