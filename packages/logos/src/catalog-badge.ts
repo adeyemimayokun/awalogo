@@ -1,6 +1,6 @@
 import type { LogoStatus } from "./schema";
 
-export type CatalogLogoBadge = "new" | "unverified";
+export type CatalogLogoBadge = "new";
 
 type BadgeLogo = {
   added_at: string;
@@ -12,7 +12,6 @@ export function getCatalogLogoBadge(
   latestLogoAddedAt: string
 ): CatalogLogoBadge | null {
   if (!logo) return null;
-  if (logo.status === "needs-review") return "unverified";
   if (logo.status === "verified" && logo.added_at === latestLogoAddedAt) return "new";
   return null;
 }

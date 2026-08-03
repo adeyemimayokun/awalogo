@@ -3,6 +3,7 @@
  * Variation IDs use the same `${logoSlug}-${variationId}` shape as the catalog UI.
  */
 export const darkLogoPreviewAssetIds = [
+  "anchor",
   "bamboo-system-technology-dark",
   "bank-of-industry-light",
   "busha-digital-light",
