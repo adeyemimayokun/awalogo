@@ -7317,38 +7317,6 @@
     "status": "verified"
   },
   {
-    "name": "3Line Card Management",
-    "slug": "3line-card-management",
-    "category": "other",
-    "aliases": [
-      "3Line Card Management Limited"
-    ],
-    "website": "https://www.3lineng.com/",
-    "source_url": "https://www.3lineng.com/_next/image?url=%2Flogo.png&w=256&q=75",
-    "source_type": "official-website",
-    "source_path": "sources/3line-card-management.png",
-    "svg_path": null,
-    "formats": [
-      {
-        "type": "png",
-        "path": "assets/3line-card-management.png",
-        "mime_type": "image/png",
-        "width": null,
-        "height": null
-      },
-      {
-        "type": "webp",
-        "path": "assets/3line-card-management.webp",
-        "mime_type": "image/webp",
-        "width": null,
-        "height": null
-      }
-    ],
-    "added_at": "2026-08-02",
-    "updated_at": "2026-08-02",
-    "status": "verified"
-  },
-  {
     "name": "advansio",
     "slug": "advansio",
     "category": "fintech",
