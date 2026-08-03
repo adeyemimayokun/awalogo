@@ -1,4 +1,4 @@
-# @nigerian-bank-logos/core
+# @awalogo/core
 
 Typed metadata and downloadable assets for Nigerian financial institution logos.
 
@@ -14,6 +14,9 @@ download every available format.
 pnpm logos:formats        # generate PNG and WebP assets from accepted sources
 pnpm logos:check-formats  # fail when committed derivatives are stale
 pnpm logos:source         # refresh the institution-driven review queue
+pnpm logos:prepare:fintech-sourcing # rebuild the verified 392/52/340 campaign manifest
+pnpm logos:discover:fintech -- --category 1 # source one resumable release batch
+pnpm logos:stage:fintech  # create the private campaign review queue
 pnpm logos:import:nigerialogos # audit and import community review assets
 pnpm logos:import:finance-apps # refresh selected official consumer-app assets
 pnpm logos:import:coverage # refresh official assets from the coverage queue
@@ -22,10 +25,22 @@ pnpm logos:sync-links     # link matching institution rows to canonical logos
 pnpm logos:promote        # rebuild reviewed promotions and their formats
 ```
 
-`logos:source` visits official websites recorded in `@nigerian-bank-logos/institutions`
+`logos:source` visits official websites recorded in `@awalogo/institutions`
 and writes candidates to `sourcing/queue.json`. Candidates are never accepted
 automatically. A maintainer must confirm that an asset is the current canonical
 logo and comes from an official source.
+
+The fintech campaign is driven by
+`sourcing/fintech-340-manifest.json`. Its discovery cache, candidate files, and
+review queue are separate from the public catalog. `--category` accepts a batch
+number, category fragment, or batch-name fragment. After discovery, rerun
+`logos:prepare:fintech-sourcing` and `logos:stage:fintech` to refresh the eight
+batch reports and private review queue.
+
+Reviewed campaign assets are added explicitly to
+`sourcing/fintech-batch-promotions.json`. Each promotion must have
+`status: "verified"`, `reviewed: true`, an official source URL, and a non-community
+source type before `logos:promote` will accept it.
 
 Official raster-only artwork can be accepted for preview and download, but it is
 never traced into an SVG and does not enable editable Figma insertion.

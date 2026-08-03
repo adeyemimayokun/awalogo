@@ -3,7 +3,7 @@ import { copyFile, mkdir, readFile, writeFile } from "node:fs/promises";
 import { dirname, extname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import type { InstitutionCategory } from "../../institutions/src";
-import { communityCandidates, institutions } from "../../institutions/src";
+import { communityCandidates, foreignAuthorizedInstitutions, institutions } from "../../institutions/src";
 import type { LogoCategory, LogoEntry, LogoFormat, LogoStatus, SourceType } from "../src/schema";
 
 const packageRoot = join(dirname(fileURLToPath(import.meta.url)), "..");
@@ -13,13 +13,29 @@ const financeAppPromotions = JSON.parse(await readFile(join(packageRoot, "sourci
 const coveragePromotions = JSON.parse(await readFile(join(packageRoot, "sourcing/institution-coverage-promotions.json"), "utf8")) as Promotion[];
 const naicomPromotions = JSON.parse(await readFile(join(packageRoot, "sourcing/naicom-directory-promotions.json"), "utf8")) as Promotion[];
 const fintechDiscoveryPromotions = JSON.parse(await readFile(join(packageRoot, "sourcing/fintech-discovery-promotions.json"), "utf8")) as Promotion[];
+const webDiscoveryPromotions = JSON.parse(await readFile(join(packageRoot, "sourcing/web-discovery-promotions.json"), "utf8")) as Promotion[];
+const fintechBatchPromotions = JSON.parse(await readFile(join(packageRoot, "sourcing/fintech-batch-promotions.json"), "utf8")) as Promotion[];
+const fintechUnverifiedPromotions = JSON.parse(await readFile(join(packageRoot, "sourcing/fintech-unverified-promotions.json"), "utf8")) as Promotion[];
+for (const promotion of fintechBatchPromotions) {
+  if (promotion.status !== "verified" || promotion.reviewed !== true || !promotion.source_url || promotion.source_type === "community-catalog") {
+    throw new Error(`Fintech campaign promotion is not fully reviewed: ${promotion.institution_slug}`);
+  }
+}
+for (const promotion of fintechUnverifiedPromotions) {
+  if (promotion.status !== "needs-review" || !promotion.source_url || !promotion.source_type || promotion.reviewed === true) {
+    throw new Error(`Unverified fintech promotion is incorrectly classified: ${promotion.institution_slug}`);
+  }
+}
 const promotions = [
   ...officialPromotions,
   ...communityPromotions,
   ...financeAppPromotions,
   ...coveragePromotions,
   ...naicomPromotions,
-  ...fintechDiscoveryPromotions
+  ...fintechDiscoveryPromotions,
+  ...webDiscoveryPromotions,
+  ...fintechBatchPromotions,
+  ...fintechUnverifiedPromotions
 ];
 
 type Promotion = {
@@ -31,6 +47,7 @@ type Promotion = {
   website?: string;
   added_at?: string;
   updated_at?: string;
+  reviewed?: boolean;
 };
 const queue = JSON.parse(await readFile(join(packageRoot, "sourcing/queue.json"), "utf8")) as {
   entries: Array<{
@@ -47,7 +64,8 @@ await mkdir(sourcesRoot, { recursive: true });
 
 const catalog: LogoEntry[] = [];
 for (const promotion of promotions) {
-  const institution = [...institutions, ...communityCandidates].find((entry) => entry.slug === promotion.institution_slug);
+  const institution = [...institutions, ...foreignAuthorizedInstitutions, ...communityCandidates]
+    .find((entry) => entry.slug === promotion.institution_slug);
   const queued = queue.entries.find((entry) => entry.institution_slug === promotion.institution_slug);
   const candidate = queued?.candidate_assets.find((asset) => asset.local_path === promotion.candidate_path);
   const previous = previousCatalog.find((entry) => entry.slug === promotion.institution_slug);

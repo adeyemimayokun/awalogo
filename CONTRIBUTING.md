@@ -32,6 +32,14 @@ Run `pnpm logos:source` to refresh candidates from official institution websites
 Review `packages/logos/sourcing/queue.json` manually; discovery does not prove
 that an asset is the current canonical logo.
 
+For the 340-company fintech campaign, run `pnpm logos:prepare:fintech-sourcing`
+before discovery, then use `pnpm logos:discover:fintech -- --category <1-8>`.
+The downloaded files remain in `packages/logos/sourcing/fintech-web-candidates`
+and are not bundled by the website or plugin. Run `pnpm logos:stage:fintech` to
+create the review queue. A campaign promotion is valid only after the official
+source, current branding, artwork completeness, and light/dark previews have all
+been checked by a maintainer.
+
 ## Naming Rules
 
 - Use lowercase slugs with hyphens, for example `first-bank`.

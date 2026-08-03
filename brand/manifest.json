@@ -1,0 +1,177 @@
+{
+  "brand": "awalogo",
+  "version": "1.0.0",
+  "updated": "2026-08-02",
+  "canonical_name": "awalogo",
+  "tagline": "Nigerian financial logos, ready to use.",
+  "guidelines": "guidelines.md",
+  "assets": {
+    "logos": [
+      {
+        "id": "symbol-full-color",
+        "path": "logos/awalogo-symbol-full-color.svg",
+        "format": "svg",
+        "view_box": "0 0 1200 800",
+        "use": "Default symbol on controlled light, neutral, or dark backgrounds"
+      },
+      {
+        "id": "symbol-flat",
+        "path": "logos/awalogo-symbol-flat.svg",
+        "format": "svg",
+        "view_box": "0 0 1200 800",
+        "use": "Small sizes and low-complexity production"
+      },
+      {
+        "id": "symbol-ink",
+        "path": "logos/awalogo-symbol-ink.svg",
+        "format": "svg",
+        "view_box": "0 0 1200 800",
+        "use": "Single-color applications on light backgrounds"
+      },
+      {
+        "id": "symbol-paper",
+        "path": "logos/awalogo-symbol-paper.svg",
+        "format": "svg",
+        "view_box": "0 0 1200 800",
+        "use": "Single-color applications on dark backgrounds"
+      },
+      {
+        "id": "lockup-on-light",
+        "path": "logos/awalogo-lockup-on-light.svg",
+        "format": "svg",
+        "view_box": "0 0 2400 800",
+        "use": "Horizontal signature on light backgrounds"
+      },
+      {
+        "id": "lockup-on-dark",
+        "path": "logos/awalogo-lockup-on-dark.svg",
+        "format": "svg",
+        "view_box": "0 0 2400 800",
+        "use": "Horizontal signature on dark backgrounds"
+      },
+      {
+        "id": "wordmark-ink",
+        "path": "logos/awalogo-wordmark-ink.svg",
+        "format": "svg",
+        "view_box": "0 0 1200 360",
+        "use": "Wordmark-only placements on light backgrounds"
+      },
+      {
+        "id": "wordmark-paper",
+        "path": "logos/awalogo-wordmark-paper.svg",
+        "format": "svg",
+        "view_box": "0 0 1200 360",
+        "use": "Wordmark-only placements on dark backgrounds"
+      },
+      {
+        "id": "app-icon",
+        "path": "logos/awalogo-app-icon.svg",
+        "format": "svg",
+        "view_box": "0 0 512 512",
+        "use": "Master vector for square app, plugin, profile, and favicon exports"
+      }
+    ],
+    "icons": [
+      { "path": "icons/awalogo-app-icon-32x32.png", "width": 32, "height": 32, "use": "Favicon" },
+      { "path": "icons/awalogo-app-icon-64x64.png", "width": 64, "height": 64, "use": "High-density favicon" },
+      { "path": "icons/awalogo-app-icon-128x128.png", "width": 128, "height": 128, "use": "Figma Community plugin icon" },
+      { "path": "icons/awalogo-app-icon-180x180.png", "width": 180, "height": 180, "use": "Apple touch icon" },
+      { "path": "icons/awalogo-app-icon-192x192.png", "width": 192, "height": 192, "use": "Web app manifest icon" },
+      { "path": "icons/awalogo-app-icon-512x512.png", "width": 512, "height": 512, "use": "Web app and marketplace icon" },
+      { "path": "icons/awalogo-app-icon-1024x1024.png", "width": 1024, "height": 1024, "use": "High-resolution app master" },
+      { "path": "icons/awalogo-symbol-256w.png", "width": 256, "height": 171, "use": "Small transparent symbol export" },
+      { "path": "icons/awalogo-symbol-512w.png", "width": 512, "height": 341, "use": "Medium transparent symbol export" },
+      { "path": "icons/awalogo-symbol-1024w.png", "width": 1024, "height": 683, "use": "Large transparent symbol export" }
+    ],
+    "social": [
+      {
+        "path": "social/awalogo-linkedin-post-1200x627.png",
+        "width": 1200,
+        "height": 627,
+        "use": "LinkedIn feed launch post"
+      },
+      {
+        "path": "social/awalogo-linkedin-page-cover-4200x700.png",
+        "width": 4200,
+        "height": 700,
+        "use": "LinkedIn company Page cover"
+      },
+      {
+        "path": "social/awalogo-open-graph-1200x630.png",
+        "width": 1200,
+        "height": 630,
+        "use": "Website Open Graph and link preview"
+      },
+      {
+        "path": "social/awalogo-github-social-preview-1280x640.png",
+        "width": 1280,
+        "height": 640,
+        "use": "GitHub repository social preview"
+      },
+      {
+        "path": "social/awalogo-social-square-1080x1080.png",
+        "width": 1080,
+        "height": 1080,
+        "use": "Square social announcement"
+      },
+      {
+        "path": "social/awalogo-profile-avatar-800x800.png",
+        "width": 800,
+        "height": 800,
+        "use": "Social profile image"
+      }
+    ],
+    "templates": [
+      {
+        "path": "templates/awalogo-social-post-template.svg",
+        "width": 1200,
+        "height": 627,
+        "use": "Editable landscape social campaign"
+      },
+      {
+        "path": "templates/awalogo-social-square-template.svg",
+        "width": 1080,
+        "height": 1080,
+        "use": "Editable square social campaign"
+      },
+      {
+        "path": "templates/awalogo-story-template.svg",
+        "width": 1080,
+        "height": 1920,
+        "use": "Editable vertical story campaign"
+      },
+      {
+        "path": "templates/awalogo-linkedin-page-cover-template.svg",
+        "width": 4200,
+        "height": 700,
+        "use": "Editable LinkedIn Page cover"
+      }
+    ],
+    "patterns": [
+      {
+        "path": "patterns/awalogo-catalog-grid.svg",
+        "format": "svg",
+        "use": "Editable catalog-grid background"
+      },
+      {
+        "path": "patterns/awalogo-catalog-grid-2400x1600.png",
+        "width": 2400,
+        "height": 1600,
+        "use": "Raster catalog-grid background"
+      }
+    ],
+    "tokens": [
+      { "path": "tokens/brand.tokens.json", "format": "json", "use": "Tool-neutral design tokens" },
+      { "path": "tokens/brand.css", "format": "css", "use": "CSS custom properties" },
+      { "path": "tokens/brand.ts", "format": "typescript", "use": "Typed product tokens" }
+    ],
+    "visuals": [
+      {
+        "path": "visuals/awalogo-brand-system-board-2400x1600.png",
+        "width": 2400,
+        "height": 1600,
+        "use": "Brand-system overview and presentation board"
+      }
+    ]
+  }
+}

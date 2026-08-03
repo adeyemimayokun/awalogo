@@ -62,7 +62,15 @@ for (const logo of logoCatalog) {
   }
 }
 
-const serializedManifest = `${JSON.stringify(manifest, null, 2)}\n`;
+const canonicalManifest = {
+  ...manifest,
+  source_sha256: Object.fromEntries(
+    Object.entries(manifest.source_sha256).sort(([left], [right]) =>
+      left < right ? -1 : left > right ? 1 : 0
+    )
+  )
+};
+const serializedManifest = `${JSON.stringify(canonicalManifest, null, 2)}\n`;
 if (check) {
   const currentManifest = existsSync(manifestPath) ? await readFile(manifestPath, "utf8") : null;
   if (currentManifest !== serializedManifest) {

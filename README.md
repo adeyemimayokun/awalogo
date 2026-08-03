@@ -1,11 +1,14 @@
-# Nigerian Bank Logos
+# awalogo
+
+**Nigerian Bank Logos.**
 
 Open source logo catalog for Nigerian banks, fintechs, and payment providers,
 with SVG, PNG, and WebP downloads.
 
-The first public surface is a Figma plugin, backed by a reusable TypeScript logo
-catalog so the same source data can later power npm packages, React components,
-Iconify exports, and generated docs.
+Website: <https://awalogo.com>
+
+The public website and offline Figma plugin are separate applications backed by
+the same reusable TypeScript catalog and shared catalog UI package.
 
 ## Status
 
@@ -28,11 +31,17 @@ or redrawn into SVG.
 
 ```txt
 apps/figma-plugin      Figma plugin UI and plugin controller
+apps/web               Public catalog website and admin entry
+packages/catalog-ui    Shared catalog components, search, and asset adapters
 packages/logos         Typed catalog, official sources, generated formats, sourcing queue
 packages/institutions  Institution data, regulator imports, and CSV/JSON exports
 packages/validator     Catalog and SVG validation scripts
+brand                  Brand guidelines, tokens, logo variants, and channel assets
 docs                   Product, contribution, and release notes
 ```
+
+The complete identity system and reusable asset pool are documented in
+[`brand/README.md`](./brand/README.md).
 
 ## Local Setup
 
@@ -42,6 +51,7 @@ pnpm install
 pnpm logos:formats
 pnpm validate
 pnpm test
+pnpm build:web
 pnpm build:plugin
 ```
 
@@ -103,6 +113,13 @@ same commands.
 pnpm build:plugin
 ```
 
+For the standalone website:
+
+```bash
+pnpm dev:web
+pnpm build:web
+```
+
 Then import `apps/figma-plugin/manifest.json` in Figma:
 
 1. Open Figma desktop.
@@ -128,6 +145,17 @@ Every logo needs:
 - A passing `pnpm validate` run.
 
 See [CONTRIBUTING.md](./CONTRIBUTING.md) and [TRADEMARKS.md](./TRADEMARKS.md).
+
+Approved maintainers can also use the secured `/admin` workspace to upload
+logos, add variations, and prepare removals as reviewable pull requests. See
+[docs/admin-cms.md](./docs/admin-cms.md) for OAuth, repository-token, and
+deployment configuration.
+
+Website visitors can request a missing logo without a GitHub account. The
+server privately delivers their contact email to maintainers and creates a
+public tracking issue without exposing it. See
+[docs/logo-request-submissions.md](./docs/logo-request-submissions.md) for
+Resend and deployment configuration.
 
 ## License
 

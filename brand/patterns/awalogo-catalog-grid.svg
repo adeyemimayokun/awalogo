@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+  <title id="title">awalogo catalog grid pattern</title>
+  <desc id="desc">Subtle modular grid with registration nodes derived from the catalog interface.</desc>
+  <defs>
+    <pattern id="grid" width="240" height="200" patternUnits="userSpaceOnUse">
+      <path d="M240 0H0V200" fill="none" stroke="#E1E4DD" stroke-opacity=".14"/>
+      <circle cx="0" cy="0" r="4" fill="#686A64" fill-opacity=".3"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="800" fill="#111411"/>
+  <rect width="1200" height="800" fill="url(#grid)"/>
+  <path d="M72 96h48M96 72v48M1080 704h48m-24-24v48" stroke="#D8EF55" stroke-opacity=".7" stroke-width="2"/>
+</svg>

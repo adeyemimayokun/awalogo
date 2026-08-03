@@ -1,20 +1,20 @@
 {
   "snapshot_date": "2026-07-13",
   "total_institutions": 1693,
-  "linked_to_logo": 170,
-  "unresolved": 1523,
+  "linked_to_logo": 181,
+  "unresolved": 1512,
   "unresolved_with_website": 0,
-  "unresolved_without_website": 1523,
+  "unresolved_without_website": 1512,
   "unresolved_by_category": {
     "commercial-bank": 0,
     "microfinance-bank": 0,
     "fintech": 2,
     "crypto-vasp": 5,
     "financial-holding-company": 2,
-    "remittance-imto": 46,
+    "remittance-imto": 45,
     "mobile-money-operator": 13,
     "bureau-de-change": 0,
-    "payment-service-bank": 1,
+    "payment-service-bank": 0,
     "non-interest-bank": 0,
     "primary-mortgage-bank": 0,
     "merchant-bank": 1,
@@ -22,14 +22,14 @@
     "discount-house": 0,
     "finance-company": 0,
     "switching-processing": 14,
-    "payment-solution-service-provider": 120,
-    "payment-terminal-service-provider": 46,
-    "super-agent": 60,
+    "payment-solution-service-provider": 117,
+    "payment-terminal-service-provider": 44,
+    "super-agent": 58,
     "payment-service-holding-company": 0,
-    "card-scheme": 8,
+    "card-scheme": 7,
     "clearing-house": 2,
     "credit-bureau": 0,
-    "digital-lender": 547,
+    "digital-lender": 542,
     "crowdfunding-platform": 3,
     "robo-adviser": 0,
     "digital-broker": 2,
@@ -58,15 +58,6 @@
       "legal_name": "3gee Pay Limited",
       "brand_name": "3gee Pay",
       "primary_category": "payment-terminal-service-provider",
-      "website": null,
-      "verification_status": "officially-verified",
-      "reason": "official-website-and-logo-source-required"
-    },
-    {
-      "slug": "3line-card-management",
-      "legal_name": "3Line Card Management",
-      "brand_name": "3Line Card Management",
-      "primary_category": "super-agent",
       "website": null,
       "verification_status": "officially-verified",
       "reason": "official-website-and-logo-source-required"
@@ -2322,15 +2313,6 @@
       "reason": "official-website-and-logo-source-required"
     },
     {
-      "slug": "connectpoint-technology-solutions",
-      "legal_name": "Connectpoint Technology Solutions Limited",
-      "brand_name": "Connectpoint Technology Solutions",
-      "primary_category": "super-agent",
-      "website": null,
-      "verification_status": "officially-verified",
-      "reason": "official-website-and-logo-source-required"
-    },
-    {
       "slug": "connex-insurance-brokers",
       "legal_name": "Connex Insurance Brokers Ltd",
       "brand_name": "Connex Insurance Brokers",
@@ -3978,15 +3960,6 @@
       "reason": "official-website-and-logo-source-required"
     },
     {
-      "slug": "flex-financial-technologies",
-      "legal_name": "FLEX FINANCIAL TECHNOLOGIES",
-      "brand_name": "FLEXFINANCE",
-      "primary_category": "digital-lender",
-      "website": null,
-      "verification_status": "officially-verified",
-      "reason": "official-website-and-logo-source-required"
-    },
-    {
       "slug": "flexi-microfinance-company",
       "legal_name": "FLEXI MICROFINANCE COMPANY LIMITED",
       "brand_name": "FLEXIBANK",
@@ -4423,15 +4396,6 @@
       "legal_name": "Glanvill Enthoven Reinsurance Brokers Ltd",
       "brand_name": "Glanvill Enthoven Reinsurance Brokers",
       "primary_category": "insurance-broker",
-      "website": null,
-      "verification_status": "officially-verified",
-      "reason": "official-website-and-logo-source-required"
-    },
-    {
-      "slug": "global-accelerex",
-      "legal_name": "Global Accelerex Limited",
-      "brand_name": "Global Accelerex",
-      "primary_category": "payment-terminal-service-provider",
       "website": null,
       "verification_status": "officially-verified",
       "reason": "official-website-and-logo-source-required"
@@ -5895,15 +5859,6 @@
       "reason": "official-website-and-logo-source-required"
     },
     {
-      "slug": "klump-technology-company",
-      "legal_name": "KLUMP TECHNOLOGY COMPANY LIMITED",
-      "brand_name": "KLUMP",
-      "primary_category": "digital-lender",
-      "website": null,
-      "verification_status": "officially-verified",
-      "reason": "official-website-and-logo-source-required"
-    },
-    {
       "slug": "kob-insurance-brokers-l-t-d",
       "legal_name": "KOB Insurance Brokers L.t.d",
       "brand_name": "KOB Insurance Brokers L.t.d",
@@ -6321,15 +6276,6 @@
       "slug": "naija-transact",
       "legal_name": "NAIJA TRANSACT LIMITED",
       "brand_name": "LENDSPHERE LOAN",
-      "primary_category": "digital-lender",
-      "website": null,
-      "verification_status": "officially-verified",
-      "reason": "official-website-and-logo-source-required"
-    },
-    {
-      "slug": "essential-finance",
-      "legal_name": "ESSENTIAL FINANCE LIMITED",
-      "brand_name": "LENDSQR WEB",
       "primary_category": "digital-lender",
       "website": null,
       "verification_status": "officially-verified",
@@ -7231,15 +7177,6 @@
       "legal_name": "Moneymaster Limited",
       "brand_name": "Moneymaster",
       "primary_category": "super-agent",
-      "website": null,
-      "verification_status": "officially-verified",
-      "reason": "official-website-and-logo-source-required"
-    },
-    {
-      "slug": "moneymaster-payment-service-bank",
-      "legal_name": "MoneyMaster Payment Service Bank Limited",
-      "brand_name": "MoneyMaster Payment Service Bank",
-      "primary_category": "payment-service-bank",
       "website": null,
       "verification_status": "officially-verified",
       "reason": "official-website-and-logo-source-required"
@@ -8730,15 +8667,6 @@
       "reason": "official-website-and-logo-source-required"
     },
     {
-      "slug": "payaza-africa",
-      "legal_name": "Payaza Africa Limited",
-      "brand_name": "Payaza Africa",
-      "primary_category": "payment-solution-service-provider",
-      "website": null,
-      "verification_status": "officially-verified",
-      "reason": "official-website-and-logo-source-required"
-    },
-    {
       "slug": "paycluster-technology",
       "legal_name": "Paycluster Technology Limited",
       "brand_name": "Paycluster Technology",
@@ -8770,15 +8698,6 @@
       "legal_name": "PAYFINANCIALS TECHNOLOGY SERVICES LIMITED",
       "brand_name": "PAYFI",
       "primary_category": "digital-lender",
-      "website": null,
-      "verification_status": "officially-verified",
-      "reason": "official-website-and-logo-source-required"
-    },
-    {
-      "slug": "payfixy",
-      "legal_name": "Payfixy Nigeria Limited",
-      "brand_name": "Payfixy",
-      "primary_category": "payment-solution-service-provider",
       "website": null,
       "verification_status": "officially-verified",
       "reason": "official-website-and-logo-source-required"
@@ -12465,15 +12384,6 @@
       "reason": "official-website-and-logo-source-required"
     },
     {
-      "slug": "umba-digital-solutions",
-      "legal_name": "UMBA DIGITAL SOLUTIONS LIMITED",
-      "brand_name": "UMBA MOBILE",
-      "primary_category": "digital-lender",
-      "website": null,
-      "verification_status": "officially-verified",
-      "reason": "official-website-and-logo-source-required"
-    },
-    {
       "slug": "soar-global-tech-services",
       "legal_name": "SOAR-GLOBAL TECH SERVICES LIMITED",
       "brand_name": "UNI KASH",
@@ -13585,15 +13495,6 @@
       "legal_name": "Zebra Insurance Brokers Ltd",
       "brand_name": "Zebra Insurance Brokers",
       "primary_category": "insurance-broker",
-      "website": null,
-      "verification_status": "officially-verified",
-      "reason": "official-website-and-logo-source-required"
-    },
-    {
-      "slug": "zedvance-finance",
-      "legal_name": "ZEDVANCE FINANCE LIMITED",
-      "brand_name": "ZEDVANCE BUSINESS",
-      "primary_category": "digital-lender",
       "website": null,
       "verification_status": "officially-verified",
       "reason": "official-website-and-logo-source-required"

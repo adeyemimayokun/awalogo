@@ -1,12 +1,10 @@
-# Nigerian Fintech Companies by Category
+# Nigerian Fintech Companies
 
-> Note: A few very small, logo-only entries in the source image were not readable enough to identify reliably.
-
-## Fintech Infrastructure, BaaS and TechFin
+## Fintech Infrastructure / BaaS / Tech-Fin
 
 - Passpoint
 - Pagaengine
-- Innovectives
+- Invectives
 - Fintava
 - Maplerad
 - Fintellia
@@ -18,364 +16,414 @@
 - Prembly
 - OnePipe
 - Woodcore
-- Softway Finance
 - Seamfix
-- Hick
+- Flick
 - Digicore
 - VerifyMe
-- Sudo
+- -$udo
+- Alawee
 - Grupp
 - Qore
 - 3Line
-- Advansio
+- advansio
+- Ikript
 - Dojah
-- Bloc
+- bloc
 - Mono
-- Lopsim
-- Hyves
-- Akilaph
+- lopsim
 
-## Payments Processing, Switching and Infrastructure
+## Mobile Money / PUB / Agency & Informal Banking
 
-- PawaPay
-- ErrandPay
-- Vesicash
-- Zest
-- C24
-- E-Settlement
-- SeerBit
-- Onafriq
-- Itex
-- Onus
-- Accelerex
-- eTranzact
-- PayU
-- Monnify
-- Kora
-- GreenPay
-- CorePay
-- Interswitch
-- Remita
-- CardVorte
-- eTops
-- Centiiv
-- Payaza
-- Xpress
-- Fincra
-- Zainpay
-- CashBuddy
-- Arca
-- Woven
-- SoftPay
-- Cellulant
-
-## Mobile Money, PSB, Agency and Informal Banking
-
-- 9PSB
+- Softway Finance
+- 9 Payment Service Bank
 - Toju
 - Kolomoni
 - Fetswallet
 - FaziPay
 - Payhive
-- RIBY
-- MoMo PSB
-- Hope Bank
-- AjoCard
-- Fortis Mobile Money
+- Riby
+- Momo
+- Hope Payment Service Bank
 - Gigmile
-- ReadyCash
+- AjoCard
+- Readycash by parkway
 - SmartTeller
-- MoneyMaster PSB
+- Moneymaster payment service bank ltd.
+- Hyves
+- Akilaah
 
-## Consumer Payments, Digital Wallets and Super Apps
+## Spend Management / Merchant Solutions / BNPL & Loyalty
 
-- Afribenki
-- Timon
-- Digimoney
-- Paypaddi
-- Paymable
-- JumiaPay
-- Kwikpik
-- BillmoPay
-- Kegow
-- Boldswitch
-- Mercurie
-- Paywise
-- Squareme
-- EverTry
-- Prime Bills
-- Sats App
-- KongaPay
-- Nairabox
-- Quickteller
-- Velcro
-- Payrit
-- Sasewallet
-- Cexipay
-- Gameporte
-- Speso
-- Cashir
-- Tribapay
-- NowNow
-- Eyowo
-- Zynopay
-- CredPal
-- Sapa
-- Nown
-- FalconPay
-- Cardify
-- TSB ePay
-- IvoryPay
-- Jupit
-- Prestmit
-
-## Spend Management, Merchant Solutions, BNPL and Loyalty
-
-- Foodly
+- foomly
 - Arobo
-- Earnipay
-- Klump
-- Sabi
+- earnipay
+- bumpa
+- eved
+- kashbuk
+- moza
+- cdCare
 - Suregifts
-- Motor
-- Vendex
-- Middleman
-- Orda Africa
+- Sabi
+- Klump
+- Motor Africa
+- vendex
+- midddleman
+- Orda.africa
 - EasySpend
 - Bujeti
-- Alerzo
+- RansePay
+- alerzo
 - Payla
-- Orapay
+- Lorapay
 - Loystar
+- Tride
+- Bountip
 - Bankoto
 - BizFlex
 - Flex
 - Duplo
-- SpacePointe
+- Peppa.io
+- Browpay
+- Spacepointe
 - Shekel Mobility
 - Univas
-- Autosend
+- Autospend
 - Nine
-- Recital
-- VendyZ
-- Coconut
-- Dropp
-- QuickInvoice
 - Moneta
-- Tribease
-- Sproutly
+- Tradeet
+- Coconut
+- Dropp.
+- Quick invoice
+- tribease
 - Genesis360
 - FlexiPay
+- Sproutly
 - SmallSmall
-- Carbin Africa
-- Xedla
+- Carbin.Africa
+- Xelda
 - Traction
 - Doroki
-- Optimus
-
-## Personal Finance, Wealth and Asset Management
-
-- Ladda
-- AjoWise
 - Selar
-- Zaira
-- Microvest
-- SaveToBuy
-- Bizpend
-- Herconomy
-- Monimoore
-- Monietab
+- Bizspend
+
+## Personal Finance, Wealth & Asset Management
+
+- SavinsBox
+- Expense AI
+- Savey
+- Thamani
+- Democratized
+- Moniger
+- Tendboxx
+- Finstaq
 - Paypaxe
 - Monibac
 - CashBox
 - Vale
-- Expense AI
-- Finstaq
-- Tenbox
-- Moniger
-- SavingsBox
-- Savey
-- Chamani
-- Democratised
-- PiggyVest
-- Wealth.ng
+- Herconomy
+- Monimoore
+- Monietab
+- Zairaa
+- Microvest
+- SavetoBuy
+- Ladda
+- AjoWise
+- Grownee
+- Optimus
+- Pinowo
+- Cowrywise
+- Esca
+- Piggyvest
 - KoloPay
 - Rise
-- Grownee
-
-## Digital Insurance, Pensions, Health-Tech and HR
-
-- Evea
-- Kashbuk
-- RansePay
+- Wealth.ng
 - Trove
-- Paddy Cover
-- Awabah
-- CubeCover
-- Pay-U
-- Reliance HMO
-- Lobby.ai
-- HumanManager
-- Tangerine APT Pensions
-- Ensuram
-- Bettalyfe
-- Recurr
-- PaidHR
-- Clafiya
-- SeamlessHR
+- Bamboo
+- I-invest
+
+## Digital Insurance, Pensions, Health-Tech & HR
+
 - Payrise
+- PaidHR
+- Ensuram
 - ParkPay
 - Octamile
+- SeamlessHR
+- Clafiya
+- Bettalyfe
+- Recurr
+- HumanManager
+- Tangerine APT
+- Loubby AI
+- Reliance HMO
+- Pay U
+- CubeCover
+- Awabah
+- PaddyCover
 
-## Crowdfunding, Agritech and Proptech
+## Digital Banks (Consumer & Business)
 
-- Assetrix
+- Fairmoney
+- Kredi
+- Sofri
+- Moniepoint
+- Mkobo
+- Carbon
+- Aku
+- RavenBank
+- Yunite
+- aella
+- Go money
+- VFD
+- Sterling
+- Gigbanc
+- Palmpay
+- CoreBank
+- FrexMFBank
+- Lenco
+- MINTYN
+- Kuda MFB
+- prospa
+- Sparkle
+- ALAT
+- pryme
+- opay
+- Brass
+
+## FX / B2B & Cross-Border Payments / Remittances
+
+- Klasha
+- Chipper
+- LEMFI
+- nilos
+- Send app
+- PCX
+- Bordawave
+- frontEdge
+- nomba
+- Accure
+- Crisscross
+- BoundlessPay
+- MANSA
+- Fxbud
+- SendSprint
+- Verto
+- Novacrust
+- straitPay
+- SENDWAVE
+- SendOva
+- MonieWorld
+- BridgePay
+- Switch
+- Naira4yuan
+- Cleva
+- Relyr
+- Feedxpay
+- AZA FInance
+- Zilla
+- veloRemit
+- Grey
+- afriex
+- Zoleapp
+- Waza
+- FalconLite
+- wirepay
+- mydove
+- Flincap
+- Trusted Transfers
+- leatherback
+- Mutigate
+- Monirates
+- Oval
+- Space
+- Ratefy
+- Graph.
+
+## Digital Lenders & Credit Infrastructure
+
+- Carrot
+- lendstack
+- Migo
+- lendha
+- monapp
+- Sycamore
+- PebbleScore
+- advancly
+- Poolside
+- CreditDirect
+- Clan
+- Move
+- Renmoney MFB
+- Zedvance
+- Hadi.
+- LiteFi
+- Lendigo
+- Kredete
+- SocialLender
+- mida
+- Periculum
+- Umba
+- CreditChek
+- BainesCredit
+- KwikPay
+- branch
+- FedaCash
+- Invessa
+- Vend
+- Page
+- Kiakia
+- CrediFex
+- obtainly
+- SnapCash
+- Lendocredit
+- stacs
+- DebtRecuva
+- tendar
+- TradeLenda
+- acceede
+- shecluded
+- PressPayNG
+- lendsqr
+- Maxim
+- Bfree
+- Credbevy
+- indicina
+
+## Crypto & Web3
+
+- Ultra
+- Blockradar
+- PouchFi
+- prestmit
+- Jupit
+- ivorypay
+- cNGN
+- Yesa
+- Busha
+- Cwallet
+- Wicrypt
+- Mular
+- Cansa finance
+- Gonana
+- Quidax
+- LEDiG
+- Luno
+- trustBank
+- StableStack
+- YellowCard
+- Bitmama
+- BitGifty
+- Mustard.ng
+- Syarpa
+
+## Crowdfunding, Agritech & Proptech
+
+- Assetrica
 - Lantan
-- Housemata
+- housmata
 - Spruce
-- PayMyRent
+- paymyrent
 - ThriveAgric
-- HouseAfrica
+- houseafrica
 - Keble
 - Donate-ng
 - Buckstrybe
 - Hiyalo
 - AFEX
-- Crowdyvest
+- Crodyvest
 - Spleet
-- Mustard.ng
-- IREVA
-- ULE Homes
+- iREVA
+- ULÉ HOMES
 - Trustcrow
-- XchangeBox
+- xchangeBOX
 - CoBuildit
 - Venco
-- hX Africa
-- Gonana
-- Canza Finance
-- cNGN
-- PouchFi
+- HXafrica
 
-## Crypto and Web3
+## Consumer Payment / Digital Wallet / Super App
 
-- Syarpa
-- BitGifty
-- Bitmama
-- Yellow Card
-- StableStack
-- TrustBank
-- Luno
-- Quidax
-- Mular
-- Wicrypt
-- Busha
-- Cwallet
-- Blockradar
-- Yesa
+- Afribenki
+- Timon
+- DgnRavePay
+- paypaddi
+- Kwikpik.
+- JEMA PAY
+- Zap
+- Payable
+- BilmaPay
+- kegow
+- Paga
+- Boldswitch
+- Mercurie
+- Paywise
+- Squareme
+- PX
+- EverTry
+- Nearpays
+- PrimeBiller
+- SatsApp
+- KongaPay
+- JumiaPay
+- Nairabox
+- Quickteller
+- Velcro
+- Payrit
+- Asewallet
+- Gexipay
+- Gameporte
+- Speso
+- Cashir
+- tribapay
+- Pocket app
+- NowNow
+- Wyowo
+- Zynopay
+- FlowAfric
+- CredPal
+- Sapa
+- FalconPay
+- noun
+- Cardiff
+- TSB-epay
+- DeSola
 
-## Digital Lenders and Credit Infrastructure
+## Payments Processing, Switching & Infrastructure
 
-- Carrot
-- Lendastack
-- Lendha
-- Monapp
-- Graph
-- Migo
-- PebbleScore
-- Advancly
-- Poolside
-- Credit Direct
-- Hadia
-- Oval
-- Space
-- Lendigo
-- Kedete
-- Social Lender
-- Clan
-- M-Cash
-- Renmoney
-- Mida
-- Periculum
-- Umba
-- KwikPay
-- Branch
-- FedaCash
-- BainesCredit
-- Page Financials
-- Kiakia
-- CrediFlex
-- Invessa
-- Obtainment
-- SnapCash
-- Lendor Credit
-- 4Tendar
-- WebtRecova
-- Stacs
-- Accede
-- Scheduled
-- PressPayNG
-- Lendsqr
-- Maxim
-- BFree
-- Credbevy
-- Indicina
-
-## Digital Banks
-
-- Prospa
-- Kuda
-- Mintyn
-- Trust MFB
-- Waza
-- Rex Microfinance Bank
-- Lenco
-- PalmPay
-- Corebank
-- GIGbanc
-- Sterling
-- Moniepoint
-- OPay
-- Sparkle
-- Leatherback
-- ALAT
-- Pryme
-- Baobab
-- FairMoney
-- Carbon
-- VFD
-- Aku
-- Sofri
-- Kredi
-
-## FX, B2B and Cross-Border Payments and Remittances
-
-- Fincap
-- RoutePay
-- Waza
-- FalconLite
-- Wirepay
-- Zole
-- Afriex
-- Grey
-- Feedxpay
-- AZA Finance
-- Zilla
-- VoleRemit
-- Naira4Yuan
-- BridgePay
-- MonieWorld
-- Sendva
-- Sendwave
-- StraitPay
-- Novacrust
-- Verto
-- SendSprint
-- FXBUD
-- MANSA
-- BoundlessPay
-- BordaWave
-- FrontEdge
-- Nomba
-- Accrue
-- PCX
-- Nilos
+- pawaPay
+- errandpay
+- Clane
+- vesicash
+- ZEST
+- C24
+- E-Settlement
+- SEERBIT
+- onafriq
+- itex
+- on.us
+- Accelerex
+- etransact
+- PayU GPO
+- monify
+- Kora
+- GreenPay
+- Interswitch
+- QorePay
+- Flutterwave
+- remita
+- CardForte
+- eTOP
+- Centric
+- UP
+- Payaza
+- Press
+- Fincra
+- zainpay
+- cashbuddy
+- arca
+- DOT
+- Woven
+- SoftPAY
+- ZONE
+- Cellulant
+- Paystack
+- CoralPay

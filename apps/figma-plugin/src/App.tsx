@@ -1,7 +1,6 @@
-import { useEffect, useLayoutEffect, useMemo, useState, type FormEvent } from "react";
+import { useEffect, useLayoutEffect, useMemo, useRef, useState, type FormEvent } from "react";
 import { createRoot } from "react-dom/client";
 import {
-  ArrowDownToLine,
   ArrowUp,
   ArrowUpRight,
   BadgeDollarSign,
@@ -9,16 +8,21 @@ import {
   Building2,
   ChartLine,
   Check,
+  ChevronDown,
   Copy,
   FileCode2,
   FileImage,
   GitFork,
+  GitPullRequest,
+  Globe2,
   History,
   Image as ImageIcon,
   Images,
   Landmark,
   Layers3,
   LayoutGrid,
+  Lock,
+  LockOpen,
   Monitor,
   MessageSquarePlus,
   Moon,
@@ -35,28 +39,25 @@ import {
   X,
   type LucideIcon
 } from "lucide-react";
-import { SpeedInsights } from "@vercel/speed-insights/react";
-import type { LogoFormatType } from "@nigerian-bank-logos/core";
-import type { InstitutionCategory } from "@nigerian-bank-logos/institutions";
+import { getCatalogLogoBadge, usesDarkLogoPreview, type LogoFormatType } from "@awalogo/core";
+import type { InstitutionCategory } from "@awalogo/institutions";
 import {
   availableInstitutionCategories,
   availableLogoCount,
-  canonicalLogoCount,
   categoryLabel,
-  logoCatalogItems,
+  explorerCatalogItems,
   type CatalogItem
 } from "./catalog-data";
 import { searchScore } from "./catalog-search";
 import { buildCompanyLogoSubmissionUrl, buildLogoRequestUrl } from "./logo-request";
+import { postToFigma, subscribeToFigma } from "./figma-bridge";
 import type { LogoAsset } from "./logo-data";
+import awalogoLogoUrl from "../community-assets/awalogo-logo.svg";
 import "./styles.css";
-
-type PluginMessage =
-  | { type: "inserted"; name: string }
-  | { type: "error"; message: string };
 
 type ProjectPanel = "changelog" | "contribute" | "request" | "trademarks";
 type ThemeMode = "system" | "light" | "dark";
+type LogoDimensions = { width: number; height: number };
 
 const PAGE_SIZE = 48;
 const THEME_STORAGE_KEY = "nigerian-bank-logos-theme";
@@ -82,15 +83,6 @@ const categoryIcons: Partial<Record<InstitutionCategory, LucideIcon>> = {
   "switching-processing": RefreshCw,
   "stockbroker": ChartLine
 };
-const darkPreviewSlugs = new Set([
-  "busha-digital-light",
-  "grey",
-  "union-bank-of",
-  "meristem-securities",
-  "cardinalstone-securities",
-  "chapel-hill-denham",
-  "investnaija"
-]);
 const formatIcons: Record<LogoFormatType, LucideIcon> = {
   svg: FileCode2,
   png: FileImage,
@@ -99,7 +91,7 @@ const formatIcons: Record<LogoFormatType, LucideIcon> = {
 };
 const categoryCounts = new Map(availableInstitutionCategories.map((category) => [
   category,
-  logoCatalogItems.filter((item) => item.categories.includes(category)).length
+  explorerCatalogItems.filter((item) => item.categories.includes(category)).length
 ]));
 const dateFormatter = new Intl.DateTimeFormat("en-NG", {
   day: "numeric",
@@ -107,6 +99,10 @@ const dateFormatter = new Intl.DateTimeFormat("en-NG", {
   year: "numeric",
   timeZone: "Africa/Lagos"
 });
+const latestLogoAddedAt = explorerCatalogItems.reduce((latest, item) => {
+  const addedAt = item.logo?.added_at;
+  return addedAt && addedAt > latest ? addedAt : latest;
+}, "");
 
 function formatDate(date: string) {
   return dateFormatter.format(new Date(`${date}T00:00:00+01:00`));
@@ -135,8 +131,50 @@ function getInstitutionInitials(name: string) {
   return `${words[0][0]}${words[1][0]}`.toUpperCase();
 }
 
+const svgPreviewUrls = new Map<string, string>();
+
 function previewUrl(logo: LogoAsset) {
-  return logo.asset_urls.png ?? logo.asset_urls.webp ?? logo.asset_urls.jpeg ?? "";
+  if (!logo.svg) return logo.asset_urls.png ?? logo.asset_urls.webp ?? logo.asset_urls.jpeg ?? "";
+  const cachedUrl = svgPreviewUrls.get(logo.svg);
+  if (cachedUrl) return cachedUrl;
+  const url = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(logo.svg)}`;
+  svgPreviewUrls.set(logo.svg, url);
+  return url;
+}
+
+async function copyTextToClipboard(text: string) {
+  const textarea = document.createElement("textarea");
+  textarea.value = text;
+  textarea.setAttribute("readonly", "");
+  textarea.style.position = "fixed";
+  textarea.style.left = "-9999px";
+  textarea.style.opacity = "0";
+  document.body.appendChild(textarea);
+  textarea.focus();
+  textarea.select();
+  textarea.setSelectionRange(0, textarea.value.length);
+  const copied = document.execCommand("copy");
+  textarea.remove();
+  if (!copied) throw new Error("Text clipboard is unavailable");
+}
+
+function svgAtDimensions(svg: string, dimensions: LogoDimensions) {
+  const documentNode = new DOMParser().parseFromString(svg, "image/svg+xml");
+  if (documentNode.querySelector("parsererror")) throw new Error("SVG is malformed");
+  const root = documentNode.documentElement;
+  if (root.tagName.toLowerCase() !== "svg") throw new Error("SVG root is missing");
+
+  if (!root.hasAttribute("viewBox")) {
+    const sourceWidth = Number.parseFloat(root.getAttribute("width") ?? "");
+    const sourceHeight = Number.parseFloat(root.getAttribute("height") ?? "");
+    if (Number.isFinite(sourceWidth) && sourceWidth > 0 && Number.isFinite(sourceHeight) && sourceHeight > 0) {
+      root.setAttribute("viewBox", `0 0 ${sourceWidth} ${sourceHeight}`);
+    }
+  }
+
+  root.setAttribute("width", String(dimensions.width));
+  root.setAttribute("height", String(dimensions.height));
+  return new XMLSerializer().serializeToString(root);
 }
 
 function getInitialTheme(): ThemeMode {
@@ -158,6 +196,10 @@ function App() {
   const [toast, setToast] = useState("");
   const [projectPanel, setProjectPanel] = useState<ProjectPanel | null>(null);
   const [themeMode, setThemeMode] = useState<ThemeMode>(getInitialTheme);
+  const [categoryPickerOpen, setCategoryPickerOpen] = useState(false);
+  const [draftCategories, setDraftCategories] = useState<InstitutionCategory[]>([]);
+  const [categoryQuery, setCategoryQuery] = useState("");
+  const categoryPickerRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
     const systemTheme = window.matchMedia("(prefers-color-scheme: dark)");
@@ -179,13 +221,17 @@ function App() {
   }, [themeMode]);
 
   useEffect(() => {
-    function handlePluginMessage(event: MessageEvent<{ pluginMessage?: PluginMessage }>) {
-      const message = event.data.pluginMessage;
-      if (!message) return;
-      setToast(message.type === "inserted" ? `${message.name} inserted` : message.message);
-    }
-    window.addEventListener("message", handlePluginMessage);
-    return () => window.removeEventListener("message", handlePluginMessage);
+    return subscribeToFigma((message) => {
+      setToast(message.type === "inserted"
+        ? `${message.name} inserted`
+        : message.type === "inserted-in-frame"
+          ? `${message.name} inserted into selected frame`
+          : message.type === "replaced"
+            ? `Selected logo replaced with ${message.name}`
+            : message.type === "clipped"
+              ? `${message.name} clipped to selected shape`
+              : message.message);
+    });
   }, []);
 
   useEffect(() => {
@@ -193,15 +239,31 @@ function App() {
       if (event.key === "Escape") {
         setSelectedItem(null);
         setProjectPanel(null);
+        setCategoryPickerOpen(false);
+        setCategoryQuery("");
       }
     }
     window.addEventListener("keydown", closeOnEscape);
     return () => window.removeEventListener("keydown", closeOnEscape);
   }, []);
 
+  useEffect(() => {
+    if (!categoryPickerOpen) return;
+
+    function closeOnOutsideClick(event: PointerEvent) {
+      if (!categoryPickerRef.current?.contains(event.target as Node)) {
+        setCategoryPickerOpen(false);
+        setCategoryQuery("");
+      }
+    }
+
+    document.addEventListener("pointerdown", closeOnOutsideClick);
+    return () => document.removeEventListener("pointerdown", closeOnOutsideClick);
+  }, [categoryPickerOpen]);
+
   useEffect(() => setVisibleLimit(PAGE_SIZE), [selectedCategories, query]);
 
-  const filteredItems = useMemo(() => logoCatalogItems
+  const filteredItems = useMemo(() => explorerCatalogItems
     .map((item) => ({ item, score: searchScore(item, query) }))
     .filter(({ item, score }) => {
       const categoryMatches = selectedCategories.length === 0 ||
@@ -212,31 +274,90 @@ function App() {
     .map(({ item }) => item), [selectedCategories, query]);
 
   const visibleItems = filteredItems.slice(0, visibleLimit);
+  const visibleCategories = useMemo(() => {
+    const normalizedQuery = categoryQuery.trim().toLocaleLowerCase("en-NG");
+    return normalizedQuery
+      ? availableInstitutionCategories.filter((category) => categoryLabel(category)
+        .toLocaleLowerCase("en-NG")
+        .includes(normalizedQuery))
+      : availableInstitutionCategories;
+  }, [categoryQuery]);
+  const draftResultCount = useMemo(() => explorerCatalogItems.filter((item) => {
+    const categoryMatches = draftCategories.length === 0 ||
+      draftCategories.some((category) => item.categories.includes(category));
+    return categoryMatches && Number.isFinite(searchScore(item, query));
+  }).length, [draftCategories, query]);
+  const categorySelectionLabel = selectedCategories.length === 0
+    ? "All categories"
+    : selectedCategories.length === 1
+      ? categoryLabel(selectedCategories[0])
+      : `${selectedCategories.length} categories`;
+  const categorySelectionSummary = selectedCategories.length === 0
+    ? "Browse every available institution"
+    : selectedCategories.map(categoryLabel).join(", ");
 
-  function insertLogo(logo: LogoAsset) {
-    parent.postMessage({
-      pluginMessage: { type: "insert-logo", name: logo.name, svg: logo.svg }
-    }, "*");
+  async function convertRaster(source: string, formatType: LogoFormatType): Promise<Blob | null> {
+    if (formatType !== "png" && formatType !== "webp" && formatType !== "jpeg") return null;
+    const image = new Image();
+    image.src = source;
+    await image.decode();
+    const canvas = document.createElement("canvas");
+    canvas.width = image.naturalWidth;
+    canvas.height = image.naturalHeight;
+    canvas.getContext("2d")?.drawImage(image, 0, 0);
+    const mimeType = formatType === "jpeg" ? "image/jpeg" : `image/${formatType}`;
+    return new Promise<Blob | null>((resolve) => canvas.toBlob(resolve, mimeType, 0.94));
   }
 
-  async function copySvg(logo: LogoAsset) {
+  async function logoBlob(logo: LogoAsset, formatType: LogoFormatType): Promise<Blob | null> {
+    if (formatType === "svg") {
+      return logo.svg ? new Blob([logo.svg], { type: "image/svg+xml;charset=utf-8" }) : null;
+    }
+    const exactAsset = logo.asset_urls[formatType];
+    if (exactAsset) return fetch(exactAsset).then((response) => response.blob());
+    const preview = previewUrl(logo);
+    return preview ? convertRaster(preview, formatType) : null;
+  }
+
+  async function insertLogo(logo: LogoAsset, formatType: LogoFormatType, dimensions: LogoDimensions) {
+    if (formatType === "svg" && logo.svg) {
+      postToFigma({ type: "insert-logo", name: logo.name, svg: logo.svg, ...dimensions });
+      return;
+    }
     try {
-      if (navigator.clipboard?.writeText) {
-        await navigator.clipboard.writeText(logo.svg);
-      } else {
-        const textarea = document.createElement("textarea");
-        textarea.value = logo.svg;
-        textarea.style.position = "fixed";
-        textarea.style.opacity = "0";
-        document.body.appendChild(textarea);
-        textarea.select();
-        const copied = document.execCommand("copy");
-        textarea.remove();
-        if (!copied) throw new Error("Copy command was rejected");
-      }
-      setToast(`${logo.name} SVG copied`);
+      const sourceBlob = await logoBlob(logo, formatType);
+      if (!sourceBlob) throw new Error("Asset unavailable");
+      const blob = sourceBlob.type === "image/webp"
+        ? await convertRaster(previewUrl(logo), "png")
+        : sourceBlob;
+      if (!blob) throw new Error("Image conversion failed");
+      const bytes = Array.from(new Uint8Array(await blob.arrayBuffer()));
+      const mimeType = blob.type as "image/png" | "image/webp" | "image/jpeg";
+      postToFigma({ type: "insert-image", name: logo.name, mimeType, bytes, ...dimensions });
     } catch {
-      setToast("Unable to copy SVG");
+      setToast(`Unable to insert ${formatType.toUpperCase()}`);
+    }
+  }
+
+  async function copyLogo(logo: LogoAsset, formatType: LogoFormatType, dimensions: LogoDimensions) {
+    try {
+      if (formatType === "svg") {
+        if (!logo.svg) throw new Error("SVG is unavailable");
+        await copyTextToClipboard(svgAtDimensions(logo.svg, dimensions));
+      } else {
+        const blob = await logoBlob(logo, formatType);
+        if (!blob || !navigator.clipboard?.write || typeof ClipboardItem === "undefined") {
+          throw new Error("Image clipboard is unavailable");
+        }
+        const clipboardBlob = blob.type === "image/png"
+          ? blob
+          : await convertRaster(previewUrl(logo), "png");
+        if (!clipboardBlob) throw new Error("Image clipboard conversion failed");
+        await navigator.clipboard.write([new ClipboardItem({ "image/png": clipboardBlob })]);
+      }
+      setToast(`${logo.name} ${formatType.toUpperCase()} copied`);
+    } catch {
+      setToast(`Unable to copy ${formatType.toUpperCase()}`);
     }
   }
 
@@ -246,9 +367,23 @@ function App() {
   }
 
   function toggleCategory(category: InstitutionCategory) {
-    setSelectedCategories((current) => current.includes(category)
+    setDraftCategories((current) => current.includes(category)
       ? current.filter((value) => value !== category)
       : [...current, category]);
+  }
+
+  function toggleCategoryPicker() {
+    if (!categoryPickerOpen) {
+      setDraftCategories(selectedCategories);
+      setCategoryQuery("");
+    }
+    setCategoryPickerOpen((current) => !current);
+  }
+
+  function applyCategoryFilter() {
+    setSelectedCategories(draftCategories);
+    setCategoryPickerOpen(false);
+    setCategoryQuery("");
   }
 
   function resetCatalog() {
@@ -259,31 +394,6 @@ function App() {
     requestAnimationFrame(() => {
       document.getElementById("catalog-results")?.scrollIntoView({ behavior: "smooth", block: "start" });
     });
-  }
-
-  function downloadCatalog() {
-    const data = logoCatalogItems.map(({ institution, institutions, logo, displayName, categories }) => ({
-      name: displayName,
-      slug: institution.slug,
-      institution_slugs: institutions.map((entry) => entry.slug),
-      logo_slug: logo?.slug ?? null,
-      categories,
-      aliases: [...new Set(institutions.flatMap((entry) => entry.aliases))],
-      website: logo.website,
-      source_url: logo.source_url,
-      formats: logo.formats.map((format) => format.type),
-      logo_status: logo.status,
-      added_at: logo.added_at
-    }));
-    const url = URL.createObjectURL(new Blob([JSON.stringify(data, null, 2)], { type: "application/json" }));
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = "nigerian-financial-logo-catalog.json";
-    document.body.appendChild(link);
-    link.click();
-    link.remove();
-    URL.revokeObjectURL(url);
-    setToast("Catalog JSON downloaded");
   }
 
   function completeLogoRequest() {
@@ -316,10 +426,10 @@ function App() {
     <main className="plugin-shell">
       <header className="topbar">
         <div className="brand">
-          <span className="brand-mark" aria-hidden="true">NG</span>
+          <span className="brand-mark" aria-hidden="true"><img src={awalogoLogoUrl} alt="" /></span>
           <div>
-            <strong>Nigerian Bank Logos</strong>
-            <small>Open source financial brand directory</small>
+            <strong>awalogo</strong>
+            <small>Nigerian Bank Logos</small>
           </div>
         </div>
         <div className="topbar-actions">
@@ -375,7 +485,7 @@ function App() {
             onKeyDown={(event) => {
               if (event.key === "Escape" && query) setQuery("");
             }}
-            placeholder="Search name, alias, licence, or regulator"
+            placeholder={'Search logos  — try "Sycamore", "Kuda" ...'}
           />
           {query ? (
             <button
@@ -391,44 +501,134 @@ function App() {
           ) : null}
         </label>
 
-        <div className="catalog-toolbar">
-          <div className="category-capsules" role="group" aria-label="Filter by category">
+        <div className="catalog-toolbar" ref={categoryPickerRef}>
+          <div className={`category-picker${categoryPickerOpen ? " open" : ""}`}>
             <button
-              className={`category-capsule${selectedCategories.length === 0 ? " selected" : ""}`}
+              className="category-picker-trigger"
               type="button"
-              aria-pressed={selectedCategories.length === 0}
-              onClick={() => setSelectedCategories([])}
+              aria-expanded={categoryPickerOpen}
+              aria-controls="category-picker-panel"
+              aria-haspopup="dialog"
+              onClick={toggleCategoryPicker}
             >
-              <LayoutGrid aria-hidden="true" size={15} strokeWidth={1.75} />
-              <span>All categories</span>
-              <small>{availableLogoCount.toLocaleString("en-NG")}</small>
-              <span className="capsule-check">{selectedCategories.length === 0 ? <Check aria-hidden="true" size={13} /> : null}</span>
+              <span className="category-picker-icon" aria-hidden="true">
+                <LayoutGrid size={18} strokeWidth={1.75} />
+              </span>
+              <span className="category-picker-copy">
+                <strong>{categorySelectionLabel}</strong>
+                <small title={categorySelectionSummary}>{categorySelectionSummary}</small>
+              </span>
+              <span className="category-picker-result-count">
+                {filteredItems.length.toLocaleString("en-NG")}
+              </span>
+              <ChevronDown className="category-picker-chevron" aria-hidden="true" size={17} strokeWidth={1.75} />
             </button>
-            {availableInstitutionCategories.map((category) => {
-              const Icon = categoryIcons[category] ?? RadioTower;
-              const selected = selectedCategories.includes(category);
-              return (
-                <button
-                  className={`category-capsule${selected ? " selected" : ""}`}
-                  key={category}
-                  type="button"
-                  aria-pressed={selected}
-                  onClick={() => toggleCategory(category)}
-                >
-                  <Icon aria-hidden="true" size={15} strokeWidth={1.75} />
-                  <span>{categoryLabel(category)}</span>
-                  <small>{categoryCounts.get(category)}</small>
-                  <span className="capsule-check">{selected ? <Check aria-hidden="true" size={13} /> : null}</span>
-                </button>
-              );
-            })}
+
+            {categoryPickerOpen ? (
+              <div className="category-picker-panel" id="category-picker-panel" role="dialog" aria-label="Choose categories">
+                <header className="category-picker-header">
+                  <div>
+                    <strong>Categories</strong>
+                    <small>Select one or more</small>
+                  </div>
+                  <div className="category-picker-header-actions">
+                    <span>{draftCategories.length === 0 ? "All" : `${draftCategories.length} selected`}</span>
+                    <button
+                      type="button"
+                      aria-label="Close category picker"
+                      onClick={() => {
+                        setCategoryPickerOpen(false);
+                        setCategoryQuery("");
+                      }}
+                    >
+                      <X aria-hidden="true" size={15} strokeWidth={1.75} />
+                    </button>
+                  </div>
+                </header>
+
+                <label className="category-search">
+                  <Search aria-hidden="true" size={15} strokeWidth={1.75} />
+                  <span>Search categories</span>
+                  <input
+                    autoFocus
+                    value={categoryQuery}
+                    onChange={(event) => setCategoryQuery(event.target.value)}
+                    placeholder="Find a category"
+                  />
+                  {categoryQuery ? (
+                    <button type="button" aria-label="Clear category search" onClick={() => setCategoryQuery("")}>
+                      <X aria-hidden="true" size={14} strokeWidth={1.75} />
+                    </button>
+                  ) : null}
+                </label>
+
+                <div className="category-options" role="group" aria-label="Available categories">
+                  {categoryQuery === "" ? (
+                    <button
+                      className={`category-option all-categories${draftCategories.length === 0 ? " selected" : ""}`}
+                      type="button"
+                      aria-pressed={draftCategories.length === 0}
+                      onClick={() => setDraftCategories([])}
+                    >
+                      <LayoutGrid aria-hidden="true" size={16} strokeWidth={1.75} />
+                      <span>All categories</span>
+                      <small>{explorerCatalogItems.length.toLocaleString("en-NG")}</small>
+                      <span className="category-option-check" aria-hidden="true">
+                        {draftCategories.length === 0 ? <Check size={14} strokeWidth={2} /> : null}
+                      </span>
+                    </button>
+                  ) : null}
+
+                  {visibleCategories.map((category) => {
+                    const Icon = categoryIcons[category] ?? RadioTower;
+                    const selected = draftCategories.includes(category);
+                    const label = categoryLabel(category);
+                    return (
+                      <button
+                        className={`category-option${selected ? " selected" : ""}`}
+                        key={category}
+                        type="button"
+                        title={label}
+                        aria-pressed={selected}
+                        onClick={() => toggleCategory(category)}
+                      >
+                        <Icon aria-hidden="true" size={16} strokeWidth={1.75} />
+                        <span>{label}</span>
+                        <small>{categoryCounts.get(category)}</small>
+                        <span className="category-option-check" aria-hidden="true">
+                          {selected ? <Check size={14} strokeWidth={2} /> : null}
+                        </span>
+                      </button>
+                    );
+                  })}
+
+                  {visibleCategories.length === 0 ? (
+                    <p className="category-no-results">No matching category</p>
+                  ) : null}
+                </div>
+
+                <footer className="category-picker-actions">
+                  <button
+                    className="category-clear-button"
+                    type="button"
+                    disabled={draftCategories.length === 0}
+                    onClick={() => setDraftCategories([])}
+                  >
+                    Clear
+                  </button>
+                  <button className="category-apply-button" type="button" onClick={applyCategoryFilter}>
+                    Show {draftResultCount.toLocaleString("en-NG")} {draftResultCount === 1 ? "result" : "results"}
+                  </button>
+                </footer>
+              </div>
+            ) : null}
           </div>
         </div>
       </section>
 
       <div className="results-summary" id="catalog-results" aria-live="polite">
         <span>{filteredItems.length.toLocaleString("en-NG")} {filteredItems.length === 1 ? "result" : "results"}</span>
-        <span>{availableLogoCount.toLocaleString("en-NG")} logo-linked institutions</span>
+        <span>{availableLogoCount.toLocaleString("en-NG")} available logos</span>
       </div>
 
       {filteredItems.length === 0 ? (
@@ -445,16 +645,19 @@ function App() {
           <section className="logo-grid" aria-label="Financial institutions">
             {visibleItems.map((item, index) => {
               const { logo, displayName, categories } = item;
+              const logoBadge = getCatalogLogoBadge(logo, latestLogoAddedAt);
               return (
                 <button
-                  className={`logo-tile${logo ? "" : " logo-pending"}`}
+                  className={`logo-tile${logo ? "" : " logo-pending"}${logoBadge ? ` logo-${logoBadge}` : ""}`}
                   key={item.institution.slug}
                   type="button"
                   onClick={() => openDetails(item)}
                   style={{ animationDelay: `${(index % 12) * 30}ms` }}
-                  aria-label={`View ${displayName} details`}
+                  aria-label={`View ${displayName} details${logoBadge === "unverified" ? ", unverified logo" : logoBadge === "new" ? ", newly added logo" : ""}`}
                 >
-                  <span className={`tile-preview${logo && darkPreviewSlugs.has(logo.slug) ? " logo-preview-dark" : ""}`}>
+                  <span className={`tile-preview${logo && usesDarkLogoPreview(logo.slug) ? " logo-preview-dark" : ""}`}>
+                    {logoBadge === "unverified" ? <span className="unverified-tag" aria-hidden="true">Unverified</span> : null}
+                    {logoBadge === "new" ? <span className="new-tag" aria-hidden="true">New</span> : null}
                     {logo ? <img src={previewUrl(logo)} alt="" /> : (
                       <span className="pending-preview" aria-hidden="true">
                         <span className="pending-monogram">{getInstitutionInitials(displayName)}</span>
@@ -488,69 +691,42 @@ function App() {
 
       <footer className="site-footer">
         <div className="footer-inner">
+          <span className="frame-register frame-register-top-left" aria-hidden="true" />
+          <span className="frame-register frame-register-top-right" aria-hidden="true" />
+          <span className="frame-register frame-register-bottom-left" aria-hidden="true" />
+          <span className="frame-register frame-register-bottom-right" aria-hidden="true" />
           <div className="footer-topbar">
             <div className="footer-brand">
-              <Landmark aria-hidden="true" size={17} strokeWidth={1.7} />
-              <strong>Nigerian Bank Logos</strong>
+              <img className="footer-brand-logo" src={awalogoLogoUrl} alt="" />
+              <strong>awalogo</strong>
             </div>
             <nav className="footer-nav" aria-label="Project links">
               <button type="button" onClick={() => setProjectPanel("contribute")} aria-haspopup="dialog">Contribute</button>
               <button type="button" onClick={() => setProjectPanel("changelog")} aria-haspopup="dialog">Changelog</button>
               <button type="button" onClick={() => setProjectPanel("trademarks")} aria-haspopup="dialog">Trademark policy</button>
             </nav>
-            <div className="footer-cta">
-              <button type="button" onClick={downloadCatalog} title="Download catalog metadata as JSON">
-                <ArrowDownToLine aria-hidden="true" size={15} /> Download JSON
-              </button>
-              <button type="button" onClick={() => setProjectPanel("request")} aria-haspopup="dialog" title="Request an unavailable logo">
-                <MessageSquarePlus aria-hidden="true" size={15} /> Request a logo
-              </button>
-              <button className="footer-cta-primary" type="button" onClick={() => setProjectPanel("contribute")} aria-haspopup="dialog">
-                Submit a logo
-              </button>
-            </div>
-          </div>
-
-          <div className="footer-body">
-            <section className="footer-intro" aria-labelledby="footer-intro-title">
-              <span className="footer-kicker">Open source · Nigeria</span>
-              <h2 id="footer-intro-title">Logo infrastructure for Nigeria's financial ecosystem.</h2>
-              <p>A community-maintained collection of verified assets for product designers, developers, and design systems.</p>
-              <dl className="footer-stats">
-                <div><dt>Listings</dt><dd>{availableLogoCount.toLocaleString("en-NG")}</dd></div>
-                <div><dt>Canonical assets</dt><dd>{canonicalLogoCount}</dd></div>
-              </dl>
-            </section>
-
-            <div className="footer-details">
-              <div className="footer-detail-grid">
-                <section>
-                  <h3>Catalog</h3>
-                  <p>Banks, fintechs, payment providers, insurers, investment firms, and other Nigerian financial institutions.</p>
-                </section>
-                <section>
-                  <h3>Built for</h3>
-                  <p>Figma workflows, websites, apps, documentation, and reusable design systems.</p>
-                </section>
-              </div>
-              <section className="footer-disclosure">
-                <h3>Asset notice</h3>
-                <p>Verified assets are reviewed against institution-owned websites, official brand pages, annual reports, or other authoritative sources. Community imports remain marked for review until their provenance is confirmed.</p>
-                <p>Code, metadata, and project tooling are available under the MIT License. Logo artwork and company names remain trademarks of their respective owners and are not relicensed by this project.</p>
-              </section>
-            </div>
           </div>
 
           <div className="footer-bottom">
             <div className="footer-meta-links">
-              <a href="https://github.com/adeyemimayokun/nigerian-bank-logos" target="_blank" rel="noreferrer">
+              <a href="https://github.com/adeyemimayokun/awalogo" target="_blank" rel="noreferrer">
                 <GitFork aria-hidden="true" size={15} /> GitHub
               </a>
+              <a href="https://awalogo.com" target="_blank" rel="noreferrer" title="Visit awalogo.com">
+                <Globe2 aria-hidden="true" size={15} /> Website
+              </a>
+              <a
+                href="https://github.com/adeyemimayokun/awalogo/blob/main/CONTRIBUTING.md"
+                target="_blank"
+                rel="noreferrer"
+                title="Contribute to awalogo"
+              >
+                <GitPullRequest aria-hidden="true" size={15} /> Contribute
+              </a>
               <span>MIT licensed tooling</span>
-              <span>Updated 14 July 2026</span>
             </div>
             <div className="footer-copyright">
-              <span>© 2026 Nigerian Bank Logos</span>
+              <span>Built for convenience — check each brand&apos;s guidelines before use.</span>
               <button
                 type="button"
                 aria-label="Back to top"
@@ -570,8 +746,7 @@ function App() {
           selectedFormat={selectedFormat}
           onClose={() => setSelectedItem(null)}
           onFormatChange={setSelectedFormat}
-          onCopySvg={copySvg}
-          onDownload={downloadLogo}
+          onCopy={copyLogo}
           onInsert={insertLogo}
           onRequest={() => {
             setQuery(selectedItem.displayName);
@@ -591,7 +766,6 @@ function App() {
       ) : null}
 
       {toast ? <div className="toast" role="status" onAnimationEnd={() => setToast("")}>{toast}</div> : null}
-      <SpeedInsights />
     </main>
   );
 }
@@ -1029,8 +1203,7 @@ function DetailSheet({
   selectedFormat,
   onClose,
   onFormatChange,
-  onCopySvg,
-  onDownload,
+  onCopy,
   onInsert,
   onRequest
 }: {
@@ -1038,13 +1211,15 @@ function DetailSheet({
   selectedFormat: LogoFormatType;
   onClose: () => void;
   onFormatChange: (format: LogoFormatType) => void;
-  onCopySvg: (logo: LogoAsset) => void;
-  onDownload: (logo: LogoAsset, format: LogoFormatType) => void;
-  onInsert: (logo: LogoAsset) => void;
+  onCopy: (logo: LogoAsset, format: LogoFormatType, dimensions: LogoDimensions) => void;
+  onInsert: (logo: LogoAsset, format: LogoFormatType, dimensions: LogoDimensions) => void;
   onRequest: () => void;
 }) {
   const { logo, displayName, categories } = item;
   const [selectedVariationId, setSelectedVariationId] = useState("primary");
+  const [dimensions, setDimensions] = useState<LogoDimensions>({ width: 512, height: 512 });
+  const [aspectRatio, setAspectRatio] = useState(1);
+  const [aspectLocked, setAspectLocked] = useState(true);
   if (!logo) {
     const institutionSource = item.institution.sources[0]?.url;
     return (
@@ -1115,6 +1290,55 @@ function DetailSheet({
   const activeVariation = variationAssets.find((variation) => variation.id === selectedVariationId) ?? variationAssets[0];
   const activeLogo = activeVariation.asset;
 
+  useEffect(() => {
+    let cancelled = false;
+    const image = new Image();
+    image.onload = () => {
+      if (cancelled || !image.naturalWidth || !image.naturalHeight) return;
+      const ratio = image.naturalWidth / image.naturalHeight;
+      const scale = Math.min(1, 1024 / Math.max(image.naturalWidth, image.naturalHeight));
+      setAspectRatio(ratio);
+      setDimensions({
+        width: Math.max(1, Math.round(image.naturalWidth * scale)),
+        height: Math.max(1, Math.round(image.naturalHeight * scale))
+      });
+    };
+    image.src = previewUrl(activeLogo);
+    return () => {
+      cancelled = true;
+    };
+  }, [activeLogo.slug]);
+
+  function updateDimension(axis: keyof LogoDimensions, nextValue: number) {
+    const value = Math.min(8192, Math.max(1, Math.round(nextValue || 1)));
+    setDimensions((current) => {
+      if (!aspectLocked) return { ...current, [axis]: value };
+      if (axis === "width") {
+        const height = Math.max(1, Math.round(value / aspectRatio));
+        return height <= 8192
+          ? { width: value, height }
+          : { width: Math.max(1, Math.round(8192 * aspectRatio)), height: 8192 };
+      }
+      const width = Math.max(1, Math.round(value * aspectRatio));
+      return width <= 8192
+        ? { width, height: value }
+        : { width: 8192, height: Math.max(1, Math.round(8192 / aspectRatio)) };
+    });
+  }
+
+  function toggleAspectLock() {
+    setAspectLocked((current) => {
+      const next = !current;
+      if (next) {
+        setDimensions((size) => ({
+          width: size.width,
+          height: Math.min(8192, Math.max(1, Math.round(size.width / aspectRatio)))
+        }));
+      }
+      return next;
+    });
+  }
+
   function selectVariation(id: string) {
     const variation = variationAssets.find((entry) => entry.id === id);
     if (!variation) return;
@@ -1131,7 +1355,7 @@ function DetailSheet({
         <header className="detail-header">
           <div>
             <span className={`verified-label${logo.status === "verified" ? "" : " community"}`}>
-              <span aria-hidden="true" /> {logo.status === "verified" ? "Verified source" : logo.status === "deprecated" ? "Deprecated asset" : "Community source"}
+              <span aria-hidden="true" /> {logo.status === "verified" ? "Verified source" : logo.status === "deprecated" ? "Deprecated asset" : "Unverified"}
             </span>
             <h2>{displayName}</h2>
             <p>{getCategorySummary(categories)}</p>
@@ -1179,7 +1403,7 @@ function DetailSheet({
               );
             })}
           </div>
-          <div className={`detail-preview${darkPreviewSlugs.has(activeLogo.slug) ? " logo-preview-dark" : ""}`}>
+          <div className={`detail-preview${usesDarkLogoPreview(activeLogo.slug) ? " logo-preview-dark" : ""}`}>
             <img src={previewUrl(activeLogo)} alt="" />
           </div>
         </div>
@@ -1203,20 +1427,55 @@ function DetailSheet({
           </div>
         </dl>
 
-        <div className={`detail-actions${activeLogo.svg ? "" : " single"}`}>
-          <button className="download-button" type="button" onClick={() => onDownload(activeLogo, selectedFormat)}>
-            Download {selectedFormat.toUpperCase()}
+        <div className="dimension-control">
+          <span className="dimension-title">Insert size</span>
+          <label className="dimension-field">
+            <span>W</span>
+            <input
+              type="number"
+              inputMode="numeric"
+              min="1"
+              max="8192"
+              value={dimensions.width}
+              onChange={(event) => updateDimension("width", event.currentTarget.valueAsNumber)}
+              aria-label="Logo width in pixels"
+            />
+            <small>px</small>
+          </label>
+          <button
+            className="aspect-lock"
+            type="button"
+            onClick={toggleAspectLock}
+            aria-label={aspectLocked ? "Unlock aspect ratio" : "Lock aspect ratio"}
+            aria-pressed={aspectLocked}
+            title={aspectLocked ? "Unlock aspect ratio" : "Lock aspect ratio"}
+          >
+            {aspectLocked
+              ? <Lock aria-hidden="true" size={14} strokeWidth={1.8} />
+              : <LockOpen aria-hidden="true" size={14} strokeWidth={1.8} />}
           </button>
-          {activeLogo.svg ? (
-            <>
-              <button className="copy-button" type="button" onClick={() => onCopySvg(activeLogo)}>
-                <Copy aria-hidden="true" size={15} strokeWidth={1.8} /> Copy SVG
-              </button>
-              <button className="insert-button" type="button" onClick={() => onInsert(activeLogo)}>
-                Insert {activeVariation.id === "primary" ? displayName : activeVariation.label}
-              </button>
-            </>
-          ) : null}
+          <label className="dimension-field">
+            <span>H</span>
+            <input
+              type="number"
+              inputMode="numeric"
+              min="1"
+              max="8192"
+              value={dimensions.height}
+              onChange={(event) => updateDimension("height", event.currentTarget.valueAsNumber)}
+              aria-label="Logo height in pixels"
+            />
+            <small>px</small>
+          </label>
+        </div>
+
+        <div className="detail-actions plugin-actions">
+          <button className="copy-button" type="button" onClick={() => onCopy(activeLogo, selectedFormat, dimensions)}>
+            <Copy aria-hidden="true" size={15} strokeWidth={1.8} /> Copy {selectedFormat.toUpperCase()}
+          </button>
+          <button className="insert-button" type="button" onClick={() => onInsert(activeLogo, selectedFormat, dimensions)}>
+            Insert {activeVariation.id === "primary" ? displayName : activeVariation.label}
+          </button>
         </div>
       </aside>
     </div>

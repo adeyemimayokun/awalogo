@@ -42,6 +42,7 @@ export const logoEntrySchema = z.object({
   name: z.string().min(2),
   slug: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/),
   category: z.enum(logoCategories),
+  categories: z.array(z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/)).min(1).optional(),
   aliases: z.array(z.string().min(1)).default([]),
   website: z.string().url(),
   source_url: z.string().url(),

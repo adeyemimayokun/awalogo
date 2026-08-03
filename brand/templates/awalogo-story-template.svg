@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1920" role="img" aria-labelledby="title desc">
+  <title id="title">awalogo vertical story template</title>
+  <desc id="desc">Editable 1080 by 1920 vertical campaign template.</desc>
+  <defs>
+    <pattern id="grid" width="270" height="320" patternUnits="userSpaceOnUse">
+      <path d="M270 0H0V320" fill="none" stroke="#E1E4DD" stroke-opacity=".1"/>
+      <circle r="4" fill="#686A64" fill-opacity=".28"/>
+    </pattern>
+  </defs>
+  <rect width="1080" height="1920" fill="#111411"/>
+  <rect width="1080" height="1920" fill="url(#grid)"/>
+  <g transform="translate(92 170) scale(.28)">
+    <path fill="#242925" d="M128 116h360c19 0 38 8 52 22l111 111c16 16 16 42 0 58l-61 61c-10 10-15 22-15 36v72c0 15 6 28 16 38l54 54c17 17 17 44 0 61l-72 72c-14 14-32 21-52 21H128c-47 0-85-38-85-85V201c0-47 38-85 85-85Z"/>
+    <path fill="#D8EF55" d="M701 210h356c55 0 100 45 100 100v310c0 55-45 100-100 100H731c-19 0-37-7-51-21l-94-94c-16-16-16-42 0-58l62-62c10-10 15-23 15-37v-64c0-14-5-27-15-37l-27-27c-16-16-16-42 0-58l57-57c6-6 14-13 23-15Z"/>
+    <path fill="#D8EF55" fill-rule="evenodd" d="M330 250c-91 0-160 66-160 151s69 151 160 151c34 0 63-10 87-29v29h64V401c0-85-59-151-151-151Zm2 65c50 0 86 36 86 86s-36 86-86 86-86-36-86-86 36-86 86-86Z"/>
+    <path fill="#151715" d="M671 337h71l49 184 54-142h55l54 142 48-184h70l-83 287h-63l-53-138-53 138h-64l-85-287Z"/>
+  </g>
+  <text x="94" y="595" fill="#F7F7F2" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="72" font-weight="700">awalogo</text>
+  <text x="92" y="960" fill="#F7F7F2" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="108" font-weight="700" letter-spacing="-4">
+    <tspan x="92">Your story</tspan>
+    <tspan x="92" dy="120">headline goes</tspan>
+    <tspan x="92" dy="120">here.</tspan>
+  </text>
+  <text x="96" y="1390" fill="#9A9D95" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="33">Open source  •  Source-aware</text>
+  <path d="M96 1480h178" stroke="#D8EF55" stroke-width="4"/>
+  <text x="96" y="1735" fill="#9A9D95" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="32">awalogo.com</text>
+</svg>

@@ -1,0 +1,95 @@
+{
+  "generated_at": "2026-08-02T22:13:08.272Z",
+  "policy": "Unverified candidates are public only with needs-review status and retained source provenance.",
+  "published_needs_review": 11,
+  "entries": [
+    {
+      "institution_slug": "global-accelerex",
+      "source_url": "https://www.globalaccelerex.com/images/Global-Accelerex-logo.png",
+      "source_type": "official-website",
+      "candidate_path": "fintech-unverified-candidates/global-accelerex/global-accelerex.jpg",
+      "sha256": "3832a2dd45c15f67d00aac2007c1026be16ba2de531d4758272c830c572a3a99",
+      "disposition": "published-needs-review"
+    },
+    {
+      "institution_slug": "coralpay",
+      "source_url": "https://contacts.zoho.com/file?ot=8&t=serviceorg&ID=798870174",
+      "source_type": "official-website",
+      "candidate_path": "fintech-unverified-candidates/coralpay/coralpay.png",
+      "sha256": "31bc5f607e984c1d1a840daf536dd81638523a73f3e8e1ab29bc6478f9a91273",
+      "disposition": "published-needs-review"
+    },
+    {
+      "institution_slug": "moneymaster-payment-service-bank",
+      "source_url": "https://moneymasterpsb.com/wp-content/uploads/2022/07/mmpsb-logo.png",
+      "source_type": "official-website",
+      "candidate_path": "fintech-unverified-candidates/moneymaster-payment-service-bank/moneymaster-payment-service-bank.png",
+      "sha256": "42df7914584423e7bb98c25737f833df255b8e86d436e79d6aea7038870fa22f",
+      "disposition": "published-needs-review"
+    },
+    {
+      "institution_slug": "suregifts",
+      "source_url": "https://www.suregifts.com.ng/register/personal#inline-logo",
+      "source_type": "official-website",
+      "candidate_path": "fintech-unverified-candidates/suregifts/suregifts.svg",
+      "sha256": "c1509ec4ced412b42a36adf891b793e31827d3f394e60a403110fedda7261f6b",
+      "disposition": "published-needs-review"
+    },
+    {
+      "institution_slug": "afriex",
+      "source_url": "https://cdn.prod.website-files.com/62ce94ab2b9c3a3597a7acd4/62d51c5a0476b26365bfe38c_Afriex%20i.svg",
+      "source_type": "official-website",
+      "candidate_path": "fintech-unverified-candidates/afriex/afriex.svg",
+      "sha256": "aadd362de18261d179a09e5463a31843225f6ecfb4dfcafb2341b2e90efe651c",
+      "disposition": "published-needs-review"
+    },
+    {
+      "institution_slug": "nomba",
+      "source_url": "https://nomba.com/favicon.png",
+      "source_type": "official-website",
+      "candidate_path": "fintech-unverified-candidates/nomba/nomba.png",
+      "sha256": "698e3efabb7dace1248567995454af57c255004cd54b09b69e67e56fb0d7b6d9",
+      "disposition": "published-needs-review"
+    },
+    {
+      "institution_slug": "novacrust",
+      "source_url": "https://novacrust.com/about-us#inline-logo",
+      "source_type": "official-website",
+      "candidate_path": "fintech-unverified-candidates/novacrust/novacrust.svg",
+      "sha256": "5c6ad1d501458396af911b1d6406987b49a1076e70e2a60fee3428aa0c68b483",
+      "disposition": "published-needs-review"
+    },
+    {
+      "institution_slug": "mercurie",
+      "source_url": "https://raw.githubusercontent.com/PaystackHQ/nigerialogos/master/public/logos/mercurie/mercurie.svg",
+      "source_type": "community-catalog",
+      "candidate_path": "fintech-unverified-candidates/mercurie/mercurie.svg",
+      "sha256": "b40160b1ac56a555273983bd087034bd6c8b4bcebea9e4037f2a0febc40de019",
+      "disposition": "published-needs-review"
+    },
+    {
+      "institution_slug": "essential-finance",
+      "source_url": "https://raw.githubusercontent.com/PaystackHQ/nigerialogos/master/public/logos/lendsqr/lendsqr.svg",
+      "source_type": "community-catalog",
+      "candidate_path": "fintech-unverified-candidates/essential-finance/essential-finance.svg",
+      "sha256": "8961ad2f9ff7599a8b88b3a31b04a9851d7de371408ec6696cb05c5b58398bb8",
+      "disposition": "published-needs-review"
+    },
+    {
+      "institution_slug": "spleet",
+      "source_url": "https://raw.githubusercontent.com/PaystackHQ/nigerialogos/master/public/logos/spleet/spleet.svg",
+      "source_type": "community-catalog",
+      "candidate_path": "fintech-unverified-candidates/spleet/spleet.svg",
+      "sha256": "8e95d920547868422ceabb8ba1343ae3ac9746fd7feb7237478b65e865b3adb8",
+      "disposition": "published-needs-review"
+    },
+    {
+      "institution_slug": "thriveagric",
+      "source_url": "https://raw.githubusercontent.com/PaystackHQ/nigerialogos/master/public/logos/thrive_agric/thrive_agric.svg",
+      "source_type": "community-catalog",
+      "candidate_path": "fintech-unverified-candidates/thriveagric/thriveagric.svg",
+      "sha256": "ee3ef69e9388a5f1bed8f7627f335a9d600badc0555df53e3cdabdec31b5f69b",
+      "disposition": "published-needs-review"
+    }
+  ]
+}

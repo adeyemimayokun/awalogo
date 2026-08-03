@@ -1,5 +1,8 @@
 export { logoCatalog } from "./catalog";
 export { institutionLogoLinks } from "./institution-links";
+export { darkLogoPreviewAssetIds, usesDarkLogoPreview } from "./preview";
+export { getCatalogLogoBadge } from "./catalog-badge";
+export type { CatalogLogoBadge } from "./catalog-badge";
 export {
   logoCatalogSchema,
   logoCategories,
@@ -19,6 +22,18 @@ export type {
   LogoVariation,
   SourceType
 } from "./schema";
+export {
+  sourcingCandidateSchema,
+  sourcingDispositionValues,
+  sourcingManifestEntrySchema,
+  sourcingManifestSchema
+} from "./sourcing-schema";
+export type {
+  SourcingCandidate,
+  SourcingDisposition,
+  SourcingManifest,
+  SourcingManifestEntry
+} from "./sourcing-schema";
 import type { LogoCategory } from "./schema";
 import { logoCatalog } from "./catalog";
 

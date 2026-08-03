@@ -2,11 +2,12 @@ import { existsSync, readFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { optimize } from "svgo";
-import { logoCatalog, logoCatalogSchema } from "../../logos/src";
+import { logoCatalog, logoCatalogSchema, sourcingManifestSchema } from "../../logos/src";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const repoRoot = join(__dirname, "../../..");
 const assetsRoot = join(repoRoot, "packages/logos/src");
+const sourcingRoot = join(repoRoot, "packages/logos/sourcing");
 
 export type ValidationIssue = {
   slug?: string;
@@ -175,8 +176,56 @@ export function validateCatalog(): ValidationIssue[] {
   return issues;
 }
 
+export function validateFintechSourcingManifest(): ValidationIssue[] {
+  const issues: ValidationIssue[] = [];
+  const path = join(sourcingRoot, "fintech-340-manifest.json");
+  if (!existsSync(path)) return [{ message: "Missing fintech-340-manifest.json." }];
+  const parsed = sourcingManifestSchema.safeParse(JSON.parse(readFileSync(path, "utf8")));
+  if (!parsed.success) {
+    return parsed.error.issues.map((issue) => ({ message: `sourcing.${issue.path.join(".")}: ${issue.message}` }));
+  }
+  const manifest = parsed.data;
+  if (manifest.summary.source_entries !== 392 || manifest.summary.available !== 52 || manifest.summary.missing !== 340) {
+    issues.push({ message: "Fintech sourcing totals must remain 392 source entries, 52 available, and 340 missing." });
+  }
+  if (manifest.entries.length !== 340) issues.push({ message: "Fintech sourcing manifest must contain exactly 340 entries." });
+  const names = new Set<string>();
+  for (const entry of manifest.entries) {
+    if (names.has(entry.normalized_name)) issues.push({ slug: entry.institution_slug ?? undefined, message: `Duplicate sourcing identity: ${entry.normalized_name}.` });
+    names.add(entry.normalized_name);
+    for (const candidate of entry.candidate_assets) {
+      if (candidate.local_path && !existsSync(join(sourcingRoot, candidate.local_path))) {
+        issues.push({ slug: entry.institution_slug ?? undefined, message: `Missing staged candidate: ${candidate.local_path}.` });
+      }
+    }
+  }
+  const promotions = JSON.parse(readFileSync(join(sourcingRoot, "fintech-batch-promotions.json"), "utf8")) as Array<{
+    institution_slug: string;
+    status?: string;
+    reviewed?: boolean;
+    source_type?: string;
+  }>;
+  for (const promotion of promotions) {
+    if (promotion.status !== "verified" || promotion.reviewed !== true || promotion.source_type === "community-catalog") {
+      issues.push({ slug: promotion.institution_slug, message: "Fintech campaign promotions require completed official-source review." });
+    }
+  }
+  const unverifiedPromotions = JSON.parse(readFileSync(join(sourcingRoot, "fintech-unverified-promotions.json"), "utf8")) as Array<{
+    institution_slug: string;
+    status?: string;
+    reviewed?: boolean;
+    source_type?: string;
+  }>;
+  for (const promotion of unverifiedPromotions) {
+    if (promotion.status !== "needs-review" || promotion.reviewed === true || !promotion.source_type) {
+      issues.push({ slug: promotion.institution_slug, message: "Unverified fintech promotions must remain visibly marked needs-review." });
+    }
+  }
+  return issues;
+}
+
 if (process.argv[1] && fileURLToPath(import.meta.url) === resolve(process.argv[1])) {
-  const issues = validateCatalog();
+  const issues = [...validateCatalog(), ...validateFintechSourcingManifest()];
 
   if (issues.length > 0) {
     console.error("Logo validation failed:");

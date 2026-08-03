@@ -1,7 +1,9 @@
-import type { Institution, InstitutionCategory } from "@nigerian-bank-logos/institutions";
+import { institutionCategories, type Institution, type InstitutionCategory } from "@awalogo/institutions";
 import communityCandidatesJson from "../../../packages/institutions/data/community-candidates.json";
+import foreignAuthorizedJson from "../../../packages/institutions/exports/foreign-authorized-ng.json";
 import institutionsJson from "../../../packages/institutions/exports/institutions-ng.json";
 import { institutionLogoLinks } from "../../../packages/logos/src/institution-links";
+import fintechSourcingManifest from "../../../packages/logos/sourcing/fintech-340-manifest.json";
 import { logos, type LogoWithSvg } from "./logo-data";
 
 export type CatalogItem = {
@@ -14,8 +16,9 @@ export type CatalogItem = {
 
 export type LogoCatalogItem = CatalogItem & { logo: LogoWithSvg };
 
-const institutions = [...institutionsJson, ...communityCandidatesJson] as Institution[];
+const institutions = [...institutionsJson, ...foreignAuthorizedJson, ...communityCandidatesJson] as Institution[];
 const logosBySlug = new Map(logos.map((logo) => [logo.slug, logo]));
+const institutionCategorySet = new Set<string>(institutionCategories);
 const categoryOverrides: Partial<Record<InstitutionCategory, string>> = {
   "crypto-vasp": "Crypto / VASP",
   "development-finance-institution": "Development finance",
@@ -117,8 +120,44 @@ const institutionItems: CatalogItem[] = institutions.map((institution) => {
     categories: institution.categories
   };
 });
+const institutionItemsBySlug = new Map(institutionItems.map((item) => [item.institution.slug, item]));
 
-export const catalogItems: CatalogItem[] = mergeCatalogItems(institutionItems)
+const linkedLogoSlugs = new Set(institutionItems.flatMap((item) => item.logo ? [item.logo.slug] : []));
+const orphanLogoItems: CatalogItem[] = logos.flatMap((logo) => {
+  if (linkedLogoSlugs.has(logo.slug)) return [];
+  const categories = (logo.categories ?? []).filter((category): category is InstitutionCategory =>
+    institutionCategorySet.has(category)
+  );
+  const primaryCategory = categories[0];
+  if (!primaryCategory) return [];
+  const reviewed = logo.status === "verified" && logo.source_type !== "community-catalog";
+  const institution: Institution = {
+    slug: logo.slug,
+    legal_name: null,
+    brand_name: logo.name,
+    aliases: logo.aliases,
+    primary_category: primaryCategory,
+    categories,
+    country_code: "NG",
+    nigeria_presence: "market-only",
+    regulators: [],
+    licence_types: [],
+    regulatory_status: reviewed ? "status-unknown" : "unverified",
+    verification_status: reviewed ? "market-verified" : "community-candidate",
+    website: logo.website,
+    sources: [{
+      url: logo.source_url,
+      source_type: logo.source_type === "community-catalog" ? "community" : "official-website",
+      retrieved_at: logo.updated_at
+    }],
+    logo_slug: logo.slug,
+    added_at: logo.added_at,
+    updated_at: logo.updated_at
+  };
+  return [{ institution, institutions: [institution], logo, displayName: logo.name, categories }];
+});
+
+export const catalogItems: CatalogItem[] = mergeCatalogItems([...institutionItems, ...orphanLogoItems])
   .sort((a, b) => a.displayName.localeCompare(b.displayName));
 
 export const institutionCount = catalogItems.length;
@@ -128,8 +167,18 @@ export const logoCatalogItems = catalogItems.filter(
 export const availableLogoCount = logoCatalogItems.length;
 export const canonicalLogoCount = logos.length;
 
+export const manifestCatalogItems: CatalogItem[] = fintechSourcingManifest.entries
+  .flatMap((entry) => {
+    const item = institutionItemsBySlug.get(entry.institution_slug);
+    return item ? [item] : [];
+  });
+export const manifestEntryCount = fintechSourcingManifest.entries.length;
+export const manifestPendingCount = manifestCatalogItems.filter((item) => item.logo === null).length;
+
+export const explorerCatalogItems = logoCatalogItems;
+
 export const availableInstitutionCategories = [...new Set(
-  logoCatalogItems.flatMap((item) => item.categories)
+  explorerCatalogItems.flatMap((item) => item.categories)
 )].sort((a, b) => categoryLabel(a).localeCompare(categoryLabel(b)));
 
 export function categoryLabel(category: InstitutionCategory): string {
