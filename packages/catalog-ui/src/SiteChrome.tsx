@@ -1,5 +1,10 @@
+import { useEffect, useRef, useState } from "react";
 import {
   ArrowUp,
+  ArrowRight,
+  Bell,
+  BellRing,
+  Check,
   GitFork,
   GitPullRequest,
   Globe2,
@@ -7,15 +12,36 @@ import {
   MessageSquarePlus,
   Monitor,
   Moon,
-  Puzzle,
   Sun
 } from "lucide-react";
 import awalogoLogoUrl from "./assets/awalogo-logo.svg";
+import figmaMarkUrl from "./assets/figma-mark.svg";
 
 export const FIGMA_PLUGIN_URL = "https://www.figma.com/community/plugin/1661356348996631383";
 
 export type ThemeMode = "system" | "light" | "dark";
 export type SitePage = "catalog" | "docs" | "not-found";
+
+export function FigmaMark({
+  size = 18,
+  className = ""
+}: {
+  size?: number;
+  className?: string;
+  strokeWidth?: number;
+  "aria-hidden"?: boolean | "true" | "false";
+}) {
+  return (
+    <img
+      className={`figma-mark${className ? ` ${className}` : ""}`}
+      src={figmaMarkUrl}
+      alt=""
+      aria-hidden="true"
+      width={Math.round(size * 2 / 3)}
+      height={size}
+    />
+  );
+}
 
 type SiteHeaderProps = {
   currentPage: SitePage;
@@ -25,6 +51,12 @@ type SiteHeaderProps = {
   onCatalog: () => void;
   onAbout: () => void;
   onChangelog: () => void;
+  newLogoCount?: number;
+  newLogoDate?: string;
+  newLogoDateLabel?: string;
+  newLogoNames?: string[];
+  newLogosActive?: boolean;
+  onNewLogos?: () => void;
 };
 
 type SiteFooterProps = {
@@ -43,8 +75,67 @@ export function SiteHeader({
   onThemeModeChange,
   onCatalog,
   onAbout,
-  onChangelog
+  onChangelog,
+  newLogoCount = 0,
+  newLogoDate = "",
+  newLogoDateLabel = "",
+  newLogoNames = [],
+  newLogosActive = false,
+  onNewLogos
 }: SiteHeaderProps) {
+  const [themeMenuOpen, setThemeMenuOpen] = useState(false);
+  const [notificationOpen, setNotificationOpen] = useState(false);
+  const themeMenuRef = useRef<HTMLDivElement>(null);
+  const notificationRef = useRef<HTMLDivElement>(null);
+  const ActiveThemeIcon = themeMode === "light" ? Sun : themeMode === "dark" ? Moon : Monitor;
+  const activeThemeLabel = themeMode === "light" ? "Light" : themeMode === "dark" ? "Dark" : "System";
+  const visibleNewLogoNames = newLogoNames.slice(0, 4);
+  const remainingNewLogoCount = Math.max(0, newLogoNames.length - visibleNewLogoNames.length);
+  const newLogoSummary = `${visibleNewLogoNames.join(", ")}${remainingNewLogoCount > 0 ? `, and ${remainingNewLogoCount} more` : ""}.`;
+
+  useEffect(() => {
+    if (!themeMenuOpen) return;
+
+    function closeThemeMenu(event: PointerEvent) {
+      if (!themeMenuRef.current?.contains(event.target as Node)) setThemeMenuOpen(false);
+    }
+
+    function closeThemeMenuOnEscape(event: KeyboardEvent) {
+      if (event.key === "Escape") setThemeMenuOpen(false);
+    }
+
+    document.addEventListener("pointerdown", closeThemeMenu);
+    document.addEventListener("keydown", closeThemeMenuOnEscape);
+    return () => {
+      document.removeEventListener("pointerdown", closeThemeMenu);
+      document.removeEventListener("keydown", closeThemeMenuOnEscape);
+    };
+  }, [themeMenuOpen]);
+
+  useEffect(() => {
+    if (!notificationOpen) return;
+
+    function closeNotification(event: PointerEvent) {
+      if (!notificationRef.current?.contains(event.target as Node)) setNotificationOpen(false);
+    }
+
+    function closeNotificationOnEscape(event: KeyboardEvent) {
+      if (event.key === "Escape") setNotificationOpen(false);
+    }
+
+    document.addEventListener("pointerdown", closeNotification);
+    document.addEventListener("keydown", closeNotificationOnEscape);
+    return () => {
+      document.removeEventListener("pointerdown", closeNotification);
+      document.removeEventListener("keydown", closeNotificationOnEscape);
+    };
+  }, [notificationOpen]);
+
+  function selectTheme(theme: ThemeMode) {
+    onThemeModeChange(theme);
+    setThemeMenuOpen(false);
+  }
+
   return (
     <header className="topbar">
       {pluginMode ? (
@@ -82,21 +173,88 @@ export function SiteHeader({
               <GitFork aria-hidden="true" size={15} strokeWidth={1.75} />
             </a>
             <a className="topbar-figma" href={FIGMA_PLUGIN_URL} target="_blank" rel="noreferrer" title="Open awalogo in Figma Community">
-              <Puzzle aria-hidden="true" size={15} strokeWidth={1.75} />
+              <FigmaMark aria-hidden="true" size={17} />
               <span>Figma plugin</span>
             </a>
           </>
         ) : null}
-        <div className="theme-toggle" role="group" aria-label="Color theme">
-          <button type="button" aria-label="Use system theme" aria-pressed={themeMode === "system"} title="System theme" onClick={() => onThemeModeChange("system")}>
-            <Monitor aria-hidden="true" size={14} strokeWidth={1.75} />
+        {onNewLogos && newLogoCount > 0 ? (
+          <div className="notification-menu" ref={notificationRef}>
+            <button
+              className="topbar-icon-button notification-button"
+              type="button"
+              aria-label={`Open updates, ${newLogoCount} newly added logos`}
+              aria-haspopup="dialog"
+              aria-expanded={notificationOpen}
+              aria-pressed={newLogosActive}
+              title={`${newLogoCount} newly added logos`}
+              onClick={() => {
+                setNotificationOpen((open) => !open);
+                setThemeMenuOpen(false);
+              }}
+            >
+              {newLogosActive
+                ? <BellRing aria-hidden="true" size={15} strokeWidth={1.75} />
+                : <Bell aria-hidden="true" size={15} strokeWidth={1.75} />}
+              <span className="notification-dot" aria-hidden="true" />
+            </button>
+            {notificationOpen ? (
+              <div className="notification-popover" role="dialog" aria-label="Logo updates">
+                <header>
+                  <strong>Updates</strong>
+                  <span>Latest</span>
+                </header>
+                <div className="notification-update">
+                  <span className="notification-update-icon" aria-hidden="true"><BellRing size={15} strokeWidth={1.75} /></span>
+                  <div>
+                    <strong>{newLogoCount} new logos added</strong>
+                    <p>{newLogoSummary}</p>
+                    <time dateTime={newLogoDate}>{newLogoDateLabel}</time>
+                  </div>
+                </div>
+                <button
+                  className="notification-action"
+                  type="button"
+                  onClick={() => {
+                    onNewLogos();
+                    setNotificationOpen(false);
+                  }}
+                >
+                  <span>{newLogosActive ? "Show all logos" : "View new logos"}</span>
+                  <ArrowRight aria-hidden="true" size={15} strokeWidth={1.75} />
+                </button>
+              </div>
+            ) : null}
+          </div>
+        ) : null}
+        <div className="theme-menu" ref={themeMenuRef}>
+          <button
+            className="theme-menu-trigger"
+            type="button"
+            aria-label={`Color theme: ${activeThemeLabel}`}
+            aria-haspopup="menu"
+            aria-expanded={themeMenuOpen}
+            title={`${activeThemeLabel} theme`}
+            onClick={() => {
+              setThemeMenuOpen((open) => !open);
+              setNotificationOpen(false);
+            }}
+          >
+            <ActiveThemeIcon aria-hidden="true" size={15} strokeWidth={1.75} />
           </button>
-          <button type="button" aria-label="Use light theme" aria-pressed={themeMode === "light"} title="Light theme" onClick={() => onThemeModeChange("light")}>
-            <Sun aria-hidden="true" size={14} strokeWidth={1.75} />
-          </button>
-          <button type="button" aria-label="Use dark theme" aria-pressed={themeMode === "dark"} title="Dark theme" onClick={() => onThemeModeChange("dark")}>
-            <Moon aria-hidden="true" size={14} strokeWidth={1.75} />
-          </button>
+          {themeMenuOpen ? (
+            <div className="theme-menu-popover" role="menu" aria-label="Color theme">
+              <button className="theme-menu-option" type="button" role="menuitemradio" aria-checked={themeMode === "system"} onClick={() => selectTheme("system")}>
+                <Monitor aria-hidden="true" size={15} strokeWidth={1.75} /><span>System</span>{themeMode === "system" ? <Check aria-hidden="true" size={14} /> : null}
+              </button>
+              <button className="theme-menu-option" type="button" role="menuitemradio" aria-checked={themeMode === "light"} onClick={() => selectTheme("light")}>
+                <Sun aria-hidden="true" size={15} strokeWidth={1.75} /><span>Light</span>{themeMode === "light" ? <Check aria-hidden="true" size={14} /> : null}
+              </button>
+              <button className="theme-menu-option" type="button" role="menuitemradio" aria-checked={themeMode === "dark"} onClick={() => selectTheme("dark")}>
+                <Moon aria-hidden="true" size={15} strokeWidth={1.75} /><span>Dark</span>{themeMode === "dark" ? <Check aria-hidden="true" size={14} /> : null}
+              </button>
+            </div>
+          ) : null}
         </div>
       </div>
     </header>
@@ -132,7 +290,7 @@ export function SiteFooter({
           </nav>
           <div className="footer-cta">
             <a href={FIGMA_PLUGIN_URL} target="_blank" rel="noreferrer" title="Open awalogo in Figma Community">
-              <Puzzle aria-hidden="true" size={15} /> Figma Plugin
+              <FigmaMark aria-hidden="true" size={17} /> Figma Plugin
             </a>
             <button type="button" onClick={onRequest} aria-haspopup="dialog" title="Request an unavailable logo">
               <MessageSquarePlus aria-hidden="true" size={15} /> Request a logo

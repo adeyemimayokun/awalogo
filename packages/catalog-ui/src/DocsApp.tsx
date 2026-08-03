@@ -7,11 +7,10 @@ import {
   GitPullRequest,
   Landmark,
   PackageOpen,
-  Puzzle,
   ShieldCheck
 } from "lucide-react";
 import { ProjectInfoSheet, type ProjectPanel } from "./CatalogApp";
-import { FIGMA_PLUGIN_URL, SiteFooter, SiteHeader, type ThemeMode } from "./SiteChrome";
+import { FIGMA_PLUGIN_URL, FigmaMark, SiteFooter, SiteHeader, type ThemeMode } from "./SiteChrome";
 import "./styles.css";
 
 const THEME_STORAGE_KEY = "awalogo-theme";
@@ -21,7 +20,7 @@ const sections = [
   { id: "overview", label: "Overview", icon: BookOpen },
   { id: "website", label: "Using the website", icon: Landmark },
   { id: "developer", label: "Developer setup", icon: PackageOpen },
-  { id: "figma", label: "Figma plugin", icon: Puzzle },
+  { id: "figma", label: "Figma plugin", icon: FigmaMark },
   { id: "contributing", label: "Contributing", icon: GitPullRequest },
   { id: "verification", label: "Verification and use", icon: ShieldCheck }
 ] as const;

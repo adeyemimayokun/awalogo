@@ -11,11 +11,11 @@ describe("catalog logo badges", () => {
     }, latestLogoAddedAt)).toBe("new");
   });
 
-  it("lets unverified status override the new badge", () => {
+  it("does not badge logos that still need review", () => {
     expect(getCatalogLogoBadge({
       added_at: latestLogoAddedAt,
       status: "needs-review"
-    }, latestLogoAddedAt)).toBe("unverified");
+    }, latestLogoAddedAt)).toBeNull();
   });
 
   it("does not badge older, deprecated, or missing logos", () => {

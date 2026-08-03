@@ -212,8 +212,12 @@ const dateFormatter = new Intl.DateTimeFormat("en-NG", {
 });
 const latestLogoAddedAt = explorerCatalogItems.reduce((latest, item) => {
   const addedAt = item.logo?.added_at;
-  return addedAt && addedAt > latest ? addedAt : latest;
+  return item.logo?.status === "verified" && addedAt && addedAt > latest ? addedAt : latest;
 }, "");
+const newlyAddedLogoItems = explorerCatalogItems.filter((item) =>
+  getCatalogLogoBadge(item.logo, latestLogoAddedAt) === "new"
+);
+const newlyAddedLogoCount = newlyAddedLogoItems.length;
 
 function formatDate(date: string) {
   return dateFormatter.format(new Date(`${date}T00:00:00+01:00`));
@@ -320,6 +324,7 @@ export function CatalogApp({
   const [themeMode, setThemeMode] = useState<ThemeMode>(getInitialTheme);
   const [categoriesExpanded, setCategoriesExpanded] = useState(false);
   const [sortDirection, setSortDirection] = useState<CatalogSortDirection>("asc");
+  const [newLogosOnly, setNewLogosOnly] = useState(false);
 
   useLayoutEffect(() => {
     const systemTheme = window.matchMedia("(prefers-color-scheme: dark)");
@@ -367,17 +372,18 @@ export function CatalogApp({
     return () => window.removeEventListener("keydown", closeOnEscape);
   }, []);
 
-  useEffect(() => setCurrentPage(1), [selectedCategories, query, sortDirection, pageSize]);
+  useEffect(() => setCurrentPage(1), [selectedCategories, query, sortDirection, pageSize, newLogosOnly]);
 
   const filteredItems = useMemo(() => explorerCatalogItems
     .map((item) => ({ item, score: searchScore(item, query) }))
     .filter(({ item, score }) => {
       const categoryMatches = selectedCategories.length === 0 ||
         selectedCategories.some((category) => item.categories.includes(category));
-      return categoryMatches && Number.isFinite(score);
+      const newLogoMatches = !newLogosOnly || getCatalogLogoBadge(item.logo, latestLogoAddedAt) === "new";
+      return categoryMatches && newLogoMatches && Number.isFinite(score);
     })
     .sort((a, b) => compareCatalogResults(a, b, sortDirection))
-    .map(({ item }) => item), [selectedCategories, query, sortDirection]);
+    .map(({ item }) => item), [selectedCategories, query, sortDirection, newLogosOnly]);
 
   const totalPages = Math.max(1, Math.ceil(filteredItems.length / pageSize));
   const activePage = Math.min(currentPage, totalPages);
@@ -474,9 +480,26 @@ export function CatalogApp({
     setQuery("");
     setSelectedCategories([]);
     setDraftCategories([]);
+    setNewLogosOnly(false);
     setCategoriesExpanded(false);
     setCurrentPage(1);
     setProjectPanel(null);
+    requestAnimationFrame(() => {
+      document.getElementById("catalog-results")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  }
+
+  function toggleNewLogos() {
+    setNewLogosOnly((active) => {
+      if (!active) {
+        setQuery("");
+        setSelectedCategories([]);
+        setDraftCategories([]);
+        setCategoriesExpanded(false);
+      }
+      return !active;
+    });
+    setCurrentPage(1);
     requestAnimationFrame(() => {
       document.getElementById("catalog-results")?.scrollIntoView({ behavior: "smooth", block: "start" });
     });
@@ -548,6 +571,12 @@ export function CatalogApp({
         onCatalog={resetCatalog}
         onAbout={() => setProjectPanel("about")}
         onChangelog={() => setProjectPanel("changelog")}
+        newLogoCount={newlyAddedLogoCount}
+        newLogoDate={latestLogoAddedAt}
+        newLogoDateLabel={formatDate(latestLogoAddedAt)}
+        newLogoNames={newlyAddedLogoItems.map((item) => item.displayName)}
+        newLogosActive={newLogosOnly}
+        onNewLogos={toggleNewLogos}
       />
 
       <section className="catalog-intro">
@@ -598,10 +627,11 @@ export function CatalogApp({
             <span><SlidersHorizontal aria-hidden="true" size={15} strokeWidth={1.75} /> Filters</span>
             <button
               type="button"
-              disabled={selectedCategories.length === 0}
+              disabled={selectedCategories.length === 0 && !newLogosOnly}
               onClick={() => {
                 setSelectedCategories([]);
                 setDraftCategories([]);
+                setNewLogosOnly(false);
               }}
             >
               Clear
@@ -722,11 +752,10 @@ export function CatalogApp({
                   type="button"
                   onClick={() => openDetails(item)}
                   style={{ animationDelay: `${(index % 12) * 30}ms` }}
-                  aria-label={`View ${displayName} details${logoBadge === "unverified" ? ", unverified logo" : logoBadge === "new" ? ", newly added logo" : ""}`}
+                  aria-label={`View ${displayName} details${logoBadge === "new" ? ", newly added logo" : ""}`}
                   title={pluginMode ? displayName : undefined}
                 >
                   <span className={`tile-preview${logo && usesDarkLogoPreview(logo.slug) ? " logo-preview-dark" : ""}`}>
-                    {logoBadge === "unverified" ? <span className="unverified-tag" aria-hidden="true">Unverified</span> : null}
                     {logoBadge === "new" ? <span className="new-tag" aria-hidden="true">New</span> : null}
                     {logo ? <img src={previewUrl(logo)} alt="" /> : (
                       <span className="pending-preview" aria-hidden="true">
