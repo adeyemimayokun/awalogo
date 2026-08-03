@@ -9,6 +9,7 @@ export const darkLogoPreviewAssetIds = [
   "cardinalstone-securities",
   "cardinalstone-securities-light",
   "chapel-hill-denham",
+  "cleva",
   "coronation-merchant-bank-light",
   "errandpay-light-wordmark",
   "fcmb-pensions-light",
@@ -18,6 +19,7 @@ export const darkLogoPreviewAssetIds = [
   "investnaija",
   "keystone-bank",
   "kiakia-bits-light",
+  "klump-technology-company",
   "lasaco-assurance-dark",
   "meristem-securities",
   "onafriq-light",
@@ -28,6 +30,8 @@ export const darkLogoPreviewAssetIds = [
   "sycamore-integrated-solutions-light",
   "tajbank-light",
   "the-alternative-bank",
+  "timon",
+  "umba-digital-solutions",
   "union-bank-of",
   "veritas-glanvills-pensions-light"
 ] as const;

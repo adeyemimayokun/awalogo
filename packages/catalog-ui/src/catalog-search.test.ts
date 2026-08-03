@@ -1,9 +1,9 @@
 import { describe, expect, it } from "vitest";
-import { logoCatalogItems } from "./catalog-data";
+import { explorerCatalogItems } from "./catalog-data";
 import { compareCatalogResults, searchScore, type CatalogSortDirection } from "./catalog-search";
 
 function resultsFor(query: string, direction: CatalogSortDirection = "asc") {
-  return logoCatalogItems
+  return explorerCatalogItems
     .map((item) => ({ item, score: searchScore(item, query) }))
     .filter(({ score }) => Number.isFinite(score))
     .sort((a, b) => compareCatalogResults(a, b, direction))
@@ -11,12 +11,11 @@ function resultsFor(query: string, direction: CatalogSortDirection = "asc") {
 }
 
 describe("catalog search ranking", () => {
-  it("orders direct public-name matches first and excludes pending assets", () => {
+  it("orders direct public-name matches first and hides pending manifest entries", () => {
     const results = resultsFor("rem");
 
     expect(results[0]).toBe("Remita Payment Service");
-    expect(results).not.toContain("REMITIX LIMITED (MUKURU)");
-    expect(results).not.toContain("REMITLY");
+    expect(resultsFor("passpoint")).toEqual([]);
   });
 
   it("still finds an institution through a merged legal name", () => {

@@ -1,16 +1,39 @@
 import { describe, expect, it } from "vitest";
 import communityCandidates from "../../../packages/institutions/data/community-candidates.json";
+import foreignAuthorized from "../../../packages/institutions/exports/foreign-authorized-ng.json";
 import institutions from "../../../packages/institutions/exports/institutions-ng.json";
-import { availableLogoCount, canonicalLogoCount, catalogItems, institutionCount, logoCatalogItems } from "./catalog-data";
+import {
+  availableLogoCount,
+  canonicalLogoCount,
+  catalogItems,
+  explorerCatalogItems,
+  institutionCount,
+  logoCatalogItems,
+  manifestCatalogItems,
+  manifestEntryCount,
+  manifestPendingCount
+} from "./catalog-data";
 import { logos } from "./logo-data";
 
 describe("institution catalog", () => {
-  it("shows every Nigerian institution", () => {
-    const expectedDirectorySize = institutions.length + communityCandidates.length;
+  it("shows every Nigerian and Nigeria-authorized institution", () => {
+    const expectedDirectorySize = institutions.length + foreignAuthorized.length + communityCandidates.length;
     expect(catalogItems.length).toBeLessThan(expectedDirectorySize);
     expect(catalogItems.flatMap((item) => item.institutions)).toHaveLength(expectedDirectorySize);
     expect(institutionCount).toBe(catalogItems.length);
-    expect(canonicalLogoCount).toBe(205);
+    expect(canonicalLogoCount).toBe(232);
+  });
+
+  it("keeps all campaign entries in research while hiding unresolved logos from the explorer", () => {
+    expect(manifestEntryCount).toBe(340);
+    expect(manifestCatalogItems).toHaveLength(340);
+    expect(manifestPendingCount).toBe(313);
+    expect(manifestCatalogItems.filter((item) => item.logo !== null)).toHaveLength(27);
+    expect(explorerCatalogItems).toHaveLength(availableLogoCount);
+    expect(explorerCatalogItems.every((item) => item.logo !== null)).toBe(true);
+    expect(explorerCatalogItems.some((item) =>
+      item.institutions.some((institution) => institution.slug === "passpoint")
+    )).toBe(false);
   });
 
   it("includes unmatched fintech research as unverified candidates", () => {
@@ -20,6 +43,15 @@ describe("institution catalog", () => {
     expect(candidate?.institution.verification_status).toBe("community-candidate");
     expect(candidate?.institution.regulatory_status).toBe("unverified");
     expect(candidate?.logo).toBeNull();
+  });
+
+  it("exposes sourced unverified fintech logos in the explorer", () => {
+    const nomba = explorerCatalogItems.find((item) =>
+      item.institutions.some((institution) => institution.slug === "nomba")
+    );
+
+    expect(nomba?.logo?.slug).toBe("nomba");
+    expect(nomba?.logo?.status).toBe("needs-review");
   });
 
   it("links newly verified fintech discoveries to official assets", () => {
@@ -84,7 +116,7 @@ describe("institution catalog", () => {
     expect(pending?.logo).toBeNull();
   });
 
-  it("exposes a logo-only catalog for the public explorer", () => {
+  it("keeps a logo-only subset for asset operations", () => {
     expect(logoCatalogItems).toHaveLength(availableLogoCount);
     expect(logoCatalogItems.every((item) => item.logo !== null)).toBe(true);
   });

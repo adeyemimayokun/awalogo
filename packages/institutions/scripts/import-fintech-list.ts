@@ -1,5 +1,5 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
-import { dirname, join } from "node:path";
+import { basename, dirname, isAbsolute, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import {
   institutionCatalogSchema,
@@ -9,18 +9,18 @@ import {
 import { packageRoot, readJson } from "./lib";
 
 const repositoryRoot = join(packageRoot, "../..");
-const sourcePath = join(repositoryRoot, "docs/research/nigerian-fintech-companies.md");
+const canonicalSourcePath = join(repositoryRoot, "docs/research/nigerian-fintech-companies.md");
 const candidatesPath = join(packageRoot, "data/community-candidates.json");
 const reportPath = join(packageRoot, "exports/fintech-list-comparison.json");
 const sourceUrl = "https://github.com/adeyemimayokun/awalogo/blob/main/docs/research/nigerian-fintech-companies.md";
-const importDate = "2026-07-14";
+const defaultImportDate = "2026-08-02";
 
 type CategoryRule = {
   primary: InstitutionCategory;
   categories: InstitutionCategory[];
 };
 
-const categoryRules: Record<string, CategoryRule> = {
+export const categoryRules: Record<string, CategoryRule> = {
   "Fintech Infrastructure, BaaS and TechFin": {
     primary: "fintech",
     categories: ["fintech", "payment-solution-service-provider"]
@@ -68,11 +68,59 @@ const categoryRules: Record<string, CategoryRule> = {
   "FX, B2B and Cross-Border Payments and Remittances": {
     primary: "remittance-imto",
     categories: ["remittance-imto", "fintech"]
+  },
+  "Fintech Infrastructure / BaaS / Tech-Fin": {
+    primary: "fintech",
+    categories: ["fintech", "payment-solution-service-provider"]
+  },
+  "Payments Processing, Switching & Infrastructure": {
+    primary: "switching-processing",
+    categories: ["switching-processing", "payment-solution-service-provider", "fintech"]
+  },
+  "Mobile Money / PUB / Agency & Informal Banking": {
+    primary: "mobile-money-operator",
+    categories: ["mobile-money-operator", "finance-app", "fintech"]
+  },
+  "Consumer Payment / Digital Wallet / Super App": {
+    primary: "finance-app",
+    categories: ["finance-app", "fintech"]
+  },
+  "Spend Management / Merchant Solutions / BNPL & Loyalty": {
+    primary: "fintech",
+    categories: ["fintech", "finance-app"]
+  },
+  "Personal Finance, Wealth & Asset Management": {
+    primary: "finance-app",
+    categories: ["finance-app", "investment-manager", "fintech"]
+  },
+  "Digital Insurance, Pensions, Health-Tech & HR": {
+    primary: "fintech",
+    categories: ["fintech", "finance-app"]
+  },
+  "Crowdfunding, Agritech & Proptech": {
+    primary: "crowdfunding-platform",
+    categories: ["crowdfunding-platform", "fintech"]
+  },
+  "Crypto & Web3": {
+    primary: "crypto-vasp",
+    categories: ["crypto-vasp", "fintech"]
+  },
+  "Digital Lenders & Credit Infrastructure": {
+    primary: "digital-lender",
+    categories: ["digital-lender", "fintech"]
+  },
+  "Digital Banks (Consumer & Business)": {
+    primary: "finance-app",
+    categories: ["finance-app", "fintech"]
+  },
+  "FX / B2B & Cross-Border Payments / Remittances": {
+    primary: "remittance-imto",
+    categories: ["remittance-imto", "fintech"]
   }
 };
 
 // These are verified brand/legal-name relationships, not fuzzy string guesses.
-const knownAliases: Record<string, string> = {
+export const knownAliases: Record<string, string> = {
   "3line": "3line-card-management",
   "9psb": "9-payment-service-bank",
   "akilaph": "akilaah-solution",
@@ -81,7 +129,9 @@ const knownAliases: Record<string, string> = {
   "arca": "arca-payments-company",
   "branch": "branch-international-financial",
   "carbon": "carbon-microfinance-bank",
+  "bamboo": "bamboo-system-technology",
   "corebank": "corestepmicrofinance-banklimited",
+  "cowrywise": "cowrywise-financial-technology",
   "etops": "etop",
   "etranzact": "etranzact-international",
   "eyowo": "eyowo-integrated-payments",
@@ -94,17 +144,23 @@ const knownAliases: Record<string, string> = {
   "kongapay": "kongapay-technologies",
   "kora": "kora-payments",
   "kuda": "kuda-microfinance-bank",
+  "kudamfb": "kuda-microfinance-bank",
   "kwikpay": "trafalgar-association",
   "lendsqr": "essential-finance",
-  "moneymasterpsb": "money-master-payment-service-bank",
+  "moneymasterpsb": "moneymaster-payment-service-bank",
+  "moneymasterpaymentservicebankltd": "moneymaster-payment-service-bank",
   "moneta": "moneta-technology",
+  "monify": "monnify",
   "momopsb": "momo-payment-service-bank",
+  "momo": "momo-payment-service-bank",
   "nownow": "nownow-digital-systems",
   "onepipe": "onepipe-io-services",
   "okra": "okra-technologies",
   "optimus": "optimus-by-afrinvest",
   "palmpay": "palmpay",
+  "page": "paga",
   "payaza": "payaza-africa",
+  "paystack": "paystack-payment",
   "payu": "payu-payments",
   "qrios": "qrios-networks",
   "remita": "remita-payment-service",
@@ -126,7 +182,7 @@ const knownAliases: Record<string, string> = {
   "zest": "zest-payments-limited-stanbic-financial-services-limited"
 };
 
-function identity(value: string): string {
+export function identity(value: string): string {
   return value
     .toLowerCase()
     .replace(/&/g, "and")
@@ -135,7 +191,7 @@ function identity(value: string): string {
     .replace(/[^a-z0-9]/g, "");
 }
 
-function slugify(value: string): string {
+export function slugify(value: string): string {
   return value
     .toLowerCase()
     .normalize("NFKD")
@@ -145,7 +201,7 @@ function slugify(value: string): string {
     .replace(/^-|-$/g, "");
 }
 
-function parseSource(markdown: string): Array<{ name: string; heading: string; rule: CategoryRule }> {
+export function parseSource(markdown: string): Array<{ name: string; heading: string; rule: CategoryRule }> {
   const entries: Array<{ name: string; heading: string; rule: CategoryRule }> = [];
   let heading = "";
 
@@ -180,7 +236,12 @@ async function loadMasterRecords(): Promise<Institution[]> {
 }
 
 async function main(): Promise<void> {
+  const options = parseOptions(process.argv.slice(2));
+  const sourcePath = options.source;
   const markdown = await readFile(sourcePath, "utf8");
+  if (options.syncSource && resolve(sourcePath) !== resolve(canonicalSourcePath)) {
+    await writeFile(canonicalSourcePath, markdown.endsWith("\n") ? markdown : `${markdown}\n`);
+  }
   const sourceEntries = parseSource(markdown);
   const master = await loadMasterRecords();
   const existingCandidates = institutionCatalogSchema.parse(
@@ -265,11 +326,11 @@ async function main(): Promise<void> {
         sources: [{
           url: sourceUrl,
           source_type: "community",
-          retrieved_at: importDate
+          retrieved_at: options.retrievedAt
         }],
         logo_slug: null,
-        added_at: importDate,
-        updated_at: importDate
+        added_at: options.retrievedAt,
+        updated_at: options.retrievedAt
       };
     });
 
@@ -278,8 +339,10 @@ async function main(): Promise<void> {
   );
 
   const report = {
-    compared_at: importDate,
-    source_file: "docs/research/nigerian-fintech-companies.md",
+    compared_at: options.retrievedAt,
+    source_file: options.syncSource || resolve(sourcePath) === resolve(canonicalSourcePath)
+      ? "docs/research/nigerian-fintech-companies.md"
+      : basename(sourcePath),
     source_entries: sourceEntries.length,
     unique_source_names: new Set(sourceEntries.map((entry) => identity(entry.name))).size,
     matched_existing_entries: matched.length,
@@ -307,6 +370,21 @@ async function main(): Promise<void> {
     `Compared ${sourceEntries.length} entries: ${matched.length} matched, ` +
     `${newCandidates.length} added, ${candidates.length} community candidates total.`
   );
+}
+
+function parseOptions(args: string[]): { source: string; retrievedAt: string; syncSource: boolean } {
+  const value = (name: string): string | undefined => {
+    const index = args.indexOf(name);
+    return index >= 0 ? args[index + 1] : undefined;
+  };
+  const sourceValue = value("--source");
+  const retrievedAt = value("--retrieved-at") ?? defaultImportDate;
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(retrievedAt)) throw new Error("--retrieved-at must use YYYY-MM-DD.");
+  return {
+    source: sourceValue ? (isAbsolute(sourceValue) ? sourceValue : resolve(repositoryRoot, sourceValue)) : canonicalSourcePath,
+    retrievedAt,
+    syncSource: args.includes("--sync-source")
+  };
 }
 
 if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) await main();

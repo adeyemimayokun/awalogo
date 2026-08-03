@@ -1,7 +1,9 @@
 import type { Institution, InstitutionCategory } from "@awalogo/institutions";
 import communityCandidatesJson from "../../../packages/institutions/data/community-candidates.json";
+import foreignAuthorizedJson from "../../../packages/institutions/exports/foreign-authorized-ng.json";
 import institutionsJson from "../../../packages/institutions/exports/institutions-ng.json";
 import { institutionLogoLinks } from "../../../packages/logos/src/institution-links";
+import fintechSourcingManifest from "../../../packages/logos/sourcing/fintech-340-manifest.json";
 import { logos, type LogoWithSvg } from "./logo-data";
 
 export type CatalogItem = {
@@ -14,7 +16,7 @@ export type CatalogItem = {
 
 export type LogoCatalogItem = CatalogItem & { logo: LogoWithSvg };
 
-const institutions = [...institutionsJson, ...communityCandidatesJson] as Institution[];
+const institutions = [...institutionsJson, ...foreignAuthorizedJson, ...communityCandidatesJson] as Institution[];
 const logosBySlug = new Map(logos.map((logo) => [logo.slug, logo]));
 const categoryOverrides: Partial<Record<InstitutionCategory, string>> = {
   "crypto-vasp": "Crypto / VASP",
@@ -117,6 +119,7 @@ const institutionItems: CatalogItem[] = institutions.map((institution) => {
     categories: institution.categories
   };
 });
+const institutionItemsBySlug = new Map(institutionItems.map((item) => [item.institution.slug, item]));
 
 export const catalogItems: CatalogItem[] = mergeCatalogItems(institutionItems)
   .sort((a, b) => a.displayName.localeCompare(b.displayName));
@@ -128,8 +131,18 @@ export const logoCatalogItems = catalogItems.filter(
 export const availableLogoCount = logoCatalogItems.length;
 export const canonicalLogoCount = logos.length;
 
+export const manifestCatalogItems: CatalogItem[] = fintechSourcingManifest.entries
+  .flatMap((entry) => {
+    const item = institutionItemsBySlug.get(entry.institution_slug);
+    return item ? [item] : [];
+  });
+export const manifestEntryCount = fintechSourcingManifest.entries.length;
+export const manifestPendingCount = manifestCatalogItems.filter((item) => item.logo === null).length;
+
+export const explorerCatalogItems = logoCatalogItems;
+
 export const availableInstitutionCategories = [...new Set(
-  logoCatalogItems.flatMap((item) => item.categories)
+  explorerCatalogItems.flatMap((item) => item.categories)
 )].sort((a, b) => categoryLabel(a).localeCompare(categoryLabel(b)));
 
 export function categoryLabel(category: InstitutionCategory): string {

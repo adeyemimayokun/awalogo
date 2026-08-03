@@ -1,0 +1,1867 @@
+{
+  "generated_at": "2026-08-02T21:19:17.934Z",
+  "policy": "Candidates remain private until every review check is true and a maintainer adds an explicit verified promotion.",
+  "summary": {
+    "institutions_with_candidates": 7,
+    "candidate_files": 7,
+    "rejected": 333
+  },
+  "entries": [
+    {
+      "institution_slug": "3line-card-management",
+      "source_name": "3Line",
+      "source_category": "Fintech Infrastructure / BaaS / Tech-Fin",
+      "release_batch": 1,
+      "candidate_rank": 1,
+      "candidate_path": "fintech-web-candidates/3line-card-management/01.png",
+      "source_url": "https://www.3lineng.com/_next/image?url=%2Flogo.png&w=256&q=75",
+      "source_type": "official-website",
+      "website": "https://www.3lineng.com/",
+      "format": "png",
+      "sha256": "e30070766c354bda4a905d4d2b29d34e264f6b378404aa2db4e88f08ce7f86ff",
+      "width": 78,
+      "height": 30,
+      "confidence": "high",
+      "disposition": "awaiting-review",
+      "review": {
+        "official_source_confirmed": false,
+        "current_brand_confirmed": false,
+        "artwork_complete": false,
+        "light_mode_checked": false,
+        "dark_mode_checked": false,
+        "reviewer": null,
+        "reviewed_at": null,
+        "notes": null
+      }
+    },
+    {
+      "institution_slug": "advansio",
+      "source_name": "advansio",
+      "source_category": "Fintech Infrastructure / BaaS / Tech-Fin",
+      "release_batch": 1,
+      "candidate_rank": 1,
+      "candidate_path": "fintech-web-candidates/advansio/01.png",
+      "source_url": "https://advansio.com/img/sticky-logo.png",
+      "source_type": "official-website",
+      "website": "https://advansio.com/",
+      "format": "png",
+      "sha256": "be2bba35e6d82c2f29438e7639a0a924833048aa08ba6c2e0a0c4c90a424a5ea",
+      "width": 177,
+      "height": 56,
+      "confidence": "high",
+      "disposition": "awaiting-review",
+      "review": {
+        "official_source_confirmed": false,
+        "current_brand_confirmed": false,
+        "artwork_complete": false,
+        "light_mode_checked": false,
+        "dark_mode_checked": false,
+        "reviewer": null,
+        "reviewed_at": null,
+        "notes": null
+      }
+    },
+    {
+      "institution_slug": "ajocard",
+      "source_name": "AjoCard",
+      "source_category": "Mobile Money / PUB / Agency & Informal Banking",
+      "release_batch": 1,
+      "candidate_rank": 1,
+      "candidate_path": "fintech-web-candidates/ajocard/01.svg",
+      "source_url": "https://ajocard.com/_next/static/media/ajocard-logo.a7bbab22.svg",
+      "source_type": "official-website",
+      "website": "https://ajocard.com/",
+      "format": "svg",
+      "sha256": "d7ae4a868ccfd6302536ff38df65fde63832bb54601c60922d1501e8899f2f51",
+      "width": 182,
+      "height": 32,
+      "confidence": "high",
+      "disposition": "awaiting-review",
+      "review": {
+        "official_source_confirmed": false,
+        "current_brand_confirmed": false,
+        "artwork_complete": false,
+        "light_mode_checked": false,
+        "dark_mode_checked": false,
+        "reviewer": null,
+        "reviewed_at": null,
+        "notes": null
+      }
+    },
+    {
+      "institution_slug": "anchor",
+      "source_name": "Anchor",
+      "source_category": "Fintech Infrastructure / BaaS / Tech-Fin",
+      "release_batch": 1,
+      "candidate_rank": 1,
+      "candidate_path": "fintech-web-candidates/anchor/02.svg",
+      "source_url": "https://getanchor.co/images/anchor-logo-white.svg",
+      "source_type": "official-website",
+      "website": "https://getanchor.co/company/about-us.html",
+      "format": "svg",
+      "sha256": "fe114e4fd2e2304d2105e62a0a6bcff831ee2c279e3c443c7ceff1a2b646d81a",
+      "width": 604,
+      "height": 104,
+      "confidence": "high",
+      "disposition": "awaiting-review",
+      "review": {
+        "official_source_confirmed": false,
+        "current_brand_confirmed": false,
+        "artwork_complete": false,
+        "light_mode_checked": false,
+        "dark_mode_checked": false,
+        "reviewer": null,
+        "reviewed_at": null,
+        "notes": null
+      }
+    },
+    {
+      "institution_slug": "klump-technology-company",
+      "source_name": "Klump",
+      "source_category": "Spend Management / Merchant Solutions / BNPL & Loyalty",
+      "release_batch": 2,
+      "candidate_rank": 1,
+      "candidate_path": "fintech-web-candidates/klump-technology-company/01.svg",
+      "source_url": "https://useklump.com/#inline-logo-0",
+      "source_type": "official-website",
+      "website": "https://useklump.com/",
+      "format": "svg",
+      "sha256": "d79a0b9723f02d1baba3bd6b7c1f2dc031f5f3b5a30accec6e83a050efbcb7b7",
+      "width": 123,
+      "height": 30,
+      "confidence": "high",
+      "disposition": "awaiting-review",
+      "review": {
+        "official_source_confirmed": false,
+        "current_brand_confirmed": false,
+        "artwork_complete": false,
+        "light_mode_checked": false,
+        "dark_mode_checked": false,
+        "reviewer": null,
+        "reviewed_at": null,
+        "notes": null
+      }
+    },
+    {
+      "institution_slug": "ratefy",
+      "source_name": "Ratefy",
+      "source_category": "FX / B2B & Cross-Border Payments / Remittances",
+      "release_batch": 3,
+      "candidate_rank": 1,
+      "candidate_path": "fintech-web-candidates/ratefy/01.png",
+      "source_url": "https://ratefy.co/ratefy-icon.png",
+      "source_type": "official-website",
+      "website": "https://ratefy.co/",
+      "format": "png",
+      "sha256": "4e03c5298677d1ac96cf1b760bae87993e47e38201949ba5499893faf4910eda",
+      "width": 370,
+      "height": 370,
+      "confidence": "medium",
+      "disposition": "awaiting-review",
+      "review": {
+        "official_source_confirmed": false,
+        "current_brand_confirmed": false,
+        "artwork_complete": false,
+        "light_mode_checked": false,
+        "dark_mode_checked": false,
+        "reviewer": null,
+        "reviewed_at": null,
+        "notes": null
+      }
+    },
+    {
+      "institution_slug": "umba-digital-solutions",
+      "source_name": "Umba",
+      "source_category": "Digital Lenders & Credit Infrastructure",
+      "release_batch": 4,
+      "candidate_rank": 1,
+      "candidate_path": "fintech-web-candidates/umba-digital-solutions/01.svg",
+      "source_url": "https://www.umba.com/images/Umba-mfb-white.svg",
+      "source_type": "official-website",
+      "website": "https://www.umba.com/kenya",
+      "format": "svg",
+      "sha256": "702184a2fe3f864d351455d71045c84b5b4b29b1222b6f65dd4bb84a30b3bc63",
+      "width": 107,
+      "height": 40,
+      "confidence": "high",
+      "disposition": "awaiting-review",
+      "review": {
+        "official_source_confirmed": false,
+        "current_brand_confirmed": false,
+        "artwork_complete": false,
+        "light_mode_checked": false,
+        "dark_mode_checked": false,
+        "reviewer": null,
+        "reviewed_at": null,
+        "notes": null
+      }
+    }
+  ],
+  "rejected": [
+    {
+      "institution_slug": "udo",
+      "source_name": "-$udo",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "acceede",
+      "source_name": "acceede",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "global-accelerex",
+      "source_name": "Accelerex",
+      "reason": "No institution-owned logo candidate was found on the official website."
+    },
+    {
+      "institution_slug": "accure",
+      "source_name": "Accure",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "advancly-technologies",
+      "source_name": "advancly",
+      "reason": "No institution-owned logo candidate was found on the official website."
+    },
+    {
+      "institution_slug": "afex",
+      "source_name": "AFEX",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "afribenki",
+      "source_name": "Afribenki",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "afriex",
+      "source_name": "afriex",
+      "reason": "No institution-owned logo candidate was found on the official website."
+    },
+    {
+      "institution_slug": "ajowise",
+      "source_name": "AjoWise",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "akilaah-solution",
+      "source_name": "Akilaah",
+      "reason": "Rejected search result after identity check (24)"
+    },
+    {
+      "institution_slug": "aku",
+      "source_name": "Aku",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "alawee",
+      "source_name": "Alawee",
+      "reason": "No institution-owned logo candidate was found on the official website."
+    },
+    {
+      "institution_slug": "alerzo",
+      "source_name": "alerzo",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "arca-payments-company",
+      "source_name": "arca",
+      "reason": "No institution-owned logo candidate was found on the official website."
+    },
+    {
+      "institution_slug": "arobo",
+      "source_name": "Arobo",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "asewallet",
+      "source_name": "Asewallet",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "assetrica",
+      "source_name": "Assetrica",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "autospend",
+      "source_name": "Autospend",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "awabah",
+      "source_name": "Awabah",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "aza-finance",
+      "source_name": "AZA FInance",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "bainescredit",
+      "source_name": "BainesCredit",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "bankoto",
+      "source_name": "Bankoto",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "bettalyfe",
+      "source_name": "Bettalyfe",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "bfree",
+      "source_name": "Bfree",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "bilmapay",
+      "source_name": "BilmaPay",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "bitgifty",
+      "source_name": "BitGifty",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "bitmama",
+      "source_name": "Bitmama",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "bizflex",
+      "source_name": "BizFlex",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "bizspend",
+      "source_name": "Bizspend",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "bloc",
+      "source_name": "bloc",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "blockradar",
+      "source_name": "Blockradar",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "bluum",
+      "source_name": "Bluum",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "boldswitch",
+      "source_name": "Boldswitch",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "bordawave",
+      "source_name": "Bordawave",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "boundlesspay",
+      "source_name": "BoundlessPay",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "bountip",
+      "source_name": "Bountip",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "bridgepay",
+      "source_name": "BridgePay",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "browpay",
+      "source_name": "Browpay",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "buckstrybe",
+      "source_name": "Buckstrybe",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "bujeti",
+      "source_name": "Bujeti",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "bumpa",
+      "source_name": "bumpa",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "c24",
+      "source_name": "C24",
+      "reason": "No institution-owned logo candidate was found on the official website."
+    },
+    {
+      "institution_slug": "cansa-finance",
+      "source_name": "Cansa finance",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "carbin-africa",
+      "source_name": "Carbin.Africa",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "cardforte",
+      "source_name": "CardForte",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "cardiff",
+      "source_name": "Cardiff",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "carrot",
+      "source_name": "Carrot",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "cashbox",
+      "source_name": "CashBox",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "cashbuddy",
+      "source_name": "cashbuddy",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "cashir",
+      "source_name": "Cashir",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "cdcare",
+      "source_name": "cdCare",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "cellulant",
+      "source_name": "Cellulant",
+      "reason": "No institution-owned logo candidate was found on the official website."
+    },
+    {
+      "institution_slug": "centric",
+      "source_name": "Centric",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "chipper",
+      "source_name": "Chipper",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "clafiya",
+      "source_name": "Clafiya",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "creditclan-tech",
+      "source_name": "Clan",
+      "reason": "No institution-owned logo candidate was found on the official website."
+    },
+    {
+      "institution_slug": "clane",
+      "source_name": "Clane",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "cleva",
+      "source_name": "Cleva",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "wrapped-cbdc",
+      "source_name": "cNGN",
+      "reason": "No institution-owned logo candidate was found on the official website."
+    },
+    {
+      "institution_slug": "cobuildit",
+      "source_name": "CoBuildit",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "coconut",
+      "source_name": "Coconut",
+      "reason": "No institution-owned logo candidate was found on the official website."
+    },
+    {
+      "institution_slug": "coralpay",
+      "source_name": "CoralPay",
+      "reason": "No institution-owned logo candidate was found on the official website."
+    },
+    {
+      "institution_slug": "corestepmicrofinance-banklimited",
+      "source_name": "CoreBank",
+      "reason": "No institution-owned logo candidate was found on the official website."
+    },
+    {
+      "institution_slug": "credbevy",
+      "source_name": "Credbevy",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "credifex",
+      "source_name": "CrediFex",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "creditchek",
+      "source_name": "CreditChek",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "creditdirect",
+      "source_name": "CreditDirect",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "crisscross",
+      "source_name": "Crisscross",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "crodyvest",
+      "source_name": "Crodyvest",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "cubecover",
+      "source_name": "CubeCover",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "cwallet",
+      "source_name": "Cwallet",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "debtrecuva",
+      "source_name": "DebtRecuva",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "democratized",
+      "source_name": "Democratized",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "desola",
+      "source_name": "DeSola",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "dgnravepay",
+      "source_name": "DgnRavePay",
+      "reason": "No institution-owned logo candidate was found on the official website."
+    },
+    {
+      "institution_slug": "digicore",
+      "source_name": "Digicore",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "dojah",
+      "source_name": "Dojah",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "donate-ng",
+      "source_name": "Donate-ng",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "doroki",
+      "source_name": "Doroki",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "dot",
+      "source_name": "DOT",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "dropp",
+      "source_name": "Dropp.",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "duplo",
+      "source_name": "Duplo",
+      "reason": "No institution-owned logo candidate was found on the official website."
+    },
+    {
+      "institution_slug": "e-settlement",
+      "source_name": "E-Settlement",
+      "reason": "No institution-owned logo candidate was found on the official website."
+    },
+    {
+      "institution_slug": "earnipay",
+      "source_name": "earnipay",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "easyspend",
+      "source_name": "EasySpend",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "ensuram",
+      "source_name": "Ensuram",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "esca",
+      "source_name": "Esca",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "etop",
+      "source_name": "eTOP",
+      "reason": "No institution-owned logo candidate was found on the official website."
+    },
+    {
+      "institution_slug": "etransact",
+      "source_name": "etransact",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "eved",
+      "source_name": "eved",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "evertry",
+      "source_name": "EverTry",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "expense-ai",
+      "source_name": "Expense AI",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "falconlite",
+      "source_name": "FalconLite",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "falconpay",
+      "source_name": "FalconPay",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "fazipay",
+      "source_name": "FaziPay",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "fedacash",
+      "source_name": "FedaCash",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "feedxpay",
+      "source_name": "Feedxpay",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "fetswallet",
+      "source_name": "Fetswallet",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "finstaq",
+      "source_name": "Finstaq",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "fintava",
+      "source_name": "Fintava",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "flex",
+      "source_name": "Flex",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "flexipay",
+      "source_name": "FlexiPay",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "flick",
+      "source_name": "Flick",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "flincap",
+      "source_name": "Flincap",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "flowafric",
+      "source_name": "FlowAfric",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "foomly",
+      "source_name": "foomly",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "frexmfbank",
+      "source_name": "FrexMFBank",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "frontedge",
+      "source_name": "frontEdge",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "fxbud",
+      "source_name": "Fxbud",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "gameporte",
+      "source_name": "Gameporte",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "genesis360",
+      "source_name": "Genesis360",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "gexipay",
+      "source_name": "Gexipay",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "gigbanc",
+      "source_name": "Gigbanc",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "gigmile",
+      "source_name": "Gigmile",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "go-money",
+      "source_name": "Go money",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "gonana",
+      "source_name": "Gonana",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "graph",
+      "source_name": "Graph.",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "greenpay",
+      "source_name": "GreenPay",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "grownee",
+      "source_name": "Grownee",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "grupp",
+      "source_name": "Grupp",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "hadi",
+      "source_name": "Hadi.",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "herconomy",
+      "source_name": "Herconomy",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "hiyalo",
+      "source_name": "Hiyalo",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "houseafrica",
+      "source_name": "houseafrica",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "housmata",
+      "source_name": "housmata",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "humanmanager",
+      "source_name": "HumanManager",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "housingexchange-ng",
+      "source_name": "HXafrica",
+      "reason": "No institution-owned logo candidate was found on the official website."
+    },
+    {
+      "institution_slug": "hyves",
+      "source_name": "Hyves",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "ikript",
+      "source_name": "Ikript",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "inlaks",
+      "source_name": "Inlaks",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "invectives",
+      "source_name": "Invectives",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "invessa",
+      "source_name": "Invessa",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "ireva",
+      "source_name": "iREVA",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "itex-integrated-services",
+      "source_name": "itex",
+      "reason": "No institution-owned logo candidate was found on the official website."
+    },
+    {
+      "institution_slug": "ivorypay",
+      "source_name": "ivorypay",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "jema-pay",
+      "source_name": "JEMA PAY",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "jumiapay",
+      "source_name": "JumiaPay",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "jupit",
+      "source_name": "Jupit",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "kashbuk",
+      "source_name": "kashbuk",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "keble",
+      "source_name": "Keble",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "kegow",
+      "source_name": "kegow",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "klasha",
+      "source_name": "Klasha",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "kolomoni",
+      "source_name": "Kolomoni",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "kolopay",
+      "source_name": "KoloPay",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "kongapay-technologies",
+      "source_name": "KongaPay",
+      "reason": "No institution-owned logo candidate was found on the official website."
+    },
+    {
+      "institution_slug": "kredete",
+      "source_name": "Kredete",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "kredi",
+      "source_name": "Kredi",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "trafalgar-association",
+      "source_name": "KwikPay",
+      "reason": "No institution-owned logo candidate was found on the official website."
+    },
+    {
+      "institution_slug": "kwikpik",
+      "source_name": "Kwikpik.",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "ladda",
+      "source_name": "Ladda",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "lantan",
+      "source_name": "Lantan",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "leatherback",
+      "source_name": "leatherback",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "ledig",
+      "source_name": "LEDiG",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "lemfi",
+      "source_name": "LEMFI",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "lenco",
+      "source_name": "Lenco",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "lendha",
+      "source_name": "lendha",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "lendigo",
+      "source_name": "Lendigo",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "lendocredit",
+      "source_name": "Lendocredit",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "essential-finance",
+      "source_name": "lendsqr",
+      "reason": "No institution-owned logo candidate was found on the official website."
+    },
+    {
+      "institution_slug": "lendstack",
+      "source_name": "lendstack",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "litefi",
+      "source_name": "LiteFi",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "lopsim",
+      "source_name": "lopsim",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "lorapay",
+      "source_name": "Lorapay",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "loubby-ai",
+      "source_name": "Loubby AI",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "loystar",
+      "source_name": "Loystar",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "luno",
+      "source_name": "Luno",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "mansa",
+      "source_name": "MANSA",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "maplerad",
+      "source_name": "Maplerad",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "maxim",
+      "source_name": "Maxim",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "mercurie",
+      "source_name": "Mercurie",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "microvest",
+      "source_name": "Microvest",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "mida",
+      "source_name": "mida",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "midddleman",
+      "source_name": "midddleman",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "migo",
+      "source_name": "Migo",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "mkobo",
+      "source_name": "Mkobo",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "monapp",
+      "source_name": "monapp",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "moneta-technology",
+      "source_name": "Moneta",
+      "reason": "No institution-owned logo candidate was found on the official website."
+    },
+    {
+      "institution_slug": "moneymaster-payment-service-bank",
+      "source_name": "Moneymaster payment service bank ltd.",
+      "reason": "No institution-owned logo candidate was found on the official website."
+    },
+    {
+      "institution_slug": "monibac",
+      "source_name": "Monibac",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "monietab",
+      "source_name": "Monietab",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "monieworld",
+      "source_name": "MonieWorld",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "moniger",
+      "source_name": "Moniger",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "monimoore",
+      "source_name": "Monimoore",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "monirates",
+      "source_name": "Monirates",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "motor-africa",
+      "source_name": "Motor Africa",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "move",
+      "source_name": "Move",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "moza",
+      "source_name": "moza",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "mular",
+      "source_name": "Mular",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "mustard-ng",
+      "source_name": "Mustard.ng",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "mutigate",
+      "source_name": "Mutigate",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "mydove",
+      "source_name": "mydove",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "naira4yuan",
+      "source_name": "Naira4yuan",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "orcom-and-orcom-business-support",
+      "source_name": "Nairabox",
+      "reason": "No institution-owned logo candidate was found on the official website."
+    },
+    {
+      "institution_slug": "nearpays",
+      "source_name": "Nearpays",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "nilos",
+      "source_name": "nilos",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "nine",
+      "source_name": "Nine",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "nomba",
+      "source_name": "nomba",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "noun",
+      "source_name": "noun",
+      "reason": "No institution-owned logo candidate was found on the official website."
+    },
+    {
+      "institution_slug": "novacrust",
+      "source_name": "Novacrust",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "nownow-digital-systems",
+      "source_name": "NowNow",
+      "reason": "No institution-owned logo candidate was found on the official website."
+    },
+    {
+      "institution_slug": "suplias-technologies",
+      "source_name": "obtainly",
+      "reason": "No institution-owned logo candidate was found on the official website."
+    },
+    {
+      "institution_slug": "octamile",
+      "source_name": "Octamile",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "on-us",
+      "source_name": "on.us",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "orda-africa",
+      "source_name": "Orda.africa",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "oval",
+      "source_name": "Oval",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "paddycover",
+      "source_name": "PaddyCover",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "pagaengine",
+      "source_name": "Pagaengine",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "paidhr",
+      "source_name": "PaidHR",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "parkpay",
+      "source_name": "ParkPay",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "passpoint",
+      "source_name": "Passpoint",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "payu-payments",
+      "source_name": "Pay U",
+      "reason": "No institution-owned logo candidate was found on the official website."
+    },
+    {
+      "institution_slug": "payable",
+      "source_name": "Payable",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "payaza-africa",
+      "source_name": "Payaza",
+      "reason": "No institution-owned logo candidate was found on the official website."
+    },
+    {
+      "institution_slug": "payhive",
+      "source_name": "Payhive",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "payla",
+      "source_name": "Payla",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "paymyrent",
+      "source_name": "paymyrent",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "paypaddi",
+      "source_name": "paypaddi",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "paypaxe",
+      "source_name": "Paypaxe",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "payrise",
+      "source_name": "Payrise",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "payrit",
+      "source_name": "Payrit",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "payu-gpo",
+      "source_name": "PayU GPO",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "paywise",
+      "source_name": "Paywise",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "pcx",
+      "source_name": "PCX",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "pebblescore",
+      "source_name": "PebbleScore",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "peppa-io",
+      "source_name": "Peppa.io",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "periculum",
+      "source_name": "Periculum",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "pinowo",
+      "source_name": "Pinowo",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "poolside",
+      "source_name": "Poolside",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "pouchfi",
+      "source_name": "PouchFi",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "prembly",
+      "source_name": "Prembly",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "press",
+      "source_name": "Press",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "presspayng",
+      "source_name": "PressPayNG",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "prestmit",
+      "source_name": "prestmit",
+      "reason": "No institution-owned logo candidate was found on the official website."
+    },
+    {
+      "institution_slug": "primebiller",
+      "source_name": "PrimeBiller",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "prospa",
+      "source_name": "prospa",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "pryme",
+      "source_name": "pryme",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "px",
+      "source_name": "PX",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "qore",
+      "source_name": "Qore",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "qorepay",
+      "source_name": "QorePay",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "qrios-networks",
+      "source_name": "Qrios",
+      "reason": "No institution-owned logo candidate was found on the official website."
+    },
+    {
+      "institution_slug": "quick-invoice",
+      "source_name": "Quick invoice",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "ransepay",
+      "source_name": "RansePay",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "ravenbank",
+      "source_name": "RavenBank",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "readycash-by-parkway",
+      "source_name": "Readycash by parkway",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "recurr",
+      "source_name": "Recurr",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "relyr",
+      "source_name": "Relyr",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "renmoney-mfb",
+      "source_name": "Renmoney MFB",
+      "reason": "No institution-owned logo candidate was found on the official website."
+    },
+    {
+      "institution_slug": "riby",
+      "source_name": "Riby",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "sabi",
+      "source_name": "Sabi",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "sapa",
+      "source_name": "Sapa",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "satsapp",
+      "source_name": "SatsApp",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "savetobuy",
+      "source_name": "SavetoBuy",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "savey",
+      "source_name": "Savey",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "savinsbox",
+      "source_name": "SavinsBox",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "seamfix",
+      "source_name": "Seamfix",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "seamlesshr-com",
+      "source_name": "SeamlessHR",
+      "reason": "No institution-owned logo candidate was found on the official website."
+    },
+    {
+      "institution_slug": "seerbit",
+      "source_name": "SEERBIT",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "selar",
+      "source_name": "Selar",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "send-app",
+      "source_name": "Send app",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "sendova",
+      "source_name": "SendOva",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "sendsprint",
+      "source_name": "SendSprint",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "sendwave",
+      "source_name": "SENDWAVE",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "shecluded",
+      "source_name": "shecluded",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "shekel-mobility",
+      "source_name": "Shekel Mobility",
+      "reason": "No institution-owned logo candidate was found on the official website."
+    },
+    {
+      "institution_slug": "smallsmall",
+      "source_name": "SmallSmall",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "smartteller",
+      "source_name": "SmartTeller",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "snapcash",
+      "source_name": "SnapCash",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "sociallender",
+      "source_name": "SocialLender",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "sofri",
+      "source_name": "Sofri",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "softpay",
+      "source_name": "SoftPAY",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "softway-finance",
+      "source_name": "Softway Finance",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "space",
+      "source_name": "Space",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "spacepointe",
+      "source_name": "Spacepointe",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "speso",
+      "source_name": "Speso",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "spleet",
+      "source_name": "Spleet",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "sproutly-tech",
+      "source_name": "Sproutly",
+      "reason": "No institution-owned logo candidate was found on the official website."
+    },
+    {
+      "institution_slug": "spruce",
+      "source_name": "Spruce",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "squareme",
+      "source_name": "Squareme",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "stablestack",
+      "source_name": "StableStack",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "stacs",
+      "source_name": "stacs",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "straitpay",
+      "source_name": "straitPay",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "suregifts",
+      "source_name": "Suregifts",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "switch",
+      "source_name": "Switch",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "syarpa",
+      "source_name": "Syarpa",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "tangerine-apt",
+      "source_name": "Tangerine APT",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "tendar",
+      "source_name": "tendar",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "tendboxx",
+      "source_name": "Tendboxx",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "thamani",
+      "source_name": "Thamani",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "thriveagric",
+      "source_name": "ThriveAgric",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "timon",
+      "source_name": "Timon",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "toju",
+      "source_name": "Toju",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "traction-payments",
+      "source_name": "Traction",
+      "reason": "No institution-owned logo candidate was found on the official website."
+    },
+    {
+      "institution_slug": "tradeet",
+      "source_name": "Tradeet",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "tradelenda",
+      "source_name": "TradeLenda",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "tribapay",
+      "source_name": "tribapay",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "tribease",
+      "source_name": "tribease",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "tride",
+      "source_name": "Tride",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "trustbank",
+      "source_name": "trustBank",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "trustcrow",
+      "source_name": "Trustcrow",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "trusted-transfers",
+      "source_name": "Trusted Transfers",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "tsb-epay",
+      "source_name": "TSB-epay",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "ule-homes",
+      "source_name": "ULÉ HOMES",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "ultra",
+      "source_name": "Ultra",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "univas",
+      "source_name": "Univas",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "up",
+      "source_name": "UP",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "vale-finance",
+      "source_name": "Vale",
+      "reason": "No institution-owned logo candidate was found on the official website."
+    },
+    {
+      "institution_slug": "velcro",
+      "source_name": "Velcro",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "veloremit",
+      "source_name": "veloRemit",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "venco",
+      "source_name": "Venco",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "vend",
+      "source_name": "Vend",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "vendex",
+      "source_name": "vendex",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "verifyme",
+      "source_name": "VerifyMe",
+      "reason": "No institution-owned logo candidate was found on the official website."
+    },
+    {
+      "institution_slug": "verto",
+      "source_name": "Verto",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "vesicash",
+      "source_name": "vesicash",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "waza",
+      "source_name": "Waza",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "wealth-ng",
+      "source_name": "Wealth.ng",
+      "reason": "No institution-owned logo candidate was found on the official website."
+    },
+    {
+      "institution_slug": "wicrypt",
+      "source_name": "Wicrypt",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "wirepay",
+      "source_name": "wirepay",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "woodcore",
+      "source_name": "Woodcore",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "woven",
+      "source_name": "Woven",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "wyowo",
+      "source_name": "Wyowo",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "xchange-box-solutions",
+      "source_name": "xchangeBOX",
+      "reason": "No institution-owned logo candidate was found on the official website."
+    },
+    {
+      "institution_slug": "xelda",
+      "source_name": "Xelda",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "yesa",
+      "source_name": "Yesa",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "yunite",
+      "source_name": "Yunite",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "zainpay",
+      "source_name": "zainpay",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "zairaa",
+      "source_name": "Zairaa",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "zedvance-finance",
+      "source_name": "Zedvance",
+      "reason": "No institution-owned logo candidate was found on the official website."
+    },
+    {
+      "institution_slug": "zest-payments-limited-stanbic-financial-services-limited",
+      "source_name": "ZEST",
+      "reason": "No institution-owned logo candidate was found on the official website."
+    },
+    {
+      "institution_slug": "zilla",
+      "source_name": "Zilla",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "zoleapp",
+      "source_name": "Zoleapp",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "zone",
+      "source_name": "ZONE",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    },
+    {
+      "institution_slug": "zynopay",
+      "source_name": "Zynopay",
+      "reason": "The discovered website does not establish a Nigerian market or regulatory connection."
+    }
+  ]
+}

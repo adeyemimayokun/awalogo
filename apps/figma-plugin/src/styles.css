@@ -917,6 +917,7 @@ html[data-theme="light"] .footer-copyright button:hover {
 }
 
 .tile-preview {
+  position: relative;
   display: grid;
   width: 100%;
   height: 84px;
@@ -925,6 +926,91 @@ html[data-theme="light"] .footer-copyright button:hover {
   border-radius: 7px;
   background: #fbfcf9;
   padding: 14px;
+}
+
+.unverified-tag {
+  position: absolute;
+  z-index: 1;
+  top: 2px;
+  right: 2px;
+  display: inline-flex;
+  align-items: center;
+  width: max-content;
+  max-width: 6px;
+  height: 6px;
+  overflow: hidden;
+  box-sizing: border-box;
+  border: 0 solid #dfc891;
+  border-radius: 999px;
+  background: transparent;
+  color: transparent;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 10px;
+  font-weight: 650;
+  line-height: 1;
+  white-space: nowrap;
+  padding: 0;
+  pointer-events: none;
+  transition:
+    max-width 160ms ease,
+    height 160ms ease,
+    gap 160ms ease,
+    padding 160ms ease,
+    border-width 160ms ease,
+    background-color 160ms ease,
+    color 120ms ease;
+}
+
+.unverified-tag::before {
+  width: 6px;
+  height: 6px;
+  flex: 0 0 6px;
+  border-radius: 50%;
+  background: #b66a19;
+  content: "";
+}
+
+.logo-tile:hover .unverified-tag,
+.logo-tile:focus-visible .unverified-tag {
+  max-width: 78px;
+  height: 16px;
+  gap: 3px;
+  border-width: 1px;
+  background: #fff7e4;
+  color: #765019;
+  padding: 0 4px;
+}
+
+.logo-tile.logo-unverified .tile-preview,
+.logo-tile.logo-new .tile-preview {
+  padding: 19px 10px 5px;
+}
+
+.logo-tile.logo-unverified .tile-preview img,
+.logo-tile.logo-new .tile-preview img {
+  max-width: 92px;
+  max-height: 38px;
+}
+
+.new-tag {
+  position: absolute;
+  z-index: 1;
+  top: 2px;
+  right: 2px;
+  display: inline-flex;
+  align-items: center;
+  height: 16px;
+  box-sizing: border-box;
+  border: 1px solid #c8dc79;
+  border-radius: 999px;
+  background: #f1f8d5;
+  color: #465516;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 9px;
+  font-weight: 650;
+  line-height: 1;
+  padding: 0 4px;
+  pointer-events: none;
 }
 
 .tile-preview svg {
@@ -1605,6 +1691,26 @@ html[data-theme="light"] .footer-copyright button:hover {
 
 .verified-label.pending > span {
   background: #9a9c94;
+}
+
+html[data-theme="dark"] .unverified-tag {
+  border-color: #6d572c;
+}
+
+html[data-theme="dark"] .unverified-tag::before {
+  background: #f0c56e;
+}
+
+html[data-theme="dark"] .logo-tile:hover .unverified-tag,
+html[data-theme="dark"] .logo-tile:focus-visible .unverified-tag {
+  background: #342b1b;
+  color: #f0c56e;
+}
+
+html[data-theme="dark"] .new-tag {
+  border-color: #566425;
+  background: #2c3515;
+  color: #d9f06c;
 }
 
 .tile-preview.logo-preview-dark,

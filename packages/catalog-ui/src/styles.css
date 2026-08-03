@@ -954,6 +954,7 @@ input {
 }
 
 .tile-preview {
+  position: relative;
   display: grid;
   width: 100%;
   height: 92px;
@@ -962,6 +963,91 @@ input {
   border-radius: 0;
   background: transparent;
   padding: 12px;
+}
+
+.unverified-tag {
+  position: absolute;
+  z-index: 1;
+  top: 2px;
+  right: 2px;
+  display: inline-flex;
+  align-items: center;
+  width: max-content;
+  max-width: 6px;
+  height: 6px;
+  overflow: hidden;
+  box-sizing: border-box;
+  border: 0 solid #e4cf9f;
+  border-radius: 999px;
+  background: transparent;
+  color: transparent;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  padding: 0;
+  pointer-events: none;
+  transition:
+    max-width 160ms ease,
+    height 160ms ease,
+    gap 160ms ease,
+    padding 160ms ease,
+    border-width 160ms ease,
+    background-color 160ms ease,
+    color 120ms ease;
+}
+
+.unverified-tag::before {
+  width: 6px;
+  height: 6px;
+  flex: 0 0 6px;
+  border-radius: 50%;
+  background: #b66a19;
+  content: "";
+}
+
+.logo-tile:hover .unverified-tag,
+.logo-tile:focus-visible .unverified-tag {
+  max-width: 96px;
+  height: 20px;
+  gap: 4px;
+  border-width: 1px;
+  background: #fff8e8;
+  color: #7a5012;
+  padding: 0 5px;
+}
+
+.logo-tile.logo-unverified .tile-preview,
+.logo-tile.logo-new .tile-preview {
+  padding: 24px 12px 6px;
+}
+
+.logo-tile.logo-unverified .tile-preview img,
+.logo-tile.logo-new .tile-preview img {
+  max-width: 108px;
+  max-height: 42px;
+}
+
+.new-tag {
+  position: absolute;
+  z-index: 1;
+  top: 2px;
+  right: 2px;
+  display: inline-flex;
+  align-items: center;
+  height: 18px;
+  box-sizing: border-box;
+  border: 1px solid #c8dc79;
+  border-radius: 999px;
+  background: #f1f8d5;
+  color: #465516;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  padding: 0 5px;
+  pointer-events: none;
 }
 
 .tile-preview svg {
@@ -977,6 +1063,49 @@ input {
   height: auto;
   max-height: 60px;
   object-fit: contain;
+}
+
+.pending-preview,
+.pending-detail-preview {
+  display: grid;
+  place-items: center;
+  gap: 8px;
+  color: var(--color-subtext);
+  font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.pending-monogram {
+  display: grid;
+  width: 36px;
+  height: 36px;
+  place-items: center;
+  border: 1px solid #d9dcd5;
+  border-radius: 50%;
+  background: #f4f5f1;
+  color: #5e6059;
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.pending-monogram.large {
+  width: 52px;
+  height: 52px;
+  font-size: 14px;
+}
+
+.logo-tile.logo-pending .tile-preview {
+  border: 1px dashed #dfe1dc;
+  background: #fafbf8;
+}
+
+.logo-tile.logo-pending:hover .tile-preview {
+  border-color: #bdc1b8;
+}
+
+.tile-meta > .pending-badge {
+  color: var(--color-subtext);
 }
 
 .tile-copy {
@@ -1699,6 +1828,34 @@ input {
   background: #d67a2a;
 }
 
+html[data-theme="dark"] .unverified-tag {
+  border-color: #6d572c;
+}
+
+html[data-theme="dark"] .unverified-tag::before {
+  background: #f0c56e;
+}
+
+html[data-theme="dark"] .logo-tile:hover .unverified-tag,
+html[data-theme="dark"] .logo-tile:focus-visible .unverified-tag {
+  background: #342b1b;
+  color: #f0c56e;
+}
+
+html[data-theme="dark"] .new-tag {
+  border-color: #566425;
+  background: #2c3515;
+  color: #d9f06c;
+}
+
+.verified-label.pending {
+  color: var(--color-subtext);
+}
+
+.verified-label.pending > span {
+  background: #9a9c94;
+}
+
 .detail-header h2 {
   margin: 7px 0 0;
   color: #343330;
@@ -1818,6 +1975,15 @@ input {
   height: auto;
   max-height: 80px;
   object-fit: contain;
+}
+
+.pending-detail-media {
+  border-style: dashed;
+  background: #fafbf8;
+}
+
+.pending-detail-preview {
+  height: 112px;
 }
 
 .tile-preview.logo-preview-dark,
@@ -2419,6 +2585,24 @@ html[data-theme="dark"] .detail-facts > div {
 
 html[data-theme="dark"] .detail-preview {
   background: #fbfcf9;
+}
+
+html[data-theme="dark"] .logo-tile.logo-pending .tile-preview,
+html[data-theme="dark"] .pending-detail-media,
+html[data-theme="dark"] .pending-detail-preview {
+  border-color: #4b4e48;
+  background: #262824;
+}
+
+html[data-theme="dark"] .pending-preview,
+html[data-theme="dark"] .pending-detail-preview {
+  color: #a9ada3;
+}
+
+html[data-theme="dark"] .pending-monogram {
+  border-color: #555850;
+  background: #30322e;
+  color: #d0d3ca;
 }
 
 html[data-theme="dark"] .dimension-control,
@@ -3314,6 +3498,17 @@ html:not([data-theme="dark"]) .footer-kicker {
   max-width: 92px;
   height: 100%;
   max-height: 58px;
+}
+
+.plugin-compact .logo-tile.logo-unverified .tile-preview,
+.plugin-compact .logo-tile.logo-new .tile-preview {
+  padding: 20px 9px 5px;
+}
+
+.plugin-compact .logo-tile.logo-unverified .tile-preview img,
+.plugin-compact .logo-tile.logo-new .tile-preview img {
+  max-width: 84px;
+  max-height: 38px;
 }
 
 .plugin-compact .detail-actions {
