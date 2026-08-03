@@ -135,7 +135,42 @@ const institutionItems: CatalogItem[] = institutions.map((institution) => {
 });
 const institutionItemsBySlug = new Map(institutionItems.map((item) => [item.institution.slug, item]));
 
-export const catalogItems: CatalogItem[] = mergeCatalogItems(institutionItems)
+const linkedLogoSlugs = new Set(institutionItems.flatMap((item) => item.logo ? [item.logo.slug] : []));
+const orphanLogoItems: CatalogItem[] = logos.flatMap((logo) => {
+  if (linkedLogoSlugs.has(logo.slug)) return [];
+  const categories = (logo.categories ?? []).filter((category): category is InstitutionCategory =>
+    institutionCategorySet.has(category)
+  );
+  const primaryCategory = categories[0];
+  if (!primaryCategory) return [];
+  const reviewed = logo.status === "verified" && logo.source_type !== "community-catalog";
+  const institution: Institution = {
+    slug: logo.slug,
+    legal_name: null,
+    brand_name: logo.name,
+    aliases: logo.aliases,
+    primary_category: primaryCategory,
+    categories,
+    country_code: "NG",
+    nigeria_presence: "market-only",
+    regulators: [],
+    licence_types: [],
+    regulatory_status: reviewed ? "status-unknown" : "unverified",
+    verification_status: reviewed ? "market-verified" : "community-candidate",
+    website: logo.website,
+    sources: [{
+      url: logo.source_url,
+      source_type: logo.source_type === "community-catalog" ? "community" : "official-website",
+      retrieved_at: logo.updated_at
+    }],
+    logo_slug: logo.slug,
+    added_at: logo.added_at,
+    updated_at: logo.updated_at
+  };
+  return [{ institution, institutions: [institution], logo, displayName: logo.name, categories }];
+});
+
+export const catalogItems: CatalogItem[] = mergeCatalogItems([...institutionItems, ...orphanLogoItems])
   .sort((a, b) => a.displayName.localeCompare(b.displayName));
 
 export const institutionCount = catalogItems.length;

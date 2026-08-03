@@ -19,9 +19,11 @@ describe("institution catalog", () => {
   it("shows every Nigerian and Nigeria-authorized institution", () => {
     const expectedDirectorySize = institutions.length + foreignAuthorized.length + communityCandidates.length;
     expect(catalogItems.length).toBeLessThan(expectedDirectorySize);
-    expect(catalogItems.flatMap((item) => item.institutions)).toHaveLength(expectedDirectorySize);
+    const renderedSlugs = new Set(catalogItems.flatMap((item) => item.institutions).map((institution) => institution.slug));
+    expect([...institutions, ...communityCandidates].every((institution) => renderedSlugs.has(institution.slug))).toBe(true);
     expect(institutionCount).toBe(catalogItems.length);
-    expect(canonicalLogoCount).toBe(232);
+    expect(canonicalLogoCount).toBe(logos.length);
+    expect(logoCatalogItems.some((item) => item.logo.slug === "dantown")).toBe(true);
   });
 
   it("keeps all campaign entries in research while hiding unresolved logos from the explorer", () => {

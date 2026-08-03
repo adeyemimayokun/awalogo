@@ -34,6 +34,7 @@ import "./admin.css";
 type Session = { login: string; avatarUrl: string; local?: boolean; repositoryAccess?: boolean };
 type Format = { type: string; path: string };
 type Variation = { id: string; name: string; source_url?: string; svg_path: string | null; formats: Format[]; preview_url?: string };
+type VariationDraft = { key: string; id: string; name: string; sourceUrl: string; file: File | null };
 type Logo = {
   name: string;
   slug: string;
@@ -255,6 +256,7 @@ export function AdminApp() {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const [result, setResult] = useState<MutationResult | null>(null);
+  const [addFormVersion, setAddFormVersion] = useState(0);
 
   useEffect(() => {
     const previousTitle = document.title;
@@ -303,6 +305,9 @@ export function AdminApp() {
       });
       setResult(next);
       await loadCatalog();
+      if (payload.operation === "add-logo") {
+        setAddFormVersion((version) => version + 1);
+      }
       return true;
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : "The request failed");
@@ -384,7 +389,7 @@ export function AdminApp() {
         </div>
       ) : null}
 
-      {mode === "add" ? <AddLogoForm busy={busy} onBack={() => setMode("manage")} onSubmit={mutate} /> :
+      {mode === "add" ? <AddLogoForm key={addFormVersion} busy={busy} onBack={() => setMode("manage")} onSubmit={mutate} /> :
       mode === "requests" ? <RequestsManager /> :
       mode === "notifications" ? <NotificationsManager onUnreadChange={setUnreadNotifications} /> : (
         <main className="admin-workspace">
@@ -739,16 +744,6 @@ function CategoryMultiSelect({
           })}
         </div>
       </details>
-      {value.length ? (
-        <div className="admin-category-selection" aria-live="polite">
-          {value.map((category) => (
-            <button type="button" key={category} onClick={() => toggle(category)} title={`Remove ${categoryLabel(category)}`}>
-              {categoryLabel(category)}
-              <X size={12} aria-hidden="true" />
-            </button>
-          ))}
-        </div>
-      ) : <small>Select at least one category used by the public catalog.</small>}
     </fieldset>
   );
 }
@@ -760,12 +755,48 @@ function AddLogoForm({ busy, onBack, onSubmit }: { busy: boolean; onBack: () => 
   const [file, setFile] = useState<File | null>(null);
   const [selectedCategories, setSelectedCategories] = useState<InstitutionCategory[]>([]);
   const [officialSourceUnavailable, setOfficialSourceUnavailable] = useState(false);
+  const [variationDrafts, setVariationDrafts] = useState<VariationDraft[]>([]);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "auto" });
+  }, []);
+
+  const duplicateVariationIds = new Set(variationDrafts
+    .map((variation) => variation.id)
+    .filter((id, index, ids) => id && ids.indexOf(id) !== index));
+  const totalAssetBytes = (file?.size ?? 0) + variationDrafts.reduce((total, variation) => total + (variation.file?.size ?? 0), 0);
+  const uploadBundleTooLarge = totalAssetBytes > 2_500_000;
+  const variationsReady = variationDrafts.every((variation) =>
+    variation.name.trim().length >= 2 && variation.id && variation.file
+  ) && duplicateVariationIds.size === 0 && !uploadBundleTooLarge;
+
+  function addVariation() {
+    setVariationDrafts((current) => [...current, {
+      key: crypto.randomUUID(),
+      id: "",
+      name: "",
+      sourceUrl: "",
+      file: null
+    }]);
+  }
+
+  function updateVariation(key: string, patch: Partial<VariationDraft>) {
+    setVariationDrafts((current) => current.map((variation) =>
+      variation.key === key ? { ...variation, ...patch } : variation
+    ));
+  }
 
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (!file) return;
     const form = new FormData(event.currentTarget);
-    const ok = await onSubmit({
+    const variations = await Promise.all(variationDrafts.map(async (variation) => ({
+      id: variation.id,
+      name: variation.name,
+      sourceUrl: variation.sourceUrl.trim() || undefined,
+      svgBase64: await fileToBase64(variation.file!)
+    })));
+    await onSubmit({
       operation: "add-logo",
       name,
       slug,
@@ -774,16 +805,9 @@ function AddLogoForm({ busy, onBack, onSubmit }: { busy: boolean; onBack: () => 
       website: form.get("website"),
       sourceUrl: String(form.get("sourceUrl") ?? "").trim() || undefined,
       sourceType: officialSourceUnavailable ? "community-catalog" : form.get("sourceType"),
-      svgBase64: await fileToBase64(file)
+      svgBase64: await fileToBase64(file),
+      variations
     });
-    if (ok) {
-      event.currentTarget.reset();
-      setName("");
-      setSlug("");
-      setFile(null);
-      setSelectedCategories([]);
-      setOfficialSourceUnavailable(false);
-    }
   }
 
   return (
@@ -802,6 +826,16 @@ function AddLogoForm({ busy, onBack, onSubmit }: { busy: boolean; onBack: () => 
             <CategoryMultiSelect value={selectedCategories} onChange={setSelectedCategories} />
             <label><span>Aliases</span><input name="aliases" placeholder="Access, Access Bank Plc" /></label>
           </div>
+          {selectedCategories.length ? (
+            <div className="admin-category-selection" aria-live="polite">
+              {selectedCategories.map((category) => (
+                <button type="button" key={category} onClick={() => setSelectedCategories((current) => current.filter((item) => item !== category))} title={`Remove ${categoryLabel(category)}`}>
+                  {categoryLabel(category)}
+                  <X size={12} aria-hidden="true" />
+                </button>
+              ))}
+            </div>
+          ) : <small className="admin-category-empty-note">Select at least one category used by the public catalog.</small>}
         </section>
         <section className="admin-form-section">
           <div className="admin-form-section-heading">
@@ -823,7 +857,30 @@ function AddLogoForm({ busy, onBack, onSubmit }: { busy: boolean; onBack: () => 
           </div>
         </section>
         <section className="admin-form-section asset"><div><h2>Logo asset</h2><p>PNG and WebP derivatives are generated automatically.</p></div><UploadField file={file} onFile={setFile} /></section>
-        <div className="admin-submit-row"><span>New entries are submitted as needs-review.</span><button disabled={busy || !file || !selectedCategories.length} type="submit"><GitFork size={17} /> Create pull request</button></div>
+        <section className="admin-form-section admin-variation-drafts">
+          <div className="admin-form-section-heading">
+            <div><h2>Logo variations</h2><p>Add wordmarks, symbols, light, dark, or stacked versions to the same pull request.</p></div>
+            <button className="admin-secondary-action" type="button" onClick={addVariation} disabled={variationDrafts.length >= 12}><Plus size={16} /> Add variation</button>
+          </div>
+          {variationDrafts.length ? (
+            <div className="admin-variation-draft-list">
+              {variationDrafts.map((variation, index) => (
+                <article className="admin-variation-draft" key={variation.key}>
+                  <header><div><span>Variation {index + 1}</span><strong>{variation.name || "Untitled variation"}</strong></div><button type="button" onClick={() => setVariationDrafts((current) => current.filter((item) => item.key !== variation.key))} aria-label={`Remove variation ${index + 1}`} title="Remove variation"><Trash2 size={16} /></button></header>
+                  <div className="admin-variation-draft-content">
+                    <div className="admin-fields two">
+                      <label><span>Name</span><input required value={variation.name} onChange={(event) => { const nextName = event.target.value; updateVariation(variation.key, { name: nextName, id: slugify(nextName) }); }} placeholder="Light wordmark" /></label>
+                      <label><span>Variation ID</span><input required pattern="[a-z0-9]+(?:-[a-z0-9]+)*" value={variation.id} onChange={(event) => updateVariation(variation.key, { id: event.target.value })} aria-invalid={duplicateVariationIds.has(variation.id)} placeholder="light-wordmark" />{duplicateVariationIds.has(variation.id) ? <small className="admin-field-error">Use a unique variation ID.</small> : null}</label>
+                      <label className="admin-field-wide"><span>Source URL (optional)</span><input type="url" value={variation.sourceUrl} onChange={(event) => updateVariation(variation.key, { sourceUrl: event.target.value })} placeholder="Uses the primary source when left empty" /></label>
+                    </div>
+                    <UploadField file={variation.file} onFile={(nextFile) => updateVariation(variation.key, { file: nextFile })} />
+                  </div>
+                </article>
+              ))}
+            </div>
+          ) : <div className="admin-inline-empty"><ImagePlus size={18} /> No additional variations</div>}
+        </section>
+        <div className="admin-submit-row"><span className={uploadBundleTooLarge ? "admin-submit-warning" : ""}>{uploadBundleTooLarge ? "Combined SVG files must stay below 2.5 MB." : variationDrafts.length ? `Primary logo and ${variationDrafts.length} variation${variationDrafts.length === 1 ? "" : "s"} will be submitted together.` : "New entries are submitted as needs-review."}</span><button disabled={busy || !file || !selectedCategories.length || !variationsReady} type="submit"><GitFork size={17} /> Create pull request</button></div>
       </form>
     </main>
   );

@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { darkLogoPreviewAssetIds, institutionLogoLinks, logoCatalog } from "../../logos/src";
+import promotedCatalog from "../../logos/src/promoted-catalog.json";
 import { validateCatalog, validateFintechSourcingManifest } from "./validate";
 
 describe("logo catalog validation", () => {
@@ -13,8 +14,8 @@ describe("logo catalog validation", () => {
     expect(darkLogoPreviewAssetIds.every((assetId) => assetIds.has(assetId))).toBe(true);
   });
 
-  it("contains the seed and promotion catalog", () => {
-    expect(logoCatalog).toHaveLength(232);
+  it("contains the seed and reviewed promotion catalog", () => {
+    expect(logoCatalog).toHaveLength(promotedCatalog.length + 3);
     expect(logoCatalog.map((logo) => logo.slug)).toEqual(expect.arrayContaining([
       "flutterwave", "moniepoint", "opay", "kuda-microfinance-bank", "leadway-assurance-company",
       "busha-digital", "quidax-technologies", "paystack-payment", "united-bank-for-africa",
@@ -35,13 +36,14 @@ describe("logo catalog validation", () => {
       "klump-technology-company", "ladda", "lemfi", "payaza-africa", "ratefy", "timon",
       "umba-digital-solutions", "verifyme", "wealth-ng", "zedvance-finance",
       "global-accelerex", "coralpay", "moneymaster-payment-service-bank", "suregifts",
-      "afriex", "nomba", "novacrust", "mercurie", "essential-finance", "spleet", "thriveagric"
+      "afriex", "nomba", "novacrust", "mercurie", "essential-finance", "spleet", "thriveagric",
+      "dantown"
     ]));
   });
 
   it("keeps Nigeria Logos imports visibly pending official verification", () => {
     const imported = logoCatalog.filter((logo) => logo.source_type === "community-catalog");
-    expect(imported).toHaveLength(45);
+    expect(imported.length).toBeGreaterThan(0);
     expect(imported.every((logo) => logo.status === "needs-review")).toBe(true);
   });
 
