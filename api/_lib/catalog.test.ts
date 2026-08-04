@@ -94,6 +94,59 @@ describe("CMS catalog mutations", () => {
     expect(result.body).toContain("Variations: `2`");
   });
 
+  it("archives the current primary before promoting a new logo version", async () => {
+    const currentSvg = Buffer.from('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle fill="#245" cx="12" cy="12" r="10"/></svg>');
+    const result = await buildMutationChanges({
+      operation: "replace-logo",
+      slug: "versioned-finance",
+      archiveId: "previous-2026-08-04",
+      archiveName: "Previous logo (2026-08-04)",
+      sourceUrl: "https://versioned-finance.example/new-brand",
+      sourceType: "official-brand-page",
+      svgBase64: safeSvg
+    }, [existingLogo("Versioned Finance", "versioned-finance")], {}, {
+      ...manifest,
+      source_sha256: { "versioned-finance": "old-hash" }
+    }, { currentPrimarySource: currentSvg });
+
+    const changes = new Map(result.changes.map((change) => [change.path, change.content]));
+    expect(changes.get("packages/logos/src/sources/versioned-finance-previous-2026-08-04.svg")?.equals(currentSvg)).toBe(true);
+    expect(changes.get("packages/logos/src/assets/versioned-finance.svg")?.equals(Buffer.from(safeSvg, "base64"))).toBe(true);
+
+    const catalog = JSON.parse(changes.get("packages/logos/src/promoted-catalog.json")!.toString());
+    expect(catalog[0]).toMatchObject({
+      slug: "versioned-finance",
+      source_url: "https://versioned-finance.example/new-brand",
+      source_type: "official-brand-page",
+      updated_at: expect.stringMatching(/^\d{4}-\d{2}-\d{2}$/),
+      status: "needs-review"
+    });
+    const variations = JSON.parse(changes.get("packages/logos/src/variations.json")!.toString());
+    expect(variations["versioned-finance"][0]).toMatchObject({
+      id: "previous-2026-08-04",
+      name: "Previous logo (2026-08-04)",
+      status: "old",
+      archived_at: expect.stringMatching(/^\d{4}-\d{2}-\d{2}$/),
+      source_url: "https://versioned-finance.example/brand"
+    });
+    const nextManifest = JSON.parse(changes.get("packages/logos/src/formats-manifest.json")!.toString());
+    expect(nextManifest.source_sha256).toHaveProperty("versioned-finance");
+    expect(nextManifest.source_sha256).toHaveProperty("versioned-finance/previous-2026-08-04");
+    expect(result.body).toContain("Archived primary: `previous-2026-08-04`");
+  });
+
+  it("rejects replacement when the current primary SVG is unavailable", async () => {
+    await expect(buildMutationChanges({
+      operation: "replace-logo",
+      slug: "versioned-finance",
+      archiveId: "previous-2026-08-04",
+      archiveName: "Previous logo",
+      sourceUrl: "https://versioned-finance.example/brand",
+      sourceType: "official-website",
+      svgBase64: safeSvg
+    }, [existingLogo("Versioned Finance", "versioned-finance")], {}, structuredClone(manifest))).rejects.toThrow("current primary SVG could not be loaded");
+  });
+
   it("rejects duplicate variation IDs before processing uploads", () => {
     expect(() => mutationSchema.parse({
       operation: "add-logo",
@@ -164,41 +217,6 @@ describe("CMS catalog mutations", () => {
       "middle-finance",
       "zulu-finance"
     ]);
-  });
-
-  it("replaces a primary logo without overwriting its previous version", async () => {
-    const logo = existingLogo("Versioned Finance", "versioned-finance");
-    const inputManifest = {
-      ...manifest,
-      source_sha256: { "versioned-finance": "12345678previoushash" }
-    };
-    const result = await buildMutationChanges({
-      operation: "replace-logo",
-      slug: "versioned-finance",
-      sourceUrl: "https://versioned-finance.example/new-brand",
-      sourceType: "official-brand-page",
-      svgBase64: safeSvg
-    }, [logo], {}, inputManifest);
-
-    const catalog = JSON.parse(result.changes.find((change) => change.path.endsWith("promoted-catalog.json"))!.content!.toString());
-    const variations = JSON.parse(result.changes.find((change) => change.path.endsWith("variations.json"))!.content!.toString());
-    const nextManifest = JSON.parse(result.changes.find((change) => change.path.endsWith("formats-manifest.json"))!.content!.toString());
-    const current = catalog[0];
-    const previous = variations["versioned-finance"][0];
-
-    expect(current.source_url).toBe("https://versioned-finance.example/new-brand");
-    expect(current.source_path).toMatch(/^sources\/versioned-finance-\d{4}-\d{2}-\d{2}-[a-f0-9]{8}\.svg$/);
-    expect(previous).toMatchObject({
-      id: "previous-12345678",
-      name: "Previous logo",
-      kind: "historical",
-      source_path: "sources/versioned-finance.svg",
-      svg_path: "assets/versioned-finance.svg"
-    });
-    expect(previous.retired_at).toMatch(/^\d{4}-\d{2}-\d{2}$/);
-    expect(nextManifest.source_sha256["versioned-finance/previous-12345678"]).toBe("12345678previoushash");
-    expect(result.changes.some((change) => change.path === "packages/logos/src/assets/versioned-finance.svg" && change.content === null)).toBe(false);
-    expect(result.body).toContain("archived as a historical logo version");
   });
 
   it("marks a reviewed logo verified with an official source", async () => {

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState, type FormEvent, type ReactNode } from "react";
+import { useEffect, useMemo, useRef, useState, type FormEvent, type ReactNode } from "react";
 import {
   ArrowLeft,
   ArrowDownToLine,
@@ -33,7 +33,7 @@ import "./admin.css";
 
 type Session = { login: string; avatarUrl: string; local?: boolean; repositoryAccess?: boolean };
 type Format = { type: string; path: string };
-type Variation = { id: string; name: string; kind?: "lockup" | "historical"; retired_at?: string; source_url?: string; svg_path: string | null; formats: Format[]; preview_url?: string };
+type Variation = { id: string; name: string; status?: "active" | "old"; archived_at?: string; source_url?: string; svg_path: string | null; formats: Format[]; preview_url?: string };
 type VariationDraft = { key: string; id: string; name: string; sourceUrl: string; file: File | null };
 type Logo = {
   name: string;
@@ -121,15 +121,13 @@ function svgDataUrl(svg: string): string {
 }
 
 function logoPreview(slug: string, localPreview?: string): string | null {
-  if (localPreview) return localPreview;
   const logo = bundledLogos.find((item) => item.slug === slug);
-  return logo?.svg ? svgDataUrl(logo.svg) : logo?.asset_urls.png ?? logo?.asset_urls.webp ?? null;
+  return logo?.svg ? svgDataUrl(logo.svg) : logo?.asset_urls.png ?? logo?.asset_urls.webp ?? localPreview ?? null;
 }
 
 function variationPreview(slug: string, variationId: string, localPreview?: string): string | null {
-  if (localPreview) return localPreview;
   const variation = bundledLogos.find((item) => item.slug === slug)?.variations.find((item) => item.id === variationId);
-  return variation?.svg ? svgDataUrl(variation.svg) : variation?.asset_urls.png ?? variation?.asset_urls.webp ?? null;
+  return variation?.svg ? svgDataUrl(variation.svg) : variation?.asset_urls.png ?? variation?.asset_urls.webp ?? localPreview ?? null;
 }
 
 function formatAssetUrl(slug: string, format: Format, variationId?: string, local = false): string | null {
@@ -428,13 +426,15 @@ export function AdminApp() {
                   {logoPreview(selected.slug, selected.preview_url) ? <img src={logoPreview(selected.slug, selected.preview_url)!} alt={`${selected.name} logo`} /> : <span>Preview unavailable</span>}
                 </div>
                 <section className="admin-primary-files">
-                  <div><h2>Primary files</h2><p>{selected.formats.length} available format{selected.formats.length === 1 ? "" : "s"}</p></div>
+                  <div className="admin-primary-files-heading">
+                    <div><h2>Primary files</h2><p>{selected.formats.length} available format{selected.formats.length === 1 ? "" : "s"}</p></div>
+                    <LogoVersionAction key={selected.slug} logo={selected} locked={data?.lockedSlugs.includes(selected.slug) ?? false} busy={busy} mutate={mutate} />
+                  </div>
                   <FormatFiles formats={selected.formats} slug={selected.slug} local={session?.local} />
                 </section>
               </div>
               <VerificationManager logo={selected} busy={busy} locked={data?.lockedSlugs.includes(selected.slug) ?? false} mutate={mutate} />
-              <VariationManager logo={selected} variations={selectedVariations.filter((variation) => variation.kind !== "historical")} busy={busy} local={session?.local} mutate={mutate} />
-              <LogoVersionManager logo={selected} versions={selectedVariations.filter((variation) => variation.kind === "historical")} busy={busy} locked={data?.lockedSlugs.includes(selected.slug) ?? false} local={session?.local} mutate={mutate} />
+              <VariationManager logo={selected} variations={selectedVariations} busy={busy} local={session?.local} mutate={mutate} />
               <DangerZone logo={selected} locked={data?.lockedSlugs.includes(selected.slug) ?? false} busy={busy} mutate={mutate} />
             </section>
           ) : <section className="admin-empty">Select a logo</section>}
@@ -512,6 +512,75 @@ function VerificationManager({ logo, busy, locked, mutate }: {
         <button className="admin-primary-button" disabled={busy} type="submit"><GitFork size={17} /> Create verification pull request</button>
       </form></div> : null}
     </section>
+  );
+}
+
+function LogoVersionAction({ logo, locked, busy, mutate }: { logo: Logo; locked: boolean; busy: boolean; mutate: (payload: Record<string, unknown>) => Promise<boolean> }) {
+  const today = new Date().toISOString().slice(0, 10);
+  const [open, setOpen] = useState(false);
+  const [file, setFile] = useState<File | null>(null);
+  const [archiveName, setArchiveName] = useState(`Previous logo (${today})`);
+  const [archiveId, setArchiveId] = useState(`previous-${today}`);
+  const [sourceType, setSourceType] = useState(logo.source_type || "official-website");
+  const [sourceUrl, setSourceUrl] = useState(logo.source_url);
+
+  useEffect(() => {
+    if (!open) return;
+    const previousFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const frame = window.requestAnimationFrame(() => document.querySelector<HTMLElement>('[role="dialog"] input')?.focus());
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+      const dialog = document.querySelector<HTMLElement>('[role="dialog"]');
+      if (dialog) keepFocusInDialog(event, dialog);
+    };
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      window.cancelAnimationFrame(frame);
+      document.removeEventListener("keydown", onKeyDown);
+      document.body.style.overflow = previousOverflow;
+      previousFocus?.focus();
+    };
+  }, [open]);
+
+  async function replace(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (!file) return;
+    const ok = await mutate({
+      operation: "replace-logo",
+      slug: logo.slug,
+      archiveId,
+      archiveName,
+      sourceType,
+      sourceUrl: sourceType === "community-catalog" ? sourceUrl || undefined : sourceUrl,
+      svgBase64: await fileToBase64(file)
+    });
+    if (ok) {
+      setOpen(false);
+      setFile(null);
+    }
+  }
+
+  return (
+    <>
+      <button className="admin-version-button" type="button" disabled={locked} title={locked ? "This core logo is managed in code" : "Archive this primary and upload its replacement"} onClick={() => setOpen(true)}><RefreshCw size={15} /> New version</button>
+      {open ? <div className="admin-dialog-backdrop" onMouseDown={(event) => { if (event.target === event.currentTarget) setOpen(false); }}>
+        <form className="admin-dialog admin-version-dialog" role="dialog" aria-modal="true" aria-labelledby="new-version-title" onSubmit={replace}>
+          <button className="admin-dialog-close" type="button" onClick={() => setOpen(false)} aria-label="Close"><X size={18} /></button>
+          <p className="admin-kicker">{logo.name}</p><h2 id="new-version-title">Add new version</h2>
+          <p className="admin-dialog-intro">The current primary will be preserved as an old version. The uploaded SVG becomes the new primary after the pull request is merged.</p>
+          <div className="admin-fields two">
+            <label><span>Old version name</span><input required value={archiveName} onChange={(event) => setArchiveName(event.target.value)} /></label>
+            <label><span>Old version ID</span><input required pattern="[a-z0-9]+(?:-[a-z0-9]+)*" value={archiveId} onChange={(event) => setArchiveId(event.target.value)} /></label>
+            <label><span>New source type</span><select value={sourceType} onChange={(event) => setSourceType(event.target.value)}>{sourceTypes.map(([value, label]) => <option key={value} value={value}>{label}</option>)}<option value="community-catalog">Community catalog</option></select></label>
+            <label><span>New source URL</span><input required={sourceType !== "community-catalog"} type="url" value={sourceUrl} onChange={(event) => setSourceUrl(event.target.value)} placeholder="https://company.com/brand" /></label>
+          </div>
+          <UploadField file={file} onFile={setFile} />
+          <button className="admin-primary-button" disabled={busy || !file || (sourceType !== "community-catalog" && !sourceUrl)} type="submit"><GitFork size={17} /> Create version pull request</button>
+        </form>
+      </div> : null}
+    </>
   );
 }
 
@@ -788,35 +857,94 @@ function CategoryMultiSelect({
   value: InstitutionCategory[];
   onChange: (categories: InstitutionCategory[]) => void;
 }) {
+  const rootRef = useRef<HTMLFieldSetElement>(null);
+  const [open, setOpen] = useState(false);
+  const [query, setQuery] = useState("");
+  const [draft, setDraft] = useState<InstitutionCategory[]>(value);
+
+  const visibleCategories = useMemo(() => {
+    const normalized = query.trim().toLowerCase();
+    return availableInstitutionCategories.filter((category) =>
+      !normalized || categoryLabel(category).toLowerCase().includes(normalized)
+    );
+  }, [query]);
+
+  useEffect(() => {
+    if (!open) return;
+    const close = () => {
+      setOpen(false);
+      setDraft(value);
+      setQuery("");
+    };
+    const onPointerDown = (event: PointerEvent) => {
+      if (rootRef.current && event.target instanceof Node && !rootRef.current.contains(event.target)) close();
+    };
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") close();
+    };
+    document.addEventListener("pointerdown", onPointerDown);
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.removeEventListener("pointerdown", onPointerDown);
+      document.removeEventListener("keydown", onKeyDown);
+    };
+  }, [open, value]);
+
+  function toggleOpen() {
+    if (open) {
+      setOpen(false);
+      setDraft(value);
+      setQuery("");
+      return;
+    }
+    setDraft(value);
+    setQuery("");
+    setOpen(true);
+  }
+
   function toggle(category: InstitutionCategory) {
-    onChange(value.includes(category)
-      ? value.filter((item) => item !== category)
-      : [...value, category]);
+    setDraft((current) => current.includes(category)
+      ? current.filter((item) => item !== category)
+      : [...current, category]);
+  }
+
+  function save() {
+    onChange(draft);
+    setOpen(false);
+    setQuery("");
   }
 
   return (
-    <fieldset className="admin-category-picker">
+    <fieldset className="admin-category-picker" ref={rootRef}>
       <legend>Categories</legend>
-      <details>
-        <summary>
+      <details open={open}>
+        <summary onClick={(event) => { event.preventDefault(); toggleOpen(); }}>
           <span>{value.length ? `${value.length} categor${value.length === 1 ? "y" : "ies"} selected` : "Select categories"}</span>
           <ChevronDown size={16} aria-hidden="true" />
         </summary>
-        <div className="admin-category-options" role="group" aria-label="Institution categories">
-          {availableInstitutionCategories.map((category) => {
-            const selected = value.includes(category);
-            return (
-              <label className={selected ? "selected" : ""} key={category}>
-                <input
-                  type="checkbox"
-                  checked={selected}
-                  onChange={() => toggle(category)}
-                />
-                <span>{categoryLabel(category)}</span>
-                {selected ? <Check size={15} aria-hidden="true" /> : null}
-              </label>
-            );
-          })}
+        <div className="admin-category-menu">
+          <div className="admin-category-search">
+            <Search size={16} aria-hidden="true" />
+            <input aria-label="Search categories" autoFocus value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search categories" />
+            {query ? <button type="button" onClick={() => setQuery("")} aria-label="Clear category search"><X size={14} /></button> : null}
+          </div>
+          <div className="admin-category-options" role="group" aria-label="Institution categories">
+            {visibleCategories.map((category) => {
+              const selected = draft.includes(category);
+              return (
+                <label className={selected ? "selected" : ""} key={category}>
+                  <input type="checkbox" checked={selected} onChange={() => toggle(category)} />
+                  <span>{categoryLabel(category)}</span>
+                  {selected ? <Check size={15} aria-hidden="true" /> : null}
+                </label>
+              );
+            })}
+            {!visibleCategories.length ? <div className="admin-category-no-results"><Search size={16} /> No categories found</div> : null}
+          </div>
+          <footer className="admin-category-actions">
+            <span>{draft.length} selected</span>
+            <button type="button" onClick={save}><Check size={15} /> Save selection</button>
+          </footer>
         </div>
       </details>
     </fieldset>
@@ -961,85 +1089,6 @@ function AddLogoForm({ busy, onBack, onSubmit }: { busy: boolean; onBack: () => 
   );
 }
 
-function LogoVersionManager({ logo, versions, busy, locked, local, mutate }: {
-  logo: Logo;
-  versions: Variation[];
-  busy: boolean;
-  locked: boolean;
-  local?: boolean;
-  mutate: (payload: Record<string, unknown>) => Promise<boolean>;
-}) {
-  const [open, setOpen] = useState(false);
-  const [file, setFile] = useState<File | null>(null);
-
-  useEffect(() => {
-    if (!open) return;
-    const previousFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    const frame = window.requestAnimationFrame(() => document.querySelector<HTMLElement>('[role="dialog"] input')?.focus());
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setOpen(false);
-      const dialog = document.querySelector<HTMLElement>('[role="dialog"]');
-      if (dialog) keepFocusInDialog(event, dialog);
-    };
-    document.addEventListener("keydown", onKeyDown);
-    return () => {
-      window.cancelAnimationFrame(frame);
-      document.removeEventListener("keydown", onKeyDown);
-      document.body.style.overflow = previousOverflow;
-      previousFocus?.focus();
-    };
-  }, [open]);
-
-  async function replace(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    if (!file) return;
-    const form = new FormData(event.currentTarget);
-    const ok = await mutate({
-      operation: "replace-logo",
-      slug: logo.slug,
-      sourceUrl: form.get("sourceUrl"),
-      sourceType: form.get("sourceType"),
-      svgBase64: await fileToBase64(file)
-    });
-    if (ok) {
-      setOpen(false);
-      setFile(null);
-    }
-  }
-
-  return (
-    <section className="admin-variations admin-logo-history">
-      <div className="admin-section-heading">
-        <div><h2>Logo history</h2><p>{versions.length ? `${versions.length} previous version${versions.length === 1 ? "" : "s"} preserved` : "The current logo is the only version"}</p></div>
-        <button disabled={locked} onClick={() => setOpen(true)} title={locked ? "This core entry is managed in code" : "Upload a new primary logo"}><Upload size={16} /> Upload new version</button>
-      </div>
-      {versions.length ? (
-        <div className="admin-variation-grid admin-history-grid">
-          {versions.map((version) => (
-            <article key={version.id}>
-              <div className="admin-variation-preview">{variationPreview(logo.slug, version.id, version.preview_url) ? <img src={variationPreview(logo.slug, version.id, version.preview_url)!} alt="" /> : <ImagePlus size={20} />}</div>
-              <div className="admin-variation-meta"><strong>{version.name}</strong><small>{version.retired_at ? `Retired ${shortDate(version.retired_at)}` : "Historical asset"}</small></div>
-              <span className="admin-history-state">Previous</span>
-              <FormatFiles formats={version.formats} slug={logo.slug} variationId={version.id} local={local} />
-            </article>
-          ))}
-        </div>
-      ) : <div className="admin-inline-empty"><ImagePlus size={18} /> Previous versions will appear here after the primary logo is replaced.</div>}
-
-      {open ? <div className="admin-dialog-backdrop" onMouseDown={(event) => { if (event.target === event.currentTarget) setOpen(false); }}><form className="admin-dialog" role="dialog" aria-modal="true" aria-labelledby="replace-logo-title" onSubmit={replace}>
-        <button className="admin-dialog-close" type="button" onClick={() => setOpen(false)} aria-label="Close"><X size={18} /></button>
-        <p className="admin-kicker">{logo.name}</p><h2 id="replace-logo-title">Upload new logo version</h2>
-        <p className="admin-dialog-intro">The uploaded artwork becomes the current primary logo. Existing primary files remain available as a dated previous version.</p>
-        <div className="admin-fields"><label><span>Official source URL</span><input required name="sourceUrl" type="url" placeholder="https://company.com/brand" /></label><label><span>Source type</span><select name="sourceType" required>{sourceTypes.map(([value, label]) => <option key={value} value={value}>{label}</option>)}</select></label></div>
-        <UploadField file={file} onFile={setFile} />
-        <button className="admin-primary-button" disabled={busy || !file} type="submit"><GitFork size={17} /> Create replacement pull request</button>
-      </form></div> : null}
-    </section>
-  );
-}
-
 function VariationManager({ logo, variations, busy, local, mutate }: { logo: Logo; variations: Variation[]; busy: boolean; local?: boolean; mutate: (payload: Record<string, unknown>) => Promise<boolean> }) {
   const [adding, setAdding] = useState(false);
   const [file, setFile] = useState<File | null>(null);
@@ -1087,6 +1136,7 @@ function VariationManager({ logo, variations, busy, local, mutate }: { logo: Log
           <div className="admin-variation-meta">
             <strong>{variation.name}</strong>
             <small>{variation.id}</small>
+            {variation.status === "old" ? <span className="admin-old-version">Old version{variation.archived_at ? ` · ${shortDate(variation.archived_at)}` : ""}</span> : null}
           </div>
           <button aria-label={`Remove ${variation.name}`} title="Remove variation" onClick={() => { setConfirming(variation.id); setConfirmation(""); }}><Trash2 size={16} /></button>
           <FormatFiles formats={variation.formats} slug={logo.slug} variationId={variation.id} local={local} />

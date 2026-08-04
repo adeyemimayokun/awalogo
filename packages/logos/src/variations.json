@@ -1051,5 +1051,69 @@
         }
       ]
     }
+  ],
+  "ventures-platform": [
+    {
+      "id": "logo-icon",
+      "name": "Logo Icon",
+      "source_url": "https://www.venturesplatform.com/",
+      "source_path": "sources/ventures-platform-logo-icon.svg",
+      "svg_path": "assets/ventures-platform-logo-icon.svg",
+      "formats": [
+        {
+          "type": "svg",
+          "path": "assets/ventures-platform-logo-icon.svg",
+          "mime_type": "image/svg+xml",
+          "width": null,
+          "height": null
+        },
+        {
+          "type": "png",
+          "path": "assets/ventures-platform-logo-icon.png",
+          "mime_type": "image/png",
+          "width": null,
+          "height": null
+        },
+        {
+          "type": "webp",
+          "path": "assets/ventures-platform-logo-icon.webp",
+          "mime_type": "image/webp",
+          "width": null,
+          "height": null
+        }
+      ]
+    },
+    {
+      "id": "previous-2026-08-04",
+      "name": "Previous logo (2026-08-04)",
+      "status": "old",
+      "archived_at": "2026-08-04",
+      "source_url": "https://raw.githubusercontent.com/PaystackHQ/nigerialogos/master/public/logos/ventures_platform/ventures_platform.svg",
+      "source_path": "sources/ventures-platform-previous-2026-08-04.svg",
+      "svg_path": "assets/ventures-platform-previous-2026-08-04.svg",
+      "formats": [
+        {
+          "type": "svg",
+          "path": "assets/ventures-platform-previous-2026-08-04.svg",
+          "mime_type": "image/svg+xml",
+          "width": null,
+          "height": null
+        },
+        {
+          "type": "png",
+          "path": "assets/ventures-platform-previous-2026-08-04.png",
+          "mime_type": "image/png",
+          "width": null,
+          "height": null
+        },
+        {
+          "type": "webp",
+          "path": "assets/ventures-platform-previous-2026-08-04.webp",
+          "mime_type": "image/webp",
+          "width": null,
+          "height": null
+        }
+      ]
+    }
   ]
 }

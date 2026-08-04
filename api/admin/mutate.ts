@@ -2,7 +2,7 @@ import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { ZodError } from "zod";
 import { requireAdmin } from "../_lib/auth.js";
 import { buildMutationChanges, catalogPaths, mutationSchema } from "../_lib/catalog.js";
-import { createCatalogPullRequest, readRepositoryJson } from "../_lib/github.js";
+import { createCatalogPullRequest, readRepositoryFile, readRepositoryJson } from "../_lib/github.js";
 import { jsonError, methodNotAllowed, requireSameOrigin } from "../_lib/http.js";
 
 export const config = { api: { bodyParser: { sizeLimit: "4mb" } } };
@@ -22,7 +22,16 @@ export default async function handler(request: VercelRequest, response: VercelRe
         admin.githubToken
       )
     ]);
-    const prepared = await buildMutationChanges(mutation, catalog, variations, manifest);
+    let currentPrimarySource: Buffer | undefined;
+    if (mutation.operation === "replace-logo") {
+      const entry = (catalog as Array<{ slug?: unknown; source_path?: unknown }>).find((item) => item.slug === mutation.slug);
+      if (!entry || typeof entry.source_path !== "string") throw new Error(`Logo "${mutation.slug}" does not exist`);
+      if (!/^sources\/[a-z0-9-]+\.svg$/.test(entry.source_path)) throw new Error("Only managed SVG source files can be versioned");
+      const source = await readRepositoryFile(`packages/logos/src/${entry.source_path}`, admin.githubToken);
+      if (!source) throw new Error("The current primary SVG could not be loaded");
+      currentPrimarySource = source;
+    }
+    const prepared = await buildMutationChanges(mutation, catalog, variations, manifest, { currentPrimarySource });
     const pullRequest = await createCatalogPullRequest({
       action: mutation.operation,
       slug: mutation.slug,
@@ -47,6 +56,6 @@ export default async function handler(request: VercelRequest, response: VercelRe
       });
       return;
     }
-    jsonError(response, error, error instanceof Error && /already|not found|does not|Only logos|official source|Confirmation|uploaded|SVG/.test(error.message) ? 400 : 500);
+    jsonError(response, error, error instanceof Error && /already|not found|does not|Only logos|Confirmation|uploaded|SVG|primary|official source/.test(error.message) ? 400 : 500);
   }
 }

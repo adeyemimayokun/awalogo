@@ -62,18 +62,12 @@ for (const logo of logoCatalog) {
   }
 }
 
-const canonicalManifest = {
-  ...manifest,
-  source_sha256: Object.fromEntries(
-    Object.entries(manifest.source_sha256).sort(([left], [right]) =>
-      left < right ? -1 : left > right ? 1 : 0
-    )
-  )
-};
+// Keep hashes in catalog order, matching the CMS mutation writer and generated exports.
+const canonicalManifest = manifest;
 const serializedManifest = `${JSON.stringify(canonicalManifest, null, 2)}\n`;
 if (check) {
   const currentManifest = existsSync(manifestPath) ? await readFile(manifestPath, "utf8") : null;
-  if (currentManifest !== serializedManifest) {
+  if (!currentManifest || !manifestsMatch(currentManifest, canonicalManifest)) {
     console.error("Generated logo format manifest is stale.");
     stale = true;
   }
@@ -105,4 +99,27 @@ async function hasExpectedEncoding(current: Buffer, expected: Buffer): Promise<b
   } catch {
     return false;
   }
+}
+
+function manifestsMatch(current: string, expected: unknown): boolean {
+  try {
+    return stableSerialize(JSON.parse(current)) === stableSerialize(expected);
+  } catch {
+    return false;
+  }
+}
+
+function stableSerialize(value: unknown): string {
+  if (Array.isArray(value)) {
+    return `[${value.map(stableSerialize).join(",")}]`;
+  }
+
+  if (value && typeof value === "object") {
+    return `{${Object.entries(value)
+      .sort(([left], [right]) => left < right ? -1 : left > right ? 1 : 0)
+      .map(([key, entry]) => `${JSON.stringify(key)}:${stableSerialize(entry)}`)
+      .join(",")}}`;
+  }
+
+  return JSON.stringify(value);
 }

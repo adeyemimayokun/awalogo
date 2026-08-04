@@ -196,10 +196,14 @@ function App() {
   const [toast, setToast] = useState("");
   const [projectPanel, setProjectPanel] = useState<ProjectPanel | null>(null);
   const [themeMode, setThemeMode] = useState<ThemeMode>(getInitialTheme);
+  const [themeMenuOpen, setThemeMenuOpen] = useState(false);
   const [categoryPickerOpen, setCategoryPickerOpen] = useState(false);
   const [draftCategories, setDraftCategories] = useState<InstitutionCategory[]>([]);
   const [categoryQuery, setCategoryQuery] = useState("");
   const categoryPickerRef = useRef<HTMLDivElement>(null);
+  const themeMenuRef = useRef<HTMLDivElement>(null);
+  const ActiveThemeIcon = themeMode === "light" ? Sun : themeMode === "dark" ? Moon : Monitor;
+  const activeThemeLabel = themeMode === "light" ? "Light" : themeMode === "dark" ? "Dark" : "System";
 
   useLayoutEffect(() => {
     const systemTheme = window.matchMedia("(prefers-color-scheme: dark)");
@@ -219,6 +223,25 @@ function App() {
 
     return () => systemTheme.removeEventListener("change", applyTheme);
   }, [themeMode]);
+
+  useEffect(() => {
+    if (!themeMenuOpen) return;
+
+    function closeThemeMenu(event: PointerEvent) {
+      if (!themeMenuRef.current?.contains(event.target as Node)) setThemeMenuOpen(false);
+    }
+
+    function closeThemeMenuOnEscape(event: KeyboardEvent) {
+      if (event.key === "Escape") setThemeMenuOpen(false);
+    }
+
+    document.addEventListener("pointerdown", closeThemeMenu);
+    document.addEventListener("keydown", closeThemeMenuOnEscape);
+    return () => {
+      document.removeEventListener("pointerdown", closeThemeMenu);
+      document.removeEventListener("keydown", closeThemeMenuOnEscape);
+    };
+  }, [themeMenuOpen]);
 
   useEffect(() => {
     return subscribeToFigma((message) => {
@@ -433,34 +456,31 @@ function App() {
           </div>
         </div>
         <div className="topbar-actions">
-          <div className="theme-toggle" role="group" aria-label="Color theme">
+          <div className="theme-menu" ref={themeMenuRef}>
             <button
+              className="theme-menu-trigger"
               type="button"
-              aria-label="Use system theme"
-              aria-pressed={themeMode === "system"}
-              title="System theme"
-              onClick={() => setThemeMode("system")}
+              aria-label={`Color theme: ${activeThemeLabel}`}
+              aria-haspopup="menu"
+              aria-expanded={themeMenuOpen}
+              title={`${activeThemeLabel} theme`}
+              onClick={() => setThemeMenuOpen((open) => !open)}
             >
-              <Monitor aria-hidden="true" size={14} strokeWidth={1.75} />
+              <ActiveThemeIcon aria-hidden="true" size={14} strokeWidth={1.75} />
             </button>
-            <button
-              type="button"
-              aria-label="Use light theme"
-              aria-pressed={themeMode === "light"}
-              title="Light theme"
-              onClick={() => setThemeMode("light")}
-            >
-              <Sun aria-hidden="true" size={14} strokeWidth={1.75} />
-            </button>
-            <button
-              type="button"
-              aria-label="Use dark theme"
-              aria-pressed={themeMode === "dark"}
-              title="Dark theme"
-              onClick={() => setThemeMode("dark")}
-            >
-              <Moon aria-hidden="true" size={14} strokeWidth={1.75} />
-            </button>
+            {themeMenuOpen ? (
+              <div className="theme-menu-popover" role="menu" aria-label="Color theme">
+                <button className="theme-menu-option" type="button" role="menuitemradio" aria-checked={themeMode === "system"} onClick={() => { setThemeMode("system"); setThemeMenuOpen(false); }}>
+                  <Monitor aria-hidden="true" size={14} strokeWidth={1.75} /><span>System</span>{themeMode === "system" ? <Check aria-hidden="true" size={13} /> : null}
+                </button>
+                <button className="theme-menu-option" type="button" role="menuitemradio" aria-checked={themeMode === "light"} onClick={() => { setThemeMode("light"); setThemeMenuOpen(false); }}>
+                  <Sun aria-hidden="true" size={14} strokeWidth={1.75} /><span>Light</span>{themeMode === "light" ? <Check aria-hidden="true" size={13} /> : null}
+                </button>
+                <button className="theme-menu-option" type="button" role="menuitemradio" aria-checked={themeMode === "dark"} onClick={() => { setThemeMode("dark"); setThemeMenuOpen(false); }}>
+                  <Moon aria-hidden="true" size={14} strokeWidth={1.75} /><span>Dark</span>{themeMode === "dark" ? <Check aria-hidden="true" size={13} /> : null}
+                </button>
+              </div>
+            ) : null}
           </div>
           <span className="asset-count" title={`${availableLogoCount.toLocaleString("en-NG")} available logos`}>
             {availableLogoCount.toLocaleString("en-NG")}
@@ -653,10 +673,9 @@ function App() {
                   type="button"
                   onClick={() => openDetails(item)}
                   style={{ animationDelay: `${(index % 12) * 30}ms` }}
-                  aria-label={`View ${displayName} details${logoBadge === "unverified" ? ", unverified logo" : logoBadge === "new" ? ", newly added logo" : ""}`}
+                  aria-label={`View ${displayName} details${logoBadge === "new" ? ", newly added logo" : ""}`}
                 >
                   <span className={`tile-preview${logo && usesDarkLogoPreview(logo.slug) ? " logo-preview-dark" : ""}`}>
-                    {logoBadge === "unverified" ? <span className="unverified-tag" aria-hidden="true">Unverified</span> : null}
                     {logoBadge === "new" ? <span className="new-tag" aria-hidden="true">New</span> : null}
                     {logo ? <img src={previewUrl(logo)} alt="" /> : (
                       <span className="pending-preview" aria-hidden="true">
@@ -1279,7 +1298,7 @@ function DetailSheet({
   };
   const variationAssets: DetailAsset[] = [
     primaryAsset,
-    ...logo.variations.filter((variation) => variation.kind !== "historical").map((variation) => ({
+    ...logo.variations.filter((variation) => variation.status !== "old").map((variation) => ({
       id: variation.id,
       label: variation.name,
       kind: "lockup" as const,
@@ -1301,12 +1320,12 @@ function DetailSheet({
       previewAssetId: logo.slug,
       asset: logo
     },
-    ...logo.variations.filter((variation) => variation.kind === "historical").map((variation) => ({
+    ...logo.variations.filter((variation) => variation.status === "old").map((variation) => ({
       id: variation.id,
       label: variation.name,
       kind: "historical" as const,
       previewAssetId: logo.slug,
-      retiredAt: variation.retired_at,
+      retiredAt: variation.archived_at,
       asset: {
         name: `${logo.name} ${variation.name}`,
         slug: `${logo.slug}-${variation.id}`,

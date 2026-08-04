@@ -37,8 +37,10 @@ export const mutationSchema = z.discriminatedUnion("operation", [
   mutationBase.extend({
     operation: z.literal("replace-logo"),
     slug,
-    sourceUrl: z.string().url(),
-    sourceType: officialSourceType,
+    archiveId: slug,
+    archiveName: z.string().trim().min(2).max(80),
+    sourceUrl: z.string().url().optional(),
+    sourceType: z.enum(["official-brand-page", "official-website", "annual-report", "verified-pdf", "other-official", "community-catalog"]),
     svgBase64: svgUpload
   }),
   mutationBase.extend({
@@ -85,9 +87,7 @@ function prettyJson(value: unknown): Buffer {
   return Buffer.from(`${JSON.stringify(value, null, 2)}\n`);
 }
 
-function decodeSvg(base64: string): Buffer {
-  const value = base64.includes(",") ? base64.slice(base64.indexOf(",") + 1) : base64;
-  const buffer = Buffer.from(value, "base64");
+function validateSvg(buffer: Buffer): Buffer {
   const text = buffer.toString("utf8").trim();
   if (!/^<svg[\s>]/i.test(text) && !/^<\?xml[\s\S]*?<svg[\s>]/i.test(text)) throw new Error("The uploaded file is not an SVG");
   if (!/\bviewBox\s*=\s*["'][^"']+["']/i.test(text)) throw new Error("SVG must include a viewBox");
@@ -97,6 +97,11 @@ function decodeSvg(base64: string): Buffer {
   const externalReference = /(?:href|src)\s*=\s*["']\s*(?:https?:)?\/\//i;
   if (externalReference.test(text) || /url\s*\(\s*["']?(?:https?:)?\/\//i.test(text)) throw new Error("SVG cannot load external resources");
   return Buffer.from(text);
+}
+
+function decodeSvg(base64: string): Buffer {
+  const value = base64.includes(",") ? base64.slice(base64.indexOf(",") + 1) : base64;
+  return validateSvg(Buffer.from(value, "base64"));
 }
 
 async function renderedFormats(svg: Buffer): Promise<{ png: Buffer; webp: Buffer }> {
@@ -186,7 +191,8 @@ export async function buildMutationChanges(
   mutation: CatalogMutation,
   inputCatalog: unknown,
   inputVariations: unknown,
-  inputManifest: FormatManifest
+  inputManifest: FormatManifest,
+  context: { currentPrimarySource?: Buffer } = {}
 ): Promise<{ changes: FileChange[]; title: string; body: string }> {
   const catalog = logoCatalogSchema.parse(inputCatalog);
   const variations = z.record(z.array(logoVariationSchema)).parse(inputVariations);
@@ -271,42 +277,46 @@ export async function buildMutationChanges(
   }
 
   if (mutation.operation === "replace-logo") {
-    const entry = catalog.find((item) => item.slug === mutation.slug);
-    if (!entry) throw new Error("This logo is a locked core entry or does not exist in the managed catalog");
-
-    const previousHash = manifest.source_sha256[mutation.slug] ?? createHash("sha256")
-      .update(JSON.stringify([entry.source_path, entry.formats]))
-      .digest("hex");
-    const historyId = `previous-${previousHash.slice(0, 8)}`;
-    const existing = variations[mutation.slug] ?? [];
-    if (existing.some((variation) => variation.id === historyId)) {
-      throw new Error("This primary logo version is already archived");
+    const catalogEntry = catalog.find((entry) => entry.slug === mutation.slug);
+    if (!catalogEntry) throw new Error("This logo is a locked core entry or does not exist in the managed catalog");
+    if (!catalogEntry.source_path.endsWith(".svg") || !catalogEntry.svg_path) {
+      throw new Error("Only SVG-backed primary logos can be versioned");
     }
-    existing.push(logoVariationSchema.parse({
-      id: historyId,
-      name: "Previous logo",
-      kind: "historical",
-      retired_at: today,
-      source_url: entry.source_url,
-      source_path: entry.source_path,
-      svg_path: entry.svg_path,
-      formats: entry.formats
-    }));
-    variations[mutation.slug] = existing;
-    manifest.source_sha256[`${mutation.slug}/${historyId}`] = previousHash;
+    if (mutation.sourceType !== "community-catalog" && !mutation.sourceUrl) {
+      throw new Error("An official source URL is required for official logo sources");
+    }
+    const existing = variations[mutation.slug] ?? [];
+    if (existing.some((entry) => entry.id === mutation.archiveId)) {
+      throw new Error(`Variation "${mutation.archiveId}" already exists`);
+    }
+    if (!context.currentPrimarySource) throw new Error("The current primary SVG could not be loaded");
 
-    const svg = decodeSvg(mutation.svgBase64);
-    const rendered = await renderedFormats(svg);
-    const nextHash = createHash("sha256").update(svg).digest("hex");
-    const fileStem = `${mutation.slug}-${today}-${nextHash.slice(0, 8)}`;
-    entry.source_url = mutation.sourceUrl;
-    entry.source_type = mutation.sourceType;
-    entry.source_path = `sources/${fileStem}.svg`;
-    entry.svg_path = `assets/${fileStem}.svg`;
-    entry.formats = formats(fileStem);
-    entry.updated_at = today;
-    manifest.source_sha256[mutation.slug] = nextHash;
-    changes.push(...fileChanges(fileStem, svg, rendered.png, rendered.webp));
+    const archivedSvg = validateSvg(context.currentPrimarySource);
+    const archivedRendered = await renderedFormats(archivedSvg);
+    const archiveStem = `${mutation.slug}-${mutation.archiveId}`;
+    existing.push(logoVariationSchema.parse({
+      id: mutation.archiveId,
+      name: mutation.archiveName,
+      status: "old",
+      archived_at: today,
+      source_url: catalogEntry.source_url,
+      source_path: `sources/${archiveStem}.svg`,
+      svg_path: `assets/${archiveStem}.svg`,
+      formats: formats(archiveStem)
+    }));
+    existing.sort((a, b) => (a.status === "old" ? 1 : 0) - (b.status === "old" ? 1 : 0) || a.name.localeCompare(b.name));
+    variations[mutation.slug] = existing;
+    manifest.source_sha256[`${mutation.slug}/${mutation.archiveId}`] = createHash("sha256").update(archivedSvg).digest("hex");
+    changes.push(...fileChanges(archiveStem, archivedSvg, archivedRendered.png, archivedRendered.webp));
+
+    const nextSvg = decodeSvg(mutation.svgBase64);
+    const nextRendered = await renderedFormats(nextSvg);
+    catalogEntry.source_url = mutation.sourceUrl ?? catalogEntry.website;
+    catalogEntry.source_type = mutation.sourceType;
+    catalogEntry.updated_at = today;
+    catalogEntry.status = "needs-review";
+    manifest.source_sha256[mutation.slug] = createHash("sha256").update(nextSvg).digest("hex");
+    changes.push(...fileChanges(mutation.slug, nextSvg, nextRendered.png, nextRendered.webp));
   }
 
   if (mutation.operation === "verify-logo") {
@@ -357,7 +367,7 @@ export async function buildMutationChanges(
   return {
     changes,
     title: `CMS: ${actionLabel} ${mutation.slug}`,
-    body: `Created by the secured logo CMS.\n\n- Operation: \`${mutation.operation}\`\n- Institution: \`${mutation.slug}\`${mutation.operation === "add-logo" ? `\n- Variations: \`${mutation.variations.length}\`` : ""}${mutation.operation === "add-logo" && mutation.sourceType === "community-catalog" ? "\n- Provenance: `community-catalog` (official logo source unavailable)" : ""}${mutation.operation === "replace-logo" ? "\n- Previous primary: archived as a historical logo version" : ""}${mutation.operation === "verify-logo" ? `\n- Official source: ${mutation.sourceUrl}\n- Source type: \`${mutation.sourceType}\`` : ""}\n\nPlease verify the source classification and rendered assets before merging.`
+    body: `Created by the secured logo CMS.\n\n- Operation: \`${mutation.operation}\`\n- Institution: \`${mutation.slug}\`${mutation.operation === "add-logo" ? `\n- Variations: \`${mutation.variations.length}\`` : ""}${mutation.operation === "replace-logo" ? `\n- Archived primary: \`${mutation.archiveId}\`` : ""}${(mutation.operation === "add-logo" || mutation.operation === "replace-logo") && mutation.sourceType === "community-catalog" ? "\n- Provenance: `community-catalog` (official logo source unavailable)" : ""}${mutation.operation === "verify-logo" ? `\n- Official source: ${mutation.sourceUrl}\n- Source type: \`${mutation.sourceType}\`` : ""}\n\nPlease verify the source classification and rendered assets before merging.`
   };
 }
 
