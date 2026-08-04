@@ -169,9 +169,20 @@ function localPath(path: string): string {
   return resolved;
 }
 
-export async function readRepositoryFile(path: string): Promise<Buffer | null> {
-  if (localChanges.has(path)) return localChanges.get(path) ?? null;
-  return readFile(localPath(path));
+export async function readRepositoryFile(path: string, sessionToken?: string): Promise<Buffer | null> {
+  if (isLocalRepositoryMode()) {
+    if (localChanges.has(path)) return localChanges.get(path) ?? null;
+    return readFile(localPath(path));
+  }
+  const { owner, repo } = repository();
+  const branch = process.env.GITHUB_DEFAULT_BRANCH ?? "main";
+  const file = await github<GitHubContent>(
+    `/repos/${owner}/${repo}/contents/${path}?ref=${encodeURIComponent(branch)}`,
+    {},
+    sessionToken
+  );
+  if (file.encoding !== "base64") throw new Error(`Unsupported GitHub encoding for ${path}`);
+  return Buffer.from(file.content.replace(/\n/g, ""), "base64");
 }
 
 function repository(): { owner: string; repo: string } {
@@ -207,20 +218,9 @@ async function github<T>(path: string, init: RequestInit = {}, sessionToken?: st
 }
 
 export async function readRepositoryJson<T>(path: string, sessionToken?: string): Promise<T> {
-  if (isLocalRepositoryMode()) {
-    const content = await readRepositoryFile(path);
-    if (!content) throw new Error(`Local repository file was removed: ${path}`);
-    return JSON.parse(content.toString("utf8")) as T;
-  }
-  const { owner, repo } = repository();
-  const branch = process.env.GITHUB_DEFAULT_BRANCH ?? "main";
-  const file = await github<GitHubContent>(
-    `/repos/${owner}/${repo}/contents/${path}?ref=${encodeURIComponent(branch)}`,
-    {},
-    sessionToken
-  );
-  if (file.encoding !== "base64") throw new Error(`Unsupported GitHub encoding for ${path}`);
-  return JSON.parse(Buffer.from(file.content.replace(/\n/g, ""), "base64").toString("utf8")) as T;
+  const content = await readRepositoryFile(path, sessionToken);
+  if (!content) throw new Error(`Repository file was removed: ${path}`);
+  return JSON.parse(content.toString("utf8")) as T;
 }
 
 export async function createRepositoryIssue(options: {

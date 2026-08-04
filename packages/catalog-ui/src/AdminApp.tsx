@@ -33,7 +33,7 @@ import "./admin.css";
 
 type Session = { login: string; avatarUrl: string; local?: boolean; repositoryAccess?: boolean };
 type Format = { type: string; path: string };
-type Variation = { id: string; name: string; source_url?: string; svg_path: string | null; formats: Format[]; preview_url?: string };
+type Variation = { id: string; name: string; status?: "active" | "old"; archived_at?: string; source_url?: string; svg_path: string | null; formats: Format[]; preview_url?: string };
 type VariationDraft = { key: string; id: string; name: string; sourceUrl: string; file: File | null };
 type Logo = {
   name: string;
@@ -42,6 +42,7 @@ type Logo = {
   categories?: string[];
   website: string;
   source_url: string;
+  source_type: string;
   svg_path: string | null;
   formats: Format[];
   status: string;
@@ -425,7 +426,10 @@ export function AdminApp() {
                   {logoPreview(selected.slug, selected.preview_url) ? <img src={logoPreview(selected.slug, selected.preview_url)!} alt={`${selected.name} logo`} /> : <span>Preview unavailable</span>}
                 </div>
                 <section className="admin-primary-files">
-                  <div><h2>Primary files</h2><p>{selected.formats.length} available format{selected.formats.length === 1 ? "" : "s"}</p></div>
+                  <div className="admin-primary-files-heading">
+                    <div><h2>Primary files</h2><p>{selected.formats.length} available format{selected.formats.length === 1 ? "" : "s"}</p></div>
+                    <LogoVersionAction key={selected.slug} logo={selected} locked={data?.lockedSlugs.includes(selected.slug) ?? false} busy={busy} mutate={mutate} />
+                  </div>
                   <FormatFiles formats={selected.formats} slug={selected.slug} local={session?.local} />
                 </section>
               </div>
@@ -437,6 +441,75 @@ export function AdminApp() {
       )}
       {busy ? <div className="admin-busy" role="status"><LoaderCircle className="spin" /><span>Saving catalog changes</span></div> : null}
     </div>
+  );
+}
+
+function LogoVersionAction({ logo, locked, busy, mutate }: { logo: Logo; locked: boolean; busy: boolean; mutate: (payload: Record<string, unknown>) => Promise<boolean> }) {
+  const today = new Date().toISOString().slice(0, 10);
+  const [open, setOpen] = useState(false);
+  const [file, setFile] = useState<File | null>(null);
+  const [archiveName, setArchiveName] = useState(`Previous logo (${today})`);
+  const [archiveId, setArchiveId] = useState(`previous-${today}`);
+  const [sourceType, setSourceType] = useState(logo.source_type || "official-website");
+  const [sourceUrl, setSourceUrl] = useState(logo.source_url);
+
+  useEffect(() => {
+    if (!open) return;
+    const previousFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const frame = window.requestAnimationFrame(() => document.querySelector<HTMLElement>('[role="dialog"] input')?.focus());
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+      const dialog = document.querySelector<HTMLElement>('[role="dialog"]');
+      if (dialog) keepFocusInDialog(event, dialog);
+    };
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      window.cancelAnimationFrame(frame);
+      document.removeEventListener("keydown", onKeyDown);
+      document.body.style.overflow = previousOverflow;
+      previousFocus?.focus();
+    };
+  }, [open]);
+
+  async function replace(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (!file) return;
+    const ok = await mutate({
+      operation: "replace-logo",
+      slug: logo.slug,
+      archiveId,
+      archiveName,
+      sourceType,
+      sourceUrl: sourceType === "community-catalog" ? sourceUrl || undefined : sourceUrl,
+      svgBase64: await fileToBase64(file)
+    });
+    if (ok) {
+      setOpen(false);
+      setFile(null);
+    }
+  }
+
+  return (
+    <>
+      <button className="admin-version-button" type="button" disabled={locked} title={locked ? "This core logo is managed in code" : "Archive this primary and upload its replacement"} onClick={() => setOpen(true)}><RefreshCw size={15} /> New version</button>
+      {open ? <div className="admin-dialog-backdrop" onMouseDown={(event) => { if (event.target === event.currentTarget) setOpen(false); }}>
+        <form className="admin-dialog admin-version-dialog" role="dialog" aria-modal="true" aria-labelledby="new-version-title" onSubmit={replace}>
+          <button className="admin-dialog-close" type="button" onClick={() => setOpen(false)} aria-label="Close"><X size={18} /></button>
+          <p className="admin-kicker">{logo.name}</p><h2 id="new-version-title">Add new version</h2>
+          <p className="admin-dialog-intro">The current primary will be preserved as an old version. The uploaded SVG becomes the new primary after the pull request is merged.</p>
+          <div className="admin-fields two">
+            <label><span>Old version name</span><input required value={archiveName} onChange={(event) => setArchiveName(event.target.value)} /></label>
+            <label><span>Old version ID</span><input required pattern="[a-z0-9]+(?:-[a-z0-9]+)*" value={archiveId} onChange={(event) => setArchiveId(event.target.value)} /></label>
+            <label><span>New source type</span><select value={sourceType} onChange={(event) => setSourceType(event.target.value)}>{sourceTypes.map(([value, label]) => <option key={value} value={value}>{label}</option>)}<option value="community-catalog">Community catalog</option></select></label>
+            <label><span>New source URL</span><input required={sourceType !== "community-catalog"} type="url" value={sourceUrl} onChange={(event) => setSourceUrl(event.target.value)} placeholder="https://company.com/brand" /></label>
+          </div>
+          <UploadField file={file} onFile={setFile} />
+          <button className="admin-primary-button" disabled={busy || !file || (sourceType !== "community-catalog" && !sourceUrl)} type="submit"><GitFork size={17} /> Create version pull request</button>
+        </form>
+      </div> : null}
+    </>
   );
 }
 
@@ -933,6 +1006,7 @@ function VariationManager({ logo, variations, busy, local, mutate }: { logo: Log
           <div className="admin-variation-meta">
             <strong>{variation.name}</strong>
             <small>{variation.id}</small>
+            {variation.status === "old" ? <span className="admin-old-version">Old version{variation.archived_at ? ` · ${shortDate(variation.archived_at)}` : ""}</span> : null}
           </div>
           <button aria-label={`Remove ${variation.name}`} title="Remove variation" onClick={() => { setConfirming(variation.id); setConfirmation(""); }}><Trash2 size={16} /></button>
           <FormatFiles formats={variation.formats} slug={logo.slug} variationId={variation.id} local={local} />

@@ -1424,6 +1424,39 @@ body:has(.admin-loading) {
   margin-bottom: 15px;
 }
 
+.admin-primary-files-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.admin-version-button {
+  display: inline-flex;
+  min-height: 34px;
+  flex: 0 0 auto;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: 1px solid var(--admin-line);
+  border-radius: var(--admin-radius);
+  background: #ffffff;
+  color: var(--admin-ink);
+  font-size: 10px;
+  padding: 0 9px;
+}
+
+.admin-version-button:hover {
+  border-color: var(--admin-line-strong);
+  background: var(--admin-subtle);
+}
+
+.admin-version-button:disabled {
+  cursor: not-allowed;
+  opacity: .45;
+}
+
 .admin-primary-files h2,
 .admin-section-heading h2,
 .admin-danger h2,
@@ -1521,7 +1554,10 @@ body:has(.admin-loading) {
 }
 
 .admin-variation-meta {
+  display: grid;
   align-content: center;
+  justify-items: start;
+  gap: 3px;
 }
 
 .admin-variation-meta strong {
@@ -1538,6 +1574,20 @@ body:has(.admin-loading) {
   font-size: 10px;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.admin-old-version {
+  display: inline-flex;
+  min-height: 20px;
+  align-items: center;
+  border: 1px solid #c6c9c1;
+  border-radius: 999px;
+  color: #666960;
+  font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+  font-size: 8px;
+  line-height: 1;
+  padding: 0 7px;
+  text-transform: uppercase;
 }
 
 .admin-variation-grid article > button {
@@ -2342,6 +2392,17 @@ body:has(.admin-loading) {
 .admin-dialog > h2 {
   margin: -7px 0 2px;
   font-size: 24px;
+}
+
+.admin-version-dialog {
+  width: min(100%, 660px);
+}
+
+.admin-dialog-intro {
+  margin: -4px 0 2px;
+  color: var(--admin-muted);
+  font-size: 11px;
+  line-height: 1.55;
 }
 
 .admin-dialog-close {

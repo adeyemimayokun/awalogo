@@ -25,6 +25,8 @@ const logoFormatSchema = z.object({
 export const logoVariationSchema = z.object({
   id: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/),
   name: z.string().min(2),
+  status: z.enum(["active", "old"]).optional(),
+  archived_at: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(),
   source_url: z.string().url().optional(),
   source_path: z.string().regex(/^(?:assets|sources)\/[a-z0-9-]+\.(?:svg|png|webp|jpg)$/),
   svg_path: z.string().regex(/^assets\/[a-z0-9-]+\.svg$/).nullable(),
