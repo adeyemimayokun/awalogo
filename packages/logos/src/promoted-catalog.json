@@ -7707,8 +7707,8 @@
     "category": "other",
     "aliases": [],
     "website": "https://venturesplatform.com/",
-    "source_url": "https://raw.githubusercontent.com/PaystackHQ/nigerialogos/master/public/logos/ventures_platform/ventures_platform.svg",
-    "source_type": "community-catalog",
+    "source_url": "https://www.venturesplatform.com",
+    "source_type": "official-website",
     "source_path": "sources/ventures-platform.svg",
     "svg_path": "assets/ventures-platform.svg",
     "formats": [
@@ -7735,7 +7735,7 @@
       }
     ],
     "added_at": "2026-07-14",
-    "updated_at": "2026-07-14",
+    "updated_at": "2026-08-04",
     "status": "needs-review"
   },
   {
