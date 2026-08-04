@@ -2239,6 +2239,10 @@ html[data-theme="dark"] .detail-preview.logo-preview-dark {
   grid-template-columns: 1fr;
 }
 
+.detail-actions.double {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 .format-picker {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(0, 1fr));

@@ -1478,6 +1478,83 @@ body:has(.admin-loading) {
   grid-template-columns: 1fr;
 }
 
+.admin-verification {
+  display: grid;
+  min-height: 72px;
+  grid-template-columns: 36px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 13px;
+  border: 1px solid var(--admin-line);
+  margin: -14px 0 34px;
+  background: var(--admin-panel);
+  padding: 14px 16px;
+}
+
+.admin-verification.verified {
+  border-color: #dce5bf;
+  background: #fbfdf4;
+}
+
+.admin-verification-icon,
+.admin-verify-dialog-icon {
+  display: grid;
+  width: 36px;
+  height: 36px;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--admin-subtle);
+  color: var(--admin-muted);
+}
+
+.admin-verification.verified .admin-verification-icon,
+.admin-verify-dialog-icon {
+  background: #eef5d7;
+  color: #64752c;
+}
+
+.admin-verification h2 {
+  margin: 0;
+  font-size: 13px;
+}
+
+.admin-verification p {
+  margin: 3px 0 0;
+  color: var(--admin-muted);
+  font-size: 11px;
+}
+
+.admin-verification > button,
+.admin-verification > a {
+  display: inline-flex;
+  min-height: 38px;
+  cursor: pointer;
+  align-items: center;
+  gap: 7px;
+  border: 1px solid var(--admin-line);
+  border-radius: var(--admin-radius);
+  background: #ffffff;
+  color: var(--admin-ink);
+  font-size: 11px;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 0 12px;
+}
+
+.admin-verification > button:hover:not(:disabled),
+.admin-verification > a:hover {
+  border-color: var(--admin-line-strong);
+  background: var(--admin-subtle);
+}
+
+.admin-verification > button:disabled {
+  cursor: not-allowed;
+  opacity: .45;
+}
+
+.admin-verify-dialog-icon {
+  margin-bottom: 14px;
+}
+
 .admin-variations {
   padding: 0 0 34px;
 }
@@ -3093,6 +3170,18 @@ body:has(.admin-loading) {
     border-top: 1px solid var(--admin-line);
     border-left: 0;
     padding: 16px;
+  }
+
+  .admin-verification {
+    grid-template-columns: 36px minmax(0, 1fr);
+    margin-top: -10px;
+  }
+
+  .admin-verification > button,
+  .admin-verification > a {
+    width: 100%;
+    grid-column: 1 / -1;
+    justify-content: center;
   }
 
   .admin-variation-grid article {

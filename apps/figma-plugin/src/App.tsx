@@ -1288,15 +1288,21 @@ function DetailSheet({
     );
   }
   const websiteUrl = logo.website;
-  const variationAssets: Array<{ id: string; label: string; asset: LogoAsset }> = [
-    {
-      id: "primary",
-      label: "Primary",
-      asset: logo
-    },
-    ...logo.variations.map((variation) => ({
+  type DetailAsset = { id: string; label: string; kind: "current" | "lockup" | "historical"; previewAssetId: string; retiredAt?: string; asset: LogoAsset };
+  const primaryAsset: DetailAsset = {
+    id: "primary",
+    label: "Primary",
+    kind: "current",
+    previewAssetId: logo.slug,
+    asset: logo
+  };
+  const variationAssets: DetailAsset[] = [
+    primaryAsset,
+    ...logo.variations.filter((variation) => variation.status !== "old").map((variation) => ({
       id: variation.id,
       label: variation.name,
+      kind: "lockup" as const,
+      previewAssetId: `${logo.slug}-${variation.id}`,
       asset: {
         name: `${logo.name} ${variation.name}`,
         slug: `${logo.slug}-${variation.id}`,
@@ -1306,7 +1312,31 @@ function DetailSheet({
       }
     }))
   ];
-  const activeVariation = variationAssets.find((variation) => variation.id === selectedVariationId) ?? variationAssets[0];
+  const versionAssets: DetailAsset[] = [
+    {
+      id: "primary",
+      label: "Current",
+      kind: "current",
+      previewAssetId: logo.slug,
+      asset: logo
+    },
+    ...logo.variations.filter((variation) => variation.status === "old").map((variation) => ({
+      id: variation.id,
+      label: variation.name,
+      kind: "historical" as const,
+      previewAssetId: logo.slug,
+      retiredAt: variation.archived_at,
+      asset: {
+        name: `${logo.name} ${variation.name}`,
+        slug: `${logo.slug}-${variation.id}`,
+        formats: variation.formats,
+        svg: variation.svg,
+        asset_urls: variation.asset_urls
+      }
+    }))
+  ];
+  const allAssets = [...variationAssets, ...versionAssets.slice(1)];
+  const activeVariation = allAssets.find((variation) => variation.id === selectedVariationId) ?? primaryAsset;
   const activeLogo = activeVariation.asset;
 
   useEffect(() => {
@@ -1359,7 +1389,7 @@ function DetailSheet({
   }
 
   function selectVariation(id: string) {
-    const variation = variationAssets.find((entry) => entry.id === id);
+    const variation = allAssets.find((entry) => entry.id === id);
     if (!variation) return;
     setSelectedVariationId(id);
     if (!variation.asset.formats.some((format) => format.type === selectedFormat)) {
@@ -1382,7 +1412,26 @@ function DetailSheet({
           <button className="close-button" type="button" onClick={onClose} aria-label="Close details" title="Close">×</button>
         </header>
 
-        {variationAssets.length > 1 ? (
+        {versionAssets.length > 1 ? (
+          <div className="variation-picker version-picker">
+            <span>Logo version</span>
+            <div role="group" aria-label="Logo version">
+              {versionAssets.map((version) => (
+                <button
+                  key={version.id}
+                  type="button"
+                  className={(version.kind === "current" ? activeVariation.kind !== "historical" : activeVariation.id === version.id) ? "active" : ""}
+                  onClick={() => selectVariation(version.id)}
+                  aria-pressed={version.kind === "current" ? activeVariation.kind !== "historical" : activeVariation.id === version.id}
+                >
+                  {version.kind === "current" ? "Current" : `${version.label}${version.retiredAt ? ` · ${formatDate(version.retiredAt)}` : ""}`}
+                </button>
+              ))}
+            </div>
+          </div>
+        ) : null}
+
+        {variationAssets.length > 1 && activeVariation.kind !== "historical" ? (
           <div className="variation-picker">
             <span>Variation</span>
             <div role="group" aria-label="Logo variation">
@@ -1422,12 +1471,13 @@ function DetailSheet({
               );
             })}
           </div>
-          <div className={`detail-preview${usesDarkLogoPreview(activeLogo.slug) ? " logo-preview-dark" : ""}`}>
+          <div className={`detail-preview${usesDarkLogoPreview(activeVariation.previewAssetId) ? " logo-preview-dark" : ""}`}>
             <img src={previewUrl(activeLogo)} alt="" />
           </div>
         </div>
 
         <dl className="detail-facts">
+          {versionAssets.length > 1 ? <div><dt>Logo version</dt><dd>{activeVariation.kind === "historical" ? `Previous · retired ${activeVariation.retiredAt ? formatDate(activeVariation.retiredAt) : "date unavailable"}` : "Current"}</dd></div> : null}
           <div>
             <dt>Available formats</dt>
             <dd>{getAvailableFormats(activeLogo)}</dd>
@@ -1493,7 +1543,7 @@ function DetailSheet({
             <Copy aria-hidden="true" size={15} strokeWidth={1.8} /> Copy {selectedFormat.toUpperCase()}
           </button>
           <button className="insert-button" type="button" onClick={() => onInsert(activeLogo, selectedFormat, dimensions)}>
-            Insert {activeVariation.id === "primary" ? displayName : activeVariation.label}
+            Insert {activeVariation.kind === "current" ? displayName : activeVariation.kind === "historical" ? `${displayName} previous logo` : activeVariation.label}
           </button>
         </div>
       </aside>

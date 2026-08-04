@@ -12,6 +12,7 @@ import type { FileChange } from "./github.js";
 const slug = z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/);
 const svgUpload = z.string().min(20).max(1_500_000);
 const mutationBase = z.object({ operation: z.string() });
+const officialSourceType = z.enum(["official-brand-page", "official-website", "annual-report", "verified-pdf", "other-official"]);
 const stagedVariationSchema = z.object({
   id: slug,
   name: z.string().trim().min(2).max(80),
@@ -41,6 +42,12 @@ export const mutationSchema = z.discriminatedUnion("operation", [
     sourceUrl: z.string().url().optional(),
     sourceType: z.enum(["official-brand-page", "official-website", "annual-report", "verified-pdf", "other-official", "community-catalog"]),
     svgBase64: svgUpload
+  }),
+  mutationBase.extend({
+    operation: z.literal("verify-logo"),
+    slug,
+    sourceUrl: z.string().url(),
+    sourceType: officialSourceType
   }),
   mutationBase.extend({
     operation: z.literal("add-variation"),
@@ -312,6 +319,17 @@ export async function buildMutationChanges(
     changes.push(...fileChanges(mutation.slug, nextSvg, nextRendered.png, nextRendered.webp));
   }
 
+  if (mutation.operation === "verify-logo") {
+    const entry = catalog.find((item) => item.slug === mutation.slug);
+    if (!entry) throw new Error("This logo is a locked core entry or does not exist in the managed catalog");
+    if (entry.status === "verified") throw new Error("This logo is already verified");
+    if (entry.status !== "needs-review") throw new Error("Only logos awaiting review can be verified");
+    entry.source_url = mutation.sourceUrl;
+    entry.source_type = mutation.sourceType;
+    entry.status = "verified";
+    entry.updated_at = today;
+  }
+
   if (mutation.operation === "remove-logo") {
     if (mutation.confirmation !== mutation.slug) throw new Error("Confirmation does not match the logo slug");
     const index = catalog.findIndex((entry) => entry.slug === mutation.slug);
@@ -349,7 +367,7 @@ export async function buildMutationChanges(
   return {
     changes,
     title: `CMS: ${actionLabel} ${mutation.slug}`,
-    body: `Created by the secured logo CMS.\n\n- Operation: \`${mutation.operation}\`\n- Institution: \`${mutation.slug}\`${mutation.operation === "add-logo" ? `\n- Variations: \`${mutation.variations.length}\`` : ""}${mutation.operation === "replace-logo" ? `\n- Archived primary: \`${mutation.archiveId}\`` : ""}${(mutation.operation === "add-logo" || mutation.operation === "replace-logo") && mutation.sourceType === "community-catalog" ? "\n- Provenance: `community-catalog` (official logo source unavailable)" : ""}\n\nPlease verify the source classification and rendered assets before merging.`
+    body: `Created by the secured logo CMS.\n\n- Operation: \`${mutation.operation}\`\n- Institution: \`${mutation.slug}\`${mutation.operation === "add-logo" ? `\n- Variations: \`${mutation.variations.length}\`` : ""}${mutation.operation === "replace-logo" ? `\n- Archived primary: \`${mutation.archiveId}\`` : ""}${(mutation.operation === "add-logo" || mutation.operation === "replace-logo") && mutation.sourceType === "community-catalog" ? "\n- Provenance: `community-catalog` (official logo source unavailable)" : ""}${mutation.operation === "verify-logo" ? `\n- Official source: ${mutation.sourceUrl}\n- Source type: \`${mutation.sourceType}\`` : ""}\n\nPlease verify the source classification and rendered assets before merging.`
   };
 }
 
