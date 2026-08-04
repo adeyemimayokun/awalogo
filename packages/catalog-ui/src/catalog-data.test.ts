@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import communityCandidates from "../../../packages/institutions/data/community-candidates.json";
 import foreignAuthorized from "../../../packages/institutions/exports/foreign-authorized-ng.json";
 import institutions from "../../../packages/institutions/exports/institutions-ng.json";
+import logoVariations from "../../../packages/logos/src/variations.json";
 import {
   availableInstitutionCategories,
   availableLogoCount,
@@ -156,7 +157,7 @@ describe("institution catalog", () => {
     expect(light?.svg).toContain("<svg");
     expect(light?.asset_urls.png).toBeTruthy();
     expect(light?.asset_urls.webp).toBeTruthy();
-    expect(logos.flatMap((logo) => logo.variations)).toHaveLength(40);
+    expect(logos.flatMap((logo) => logo.variations)).toHaveLength(Object.values(logoVariations).flat().length);
     expect(logos.find((logo) => logo.slug === "moniepoint")?.variations.map((variation) => variation.id)).toContain("wordmark");
     expect(logos.find((logo) => logo.slug === "bamboo-system-technology")?.variations.map((variation) => variation.id))
       .toEqual(expect.arrayContaining(["dark", "symbol"]));
