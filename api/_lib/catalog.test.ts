@@ -166,6 +166,41 @@ describe("CMS catalog mutations", () => {
     ]);
   });
 
+  it("replaces a primary logo without overwriting its previous version", async () => {
+    const logo = existingLogo("Versioned Finance", "versioned-finance");
+    const inputManifest = {
+      ...manifest,
+      source_sha256: { "versioned-finance": "12345678previoushash" }
+    };
+    const result = await buildMutationChanges({
+      operation: "replace-logo",
+      slug: "versioned-finance",
+      sourceUrl: "https://versioned-finance.example/new-brand",
+      sourceType: "official-brand-page",
+      svgBase64: safeSvg
+    }, [logo], {}, inputManifest);
+
+    const catalog = JSON.parse(result.changes.find((change) => change.path.endsWith("promoted-catalog.json"))!.content!.toString());
+    const variations = JSON.parse(result.changes.find((change) => change.path.endsWith("variations.json"))!.content!.toString());
+    const nextManifest = JSON.parse(result.changes.find((change) => change.path.endsWith("formats-manifest.json"))!.content!.toString());
+    const current = catalog[0];
+    const previous = variations["versioned-finance"][0];
+
+    expect(current.source_url).toBe("https://versioned-finance.example/new-brand");
+    expect(current.source_path).toMatch(/^sources\/versioned-finance-\d{4}-\d{2}-\d{2}-[a-f0-9]{8}\.svg$/);
+    expect(previous).toMatchObject({
+      id: "previous-12345678",
+      name: "Previous logo",
+      kind: "historical",
+      source_path: "sources/versioned-finance.svg",
+      svg_path: "assets/versioned-finance.svg"
+    });
+    expect(previous.retired_at).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+    expect(nextManifest.source_sha256["versioned-finance/previous-12345678"]).toBe("12345678previoushash");
+    expect(result.changes.some((change) => change.path === "packages/logos/src/assets/versioned-finance.svg" && change.content === null)).toBe(false);
+    expect(result.body).toContain("archived as a historical logo version");
+  });
+
   it("rejects SVG files with executable content", async () => {
     const unsafe = Buffer.from('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><script>alert(1)</script></svg>').toString("base64");
     await expect(buildMutationChanges({

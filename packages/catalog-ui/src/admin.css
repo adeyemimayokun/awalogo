@@ -1475,6 +1475,28 @@ body:has(.admin-loading) {
   background: var(--admin-subtle);
 }
 
+.admin-section-heading button:disabled {
+  cursor: not-allowed;
+  opacity: .48;
+}
+
+.admin-logo-history {
+  padding-top: 4px;
+}
+
+.admin-history-grid article {
+  grid-template-columns: 92px 170px minmax(72px, auto) minmax(0, 1fr);
+}
+
+.admin-history-state {
+  justify-self: start;
+  border: 1px solid var(--admin-line);
+  border-radius: 999px;
+  color: var(--admin-muted);
+  font-size: 10px;
+  padding: 4px 8px;
+}
+
 .admin-variation-grid {
   display: grid;
   gap: 8px;
@@ -2342,6 +2364,13 @@ body:has(.admin-loading) {
 .admin-dialog > h2 {
   margin: -7px 0 2px;
   font-size: 24px;
+}
+
+.admin-dialog-intro {
+  margin: -4px 0 2px;
+  color: var(--admin-muted);
+  font-size: 12px;
+  line-height: 1.55;
 }
 
 .admin-dialog-close {

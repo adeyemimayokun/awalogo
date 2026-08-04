@@ -34,6 +34,13 @@ export const mutationSchema = z.discriminatedUnion("operation", [
   }),
   mutationBase.extend({ operation: z.literal("remove-logo"), slug, confirmation: z.string() }),
   mutationBase.extend({
+    operation: z.literal("replace-logo"),
+    slug,
+    sourceUrl: z.string().url(),
+    sourceType: z.enum(["official-brand-page", "official-website", "annual-report", "verified-pdf", "other-official"]),
+    svgBase64: svgUpload
+  }),
+  mutationBase.extend({
     operation: z.literal("add-variation"),
     slug,
     variationId: slug,
@@ -256,6 +263,45 @@ export async function buildMutationChanges(
     changes.push(...fileChanges(fileStem, svg, rendered.png, rendered.webp));
   }
 
+  if (mutation.operation === "replace-logo") {
+    const entry = catalog.find((item) => item.slug === mutation.slug);
+    if (!entry) throw new Error("This logo is a locked core entry or does not exist in the managed catalog");
+
+    const previousHash = manifest.source_sha256[mutation.slug] ?? createHash("sha256")
+      .update(JSON.stringify([entry.source_path, entry.formats]))
+      .digest("hex");
+    const historyId = `previous-${previousHash.slice(0, 8)}`;
+    const existing = variations[mutation.slug] ?? [];
+    if (existing.some((variation) => variation.id === historyId)) {
+      throw new Error("This primary logo version is already archived");
+    }
+    existing.push(logoVariationSchema.parse({
+      id: historyId,
+      name: "Previous logo",
+      kind: "historical",
+      retired_at: today,
+      source_url: entry.source_url,
+      source_path: entry.source_path,
+      svg_path: entry.svg_path,
+      formats: entry.formats
+    }));
+    variations[mutation.slug] = existing;
+    manifest.source_sha256[`${mutation.slug}/${historyId}`] = previousHash;
+
+    const svg = decodeSvg(mutation.svgBase64);
+    const rendered = await renderedFormats(svg);
+    const nextHash = createHash("sha256").update(svg).digest("hex");
+    const fileStem = `${mutation.slug}-${today}-${nextHash.slice(0, 8)}`;
+    entry.source_url = mutation.sourceUrl;
+    entry.source_type = mutation.sourceType;
+    entry.source_path = `sources/${fileStem}.svg`;
+    entry.svg_path = `assets/${fileStem}.svg`;
+    entry.formats = formats(fileStem);
+    entry.updated_at = today;
+    manifest.source_sha256[mutation.slug] = nextHash;
+    changes.push(...fileChanges(fileStem, svg, rendered.png, rendered.webp));
+  }
+
   if (mutation.operation === "remove-logo") {
     if (mutation.confirmation !== mutation.slug) throw new Error("Confirmation does not match the logo slug");
     const index = catalog.findIndex((entry) => entry.slug === mutation.slug);
@@ -293,7 +339,7 @@ export async function buildMutationChanges(
   return {
     changes,
     title: `CMS: ${actionLabel} ${mutation.slug}`,
-    body: `Created by the secured logo CMS.\n\n- Operation: \`${mutation.operation}\`\n- Institution: \`${mutation.slug}\`${mutation.operation === "add-logo" ? `\n- Variations: \`${mutation.variations.length}\`` : ""}${mutation.operation === "add-logo" && mutation.sourceType === "community-catalog" ? "\n- Provenance: `community-catalog` (official logo source unavailable)" : ""}\n\nPlease verify the source classification and rendered assets before merging.`
+    body: `Created by the secured logo CMS.\n\n- Operation: \`${mutation.operation}\`\n- Institution: \`${mutation.slug}\`${mutation.operation === "add-logo" ? `\n- Variations: \`${mutation.variations.length}\`` : ""}${mutation.operation === "add-logo" && mutation.sourceType === "community-catalog" ? "\n- Provenance: `community-catalog` (official logo source unavailable)" : ""}${mutation.operation === "replace-logo" ? "\n- Previous primary: archived as a historical logo version" : ""}\n\nPlease verify the source classification and rendered assets before merging.`
   };
 }
 

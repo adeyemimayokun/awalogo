@@ -33,7 +33,7 @@ import "./admin.css";
 
 type Session = { login: string; avatarUrl: string; local?: boolean; repositoryAccess?: boolean };
 type Format = { type: string; path: string };
-type Variation = { id: string; name: string; source_url?: string; svg_path: string | null; formats: Format[]; preview_url?: string };
+type Variation = { id: string; name: string; kind?: "lockup" | "historical"; retired_at?: string; source_url?: string; svg_path: string | null; formats: Format[]; preview_url?: string };
 type VariationDraft = { key: string; id: string; name: string; sourceUrl: string; file: File | null };
 type Logo = {
   name: string;
@@ -120,13 +120,15 @@ function svgDataUrl(svg: string): string {
 }
 
 function logoPreview(slug: string, localPreview?: string): string | null {
+  if (localPreview) return localPreview;
   const logo = bundledLogos.find((item) => item.slug === slug);
-  return logo?.svg ? svgDataUrl(logo.svg) : logo?.asset_urls.png ?? logo?.asset_urls.webp ?? localPreview ?? null;
+  return logo?.svg ? svgDataUrl(logo.svg) : logo?.asset_urls.png ?? logo?.asset_urls.webp ?? null;
 }
 
 function variationPreview(slug: string, variationId: string, localPreview?: string): string | null {
+  if (localPreview) return localPreview;
   const variation = bundledLogos.find((item) => item.slug === slug)?.variations.find((item) => item.id === variationId);
-  return variation?.svg ? svgDataUrl(variation.svg) : variation?.asset_urls.png ?? variation?.asset_urls.webp ?? localPreview ?? null;
+  return variation?.svg ? svgDataUrl(variation.svg) : variation?.asset_urls.png ?? variation?.asset_urls.webp ?? null;
 }
 
 function formatAssetUrl(slug: string, format: Format, variationId?: string, local = false): string | null {
@@ -429,7 +431,8 @@ export function AdminApp() {
                   <FormatFiles formats={selected.formats} slug={selected.slug} local={session?.local} />
                 </section>
               </div>
-              <VariationManager logo={selected} variations={selectedVariations} busy={busy} local={session?.local} mutate={mutate} />
+              <VariationManager logo={selected} variations={selectedVariations.filter((variation) => variation.kind !== "historical")} busy={busy} local={session?.local} mutate={mutate} />
+              <LogoVersionManager logo={selected} versions={selectedVariations.filter((variation) => variation.kind === "historical")} busy={busy} locked={data?.lockedSlugs.includes(selected.slug) ?? false} local={session?.local} mutate={mutate} />
               <DangerZone logo={selected} locked={data?.lockedSlugs.includes(selected.slug) ?? false} busy={busy} mutate={mutate} />
             </section>
           ) : <section className="admin-empty">Select a logo</section>}
@@ -883,6 +886,85 @@ function AddLogoForm({ busy, onBack, onSubmit }: { busy: boolean; onBack: () => 
         <div className="admin-submit-row"><span className={uploadBundleTooLarge ? "admin-submit-warning" : ""}>{uploadBundleTooLarge ? "Combined SVG files must stay below 2.5 MB." : variationDrafts.length ? `Primary logo and ${variationDrafts.length} variation${variationDrafts.length === 1 ? "" : "s"} will be submitted together.` : "New entries are submitted as needs-review."}</span><button disabled={busy || !file || !selectedCategories.length || !variationsReady} type="submit"><GitFork size={17} /> Create pull request</button></div>
       </form>
     </main>
+  );
+}
+
+function LogoVersionManager({ logo, versions, busy, locked, local, mutate }: {
+  logo: Logo;
+  versions: Variation[];
+  busy: boolean;
+  locked: boolean;
+  local?: boolean;
+  mutate: (payload: Record<string, unknown>) => Promise<boolean>;
+}) {
+  const [open, setOpen] = useState(false);
+  const [file, setFile] = useState<File | null>(null);
+
+  useEffect(() => {
+    if (!open) return;
+    const previousFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const frame = window.requestAnimationFrame(() => document.querySelector<HTMLElement>('[role="dialog"] input')?.focus());
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+      const dialog = document.querySelector<HTMLElement>('[role="dialog"]');
+      if (dialog) keepFocusInDialog(event, dialog);
+    };
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      window.cancelAnimationFrame(frame);
+      document.removeEventListener("keydown", onKeyDown);
+      document.body.style.overflow = previousOverflow;
+      previousFocus?.focus();
+    };
+  }, [open]);
+
+  async function replace(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (!file) return;
+    const form = new FormData(event.currentTarget);
+    const ok = await mutate({
+      operation: "replace-logo",
+      slug: logo.slug,
+      sourceUrl: form.get("sourceUrl"),
+      sourceType: form.get("sourceType"),
+      svgBase64: await fileToBase64(file)
+    });
+    if (ok) {
+      setOpen(false);
+      setFile(null);
+    }
+  }
+
+  return (
+    <section className="admin-variations admin-logo-history">
+      <div className="admin-section-heading">
+        <div><h2>Logo history</h2><p>{versions.length ? `${versions.length} previous version${versions.length === 1 ? "" : "s"} preserved` : "The current logo is the only version"}</p></div>
+        <button disabled={locked} onClick={() => setOpen(true)} title={locked ? "This core entry is managed in code" : "Upload a new primary logo"}><Upload size={16} /> Upload new version</button>
+      </div>
+      {versions.length ? (
+        <div className="admin-variation-grid admin-history-grid">
+          {versions.map((version) => (
+            <article key={version.id}>
+              <div className="admin-variation-preview">{variationPreview(logo.slug, version.id, version.preview_url) ? <img src={variationPreview(logo.slug, version.id, version.preview_url)!} alt="" /> : <ImagePlus size={20} />}</div>
+              <div className="admin-variation-meta"><strong>{version.name}</strong><small>{version.retired_at ? `Retired ${shortDate(version.retired_at)}` : "Historical asset"}</small></div>
+              <span className="admin-history-state">Previous</span>
+              <FormatFiles formats={version.formats} slug={logo.slug} variationId={version.id} local={local} />
+            </article>
+          ))}
+        </div>
+      ) : <div className="admin-inline-empty"><ImagePlus size={18} /> Previous versions will appear here after the primary logo is replaced.</div>}
+
+      {open ? <div className="admin-dialog-backdrop" onMouseDown={(event) => { if (event.target === event.currentTarget) setOpen(false); }}><form className="admin-dialog" role="dialog" aria-modal="true" aria-labelledby="replace-logo-title" onSubmit={replace}>
+        <button className="admin-dialog-close" type="button" onClick={() => setOpen(false)} aria-label="Close"><X size={18} /></button>
+        <p className="admin-kicker">{logo.name}</p><h2 id="replace-logo-title">Upload new logo version</h2>
+        <p className="admin-dialog-intro">The uploaded artwork becomes the current primary logo. Existing primary files remain available as a dated previous version.</p>
+        <div className="admin-fields"><label><span>Official source URL</span><input required name="sourceUrl" type="url" placeholder="https://company.com/brand" /></label><label><span>Source type</span><select name="sourceType" required>{sourceTypes.map(([value, label]) => <option key={value} value={value}>{label}</option>)}</select></label></div>
+        <UploadField file={file} onFile={setFile} />
+        <button className="admin-primary-button" disabled={busy || !file} type="submit"><GitFork size={17} /> Create replacement pull request</button>
+      </form></div> : null}
+    </section>
   );
 }
 
