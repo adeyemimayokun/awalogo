@@ -829,7 +829,7 @@ export function CatalogApp({
           pluginMode={pluginMode}
           onCopy={copyLogo}
           onDownload={downloadLogo}
-          onInsert={insertLogo}
+          onInsert={pluginMode ? insertLogo : undefined}
           onRequest={() => {
             setQuery(selectedItem.displayName);
             setSelectedItem(null);
@@ -1423,7 +1423,7 @@ function DetailSheet({
   onFormatChange: (format: LogoFormatType) => void;
   onCopy: (logo: LogoAsset, format: LogoFormatType, dimensions?: LogoDimensions) => void;
   onDownload: (logo: LogoAsset, format: LogoFormatType) => void;
-  onInsert: (logo: LogoAsset, format: LogoFormatType, dimensions: LogoDimensions) => void;
+  onInsert?: (logo: LogoAsset, format: LogoFormatType, dimensions: LogoDimensions) => void;
   onRequest: () => void;
 }) {
   const { logo, displayName, categories } = item;
@@ -1738,7 +1738,7 @@ function DetailSheet({
           </div>
         ) : null}
 
-        <div className={`detail-actions${pluginMode ? "" : activeLogo.svg ? " double" : " single"}`}>
+        <div className={`detail-actions${pluginMode && onInsert ? "" : activeLogo.svg ? " double" : " single"}`}>
           <button className="download-button" type="button" onClick={() => onDownload(activeLogo, selectedFormat)}>
             Download {selectedFormat.toUpperCase()}
           </button>
@@ -1747,7 +1747,7 @@ function DetailSheet({
               <button className="copy-button" type="button" onClick={() => onCopy(activeLogo, selectedFormat, pluginMode ? dimensions : undefined)}>
                 <Copy aria-hidden="true" size={15} strokeWidth={1.8} /> Copy {selectedFormat.toUpperCase()}
               </button>
-              {pluginMode ? (
+              {pluginMode && onInsert ? (
                 <button className="insert-button" type="button" onClick={() => onInsert(activeLogo, selectedFormat, dimensions)}>
                   Insert {activeVariation.kind === "current" ? displayName : activeVariation.kind === "historical" ? `${displayName} previous logo` : activeVariation.label}
                 </button>

@@ -42,6 +42,7 @@ type Logo = {
   categories?: string[];
   website: string;
   source_url: string;
+  source_type: string;
   svg_path: string | null;
   formats: Format[];
   status: string;
@@ -431,6 +432,7 @@ export function AdminApp() {
                   <FormatFiles formats={selected.formats} slug={selected.slug} local={session?.local} />
                 </section>
               </div>
+              <VerificationManager logo={selected} busy={busy} locked={data?.lockedSlugs.includes(selected.slug) ?? false} mutate={mutate} />
               <VariationManager logo={selected} variations={selectedVariations.filter((variation) => variation.kind !== "historical")} busy={busy} local={session?.local} mutate={mutate} />
               <LogoVersionManager logo={selected} versions={selectedVariations.filter((variation) => variation.kind === "historical")} busy={busy} locked={data?.lockedSlugs.includes(selected.slug) ?? false} local={session?.local} mutate={mutate} />
               <DangerZone logo={selected} locked={data?.lockedSlugs.includes(selected.slug) ?? false} busy={busy} mutate={mutate} />
@@ -440,6 +442,76 @@ export function AdminApp() {
       )}
       {busy ? <div className="admin-busy" role="status"><LoaderCircle className="spin" /><span>Saving catalog changes</span></div> : null}
     </div>
+  );
+}
+
+function VerificationManager({ logo, busy, locked, mutate }: {
+  logo: Logo;
+  busy: boolean;
+  locked: boolean;
+  mutate: (payload: Record<string, unknown>) => Promise<boolean>;
+}) {
+  const [open, setOpen] = useState(false);
+  const isVerified = logo.status === "verified";
+
+  useEffect(() => {
+    if (!open) return;
+    const previousFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const frame = window.requestAnimationFrame(() => document.querySelector<HTMLElement>('[role="dialog"] input')?.focus());
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+      const dialog = document.querySelector<HTMLElement>('[role="dialog"]');
+      if (dialog) keepFocusInDialog(event, dialog);
+    };
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      window.cancelAnimationFrame(frame);
+      document.removeEventListener("keydown", onKeyDown);
+      document.body.style.overflow = previousOverflow;
+      previousFocus?.focus();
+    };
+  }, [open]);
+
+  async function verify(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const form = new FormData(event.currentTarget);
+    const ok = await mutate({
+      operation: "verify-logo",
+      slug: logo.slug,
+      sourceUrl: form.get("sourceUrl"),
+      sourceType: form.get("sourceType")
+    });
+    if (ok) setOpen(false);
+  }
+
+  const hasOfficialSourceType = sourceTypes.some(([value]) => value === logo.source_type);
+  const existingOfficialSource = hasOfficialSourceType ? logo.source_url : "";
+  const existingOfficialSourceType = hasOfficialSourceType ? logo.source_type : "official-website";
+
+  return (
+    <section className={`admin-verification ${isVerified ? "verified" : "needs-review"}`}>
+      <div className="admin-verification-icon"><ShieldCheck size={18} /></div>
+      <div>
+        <h2>{isVerified ? "Verified logo" : "Verification required"}</h2>
+        <p>{isVerified ? "This logo is linked to an official source." : "Confirm the artwork against an official company-controlled source."}</p>
+      </div>
+      {isVerified ? (
+        <a href={logo.source_url} target="_blank" rel="noreferrer">View source <ExternalLink size={14} /></a>
+      ) : (
+        <button type="button" disabled={locked || logo.status !== "needs-review"} onClick={() => setOpen(true)}><ShieldCheck size={16} /> Mark as verified</button>
+      )}
+
+      {open ? <div className="admin-dialog-backdrop" onMouseDown={(event) => { if (event.target === event.currentTarget) setOpen(false); }}><form className="admin-dialog" role="dialog" aria-modal="true" aria-labelledby="verify-logo-title" onSubmit={verify}>
+        <button className="admin-dialog-close" type="button" onClick={() => setOpen(false)} aria-label="Close"><X size={18} /></button>
+        <div className="admin-verify-dialog-icon"><ShieldCheck size={20} /></div>
+        <p className="admin-kicker">{logo.name}</p><h2 id="verify-logo-title">Mark logo as verified</h2>
+        <p className="admin-dialog-intro">Use the exact page where the current artwork is published. Verification changes the public status after the pull request is reviewed and merged.</p>
+        <div className="admin-fields"><label><span>Official source URL</span><input required name="sourceUrl" type="url" defaultValue={existingOfficialSource} placeholder="https://company.com/brand" /></label><label><span>Source type</span><select name="sourceType" required defaultValue={existingOfficialSourceType}>{sourceTypes.map(([value, label]) => <option key={value} value={value}>{label}</option>)}</select></label></div>
+        <button className="admin-primary-button" disabled={busy} type="submit"><GitFork size={17} /> Create verification pull request</button>
+      </form></div> : null}
+    </section>
   );
 }
 

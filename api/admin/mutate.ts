@@ -47,6 +47,6 @@ export default async function handler(request: VercelRequest, response: VercelRe
       });
       return;
     }
-    jsonError(response, error, error instanceof Error && /already exists|not found|does not|Confirmation|uploaded|SVG/.test(error.message) ? 400 : 500);
+    jsonError(response, error, error instanceof Error && /already|not found|does not|Only logos|official source|Confirmation|uploaded|SVG/.test(error.message) ? 400 : 500);
   }
 }

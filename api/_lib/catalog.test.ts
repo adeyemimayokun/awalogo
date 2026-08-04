@@ -201,6 +201,40 @@ describe("CMS catalog mutations", () => {
     expect(result.body).toContain("archived as a historical logo version");
   });
 
+  it("marks a reviewed logo verified with an official source", async () => {
+    const logo = {
+      ...existingLogo("Reviewed Finance", "reviewed-finance"),
+      source_url: "https://reviewed-finance.example",
+      source_type: "community-catalog",
+      status: "needs-review"
+    };
+    const result = await buildMutationChanges({
+      operation: "verify-logo",
+      slug: "reviewed-finance",
+      sourceUrl: "https://reviewed-finance.example/brand",
+      sourceType: "official-brand-page"
+    }, [logo], {}, structuredClone(manifest));
+
+    const catalog = JSON.parse(result.changes.find((change) => change.path.endsWith("promoted-catalog.json"))!.content!.toString());
+    expect(catalog[0]).toMatchObject({
+      slug: "reviewed-finance",
+      source_url: "https://reviewed-finance.example/brand",
+      source_type: "official-brand-page",
+      status: "verified"
+    });
+    expect(catalog[0].updated_at).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+    expect(result.body).toContain("Official source: https://reviewed-finance.example/brand");
+  });
+
+  it("does not verify an already verified logo", async () => {
+    await expect(buildMutationChanges({
+      operation: "verify-logo",
+      slug: "verified-finance",
+      sourceUrl: "https://verified-finance.example/brand",
+      sourceType: "official-website"
+    }, [existingLogo("Verified Finance", "verified-finance")], {}, structuredClone(manifest))).rejects.toThrow("already verified");
+  });
+
   it("rejects SVG files with executable content", async () => {
     const unsafe = Buffer.from('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><script>alert(1)</script></svg>').toString("base64");
     await expect(buildMutationChanges({
