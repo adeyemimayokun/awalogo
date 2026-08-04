@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState, type FormEvent, type ReactNode } from "react";
+import { useEffect, useMemo, useRef, useState, type FormEvent, type ReactNode } from "react";
 import {
   ArrowLeft,
   ArrowDownToLine,
@@ -786,35 +786,94 @@ function CategoryMultiSelect({
   value: InstitutionCategory[];
   onChange: (categories: InstitutionCategory[]) => void;
 }) {
+  const rootRef = useRef<HTMLFieldSetElement>(null);
+  const [open, setOpen] = useState(false);
+  const [query, setQuery] = useState("");
+  const [draft, setDraft] = useState<InstitutionCategory[]>(value);
+
+  const visibleCategories = useMemo(() => {
+    const normalized = query.trim().toLowerCase();
+    return availableInstitutionCategories.filter((category) =>
+      !normalized || categoryLabel(category).toLowerCase().includes(normalized)
+    );
+  }, [query]);
+
+  useEffect(() => {
+    if (!open) return;
+    const close = () => {
+      setOpen(false);
+      setDraft(value);
+      setQuery("");
+    };
+    const onPointerDown = (event: PointerEvent) => {
+      if (rootRef.current && event.target instanceof Node && !rootRef.current.contains(event.target)) close();
+    };
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") close();
+    };
+    document.addEventListener("pointerdown", onPointerDown);
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.removeEventListener("pointerdown", onPointerDown);
+      document.removeEventListener("keydown", onKeyDown);
+    };
+  }, [open, value]);
+
+  function toggleOpen() {
+    if (open) {
+      setOpen(false);
+      setDraft(value);
+      setQuery("");
+      return;
+    }
+    setDraft(value);
+    setQuery("");
+    setOpen(true);
+  }
+
   function toggle(category: InstitutionCategory) {
-    onChange(value.includes(category)
-      ? value.filter((item) => item !== category)
-      : [...value, category]);
+    setDraft((current) => current.includes(category)
+      ? current.filter((item) => item !== category)
+      : [...current, category]);
+  }
+
+  function save() {
+    onChange(draft);
+    setOpen(false);
+    setQuery("");
   }
 
   return (
-    <fieldset className="admin-category-picker">
+    <fieldset className="admin-category-picker" ref={rootRef}>
       <legend>Categories</legend>
-      <details>
-        <summary>
+      <details open={open}>
+        <summary onClick={(event) => { event.preventDefault(); toggleOpen(); }}>
           <span>{value.length ? `${value.length} categor${value.length === 1 ? "y" : "ies"} selected` : "Select categories"}</span>
           <ChevronDown size={16} aria-hidden="true" />
         </summary>
-        <div className="admin-category-options" role="group" aria-label="Institution categories">
-          {availableInstitutionCategories.map((category) => {
-            const selected = value.includes(category);
-            return (
-              <label className={selected ? "selected" : ""} key={category}>
-                <input
-                  type="checkbox"
-                  checked={selected}
-                  onChange={() => toggle(category)}
-                />
-                <span>{categoryLabel(category)}</span>
-                {selected ? <Check size={15} aria-hidden="true" /> : null}
-              </label>
-            );
-          })}
+        <div className="admin-category-menu">
+          <div className="admin-category-search">
+            <Search size={16} aria-hidden="true" />
+            <input aria-label="Search categories" autoFocus value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search categories" />
+            {query ? <button type="button" onClick={() => setQuery("")} aria-label="Clear category search"><X size={14} /></button> : null}
+          </div>
+          <div className="admin-category-options" role="group" aria-label="Institution categories">
+            {visibleCategories.map((category) => {
+              const selected = draft.includes(category);
+              return (
+                <label className={selected ? "selected" : ""} key={category}>
+                  <input type="checkbox" checked={selected} onChange={() => toggle(category)} />
+                  <span>{categoryLabel(category)}</span>
+                  {selected ? <Check size={15} aria-hidden="true" /> : null}
+                </label>
+              );
+            })}
+            {!visibleCategories.length ? <div className="admin-category-no-results"><Search size={16} /> No categories found</div> : null}
+          </div>
+          <footer className="admin-category-actions">
+            <span>{draft.length} selected</span>
+            <button type="button" onClick={save}><Check size={15} /> Save selection</button>
+          </footer>
         </div>
       </details>
     </fieldset>
