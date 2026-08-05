@@ -1,6 +1,7 @@
 import { useEffect, useLayoutEffect, useMemo, useState, type FormEvent, type ReactNode } from "react";
 import {
   ArrowDownAZ,
+  ArrowUpFromLine,
   ArrowUpAZ,
   ArrowUpRight,
   BadgeDollarSign,
@@ -47,6 +48,7 @@ import {
   type CatalogItem
 } from "./catalog-data";
 import { compareCatalogResults, searchScore, type CatalogSortDirection } from "./catalog-search";
+import changelogJson from "./changelog.json";
 import { buildCompanyLogoSubmissionUrl } from "./logo-request";
 import type { LogoAsset } from "./logo-data";
 import { SiteFooter, SiteHeader, type ThemeMode } from "./SiteChrome";
@@ -71,16 +73,37 @@ export type CatalogPluginBridge = {
 };
 
 export type ProjectPanel = "about" | "changelog" | "contribute" | "request" | "trademarks";
-type MajorVersion = `v${number}.0.0`;
 type LogoDimensions = { width: number; height: number };
 
-type MajorRelease = {
-  version: MajorVersion;
+function getSharedLogoItem(search: string): CatalogItem | null {
+  const logoSlug = new URLSearchParams(search).get("logo");
+  if (!logoSlug) return null;
+  return explorerCatalogItems.find((item) => item.logo?.slug === logoSlug) ?? null;
+}
+
+function setSharedLogoLocation(logoSlug: string | null): void {
+  const url = new URL(window.location.href);
+  if (logoSlug) url.searchParams.set("logo", logoSlug);
+  else url.searchParams.delete("logo");
+  url.searchParams.delete("asset");
+  const next = `${url.pathname}${url.search}${url.hash}`;
+  const current = `${window.location.pathname}${window.location.search}${window.location.hash}`;
+  if (next !== current) window.history.pushState(null, "", next);
+}
+
+function buildLogoShareUrl(logoSlug: string, assetId: string): string {
+  const url = new URL("/", window.location.origin);
+  url.searchParams.set("logo", logoSlug);
+  if (assetId !== "primary") url.searchParams.set("asset", assetId);
+  return url.toString();
+}
+
+type ChangelogRelease = {
+  version: string;
   date: string;
-  displayDate: string;
   title: string;
   changes: readonly string[];
-  latest?: boolean;
+  status: "draft" | "published";
 };
 
 type AboutBlock =
@@ -148,27 +171,9 @@ function renderAboutInline(content: string): ReactNode[] {
       return part;
     });
 }
-const majorReleases: readonly MajorRelease[] = [
-  {
-    version: "v1.0.0",
-    date: "2026-07-19",
-    displayDate: "19 July 2026",
-    title: "Initial release",
-    latest: true,
-    changes: [
-      "Launched the searchable Nigerian financial institution logo catalog across regulated institutions and verified financial brands.",
-      "Added verified source metadata, institution-to-logo links, logo detail previews, and official website references.",
-      "Introduced logo variations alongside SVG, PNG, and WebP downloads and editable SVG insertion for Figma.",
-      "Added relevance-ranked search, multi-category filtering, alphabetical sorting, and responsive desktop and mobile browsing.",
-      "Launched logo requests and official company submissions for community-led catalog growth.",
-      "Added catalog validation and an open source contribution workflow.",
-      "Renamed the product to awalogo, with Nigerian Bank Logos as its descriptive tagline.",
-      "Moved the public website to awalogo.com and aligned website, plugin, metadata, and downloads with the new identity.",
-      "Separated the public website and offline Figma plugin into independent application builds.",
-      "Refined the catalog with a denser reference-led layout, native system typography, sticky filters, consistent borders, and coordinated light and dark themes."
-    ]
-  }
-];
+const publishedChangelog = (changelogJson as ChangelogRelease[])
+  .filter((release) => release.status === "published")
+  .sort((left, right) => right.date.localeCompare(left.date));
 const categoryIcons: Partial<Record<InstitutionCategory, LucideIcon>> = {
   "commercial-bank": Landmark,
   "development-finance-institution": Building2,
@@ -312,11 +317,12 @@ export function CatalogApp({
   aboutMarkdown?: string;
 }) {
   const pluginMode = __NBL_SURFACE__ === "plugin";
+  const initialSharedItem = pluginMode ? null : getSharedLogoItem(window.location.search);
   const [query, setQuery] = useState("");
   const [selectedCategories, setSelectedCategories] = useState<InstitutionCategory[]>([]);
   const [draftCategories, setDraftCategories] = useState<InstitutionCategory[]>([]);
-  const [selectedItem, setSelectedItem] = useState<CatalogItem | null>(null);
-  const [selectedFormat, setSelectedFormat] = useState<LogoFormatType>("svg");
+  const [selectedItem, setSelectedItem] = useState<CatalogItem | null>(initialSharedItem);
+  const [selectedFormat, setSelectedFormat] = useState<LogoFormatType>(initialSharedItem?.logo?.formats[0]?.type ?? "svg");
   const [pageSize, setPageSize] = useState<number>(DEFAULT_PAGE_SIZE);
   const [currentPage, setCurrentPage] = useState(1);
   const [toast, setToast] = useState("");
@@ -324,7 +330,7 @@ export function CatalogApp({
   const [themeMode, setThemeMode] = useState<ThemeMode>(getInitialTheme);
   const [categoriesExpanded, setCategoriesExpanded] = useState(false);
   const [sortDirection, setSortDirection] = useState<CatalogSortDirection>("asc");
-  const [newLogosOnly, setNewLogosOnly] = useState(false);
+  const [newLogosOnly, setNewLogosOnly] = useState(() => new URLSearchParams(window.location.search).get("new") === "true");
 
   useLayoutEffect(() => {
     const systemTheme = window.matchMedia("(prefers-color-scheme: dark)");
@@ -363,7 +369,7 @@ export function CatalogApp({
   useEffect(() => {
     function closeOnEscape(event: KeyboardEvent) {
       if (event.key === "Escape") {
-        setSelectedItem(null);
+        closeDetails();
         setProjectPanel(null);
         setCategoriesExpanded(false);
       }
@@ -371,6 +377,17 @@ export function CatalogApp({
     window.addEventListener("keydown", closeOnEscape);
     return () => window.removeEventListener("keydown", closeOnEscape);
   }, []);
+
+  useEffect(() => {
+    if (pluginMode) return;
+    function restoreSharedLogo() {
+      const item = getSharedLogoItem(window.location.search);
+      setSelectedItem(item);
+      if (item?.logo) setSelectedFormat(item.logo.formats[0]?.type ?? "png");
+    }
+    window.addEventListener("popstate", restoreSharedLogo);
+    return () => window.removeEventListener("popstate", restoreSharedLogo);
+  }, [pluginMode]);
 
   useEffect(() => setCurrentPage(1), [selectedCategories, query, sortDirection, pageSize, newLogosOnly]);
 
@@ -452,6 +469,12 @@ export function CatalogApp({
   function openDetails(item: CatalogItem) {
     setSelectedFormat(item.logo?.formats[0]?.type ?? "png");
     setSelectedItem(item);
+    if (!pluginMode && item.logo) setSharedLogoLocation(item.logo.slug);
+  }
+
+  function closeDetails() {
+    setSelectedItem(null);
+    if (!pluginMode) setSharedLogoLocation(null);
   }
 
   function toggleCategory(category: InstitutionCategory) {
@@ -853,7 +876,7 @@ export function CatalogApp({
         <DetailSheet
           item={selectedItem}
           selectedFormat={selectedFormat}
-          onClose={() => setSelectedItem(null)}
+          onClose={closeDetails}
           onFormatChange={setSelectedFormat}
           pluginMode={pluginMode}
           onCopy={copyLogo}
@@ -861,7 +884,7 @@ export function CatalogApp({
           onInsert={pluginMode ? insertLogo : undefined}
           onRequest={() => {
             setQuery(selectedItem.displayName);
-            setSelectedItem(null);
+            closeDetails();
             setProjectPanel("request");
           }}
         />
@@ -949,17 +972,17 @@ export function ProjectInfoSheet({
             />
           ) : isChangelog ? (
             <div className="changelog-list">
-              {majorReleases.map((release) => (
+              {publishedChangelog.map((release, index) => (
                 <article className="changelog-entry" key={release.version}>
                   <header>
                     <div>
                       <div className="changelog-release-meta">
                         <span className="changelog-version">{release.version}</span>
-                        <time dateTime={release.date}>{release.displayDate}</time>
+                        <time dateTime={release.date}>{formatDate(release.date)}</time>
                       </div>
                       <h3>{release.title}</h3>
                     </div>
-                    {release.latest ? <span className="changelog-latest">Latest</span> : null}
+                    {index === 0 ? <span className="changelog-latest">Latest</span> : null}
                   </header>
                   <ul>
                     {release.changes.map((change) => <li key={change}>{change}</li>)}
@@ -1443,6 +1466,7 @@ function DetailSheet({
   onCopy,
   onDownload,
   onInsert,
+  onFeedback,
   onRequest
 }: {
   item: CatalogItem;
@@ -1456,10 +1480,12 @@ function DetailSheet({
   onRequest: () => void;
 }) {
   const { logo, displayName, categories } = item;
-  const [selectedVariationId, setSelectedVariationId] = useState("primary");
+  const initialSharedAsset = !pluginMode ? new URLSearchParams(window.location.search).get("asset") : null;
+  const [selectedVariationId, setSelectedVariationId] = useState(initialSharedAsset ?? "primary");
   const [dimensions, setDimensions] = useState<LogoDimensions>({ width: 512, height: 512 });
   const [aspectRatio, setAspectRatio] = useState(1);
   const [aspectLocked, setAspectLocked] = useState(true);
+  const [shareCopied, setShareCopied] = useState(false);
   if (!logo) {
     const institutionSource = item.institution.sources[0]?.url;
     return (
@@ -1620,6 +1646,20 @@ function DetailSheet({
     }
   }
 
+  async function shareLogo() {
+    if (!logo) return;
+    const url = buildLogoShareUrl(logo.slug, activeVariation.id);
+    try {
+      await copyTextToClipboard(url, false);
+      setShareCopied(true);
+      onFeedback("Logo link copied");
+      window.setTimeout(() => setShareCopied(false), 1800);
+    } catch {
+      setShareCopied(false);
+      onFeedback("Unable to copy logo link");
+    }
+  }
+
   return (
     <div className="detail-backdrop" onMouseDown={onClose}>
       <aside className="detail-sheet" aria-label={`${displayName} details`} onMouseDown={(event) => event.stopPropagation()}>
@@ -1632,7 +1672,14 @@ function DetailSheet({
             <h2>{displayName}</h2>
             <p>{getCategorySummary(categories)}</p>
           </div>
-          <button className="close-button" type="button" onClick={onClose} aria-label="Close details" title="Close">×</button>
+          <div className="detail-header-actions">
+            {!pluginMode ? (
+              <button className="close-button share-button" type="button" onClick={shareLogo} aria-label={shareCopied ? "Logo link copied" : `Share ${displayName} logo`} title={shareCopied ? "Link copied" : "Share logo"}>
+                {shareCopied ? <Check aria-hidden="true" size={15} strokeWidth={1.9} /> : <ArrowUpFromLine aria-hidden="true" size={15} strokeWidth={1.8} />}
+              </button>
+            ) : null}
+            <button className="close-button" type="button" onClick={onClose} aria-label="Close details" title="Close">×</button>
+          </div>
         </header>
 
         {versionAssets.length > 1 ? (
