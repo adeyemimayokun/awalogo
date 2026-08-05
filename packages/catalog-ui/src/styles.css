@@ -1964,13 +1964,6 @@ html[data-theme="dark"] .new-tag {
   font-size: 12px;
 }
 
-.detail-header-actions {
-  display: flex;
-  flex: 0 0 auto;
-  align-items: center;
-  gap: 7px;
-}
-
 .close-button {
   display: grid;
   width: 34px;
@@ -1986,12 +1979,6 @@ html[data-theme="dark"] .new-tag {
   transition:
     background 180ms cubic-bezier(0.16, 1, 0.3, 1),
     transform 180ms cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.share-button[aria-label="Logo link copied"] {
-  border-color: #b8ca64;
-  background: #eef5cd;
-  color: #536416;
 }
 
 .close-button:hover {

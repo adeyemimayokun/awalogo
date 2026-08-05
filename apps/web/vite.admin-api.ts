@@ -1,12 +1,10 @@
 import type { IncomingMessage, ServerResponse } from "node:http";
 import type { Plugin } from "vite";
 import adminCatalog from "../../api/admin/catalog";
-import adminChangelog from "../../api/admin/changelog";
 import adminLocalAsset from "../../api/admin/local-asset";
 import adminMutate from "../../api/admin/mutate";
 import adminNotifications from "../../api/admin/notifications";
 import adminRequests from "../../api/admin/requests";
-import adminSiteUpdates from "../../api/admin/site-updates";
 import authCallback from "../../api/auth/callback";
 import authGithub from "../../api/auth/github";
 import authLogout from "../../api/auth/logout";
@@ -28,12 +26,10 @@ type ApiHandler = (request: never, response: never) => void | Promise<void>;
 
 const handlers: Record<string, ApiHandler> = {
   "/api/admin/catalog": adminCatalog,
-  "/api/admin/changelog": adminChangelog,
   "/api/admin/local-asset": adminLocalAsset,
   "/api/admin/mutate": adminMutate,
   "/api/admin/notifications": adminNotifications,
   "/api/admin/requests": adminRequests,
-  "/api/admin/site-updates": adminSiteUpdates,
   "/api/auth/callback": authCallback,
   "/api/auth/github": authGithub,
   "/api/auth/logout": authLogout,

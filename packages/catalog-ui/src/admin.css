@@ -240,12 +240,6 @@ body:has(.admin-loading) {
   padding: 64px 0;
 }
 
-.admin-updates-dashboard {
-  width: min(100% - 36px, 1100px);
-  margin: 0 auto;
-  padding: 64px 0;
-}
-
 .admin-cms-heading {
   display: flex;
   min-height: 116px;
@@ -269,177 +263,6 @@ body:has(.admin-loading) {
   color: var(--admin-muted);
   font-size: 13px;
   line-height: 1.55;
-}
-
-.admin-cms-heading > button {
-  display: inline-flex;
-  min-height: 42px;
-  flex: 0 0 auto;
-  cursor: pointer;
-  align-items: center;
-  justify-content: center;
-  gap: 7px;
-  border: 1px solid #9daf4e;
-  border-radius: var(--admin-radius);
-  background: var(--admin-accent);
-  color: var(--admin-ink);
-  font-size: 12px;
-  font-weight: 650;
-  padding: 0 14px;
-}
-
-.admin-cms-heading > button:hover {
-  background: #d2ea6f;
-}
-
-.admin-update-list {
-  border-top: 1px solid var(--admin-line);
-}
-
-.admin-update-row {
-  display: grid;
-  min-height: 132px;
-  grid-template-columns: 42px minmax(0, 1fr) auto;
-  align-items: center;
-  gap: 18px;
-  border-bottom: 1px solid var(--admin-line);
-  padding: 20px 4px;
-}
-
-.admin-update-icon {
-  display: grid;
-  width: 42px;
-  height: 42px;
-  place-items: center;
-  border-radius: 50%;
-  background: var(--admin-accent-soft);
-  color: #617125;
-}
-
-.admin-update-copy {
-  min-width: 0;
-}
-
-.admin-update-copy > div {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  margin-bottom: 7px;
-}
-
-.admin-update-status {
-  display: inline-flex;
-  min-height: 21px;
-  align-items: center;
-  border: 1px solid var(--admin-line);
-  border-radius: 999px;
-  color: var(--admin-muted);
-  font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
-  font-size: 8px;
-  line-height: 1;
-  padding: 0 7px;
-  text-transform: uppercase;
-}
-
-.admin-update-status.published {
-  border-color: #b6c86c;
-  background: #f7fadf;
-  color: #53631d;
-}
-
-.admin-update-copy time,
-.admin-update-copy small {
-  color: var(--admin-muted);
-  font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
-  font-size: 9px;
-}
-
-.admin-update-copy h2 {
-  margin: 0;
-  font-size: 16px;
-}
-
-.admin-update-copy p {
-  max-width: 700px;
-  margin: 5px 0 8px;
-  color: var(--admin-muted);
-  font-size: 12px;
-  line-height: 1.5;
-}
-
-.admin-update-copy small {
-  display: block;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.admin-release-version {
-  color: var(--admin-ink);
-  font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
-  font-size: 10px;
-  font-weight: 650;
-}
-
-.admin-release-notes {
-  display: grid;
-  max-width: 730px;
-  gap: 3px;
-  margin: 6px 0 8px;
-  color: var(--admin-muted);
-  font-size: 11px;
-  line-height: 1.45;
-  padding-left: 17px;
-}
-
-.admin-changelog-dialog {
-  width: min(100%, 720px);
-}
-
-.admin-release-notes-field textarea {
-  min-height: 176px;
-}
-
-.admin-release-notes-field > small {
-  color: var(--admin-muted);
-  font-size: 10px;
-}
-
-.admin-update-actions {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-}
-
-.admin-update-actions button {
-  display: inline-flex;
-  min-height: 38px;
-  cursor: pointer;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  border: 1px solid var(--admin-line);
-  border-radius: var(--admin-radius);
-  background: #ffffff;
-  color: var(--admin-ink);
-  font-size: 11px;
-  padding: 0 11px;
-}
-
-.admin-update-actions button:hover {
-  border-color: var(--admin-line-strong);
-  background: var(--admin-subtle);
-}
-
-.admin-update-actions button.danger {
-  width: 38px;
-  color: var(--admin-danger);
-  padding: 0;
-}
-
-.admin-update-actions button.danger:hover {
-  border-color: #d7b4b0;
-  background: var(--admin-danger-soft);
 }
 
 .request-page-heading {
@@ -1201,26 +1024,6 @@ body:has(.admin-loading) {
   border-color: #d8d2a5;
   background: #fffdf0;
   color: #615916;
-}
-
-.admin-inline-message.success {
-  border-color: #b7c878;
-  background: #fbfdf4;
-  color: #53631d;
-}
-
-.admin-inline-message > span {
-  min-width: 0;
-  flex: 1;
-}
-
-.admin-inline-message > a {
-  display: inline-flex;
-  flex: 0 0 auto;
-  align-items: center;
-  gap: 5px;
-  color: inherit;
-  font-weight: 650;
 }
 
 .admin-queue-loading {
@@ -2564,30 +2367,6 @@ body:has(.admin-loading) {
   padding: 0 11px;
 }
 
-.admin-fields textarea {
-  width: 100%;
-  min-height: 108px;
-  resize: vertical;
-  border: 1px solid #cfd2ca;
-  border-radius: var(--admin-radius);
-  outline: 0;
-  background: white;
-  color: var(--admin-ink);
-  font: inherit;
-  font-size: 12px;
-  line-height: 1.55;
-  padding: 11px;
-}
-
-.admin-fields textarea::placeholder {
-  color: #94978f;
-}
-
-.admin-fields textarea:focus {
-  border-color: #718433;
-  box-shadow: 0 0 0 2px rgb(201 228 93 / 28%);
-}
-
 .admin-fields input::placeholder,
 .admin-dialog input::placeholder {
   color: #94978f;
@@ -2808,10 +2587,6 @@ body:has(.admin-loading) {
 
 .admin-version-dialog {
   width: min(100%, 660px);
-}
-
-.admin-update-dialog {
-  width: min(100%, 680px);
 }
 
 .admin-dialog-intro {
@@ -3156,45 +2931,10 @@ body:has(.admin-loading) {
     padding: 26px 0 48px;
   }
 
-  .admin-updates-dashboard {
-    width: min(100% - 28px, 1100px);
-    padding: 26px 0 48px;
-  }
-
   .admin-cms-heading {
     min-height: 0;
     align-items: flex-start;
     gap: 14px;
-  }
-
-  .admin-cms-heading > button {
-    width: 100%;
-    flex: 1 0 100%;
-  }
-
-  .admin-updates-dashboard .admin-cms-heading {
-    flex-wrap: wrap;
-    padding-bottom: 22px;
-  }
-
-  .admin-update-row {
-    grid-template-columns: 38px minmax(0, 1fr);
-    gap: 12px;
-    padding: 18px 0;
-  }
-
-  .admin-update-icon {
-    width: 38px;
-    height: 38px;
-  }
-
-  .admin-update-actions {
-    width: 100%;
-    grid-column: 1 / -1;
-  }
-
-  .admin-update-actions button:first-child {
-    flex: 1;
   }
 
   .request-page-heading {

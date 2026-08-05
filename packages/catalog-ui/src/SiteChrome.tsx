@@ -16,30 +16,11 @@ import {
 } from "lucide-react";
 import awalogoLogoUrl from "./assets/awalogo-logo.svg";
 import figmaMarkUrl from "./assets/figma-mark.svg";
-import siteUpdatesJson from "./site-updates.json";
 
 export const FIGMA_PLUGIN_URL = "https://www.figma.com/community/plugin/1661356348996631383";
 
 export type ThemeMode = "system" | "light" | "dark";
 export type SitePage = "catalog" | "docs" | "not-found";
-
-type SiteUpdate = {
-  id: string;
-  title: string;
-  summary: string;
-  published_at: string;
-  action_label: string;
-  action_href: string;
-  status: "draft" | "published";
-};
-
-const latestSiteUpdate = (siteUpdatesJson as SiteUpdate[])
-  .filter((update) => update.status === "published")
-  .sort((left, right) => right.published_at.localeCompare(left.published_at))[0] ?? null;
-
-function updateDateLabel(value: string): string {
-  return new Intl.DateTimeFormat("en-NG", { day: "numeric", month: "short", year: "numeric" }).format(new Date(`${value}T00:00:00`));
-}
 
 export function FigmaMark({
   size = 18,
@@ -111,13 +92,6 @@ export function SiteHeader({
   const visibleNewLogoNames = newLogoNames.slice(0, 4);
   const remainingNewLogoCount = Math.max(0, newLogoNames.length - visibleNewLogoNames.length);
   const newLogoSummary = `${visibleNewLogoNames.join(", ")}${remainingNewLogoCount > 0 ? `, and ${remainingNewLogoCount} more` : ""}.`;
-  const fallbackUpdate = onNewLogos && newLogoCount > 0 ? {
-    title: `${newLogoCount} new logos added`,
-    summary: newLogoSummary,
-    published_at: newLogoDate,
-    action_label: newLogosActive ? "Show all logos" : "View new logos"
-  } : null;
-  const visibleUpdate = latestSiteUpdate ?? fallbackUpdate;
 
   useEffect(() => {
     if (!themeMenuOpen) return;
@@ -204,16 +178,16 @@ export function SiteHeader({
             </a>
           </>
         ) : null}
-        {!pluginMode && visibleUpdate ? (
+        {onNewLogos && newLogoCount > 0 ? (
           <div className="notification-menu" ref={notificationRef}>
             <button
               className="topbar-icon-button notification-button"
               type="button"
-              aria-label={`Open updates: ${visibleUpdate.title}`}
+              aria-label={`Open updates, ${newLogoCount} newly added logos`}
               aria-haspopup="dialog"
               aria-expanded={notificationOpen}
               aria-pressed={newLogosActive}
-              title="Website updates"
+              title={`${newLogoCount} newly added logos`}
               onClick={() => {
                 setNotificationOpen((open) => !open);
                 setThemeMenuOpen(false);
@@ -233,29 +207,22 @@ export function SiteHeader({
                 <div className="notification-update">
                   <span className="notification-update-icon" aria-hidden="true"><BellRing size={15} strokeWidth={1.75} /></span>
                   <div>
-                    <strong>{visibleUpdate.title}</strong>
-                    <p>{visibleUpdate.summary}</p>
-                    <time dateTime={visibleUpdate.published_at}>{latestSiteUpdate ? updateDateLabel(visibleUpdate.published_at) : newLogoDateLabel}</time>
+                    <strong>{newLogoCount} new logos added</strong>
+                    <p>{newLogoSummary}</p>
+                    <time dateTime={newLogoDate}>{newLogoDateLabel}</time>
                   </div>
                 </div>
-                {latestSiteUpdate ? (
-                  <a className="notification-action" href={latestSiteUpdate.action_href} onClick={() => setNotificationOpen(false)}>
-                    <span>{latestSiteUpdate.action_label}</span>
-                    <ArrowRight aria-hidden="true" size={15} strokeWidth={1.75} />
-                  </a>
-                ) : (
-                  <button
-                    className="notification-action"
-                    type="button"
-                    onClick={() => {
-                      onNewLogos?.();
-                      setNotificationOpen(false);
-                    }}
-                  >
-                    <span>{fallbackUpdate?.action_label}</span>
-                    <ArrowRight aria-hidden="true" size={15} strokeWidth={1.75} />
-                  </button>
-                )}
+                <button
+                  className="notification-action"
+                  type="button"
+                  onClick={() => {
+                    onNewLogos();
+                    setNotificationOpen(false);
+                  }}
+                >
+                  <span>{newLogosActive ? "Show all logos" : "View new logos"}</span>
+                  <ArrowRight aria-hidden="true" size={15} strokeWidth={1.75} />
+                </button>
               </div>
             ) : null}
           </div>
