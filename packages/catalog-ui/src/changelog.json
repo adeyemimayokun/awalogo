@@ -1,0 +1,22 @@
+[
+  {
+    "version": "v1.0.0",
+    "title": "Initial release",
+    "date": "2026-07-19",
+    "changes": [
+      "Launched the searchable Nigerian financial institution logo catalog across regulated institutions and verified financial brands.",
+      "Added verified source metadata, institution-to-logo links, logo detail previews, and official website references.",
+      "Introduced logo variations alongside SVG, PNG, and WebP downloads and editable SVG insertion for Figma.",
+      "Added relevance-ranked search, multi-category filtering, alphabetical sorting, and responsive desktop and mobile browsing.",
+      "Launched logo requests and official company submissions for community-led catalog growth.",
+      "Added catalog validation and an open source contribution workflow.",
+      "Renamed the product to awalogo, with Nigerian Bank Logos as its descriptive tagline.",
+      "Moved the public website to awalogo.com and aligned website, plugin, metadata, and downloads with the new identity.",
+      "Separated the public website and offline Figma plugin into independent application builds.",
+      "Refined the catalog with a denser reference-led layout, native system typography, sticky filters, consistent borders, and coordinated light and dark themes."
+    ],
+    "status": "published",
+    "created_at": "2026-07-19",
+    "updated_at": "2026-07-19"
+  }
+]

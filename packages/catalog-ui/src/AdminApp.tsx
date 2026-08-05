@@ -14,12 +14,15 @@ import {
   LoaderCircle,
   LogOut,
   MailCheck,
+  Megaphone,
   MessageSquare,
+  Pencil,
   Plus,
   RefreshCw,
   Search,
   Send,
   ShieldCheck,
+  ScrollText,
   TriangleAlert,
   Trash2,
   Upload,
@@ -51,7 +54,7 @@ type Logo = {
 type CatalogResponse = { catalog: Logo[]; variations: Record<string, Variation[]>; lockedSlugs: string[]; localPreview?: boolean };
 type MutationResult = { pullRequest?: { number: number; url: string }; localPreview?: boolean };
 type IntegrationState = { available: boolean; message?: string };
-type AdminMode = "requests" | "manage" | "add" | "notifications";
+type AdminMode = "requests" | "manage" | "add" | "updates" | "changelog" | "notifications";
 type LogoRequestStatus = "pending" | "in-review" | "needs-info" | "approved" | "completed" | "rejected";
 type LogoRequest = {
   number: number;
@@ -76,6 +79,44 @@ type AdminNotification = {
   unread: boolean;
   updatedAt: string;
   url: string;
+};
+type SiteUpdate = {
+  id: string;
+  title: string;
+  summary: string;
+  published_at: string;
+  action_label: string;
+  action_href: string;
+  status: "draft" | "published";
+  created_at: string;
+  updated_at: string;
+};
+type SiteUpdateDraft = {
+  id: string;
+  title: string;
+  summary: string;
+  publishedAt: string;
+  actionLabel: string;
+  actionHref: string;
+  status: "draft" | "published";
+  creating: boolean;
+};
+type ChangelogRelease = {
+  version: string;
+  title: string;
+  date: string;
+  changes: string[];
+  status: "draft" | "published";
+  created_at: string;
+  updated_at: string;
+};
+type ChangelogDraft = {
+  version: string;
+  title: string;
+  date: string;
+  changesText: string;
+  status: "draft" | "published";
+  creating: boolean;
 };
 
 const sourceTypes = [
@@ -364,6 +405,8 @@ export function AdminApp() {
               <button aria-current={mode === "requests" ? "page" : undefined} className={mode === "requests" ? "active" : ""} onClick={() => setMode("requests")}><ClipboardList size={18} /> Requests</button>
               <button aria-current={mode === "manage" ? "page" : undefined} className={mode === "manage" ? "active" : ""} onClick={() => setMode("manage")}><FileCode2 size={18} /> Manage logos</button>
               <button aria-current={mode === "add" ? "page" : undefined} className={mode === "add" ? "active" : ""} onClick={() => setMode("add")}><Plus size={18} /> Add logo</button>
+              <button aria-current={mode === "updates" ? "page" : undefined} className={mode === "updates" ? "active" : ""} onClick={() => setMode("updates")}><Megaphone size={18} /> Website updates</button>
+              <button aria-current={mode === "changelog" ? "page" : undefined} className={mode === "changelog" ? "active" : ""} onClick={() => setMode("changelog")}><ScrollText size={18} /> Changelog</button>
               <button aria-current={mode === "notifications" ? "page" : undefined} className={mode === "notifications" ? "active" : ""} onClick={() => setMode("notifications")}><Bell size={18} /> Notifications{unreadNotifications ? <span className="admin-nav-count">{unreadNotifications}</span> : null}</button>
             </nav>
             <span className="admin-managed-count">{data?.catalog.length ?? 0} managed entries</span>
@@ -392,6 +435,8 @@ export function AdminApp() {
 
       {mode === "add" ? <AddLogoForm key={addFormVersion} busy={busy} onBack={() => setMode("manage")} onSubmit={mutate} /> :
       mode === "requests" ? <RequestsManager /> :
+      mode === "updates" ? <SiteUpdatesManager /> :
+      mode === "changelog" ? <ChangelogManager /> :
       mode === "notifications" ? <NotificationsManager onUnreadChange={setUnreadNotifications} /> : (
         <main className="admin-workspace">
           <aside className="admin-catalog">
@@ -729,6 +774,359 @@ function RequestsManager() {
           </div>
         </section>
       )}
+    </main>
+  );
+}
+
+function SiteUpdatesManager() {
+  const [updates, setUpdates] = useState<SiteUpdate[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState("");
+  const [result, setResult] = useState<MutationResult | null>(null);
+  const [draft, setDraft] = useState<SiteUpdateDraft | null>(null);
+  const [deleting, setDeleting] = useState<SiteUpdate | null>(null);
+  const [confirmation, setConfirmation] = useState("");
+  const editorOpen = draft !== null;
+
+  async function loadUpdates() {
+    setLoading(true);
+    setError("");
+    try {
+      const response = await api<{ updates: SiteUpdate[] }>("/api/admin/site-updates");
+      setUpdates(response.updates);
+    } catch (caught) {
+      setError(caught instanceof Error ? caught.message : "Could not load website updates");
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  useEffect(() => { void loadUpdates(); }, []);
+
+  useEffect(() => {
+    if (!editorOpen) return;
+    const previousFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const frame = window.requestAnimationFrame(() => document.querySelector<HTMLElement>('[role="dialog"] input')?.focus());
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setDraft(null);
+      const dialog = document.querySelector<HTMLElement>('[role="dialog"]');
+      if (dialog) keepFocusInDialog(event, dialog);
+    };
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      window.cancelAnimationFrame(frame);
+      document.removeEventListener("keydown", onKeyDown);
+      document.body.style.overflow = previousOverflow;
+      previousFocus?.focus();
+    };
+  }, [editorOpen]);
+
+  function createUpdate() {
+    const today = new Date().toISOString().slice(0, 10);
+    setDraft({ id: "", title: "", summary: "", publishedAt: today, actionLabel: "View update", actionHref: "/", status: "draft", creating: true });
+    setError("");
+    setResult(null);
+  }
+
+  function editUpdate(update: SiteUpdate) {
+    setDraft({
+      id: update.id,
+      title: update.title,
+      summary: update.summary,
+      publishedAt: update.published_at,
+      actionLabel: update.action_label,
+      actionHref: update.action_href,
+      status: update.status,
+      creating: false
+    });
+    setError("");
+    setResult(null);
+  }
+
+  async function saveUpdate(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (!draft) return;
+    setBusy(true);
+    setError("");
+    setResult(null);
+    try {
+      const response = await api<MutationResult & { updates: SiteUpdate[] }>("/api/admin/site-updates", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ operation: draft.creating ? "create" : "update", ...draft, creating: undefined })
+      });
+      if (response.localPreview) setUpdates(response.updates);
+      setResult(response);
+      setDraft(null);
+    } catch (caught) {
+      setError(caught instanceof Error ? caught.message : "Could not save the website update");
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  async function deleteUpdate() {
+    if (!deleting) return;
+    setBusy(true);
+    setError("");
+    setResult(null);
+    try {
+      const response = await api<MutationResult & { updates: SiteUpdate[] }>("/api/admin/site-updates", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ operation: "delete", id: deleting.id, confirmation })
+      });
+      if (response.localPreview) setUpdates(response.updates);
+      setResult(response);
+      setDeleting(null);
+      setConfirmation("");
+    } catch (caught) {
+      setError(caught instanceof Error ? caught.message : "Could not remove the website update");
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  return (
+    <main className="admin-updates-dashboard">
+      <header className="admin-cms-heading">
+        <div><p className="admin-kicker">Public website content</p><h1>Website updates</h1><p>Publish and maintain the message shown from the notification bell. Only the newest published update appears publicly.</p></div>
+        <button className="primary" type="button" onClick={createUpdate}><Plus size={17} /> New update</button>
+      </header>
+
+      {result ? <div className="admin-inline-message success" role="status"><Check size={17} /><span>{result.localPreview ? "Local update saved." : `Pull request #${result.pullRequest?.number} created. The website changes after it is reviewed and merged.`}</span>{result.pullRequest ? <a href={result.pullRequest.url} target="_blank" rel="noreferrer">Review PR <ExternalLink size={14} /></a> : null}</div> : null}
+      {error ? <div className="admin-inline-message error" role="alert"><X size={17} /> {error}</div> : null}
+
+      {loading ? <AdminQueueLoading /> : updates.length ? (
+        <section className="admin-update-list" aria-label="Website update posts">
+          {updates.map((update) => (
+            <article className="admin-update-row" key={update.id}>
+              <span className="admin-update-icon"><Megaphone size={18} /></span>
+              <div className="admin-update-copy">
+                <div><span className={`admin-update-status ${update.status}`}>{update.status}</span><time dateTime={update.published_at}>{shortDate(update.published_at)}</time></div>
+                <h2>{update.title}</h2>
+                <p>{update.summary}</p>
+                <small>{update.action_label} · {update.action_href}</small>
+              </div>
+              <div className="admin-update-actions">
+                <button type="button" onClick={() => editUpdate(update)}><Pencil size={15} /> Edit</button>
+                <button className="danger" type="button" aria-label={`Remove ${update.title}`} title="Remove update" onClick={() => { setDeleting(update); setConfirmation(""); }}><Trash2 size={16} /></button>
+              </div>
+            </article>
+          ))}
+        </section>
+      ) : <AdminQueueEmpty icon={<Megaphone size={22} />} title="No website updates" detail="Create a post to add an update to the notification menu." />}
+
+      {draft ? <div className="admin-dialog-backdrop" onMouseDown={(event) => { if (event.target === event.currentTarget) setDraft(null); }}>
+        <form className="admin-dialog admin-update-dialog" role="dialog" aria-modal="true" aria-labelledby="site-update-title" onSubmit={saveUpdate}>
+          <button className="admin-dialog-close" type="button" onClick={() => setDraft(null)} aria-label="Close"><X size={18} /></button>
+          <p className="admin-kicker">Website notification</p><h2 id="site-update-title">{draft.creating ? "Create update" : "Edit update"}</h2>
+          <p className="admin-dialog-intro">Published posts are ordered by publication date. The newest one is displayed in the website header.</p>
+          <div className="admin-fields">
+            <label><span>Title</span><input required value={draft.title} maxLength={100} onChange={(event) => setDraft((current) => current ? { ...current, title: event.target.value, id: current.creating ? slugify(event.target.value) : current.id } : current)} placeholder="15 new logos added" /></label>
+            <label><span>Update ID</span><input required readOnly={!draft.creating} pattern="[a-z0-9]+(?:-[a-z0-9]+)*" value={draft.id} onChange={(event) => setDraft((current) => current ? { ...current, id: event.target.value } : current)} placeholder="logos-2026-08-05" /></label>
+            <label><span>Summary</span><textarea required value={draft.summary} maxLength={280} onChange={(event) => setDraft((current) => current ? { ...current, summary: event.target.value } : current)} placeholder="A short description of what changed." /></label>
+          </div>
+          <div className="admin-fields two">
+            <label><span>Publication date</span><input required type="date" value={draft.publishedAt} onChange={(event) => setDraft((current) => current ? { ...current, publishedAt: event.target.value } : current)} /></label>
+            <label><span>Visibility</span><select value={draft.status} onChange={(event) => setDraft((current) => current ? { ...current, status: event.target.value as SiteUpdateDraft["status"] } : current)}><option value="draft">Draft</option><option value="published">Published</option></select></label>
+            <label><span>Button label</span><input required value={draft.actionLabel} maxLength={50} onChange={(event) => setDraft((current) => current ? { ...current, actionLabel: event.target.value } : current)} placeholder="View new logos" /></label>
+            <label><span>Button link</span><input required value={draft.actionHref} onChange={(event) => setDraft((current) => current ? { ...current, actionHref: event.target.value } : current)} placeholder="/?new=true" /></label>
+          </div>
+          <button className="admin-primary-button" disabled={busy} type="submit"><GitFork size={17} /> {busy ? "Creating pull request" : draft.creating ? "Create update pull request" : "Save update pull request"}</button>
+        </form>
+      </div> : null}
+
+      {deleting ? <ConfirmDialog title="Remove website update" token={deleting.id} value={confirmation} onChange={setConfirmation} busy={busy} onCancel={() => setDeleting(null)} onConfirm={deleteUpdate} /> : null}
+    </main>
+  );
+}
+
+function ChangelogManager() {
+  const [releases, setReleases] = useState<ChangelogRelease[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState("");
+  const [result, setResult] = useState<MutationResult | null>(null);
+  const [draft, setDraft] = useState<ChangelogDraft | null>(null);
+  const [deleting, setDeleting] = useState<ChangelogRelease | null>(null);
+  const [confirmation, setConfirmation] = useState("");
+  const editorOpen = draft !== null;
+
+  async function loadReleases() {
+    setLoading(true);
+    setError("");
+    try {
+      const response = await api<{ releases: ChangelogRelease[] }>("/api/admin/changelog");
+      setReleases(response.releases);
+    } catch (caught) {
+      setError(caught instanceof Error ? caught.message : "Could not load the changelog");
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  useEffect(() => { void loadReleases(); }, []);
+
+  useEffect(() => {
+    if (!editorOpen) return;
+    const previousFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const frame = window.requestAnimationFrame(() => document.querySelector<HTMLElement>('[role="dialog"] input')?.focus());
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setDraft(null);
+      const dialog = document.querySelector<HTMLElement>('[role="dialog"]');
+      if (dialog) keepFocusInDialog(event, dialog);
+    };
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      window.cancelAnimationFrame(frame);
+      document.removeEventListener("keydown", onKeyDown);
+      document.body.style.overflow = previousOverflow;
+      previousFocus?.focus();
+    };
+  }, [editorOpen]);
+
+  function nextVersion(): string {
+    const highest = releases.reduce((major, release) => Math.max(major, Number(release.version.slice(1).split(".")[0]) || 0), 0);
+    return `v${highest + 1}.0.0`;
+  }
+
+  function createRelease() {
+    setDraft({
+      version: nextVersion(),
+      title: "",
+      date: new Date().toISOString().slice(0, 10),
+      changesText: "",
+      status: "draft",
+      creating: true
+    });
+    setError("");
+    setResult(null);
+  }
+
+  function editRelease(release: ChangelogRelease) {
+    setDraft({
+      version: release.version,
+      title: release.title,
+      date: release.date,
+      changesText: release.changes.join("\n"),
+      status: release.status,
+      creating: false
+    });
+    setError("");
+    setResult(null);
+  }
+
+  async function saveRelease(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (!draft) return;
+    const changes = draft.changesText.split(/\r?\n/).map((change) => change.trim()).filter(Boolean);
+    if (!changes.length) {
+      setError("Add at least one release note.");
+      return;
+    }
+    setBusy(true);
+    setError("");
+    setResult(null);
+    try {
+      const response = await api<MutationResult & { releases: ChangelogRelease[] }>("/api/admin/changelog", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          operation: draft.creating ? "create" : "update",
+          version: draft.version,
+          title: draft.title,
+          date: draft.date,
+          changes,
+          status: draft.status
+        })
+      });
+      if (response.localPreview) setReleases(response.releases);
+      setResult(response);
+      setDraft(null);
+    } catch (caught) {
+      setError(caught instanceof Error ? caught.message : "Could not save the changelog release");
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  async function deleteRelease() {
+    if (!deleting) return;
+    setBusy(true);
+    setError("");
+    setResult(null);
+    try {
+      const response = await api<MutationResult & { releases: ChangelogRelease[] }>("/api/admin/changelog", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ operation: "delete", version: deleting.version, confirmation })
+      });
+      if (response.localPreview) setReleases(response.releases);
+      setResult(response);
+      setDeleting(null);
+      setConfirmation("");
+    } catch (caught) {
+      setError(caught instanceof Error ? caught.message : "Could not remove the changelog release");
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  return (
+    <main className="admin-updates-dashboard admin-changelog-dashboard">
+      <header className="admin-cms-heading">
+        <div><p className="admin-kicker">Public release history</p><h1>Changelog</h1><p>Publish major releases and maintain the notes shown in the public changelog. Draft releases remain visible only to admins.</p></div>
+        <button className="primary" type="button" onClick={createRelease}><Plus size={17} /> New release</button>
+      </header>
+
+      {result ? <div className="admin-inline-message success" role="status"><Check size={17} /><span>{result.localPreview ? "Local release saved." : `Pull request #${result.pullRequest?.number} created. The changelog changes after it is reviewed and merged.`}</span>{result.pullRequest ? <a href={result.pullRequest.url} target="_blank" rel="noreferrer">Review PR <ExternalLink size={14} /></a> : null}</div> : null}
+      {error ? <div className="admin-inline-message error" role="alert"><X size={17} /> {error}</div> : null}
+
+      {loading ? <AdminQueueLoading /> : releases.length ? (
+        <section className="admin-update-list" aria-label="Changelog releases">
+          {releases.map((release) => (
+            <article className="admin-update-row admin-changelog-row" key={release.version}>
+              <span className="admin-update-icon"><ScrollText size={18} /></span>
+              <div className="admin-update-copy">
+                <div><span className={`admin-update-status ${release.status}`}>{release.status}</span><strong className="admin-release-version">{release.version}</strong><time dateTime={release.date}>{shortDate(release.date)}</time></div>
+                <h2>{release.title}</h2>
+                <ul className="admin-release-notes">
+                  {release.changes.slice(0, 3).map((change) => <li key={change}>{change}</li>)}
+                </ul>
+                {release.changes.length > 3 ? <small>+{release.changes.length - 3} more release notes</small> : null}
+              </div>
+              <div className="admin-update-actions">
+                <button type="button" onClick={() => editRelease(release)}><Pencil size={15} /> Edit</button>
+                <button className="danger" type="button" aria-label={`Remove ${release.version}`} title="Remove release" onClick={() => { setDeleting(release); setConfirmation(""); }}><Trash2 size={16} /></button>
+              </div>
+            </article>
+          ))}
+        </section>
+      ) : <AdminQueueEmpty icon={<ScrollText size={22} />} title="No changelog releases" detail="Create a major release to start the public changelog." />}
+
+      {draft ? <div className="admin-dialog-backdrop" onMouseDown={(event) => { if (event.target === event.currentTarget) setDraft(null); }}>
+        <form className="admin-dialog admin-changelog-dialog" role="dialog" aria-modal="true" aria-labelledby="changelog-editor-title" onSubmit={saveRelease}>
+          <button className="admin-dialog-close" type="button" onClick={() => setDraft(null)} aria-label="Close"><X size={18} /></button>
+          <p className="admin-kicker">Major release</p><h2 id="changelog-editor-title">{draft.creating ? "Create release" : `Edit ${draft.version}`}</h2>
+          <p className="admin-dialog-intro">Only major versions are accepted. Add one clear release note per line.</p>
+          <div className="admin-fields two">
+            <label><span>Version</span><input required readOnly={!draft.creating} pattern="v[1-9][0-9]*\.0\.0" value={draft.version} onChange={(event) => setDraft((current) => current ? { ...current, version: event.target.value } : current)} placeholder="v2.0.0" /></label>
+            <label><span>Release date</span><input required type="date" value={draft.date} onChange={(event) => setDraft((current) => current ? { ...current, date: event.target.value } : current)} /></label>
+            <label><span>Visibility</span><select value={draft.status} onChange={(event) => setDraft((current) => current ? { ...current, status: event.target.value as ChangelogDraft["status"] } : current)}><option value="draft">Draft</option><option value="published">Published</option></select></label>
+            <label><span>Release title</span><input required maxLength={100} value={draft.title} onChange={(event) => setDraft((current) => current ? { ...current, title: event.target.value } : current)} placeholder="A major catalog update" /></label>
+          </div>
+          <div className="admin-fields"><label className="admin-release-notes-field"><span>Release notes</span><textarea required maxLength={9000} value={draft.changesText} onChange={(event) => setDraft((current) => current ? { ...current, changesText: event.target.value } : current)} placeholder={"Added new logo categories\nImproved search and filtering\nUpdated the Figma plugin"} /><small>One change per line. Up to 30 notes.</small></label></div>
+          <button className="admin-primary-button" disabled={busy} type="submit"><GitFork size={17} /> {busy ? "Creating pull request" : draft.creating ? "Create release pull request" : "Save release pull request"}</button>
+        </form>
+      </div> : null}
+
+      {deleting ? <ConfirmDialog title="Remove changelog release" token={deleting.version} value={confirmation} onChange={setConfirmation} busy={busy} onCancel={() => setDeleting(null)} onConfirm={deleteRelease} /> : null}
     </main>
   );
 }
