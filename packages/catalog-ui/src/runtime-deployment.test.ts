@@ -7,7 +7,7 @@ describe("runtime catalog deployment", () => {
     const apiRoot = resolve(process.cwd(), "api");
     const routes = (await readdir(apiRoot, { recursive: true }))
       .filter((path) => /\.(?:js|ts)$/.test(path))
-      .filter((path) => !path.startsWith("_lib/"));
+      .filter((path) => !path.split("/").some((segment) => segment.startsWith("_")));
 
     expect(routes).toHaveLength(12);
     expect(routes.some((path) => path.endsWith(".test.ts"))).toBe(false);

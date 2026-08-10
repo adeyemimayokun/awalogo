@@ -57,7 +57,7 @@ type Logo = {
 type CatalogResponse = { catalog: Logo[]; variations: Record<string, Variation[]>; lockedSlugs: string[]; localPreview?: boolean };
 type MutationResult = { pullRequest?: { number: number; url: string }; localPreview?: boolean };
 type IntegrationState = { available: boolean; message?: string };
-type AdminMode = "requests" | "review" | "manage" | "add" | "updates" | "changelog" | "notifications";
+type AdminMode = "requests" | "manage" | "add" | "updates" | "changelog" | "notifications";
 type LogoRequestStatus = "pending" | "in-review" | "needs-info" | "approved" | "completed" | "rejected";
 type LogoRequest = {
   number: number;
@@ -407,7 +407,6 @@ export function AdminApp() {
           <div className="admin-header-secondary">
             <nav className="admin-tabs" aria-label="Admin sections">
               <button aria-current={mode === "requests" ? "page" : undefined} className={mode === "requests" ? "active" : ""} onClick={() => setMode("requests")}><ClipboardList size={18} /> Requests</button>
-              <button aria-current={mode === "review" ? "page" : undefined} className={mode === "review" ? "active" : ""} onClick={() => setMode("review")}><ShieldCheck size={18} /> Review queue<span className="admin-nav-count">{reviewQueue.length}</span></button>
               <button aria-current={mode === "manage" ? "page" : undefined} className={mode === "manage" ? "active" : ""} onClick={() => setMode("manage")}><FileCode2 size={18} /> Manage logos</button>
               <button aria-current={mode === "add" ? "page" : undefined} className={mode === "add" ? "active" : ""} onClick={() => setMode("add")}><Plus size={18} /> Add logo</button>
               <button aria-current={mode === "updates" ? "page" : undefined} className={mode === "updates" ? "active" : ""} onClick={() => setMode("updates")}><Megaphone size={18} /> Website updates</button>
@@ -440,7 +439,6 @@ export function AdminApp() {
 
       {mode === "add" ? <AddLogoForm key={addFormVersion} busy={busy} onBack={() => setMode("manage")} onSubmit={mutate} /> :
       mode === "requests" ? <RequestsManager /> :
-      mode === "review" ? <ReviewQueue logos={reviewQueue} busy={busy} lockedSlugs={data?.lockedSlugs ?? []} mutate={mutate} /> :
       mode === "updates" ? <SiteUpdatesManager /> :
       mode === "changelog" ? <ChangelogManager /> :
       mode === "notifications" ? <NotificationsManager onUnreadChange={setUnreadNotifications} /> : (

@@ -22,6 +22,7 @@ jobs:
       - run: pnpm logos:check-formats
       - run: pnpm catalog:check
       - run: pnpm institutions:check
+      - run: pnpm vercel:check-functions
       - run: pnpm test
       - run: pnpm typecheck
       - run: pnpm build:plugin

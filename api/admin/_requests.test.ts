@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
-import requestsHandler from "../admin/requests";
+import requestsHandler from "./requests";
 
 type TestResponse = VercelResponse & { body?: unknown; statusCode: number };
 
