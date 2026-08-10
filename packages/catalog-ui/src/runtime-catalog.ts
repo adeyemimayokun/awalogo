@@ -1,5 +1,40 @@
 import { z } from "zod";
-import { institutionSchema } from "../../institutions/src";
+import {
+  institutionCategories,
+  institutionSourceTypes,
+  nigeriaPresenceValues,
+  regulatoryStatuses,
+  verificationStatuses
+} from "../../institutions/src";
+
+const isoDateSchema = z.string().regex(/^\d{4}-\d{2}-\d{2}$/);
+const httpUrlSchema = z.string().regex(/^https?:\/\/\S+$/i, "Invalid HTTP URL");
+
+// Figma's controller sandbox does not expose the browser URL constructor used
+// by Zod's .url() validator, so runtime transport validation stays declarative.
+const runtimeInstitutionSchema = z.object({
+  slug: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/),
+  legal_name: z.string().min(2).nullable(),
+  brand_name: z.string().min(2),
+  aliases: z.array(z.string().min(1)),
+  primary_category: z.enum(institutionCategories),
+  categories: z.array(z.enum(institutionCategories)).min(1),
+  country_code: z.string().regex(/^[A-Z]{2}$/),
+  nigeria_presence: z.enum(nigeriaPresenceValues),
+  regulators: z.array(z.string().min(2)),
+  licence_types: z.array(z.string().min(2)),
+  regulatory_status: z.enum(regulatoryStatuses),
+  verification_status: z.enum(verificationStatuses),
+  website: httpUrlSchema.nullable(),
+  sources: z.array(z.object({
+    url: httpUrlSchema,
+    source_type: z.enum(institutionSourceTypes),
+    retrieved_at: isoDateSchema
+  })).min(1),
+  logo_slug: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/).nullable(),
+  added_at: isoDateSchema,
+  updated_at: isoDateSchema
+});
 
 const runtimeAssetSchema = z.object({
   type: z.enum(["svg", "png", "webp", "jpeg"]),
@@ -16,7 +51,7 @@ const runtimeVariationSchema = z.object({
   name: z.string(),
   status: z.enum(["active", "old"]).optional(),
   archived_at: z.string().optional(),
-  source_url: z.string().url().optional(),
+  source_url: httpUrlSchema.optional(),
   formats: z.array(runtimeAssetSchema).min(1)
 });
 
@@ -26,8 +61,8 @@ const runtimeLogoSchema = z.object({
   category: z.string(),
   categories: z.array(z.string()).optional(),
   aliases: z.array(z.string()),
-  website: z.string().url(),
-  source_url: z.string().url(),
+  website: httpUrlSchema,
+  source_url: httpUrlSchema,
   source_type: z.string(),
   added_at: z.string(),
   updated_at: z.string(),
@@ -43,7 +78,7 @@ export const runtimeCatalogSchema = z.object({
   items: z.array(z.object({
     display_name: z.string(),
     categories: z.array(z.string()),
-    institutions: z.array(institutionSchema).min(1),
+    institutions: z.array(runtimeInstitutionSchema).min(1),
     logo: runtimeLogoSchema
   }))
 });

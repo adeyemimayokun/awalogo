@@ -1,8 +1,10 @@
-import { describe, expect, it } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import generatedRuntimeCatalog from "./generated/runtime-catalog.json";
 import { parseRuntimeCatalog } from "./runtime-catalog";
 
 describe("public runtime catalog", () => {
+  afterEach(() => vi.unstubAllGlobals());
+
   it("has deterministic unique entries and content-addressed assets", () => {
     const catalog = parseRuntimeCatalog(generatedRuntimeCatalog);
     const slugs = catalog.items.map((item) => item.logo.slug);
@@ -24,5 +26,11 @@ describe("public runtime catalog", () => {
     const changed = structuredClone(generatedRuntimeCatalog);
     changed.items[0].logo.formats[0].url = "https://example.com/logo.svg";
     expect(() => parseRuntimeCatalog(changed)).toThrow();
+  });
+
+  it("validates metadata in the Figma controller sandbox without URL", () => {
+    vi.stubGlobal("URL", undefined);
+    const catalog = parseRuntimeCatalog(generatedRuntimeCatalog);
+    expect(catalog.items).toHaveLength(228);
   });
 });
