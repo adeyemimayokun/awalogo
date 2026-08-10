@@ -1,6 +1,7 @@
 import { isUiToPluginMessage, type PluginToUiMessage } from "./messages";
 import { CATALOG_ORIGIN, CATALOG_PATH, parseRuntimeCatalog, type RuntimeCatalog } from "@awalogo/catalog-ui/runtime-catalog";
 import { trimAssetCache, type AssetCacheEntry } from "./cache-policy";
+import { readResponseHeader } from "./response-headers";
 
 figma.showUI(__html__, {
   width: 420,
@@ -76,7 +77,7 @@ async function loadCatalog(requestId: string, force = false) {
     const catalog = parseRuntimeCatalog(await response.json());
     const nextCache: CatalogCache = {
       catalog,
-      etag: response.headers.get("etag") ?? undefined,
+      etag: readResponseHeader(response, "etag"),
       fetchedAt: Date.now()
     };
     await figma.clientStorage.setAsync(CATALOG_CACHE_KEY, nextCache).catch(() => undefined);
