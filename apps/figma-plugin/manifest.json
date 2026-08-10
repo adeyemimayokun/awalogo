@@ -9,6 +9,13 @@
   ],
   "documentAccess": "dynamic-page",
   "networkAccess": {
-    "allowedDomains": ["none"]
+    "allowedDomains": [
+      "https://www.awalogo.com/catalog/"
+    ],
+    "reasoning": "awalogo fetches its versioned public catalog and content-addressed logo assets. No analytics or user data are transmitted.",
+    "devAllowedDomains": [
+      "http://localhost:5173",
+      "http://localhost:5176"
+    ]
   }
 }

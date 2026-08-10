@@ -2,7 +2,7 @@
 
 Nigerian Bank Logos.
 
-This workspace contains the offline Figma plugin UI and its sandboxed controller.
+This workspace contains the runtime-synced Figma plugin UI and its sandboxed controller.
 
 ## Structure
 
@@ -13,7 +13,7 @@ src/main.ts          Figma controller and vector insertion
 src/messages.ts      Shared UI/controller message contract
 src/figma-bridge.ts  Browser-safe Figma messaging adapter
 vite.config.ts       Plugin browser-preview configuration
-vite.plugin.config.ts  Self-contained offline plugin UI bundle
+vite.plugin.config.ts  Self-contained plugin UI bundle
 vite.main.config.ts  Controller IIFE bundle
 ```
 
@@ -41,8 +41,11 @@ pnpm --filter @awalogo/figma-plugin watch:ui
 pnpm --filter @awalogo/figma-plugin watch:controller
 ```
 
-Figma reloads the generated files; run the development plugin again after a rebuild. The UI build inlines its JavaScript, CSS, and logo assets into `figma-dist/index.html` because Figma only loads the file declared by the manifest.
+Figma reloads the generated files; run the development plugin again after a rebuild. The UI build inlines its JavaScript and CSS into `figma-dist/index.html`. Logo payloads remain outside the bundle and are loaded only when needed.
 
 ## Runtime boundary
 
-The plugin declares `allowedDomains: ["none"]`. Logo data and assets are bundled at build time, and no CMS credentials or website admin code execute inside Figma.
+The plugin restricts network access to `www.awalogo.com/catalog/`. It loads the same
+versioned catalog used by the website, validates asset checksums, and keeps a
+bounded cache in `figma.clientStorage` for offline fallback. No CMS credentials,
+analytics, or website admin code execute inside Figma.

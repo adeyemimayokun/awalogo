@@ -6,12 +6,15 @@
   "exports": {
     ".": "./src/index.ts",
     "./admin": "./src/admin.ts",
-    "./logo-data.plugin": "./src/logo-data.plugin.ts"
+    "./logo-data.plugin": "./src/logo-data.plugin.ts",
+    "./runtime-catalog": "./src/runtime-catalog.ts",
+    "./catalog-projection": "./src/catalog-projection.ts"
   },
   "dependencies": {
     "@awalogo/core": "workspace:*",
     "@awalogo/institutions": "workspace:*",
     "lucide-react": "^1.24.0",
-    "react": "^19.0.0"
+    "react": "^19.0.0",
+    "zod": "^3.24.1"
   }
 }

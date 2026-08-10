@@ -7,8 +7,8 @@ with SVG, PNG, and WebP downloads.
 
 Website: <https://awalogo.com>
 
-The public website and offline Figma plugin are separate applications backed by
-the same reusable TypeScript catalog and shared catalog UI package.
+The public website and Figma plugin are separate applications backed by the
+same generated runtime catalog and shared TypeScript catalog package.
 
 ## Status
 
@@ -23,7 +23,7 @@ Initial verified seed:
 | OPay | Fintech | <https://gstatic.opayweb.com/website-ng/img/opay-logo.684aa98.svg> |
 | Flutterwave | Fintech | <https://flutterwave.com/images/logo/full.svg> |
 
-The catalog now contains 119 reviewed official logos. Coverage expands through an
+The public runtime catalog currently contains 228 available logos. Coverage expands through an
 institution-driven sourcing queue. Raster sources are preserved and never traced
 or redrawn into SVG.
 
@@ -61,6 +61,7 @@ Refresh institution registers into a review-only staging area and regenerate com
 pnpm institutions:refresh
 pnpm institutions:generate
 pnpm institutions:check
+pnpm catalog:generate
 ```
 
 The snapshot coverage and known regulator-source gaps are recorded in `packages/institutions/exports/source-report.json`. Institutions remain separate from the logo catalog until official artwork is reviewed.
@@ -126,13 +127,14 @@ Then import `apps/figma-plugin/manifest.json` in Figma:
 2. Go to Plugins > Development > Import plugin from manifest.
 3. Select `apps/figma-plugin/manifest.json`.
 
-The plugin is offline-first and declares `allowedDomains: ["none"]`.
+The plugin loads the versioned catalog from `https://www.awalogo.com/catalog/v1/catalog.json`
+and caches the last successful catalog plus recently used assets for offline fallback.
+Its network access is restricted to the `www.awalogo.com/catalog/` path.
 
-The explorer bundles the complete Nigerian institution dataset. Approved logos
-appear first and support available-format downloads; official SVGs also support
-editable insertion. Records
-without approved official artwork remain searchable with a `Logo pending` state;
-the interface never substitutes an unrelated page image or generated mark.
+The website and plugin expose the same generated set of available logos. Assets
+support their available download formats, and official SVGs also support editable
+insertion. Pending records are retained in the repository research data but are
+excluded from both public products.
 
 ## Adding Logos
 

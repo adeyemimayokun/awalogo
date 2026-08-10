@@ -9,3 +9,4 @@ packages/institutions/staging/
 *.log
 *.tsbuildinfo
 .vercel
+apps/web/public/catalog/

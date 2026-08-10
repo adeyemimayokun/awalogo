@@ -1,4 +1,6 @@
 import { isUiToPluginMessage, type PluginToUiMessage } from "./messages";
+import { CATALOG_ORIGIN, CATALOG_PATH, parseRuntimeCatalog, type RuntimeCatalog } from "@awalogo/catalog-ui/runtime-catalog";
+import { trimAssetCache, type AssetCacheEntry } from "./cache-policy";
 
 figma.showUI(__html__, {
   width: 420,
@@ -8,6 +10,12 @@ figma.showUI(__html__, {
 
 const MAX_SVG_LENGTH = 1_500_000;
 const INSERTED_LOGO_KEY = "awalogo:inserted";
+const CATALOG_CACHE_KEY = "awalogo:catalog:v1";
+const ASSET_INDEX_KEY = "awalogo:asset-index:v1";
+const ASSET_KEY_PREFIX = "awalogo:asset:v1:";
+const CATALOG_URL = `${CATALOG_ORIGIN}${CATALOG_PATH}`;
+const CATALOG_TIMEOUT_MS = 8_000;
+type CatalogCache = { catalog: RuntimeCatalog; etag?: string; fetchedAt: number };
 type ClipShapeNode = RectangleNode | EllipseNode | PolygonNode | StarNode | VectorNode | BooleanOperationNode;
 type InsertedLogoNode = RectangleNode | FrameNode;
 
@@ -22,6 +30,99 @@ const CLIP_SHAPE_TYPES = new Set<SceneNode["type"]>([
 
 function postToUi(message: PluginToUiMessage) {
   figma.ui.postMessage(message);
+}
+
+function requestError(requestId: string, message: string, code: "offline" | "invalid" | "unavailable") {
+  postToUi({ type: "request-error", requestId, message, code });
+}
+
+function errorMessage(error: unknown, fallback: string) {
+  if (error instanceof Error) return error.message;
+  if (typeof error === "string" && error.trim()) return error;
+  if (error && typeof error === "object" && "message" in error && typeof error.message === "string") {
+    return error.message;
+  }
+  return fallback;
+}
+
+function catalogAssetUrl(value: string) {
+  const prefix = `${CATALOG_ORIGIN}/catalog/v1/assets/`;
+  return value.startsWith(prefix) && !value.slice(prefix.length).includes("/") ? value : null;
+}
+
+async function withTimeout<T>(promise: Promise<T>, timeoutMs: number): Promise<T> {
+  return Promise.race([
+    promise,
+    new Promise<T>((_resolve, reject) => setTimeout(() => reject(new Error("Request timed out")), timeoutMs))
+  ]);
+}
+
+async function loadCatalog(requestId: string, force = false) {
+  const stored = await figma.clientStorage.getAsync(CATALOG_CACHE_KEY) as CatalogCache | undefined;
+  let cached: CatalogCache | undefined;
+  try {
+    if (stored) cached = { ...stored, catalog: parseRuntimeCatalog(stored.catalog) };
+  } catch {
+    await figma.clientStorage.deleteAsync(CATALOG_CACHE_KEY);
+  }
+  try {
+    const headers = !force && cached?.etag ? { "If-None-Match": cached.etag } : undefined;
+    const response = await withTimeout(fetch(CATALOG_URL, { headers }), CATALOG_TIMEOUT_MS);
+    if (response.status === 304 && cached) {
+      postToUi({ type: "catalog-result", requestId, catalog: cached.catalog, source: "cache", stale: false });
+      return;
+    }
+    if (!response.ok) throw new Error(`Catalog request failed with ${response.status}`);
+    const catalog = parseRuntimeCatalog(await response.json());
+    const nextCache: CatalogCache = {
+      catalog,
+      etag: response.headers.get("etag") ?? undefined,
+      fetchedAt: Date.now()
+    };
+    await figma.clientStorage.setAsync(CATALOG_CACHE_KEY, nextCache).catch(() => undefined);
+    postToUi({ type: "catalog-result", requestId, catalog, source: "network", stale: false });
+  } catch (error) {
+    if (cached) {
+      postToUi({ type: "catalog-result", requestId, catalog: cached.catalog, source: "cache", stale: true });
+      return;
+    }
+    requestError(requestId, errorMessage(error, "The production catalog is unavailable. Deploy awalogo.com and try again."), "offline");
+  }
+}
+
+async function loadAsset(requestId: string, urlValue: string, checksum: string) {
+  const url = catalogAssetUrl(urlValue);
+  if (!url || !/^[a-f0-9]{64}$/.test(checksum) || !url.includes(checksum)) {
+    requestError(requestId, "The requested asset is not trusted.", "invalid");
+    return;
+  }
+
+  const cacheKey = `${ASSET_KEY_PREFIX}${checksum}`;
+  const cachedBytes = await figma.clientStorage.getAsync(cacheKey) as Uint8Array | undefined;
+  if (cachedBytes instanceof Uint8Array) {
+    const index = (await figma.clientStorage.getAsync(ASSET_INDEX_KEY) as AssetCacheEntry[] | undefined) ?? [];
+    const updated = index.map((entry) => entry.checksum === checksum ? { ...entry, lastUsed: Date.now() } : entry);
+    await figma.clientStorage.setAsync(ASSET_INDEX_KEY, updated);
+    postToUi({ type: "asset-result", requestId, checksum, bytes: Array.from(cachedBytes), source: "cache" });
+    return;
+  }
+
+  try {
+    const response = await withTimeout(fetch(url), CATALOG_TIMEOUT_MS);
+    if (!response.ok) throw new Error(`Asset request failed with ${response.status}`);
+    const bytes = new Uint8Array(await response.arrayBuffer());
+    if (bytes.byteLength === 0 || bytes.byteLength > 10_000_000) throw new Error("Asset size is invalid");
+
+    const index = (await figma.clientStorage.getAsync(ASSET_INDEX_KEY) as AssetCacheEntry[] | undefined) ?? [];
+    const policy = trimAssetCache(index, { checksum, size: bytes.byteLength, lastUsed: Date.now() });
+    await Promise.all(policy.evicted.map((evicted) => figma.clientStorage.deleteAsync(`${ASSET_KEY_PREFIX}${evicted}`)))
+      .catch(() => undefined);
+    if (policy.cacheIncoming) await figma.clientStorage.setAsync(cacheKey, bytes).catch(() => undefined);
+    await figma.clientStorage.setAsync(ASSET_INDEX_KEY, policy.entries).catch(() => undefined);
+    postToUi({ type: "asset-result", requestId, checksum, bytes: Array.from(bytes), source: "network" });
+  } catch (error) {
+    requestError(requestId, errorMessage(error, "The asset is unavailable."), "unavailable");
+  }
 }
 
 function placeNode(node: SceneNode) {
@@ -138,6 +239,16 @@ figma.ui.onmessage = async (message: unknown) => {
 
   if (message.type === "close") {
     figma.closePlugin();
+    return;
+  }
+
+  if (message.type === "catalog-load") {
+    await loadCatalog(message.requestId, message.force);
+    return;
+  }
+
+  if (message.type === "asset-load") {
+    await loadAsset(message.requestId, message.url, message.checksum);
     return;
   }
 

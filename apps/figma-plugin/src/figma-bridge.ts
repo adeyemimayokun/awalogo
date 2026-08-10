@@ -13,15 +13,44 @@ export function postToFigma(message: UiToPluginMessage): boolean {
 export function subscribeToFigma(handler: (message: PluginToUiMessage) => void): () => void {
   const listener = (event: MessageEvent<PluginMessageEnvelope<PluginToUiMessage>>) => {
     const message = event.data?.pluginMessage;
-    if (!message || ![
-      "inserted",
-      "inserted-in-frame",
-      "replaced",
-      "clipped",
-      "error"
-    ].includes(message.type)) return;
+    if (!message || typeof message !== "object" || !("type" in message)) return;
     handler(message);
   };
   window.addEventListener("message", listener);
   return () => window.removeEventListener("message", listener);
+}
+
+let requestSequence = 0;
+type RequestPayload =
+  | { type: "catalog-load"; force?: boolean }
+  | { type: "asset-load"; url: string; checksum: string };
+
+export function requestFromFigma<T extends PluginToUiMessage>(
+  message: RequestPayload,
+  expectedType: T["type"],
+  timeoutMs = 10_000
+): Promise<T> {
+  const requestId = `request-${Date.now()}-${requestSequence++}`;
+  return new Promise<T>((resolve, reject) => {
+    const timeout = window.setTimeout(() => {
+      unsubscribe();
+      reject(new Error("The request timed out."));
+    }, timeoutMs);
+    const unsubscribe = subscribeToFigma((response) => {
+      if (!("requestId" in response) || response.requestId !== requestId) return;
+      window.clearTimeout(timeout);
+      unsubscribe();
+      if (response.type === "request-error") {
+        reject(new Error(response.message));
+        return;
+      }
+      if (response.type !== expectedType) return;
+      resolve(response as T);
+    });
+    if (!postToFigma({ ...message, requestId } as UiToPluginMessage)) {
+      window.clearTimeout(timeout);
+      unsubscribe();
+      reject(new Error("Figma plugin messaging is unavailable."));
+    }
+  });
 }

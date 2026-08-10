@@ -32,9 +32,9 @@ The process began with a structured list of Nigerian financial institutions. Log
 
 The approved artwork was then prepared in practical formats—including SVG, PNG, and WebP—so it could support different design and development workflows. Raster logos are preserved in their original format rather than being inaccurately traced or redrawn as vectors.
 
-The project also includes a searchable public catalog and an offline-first Figma plugin, both powered by the same structured logo library. Contribution and review workflows allow the collection to grow while maintaining clear sourcing and quality standards.
+The project also includes a searchable public catalog and a repository-synced Figma plugin. Both consume the same versioned runtime catalog, while contribution and review workflows allow the collection to grow with clear sourcing and quality standards.
 
-Today, awalogo contains **119 reviewed logos sourced from official properties**, with more institutions being researched and added over time.
+Today, awalogo publishes **228 available logos**, with more institutions being researched and added over time.
 
 ## Built for the community
 

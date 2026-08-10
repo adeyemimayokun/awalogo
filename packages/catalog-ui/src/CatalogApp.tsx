@@ -418,8 +418,10 @@ export function CatalogApp({
   async function copyLogo(logo: LogoAsset, formatType: LogoFormatType, dimensions?: LogoDimensions) {
     try {
       if (formatType === "svg") {
-        if (!logo.svg) throw new Error("SVG is unavailable");
-        const svg = dimensions ? svgAtDimensions(logo.svg, dimensions) : logo.svg;
+        const blob = await logoBlob(logo, "svg");
+        if (!blob) throw new Error("SVG is unavailable");
+        const source = await blob.text();
+        const svg = dimensions ? svgAtDimensions(source, dimensions) : source;
         await copyTextToClipboard(svg, pluginMode);
       } else {
         const blob = await logoBlob(logo, formatType);
@@ -443,13 +445,15 @@ export function CatalogApp({
       setToast("Install the Figma plugin to insert logos");
       return;
     }
-    if (formatType === "svg" && logo.svg) {
-      if (!pluginBridge?.post({ type: "insert-logo", name: logo.name, svg: logo.svg, ...dimensions })) {
-        setToast("Insertion is available inside Figma");
-      }
-      return;
-    }
     try {
+      if (formatType === "svg") {
+        const blob = await logoBlob(logo, "svg");
+        if (!blob) throw new Error("SVG is unavailable");
+        if (!pluginBridge?.post({ type: "insert-logo", name: logo.name, svg: await blob.text(), ...dimensions })) {
+          setToast("Insertion is available inside Figma");
+        }
+        return;
+      }
       const sourceBlob = await logoBlob(logo, formatType);
       if (!sourceBlob) throw new Error("Asset unavailable");
       const blob = sourceBlob.type === "image/webp"
@@ -556,9 +560,6 @@ export function CatalogApp({
   }
 
   async function logoBlob(logo: LogoAsset, formatType: LogoFormatType): Promise<Blob | null> {
-    if (formatType === "svg") {
-      return logo.svg ? new Blob([logo.svg], { type: "image/svg+xml;charset=utf-8" }) : null;
-    }
     const exactAsset = logo.asset_urls[formatType];
     if (exactAsset) return fetch(exactAsset).then((response) => response.blob());
     const preview = previewUrl(logo);
@@ -1816,11 +1817,11 @@ function DetailSheet({
           </div>
         ) : null}
 
-        <div className={`detail-actions${pluginMode && onInsert ? "" : activeLogo.svg ? " double" : " single"}`}>
+        <div className={`detail-actions${pluginMode && onInsert ? "" : activeLogo.formats.some((format) => format.type === selectedFormat) ? " double" : " single"}`}>
           <button className="download-button" type="button" onClick={() => onDownload(activeLogo, selectedFormat)}>
             Download {selectedFormat.toUpperCase()}
           </button>
-          {activeLogo.svg || pluginMode ? (
+          {activeLogo.formats.some((format) => format.type === selectedFormat) || pluginMode ? (
             <>
               <button className="copy-button" type="button" onClick={() => onCopy(activeLogo, selectedFormat, pluginMode ? dimensions : undefined)}>
                 <Copy aria-hidden="true" size={15} strokeWidth={1.8} /> Copy {selectedFormat.toUpperCase()}

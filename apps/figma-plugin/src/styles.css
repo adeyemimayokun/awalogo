@@ -2555,3 +2555,65 @@ html[data-theme="dark"] .detail-facts a:focus-visible {
     transition-duration: 1ms !important;
   }
 }
+.catalog-connection-state {
+  display: grid;
+  min-height: 100vh;
+  place-content: center;
+  justify-items: center;
+  gap: 10px;
+  padding: 32px;
+  text-align: center;
+}
+
+.catalog-connection-state h1 {
+  margin: 6px 0 0;
+  font-size: 18px;
+}
+
+.catalog-connection-state p {
+  max-width: 300px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.catalog-connection-state button,
+.catalog-sync-status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+}
+
+.catalog-connection-state button {
+  min-height: 36px;
+  border-radius: 4px;
+  margin-top: 8px;
+  font-size: 12px;
+  padding: 0 13px;
+}
+
+.catalog-loading-icon {
+  animation: catalog-spin 900ms linear infinite;
+}
+
+@keyframes catalog-spin {
+  to { transform: rotate(360deg); }
+}
+
+.catalog-sync-status {
+  min-height: 28px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 10px;
+  padding: 0 8px;
+}
+
+.catalog-sync-status.stale {
+  border-color: #d5b16f;
+  color: #91611b;
+}

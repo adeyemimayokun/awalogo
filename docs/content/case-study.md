@@ -71,13 +71,13 @@ Raster artwork was preserved rather than automatically traced into SVG, since tr
 With the catalog structure in place, I built two experiences around the same underlying data:
 
 - A searchable public website for discovering and downloading available assets.
-- An offline-first Figma plugin for finding logos during the design process.
+- A repository-synced Figma plugin for finding logos during the design process.
 
 I also introduced automated validation and structured contribution workflows. These checks help identify missing files, unsafe SVG content, duplicate identifiers, and incomplete metadata. Contributors can propose new assets or corrections, but submissions still require sourcing and review.
 
 ## Outcome
 
-awalogo has grown from a small verified seed into a catalog containing **119 reviewed logos sourced from official properties**.
+awalogo has grown from a small verified seed into a public runtime catalog containing **228 available logos**.
 
 The solution now provides:
 

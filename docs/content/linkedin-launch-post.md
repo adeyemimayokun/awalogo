@@ -21,10 +21,10 @@ Bringing the idea to life involved:
 - Reviewing assets instead of accepting arbitrary web images.
 - Preparing available SVG, PNG, and WebP formats.
 - Building a searchable public catalog.
-- Creating an offline-first Figma plugin.
+- Creating a repository-synced Figma plugin with cached fallback.
 - Establishing contribution and review workflows so the library can grow responsibly.
 
-Today, awalogo contains **119 reviewed logos sourced from official properties**, and the collection is still growing.
+Today, awalogo publishes **228 available logos**, and the collection is still growing.
 
 The project is open source and free to use. The supporting code and tools are open to the community, while every logo remains a trademark of its respective owner.
 

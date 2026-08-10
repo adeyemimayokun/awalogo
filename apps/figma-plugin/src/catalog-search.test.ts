@@ -1,6 +1,10 @@
 import { describe, expect, it } from "vitest";
-import { explorerCatalogItems } from "./catalog-data";
+import generatedRuntimeCatalog from "../../../packages/catalog-ui/src/generated/runtime-catalog.json";
+import { parseRuntimeCatalog } from "@awalogo/catalog-ui/runtime-catalog";
+import { catalogItemsFromRuntime } from "./catalog-data";
 import { searchScore } from "./catalog-search";
+
+const explorerCatalogItems = catalogItemsFromRuntime(parseRuntimeCatalog(generatedRuntimeCatalog));
 
 function resultsFor(query: string) {
   return explorerCatalogItems

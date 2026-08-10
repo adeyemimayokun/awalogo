@@ -5,6 +5,8 @@ import {
   Bell,
   Check,
   ChevronDown,
+  ChevronLeft,
+  ChevronRight,
   ClipboardList,
   ExternalLink,
   FileCode2,
@@ -32,6 +34,7 @@ import type { InstitutionCategory } from "@awalogo/institutions";
 import awalogoLogoUrl from "./assets/awalogo-logo.svg";
 import { availableInstitutionCategories, categoryLabel } from "./catalog-data";
 import { logos as bundledLogos } from "./logo-data";
+import { getReviewQueue, getReviewQueuePosition, sourceClassificationLabel } from "./review-queue";
 import "./admin.css";
 
 type Session = { login: string; avatarUrl: string; local?: boolean; repositoryAccess?: boolean };
@@ -54,7 +57,7 @@ type Logo = {
 type CatalogResponse = { catalog: Logo[]; variations: Record<string, Variation[]>; lockedSlugs: string[]; localPreview?: boolean };
 type MutationResult = { pullRequest?: { number: number; url: string }; localPreview?: boolean };
 type IntegrationState = { available: boolean; message?: string };
-type AdminMode = "requests" | "manage" | "add" | "updates" | "changelog" | "notifications";
+type AdminMode = "requests" | "review" | "manage" | "add" | "updates" | "changelog" | "notifications";
 type LogoRequestStatus = "pending" | "in-review" | "needs-info" | "approved" | "completed" | "rejected";
 type LogoRequest = {
   number: number;
@@ -332,6 +335,7 @@ export function AdminApp() {
     const normalized = query.toLowerCase().trim();
     return (data?.catalog ?? []).filter((logo) => !normalized || `${logo.name} ${logo.slug}`.toLowerCase().includes(normalized));
   }, [data, query]);
+  const reviewQueue = useMemo(() => getReviewQueue(data?.catalog ?? []), [data]);
   const selected = (data?.catalog ?? []).find((logo) => logo.slug === selectedSlug) ?? null;
   const selectedVariations = selected ? data?.variations[selected.slug] ?? [] : [];
 
@@ -403,6 +407,7 @@ export function AdminApp() {
           <div className="admin-header-secondary">
             <nav className="admin-tabs" aria-label="Admin sections">
               <button aria-current={mode === "requests" ? "page" : undefined} className={mode === "requests" ? "active" : ""} onClick={() => setMode("requests")}><ClipboardList size={18} /> Requests</button>
+              <button aria-current={mode === "review" ? "page" : undefined} className={mode === "review" ? "active" : ""} onClick={() => setMode("review")}><ShieldCheck size={18} /> Review queue<span className="admin-nav-count">{reviewQueue.length}</span></button>
               <button aria-current={mode === "manage" ? "page" : undefined} className={mode === "manage" ? "active" : ""} onClick={() => setMode("manage")}><FileCode2 size={18} /> Manage logos</button>
               <button aria-current={mode === "add" ? "page" : undefined} className={mode === "add" ? "active" : ""} onClick={() => setMode("add")}><Plus size={18} /> Add logo</button>
               <button aria-current={mode === "updates" ? "page" : undefined} className={mode === "updates" ? "active" : ""} onClick={() => setMode("updates")}><Megaphone size={18} /> Website updates</button>
@@ -435,6 +440,7 @@ export function AdminApp() {
 
       {mode === "add" ? <AddLogoForm key={addFormVersion} busy={busy} onBack={() => setMode("manage")} onSubmit={mutate} /> :
       mode === "requests" ? <RequestsManager /> :
+      mode === "review" ? <ReviewQueue logos={reviewQueue} busy={busy} lockedSlugs={data?.lockedSlugs ?? []} mutate={mutate} /> :
       mode === "updates" ? <SiteUpdatesManager /> :
       mode === "changelog" ? <ChangelogManager /> :
       mode === "notifications" ? <NotificationsManager onUnreadChange={setUnreadNotifications} /> : (
@@ -490,11 +496,94 @@ export function AdminApp() {
   );
 }
 
-function VerificationManager({ logo, busy, locked, mutate }: {
+function ReviewQueue({ logos, busy, lockedSlugs, mutate }: {
+  logos: Logo[];
+  busy: boolean;
+  lockedSlugs: string[];
+  mutate: (payload: Record<string, unknown>) => Promise<boolean>;
+}) {
+  const [selectedSlug, setSelectedSlug] = useState(logos[0]?.slug ?? "");
+  const selected = logos.find((logo) => logo.slug === selectedSlug) ?? logos[0] ?? null;
+  const position = getReviewQueuePosition(logos, selected?.slug ?? "");
+
+  if (!selected) {
+    return (
+      <main className="admin-review-page admin-review-complete">
+        <span className="admin-review-complete-icon"><Check size={24} /></span>
+        <p className="admin-kicker">Queue complete</p>
+        <h1>Nothing needs review</h1>
+        <p>Every catalog entry currently has a completed verification decision.</p>
+      </main>
+    );
+  }
+
+  const preview = logoPreview(selected.slug, selected.preview_url);
+  const sourceHost = (() => {
+    try { return new URL(selected.source_url).hostname.replace(/^www\./, ""); }
+    catch { return selected.source_url; }
+  })();
+
+  return (
+    <main className="admin-review-page">
+      <header className="admin-review-header">
+        <div>
+          <p className="admin-kicker">Catalog verification</p>
+          <h1>Review queue</h1>
+          <p>Confirm each logo against a company-controlled source before approving it.</p>
+        </div>
+        <div className="admin-review-progress" aria-label={`Entry ${position.current} of ${position.total}`}>
+          <div><strong>{position.current} of {position.total}</strong><span>{position.total - position.current} remaining after this</span></div>
+          <progress value={position.current} max={position.total}>{position.current} of {position.total}</progress>
+        </div>
+      </header>
+
+      <div className="admin-review-card" key={selected.slug}>
+        <section className="admin-review-artwork">
+          <span className="admin-review-sequence">{String(position.current).padStart(2, "0")}</span>
+          {preview ? <img src={preview} alt={`${selected.name} logo`} /> : <span className="admin-review-preview-empty"><ImagePlus size={22} /> Preview unavailable</span>}
+        </section>
+        <section className="admin-review-details">
+          <div className="admin-review-title">
+            <div><p className="admin-status needs-review">Needs review</p><h2>{selected.name}</h2><p>{selected.slug} · {logoCategorySummary(selected)}</p></div>
+            <a href={selected.website} target="_blank" rel="noreferrer">Website <ExternalLink size={14} /></a>
+          </div>
+
+          <dl className="admin-review-source">
+            <div>
+              <dt>Official-source URL</dt>
+              <dd><a href={selected.source_url} target="_blank" rel="noreferrer"><span>{sourceHost}</span><ExternalLink size={14} /></a><small>{selected.source_url}</small></dd>
+            </div>
+            <div>
+              <dt>Source classification</dt>
+              <dd><span className={`admin-source-pill ${selected.source_type === "community-catalog" ? "community" : "official"}`}>{sourceClassificationLabel(selected.source_type)}</span></dd>
+            </div>
+          </dl>
+
+          <VerificationManager
+            logo={selected}
+            busy={busy}
+            locked={lockedSlugs.includes(selected.slug)}
+            mutate={mutate}
+            onVerified={() => setSelectedSlug(position.nextSlug ?? position.previousSlug ?? "")}
+          />
+        </section>
+      </div>
+
+      <nav className="admin-review-navigation" aria-label="Review queue navigation">
+        <button type="button" disabled={!position.previousSlug} onClick={() => position.previousSlug && setSelectedSlug(position.previousSlug)}><ChevronLeft size={17} /> Previous</button>
+        <label><span>Jump to entry</span><select value={selected.slug} onChange={(event) => setSelectedSlug(event.target.value)}>{logos.map((logo, index) => <option key={logo.slug} value={logo.slug}>{index + 1}. {logo.name}</option>)}</select></label>
+        <button type="button" disabled={!position.nextSlug} onClick={() => position.nextSlug && setSelectedSlug(position.nextSlug)}>Next <ChevronRight size={17} /></button>
+      </nav>
+    </main>
+  );
+}
+
+function VerificationManager({ logo, busy, locked, mutate, onVerified }: {
   logo: Logo;
   busy: boolean;
   locked: boolean;
   mutate: (payload: Record<string, unknown>) => Promise<boolean>;
+  onVerified?: () => void;
 }) {
   const [open, setOpen] = useState(false);
   const isVerified = logo.status === "verified";
@@ -528,7 +617,10 @@ function VerificationManager({ logo, busy, locked, mutate }: {
       sourceUrl: form.get("sourceUrl"),
       sourceType: form.get("sourceType")
     });
-    if (ok) setOpen(false);
+    if (ok) {
+      setOpen(false);
+      onVerified?.();
+    }
   }
 
   const hasOfficialSourceType = sourceTypes.some(([value]) => value === logo.source_type);
