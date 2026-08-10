@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { institutionSchema } from "@awalogo/institutions";
+import { institutionSchema } from "../../institutions/src";
 
 const runtimeAssetSchema = z.object({
   type: z.enum(["svg", "png", "webp", "jpeg"]),
