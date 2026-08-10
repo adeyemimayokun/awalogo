@@ -1,8 +1,18 @@
-import { readFile } from "node:fs/promises";
+import { readFile, readdir } from "node:fs/promises";
 import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";
 
 describe("runtime catalog deployment", () => {
+  it("stays within the Vercel Hobby plan function limit", async () => {
+    const apiRoot = resolve(process.cwd(), "api");
+    const routes = (await readdir(apiRoot, { recursive: true }))
+      .filter((path) => /\.(?:js|ts)$/.test(path))
+      .filter((path) => !path.startsWith("_lib/"));
+
+    expect(routes).toHaveLength(12);
+    expect(routes.some((path) => path.endsWith(".test.ts"))).toBe(false);
+  });
+
   it("serves catalog files with public CORS and appropriate cache policies", async () => {
     const config = JSON.parse(await readFile(resolve(process.cwd(), "vercel.json"), "utf8"));
     const catalog = config.headers.find((entry: { source: string }) => entry.source === "/catalog/v1/catalog.json");

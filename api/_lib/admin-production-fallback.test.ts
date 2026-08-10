@@ -1,9 +1,9 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
-import { issueSession } from "../_lib/auth";
-import catalogHandler from "./catalog";
-import notificationsHandler from "./notifications";
-import requestsHandler from "./requests";
+import { issueSession } from "./auth";
+import catalogHandler from "../admin/catalog";
+import notificationsHandler from "../admin/notifications";
+import requestsHandler from "../admin/requests";
 
 type TestResponse = VercelResponse & {
   body?: unknown;
