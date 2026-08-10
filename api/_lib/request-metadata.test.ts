@@ -33,8 +33,12 @@ describe("private request metadata", () => {
 
   it("rejects tampered encrypted metadata", () => {
     const body = appendPrivateRequestMetadata("Public request", metadata);
-    const tampered = body.replace(/(awalogo-private-request:\s*v1\.)[A-Za-z0-9_-]/, "$1x");
+    const tampered = body.replace(
+      /(awalogo-private-request:\s*v1\.)([A-Za-z0-9_-])/,
+      (_match, prefix: string, character: string) => `${prefix}${character === "A" ? "B" : "A"}`
+    );
 
+    expect(tampered).not.toBe(body);
     expect(readPrivateRequestMetadata(tampered)).toBeNull();
   });
 });
