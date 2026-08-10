@@ -56,9 +56,9 @@ SOURCE-AWARE AND OPEN SOURCE
 
 Each available logo includes institution metadata, source status, and an official website where available. The catalog is maintained in public, and companies and community contributors can request a missing logo, submit current artwork, or report a correction.
 
-OFFLINE BY DESIGN
+LIVE CATALOG, CACHED FALLBACK
 
-The catalog and logo files are bundled with the plugin. awalogo does not require an account, payment, or runtime network connection. Website and GitHub links open outside the plugin only when you choowhat se them.
+The plugin loads its versioned catalog from awalogo.com so approved additions match the website without a plugin release. The last successful catalog and recently used assets remain available when the connection is interrupted. No account or payment is required.
 
 TRADEMARK NOTICE
 
@@ -104,16 +104,18 @@ Use the following answers in Figma's data security form.
 ### Summary
 
 ```text
-awalogo does not collect, store, sell, share, or transmit personal data. The logo catalog and assets are bundled with the plugin and work without runtime network access.
+awalogo does not collect, store, sell, share, or transmit personal data. The plugin requests only the public logo catalog and selected logo assets from awalogo.com.
 ```
 
 ### Network access
 
 ```text
-No access to network.
+Access to `www.awalogo.com/catalog/` only.
 ```
 
-The manifest declares `allowedDomains: ["none"]`.
+The manifest restricts `allowedDomains` to `www.awalogo.com/catalog/`. This is used
+only to retrieve the public catalog and logo files. No analytics, tracking, or
+user-submitted document data is transmitted.
 
 ### Accounts and payments
 
@@ -156,9 +158,9 @@ The plugin contains no advertising, analytics, behavioral tracking, or third-par
 Paste this into any review-notes or additional-information field:
 
 ```text
-awalogo is a free, offline-first logo browser for Nigerian financial institutions.
+awalogo is a free logo browser for Nigerian financial institutions.
 
-No account or payment is required. The plugin makes no runtime network requests and declares allowedDomains: ["none"]. All catalog data and logo assets are bundled locally.
+No account or payment is required. The plugin loads a versioned public catalog from awalogo.com and caches the last successful response plus recently used assets for offline fallback. Network access is restricted to the public catalog path.
 
 Suggested review flow:
 1. Run the plugin in a Figma Design file.
@@ -346,7 +348,7 @@ Initial Community release of awalogo.
 - Browse logo variations and source metadata.
 - Use system, light, or dark color mode.
 - Request missing logos and contribute current artwork through GitHub.
-- Work offline with no account or runtime network access.
+- Use the last successful catalog and recently used assets during a network interruption.
 ```
 
 ## Legal and Licensing Copy
@@ -364,7 +366,7 @@ The awalogo codebase and project tooling are available under the MIT License. Lo
 - Comments: allow comments
 - Contributors: add maintainers who should receive visible credit
 - Pricing: free
-- Network label expected from manifest: `No access to network`
+- Network label expected from manifest: access to `www.awalogo.com/catalog/`
 - Playground file: optional but recommended
 - Carousel: optional; use up to six focused workflow images from the copy above
 
@@ -374,7 +376,8 @@ The awalogo codebase and project tooling are available under the MIT License. Lo
 - Build with `pnpm build:plugin`.
 - Import `apps/figma-plugin/manifest.json` in Figma Desktop.
 - Confirm `apps/figma-plugin/figma-dist/main.js` loads.
-- Confirm `apps/figma-plugin/figma-dist/index.html` renders offline.
+- Confirm `apps/figma-plugin/figma-dist/index.html` loads the production catalog.
+- Confirm the cached catalog appears when the connection is interrupted.
 - Test search, filtering, variations, sizing, copy, and insertion.
 - Test frame insertion, shape clipping, and selected-logo replacement.
 - Test system, light, and dark modes.

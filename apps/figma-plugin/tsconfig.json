@@ -9,9 +9,9 @@
     "src",
     "vite.config.ts",
     "vite.plugin.config.ts",
-    "vite.logo-assets.ts",
     "vite.main.config.ts",
     "../../packages/logos/src",
-    "../../packages/institutions/src"
+    "../../packages/institutions/src",
+    "../../packages/catalog-ui/src/runtime-catalog.ts"
   ]
 }

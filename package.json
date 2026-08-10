@@ -39,7 +39,9 @@
     "logos:import:coverage": "tsx packages/logos/scripts/import-institution-coverage.ts",
     "logos:import:naicom": "tsx packages/logos/scripts/import-naicom-directory-logos.ts",
     "logos:sync-links": "tsx packages/logos/scripts/sync-institution-logo-links.ts",
-    "logos:promote": "tsx packages/logos/scripts/promote-candidates.ts && pnpm logos:sync-links && pnpm institutions:generate && pnpm logos:formats"
+    "logos:promote": "tsx packages/logos/scripts/promote-candidates.ts && pnpm logos:sync-links && pnpm institutions:generate && pnpm logos:formats",
+    "catalog:generate": "tsx packages/logos/scripts/generate-runtime-catalog.ts",
+    "catalog:check": "tsx packages/logos/scripts/generate-runtime-catalog.ts --check"
   },
   "devDependencies": {
     "@figma/plugin-typings": "^1.101.0",

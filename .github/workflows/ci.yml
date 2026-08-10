@@ -20,6 +20,7 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm validate
       - run: pnpm logos:check-formats
+      - run: pnpm catalog:check
       - run: pnpm institutions:check
       - run: pnpm vercel:check-functions
       - run: pnpm test

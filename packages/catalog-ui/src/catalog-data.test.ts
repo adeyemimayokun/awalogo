@@ -91,7 +91,7 @@ describe("institution catalog", () => {
     const paga = logoCatalogItems.find((item) => item.logo.slug === "paga");
 
     expect(paga?.displayName).toBe("Paga");
-    expect(paga?.logo.svg).toContain("<svg");
+    expect(paga?.logo.asset_urls.svg).toMatch(/^\/catalog\/v1\/assets\/[a-f0-9]{64}\.svg$/);
     expect(paga?.institutions.map((institution) => institution.slug)).toEqual(expect.arrayContaining([
       "paga-remit",
       "pagatech"
@@ -151,10 +151,10 @@ describe("institution catalog", () => {
     const busha = logoCatalogItems.find((item) => item.logo.slug === "busha-digital");
     const light = busha?.logo.variations.find((variation) => variation.id === "light");
 
-    expect(symbol?.svg).toContain("<svg");
+    expect(symbol?.asset_urls.svg).toMatch(/^\/catalog\/v1\/assets\/[a-f0-9]{64}\.svg$/);
     expect(symbol?.asset_urls.png).toBeTruthy();
     expect(symbol?.asset_urls.webp).toBeTruthy();
-    expect(light?.svg).toContain("<svg");
+    expect(light?.asset_urls.svg).toMatch(/^\/catalog\/v1\/assets\/[a-f0-9]{64}\.svg$/);
     expect(light?.asset_urls.png).toBeTruthy();
     expect(light?.asset_urls.webp).toBeTruthy();
     expect(logos.flatMap((logo) => logo.variations)).toHaveLength(Object.values(logoVariations).flat().length);

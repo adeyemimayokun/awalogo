@@ -164,6 +164,8 @@ export function DocsApp({ aboutMarkdown = "" }: { aboutMarkdown?: string }) {
               label="TypeScript"
               code={`import { findLogoBySlug, getLogosByCategory } from "@awalogo/core";\n\nconst access = findLogoBySlug("access-bank");\nconst commercialBanks = getLogosByCategory("commercial-bank");\n\nconsole.log(access?.formats);\nconsole.log(commercialBanks.length);`}
             />
+            <h3>Runtime catalog</h3>
+            <p>The website and Figma plugin consume the generated catalog at <code>https://www.awalogo.com/catalog/v1/catalog.json</code>. Asset URLs are content-addressed and can be cached indefinitely.</p>
             <h3>Catalog record</h3>
             <CodeBlock
               label="TypeScript"
@@ -173,7 +175,7 @@ export function DocsApp({ aboutMarkdown = "" }: { aboutMarkdown?: string }) {
 
           <section id="figma" className="docs-section">
             <h2>Figma plugin</h2>
-            <p>The offline plugin bundles approved metadata and assets locally. It does not require runtime network access, and SVG insertion creates editable vector layers.</p>
+            <p>The plugin loads the same versioned catalog published by awalogo.com, so approved logo updates reach the website and plugin together after deployment. It caches the last successful catalog and recently used assets for offline fallback, while SVG insertion still creates editable vector layers.</p>
             <CodeBlock label="Build the plugin" code={`pnpm build:plugin`} />
             <ol className="docs-steps docs-steps-compact">
               <li><strong>Open Figma desktop</strong><span>Go to Plugins, Development, then Import plugin from manifest.</span></li>

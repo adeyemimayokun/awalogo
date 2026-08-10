@@ -2,7 +2,6 @@ import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import react from "@vitejs/plugin-react";
 import { defineConfig, type Plugin } from "vite";
-import { pluginLogoAssets } from "./vite.logo-assets";
 
 const root = dirname(fileURLToPath(import.meta.url));
 
@@ -35,7 +34,7 @@ function inlineFigmaUi(): Plugin {
 
 export default defineConfig({
   root,
-  plugins: [react(), pluginLogoAssets(), inlineFigmaUi()],
+  plugins: [react(), inlineFigmaUi()],
   define: {
     __NBL_SURFACE__: JSON.stringify("plugin")
   },
@@ -43,6 +42,7 @@ export default defineConfig({
     alias: [
       { find: "@awalogo/core", replacement: resolve(root, "../../packages/logos/src/index.ts") },
       { find: "@awalogo/institutions", replacement: resolve(root, "../../packages/institutions/src/index.ts") },
+      { find: "@awalogo/catalog-ui", replacement: resolve(root, "../../packages/catalog-ui/src") },
       { find: "@logo-assets", replacement: resolve(root, "../../packages/logos/src/assets") }
     ]
   },

@@ -1,141 +1,31 @@
 import { describe, expect, it } from "vitest";
-import communityCandidates from "../../../packages/institutions/data/community-candidates.json";
-import foreignAuthorized from "../../../packages/institutions/exports/foreign-authorized-ng.json";
-import institutions from "../../../packages/institutions/exports/institutions-ng.json";
-import {
-  availableLogoCount,
-  canonicalLogoCount,
-  catalogItems,
-  explorerCatalogItems,
-  institutionCount,
-  logoCatalogItems,
-  manifestCatalogItems,
-  manifestEntryCount,
-  manifestPendingCount
-} from "./catalog-data";
-import { logos } from "./logo-data";
+import generatedRuntimeCatalog from "../../../packages/catalog-ui/src/generated/runtime-catalog.json";
+import { parseRuntimeCatalog } from "@awalogo/catalog-ui/runtime-catalog";
+import { availableCategories, catalogItemsFromRuntime } from "./catalog-data";
 
-describe("institution catalog", () => {
-  it("shows every Nigerian and Nigeria-authorized institution", () => {
-    const expectedDirectorySize = institutions.length + foreignAuthorized.length + communityCandidates.length;
-    expect(catalogItems.length).toBeLessThan(expectedDirectorySize);
-    const renderedSlugs = new Set(catalogItems.flatMap((item) => item.institutions).map((institution) => institution.slug));
-    expect([...institutions, ...communityCandidates].every((institution) => renderedSlugs.has(institution.slug))).toBe(true);
-    expect(institutionCount).toBe(catalogItems.length);
-    expect(canonicalLogoCount).toBe(logos.length);
-    expect(logoCatalogItems.some((item) => item.logo.slug === "dantown")).toBe(true);
+const catalog = parseRuntimeCatalog(generatedRuntimeCatalog);
+const items = catalogItemsFromRuntime(catalog);
+
+describe("runtime institution catalog", () => {
+  it("contains only logo-linked public institutions", () => {
+    expect(items).toHaveLength(catalog.items.length);
+    expect(items.every((item) => item.logo.formats.length > 0)).toBe(true);
+    expect(items.some((item) => item.institutions.some((institution) => institution.slug === "passpoint"))).toBe(false);
   });
 
-  it("keeps all campaign entries in research while hiding unresolved logos from the explorer", () => {
-    expect(manifestEntryCount).toBe(340);
-    expect(manifestCatalogItems).toHaveLength(340);
-    expect(manifestPendingCount).toBe(313);
-    expect(manifestCatalogItems.filter((item) => item.logo !== null)).toHaveLength(27);
-    expect(explorerCatalogItems).toHaveLength(availableLogoCount);
-    expect(explorerCatalogItems.every((item) => item.logo !== null)).toBe(true);
-    expect(explorerCatalogItems.some((item) =>
-      item.institutions.some((institution) => institution.slug === "passpoint")
-    )).toBe(false);
+  it("preserves canonical families, variations, and review states", () => {
+    const paga = items.find((item) => item.logo.slug === "paga");
+    const sycamore = items.find((item) => item.logo.slug === "sycamore-integrated-solutions");
+    const nomba = items.find((item) => item.logo.slug === "nomba");
+
+    expect(paga?.institutions.map((institution) => institution.slug)).toEqual(expect.arrayContaining(["paga-remit", "pagatech"]));
+    expect(sycamore?.logo.variations.some((variation) => variation.id === "symbol")).toBe(true);
+    expect(nomba?.logo.status).toBe("needs-review");
   });
 
-  it("includes unmatched fintech research as unverified candidates", () => {
-    const candidate = catalogItems.find((item) => item.institution.slug === "passpoint");
-
-    expect(candidate?.displayName).toBe("Passpoint");
-    expect(candidate?.institution.verification_status).toBe("community-candidate");
-    expect(candidate?.institution.regulatory_status).toBe("unverified");
-    expect(candidate?.logo).toBeNull();
-  });
-
-  it("exposes sourced unverified fintech logos in the explorer", () => {
-    const nomba = explorerCatalogItems.find((item) =>
-      item.institutions.some((institution) => institution.slug === "nomba")
-    );
-
-    expect(nomba?.logo?.slug).toBe("nomba");
-    expect(nomba?.logo?.status).toBe("needs-review");
-  });
-
-  it("links newly verified fintech discoveries to official assets", () => {
-    for (const slug of ["pawapay", "grey", "onafriq"]) {
-      const item = catalogItems.find((entry) => entry.institutions.some((institution) => institution.slug === slug));
-      expect(item?.logo?.slug).toBe(slug);
-      expect(item?.institution.verification_status).toBe("community-candidate");
-      expect(item?.logo?.status).toBe("verified");
-    }
-  });
-
-  it("publishes Paga through its current canonical asset", () => {
-    const paga = logoCatalogItems.find((item) => item.logo.slug === "paga");
-
-    expect(paga?.displayName).toBe("Paga");
-    expect(paga?.logo.svg).toContain("<svg");
-    expect(paga?.institutions.map((institution) => institution.slug)).toEqual(expect.arrayContaining([
-      "paga-remit",
-      "pagatech"
-    ]));
-  });
-
-  it("merges related Flutterwave institutions into the common brand entry", () => {
-    const flutterwave = catalogItems.find((item) => item.logo?.slug === "flutterwave");
-
-    expect(flutterwave?.displayName).toBe("Flutterwave");
-    expect(flutterwave?.institutions.map((institution) => institution.slug)).toEqual(expect.arrayContaining([
-      "flutterwave-tech-payments",
-      "flutterwave-technology-solutions"
-    ]));
-  });
-
-  it("merges every duplicate canonical logo into one catalog entry", () => {
-    const logoSlugs = logoCatalogItems.map((item) => item.logo.slug);
-
-    expect(new Set(logoSlugs).size).toBe(logoSlugs.length);
-    const custodian = catalogItems.find((item) => item.logo?.slug === "custodian-and-allied-insurance");
-    expect(custodian?.displayName).toBe("Custodian");
-    expect(custodian?.institutions).toHaveLength(2);
-  });
-
-  it("merges related institutions that use byte-identical brand artwork", () => {
-    const expectedFamilies = [
-      ["cordros-insurance-brokers", "Cordros", 3],
-      ["emple-general-insurance-company", "emPLE", 2],
-      ["heirs-general-insurance", "Heirs Insurance", 2],
-      ["mutual-benefit-assurance", "Mutual Benefits", 2],
-      ["tangerine-general-insurance", "Tangerine", 2]
-    ] as const;
-
-    for (const [logoSlug, displayName, institutionTotal] of expectedFamilies) {
-      const family = catalogItems.find((item) => item.logo?.slug === logoSlug);
-      expect(family?.displayName).toBe(displayName);
-      expect(family?.institutions).toHaveLength(institutionTotal);
-    }
-  });
-
-  it("keeps unsourced institutions visible with a pending logo", () => {
-    const pending = catalogItems.find((item) => item.institution.slug === "caelum-technologies");
-
-    expect(pending?.displayName).toBe("1-HOUR LOAN");
-    expect(pending?.logo).toBeNull();
-  });
-
-  it("keeps a logo-only subset for asset operations", () => {
-    expect(logoCatalogItems).toHaveLength(availableLogoCount);
-    expect(logoCatalogItems.every((item) => item.logo !== null)).toBe(true);
-  });
-
-  it("hydrates reviewed SVG logo variations", () => {
-    const sycamore = logoCatalogItems.find((item) => item.logo.slug === "sycamore-integrated-solutions");
-    const symbol = sycamore?.logo.variations.find((variation) => variation.id === "symbol");
-    const busha = logoCatalogItems.find((item) => item.logo.slug === "busha-digital");
-    const light = busha?.logo.variations.find((variation) => variation.id === "light");
-
-    expect(symbol?.svg).toContain("<svg");
-    expect(light?.svg).toContain("<svg");
-  });
-
-  it("bundles one canonical offline asset for every catalog logo", () => {
-    for (const logo of logos) {
-      expect(logo.svg || logo.asset_urls.png).toBeTruthy();
-    }
+  it("derives available categories from the live items", () => {
+    const categories = availableCategories(items);
+    expect(categories).toContain("commercial-bank");
+    expect(categories).toContain("fintech");
   });
 });

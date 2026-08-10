@@ -42,15 +42,21 @@ import {
 import { getCatalogLogoBadge, usesDarkLogoPreview, type LogoFormatType } from "@awalogo/core";
 import type { InstitutionCategory } from "@awalogo/institutions";
 import {
-  availableInstitutionCategories,
-  availableLogoCount,
+  CATALOG_ORIGIN,
+  CATALOG_PATH,
+  parseRuntimeCatalog,
+  type RuntimeCatalog
+} from "@awalogo/catalog-ui/runtime-catalog";
+import {
+  availableCategories,
+  catalogItemsFromRuntime,
   categoryLabel,
-  explorerCatalogItems,
   type CatalogItem
 } from "./catalog-data";
 import { searchScore } from "./catalog-search";
 import { buildCompanyLogoSubmissionUrl, buildLogoRequestUrl } from "./logo-request";
-import { postToFigma, subscribeToFigma } from "./figma-bridge";
+import { isFigmaPlugin, postToFigma, requestFromFigma, subscribeToFigma } from "./figma-bridge";
+import type { PluginToUiMessage } from "./messages";
 import type { LogoAsset } from "./logo-data";
 import awalogoLogoUrl from "../community-assets/awalogo-logo.svg";
 import "./styles.css";
@@ -89,20 +95,12 @@ const formatIcons: Record<LogoFormatType, LucideIcon> = {
   webp: Images,
   jpeg: ImageIcon
 };
-const categoryCounts = new Map(availableInstitutionCategories.map((category) => [
-  category,
-  explorerCatalogItems.filter((item) => item.categories.includes(category)).length
-]));
 const dateFormatter = new Intl.DateTimeFormat("en-NG", {
   day: "numeric",
   month: "short",
   year: "numeric",
   timeZone: "Africa/Lagos"
 });
-const latestLogoAddedAt = explorerCatalogItems.reduce((latest, item) => {
-  const addedAt = item.logo?.added_at;
-  return addedAt && addedAt > latest ? addedAt : latest;
-}, "");
 
 function formatDate(date: string) {
   return dateFormatter.format(new Date(`${date}T00:00:00+01:00`));
@@ -134,7 +132,7 @@ function getInstitutionInitials(name: string) {
 const svgPreviewUrls = new Map<string, string>();
 
 function previewUrl(logo: LogoAsset) {
-  if (!logo.svg) return logo.asset_urls.png ?? logo.asset_urls.webp ?? logo.asset_urls.jpeg ?? "";
+  if (!logo.svg) return logo.asset_urls.webp ?? logo.asset_urls.png ?? logo.asset_urls.jpeg ?? "";
   const cachedUrl = svgPreviewUrls.get(logo.svg);
   if (cachedUrl) return cachedUrl;
   const url = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(logo.svg)}`;
@@ -188,6 +186,9 @@ function getInitialTheme(): ThemeMode {
 }
 
 function App() {
+  const [runtimeCatalog, setRuntimeCatalog] = useState<RuntimeCatalog | null>(null);
+  const [catalogState, setCatalogState] = useState<"loading" | "fresh" | "cached" | "stale" | "error">("loading");
+  const [catalogError, setCatalogError] = useState("");
   const [query, setQuery] = useState("");
   const [selectedCategories, setSelectedCategories] = useState<InstitutionCategory[]>([]);
   const [selectedItem, setSelectedItem] = useState<CatalogItem | null>(null);
@@ -204,6 +205,46 @@ function App() {
   const themeMenuRef = useRef<HTMLDivElement>(null);
   const ActiveThemeIcon = themeMode === "light" ? Sun : themeMode === "dark" ? Moon : Monitor;
   const activeThemeLabel = themeMode === "light" ? "Light" : themeMode === "dark" ? "Dark" : "System";
+  const explorerCatalogItems = useMemo(() => runtimeCatalog ? catalogItemsFromRuntime(runtimeCatalog) : [], [runtimeCatalog]);
+  const availableInstitutionCategories = useMemo(() => availableCategories(explorerCatalogItems), [explorerCatalogItems]);
+  const availableLogoCount = explorerCatalogItems.length;
+  const categoryCounts = useMemo(() => new Map(availableInstitutionCategories.map((category) => [
+    category,
+    explorerCatalogItems.filter((item) => item.categories.includes(category)).length
+  ])), [availableInstitutionCategories, explorerCatalogItems]);
+  const latestLogoAddedAt = useMemo(() => explorerCatalogItems.reduce((latest, item) => {
+    const addedAt = item.logo.added_at;
+    return addedAt > latest ? addedAt : latest;
+  }, ""), [explorerCatalogItems]);
+
+  async function loadCatalog(force = false) {
+    setCatalogError("");
+    if (!runtimeCatalog) setCatalogState("loading");
+    try {
+      if (isFigmaPlugin()) {
+        const response = await requestFromFigma<Extract<PluginToUiMessage, { type: "catalog-result" }>>(
+          { type: "catalog-load", force },
+          "catalog-result"
+        );
+        setRuntimeCatalog(parseRuntimeCatalog(response.catalog));
+        setCatalogState(response.stale ? "stale" : response.source === "cache" ? "cached" : "fresh");
+      } else {
+        const response = await fetch(`${CATALOG_ORIGIN}${CATALOG_PATH}`, { cache: force ? "reload" : "default" });
+        if (!response.ok) throw new Error(`Catalog request failed with ${response.status}`);
+        setRuntimeCatalog(parseRuntimeCatalog(await response.json()));
+        setCatalogState("fresh");
+      }
+    } catch (error) {
+      setCatalogError(error instanceof Error ? error.message : "The catalog is unavailable.");
+      setCatalogState(runtimeCatalog ? "stale" : "error");
+    }
+  }
+
+  useEffect(() => {
+    void loadCatalog();
+    // The initial request should run once; refreshes are explicit.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useLayoutEffect(() => {
     const systemTheme = window.matchMedia("(prefers-color-scheme: dark)");
@@ -245,6 +286,7 @@ function App() {
 
   useEffect(() => {
     return subscribeToFigma((message) => {
+      if (message.type === "catalog-result" || message.type === "asset-result" || message.type === "request-error") return;
       setToast(message.type === "inserted"
         ? `${message.name} inserted`
         : message.type === "inserted-in-frame"
@@ -294,7 +336,7 @@ function App() {
       return categoryMatches && Number.isFinite(score);
     })
     .sort((a, b) => a.score - b.score || a.item.displayName.localeCompare(b.item.displayName))
-    .map(({ item }) => item), [selectedCategories, query]);
+    .map(({ item }) => item), [explorerCatalogItems, selectedCategories, query]);
 
   const visibleItems = filteredItems.slice(0, visibleLimit);
   const visibleCategories = useMemo(() => {
@@ -309,7 +351,7 @@ function App() {
     const categoryMatches = draftCategories.length === 0 ||
       draftCategories.some((category) => item.categories.includes(category));
     return categoryMatches && Number.isFinite(searchScore(item, query));
-  }).length, [draftCategories, query]);
+  }).length, [draftCategories, explorerCatalogItems, query]);
   const categorySelectionLabel = selectedCategories.length === 0
     ? "All categories"
     : selectedCategories.length === 1
@@ -332,22 +374,49 @@ function App() {
     return new Promise<Blob | null>((resolve) => canvas.toBlob(resolve, mimeType, 0.94));
   }
 
-  async function logoBlob(logo: LogoAsset, formatType: LogoFormatType): Promise<Blob | null> {
-    if (formatType === "svg") {
-      return logo.svg ? new Blob([logo.svg], { type: "image/svg+xml;charset=utf-8" }) : null;
+  async function loadAssetBytes(logo: LogoAsset, formatType: LogoFormatType) {
+    const format = logo.formats.find((entry) => entry.type === formatType);
+    const url = logo.asset_urls[formatType];
+    if (!format || !url) throw new Error(`${formatType.toUpperCase()} is unavailable`);
+
+    let bytes: Uint8Array;
+    if (isFigmaPlugin()) {
+      const response = await requestFromFigma<Extract<PluginToUiMessage, { type: "asset-result" }>>(
+        { type: "asset-load", url, checksum: format.checksum },
+        "asset-result"
+      );
+      bytes = new Uint8Array(response.bytes);
+    } else {
+      const response = await fetch(url);
+      if (!response.ok) throw new Error(`Asset request failed with ${response.status}`);
+      bytes = new Uint8Array(await response.arrayBuffer());
     }
-    const exactAsset = logo.asset_urls[formatType];
-    if (exactAsset) return fetch(exactAsset).then((response) => response.blob());
+
+    const exactBuffer = bytes.slice().buffer as ArrayBuffer;
+    const digest = Array.from(new Uint8Array(await crypto.subtle.digest("SHA-256", exactBuffer)))
+      .map((byte) => byte.toString(16).padStart(2, "0"))
+      .join("");
+    if (digest !== format.checksum) throw new Error("Asset integrity check failed");
+    return { bytes, buffer: exactBuffer, format };
+  }
+
+  async function logoBlob(logo: LogoAsset, formatType: LogoFormatType): Promise<Blob | null> {
+    const exactAsset = logo.formats.find((format) => format.type === formatType);
+    if (exactAsset) {
+      const { buffer, format } = await loadAssetBytes(logo, formatType);
+      return new Blob([buffer], { type: format.mime_type });
+    }
     const preview = previewUrl(logo);
     return preview ? convertRaster(preview, formatType) : null;
   }
 
   async function insertLogo(logo: LogoAsset, formatType: LogoFormatType, dimensions: LogoDimensions) {
-    if (formatType === "svg" && logo.svg) {
-      postToFigma({ type: "insert-logo", name: logo.name, svg: logo.svg, ...dimensions });
-      return;
-    }
     try {
+      if (formatType === "svg") {
+        const { bytes } = await loadAssetBytes(logo, "svg");
+        postToFigma({ type: "insert-logo", name: logo.name, svg: new TextDecoder().decode(bytes), ...dimensions });
+        return;
+      }
       const sourceBlob = await logoBlob(logo, formatType);
       if (!sourceBlob) throw new Error("Asset unavailable");
       const blob = sourceBlob.type === "image/webp"
@@ -365,8 +434,8 @@ function App() {
   async function copyLogo(logo: LogoAsset, formatType: LogoFormatType, dimensions: LogoDimensions) {
     try {
       if (formatType === "svg") {
-        if (!logo.svg) throw new Error("SVG is unavailable");
-        await copyTextToClipboard(svgAtDimensions(logo.svg, dimensions));
+        const { bytes } = await loadAssetBytes(logo, "svg");
+        await copyTextToClipboard(svgAtDimensions(new TextDecoder().decode(bytes), dimensions));
       } else {
         const blob = await logoBlob(logo, formatType);
         if (!blob || !navigator.clipboard?.write || typeof ClipboardItem === "undefined") {
@@ -424,25 +493,47 @@ function App() {
     setToast("Submission prepared on GitHub");
   }
 
-  function downloadLogo(logo: LogoAsset, formatType: LogoFormatType) {
+  async function downloadLogo(logo: LogoAsset, formatType: LogoFormatType) {
     const format = logo.formats.find((entry) => entry.type === formatType);
     if (!format) return;
-    const blobUrl = formatType === "svg"
-      ? URL.createObjectURL(new Blob([logo.svg], { type: "image/svg+xml;charset=utf-8" }))
-      : null;
-    const downloadUrl = blobUrl ?? logo.asset_urls[formatType];
-    if (!downloadUrl) {
+    let blob: Blob | null = null;
+    try {
+      blob = await logoBlob(logo, formatType);
+    } catch {
       setToast(`${formatType.toUpperCase()} is unavailable`);
       return;
     }
+    if (!blob) return;
+    const downloadUrl = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = downloadUrl;
     link.download = `${logo.slug}.${formatType}`;
     document.body.appendChild(link);
     link.click();
     link.remove();
-    if (blobUrl) URL.revokeObjectURL(blobUrl);
+    URL.revokeObjectURL(downloadUrl);
     setToast(`${logo.name} ${formatType.toUpperCase()} downloaded`);
+  }
+
+  if (catalogState === "loading" && !runtimeCatalog) {
+    return (
+      <main className="plugin-shell catalog-connection-state" aria-live="polite">
+        <RefreshCw className="catalog-loading-icon" aria-hidden="true" size={22} />
+        <h1>Loading the latest logos</h1>
+        <p>Connecting to awalogo.com.</p>
+      </main>
+    );
+  }
+
+  if (catalogState === "error" && !runtimeCatalog) {
+    return (
+      <main className="plugin-shell catalog-connection-state" role="alert">
+        <Globe2 aria-hidden="true" size={22} />
+        <h1>Catalog unavailable</h1>
+        <p>{catalogError || "Connect to the internet and try again."}</p>
+        <button type="button" onClick={() => void loadCatalog(true)}><RefreshCw size={14} /> Try again</button>
+      </main>
+    );
   }
 
   return (
@@ -456,6 +547,15 @@ function App() {
           </div>
         </div>
         <div className="topbar-actions">
+          <button
+            className={`catalog-sync-status ${catalogState}`}
+            type="button"
+            onClick={() => void loadCatalog(true)}
+            title={catalogState === "stale" ? "Offline; showing the last saved catalog" : "Refresh catalog"}
+          >
+            <RefreshCw aria-hidden="true" size={12} />
+            {catalogState === "fresh" ? "Live" : catalogState === "cached" ? "Cached" : catalogState === "stale" ? "Offline" : "Syncing"}
+          </button>
           <div className="theme-menu" ref={themeMenuRef}>
             <button
               className="theme-menu-trigger"
@@ -677,7 +777,7 @@ function App() {
                 >
                   <span className={`tile-preview${logo && usesDarkLogoPreview(logo.slug) ? " logo-preview-dark" : ""}`}>
                     {logoBadge === "new" ? <span className="new-tag" aria-hidden="true">New</span> : null}
-                    {logo ? <img src={previewUrl(logo)} alt="" /> : (
+                    {logo ? <img src={previewUrl(logo)} alt="" loading="lazy" /> : (
                       <span className="pending-preview" aria-hidden="true">
                         <span className="pending-monogram">{getInstitutionInitials(displayName)}</span>
                         <span>Awaiting verified asset</span>
@@ -1551,4 +1651,8 @@ function DetailSheet({
   );
 }
 
-createRoot(document.getElementById("root")!).render(<App />);
+const rootElement = document.getElementById("root")!;
+const root = import.meta.hot?.data.root ?? createRoot(rootElement);
+if (import.meta.hot) import.meta.hot.data.root = root;
+
+root.render(<App />);

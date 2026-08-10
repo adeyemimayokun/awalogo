@@ -5,7 +5,7 @@ const outputDirectory = resolve(import.meta.dirname, "../figma-dist");
 const outputPath = resolve(outputDirectory, "index.html");
 const controllerPath = resolve(outputDirectory, "main.js");
 const html = await readFile(outputPath, "utf8");
-const maxPluginSize = 15_000_000;
+const maxPluginSize = 2_500_000;
 
 async function directorySize(directory) {
   let size = 0;
@@ -26,7 +26,10 @@ if (/<script[^>]+src=|<link[^>]+rel=["']stylesheet/i.test(html)) {
   throw new Error("Plugin UI still contains external script or stylesheet references");
 }
 if (totalSize > maxPluginSize) {
-  throw new Error(`Plugin code is ${(totalSize / 1_000_000).toFixed(1)} MB; Figma allows at most 15 MB`);
+  throw new Error(`Plugin code is ${(totalSize / 1_000_000).toFixed(1)} MB; runtime catalog builds must stay below 2.5 MB`);
+}
+if (html.includes("pluginAssetPayloads") || html.length > 2_400_000) {
+  throw new Error("Plugin UI still appears to contain embedded catalog assets");
 }
 
-console.log(`Self-contained Figma plugin is valid (${(totalSize / 1_000_000).toFixed(1)} MB of 15 MB).`);
+console.log(`Runtime Figma plugin is valid (${(totalSize / 1_000_000).toFixed(1)} MB).`);

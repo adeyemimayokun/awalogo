@@ -16,7 +16,11 @@ const analyticsEnabled = import.meta.env.PROD && import.meta.env.VITE_ENABLE_VER
 const speedInsightsEnabled = import.meta.env.PROD && import.meta.env.VITE_ENABLE_VERCEL_SPEED_INSIGHTS === "true";
 if (isAdminRoute) document.documentElement.dataset.admin = "true";
 
-createRoot(document.getElementById("root")!).render(
+const rootElement = document.getElementById("root")!;
+const root = import.meta.hot?.data.root ?? createRoot(rootElement);
+if (import.meta.hot) import.meta.hot.data.root = root;
+
+root.render(
   <>
     {isAdminRoute ? (
       <Suspense fallback={<main style={{ display: "grid", minHeight: "100vh", placeItems: "center", fontSize: 12 }}>Loading admin</main>}>

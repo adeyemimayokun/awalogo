@@ -1,46 +1,41 @@
+import type { LogoFormatType } from "@awalogo/core";
 import {
-  logoCatalog,
-  type LogoEntry,
-  type LogoFormat,
-  type LogoFormatType
-} from "@awalogo/core";
-import { pluginAssetPayloads, pluginEntryAssets } from "virtual:awalogo-plugin-assets";
+  absoluteCatalogUrl,
+  type RuntimeAsset,
+  type RuntimeCatalog,
+  type RuntimeLogo
+} from "@awalogo/catalog-ui/runtime-catalog";
 
 export type LogoAsset = {
   name: string;
   slug: string;
-  formats: LogoFormat[];
+  formats: RuntimeAsset[];
   svg: string;
   asset_urls: Partial<Record<LogoFormatType, string>>;
 };
 
-export type LogoVariationWithSvg = NonNullable<LogoEntry["variations"]>[number] & {
+export type LogoVariationWithSvg = RuntimeLogo["variations"][number] & {
   svg: string;
   asset_urls: Partial<Record<LogoFormatType, string>>;
 };
 
-export type LogoWithSvg = Omit<LogoEntry, "variations"> & LogoAsset & {
+export type LogoWithSvg = Omit<RuntimeLogo, "variations"> & LogoAsset & {
   variations: LogoVariationWithSvg[];
 };
 
-function assetFor(key: string) {
-  const assetId = pluginEntryAssets[key];
-  return assetId ? pluginAssetPayloads[assetId] : undefined;
+function assetUrls(formats: RuntimeAsset[], origin?: string) {
+  return Object.fromEntries(formats.map((format) => [format.type, absoluteCatalogUrl(format.url, origin)]));
 }
 
-function hydrateAsset(key: string) {
-  const asset = assetFor(key);
-  return {
-    svg: asset?.svg ?? "",
-    asset_urls: asset?.raster_url ? { png: asset.raster_url } : {}
-  } satisfies Pick<LogoAsset, "svg" | "asset_urls">;
+export function hydrateRuntimeLogos(catalog: RuntimeCatalog, origin?: string): LogoWithSvg[] {
+  return catalog.items.map(({ logo }) => ({
+    ...logo,
+    svg: "",
+    asset_urls: assetUrls(logo.formats, origin),
+    variations: logo.variations.map((variation) => ({
+      ...variation,
+      svg: "",
+      asset_urls: assetUrls(variation.formats, origin)
+    }))
+  }));
 }
-
-export const logos: LogoWithSvg[] = logoCatalog.map((logo) => ({
-  ...logo,
-  ...hydrateAsset(`logo:${logo.slug}`),
-  variations: (logo.variations ?? []).map((variation) => ({
-    ...variation,
-    ...hydrateAsset(`variation:${logo.slug}:${variation.id}`)
-  }))
-}));

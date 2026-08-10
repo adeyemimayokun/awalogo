@@ -16,6 +16,7 @@
     "typecheck": "tsc -p tsconfig.json"
   },
   "dependencies": {
+    "@awalogo/catalog-ui": "workspace:*",
     "@awalogo/core": "workspace:*",
     "@awalogo/institutions": "workspace:*",
     "@vitejs/plugin-react": "^4.3.4",

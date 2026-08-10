@@ -56,6 +56,9 @@ importers:
 
   apps/figma-plugin:
     dependencies:
+      '@awalogo/catalog-ui':
+        specifier: workspace:*
+        version: link:../../packages/catalog-ui
       '@awalogo/core':
         specifier: workspace:*
         version: link:../../packages/logos
@@ -145,6 +148,9 @@ importers:
       react:
         specifier: ^19.0.0
         version: 19.2.7
+      zod:
+        specifier: ^3.24.1
+        version: 3.25.76
 
   packages/institutions:
     dependencies:

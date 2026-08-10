@@ -4,7 +4,9 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "prebuild": "pnpm --dir ../.. catalog:generate",
     "build": "vite build",
+    "predev": "pnpm --dir ../.. catalog:generate",
     "dev": "vite --host 127.0.0.1",
     "typecheck": "tsc -p tsconfig.json"
   },

@@ -14,7 +14,7 @@ with a Figma plugin and using a structured logo data package underneath it.
 ## v1 Scope
 
 - Searchable Figma plugin.
-- Offline bundled SVG catalog.
+- Versioned runtime catalog shared by the website and Figma plugin.
 - Logo metadata with name, category, aliases, source, status, and SVG path.
 - Validation for metadata, duplicate slugs, missing files, and unsafe SVG.
 - Contribution workflow and trademark policy.
