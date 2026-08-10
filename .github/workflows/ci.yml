@@ -21,6 +21,7 @@ jobs:
       - run: pnpm validate
       - run: pnpm logos:check-formats
       - run: pnpm institutions:check
+      - run: pnpm vercel:check-functions
       - run: pnpm test
       - run: pnpm typecheck
       - run: pnpm build:plugin
