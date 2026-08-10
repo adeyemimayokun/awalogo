@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "catalog_version": "1158c8246a29cb8cd674208636a05b62cb21cb637485935cec04df5e2124578e",
+  "catalog_version": "67e9a68e0a44103fd0adaaedc3d635c023574f037950d7df94ab613bfb75363d",
   "published_at": "2026-08-04",
   "items": [
     {
@@ -18922,7 +18922,7 @@
         "source_type": "official-website",
         "added_at": "2026-07-14",
         "updated_at": "2026-08-04",
-        "status": "needs-review",
+        "status": "verified",
         "formats": [
           {
             "type": "svg",

@@ -883,6 +883,7 @@ export function CatalogApp({
           onCopy={copyLogo}
           onDownload={downloadLogo}
           onInsert={pluginMode ? insertLogo : undefined}
+          onFeedback={setToast}
           onRequest={() => {
             setQuery(selectedItem.displayName);
             closeDetails();
@@ -1478,6 +1479,7 @@ function DetailSheet({
   onCopy: (logo: LogoAsset, format: LogoFormatType, dimensions?: LogoDimensions) => void;
   onDownload: (logo: LogoAsset, format: LogoFormatType) => void;
   onInsert?: (logo: LogoAsset, format: LogoFormatType, dimensions: LogoDimensions) => void;
+  onFeedback: (message: string) => void;
   onRequest: () => void;
 }) {
   const { logo, displayName, categories } = item;
