@@ -10,7 +10,7 @@ import {
   ShieldCheck
 } from "lucide-react";
 import { ProjectInfoSheet, type ProjectPanel } from "./CatalogApp";
-import { FIGMA_PLUGIN_URL, FigmaMark, SiteFooter, SiteHeader, type ThemeMode } from "./SiteChrome";
+import { FIGMA_PLUGIN_URL, SiteFooter, SiteHeader, type ThemeMode } from "./SiteChrome";
 import "./styles.css";
 
 const THEME_STORAGE_KEY = "awalogo-theme";
@@ -20,7 +20,6 @@ const sections = [
   { id: "overview", label: "Overview", icon: BookOpen },
   { id: "website", label: "Using the website", icon: Landmark },
   { id: "developer", label: "Developer setup", icon: PackageOpen },
-  { id: "figma", label: "Figma plugin", icon: FigmaMark },
   { id: "contributing", label: "Contributing", icon: GitPullRequest },
   { id: "verification", label: "Verification and use", icon: ShieldCheck }
 ] as const;
@@ -129,10 +128,10 @@ export function DocsApp({ aboutMarkdown = "" }: { aboutMarkdown?: string }) {
           <section id="overview" className="docs-section">
             <h2>Overview</h2>
             <p>awalogo is an open source catalog of Nigerian banks, fintechs, payment providers, insurers, investment firms, regulators, and related financial institutions.</p>
-            <p>Each accepted record connects recognizable brand metadata to reviewed SVG or raster assets. The website is the public browsing and download surface. The Figma plugin and repository packages use the same underlying catalog.</p>
+            <p>Each accepted record connects recognizable brand metadata to reviewed SVG or raster assets. The website provides the public browsing and download experience.</p>
             <div className="docs-note">
               <strong>Distribution status</strong>
-              <p>The website and Figma Community plugin are available now. The public npm release is still pending, while <code>@awalogo/core</code> can be built from this repository today.</p>
+              <p>The website and <a href={FIGMA_PLUGIN_URL} target="_blank" rel="noreferrer">Figma Community plugin</a> are available now. The public npm release is still pending, while <code>@awalogo/core</code> can be built from this repository today.</p>
             </div>
           </section>
 
@@ -164,28 +163,11 @@ export function DocsApp({ aboutMarkdown = "" }: { aboutMarkdown?: string }) {
               label="TypeScript"
               code={`import { findLogoBySlug, getLogosByCategory } from "@awalogo/core";\n\nconst access = findLogoBySlug("access-bank");\nconst commercialBanks = getLogosByCategory("commercial-bank");\n\nconsole.log(access?.formats);\nconsole.log(commercialBanks.length);`}
             />
-            <h3>Runtime catalog</h3>
-            <p>The website and Figma plugin consume the generated catalog at <code>https://www.awalogo.com/catalog/v1/catalog.json</code>. Asset URLs are content-addressed and can be cached indefinitely.</p>
             <h3>Catalog record</h3>
             <CodeBlock
               label="TypeScript"
               code={`type LogoEntry = {\n  name: string;\n  slug: string;\n  category: LogoCategory;\n  aliases: string[];\n  website: string;\n  source_url: string;\n  source_type: SourceType;\n  formats: LogoFormat[];\n  variations?: LogoVariation[];\n  status: "verified" | "needs-review" | "deprecated";\n};`}
             />
-          </section>
-
-          <section id="figma" className="docs-section">
-            <h2>Figma plugin</h2>
-            <p>The plugin loads the same versioned catalog published by awalogo.com, so approved logo updates reach the website and plugin together after deployment. It caches the last successful catalog and recently used assets for offline fallback, while SVG insertion still creates editable vector layers.</p>
-            <CodeBlock label="Build the plugin" code={`pnpm build:plugin`} />
-            <ol className="docs-steps docs-steps-compact">
-              <li><strong>Open Figma desktop</strong><span>Go to Plugins, Development, then Import plugin from manifest.</span></li>
-              <li><strong>Select the manifest</strong><span>Choose <code>apps/figma-plugin/manifest.json</code> from the cloned repository.</span></li>
-              <li><strong>Run awalogo</strong><span>Open it from Plugins, Development. Rebuild and relaunch after packaged changes.</span></li>
-            </ol>
-            <div className="docs-note">
-              <strong>Community installation</strong>
-              <p>Install awalogo from <a href={FIGMA_PLUGIN_URL} target="_blank" rel="noreferrer">Figma Community</a> to search and insert the catalog without leaving your design file.</p>
-            </div>
           </section>
 
           <section id="contributing" className="docs-section">
