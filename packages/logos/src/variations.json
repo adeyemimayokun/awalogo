@@ -1115,5 +1115,39 @@
         }
       ]
     }
+  ],
+  "kuda-microfinance-bank": [
+    {
+      "id": "previous-2026-08-11",
+      "name": "Previous logo",
+      "status": "old",
+      "archived_at": "2026-08-11",
+      "source_url": "https://www.kuda.com/",
+      "source_path": "sources/kuda-microfinance-bank-previous-2026-08-11.svg",
+      "svg_path": "assets/kuda-microfinance-bank-previous-2026-08-11.svg",
+      "formats": [
+        {
+          "type": "svg",
+          "path": "assets/kuda-microfinance-bank-previous-2026-08-11.svg",
+          "mime_type": "image/svg+xml",
+          "width": null,
+          "height": null
+        },
+        {
+          "type": "png",
+          "path": "assets/kuda-microfinance-bank-previous-2026-08-11.png",
+          "mime_type": "image/png",
+          "width": null,
+          "height": null
+        },
+        {
+          "type": "webp",
+          "path": "assets/kuda-microfinance-bank-previous-2026-08-11.webp",
+          "mime_type": "image/webp",
+          "width": null,
+          "height": null
+        }
+      ]
+    }
   ]
 }
