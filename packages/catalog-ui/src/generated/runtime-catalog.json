@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "catalog_version": "67e9a68e0a44103fd0adaaedc3d635c023574f037950d7df94ab613bfb75363d",
-  "published_at": "2026-08-04",
+  "catalog_version": "28d67eb1ae79df4e824a174d5c43588ff49a8d3b84f7c0d48091eb48bbe817aa",
+  "published_at": "2026-08-11",
   "items": [
     {
       "display_name": "3Line Card Management",
@@ -9806,38 +9806,75 @@
         "source_url": "https://www.kuda.com/",
         "source_type": "official-website",
         "added_at": "2026-07-13",
-        "updated_at": "2026-07-13",
-        "status": "verified",
+        "updated_at": "2026-08-11",
+        "status": "needs-review",
         "formats": [
           {
             "type": "svg",
             "repository_path": "assets/kuda-microfinance-bank.svg",
-            "url": "/catalog/v1/assets/21dd967ad9fef45face5c82a09b75081ddb74af6b621a5af8cde3e948ba7e679.svg",
+            "url": "/catalog/v1/assets/71e7077052c873f3910c8eaeaf567490d113c25e24c3d7c0c04570f064c53c59.svg",
             "mime_type": "image/svg+xml",
             "width": null,
             "height": null,
-            "checksum": "21dd967ad9fef45face5c82a09b75081ddb74af6b621a5af8cde3e948ba7e679"
+            "checksum": "71e7077052c873f3910c8eaeaf567490d113c25e24c3d7c0c04570f064c53c59"
           },
           {
             "type": "png",
             "repository_path": "assets/kuda-microfinance-bank.png",
-            "url": "/catalog/v1/assets/00b8bc35d21a86258f1007212eb81b8fd4515330dc7a015eb19df9db366a9489.png",
+            "url": "/catalog/v1/assets/b6b7e4ff1bee951e6a50905a62c45ff3985b4bbc7b18a58e5a010eccdbd740cf.png",
             "mime_type": "image/png",
             "width": null,
             "height": null,
-            "checksum": "00b8bc35d21a86258f1007212eb81b8fd4515330dc7a015eb19df9db366a9489"
+            "checksum": "b6b7e4ff1bee951e6a50905a62c45ff3985b4bbc7b18a58e5a010eccdbd740cf"
           },
           {
             "type": "webp",
             "repository_path": "assets/kuda-microfinance-bank.webp",
-            "url": "/catalog/v1/assets/bf568ec88fcfe8b2133233849d559167777a8ea2d2ed58941e56c83c3e1d74dc.webp",
+            "url": "/catalog/v1/assets/0a66f1c4e36ed4822b6e2896e9606c88cf9a97870df79c153d7625cc80d8087b.webp",
             "mime_type": "image/webp",
             "width": null,
             "height": null,
-            "checksum": "bf568ec88fcfe8b2133233849d559167777a8ea2d2ed58941e56c83c3e1d74dc"
+            "checksum": "0a66f1c4e36ed4822b6e2896e9606c88cf9a97870df79c153d7625cc80d8087b"
           }
         ],
-        "variations": []
+        "variations": [
+          {
+            "id": "previous-2026-08-11",
+            "name": "Previous logo",
+            "status": "old",
+            "archived_at": "2026-08-11",
+            "source_url": "https://www.kuda.com/",
+            "formats": [
+              {
+                "type": "svg",
+                "repository_path": "assets/kuda-microfinance-bank-previous-2026-08-11.svg",
+                "url": "/catalog/v1/assets/21dd967ad9fef45face5c82a09b75081ddb74af6b621a5af8cde3e948ba7e679.svg",
+                "mime_type": "image/svg+xml",
+                "width": null,
+                "height": null,
+                "checksum": "21dd967ad9fef45face5c82a09b75081ddb74af6b621a5af8cde3e948ba7e679"
+              },
+              {
+                "type": "png",
+                "repository_path": "assets/kuda-microfinance-bank-previous-2026-08-11.png",
+                "url": "/catalog/v1/assets/00b8bc35d21a86258f1007212eb81b8fd4515330dc7a015eb19df9db366a9489.png",
+                "mime_type": "image/png",
+                "width": null,
+                "height": null,
+                "checksum": "00b8bc35d21a86258f1007212eb81b8fd4515330dc7a015eb19df9db366a9489"
+              },
+              {
+                "type": "webp",
+                "repository_path": "assets/kuda-microfinance-bank-previous-2026-08-11.webp",
+                "url": "/catalog/v1/assets/bf568ec88fcfe8b2133233849d559167777a8ea2d2ed58941e56c83c3e1d74dc.webp",
+                "mime_type": "image/webp",
+                "width": null,
+                "height": null,
+                "checksum": "bf568ec88fcfe8b2133233849d559167777a8ea2d2ed58941e56c83c3e1d74dc"
+              }
+            ]
+          }
+        ]
       }
     },
     {

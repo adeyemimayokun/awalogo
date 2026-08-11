@@ -3,10 +3,13 @@ import promotedCatalog from "../../logos/src/promoted-catalog.json";
 import { getReviewQueue, getReviewQueuePosition, sourceClassificationLabel } from "./review-queue";
 
 describe("admin review queue", () => {
-  it("contains all 59 catalog entries awaiting review and nothing else", () => {
+  it("contains every catalog entry awaiting review and nothing else", () => {
     const queue = getReviewQueue(promotedCatalog);
+    const expectedSlugs = promotedCatalog
+      .filter((entry) => entry.status === "needs-review")
+      .map((entry) => entry.slug);
 
-    expect(queue).toHaveLength(59);
+    expect(queue.map((entry) => entry.slug)).toEqual(expectedSlugs);
     expect(queue.every((entry) => entry.status === "needs-review")).toBe(true);
   });
 
