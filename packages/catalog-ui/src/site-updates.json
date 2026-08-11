@@ -1,5 +1,16 @@
 [
   {
+    "id": "kuda-logo-updated",
+    "title": "Kuda logo updated",
+    "summary": "Kuda’s latest official logo is now available in SVG, PNG, and WebP formats. The previous logo remains accessible in the logo history for older projects and references.",
+    "published_at": "2026-08-11",
+    "action_label": "View Logo",
+    "action_href": "https://www.awalogo.com/?logo=kuda-microfinance-bank/",
+    "status": "published",
+    "created_at": "2026-08-11",
+    "updated_at": "2026-08-11"
+  },
+  {
     "id": "logos-2026-08-02",
     "title": "15 new logos added",
     "summary": "advansio, AjoCard, Anchor, Cleva, and 11 more.",
