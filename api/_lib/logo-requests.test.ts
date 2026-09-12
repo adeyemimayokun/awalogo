@@ -1,6 +1,5 @@
 import { describe, expect, it } from "vitest";
 import {
-  buildMaintainerEmail,
   buildPublicIssue,
   publicLogoRequestSchema
 } from "./logo-requests.js";
@@ -26,15 +25,6 @@ describe("public logo requests", () => {
     expect(issue.body).toContain("asset links are withheld");
     expect(issue.body).toContain("Availability notification");
     expect(issue.body).toContain("Requested.");
-  });
-
-  it("includes the private reply address in the maintainer email", () => {
-    const email = buildMaintainerEmail(validRequest);
-
-    expect(email.subject).toBe("Logo request: Example Finance");
-    expect(email.text).toContain("Contributor email: designer@example.com");
-    expect(email.text).toContain("Notify when available: Yes");
-    expect(email.text).toContain("Submission ID: a0ec6ec5-6dde-4bea-b5c4-3cfdcb9b65fe");
   });
 
   it("requires an official website", () => {

@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { afterEach, beforeEach, describe, expect, it } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import requestsHandler from "./requests";
 
 type TestResponse = VercelResponse & { body?: unknown; statusCode: number };
@@ -21,7 +21,7 @@ function response(): TestResponse {
   return result;
 }
 
-function request(method: "GET" | "PATCH", body?: unknown): VercelRequest {
+function request(method: "GET" | "POST" | "PATCH", body?: unknown): VercelRequest {
   return {
     method,
     body,
@@ -42,6 +42,7 @@ describe("admin request status updates", () => {
   });
 
   afterEach(() => {
+    vi.unstubAllGlobals();
     process.env = { ...originalEnvironment };
   });
 
@@ -70,5 +71,42 @@ describe("admin request status updates", () => {
     const pending = response();
     await requestsHandler(request("PATCH", { number: 104, status: "pending" }), pending);
     expect(pending.body).toMatchObject({ request: { status: "pending", state: "open" } });
+  });
+
+  it("merges delivered requests that were not created as GitHub issues", async () => {
+    process.env.RESEND_API_KEY = "test";
+    vi.stubGlobal("fetch", vi.fn(async (input: string | URL | Request) => {
+      const url = String(input);
+      if (url.endsWith("/emails?limit=20")) {
+        return Response.json({ data: [{ id: "email-1", subject: "Logo request: Source MFB", created_at: "2026-09-12T11:52:51.000Z" }] });
+      }
+      return Response.json({
+        id: "email-1",
+        subject: "Logo request: Source MFB",
+        created_at: "2026-09-12T11:52:51.000Z",
+        text: [
+          "Company or product: Source MFB",
+          "Type of company: Bank",
+          "Company website: https://mysourcebank.com/",
+          "Contributor email: requester@example.com",
+          "Logo file link: Not provided",
+          "Notify when available: Yes",
+          "Submission ID: ec932b27-3abc-4c98-9f0c-d44f2b85156a"
+        ].join("\n")
+      });
+    }));
+
+    const listed = response();
+    await requestsHandler(request("GET"), listed);
+
+    expect((listed.body as { requests: Array<{ institution: string; source: string }> }).requests)
+      .toContainEqual(expect.objectContaining({ institution: "Source MFB", source: "email" }));
+
+    const recovered = response();
+    await requestsHandler(request("POST", { emailId: "email-1" }), recovered);
+    expect(recovered.statusCode).toBe(201);
+    expect(recovered.body).toMatchObject({
+      request: { institution: "Source MFB", source: "github", status: "pending" }
+    });
   });
 });

@@ -1,14 +1,21 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { z } from "zod";
 import { requireAdmin } from "../_lib/auth.js";
+import { listDeliveredLogoRequests } from "../_lib/email.js";
 import {
+  createRepositoryIssue,
   isLocalRepositoryMode,
   listRepositoryIssues,
   type RepositoryIssue,
   updateRepositoryIssue
 } from "../_lib/github.js";
 import { jsonError, methodNotAllowed } from "../_lib/http.js";
-import { readPrivateRequestMetadata } from "../_lib/request-metadata.js";
+import { buildPublicIssue, publicLogoRequestSchema } from "../_lib/logo-requests.js";
+import {
+  appendPrivateRequestMetadata,
+  readPrivateRequestMetadata,
+  readSubmissionId
+} from "../_lib/request-metadata.js";
 
 const requestStatuses = ["pending", "in-review", "needs-info", "approved", "completed", "rejected"] as const;
 type RequestStatus = typeof requestStatuses[number];
@@ -25,6 +32,7 @@ const updateSchema = z.object({
   number: z.number().int().positive(),
   status: z.enum(requestStatuses)
 });
+const recoverSchema = z.object({ emailId: z.string().trim().min(1).max(120) });
 
 function issueStatus(issue: RepositoryIssue): RequestStatus {
   const markedStatus = issue.body?.match(statusMarker)?.[1] as RequestStatus | undefined;
@@ -64,6 +72,8 @@ function serializeIssue(issue: RepositoryIssue) {
     issueSection(issue.body, "Company") ||
     issue.title.replace(/^(?:Logo request|Company logo submission):\s*/i, "");
   return {
+    id: `github-${issue.number}`,
+    submissionId: readSubmissionId(issue.body),
     number: issue.number,
     institution,
     category: issueSection(issue.body, "Category") || "Other",
@@ -79,24 +89,113 @@ function serializeIssue(issue: RepositoryIssue) {
     submittedAt: issue.created_at,
     updatedAt: issue.updated_at,
     submitter: issue.user?.login ?? "unknown",
-    issueUrl: issue.html_url
+    issueUrl: issue.html_url,
+    source: "github" as const
   };
 }
 
+async function emailBackedRequests() {
+  try {
+    return (await listDeliveredLogoRequests()).map((item) => ({
+      id: `email-${item.id}`,
+      submissionId: item.submissionId,
+      number: null,
+      institution: item.institution,
+      category: item.category,
+      website: item.website,
+      email: item.email,
+      assetUrl: item.assetUrl,
+      notifyWhenAvailable: item.notifyWhenAvailable,
+      status: "pending" as const,
+      state: "open" as const,
+      submittedAt: item.submittedAt,
+      updatedAt: item.submittedAt,
+      submitter: "website request",
+      issueUrl: null,
+      source: "email" as const
+    }));
+  } catch (error) {
+    console.error("Logo request email fallback failed", error);
+    return [];
+  }
+}
+
 export default async function handler(request: VercelRequest, response: VercelResponse): Promise<void> {
-  if (request.method !== "GET" && request.method !== "PATCH") return methodNotAllowed(response, ["GET", "PATCH"]);
+  if (request.method !== "GET" && request.method !== "POST" && request.method !== "PATCH") {
+    return methodNotAllowed(response, ["GET", "POST", "PATCH"]);
+  }
   const admin = requireAdmin(request, response);
   if (!admin) return;
   response.setHeader("Cache-Control", "no-store");
 
   try {
-    const issues = await listRepositoryIssues("logo-request", admin.githubToken);
+    let issues: RepositoryIssue[] = [];
+    let githubAvailable = true;
+    try {
+      issues = await listRepositoryIssues("logo-request", admin.githubToken);
+    } catch (error) {
+      githubAvailable = false;
+      console.error("GitHub logo request listing failed", error);
+    }
     if (request.method === "GET") {
+      const issueRequests = issues.map(serializeIssue);
+      const knownSubmissionIds = new Set(issueRequests.flatMap((item) => item.submissionId ? [item.submissionId] : []));
+      const deliveredRequests = (await emailBackedRequests())
+        .filter((item) => !knownSubmissionIds.has(item.submissionId));
+      const requests = [...issueRequests, ...deliveredRequests]
+        .sort((left, right) => right.submittedAt.localeCompare(left.submittedAt));
       response.status(200).json({
-        requests: issues.map(serializeIssue),
+        requests,
         localPreview: isLocalRepositoryMode(),
-        integration: { available: true }
+        integration: githubAvailable
+          ? { available: true }
+          : {
+              available: false,
+              message: requests.length
+                ? "GitHub is unavailable. Delivered email requests are shown read-only until repository access is restored."
+                : "GitHub logo requests are unavailable. Configure the admin token with read access to repository issues."
+            }
       });
+      return;
+    }
+
+    if (!githubAvailable) throw new Error("GitHub logo requests are unavailable");
+
+    if (request.method === "POST") {
+      const recover = recoverSchema.parse(request.body);
+      const delivered = (await listDeliveredLogoRequests()).find((item) => item.id === recover.emailId);
+      if (!delivered) {
+        response.status(404).json({ error: "The delivered logo request could not be found" });
+        return;
+      }
+      const duplicate = issues.find((issue) => readSubmissionId(issue.body) === delivered.submissionId);
+      if (duplicate) {
+        response.status(200).json({ request: serializeIssue(duplicate), localPreview: isLocalRepositoryMode() });
+        return;
+      }
+      const submission = publicLogoRequestSchema.parse({
+        submissionId: delivered.submissionId,
+        institutionName: delivered.institution,
+        officialWebsite: delivered.website,
+        email: delivered.email,
+        category: delivered.category,
+        logoAssetUrl: delivered.assetUrl ?? "",
+        notifyWhenAvailable: delivered.notifyWhenAvailable,
+        websiteConfirm: ""
+      });
+      const publicIssue = buildPublicIssue(submission);
+      const created = await createRepositoryIssue({
+        ...publicIssue,
+        body: appendPrivateRequestMetadata(publicIssue.body, {
+          submissionId: submission.submissionId,
+          email: submission.email,
+          logoAssetUrl: submission.logoAssetUrl,
+          notifyWhenAvailable: submission.notifyWhenAvailable
+        }),
+        labels: ["logo-request"],
+        sessionToken: admin.githubToken
+      });
+      response.status(201).json({ request: serializeIssue(created), localPreview: isLocalRepositoryMode() });
       return;
     }
 
@@ -114,17 +213,6 @@ export default async function handler(request: VercelRequest, response: VercelRe
     });
     response.status(200).json({ request: serializeIssue(updated), localPreview: isLocalRepositoryMode() });
   } catch (error) {
-    if (request.method === "GET") {
-      response.status(200).json({
-        requests: [],
-        localPreview: isLocalRepositoryMode(),
-        integration: {
-          available: false,
-          message: "GitHub logo requests are unavailable. Configure the admin token with read access to repository issues."
-        }
-      });
-      return;
-    }
     jsonError(response, error, 503);
   }
 }

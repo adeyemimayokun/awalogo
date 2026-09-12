@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { afterEach, beforeEach, describe, expect, it } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { issueSession } from "../_lib/auth";
 import catalogHandler from "./catalog";
 import notificationsHandler from "./notifications";
@@ -57,6 +57,7 @@ describe("production admin read fallbacks", () => {
   });
 
   afterEach(() => {
+    vi.unstubAllGlobals();
     process.env = { ...originalEnvironment };
   });
 
@@ -90,6 +91,40 @@ describe("production admin read fallbacks", () => {
     expect(result.statusCode).toBe(200);
     expect(result.body).toMatchObject({
       requests: [],
+      integration: { available: false }
+    });
+  });
+
+  it("shows delivered email requests when GitHub is unavailable", async () => {
+    process.env.RESEND_API_KEY = "test";
+    vi.stubGlobal("fetch", vi.fn(async (input: string | URL | Request) => {
+      const url = String(input);
+      if (url.includes("api.github.com")) return new Response("Bad credentials", { status: 401 });
+      if (url.endsWith("/emails?limit=20")) {
+        return Response.json({ data: [{ id: "email-1", subject: "Logo request: Source MFB", created_at: "2026-09-12T11:52:51.000Z" }] });
+      }
+      return Response.json({
+        id: "email-1",
+        subject: "Logo request: Source MFB",
+        created_at: "2026-09-12T11:52:51.000Z",
+        text: [
+          "Company or product: Source MFB",
+          "Type of company: Bank",
+          "Company website: https://mysourcebank.com/",
+          "Contributor email: requester@example.com",
+          "Logo file link: Not provided",
+          "Notify when available: Yes",
+          "Submission ID: ec932b27-3abc-4c98-9f0c-d44f2b85156a"
+        ].join("\n")
+      });
+    }));
+
+    const result = response();
+    await requestsHandler(adminRequest(), result);
+
+    expect(result.statusCode).toBe(200);
+    expect(result.body).toMatchObject({
+      requests: [{ institution: "Source MFB", number: null, source: "email", status: "pending" }],
       integration: { available: false }
     });
   });

@@ -60,7 +60,8 @@ type IntegrationState = { available: boolean; message?: string };
 type AdminMode = "requests" | "manage" | "add" | "updates" | "changelog" | "notifications";
 type LogoRequestStatus = "pending" | "in-review" | "needs-info" | "approved" | "completed" | "rejected";
 type LogoRequest = {
-  number: number;
+  id: string;
+  number: number | null;
   institution: string;
   category: string;
   website: string | null;
@@ -72,7 +73,8 @@ type LogoRequest = {
   submittedAt: string;
   updatedAt: string;
   submitter: string;
-  issueUrl: string;
+  issueUrl: string | null;
+  source: "github" | "email";
 };
 type AdminNotification = {
   id: string;
@@ -739,13 +741,13 @@ function shortDate(value: string): string {
 function RequestsManager() {
   const [requests, setRequests] = useState<LogoRequest[]>([]);
   const [loading, setLoading] = useState(true);
-  const [saving, setSaving] = useState<number | null>(null);
+  const [saving, setSaving] = useState<string | null>(null);
   const [error, setError] = useState("");
   const [integrationMessage, setIntegrationMessage] = useState("");
   const [query, setQuery] = useState("");
   const [status, setStatus] = useState<LogoRequestStatus | "all">("all");
   const [category, setCategory] = useState("all");
-  const [selectedNumber, setSelectedNumber] = useState<number | null>(null);
+  const [selectedId, setSelectedId] = useState<string | null>(null);
 
   async function loadRequests(): Promise<LogoRequest[]> {
     setLoading(true);
@@ -770,20 +772,21 @@ function RequestsManager() {
     return requests.filter((item) =>
       (status === "all" || item.status === status) &&
       (category === "all" || item.category === category) &&
-      (!normalized || `${item.institution} ${item.category} ${item.submitter} ${item.number}`.toLowerCase().includes(normalized))
+      (!normalized || `${item.institution} ${item.category} ${item.submitter} ${item.number ?? "email"}`.toLowerCase().includes(normalized))
     );
   }, [category, query, requests, status]);
 
   const requestCategories = useMemo(() => [...new Set(requests.map((item) => item.category))].sort(), [requests]);
-  const selectedRequest = visible.find((item) => item.number === selectedNumber) ?? visible[0] ?? null;
+  const selectedRequest = visible.find((item) => item.id === selectedId) ?? visible[0] ?? null;
 
   useEffect(() => {
-    if (selectedRequest && selectedRequest.number !== selectedNumber) setSelectedNumber(selectedRequest.number);
-    if (!selectedRequest && selectedNumber !== null) setSelectedNumber(null);
-  }, [selectedNumber, selectedRequest]);
+    if (selectedRequest && selectedRequest.id !== selectedId) setSelectedId(selectedRequest.id);
+    if (!selectedRequest && selectedId !== null) setSelectedId(null);
+  }, [selectedId, selectedRequest]);
 
   async function updateStatus(item: LogoRequest, nextStatus: LogoRequestStatus) {
-    setSaving(item.number);
+    if (item.number === null) return;
+    setSaving(item.id);
     setError("");
     try {
       const response = await api<{ request: LogoRequest }>("/api/admin/requests", {
@@ -794,6 +797,25 @@ function RequestsManager() {
       setRequests((current) => current.map((request) => request.number === item.number ? response.request : request));
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : "Could not update request");
+    } finally {
+      setSaving(null);
+    }
+  }
+
+  async function recoverRequest(item: LogoRequest) {
+    if (item.source !== "email") return;
+    setSaving(item.id);
+    setError("");
+    try {
+      const response = await api<{ request: LogoRequest }>("/api/admin/requests", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ emailId: item.id.replace(/^email-/, "") })
+      });
+      setRequests((current) => current.map((request) => request.id === item.id ? response.request : request));
+      setSelectedId(response.request.id);
+    } catch (caught) {
+      setError(caught instanceof Error ? caught.message : "Could not add request to GitHub");
     } finally {
       setSaving(null);
     }
@@ -830,9 +852,9 @@ function RequestsManager() {
             <header><span>{visible.length} request{visible.length === 1 ? "" : "s"}</span><span>Newest first</span></header>
             <div className="admin-request-index-list">
               {visible.map((item) => (
-                <button aria-current={selectedRequest?.number === item.number ? "true" : undefined} className={selectedRequest?.number === item.number ? "active" : ""} key={item.number} onClick={() => setSelectedNumber(item.number)}>
+                <button aria-current={selectedRequest?.id === item.id ? "true" : undefined} className={selectedRequest?.id === item.id ? "active" : ""} key={item.id} onClick={() => setSelectedId(item.id)}>
                   <span className={`admin-request-state status-${item.status}`} />
-                  <span><strong>{item.institution}</strong><small>#{item.number} · {item.category}</small></span>
+                  <span><strong>{item.institution}</strong><small>{item.number === null ? "Email record" : `#${item.number}`} · {item.category}</small></span>
                   <time dateTime={item.submittedAt}>{shortDate(item.submittedAt)}</time>
                 </button>
               ))}
@@ -843,8 +865,8 @@ function RequestsManager() {
             {selectedRequest ? (
               <>
                 <header className="admin-request-review-heading">
-                  <div><p className="admin-kicker">Request #{selectedRequest.number}</p><h2>{selectedRequest.institution}</h2><p>{selectedRequest.category} · submitted by @{selectedRequest.submitter}</p></div>
-                  <a className="admin-icon-link" href={selectedRequest.issueUrl} target="_blank" rel="noreferrer" aria-label={`Open request ${selectedRequest.number} on GitHub`} title="Open on GitHub"><ExternalLink size={17} /></a>
+                  <div><p className="admin-kicker">{selectedRequest.number === null ? "Email-backed request" : `Request #${selectedRequest.number}`}</p><h2>{selectedRequest.institution}</h2><p>{selectedRequest.category} · submitted by {selectedRequest.source === "github" ? `@${selectedRequest.submitter}` : selectedRequest.submitter}</p></div>
+                  {selectedRequest.issueUrl ? <a className="admin-icon-link" href={selectedRequest.issueUrl} target="_blank" rel="noreferrer" aria-label={`Open request ${selectedRequest.number} on GitHub`} title="Open on GitHub"><ExternalLink size={17} /></a> : null}
                 </header>
                 <dl className="admin-request-details">
                   <div><dt>Submitted</dt><dd>{shortDate(selectedRequest.submittedAt)}</dd></div>
@@ -854,8 +876,10 @@ function RequestsManager() {
                   <div><dt>Submitted asset</dt><dd>{selectedRequest.assetUrl ? <a href={selectedRequest.assetUrl} target="_blank" rel="noreferrer">Review asset <ExternalLink size={13} /></a> : "Not provided"}</dd></div>
                 </dl>
                 <section className="admin-request-status-panel">
-                  <div><h3>Publication status</h3><p>Update the request as it moves through review.</p></div>
-                  <label className="admin-status-select"><span className="admin-visually-hidden">Status for {selectedRequest.institution}</span><select className={`status-${selectedRequest.status}`} disabled={saving === selectedRequest.number} value={selectedRequest.status} onChange={(event) => updateStatus(selectedRequest, event.target.value as LogoRequestStatus)}>{requestStatusOptions.map(([value, label]) => <option key={value} value={value}>{label}</option>)}</select></label>
+                  <div><h3>Publication status</h3><p>{selectedRequest.source === "email" ? "Add this delivered request to GitHub to begin review." : "Update the request as it moves through review."}</p></div>
+                  {selectedRequest.source === "email"
+                    ? <button className="admin-version-button" type="button" disabled={saving === selectedRequest.id} onClick={() => recoverRequest(selectedRequest)}><GitFork size={15} /> Add to GitHub</button>
+                    : <label className="admin-status-select"><span className="admin-visually-hidden">Status for {selectedRequest.institution}</span><select className={`status-${selectedRequest.status}`} disabled={saving === selectedRequest.id} value={selectedRequest.status} onChange={(event) => updateStatus(selectedRequest, event.target.value as LogoRequestStatus)}>{requestStatusOptions.map(([value, label]) => <option key={value} value={value}>{label}</option>)}</select></label>}
                 </section>
               </>
             ) : (

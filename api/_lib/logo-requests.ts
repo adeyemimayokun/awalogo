@@ -59,21 +59,3 @@ export function buildPublicIssue(request: PublicLogoRequest): { title: string; b
     ].join("\n")
   };
 }
-
-export function buildMaintainerEmail(request: PublicLogoRequest): { subject: string; text: string } {
-  return {
-    subject: `Logo request: ${request.institutionName.replace(/[\r\n]+/g, " ")}`,
-    text: [
-      "A new logo request was submitted through awalogo.com.",
-      "",
-      `Company or product: ${request.institutionName}`,
-      `Type of company: ${request.category}`,
-      `Company website: ${request.officialWebsite}`,
-      `Contributor email: ${request.email}`,
-      `Logo file link: ${request.logoAssetUrl || "Not provided"}`,
-      `Notify when available: ${request.notifyWhenAvailable ? "Yes" : "No"}`,
-      "",
-      `Submission ID: ${request.submissionId}`
-    ].join("\n")
-  };
-}
