@@ -10,10 +10,11 @@ maintainers and shows a confirmation in the website.
    hidden spam-trap field when it is filled.
 2. The private contributor email and request details are delivered to the
    maintainer inbox through [Resend](https://resend.com/docs/api-reference/emails/send-email).
-3. The server creates a public `logo-request` issue through the
+3. The server attempts to create a public `logo-request` issue through the
    [GitHub Issues API](https://docs.github.com/en/rest/issues/issues).
-4. The public issue excludes the contributor email. If public issue creation
-   fails, the private maintainer email remains the source of truth.
+4. The public issue excludes the contributor email and supplied artwork link.
+   Email delivery and encrypted issue storage are independent, so a temporary
+   failure in one service does not discard a request accepted by the other.
 
 ## Deployment setup
 

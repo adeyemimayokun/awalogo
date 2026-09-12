@@ -6,6 +6,7 @@ import { methodNotAllowed, requireSameOrigin } from "./_lib/http.js";
 import { buildPublicIssue, publicLogoRequestSchema } from "./_lib/logo-requests.js";
 import {
   appendPrivateRequestMetadata,
+  readPrivateRequestMetadata,
   readSubmissionId
 } from "./_lib/request-metadata.js";
 
@@ -17,34 +18,64 @@ export default async function handler(request: VercelRequest, response: VercelRe
 
   try {
     const submission = publicLogoRequestSchema.parse(request.body);
-    const existingIssue = (await listRepositoryIssues("logo-request"))
-      .find((item) => readSubmissionId(item.body) === submission.submissionId);
+    let emailDelivered = false;
+    try {
+      await sendPrivateLogoRequest(submission);
+      emailDelivered = true;
+    } catch (error) {
+      console.error("Logo request maintainer email delivery failed", error);
+    }
+
+    let existingIssue = null;
+    try {
+      existingIssue = (await listRepositoryIssues("logo-request"))
+        .find((item) => readSubmissionId(item.body) === submission.submissionId) ?? null;
+    } catch (error) {
+      console.error("Logo request duplicate check failed", error);
+    }
+
     let createdIssue = existingIssue;
+    let metadataStored = existingIssue ? readPrivateRequestMetadata(existingIssue.body) !== null : false;
     if (!createdIssue) {
       const publicIssue = buildPublicIssue(submission);
-      createdIssue = await createRepositoryIssue({
-        ...publicIssue,
-        body: appendPrivateRequestMetadata(publicIssue.body, {
+      let issueBody = publicIssue.body;
+      let metadataPrepared = false;
+      try {
+        issueBody = appendPrivateRequestMetadata(publicIssue.body, {
           submissionId: submission.submissionId,
           email: submission.email,
           logoAssetUrl: submission.logoAssetUrl,
           notifyWhenAvailable: submission.notifyWhenAvailable
-        }),
-        labels: ["logo-request"]
+        });
+        metadataPrepared = true;
+      } catch (error) {
+        console.error("Logo request encrypted metadata storage is unavailable", error);
+      }
+
+      if (metadataPrepared || emailDelivered) {
+        try {
+          createdIssue = await createRepositoryIssue({
+            ...publicIssue,
+            body: issueBody,
+            labels: ["logo-request"]
+          });
+          metadataStored = metadataPrepared;
+        } catch (error) {
+          console.error("Logo request public issue creation failed", error);
+        }
+      }
+    }
+
+    if (!emailDelivered && !metadataStored) {
+      response.status(503).json({
+        error: "We could not securely save your request right now. Please wait a moment and try again."
       });
+      return;
     }
 
-    let emailDelivered = true;
-    try {
-      await sendPrivateLogoRequest(submission);
-    } catch (error) {
-      emailDelivered = false;
-      console.error("Logo request was stored but maintainer email delivery failed", error);
-    }
-
-    response.status(existingIssue ? 200 : 201).json({
+    response.status(existingIssue ? 200 : createdIssue ? 201 : 202).json({
       ok: true,
-      issue: { number: createdIssue.number, url: createdIssue.html_url },
+      issue: createdIssue ? { number: createdIssue.number, url: createdIssue.html_url } : null,
       emailDelivered
     });
   } catch (error) {

@@ -19,7 +19,12 @@ const storedRequestMetadataSchema = z.object({
 export type StoredRequestMetadata = z.infer<typeof storedRequestMetadataSchema>;
 
 function storageKey(): Buffer {
-  const secret = process.env.LOGO_REQUEST_STORAGE_SECRET ?? process.env.ADMIN_SESSION_SECRET;
+  const localDevelopmentSecret = process.env.AWALOGO_LOCAL_ADMIN_BYPASS === "1" && !process.env.VERCEL
+    ? "awalogo-local-development-only-request-storage-secret"
+    : undefined;
+  const secret = process.env.LOGO_REQUEST_STORAGE_SECRET ??
+    process.env.ADMIN_SESSION_SECRET ??
+    localDevelopmentSecret;
   if (!secret || secret.length < 32) {
     throw new Error("LOGO_REQUEST_STORAGE_SECRET or ADMIN_SESSION_SECRET must be at least 32 characters");
   }
