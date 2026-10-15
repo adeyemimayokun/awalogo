@@ -22,7 +22,10 @@ export default async function handler(request: VercelRequest, response: VercelRe
     try {
       const status = await getAssetRequestStatus(token);
       response.status(status ? 200 : 404).json(status ?? { error: "Request not found" });
-    } catch { response.status(503).json({ error: "Request tracking is temporarily unavailable" }); }
+    } catch (error) {
+      console.error("Private request tracking lookup failed", error);
+      response.status(503).json({ error: "Request tracking is temporarily unavailable" });
+    }
     return;
   }
   if (request.method !== "POST") return methodNotAllowed(response, ["GET", "POST"]);
