@@ -4,6 +4,7 @@ import { sendPrivateLogoRequest } from "./_lib/email.js";
 import { createRepositoryIssue, listRepositoryIssues } from "./_lib/github.js";
 import { methodNotAllowed, requireSameOrigin } from "./_lib/http.js";
 import { buildPublicIssue, publicLogoRequestSchema } from "./_lib/logo-requests.js";
+import { getAssetRequestStatus, requestStoreConfigured, saveAssetRequest } from "./_lib/request-store.js";
 import {
   appendPrivateRequestMetadata,
   readPrivateRequestMetadata,
@@ -13,14 +14,27 @@ import {
 export const config = { api: { bodyParser: { sizeLimit: "64kb" } } };
 
 export default async function handler(request: VercelRequest, response: VercelResponse): Promise<void> {
-  if (request.method !== "POST") return methodNotAllowed(response, ["POST"]);
+  response.setHeader("Cache-Control", "no-store");
+  if (request.method === "GET") {
+    response.setHeader("Cache-Control", "no-store");
+    const token = typeof request.query.token === "string" ? request.query.token : "";
+    if (!requestStoreConfigured()) { response.status(503).json({ error: "Request tracking is not available yet" }); return; }
+    try {
+      const status = await getAssetRequestStatus(token);
+      response.status(status ? 200 : 404).json(status ?? { error: "Request not found" });
+    } catch { response.status(503).json({ error: "Request tracking is temporarily unavailable" }); }
+    return;
+  }
+  if (request.method !== "POST") return methodNotAllowed(response, ["GET", "POST"]);
   if (!requireSameOrigin(request, response)) return;
 
   try {
     const submission = publicLogoRequestSchema.parse(request.body);
+    const databaseStored = requestStoreConfigured();
+    const trackingUrl = databaseStored ? await saveAssetRequest(submission) : null;
     let emailDelivered = false;
     try {
-      await sendPrivateLogoRequest(submission);
+      await sendPrivateLogoRequest(submission, trackingUrl);
       emailDelivered = true;
     } catch (error) {
       console.error("Logo request maintainer email delivery failed", error);
@@ -66,7 +80,7 @@ export default async function handler(request: VercelRequest, response: VercelRe
       }
     }
 
-    if (!emailDelivered && !metadataStored) {
+    if (!emailDelivered && !metadataStored && !databaseStored) {
       response.status(503).json({
         error: "We could not securely save your request right now. Please wait a moment and try again."
       });
@@ -76,7 +90,8 @@ export default async function handler(request: VercelRequest, response: VercelRe
     response.status(existingIssue ? 200 : createdIssue ? 201 : 202).json({
       ok: true,
       issue: createdIssue ? { number: createdIssue.number, url: createdIssue.html_url } : null,
-      emailDelivered
+      emailDelivered,
+      trackingUrl
     });
   } catch (error) {
     if (error instanceof ZodError) {

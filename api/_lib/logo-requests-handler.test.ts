@@ -162,4 +162,21 @@ describe("website logo request persistence", () => {
       error: "We could not securely save your request right now. Please wait a moment and try again."
     });
   });
+
+  it("persists in the database before delivery and accepts a request when email and GitHub fail", async () => {
+    process.env.VERCEL = "1";
+    process.env.SUPABASE_URL = "https://example.supabase.co";
+    process.env.SUPABASE_SECRET_KEY = "test-server-key";
+    const calls: string[] = [];
+    vi.stubGlobal("fetch", vi.fn(async (input: string | URL | Request) => {
+      const url = String(input); calls.push(url);
+      if (url.includes("example.supabase.co")) return url.includes("on_conflict") ? new Response(null, { status: 204 }) : Response.json([{ submission_id: submission.submissionId }]);
+      return new Response("Unavailable", { status: 503 });
+    }));
+    const saved = response();
+    await logoRequestsHandler(publicRequest(), saved);
+    expect(calls[0]).toContain("example.supabase.co/rest/v1/asset_requests");
+    expect(saved.statusCode).toBe(202);
+    expect(saved.body).toMatchObject({ ok: true, emailDelivered: false, trackingUrl: expect.stringContaining("/v2/requests?token=") });
+  });
 });

@@ -61,6 +61,7 @@ type AdminMode = "requests" | "manage" | "add" | "updates" | "changelog" | "noti
 type LogoRequestStatus = "pending" | "in-review" | "needs-info" | "approved" | "completed" | "rejected";
 type LogoRequest = {
   id: string;
+  submissionId?: string;
   number: number | null;
   institution: string;
   category: string;
@@ -74,7 +75,7 @@ type LogoRequest = {
   updatedAt: string;
   submitter: string;
   issueUrl: string | null;
-  source: "github" | "email";
+  source: "github" | "email" | "database";
 };
 type AdminNotification = {
   id: string;
@@ -785,16 +786,16 @@ function RequestsManager() {
   }, [selectedId, selectedRequest]);
 
   async function updateStatus(item: LogoRequest, nextStatus: LogoRequestStatus) {
-    if (item.number === null) return;
+    if (item.number === null && item.source !== "database") return;
     setSaving(item.id);
     setError("");
     try {
       const response = await api<{ request: LogoRequest }>("/api/admin/requests", {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ number: item.number, status: nextStatus })
+        body: JSON.stringify(item.source === "database" ? { submissionId: item.submissionId, status: nextStatus } : { number: item.number, status: nextStatus })
       });
-      setRequests((current) => current.map((request) => request.number === item.number ? response.request : request));
+      setRequests((current) => current.map((request) => request.id === item.id ? response.request : request));
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : "Could not update request");
     } finally {

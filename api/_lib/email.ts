@@ -123,7 +123,7 @@ async function sendEmail(options: {
   }
 }
 
-export async function sendPrivateLogoRequest(request: PublicLogoRequest): Promise<void> {
+export async function sendPrivateLogoRequest(request: PublicLogoRequest, trackingPath?: string | null): Promise<void> {
   await sendEmail({
     to: requiredEnv("LOGO_REQUEST_INBOX"),
     replyTo: request.email,
@@ -139,7 +139,7 @@ export async function sendPrivateLogoRequest(request: PublicLogoRequest): Promis
     await sendEmail({
       to: request.email,
       idempotencyKey: `logo-request-receipt-${request.submissionId}`,
-      message: requesterLogoRequestTemplate(request),
+      message: requesterLogoRequestTemplate(request, trackingPath),
       tags: [
         { name: "email_type", value: "logo_request_receipt" },
         { name: "submission_id", value: request.submissionId }

@@ -2,6 +2,7 @@ import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { z } from "zod";
 import { requireAdmin } from "../_lib/auth.js";
 import { listDeliveredLogoRequests } from "../_lib/email.js";
+import { listAssetRequests, requestStoreConfigured, updateAssetRequest, type StoredAssetRequest } from "../_lib/request-store.js";
 import {
   createRepositoryIssue,
   isLocalRepositoryMode,
@@ -32,6 +33,7 @@ const updateSchema = z.object({
   number: z.number().int().positive(),
   status: z.enum(requestStatuses)
 });
+const storedUpdateSchema = z.object({ submissionId: z.string().uuid(), status: z.enum(requestStatuses) });
 const recoverSchema = z.object({ emailId: z.string().trim().min(1).max(120) });
 
 function issueStatus(issue: RepositoryIssue): RequestStatus {
@@ -120,6 +122,27 @@ async function emailBackedRequests() {
   }
 }
 
+function serializeStoredRequest(item: StoredAssetRequest) {
+  return {
+    id: `database-${item.submission_id}`,
+    submissionId: item.submission_id,
+    number: item.github_issue_number,
+    institution: item.brand_name,
+    category: item.category,
+    website: item.website,
+    email: item.contact_email,
+    assetUrl: item.asset_url,
+    notifyWhenAvailable: item.notify_when_available,
+    status: item.status,
+    state: item.status === "completed" || item.status === "rejected" ? "closed" : "open",
+    submittedAt: item.created_at,
+    updatedAt: item.updated_at,
+    submitter: "website request",
+    issueUrl: null,
+    source: "database" as const
+  };
+}
+
 export default async function handler(request: VercelRequest, response: VercelResponse): Promise<void> {
   if (request.method !== "GET" && request.method !== "POST" && request.method !== "PATCH") {
     return methodNotAllowed(response, ["GET", "POST", "PATCH"]);
@@ -129,6 +152,12 @@ export default async function handler(request: VercelRequest, response: VercelRe
   response.setHeader("Cache-Control", "no-store");
 
   try {
+    if (request.method === "PATCH" && requestStoreConfigured() && request.body?.submissionId) {
+      const update = storedUpdateSchema.parse(request.body);
+      const updated = await updateAssetRequest(update.submissionId, update.status);
+      response.status(updated ? 200 : 404).json(updated ? { request: serializeStoredRequest(updated) } : { error: "Request not found" });
+      return;
+    }
     let issues: RepositoryIssue[] = [];
     let githubAvailable = true;
     try {
@@ -138,11 +167,13 @@ export default async function handler(request: VercelRequest, response: VercelRe
       console.error("GitHub logo request listing failed", error);
     }
     if (request.method === "GET") {
-      const issueRequests = issues.map(serializeIssue);
+      const storedRequests = requestStoreConfigured() ? (await listAssetRequests()).map(serializeStoredRequest) : [];
+      const storedIds = new Set(storedRequests.map((item) => item.submissionId));
+      const issueRequests = issues.map(serializeIssue).filter((item) => !item.submissionId || !storedIds.has(item.submissionId));
       const knownSubmissionIds = new Set(issueRequests.flatMap((item) => item.submissionId ? [item.submissionId] : []));
       const deliveredRequests = (await emailBackedRequests())
-        .filter((item) => !knownSubmissionIds.has(item.submissionId));
-      const requests = [...issueRequests, ...deliveredRequests]
+        .filter((item) => !knownSubmissionIds.has(item.submissionId) && !storedIds.has(item.submissionId));
+      const requests = [...storedRequests, ...issueRequests, ...deliveredRequests]
         .sort((left, right) => right.submittedAt.localeCompare(left.submittedAt));
       response.status(200).json({
         requests,
@@ -151,7 +182,9 @@ export default async function handler(request: VercelRequest, response: VercelRe
           ? { available: true }
           : {
               available: false,
-              message: requests.length
+              message: storedRequests.length
+                ? "Requests are saved in the database. GitHub mirroring is currently unavailable."
+                : requests.length
                 ? "GitHub is unavailable. Delivered email requests are shown read-only until repository access is restored."
                 : "GitHub logo requests are unavailable. Configure the admin token with read access to repository issues."
             }

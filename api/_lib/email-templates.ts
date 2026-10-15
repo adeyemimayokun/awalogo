@@ -91,7 +91,8 @@ export function maintainerLogoRequestTemplate(request: PublicLogoRequest): Email
   };
 }
 
-export function requesterLogoRequestTemplate(request: PublicLogoRequest): EmailTemplate {
+export function requesterLogoRequestTemplate(request: PublicLogoRequest, trackingPath?: string | null): EmailTemplate {
+  const trackingUrl = trackingPath?.startsWith("/v2/requests?token=") ? `https://www.awalogo.com${trackingPath}` : null;
   const subject = `We received your ${cleanSubject(request.institutionName)} logo request`;
   const rows: Array<[string, string]> = [
     ["Company or product", request.institutionName],
@@ -106,6 +107,7 @@ export function requesterLogoRequestTemplate(request: PublicLogoRequest): EmailT
     "",
     ...rows.map(([label, value]) => `${label}: ${value}`),
     "",
+    ...(trackingUrl ? [`Track your request: ${trackingUrl}`, ""] : []),
     request.notifyWhenAvailable
       ? "You asked us to email you when this logo becomes available."
       : "You did not request an availability email."
@@ -118,7 +120,7 @@ export function requesterLogoRequestTemplate(request: PublicLogoRequest): EmailT
       eyebrow: "Request received",
       heading: "Thanks for helping awalogo grow",
       intro: `We received your request for ${request.institutionName}. Our maintainers will review its official source before publishing it.`,
-      content: detailRows(rows),
+      content: detailRows(rows) + (trackingUrl ? `<p style="margin:24px 0 0;"><a href="${escapeHtml(trackingUrl)}" style="background:#292a27;color:#fff;padding:12px 18px;text-decoration:none;display:inline-block;">Track your request</a></p>` : ""),
       footer: request.notifyWhenAvailable
         ? "You asked us to email you when this logo becomes available."
         : "You did not request an availability email."

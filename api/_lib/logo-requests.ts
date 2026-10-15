@@ -12,6 +12,7 @@ const optionalHttpsUrl = z.union([
 
 export const publicLogoRequestSchema = z.object({
   submissionId: z.string().uuid(),
+  trackingToken: z.string().regex(/^[A-Za-z0-9_-]{43}$/).optional(),
   institutionName: z.string().trim().min(2).max(120),
   officialWebsite: httpUrl,
   email: z.string().trim().email().max(254),

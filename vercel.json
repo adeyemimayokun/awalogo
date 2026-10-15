@@ -6,6 +6,13 @@
   "outputDirectory": "apps/web/dist",
   "headers": [
     {
+      "source": "/v2/:path*",
+      "headers": [
+        { "key": "X-Robots-Tag", "value": "noindex, nofollow" },
+        { "key": "Referrer-Policy", "value": "no-referrer" }
+      ]
+    },
+    {
       "source": "/catalog/v1/catalog.json",
       "headers": [
         { "key": "Access-Control-Allow-Origin", "value": "*" },
@@ -23,6 +30,8 @@
     }
   ],
   "rewrites": [
+    { "source": "/v2", "destination": "/index.html" },
+    { "source": "/v2/:path*", "destination": "/index.html" },
     { "source": "/docs", "destination": "/index.html" },
     { "source": "/docs/:path*", "destination": "/index.html" },
     { "source": "/admin", "destination": "/index.html" },

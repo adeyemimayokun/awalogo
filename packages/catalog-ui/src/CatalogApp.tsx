@@ -326,7 +326,7 @@ export function CatalogApp({
   const [pageSize, setPageSize] = useState<number>(DEFAULT_PAGE_SIZE);
   const [currentPage, setCurrentPage] = useState(1);
   const [toast, setToast] = useState("");
-  const [projectPanel, setProjectPanel] = useState<ProjectPanel | null>(null);
+  const [projectPanel, setProjectPanel] = useState<ProjectPanel | null>(() => new URLSearchParams(window.location.search).get("request") === "true" ? "request" : null);
   const [themeMode, setThemeMode] = useState<ThemeMode>(getInitialTheme);
   const [categoriesExpanded, setCategoriesExpanded] = useState(false);
   const [sortDirection, setSortDirection] = useState<CatalogSortDirection>("asc");
