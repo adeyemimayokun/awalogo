@@ -179,4 +179,15 @@ describe("website logo request persistence", () => {
     expect(saved.statusCode).toBe(202);
     expect(saved.body).toMatchObject({ ok: true, emailDelivered: false, trackingUrl: expect.stringContaining("/v2/requests?token=") });
   });
+
+  it("retains private email delivery when the configured database is unavailable", async () => {
+    process.env.VERCEL = "1";
+    process.env.SUPABASE_URL = "https://example.supabase.co";
+    process.env.SUPABASE_SECRET_KEY = "test-server-key";
+    vi.stubGlobal("fetch", vi.fn(async (input: string | URL | Request) => String(input).includes("api.resend.com") ? new Response(null, { status: 202 }) : new Response(null, { status: 503 })));
+    const saved = response();
+    await logoRequestsHandler(publicRequest(), saved);
+    expect(saved.statusCode).toBe(202);
+    expect(saved.body).toMatchObject({ ok: true, emailDelivered: true, trackingUrl: null });
+  });
 });

@@ -167,7 +167,11 @@ export default async function handler(request: VercelRequest, response: VercelRe
       console.error("GitHub logo request listing failed", error);
     }
     if (request.method === "GET") {
-      const storedRequests = requestStoreConfigured() ? (await listAssetRequests()).map(serializeStoredRequest) : [];
+      let storedRequests: ReturnType<typeof serializeStoredRequest>[] = [];
+      if (requestStoreConfigured()) {
+        try { storedRequests = (await listAssetRequests()).map(serializeStoredRequest); }
+        catch (error) { console.error("Request database listing failed; using existing request sources", error); }
+      }
       const storedIds = new Set(storedRequests.map((item) => item.submissionId));
       const issueRequests = issues.map(serializeIssue).filter((item) => !item.submissionId || !storedIds.has(item.submissionId));
       const knownSubmissionIds = new Set(issueRequests.flatMap((item) => item.submissionId ? [item.submissionId] : []));

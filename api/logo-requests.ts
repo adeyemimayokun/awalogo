@@ -33,8 +33,16 @@ export default async function handler(request: VercelRequest, response: VercelRe
 
   try {
     const submission = publicLogoRequestSchema.parse(request.body);
-    const databaseStored = requestStoreConfigured();
-    const trackingUrl = databaseStored ? await saveAssetRequest(submission) : null;
+    let databaseStored = false;
+    let trackingUrl: string | null = null;
+    if (requestStoreConfigured()) {
+      try {
+        trackingUrl = await saveAssetRequest(submission);
+        databaseStored = true;
+      } catch (error) {
+        console.error("Request database persistence failed; trying private delivery", error);
+      }
+    }
     let emailDelivered = false;
     try {
       await sendPrivateLogoRequest(submission, trackingUrl);
