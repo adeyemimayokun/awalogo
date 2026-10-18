@@ -3,6 +3,7 @@ import { paginate, recommendBrands, shortcut } from "./browse-tools";
 import affiliations from "../../../packages/brands/research/affiliations.json";
 import { cancelActionSounds, initialSound, playActionSound, SOUND_KEY } from "./action-sound";
 import { bagReducer, type BagState } from "./bag-actions";
+import { assetUrl } from "./asset-url";
 import V2Navigation from "./V2Navigation";
 import V2BrandCard from "./V2BrandCard";
 import V2Pagination from "./V2Pagination";
@@ -219,7 +220,7 @@ function V2Workspace() {
   }
   function snippet() {
     if (!asset || !selected) return "";
-    const url = new URL(asset.url, "https://www.awalogo.com").href;
+    const url = assetUrl(asset.url);
     const name = historicalAsset?.brand_name ?? selected.name;
     return codeType === "html" ? `<img src="${escapeAttribute(url)}" alt="${escapeAttribute(name)} logo" width="160" loading="lazy" />` : `<img src=${JSON.stringify(url)} alt=${JSON.stringify(`${name} logo`)} width={160} loading="lazy" />`;
   }

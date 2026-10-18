@@ -223,7 +223,7 @@
 .v2-theme-options label:has(input:checked) { border-color:var(--muted); }
 .v2-theme-options label:has(input:focus-visible) { outline:2px solid var(--field-focus, #92928e); outline-offset:2px; }
 .v2-app[data-v2-theme="dark"] { --ink:#ededeb; --muted:#aaa; --line:#3b3b3b; --surface:#1c1c1c; background:#151515; color-scheme:dark; }
-.v2-app[data-v2-theme="dark"] :is(.v2-panel,.v2-dock,.v2-dock-popover,.v2-dock-item,.v2-dock-category,.v2-search-wrap > label,.v2-select select,.v2-request input,.v2-request select,.v2-actions button,.v2-bag-row button,.v2-code pre,.v2-close,.v2-formats button.active) { background:#1c1c1c; color:var(--ink); }
+.v2-app[data-v2-theme="dark"] :where(.v2-panel,.v2-dock,.v2-dock-popover,.v2-dock-item,.v2-dock-category,.v2-search-wrap > label,.v2-select select,.v2-request input,.v2-request select,.v2-actions button,.v2-bag-row button,.v2-code pre,.v2-close,.v2-formats button.active) { background:var(--surface); color:var(--ink); }
 .v2-app[data-v2-theme="dark"] :is(.v2-preview,.v2-detail-preview) { background:#fff; border-color:#3b3b3b; }
 .v2-app[data-v2-theme="dark"] .v2-primary { background:#ededeb; color:#202020; border-color:#ededeb; }
 .v2-app[data-v2-theme="dark"] .v2-dock-item small { background:#1c1c1c; }

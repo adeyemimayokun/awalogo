@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { paginate, recommendBrands } from "./browse-tools";
 import V2Pagination from "./V2Pagination";
+import { assetUrl } from "./asset-url";
 import { ArrowDownToLine, Copy, ExternalLink, Plus, RotateCcw, Search, X } from "lucide-react";
 import { findFlags, flags, flagSource, type CountryFlag, type FlagAsset } from "./flags-data";
 import V2Select from "./V2Select";
@@ -48,7 +49,7 @@ export function FlagDetails({ flag, onAdd, onDownload, onCopy, readAsset, busy =
   useEffect(() => setError(""), [ratio, format]);
   const variant = flag.variants.find((item) => item.id === ratio)!;
   const asset = variant.formats.find((item) => item.type === format)!;
-  const url = new URL(asset.url, "https://www.awalogo.com").href;
+  const url = assetUrl(asset.url);
   const alt = `${flag.name} flag`;
   const snippet = language === "html" ? `<img src="${url}" alt="${alt.replaceAll('"', "&quot;")}" width="${ratio === "4x3" ? 64 : 48}" />` : `<img src=${JSON.stringify(url)} alt=${JSON.stringify(alt)} width={${ratio === "4x3" ? 64 : 48}} />`;
   return <><p className="v2-eyebrow">{t("COUNTRY FLAG /")} {flag.code}</p><h2>{flag.name}</h2><div className="v2-detail-preview v2-flag-detail"><img src={asset.url} alt={alt} /></div>

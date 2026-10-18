@@ -33,6 +33,8 @@ Open a logo or flag to preview the selected format/variant, download it, copy
 HTML/React image code or available SVG, and share a link. Logos also support
 validated inline SVG/JSX. Formats depend on source availability; raster artwork
 is never traced to manufacture vectors. Flag variants are standardized 4:3 and square.
+Image snippets use the current deployment origin so preview-only assets do not
+incorrectly point at production. Use production-origin snippets in production projects.
 
 Pack assets into the floating download bag. Drag it to move it; focused arrow keys
 move it and Home restores its default position. The position and collection persist

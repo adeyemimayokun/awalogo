@@ -8,6 +8,7 @@ export const previewUpdates = [{
 export const previewChangelog = [{
   version:"V2 preview / 2026-10-18", date:"2026-10-18", title:"Coming soon preview improvements", status:"published",
   changes:[
+    "Fixed dark-theme primary-action contrast and made copied logo/flag image URLs use the current deployment, including staging-only assets.",
     "Combined 228 unchanged financial logos with 84 independent reviewed company additions; added 249 separately licensed country/territory flags. V1 and the current Figma plugin remain unchanged.",
     "Added actual industry/category labels, multiple categories, country filters, popularity sorting and normalized name/alias search. Historical 9mobile artwork is a community-sourced previous version under T2, not the current primary logo.",
     "Added 20-item default pages for logos and flags, three previous/two next page links and first/last jumps. Search and filtered lists remain unpaginated.",
