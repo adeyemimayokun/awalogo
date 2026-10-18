@@ -1,8 +1,9 @@
+import V2Select from "./V2Select";
 import { useEffect, useState, type FormEvent } from "react";
 import { ArrowLeft, Check, Send } from "lucide-react";
-import { logos } from "../../../packages/catalog-ui/src/logo-data";
+import { logos } from "./v2-brand-data";
 
-export default function V2Request() {
+export default function V2Request({ embedded = false, onBrowse, onSelectBrand }: { embedded?: boolean; onBrowse?: () => void; onSelectBrand?: (slug: string) => void }) {
   const [name, setName] = useState("");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
@@ -30,18 +31,18 @@ export default function V2Request() {
       const body = await response.json(); if (!response.ok) throw new Error(body.error ?? "Your request could not be saved"); setResult(body);
     } catch (caught) { setError(caught instanceof Error ? caught.message : "Your request could not be saved"); } finally { setBusy(false); }
   }
-  return <main className="v2-request"><a href="/v2"><ArrowLeft size={16} />Back to the library</a><p className="v2-eyebrow">GROW THE LIBRARY</p><h1>{token ? "Your request" : result ? "Request received" : "Request a brand asset"}</h1>
+  return <section className={`v2-request${embedded ? " v2-request-embedded" : ""}`} aria-label="Brand request"><a href="/v2" onClick={(event) => { if (onBrowse && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey) { event.preventDefault(); onBrowse(); } }}><ArrowLeft size={16} />Back to the library</a><p className="v2-eyebrow">GROW THE LIBRARY</p><h1>{token ? "Your request" : result ? "Request received" : "Request a brand asset"}</h1>
     {error ? <p className="v2-error" role="alert">{error}</p> : null}
     {token ? status ? <div className="v2-request-success"><h2>{status.brand_name}</h2><p>Status: {status.status.replaceAll("-", " ")}</p></div> : !error ? <p role="status">Loading request...</p> : null : result ? <div className="v2-request-success"><Check size={28} /><p>We received your request for {name}.</p>{result.trackingUrl ? <a href={result.trackingUrl}>Track your request</a> : <p>Your request has been delivered to the maintainers.</p>}<a href="/v2">Return to the library</a></div> : <form onSubmit={submit}>
       <label>Brand or company name<input name="name" required minLength={2} maxLength={120} value={name} onChange={(event) => setName(event.target.value)} /></label>
-      {matches.length ? <div className="v2-request-matches"><span>Already in the library</span>{matches.map((logo) => <a key={logo.slug} href={`/v2?brand=${logo.slug}`}>{logo.name}</a>)}</div> : null}
+      {matches.length ? <div className="v2-request-matches"><span>Already in the library</span>{matches.map((logo) => <a key={logo.slug} href={`/v2?brand=${logo.slug}`} onClick={(event) => { if (onSelectBrand && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey) { event.preventDefault(); onSelectBrand(logo.slug); } }}>{logo.name}</a>)}</div> : null}
       <label>Official website<input name="website" type="url" required placeholder="https://company.com" /></label>
       <label>Your email<input name="email" type="email" required maxLength={254} /></label>
-      <label>Company type<select name="category">{["Bank", "Finance app", "Fintech", "Insurance", "Investment platform", "Payments", "Other"].map((value) => <option key={value}>{value}</option>)}</select></label>
+      <label>Company type<V2Select name="category">{["Bank", "Finance app", "Fintech", "Insurance", "Investment platform", "Payments", "Other"].map((value) => <option key={value}>{value}</option>)}</V2Select></label>
       <label>Artwork link (optional)<input name="asset" type="url" placeholder="https://..." /></label>
       <label className="v2-check"><input name="notify" type="checkbox" defaultChecked />Email me when it is available</label>
       <div className="v2-honeypot" aria-hidden="true"><input name="websiteConfirm" tabIndex={-1} autoComplete="off" /></div>
       <button className="v2-primary" disabled={busy}><Send size={16} />{busy ? "Sending..." : "Send request"}</button>
     </form>}
-  </main>;
+  </section>;
 }

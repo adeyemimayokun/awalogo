@@ -7,6 +7,9 @@
   "license": "MIT",
   "packageManager": "pnpm@9.15.4",
   "scripts": {
+    "brands:research": "node scripts/research-brands.mjs",
+    "brands:publish": "node scripts/publish-brands.mjs",
+    "brands:check": "node scripts/publish-brands.mjs --check && tsx packages/brands/validate.ts && node scripts/brands-baseline.mjs",
     "build": "tsc -p packages/logos/tsconfig.build.json && tsc -p packages/institutions/tsconfig.build.json && pnpm build:web && pnpm build:plugin",
     "build:web": "pnpm --filter @awalogo/web build",
     "build:plugin": "pnpm --filter @awalogo/figma-plugin build",

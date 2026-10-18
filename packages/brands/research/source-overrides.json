@@ -1,0 +1,7 @@
+{
+  "globacom": { "aliases": ["Glo", "Glo Nigeria", "Globacom Nigeria"] },
+  "shoprite": { "pages": ["https://shoprite.ng/", "https://www.shoprite.co.za/"] },
+  "mainone": { "pages": ["https://mainone.net/"] },
+  "airtel-nigeria": { "aliases": ["Airtel", "Airtel Networks Limited"], "pages": ["https://www.airtel.com.ng/min/"] },
+  "jumia-nigeria": { "aliases": ["Jumia"], "pages": ["https://group.jumia.com/press/media-kit"] }
+}

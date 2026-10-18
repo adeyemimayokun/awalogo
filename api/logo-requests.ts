@@ -1,5 +1,7 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { ZodError } from "zod";
+import { handlePopularity } from "./_lib/popularity.js";
+import { handleLogoReport } from "./_lib/logo-report.js";
 import { sendPrivateLogoRequest } from "./_lib/email.js";
 import { createRepositoryIssue, listRepositoryIssues } from "./_lib/github.js";
 import { methodNotAllowed, requireSameOrigin } from "./_lib/http.js";
@@ -14,6 +16,8 @@ import {
 export const config = { api: { bodyParser: { sizeLimit: "64kb" } } };
 
 export default async function handler(request: VercelRequest, response: VercelResponse): Promise<void> {
+  if (request.query.view === "report") return handleLogoReport(request, response);
+  if (request.query.view === "popularity") return handlePopularity(request, response);
   response.setHeader("Cache-Control", "no-store");
   if (request.method === "GET") {
     response.setHeader("Cache-Control", "no-store");

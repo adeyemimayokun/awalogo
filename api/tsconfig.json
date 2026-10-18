@@ -8,7 +8,9 @@
   },
   "include": [
     "./**/*.ts",
+    "../packages/catalog-ui/src/generated/runtime-catalog.json",
     "../packages/logos/src/promoted-catalog.json",
-    "../packages/logos/src/variations.json"
+    "../packages/logos/src/variations.json",
+    "../packages/brands/catalog.json"
   ]
 }

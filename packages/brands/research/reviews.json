@@ -1,0 +1,1249 @@
+[
+  {
+    "slug": "credit-direct",
+    "decision": "approved",
+    "asset_path": "staging/credit-direct-0-5c3b753260b1.svg",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-18",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Artwork visually inspected on light and dark backgrounds against the logo served by the official company website. Official sourcing does not imply trademark ownership or a redistribution licence.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://www.creditdirect.ng/",
+        "note": "Official website describes financial services for Nigerians.",
+        "retrieved_at": "2026-10-18"
+      }
+    ]
+  },
+  {
+    "slug": "seamlesshr",
+    "decision": "approved",
+    "asset_path": "staging/seamlesshr-0-dee188b7f769.webp",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-18",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Artwork visually inspected on light and dark backgrounds against the logo served by the official company website. Official sourcing does not imply trademark ownership or a redistribution licence.",
+    "origin_country": "NG",
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG",
+      "KE",
+      "GH"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://seamlesshr.com/about/",
+        "note": "Company history describes Nigerian founders and offices in Lagos, Nairobi and Accra.",
+        "retrieved_at": "2026-10-18"
+      }
+    ]
+  },
+  {
+    "slug": "ipnx",
+    "decision": "approved",
+    "asset_path": "staging/ipnx-0-b6f307ad65bb.png",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-18",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Artwork visually inspected on light and dark backgrounds against the logo served by the official company website. Official sourcing does not imply trademark ownership or a redistribution licence.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://www.ipnxnigeria.net/",
+        "note": "Official website identifies its Nigerian fibre broadband services.",
+        "retrieved_at": "2026-10-18"
+      }
+    ]
+  },
+  {
+    "slug": "food-concepts",
+    "decision": "approved",
+    "asset_path": "staging/food-concepts-0-86fa89686dcd.png",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-18",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Artwork visually inspected on light and dark backgrounds against the logo served by the official company website. Official sourcing does not imply trademark ownership or a redistribution licence.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://foodconceptsplc.com/wp-content/uploads/2023/12/FoodConceptsPlc_2022AnnuaReport.pdf",
+        "note": "Official annual report documents restaurant operations in Nigerian states.",
+        "retrieved_at": "2026-10-18"
+      }
+    ]
+  },
+  {
+    "slug": "gig-logistics",
+    "decision": "approved",
+    "asset_path": "staging/gig-logistics-0-48cfb3cc6d2b.webp",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-18",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Artwork visually inspected on light and dark backgrounds against the logo served by the official company website. Official sourcing does not imply trademark ownership or a redistribution licence.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "dark",
+    "evidence": [
+      {
+        "url": "https://giglogistics.com/",
+        "note": "Official website offers domestic shipping across all 36 Nigerian states.",
+        "retrieved_at": "2026-10-18"
+      }
+    ]
+  },
+  {
+    "slug": "arik-air",
+    "decision": "approved",
+    "asset_path": "staging/arik-air-0-d31f72de5245.png",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-18",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Artwork visually inspected on light and dark backgrounds against the logo served by the official company website. Official sourcing does not imply trademark ownership or a redistribution licence.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "dark",
+    "evidence": [
+      {
+        "url": "https://www.fly.arikair.com/",
+        "note": "Official airline website lists domestic Nigerian routes and Lagos contact address.",
+        "retrieved_at": "2026-10-18"
+      }
+    ]
+  },
+  {
+    "slug": "fidson-healthcare",
+    "decision": "approved",
+    "asset_path": "staging/fidson-healthcare-0-a18b0fdf67d7.png",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-18",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Artwork visually inspected on light and dark backgrounds against the logo served by the official company website. Official sourcing does not imply trademark ownership or a redistribution licence.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://fidson.com/",
+        "note": "Official website identifies Fidson as a pharmaceutical company in Nigeria.",
+        "retrieved_at": "2026-10-18"
+      }
+    ]
+  },
+  {
+    "slug": "innoson-vehicles",
+    "decision": "approved",
+    "asset_path": "staging/innoson-vehicles-0-4c7ddca27d59.png",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-18",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Artwork visually inspected on light and dark backgrounds against the logo served by the official company website. Official sourcing does not imply trademark ownership or a redistribution licence.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://www.innosonvehicles.com/about-ivm/",
+        "note": "Official company history identifies vehicle manufacturing in Nnewi, Nigeria.",
+        "retrieved_at": "2026-10-18"
+      }
+    ]
+  },
+  {
+    "slug": "mtn-group",
+    "decision": "approved",
+    "asset_path": "staging/mtn-group-0-1a00dfd52f10.svg",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-18",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Artwork visually inspected on light and dark backgrounds against the logo served by the official company website. Official sourcing does not imply trademark ownership or a redistribution licence.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "ZA"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://www.mtn.com/contact-us/",
+        "note": "Official group contact page lists the South African physical address in Gauteng.",
+        "retrieved_at": "2026-10-18"
+      }
+    ]
+  },
+  {
+    "slug": "kcb-group",
+    "decision": "approved",
+    "asset_path": "staging/kcb-group-0-62f06f98b190.png",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-18",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Artwork visually inspected on light and dark backgrounds against the logo served by the official company website. Official sourcing does not imply trademark ownership or a redistribution licence.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "KE"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://kcbgroup.com/contact-us/",
+        "note": "Official group contact page lists Kencom House, Nairobi, Kenya.",
+        "retrieved_at": "2026-10-18"
+      }
+    ]
+  },
+  {
+    "slug": "hubtel",
+    "decision": "approved",
+    "asset_path": "staging/hubtel-0-bbef7d94cc12.svg",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-18",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Artwork visually inspected on light and dark backgrounds against the logo served by the official company website. Official sourcing does not imply trademark ownership or a redistribution licence.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "GH"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://hubtel.com/",
+        "note": "Official website describes business payment services in more than eight Ghanaian cities.",
+        "retrieved_at": "2026-10-18"
+      }
+    ]
+  },
+  {
+    "slug": "sifca",
+    "decision": "approved",
+    "asset_path": "staging/sifca-0-66df49a4cca6.png",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-18",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Artwork visually inspected on light and dark backgrounds against the logo served by the official company website. Official sourcing does not imply trademark ownership or a redistribution licence.",
+    "origin_country": "CI",
+    "headquarters_country": "CI",
+    "operating_countries": [
+      "CI"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://groupesifca.com/presentation-du-groupe-sifca/",
+        "note": "Official profile describes an Ivorian group founded in 1964 with headquarters in Abidjan.",
+        "retrieved_at": "2026-10-18"
+      }
+    ]
+  },
+  {
+    "slug": "paps",
+    "decision": "approved",
+    "asset_path": "staging/paps-0-15197ec3f6b2.png",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-18",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Artwork visually inspected on light and dark backgrounds against the logo served by the official company website. Official sourcing does not imply trademark ownership or a redistribution licence.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "SN",
+      "CI"
+    ],
+    "preview_background": "dark",
+    "evidence": [
+      {
+        "url": "https://papslogistics.com/",
+        "note": "Official website describes logistics services in Senegal and Cote d'Ivoire.",
+        "retrieved_at": "2026-10-18"
+      }
+    ]
+  },
+  {
+    "slug": "bakhresa-group",
+    "decision": "approved",
+    "asset_path": "staging/bakhresa-group-0-9aad74746dc6.png",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-18",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Artwork visually inspected on light and dark backgrounds against the logo served by the official company website. Official sourcing does not imply trademark ownership or a redistribution licence.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "TZ"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://bakhresa.com/contact/",
+        "note": "Official contact page lists the group office in Dar es Salaam, Tanzania.",
+        "retrieved_at": "2026-10-18"
+      }
+    ]
+  },
+  {
+    "slug": "crdb-bank",
+    "decision": "approved",
+    "asset_path": "staging/crdb-bank-0-6225f07d0b48.svg",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-18",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Artwork visually inspected on light and dark backgrounds against the logo served by the official company website. Official sourcing does not imply trademark ownership or a redistribution licence.",
+    "origin_country": null,
+    "headquarters_country": "TZ",
+    "operating_countries": [
+      "TZ",
+      "BI",
+      "CD"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://www.crdbbank.co.tz/en/about-us/group",
+        "note": "Official profile identifies headquarters in Dar es Salaam and operations in Tanzania, Burundi and DR Congo.",
+        "retrieved_at": "2026-10-18"
+      }
+    ]
+  },
+  {
+    "slug": "reliance-health",
+    "decision": "duplicate",
+    "duplicate_of": "reliance-hmo",
+    "reviewer": "Codex assisted identity review",
+    "reviewed_at": "2026-10-18",
+    "review_notes": "Existing Reliance HMO already points to getreliancehealth.com/nigeria/. Reliance Health uses the same official domain and references Reliance HMO. Hold as an identity/replacement proposal; do not publish a competing logo or alter the existing one.",
+    "evidence": [
+      {
+        "url": "https://getreliancehealth.com/",
+        "note": "Official homepage references Reliance HMO and links Nigerian operations.",
+        "retrieved_at": "2026-10-18"
+      }
+    ]
+  },
+  {
+    "slug": "baines-credit",
+    "decision": "approved",
+    "asset_path": "staging/baines-credit-0-ce4e7cc444b2.webp",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-18",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Visually reviewed the company artwork on light and dark backgrounds against its official website. Excluded promotional imagery, partner logos and product-only marks. Official sourcing is not a trademark licence.",
+    "batch": "africa-100-02",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "dark",
+    "evidence": [
+      {
+        "url": "https://www.bainescredit.com/",
+        "note": "Official homepage describes banking services for individuals and businesses across Nigeria.",
+        "retrieved_at": "2026-10-18"
+      }
+    ]
+  },
+  {
+    "slug": "spectranet",
+    "decision": "approved",
+    "asset_path": "staging/spectranet-0-0c60578cfcb8.webp",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-18",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Visually reviewed the company artwork on light and dark backgrounds against its official website. Excluded promotional imagery, partner logos and product-only marks. Official sourcing is not a trademark licence.",
+    "batch": "africa-100-02",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://www.spectranet.com.ng/",
+        "note": "Official website lists broadband coverage in Lagos, Abuja, Port Harcourt and other Nigerian towns.",
+        "retrieved_at": "2026-10-18"
+      }
+    ]
+  },
+  {
+    "slug": "konga",
+    "decision": "approved",
+    "asset_path": "staging/konga-2-3e2330e5034f.webp",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-18",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Visually reviewed the company artwork on light and dark backgrounds against its official website. Excluded promotional imagery, partner logos and product-only marks. Official sourcing is not a trademark licence.",
+    "batch": "africa-100-02",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://www.konga.com/content/about-us?mobile_menu=open",
+        "note": "Official company information identifies Konga.com Online Shopping Limited and its Lagos, Nigeria address.",
+        "retrieved_at": "2026-10-18"
+      }
+    ]
+  },
+  {
+    "slug": "slot",
+    "decision": "approved",
+    "asset_path": "staging/slot-0-2b5c14496bc1.webp",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-18",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Visually reviewed the company artwork on light and dark backgrounds against its official website. Excluded promotional imagery, partner logos and product-only marks. Official sourcing is not a trademark licence.",
+    "batch": "africa-100-02",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://slot.ng/",
+        "note": "Official retailer website identifies SLOT Nigeria and offers nationwide Nigerian delivery.",
+        "retrieved_at": "2026-10-18"
+      }
+    ]
+  },
+  {
+    "slug": "air-peace",
+    "decision": "approved",
+    "asset_path": "staging/air-peace-0-dbe34c68b109.webp",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-18",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Visually reviewed the company artwork on light and dark backgrounds against its official website. Excluded promotional imagery, partner logos and product-only marks. Official sourcing is not a trademark licence.",
+    "batch": "africa-100-02",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://flyairpeace.com/",
+        "note": "Official airline website advertises Nigerian domestic services alongside regional and international flights.",
+        "retrieved_at": "2026-10-18"
+      }
+    ]
+  },
+  {
+    "slug": "emzor",
+    "decision": "approved",
+    "asset_path": "staging/emzor-0-24c6d9151939.jpeg",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-18",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Visually reviewed the company artwork on light and dark backgrounds against its official website. Excluded promotional imagery, partner logos and product-only marks. Official sourcing is not a trademark licence.",
+    "batch": "africa-100-02",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://www.emzorpharma.com/",
+        "note": "Official manufacturer website identifies Nigerian pharmaceutical operations and its Isolo, Nigeria contact address.",
+        "retrieved_at": "2026-10-18"
+      }
+    ]
+  },
+  {
+    "slug": "propertypro",
+    "decision": "approved",
+    "asset_path": "staging/propertypro-0-f1c435eef6c6.png",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-18",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Visually reviewed the company artwork on light and dark backgrounds against its official website. Excluded promotional imagery, partner logos and product-only marks. Official sourcing is not a trademark licence.",
+    "batch": "africa-100-02",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://propertypro.ng/",
+        "note": "Official property platform offers Nigerian property listings for sale, rent and lease.",
+        "retrieved_at": "2026-10-18"
+      }
+    ]
+  },
+  {
+    "slug": "churchgate",
+    "decision": "approved",
+    "asset_path": "staging/churchgate-1-a1626be28722.png",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-18",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Visually reviewed the company artwork on light and dark backgrounds against its official website. Excluded promotional imagery, partner logos and product-only marks. Official sourcing is not a trademark licence.",
+    "batch": "africa-100-02",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://churchgate.com/",
+        "note": "Official company portfolio lists property developments in Abuja and Lagos, Nigeria.",
+        "retrieved_at": "2026-10-18"
+      }
+    ]
+  },
+  {
+    "slug": "kasapreko",
+    "decision": "approved",
+    "asset_path": "staging/kasapreko-0-1d7ea6e02063.png",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-18",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Visually reviewed the company artwork on light and dark backgrounds against its official website. Excluded promotional imagery, partner logos and product-only marks. Official sourcing is not a trademark licence.",
+    "batch": "africa-100-02",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "GH"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://kasapreko.com/contact-us/",
+        "note": "Official contact page lists the beverage company's location in Greater Accra, Ghana.",
+        "retrieved_at": "2026-10-18"
+      }
+    ]
+  },
+  {
+    "slug": "vezeeta",
+    "decision": "approved",
+    "asset_path": "staging/vezeeta-0-5e6ce273bf17.svg",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-18",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Visually reviewed the company artwork on light and dark backgrounds against its official website. Excluded promotional imagery, partner logos and product-only marks. Official sourcing is not a trademark licence.",
+    "batch": "africa-100-02",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "EG",
+      "NG"
+    ],
+    "preview_background": "dark",
+    "evidence": [
+      {
+        "url": "https://www.vezeeta.com/en",
+        "note": "Official Egyptian website offers doctor bookings in Egypt; the separately sourced Nigerian site confirms Nigerian services.",
+        "retrieved_at": "2026-10-18"
+      }
+    ]
+  },
+  {
+    "slug": "royal-air-maroc",
+    "decision": "approved",
+    "asset_path": "staging/royal-air-maroc-0-132503e4671f.svg",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-18",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Visually reviewed the company artwork on light and dark backgrounds against its official website. Excluded promotional imagery, partner logos and product-only marks. Official sourcing is not a trademark licence.",
+    "batch": "africa-100-02",
+    "origin_country": null,
+    "headquarters_country": "MA",
+    "operating_countries": [
+      "MA"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://www.royalairmaroc.com/ma-fr/mentions-legales",
+        "note": "Official legal notice identifies Royal Air Maroc's registered company address in Casablanca, Morocco.",
+        "retrieved_at": "2026-10-18"
+      }
+    ]
+  },
+  {
+    "slug": "orange-cote-d-ivoire",
+    "decision": "approved",
+    "asset_path": "staging/orange-cote-d-ivoire-0-d5a5bf13bc8f.svg",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-18",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Visually reviewed the company artwork on light and dark backgrounds against its official website. Excluded promotional imagery, partner logos and product-only marks. Official sourcing is not a trademark licence.",
+    "batch": "africa-100-02",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "CI"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://www.orange.ci/fr/telephonie-d-entreprise.html",
+        "note": "Official operator page describes Orange's telecommunications services and established presence in Cote d'Ivoire.",
+        "retrieved_at": "2026-10-18"
+      }
+    ]
+  },
+  {
+    "slug": "discovery",
+    "decision": "pending-review",
+    "reviewer": "Codex assisted visual review",
+    "reviewed_at": "2026-10-18",
+    "review_notes": "Staged candidates are promotional banking/phone imagery, not a standalone Discovery corporate logo. Await suitable official artwork."
+  },
+  {
+    "slug": "nasco",
+    "decision": "pending-review",
+    "reviewer": "Codex assisted visual review",
+    "reviewed_at": "2026-10-18",
+    "review_notes": "The staged candidate is a landscape image, not a NASCO logo. Await suitable official company artwork."
+  },
+  {
+    "slug": "globacom",
+    "decision": "approved",
+    "asset_path": "staging/globacom-0-2c1996530bfa.png",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-18",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Visually reviewed the official company identity on light and dark backgrounds. Recovered from a reviewed official page, embedded brand SVG or official media-kit download. Official sourcing does not grant a trademark licence.",
+    "batch": "africa-coverage-recovery-03",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://www.gloworld.com/ng",
+        "note": "Official Nigerian country site provides Glo-branded telecommunications services and publishes the reviewed Glo logo.",
+        "retrieved_at": "2026-10-18"
+      }
+    ]
+  },
+  {
+    "slug": "jumia-nigeria",
+    "decision": "approved",
+    "asset_path": "staging/jumia-nigeria-0-7e0f11569a37.png",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-18",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Visually reviewed the official company identity on light and dark backgrounds. Recovered from a reviewed official page, embedded brand SVG or official media-kit download. Official sourcing does not grant a trademark licence.",
+    "batch": "africa-coverage-recovery-03",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://group.jumia.com/press/media-kit",
+        "note": "Official Jumia media kit provides the downloadable company logo used for this brand entry.",
+        "retrieved_at": "2026-10-18"
+      },
+      {
+        "url": "https://www.jumia.com.ng/",
+        "note": "Official Nigerian marketplace describes shopping and delivery for customers in Nigeria.",
+        "retrieved_at": "2026-10-18"
+      }
+    ]
+  },
+  {
+    "slug": "nigerian-breweries",
+    "decision": "approved",
+    "asset_path": "staging/nigerian-breweries-0-a8a94c6a19a0.svg",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-18",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Visually reviewed the official company identity on light and dark backgrounds. Recovered from a reviewed official page, embedded brand SVG or official media-kit download. Official sourcing does not grant a trademark licence.",
+    "batch": "africa-coverage-recovery-03",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "dark",
+    "evidence": [
+      {
+        "url": "https://www.nbplc.com/",
+        "note": "Official Nigerian Breweries website identifies its brewing operations in Nigeria; selected artwork is its corporate header logo, not a product brand.",
+        "retrieved_at": "2026-10-18"
+      }
+    ]
+  },
+  {
+    "slug": "shoprite",
+    "decision": "approved",
+    "asset_path": "staging/shoprite-0-cc478fcd590e.png",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-18",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Visually reviewed the official Shoprite Nigerian retail brand logo on dark and light backgrounds. This is the retail brand, not the holding company corporate identity. Nigerian stores have a separately identified operator; shared ownership is not assumed. Official sourcing does not grant a trademark licence.",
+    "batch": "africa-coverage-recovery-03",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "ZA",
+      "NG"
+    ],
+    "preview_background": "dark",
+    "website": "https://shoprite.ng/",
+    "evidence": [
+      {
+        "url": "https://shoprite.ng/locate-a-store/",
+        "note": "Official Nigerian retail brand site lists Nigerian stores and identifies Retail Supermarkets Nigeria as the local operator.",
+        "retrieved_at": "2026-10-18"
+      },
+      {
+        "url": "https://www.shopriteholdings.co.za/docs/2021-sr.pdf",
+        "note": "Official group sustainability report documents the Shoprite retail brand and its South African operations; local brand operators are not assumed to share ownership.",
+        "retrieved_at": "2026-10-18"
+      }
+    ]
+  },
+  {
+    "slug": "airtel-nigeria",
+    "decision": "approved",
+    "asset_path": "staging/airtel-nigeria-0-5e73b9fa81eb.svg",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-18",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Visually reviewed the official company identity on light and dark backgrounds. Recovered from a reviewed official page, embedded brand SVG or official media-kit download. Official sourcing does not grant a trademark licence.",
+    "batch": "africa-coverage-recovery-03",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://www.airtel.com.ng/nin/pdf/Indemnity.pdf",
+        "note": "Official Airtel Networks Limited document identifies the Nigerian registered company and its Lagos address.",
+        "retrieved_at": "2026-10-18"
+      }
+    ]
+  },
+  {
+    "slug": "page-financials",
+    "decision": "approved",
+    "asset_path": "staging/page-financials-0-e95a823b9336.png",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-18",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Visually reviewed the company logo on light and dark backgrounds. Selected the corporate identity, not partner or product artwork. Official provenance does not grant a trademark licence.",
+    "batch": "africa-cross-industry-04",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "aliases": [
+      "Page Financials"
+    ],
+    "evidence": [
+      {
+        "url": "https://pagefinancials.com/",
+        "note": "Official company website describes its Nigerian financial services and domestic banking channels.",
+        "retrieved_at": "2026-10-18"
+      }
+    ]
+  },
+  {
+    "slug": "decagon",
+    "decision": "approved",
+    "asset_path": "staging/decagon-0-be8dd35439b1.svg",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-18",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Visually reviewed the company logo on light and dark backgrounds. Selected the corporate identity, not partner or product artwork. Official provenance does not grant a trademark licence.",
+    "batch": "africa-cross-industry-04",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "dark",
+    "evidence": [
+      {
+        "url": "https://decagonhq.com/",
+        "note": "Official company website explicitly identifies Lagos, Nigeria as an operating base for its software engineering services.",
+        "retrieved_at": "2026-10-18"
+      }
+    ]
+  },
+  {
+    "slug": "venture-garden-group",
+    "decision": "approved",
+    "asset_path": "staging/venture-garden-group-0-f34b694fd8cc.png",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-18",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Visually reviewed the company logo on light and dark backgrounds. Selected the corporate identity, not partner or product artwork. Official provenance does not grant a trademark licence.",
+    "batch": "africa-cross-industry-04",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "aliases": [
+      "VGG"
+    ],
+    "evidence": [
+      {
+        "url": "https://venturegardengroup.com/about-us/",
+        "note": "Official company history describes the founders starting their first Nigerian business in 2011.",
+        "retrieved_at": "2026-10-18"
+      }
+    ]
+  },
+  {
+    "slug": "spar-nigeria",
+    "decision": "approved",
+    "asset_path": "staging/spar-nigeria-0-deccd6a7512e.png",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-18",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Official SPAR Market artwork sourced from the Nigerian operator; do not conflate the retail brand operator with worldwide SPAR ownership. Visually reviewed the company logo on light and dark backgrounds. Selected the corporate identity, not partner or product artwork. Official provenance does not grant a trademark licence.",
+    "batch": "africa-cross-industry-04",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "aliases": [
+      "SPAR",
+      "SPAR Market"
+    ],
+    "evidence": [
+      {
+        "url": "https://sparnigeria.com/",
+        "note": "Official SPAR Market Nigeria site identifies Artee Industries Limited as the local retail brand operator.",
+        "retrieved_at": "2026-10-18"
+      }
+    ]
+  },
+  {
+    "slug": "oando",
+    "decision": "approved",
+    "asset_path": "staging/oando-0-4a00edbbaa40.svg",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-18",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Visually reviewed the company logo on light and dark backgrounds. Selected the corporate identity, not partner or product artwork. Official provenance does not grant a trademark licence.",
+    "batch": "africa-cross-industry-04",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://www.oandoplc.com/",
+        "note": "Official Oando company site identifies Nigerian energy operations and its primary Nigerian stock exchange listing.",
+        "retrieved_at": "2026-10-18"
+      }
+    ]
+  },
+  {
+    "slug": "aiteo",
+    "decision": "approved",
+    "asset_path": "staging/aiteo-0-05baee9954cf.png",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-18",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Visually reviewed the company logo on light and dark backgrounds. Selected the corporate identity, not partner or product artwork. Official provenance does not grant a trademark licence.",
+    "batch": "africa-cross-industry-04",
+    "origin_country": null,
+    "headquarters_country": "NG",
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "dark",
+    "evidence": [
+      {
+        "url": "https://www.aiteogroup.com/our-focus.php",
+        "note": "Official company profile identifies Lagos headquarters and offshore operations in the Niger Delta, Nigeria.",
+        "retrieved_at": "2026-10-18"
+      }
+    ]
+  },
+  {
+    "slug": "egbin-power",
+    "decision": "approved",
+    "asset_path": "staging/egbin-power-1-ae938a6a204e.png",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-18",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Visually reviewed the company logo on light and dark backgrounds. Selected the corporate identity, not partner or product artwork. Official provenance does not grant a trademark licence.",
+    "batch": "africa-cross-industry-04",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://egbin-power.com/",
+        "note": "Official generating company website describes its six-unit plant supplying Nigeria's national electricity grid.",
+        "retrieved_at": "2026-10-18"
+      }
+    ]
+  },
+  {
+    "slug": "altschool-africa",
+    "decision": "approved",
+    "asset_path": "staging/altschool-africa-0-4230acfdc5d4.png",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-18",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Visually reviewed the company logo on light and dark backgrounds. Selected the corporate identity, not partner or product artwork. Official provenance does not grant a trademark licence.",
+    "batch": "africa-cross-industry-04",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "aliases": [
+      "AltSchool",
+      "Alt School Africa"
+    ],
+    "evidence": [
+      {
+        "url": "https://store.altschoolafrica.com/docs/alt-AltSchoolAfricaImpactReport2025.1-1749652617138984221.pdf",
+        "note": "Official impact report documents Nigerian learner participation and the company's African education footprint.",
+        "retrieved_at": "2026-10-18"
+      }
+    ]
+  },
+  {
+    "slug": "channels-television",
+    "decision": "approved",
+    "asset_path": "staging/channels-television-0-41940b78f406.png",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-18",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Visually reviewed the company logo on light and dark backgrounds. Selected the corporate identity, not partner or product artwork. Official provenance does not grant a trademark licence.",
+    "batch": "africa-cross-industry-04",
+    "origin_country": "NG",
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "aliases": [
+      "Channels TV"
+    ],
+    "evidence": [
+      {
+        "url": "https://www.channelstv.com/aboutus/",
+        "note": "Official corporate profile identifies Nigerian founders and broadcast operations in Lagos, Abuja, Edo and Kano.",
+        "retrieved_at": "2026-10-18"
+      }
+    ]
+  },
+  {
+    "slug": "arise-news",
+    "decision": "approved",
+    "asset_path": "staging/arise-news-1-af26a30b26df.png",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-18",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Visually reviewed the company logo on light and dark backgrounds. Selected the corporate identity, not partner or product artwork. Official provenance does not grant a trademark licence.",
+    "batch": "africa-cross-industry-04",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "aliases": [
+      "ARISE"
+    ],
+    "evidence": [
+      {
+        "url": "https://www.arise.tv/contact-us/",
+        "note": "Official broadcaster contact page lists its Nigeria-Lagos operation.",
+        "retrieved_at": "2026-10-18"
+      }
+    ]
+  },
+  {
+    "slug": "tvc-communications",
+    "decision": "approved",
+    "asset_path": "staging/tvc-communications-1-fc40f4ec1435.png",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-18",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Visually reviewed the company logo on light and dark backgrounds. Selected the corporate identity, not partner or product artwork. Official provenance does not grant a trademark licence.",
+    "batch": "africa-cross-industry-04",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "dark",
+    "aliases": [
+      "TVC"
+    ],
+    "evidence": [
+      {
+        "url": "https://www.tvccommunications.tv/",
+        "note": "Official company website identifies Nigerian television and radio broadcasting operations.",
+        "retrieved_at": "2026-10-18"
+      }
+    ]
+  },
+  {
+    "slug": "bua-cement",
+    "decision": "approved",
+    "asset_path": "staging/bua-cement-0-5f4d4b27c021.png",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-18",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Visually reviewed the company logo on light and dark backgrounds. Selected the corporate identity, not partner or product artwork. Official provenance does not grant a trademark licence.",
+    "batch": "africa-cross-industry-04",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://www.buacement.com/",
+        "note": "Official company website describes cement manufacturing plants in Edo and Sokoto, Nigeria.",
+        "retrieved_at": "2026-10-18"
+      }
+    ]
+  },
+  {
+    "slug": "mixta-africa",
+    "decision": "approved",
+    "asset_path": "staging/mixta-africa-0-2e6d1e0f2bca.png",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-18",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Visually reviewed the company logo on light and dark backgrounds. Selected the corporate identity, not partner or product artwork. Official provenance does not grant a trademark licence.",
+    "batch": "africa-cross-industry-04",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://mixtafrica.com/contact-us/",
+        "note": "Official developer contact page lists its Nigerian sales team and Lagos office.",
+        "retrieved_at": "2026-10-18"
+      }
+    ]
+  },
+  {
+    "slug": "naspers",
+    "decision": "approved",
+    "asset_path": "staging/naspers-1-407def961239.svg",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-18",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Visually reviewed the company logo on light and dark backgrounds. Selected the corporate identity, not partner or product artwork. Official provenance does not grant a trademark licence.",
+    "batch": "africa-cross-industry-04",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "ZA"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://www.naspers.com/~/media/Files/N/Naspers-Corp-V2/investor/results-reports-events/results-reports-and-events-archive/financial-results/full-year/2022/financial-results-booklet.pdf",
+        "note": "Official company financial report identifies its Cape Town, South Africa head office.",
+        "retrieved_at": "2026-10-18"
+      }
+    ]
+  },
+  {
+    "slug": "mpharma",
+    "decision": "approved",
+    "asset_path": "staging/mpharma-0-4895e7a42091.svg",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-18",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Visually reviewed the company logo on light and dark backgrounds. Selected the corporate identity, not partner or product artwork. Official provenance does not grant a trademark licence.",
+    "batch": "africa-cross-industry-04",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "GH",
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://wellness.mpharma.com/hpv",
+        "note": "Official mPharma programme page describes healthcare services delivered across Ghana and Nigeria.",
+        "retrieved_at": "2026-10-18"
+      }
+    ]
+  },
+  {
+    "slug": "swvl",
+    "decision": "approved",
+    "asset_path": "staging/swvl-0-4743fd8da00b.svg",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-18",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Visually reviewed the company logo on light and dark backgrounds. Selected the corporate identity, not partner or product artwork. Official provenance does not grant a trademark licence.",
+    "batch": "africa-cross-industry-04",
+    "origin_country": "EG",
+    "headquarters_country": "AE",
+    "operating_countries": [
+      "EG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://www.sec.gov/Archives/edgar/data/1875609/000110465926045255/swvl-20251231x20f.htm",
+        "note": "Company annual filing identifies Egyptian operations and its principal executive office in Dubai, United Arab Emirates.",
+        "retrieved_at": "2026-10-18"
+      },
+      {
+        "url": "https://www.swvl.com/about-us",
+        "note": "Official company history describes the business beginning in Cairo, Egypt.",
+        "retrieved_at": "2026-10-18"
+      }
+    ]
+  },
+  {
+    "slug": "societe-ivoirienne-de-banque",
+    "decision": "approved",
+    "asset_path": "staging/societe-ivoirienne-de-banque-0-0c088ec77c31.png",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-18",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Visually reviewed the company logo on light and dark backgrounds. Selected the corporate identity, not partner or product artwork. Official provenance does not grant a trademark licence.",
+    "batch": "africa-cross-industry-04",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "CI"
+    ],
+    "preview_background": "light",
+    "aliases": [
+      "SIB"
+    ],
+    "evidence": [
+      {
+        "url": "https://sib.ci/nos-agences-centres-professionnels-et-centres-entreprises/",
+        "note": "Official banking site lists its branch network serving Cote d'Ivoire.",
+        "retrieved_at": "2026-10-18"
+      }
+    ]
+  },
+  {
+    "slug": "intouch",
+    "decision": "pending-review",
+    "reviewer": "Codex assisted visual review",
+    "reviewed_at": "2026-10-18",
+    "review_notes": "Staged candidate is TouchPoint by InTouch product artwork, not the InTouch corporate identity. Hold until standalone corporate artwork is sourced and reviewed."
+  }
+]

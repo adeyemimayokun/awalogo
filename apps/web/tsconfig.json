@@ -12,6 +12,7 @@
     "../../api/**/*.ts",
     "../../packages/catalog-ui/src",
     "../../packages/logos/src",
+    "../../packages/brands",
     "../../packages/institutions/src"
   ]
 }

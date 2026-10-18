@@ -6,6 +6,20 @@
   "outputDirectory": "apps/web/dist",
   "headers": [
     {
+      "source": "/catalog/v2/assets/:path*",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" },
+        { "key": "Access-Control-Allow-Origin", "value": "*" }
+      ]
+    },
+    {
+      "source": "/flags/v1/assets/:path*",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" },
+        { "key": "Access-Control-Allow-Origin", "value": "*" }
+      ]
+    },
+    {
       "source": "/v2/:path*",
       "headers": [
         { "key": "X-Robots-Tag", "value": "noindex, nofollow" },

@@ -1,9 +1,21 @@
 import { describe, expect, it } from "vitest";
+import { readFileSync } from "node:fs";
+import { resolve } from "node:path";
 import { darkLogoPreviewAssetIds, institutionLogoLinks, logoCatalog } from "../../logos/src";
 import promotedCatalog from "../../logos/src/promoted-catalog.json";
 import { validateCatalog, validateFintechSourcingManifest } from "./validate";
 
 describe("logo catalog validation", () => {
+  it("keeps every primary and historical SVG renderable as a standalone image", () => {
+    for (const logo of logoCatalog) {
+      for (const asset of [logo, ...(logo.variations ?? [])]) {
+        if (!asset.svg_path) continue;
+        const svg = readFileSync(resolve("packages/logos/src", asset.svg_path), "utf8");
+        const root = svg.match(/^<svg\b[^>]*>/)?.[0] ?? "";
+        expect(root, asset.svg_path).toMatch(/\sxmlns=["']http:\/\/www\.w3\.org\/2000\/svg["']/);
+      }
+    }
+  });
   it("keeps preview contrast entries linked to catalog assets", () => {
     const assetIds = new Set(logoCatalog.flatMap((logo) => [
       logo.slug,

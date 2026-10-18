@@ -1,13 +1,28 @@
+import V2Navigation from "./V2Navigation";
+import V2Flags, { FlagDetails } from "./V2Flags";
+import { flags, flagForSlug, flagSource, type CountryFlag, type FlagAsset } from "./flags-data";
+import V2CategoryFilter from "./V2CategoryFilter";
+import { filterBrands, toggleCategory } from "./brand-filters";
+import V2Report from "./V2Report";
+import { brandCategory } from "./brand-category";
+import V2Info, { infoTitles, type InfoPage } from "./V2Info";
+import V2Select from "./V2Select";
+import { recordDownloads, sortBrands, type BrandSort, type DownloadCounts } from "./popularity";
 import { useEffect, useRef, useState } from "react";
-import { ArrowDownToLine, Check, Code2, Copy, ExternalLink, Plus, Search, ShoppingBag, Trash2, X } from "lucide-react";
+import { ArrowDownToLine, ArrowUpRight, Check, Code2, Copy, ExternalLink, Flag, LayoutGrid, Plus, RotateCcw, Search, ShoppingBag, Trash2, X } from "lucide-react";
 import { zipSync, strToU8 } from "fflate";
-import { logos, type LogoWithSvg } from "../../../packages/catalog-ui/src/logo-data";
+import { logos, expansionBySlug, expansionBrands, industries, matchesBrandScope, type LogoWithSvg } from "./v2-brand-data";
 import type { RuntimeAsset } from "../../../packages/catalog-ui/src/runtime-catalog";
 import "./v2.css";
+import "./v2-expansion.css";
+import "./v2-fields.css";
+import "./v2-topnav.css";
 import V2Request from "./V2Request";
 import { svgCode } from "./svg-code";
+import { usesDarkLogoPreview } from "../../../packages/logos/src/preview";
 
 type Selection = { slug: string; variation: string; format: string };
+type ResourceAsset = Omit<RuntimeAsset, "repository_path">;
 const BAG_KEY = "awalogo-v2-downloads";
 function initialBag(): Selection[] {
   try {
@@ -15,12 +30,14 @@ function initialBag(): Selection[] {
     return Array.isArray(saved) ? saved.filter((item): item is Selection => typeof item?.slug === "string" && typeof item?.variation === "string" && typeof item?.format === "string").slice(0, 50) : [];
   } catch { return []; }
 }
-function formatsFor(item: Selection): RuntimeAsset[] {
+function formatsFor(item: Selection): ResourceAsset[] {
+  const flag = flagForSlug(item.slug);
+  if (flag) return flag.variants.find((variant) => variant.id === item.variation)?.formats ?? [];
   const logo = logos.find((entry) => entry.slug === item.slug);
   return item.variation === "primary" ? logo?.formats ?? [] : logo?.variations.find((variation) => variation.id === item.variation)?.formats ?? [];
 }
-function preview(formats: RuntimeAsset[]) { return formats.find((asset) => asset.type === "svg")?.url ?? formats[0]?.url; }
-async function fetchAsset(asset: RuntimeAsset, signal?: AbortSignal): Promise<Uint8Array> {
+function preview(formats: ResourceAsset[]) { return formats.find((asset) => asset.type === "svg")?.url ?? formats[0]?.url; }
+async function fetchAsset(asset: ResourceAsset, signal?: AbortSignal): Promise<Uint8Array> {
   const response = await fetch(asset.url, { signal });
   if (!response.ok) throw new Error("The asset could not be downloaded");
   const bytes = new Uint8Array(await response.arrayBuffer());
@@ -38,8 +55,26 @@ function saveBlob(blob: Blob, name: string) {
 function escapeAttribute(value: string) { return value.replaceAll("&", "&amp;").replaceAll('"', "&quot;").replaceAll("<", "&lt;"); }
 
 export default function V2App() {
+  const [resource, setResource] = useState<"logos" | "flags">(() => location.pathname === "/v2/flags" ? "flags" : "logos");
+  const [selectedFlag, setSelectedFlag] = useState<CountryFlag | null>(() => location.pathname === "/v2/flags" ? flags.find((flag) => flag.code.toLowerCase() === new URLSearchParams(location.search).get("flag")?.toLowerCase()) ?? null : null);
   const [query, setQuery] = useState("");
-  const [category, setCategory] = useState("all");
+  const [category, setCategory] = useState<string[]>([]);
+  const [industry, setIndustry] = useState("");
+  const [market, setMarket] = useState("");
+  const searchRef = useRef<HTMLInputElement>(null);
+  const [sort, setSort] = useState<BrandSort>("popular");
+  const [downloadCounts, setDownloadCounts] = useState<DownloadCounts>({});
+  useEffect(() => {
+    const controller = new AbortController();
+    fetch("/api/logo-requests?view=popularity", { signal: controller.signal }).then(async (response) => {
+      if (!response.ok) return;
+      const body = await response.json();
+      if (body.counts && typeof body.counts === "object" && !Array.isArray(body.counts)) {
+        setDownloadCounts(Object.fromEntries(Object.entries(body.counts).filter(([, count]) => typeof count === "number" && Number.isSafeInteger(count) && count >= 0)) as DownloadCounts);
+      }
+    }).catch(() => { /* Editorial ordering remains available offline. */ });
+    return () => controller.abort();
+  }, []);
   const [selected, setSelected] = useState<LogoWithSvg | null>(() => logos.find((logo) => logo.slug === new URLSearchParams(location.search).get("brand")) ?? null);
   const [variation, setVariation] = useState("primary");
   const [format, setFormat] = useState("svg");
@@ -49,24 +84,33 @@ export default function V2App() {
   const [codeError, setCodeError] = useState("");
   const [bag, setBag] = useState<Selection[]>(initialBag);
   const [bagOpen, setBagOpen] = useState(false);
+  const [requestOpen, setRequestOpen] = useState(false);
+  const [reportOpen, setReportOpen] = useState(false);
+  const [infoPage, setInfoPage] = useState<InfoPage | null>(null);
+  const [theme, setTheme] = useState<"light" | "dark" | "system">(() => {
+    try { const saved = localStorage.getItem("awalogo-v2-theme"); return saved === "light" || saved === "dark" ? saved : "system"; } catch { return "system"; }
+  });
+  const [systemDark, setSystemDark] = useState(() => matchMedia("(prefers-color-scheme: dark)").matches);
+  useEffect(() => { const media = matchMedia("(prefers-color-scheme: dark)"); const update = () => setSystemDark(media.matches); media.addEventListener("change", update); return () => media.removeEventListener("change", update); }, []);
+  useEffect(() => { try { localStorage.setItem("awalogo-v2-theme", theme); } catch { /* Theme remains active for this session. */ } }, [theme]);
   const [busy, setBusy] = useState(false);
   const [feedback, setFeedback] = useState("");
   const panelRef = useRef<HTMLElement>(null);
   useEffect(() => {
-    if (!selected && !bagOpen) return;
+    if (!selected && !selectedFlag && !bagOpen && !requestOpen && !infoPage) return;
     const previous = document.activeElement as HTMLElement | null;
     const overflow = document.body.style.overflow; document.body.style.overflow = "hidden";
     panelRef.current?.querySelector<HTMLElement>("button")?.focus();
     const trap = (event: KeyboardEvent) => {
       if (event.key !== "Tab") return;
-      const controls = [...(panelRef.current?.querySelectorAll<HTMLElement>('button:not(:disabled), a[href], input, select') ?? [])];
+      const controls = [...(panelRef.current?.querySelectorAll<HTMLElement>('button:not(:disabled), a[href], input:not(:disabled):not([tabindex="-1"]), select:not(:disabled), textarea:not(:disabled)') ?? [])];
       const first = controls[0]; const last = controls.at(-1);
       if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus(); }
       if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
     };
     document.addEventListener("keydown", trap);
     return () => { document.body.style.overflow = overflow; document.removeEventListener("keydown", trap); previous?.focus(); };
-  }, [selected, bagOpen]);
+  }, [selected, selectedFlag, bagOpen, requestOpen, infoPage, reportOpen]);
   useEffect(() => { try { localStorage.setItem(BAG_KEY, JSON.stringify(bag)); } catch { /* Session still works when storage is unavailable. */ } }, [bag]);
   useEffect(() => {
     const meta = document.createElement("meta"); meta.name = "robots"; meta.content = "noindex,nofollow"; document.head.append(meta);
@@ -74,9 +118,12 @@ export default function V2App() {
     return () => { meta.remove(); document.title = oldTitle; };
   }, []);
   useEffect(() => { if (!feedback) return; const timer = setTimeout(() => setFeedback(""), 4500); return () => clearTimeout(timer); }, [feedback]);
-  useEffect(() => { const escape = (event: KeyboardEvent) => { if (event.key === "Escape") { setSelected(null); setBagOpen(false); } }; document.addEventListener("keydown", escape); return () => document.removeEventListener("keydown", escape); }, []);
+  useEffect(() => { const escape = (event: KeyboardEvent) => { if (event.key === "Escape") { setSelected(null); setBagOpen(false); setRequestOpen(false); setInfoPage(null); setReportOpen(false); setSelectedFlag(null); } }; document.addEventListener("keydown", escape); return () => document.removeEventListener("keydown", escape); }, []);
   const categories = [...new Set(logos.map((logo) => logo.category))].sort();
-  const visible = logos.filter((logo) => (category === "all" || logo.category === category) && `${logo.name} ${logo.aliases.join(" ")}`.toLowerCase().includes(query.toLowerCase().trim()));
+  const visible = sortBrands(filterBrands(logos, category, query).filter((brand) => matchesBrandScope(brand.slug, industry, market)), sort, downloadCounts);
+  const categoryOptions = categories.map((value) => ({ value, count: logos.filter((logo) => logo.category === value).length }));
+  function changeCategory(value: string) { setCategory((selected) => toggleCategory(selected, value)); }
+  function resetFilters() { setQuery(""); setCategory([]); setIndustry(""); setMarket(""); setSort("popular"); searchRef.current?.focus(); }
   const selectedFormats = selected ? (variation === "primary" ? selected.formats : selected.variations.find((entry) => entry.id === variation)?.formats ?? []) : [];
   const asset = selectedFormats.find((entry) => entry.type === format) ?? selectedFormats[0];
   useEffect(() => {
@@ -86,10 +133,10 @@ export default function V2App() {
     fetchAsset(asset, controller.signal).then((bytes) => setInlineCode(svgCode(new TextDecoder().decode(bytes), codeType, selected.name))).catch((error) => { if (!controller.signal.aborted) setCodeError(error instanceof Error ? error.message : "The SVG could not be loaded"); });
     return () => controller.abort();
   }, [asset?.url, asset?.type, selected, codeMode, codeType]);
-  function open(logo: LogoWithSvg) { setSelected(logo); setVariation("primary"); setFormat(logo.formats[0].type); setBagOpen(false); }
+  function open(logo: LogoWithSvg) { setReportOpen(false); setSelected(logo); setVariation("primary"); setFormat(logo.formats[0].type); setBagOpen(false); }
   async function copy(text: string, message = "Copied to clipboard") { try { await navigator.clipboard.writeText(text); setFeedback(message); } catch { setFeedback("Clipboard access failed. Please allow clipboard access and try again."); } }
   function add(item: Selection) { if (bag.some((entry) => JSON.stringify(entry) === JSON.stringify(item))) { setFeedback("Already in your download bag"); return; } if (bag.length >= 50) { setFeedback("Your bag can hold 50 assets"); return; } setBag((items) => [...items, item]); setFeedback("Added to download bag"); }
-  async function download() { if (!asset || !selected) return; try { const bytes = await fetchAsset(asset); saveBlob(new Blob([bytes.buffer as ArrayBuffer], { type: asset.mime_type }), `${selected.slug}-${variation}.${asset.type}`); setFeedback("Download ready"); } catch (error) { setFeedback(error instanceof Error ? error.message : "Download failed. Please try again."); } }
+  async function download() { if (!asset || !selected) return; try { const bytes = await fetchAsset(asset); saveBlob(new Blob([bytes.buffer as ArrayBuffer], { type: asset.mime_type }), `${selected.slug}-${variation}.${asset.type}`); void recordDownloads([selected.slug]); setFeedback("Download ready"); } catch (error) { setFeedback(error instanceof Error ? error.message : "Download failed. Please try again."); } }
   async function downloadBag() {
     setBusy(true);
     try {
@@ -101,9 +148,14 @@ export default function V2App() {
         if (total > 100 * 1024 * 1024) throw new Error("This bundle exceeds 100 MB. Remove some assets and try again.");
         files[`${item.slug}/${item.variation}.${item.format}`] = bytes;
       }
-      files["manifest.json"] = strToU8(JSON.stringify(bag.map((item) => ({ ...item, source: logos.find((logo) => logo.slug === item.slug)?.source_url })), null, 2));
-      files["README.txt"] = strToU8("Assets remain trademarks of their respective owners. Refer to the source links in manifest.json for usage guidance.");
-      const zip = zipSync(files, { level: 0 }); saveBlob(new Blob([zip.buffer as ArrayBuffer], { type: "application/zip" }), "awalogo-assets.zip"); setFeedback("Your download bundle is ready");
+      files["manifest.json"] = strToU8(JSON.stringify(bag.map((item) => ({ ...item, source: flagForSlug(item.slug) ? flagSource : logos.find((logo) => logo.slug === item.slug)?.source_url })), null, 2));
+      if (bag.some((item) => flagForSlug(item.slug))) {
+        const license = await fetch("/flags/v1/LICENSE.txt");
+        if (!license.ok) throw new Error("Flag license could not be loaded. Please try again.");
+        files["FLAGS-LICENSE.txt"] = strToU8(await license.text());
+      }
+      files["README.txt"] = strToU8("Logo assets remain trademarks of their respective owners. Refer to manifest.json for sources. Flag artwork is provided under the MIT license included in FLAGS-LICENSE.txt when flags are present. Flag variants use standardized proportions.");
+      const zip = zipSync(files, { level: 0 }); saveBlob(new Blob([zip.buffer as ArrayBuffer], { type: "application/zip" }), "awalogo-assets.zip"); const logoSlugs = bag.filter((item) => !flagForSlug(item.slug)).map((item) => item.slug); if (logoSlugs.length) void recordDownloads(logoSlugs); setFeedback("Your download bundle is ready");
     } catch (error) { setFeedback(error instanceof Error ? error.message : "Bundle download failed"); } finally { setBusy(false); }
   }
   function snippet() {
@@ -111,23 +163,56 @@ export default function V2App() {
     const url = new URL(asset.url, "https://www.awalogo.com").href;
     return codeType === "html" ? `<img src="${escapeAttribute(url)}" alt="${escapeAttribute(selected.name)} logo" width="160" loading="lazy" />` : `<img src=${JSON.stringify(url)} alt=${JSON.stringify(`${selected.name} logo`)} width={160} loading="lazy" />`;
   }
-  if (location.pathname === "/v2/requests") return <div className="v2-app"><V2Request /></div>;
+  const isRequest = location.pathname === "/v2/requests";
+  const darkPreviewUrls = new Set(logos.flatMap((logo) => [
+    ...(usesDarkLogoPreview(logo.slug) || expansionBySlug.get(logo.slug)?.preview_background === "dark" ? logo.formats.map((entry) => entry.url) : []),
+    ...logo.variations.flatMap((entry) => usesDarkLogoPreview(`${logo.slug}-${entry.id}`) ? entry.formats.map((file) => file.url) : [])
+  ]));
   async function copySvg() {
     if (asset?.type !== "svg") return;
     try { const svg = new TextDecoder().decode(await fetchAsset(asset)); await copy(svg, "SVG copied"); } catch { setFeedback("SVG could not be copied. Please try again."); }
   }
-  return <div className="v2-app">
-    <header className="v2-header"><a className="v2-wordmark" href="/v2">awalogo<span>V2</span></a><span className="v2-coming">Coming soon</span><nav><a href="/">V1 interface</a><a href="/v2/requests">Request a logo</a><button onClick={() => { setBagOpen(true); setSelected(null); }} aria-label={`Download bag, ${bag.length} assets`}><ShoppingBag size={19} /><span>{bag.length}</span></button></nav></header>
-    <main className="v2-main"><div className="v2-heading"><div><p>NIGERIAN BRAND LIBRARY</p><h1>Find your next brand asset.</h1></div><span>{logos.length} brands</span></div>
-      <div className="v2-toolbar"><label><Search size={20} /><input aria-label="Search brands" placeholder="Search brands, banks, fintechs..." value={query} onChange={(event) => setQuery(event.target.value)} /></label><select aria-label="Filter by category" value={category} onChange={(event) => setCategory(event.target.value)}><option value="all">All categories</option>{categories.map((value) => <option key={value}>{value}</option>)}</select></div>
-      <div className="v2-result-line"><span>{visible.length} results</span><span>Logos & brand assets</span></div>
-      <div className="v2-grid">{visible.map((logo) => <article className="v2-brand" key={logo.slug}><button className="v2-preview" onClick={() => open(logo)} aria-label={`View ${logo.name}`}><img loading="lazy" src={preview(logo.formats)} alt={`${logo.name} logo`} /></button><div className="v2-card-label"><button onClick={() => open(logo)}><strong>{logo.name}</strong><small>{logo.category.replaceAll("-", " ")}</small></button><button className="v2-icon" aria-label={`Add ${logo.name} to download bag`} onClick={() => add({ slug: logo.slug, variation: "primary", format: logo.formats[0].type })}><Plus size={18} /></button></div></article>)}</div>
-      {!visible.length ? <div className="v2-empty"><p>No brands match your search. Try another name or category.</p><a href="/v2/requests">Request a missing brand</a></div> : null}
-    </main>
-    <footer className="v2-footer"><span>awalogo / A growing library of Nigerian brands.</span><a href="/v2/requests">Request a brand asset</a><a href="/">Explore V1 <ExternalLink size={13} /></a></footer>
-    {selected || bagOpen ? <div className="v2-backdrop" onMouseDown={(event) => { if (event.target === event.currentTarget) { setSelected(null); setBagOpen(false); } }}><aside ref={panelRef} className="v2-panel" role="dialog" aria-modal="true" aria-label={selected?.name ?? "Download bag"}><button className="v2-close" aria-label="Close panel" onClick={() => { setSelected(null); setBagOpen(false); }}><X size={22} /></button>
-      {selected ? <><p className="v2-eyebrow">{selected.category.replaceAll("-", " ")}</p><h2>{selected.name}</h2><div className="v2-detail-preview"><img src={preview(selectedFormats)} alt={`${selected.name} ${variation} logo`} /></div><label className="v2-field">Logo version<select value={variation} onChange={(event) => { setVariation(event.target.value); setFormat(formatsFor({ slug: selected.slug, variation: event.target.value, format }).at(0)?.type ?? "svg"); }}><option value="primary">Primary logo</option>{selected.variations.map((entry) => <option key={entry.id} value={entry.id}>{entry.name}{entry.status === "old" ? " (previous version)" : ""}</option>)}</select></label><div className="v2-formats">{selectedFormats.map((entry) => <button className={asset?.type === entry.type ? "active" : ""} key={entry.type} onClick={() => setFormat(entry.type)}>{entry.type.toUpperCase()}</button>)}</div><div className="v2-actions"><button className="v2-primary" onClick={download}><ArrowDownToLine size={17} />Download {asset?.type.toUpperCase()}</button><button onClick={() => asset && add({ slug: selected.slug, variation, format: asset.type })}><Plus size={17} />Add to bag</button></div><section className="v2-code"><div><h3><Code2 size={17} />Use in your project</h3><select aria-label="Code language" value={codeType} onChange={(event) => setCodeType(event.target.value as "html" | "react")}><option value="html">HTML</option><option value="react">React</option></select></div><pre>{snippet()}</pre><button onClick={() => copy(snippet())}><Copy size={16} />Copy {codeType === "html" ? "HTML" : "React"}</button>{asset?.type === "svg" ? <button onClick={copySvg}><Copy size={16} />Copy SVG</button> : null}</section><div className="v2-source"><a href={selected.website} target="_blank" rel="noreferrer">Official website <ExternalLink size={14} /></a><button onClick={() => copy(`${location.origin}/v2?brand=${selected.slug}`, "Brand link copied")}><Copy size={14} />Share brand</button></div></> : <><p className="v2-eyebrow">YOUR COLLECTION</p><h2>Download bag <span>{bag.length}</span></h2>{bag.map((item, index) => <div className="v2-bag-row" key={`${item.slug}-${item.variation}-${item.format}`}><img src={preview(formatsFor(item))} alt="" /><div><strong>{logos.find((logo) => logo.slug === item.slug)?.name ?? item.slug}</strong><small>{item.variation} / {item.format.toUpperCase()}</small></div><button aria-label={`Remove ${item.slug}`} onClick={() => setBag((entries) => entries.filter((_, position) => position !== index))}><Trash2 size={17} /></button></div>)}{bag.length ? <button className="v2-primary" disabled={busy} onClick={downloadBag}><ArrowDownToLine size={17} />{busy ? "Preparing bundle..." : "Download ZIP"}</button> : <p className="v2-empty">Your bag is empty. Add a brand asset to start a collection.</p>}</>}
+  const navigation = <V2Navigation isRequest={isRequest} showCategories={resource === "logos"} onFlags={() => showResource("flags")} bagCount={bag.length} category={category}
+    categories={categories.map((value) => ({ value, count: logos.filter((logo) => logo.category === value).length }))}
+    total={logos.length} theme={theme} onTheme={setTheme} onSearch={() => { if (isRequest) { location.assign("/v2"); return; } showResource("logos"); requestAnimationFrame(() => searchRef.current?.focus()); }} onInfo={(page) => { closePanels(); setInfoPage(page); }} onCategory={changeCategory} onRequest={openRequest} onLibrary={() => showResource("logos")} onBag={() => { closePanels(); setBagOpen(true); }} />;
+  function closePanels() { setSelectedFlag(null); setSelected(null); setBagOpen(false); setRequestOpen(false); setInfoPage(null); setReportOpen(false); }
+  function openRequest() { closePanels(); setRequestOpen(true); }
+  function showResource(next: "logos" | "flags") {
+    closePanels(); setResource(next);
+    const path = next === "flags" ? "/v2/flags" : "/v2";
+    if (location.pathname !== path || location.search) history.pushState(null, "", path);
+  }
+  useEffect(() => {
+    const back = () => { closePanels(); setResource(location.pathname === "/v2/flags" ? "flags" : "logos"); };
+    window.addEventListener("popstate", back); return () => window.removeEventListener("popstate", back);
+  }, []);
+  async function downloadFlag(asset: FlagAsset, name: string) {
+    try { const bytes = await fetchAsset(asset); saveBlob(new Blob([bytes.buffer as ArrayBuffer], { type: asset.mime_type }), name); setFeedback("Flag download ready"); }
+    catch (error) { setFeedback(error instanceof Error ? error.message : "Flag download failed. Please try again."); }
+  }
+  return <div className={`v2-app${isRequest ? " v2-request-layout" : ""}`} data-v2-theme={theme === "system" ? (systemDark ? "dark" : "light") : theme}>
+    <style>{[...darkPreviewUrls].map((url) => `.v2-app :is(.v2-preview,.v2-detail-preview):has(img[src=${JSON.stringify(url)}]){background:#272727}`).join("\n")}</style>
+    {navigation}
+    <div className="v2-workspace">
+    {isRequest ? <V2Request /> : <main className="v2-main">{resource === "flags" ? <V2Flags onSelect={(flag) => { closePanels(); setSelectedFlag(flag); }} onAdd={add} /> : <><div className="v2-heading"><div><p>NIGERIAN & AFRICAN BRANDS</p><h1>Good brands. Ready to use.</h1><p className="v2-description">Explore company logos from Nigeria and across African markets.</p></div><span>{logos.length} brands<br /><small>One growing library</small></span></div>
+      <div className="v2-toolbar"><div className="v2-search-wrap"><label><Search size={20} /><input ref={searchRef} aria-label="Search brands" placeholder="Search brands, banks, fintechs..." value={query} onChange={(event) => setQuery(event.target.value)} /></label>{query ? <button className="v2-search-clear" title="Clear search" aria-label="Clear search" onClick={() => { setQuery(""); searchRef.current?.focus(); }}><X size={16} /></button> : null}</div><V2CategoryFilter options={categoryOptions} selected={category} onToggle={changeCategory} /></div>
+      {category.length ? <div className="v2-filter-chips" aria-label="Selected categories">{category.map((value) => <button key={value} aria-label={`Remove ${value.replaceAll("-", " ")} filter`} onClick={() => changeCategory(value)}><span>{value.replaceAll("-", " ")}</span><X size={13} /></button>)}</div> : null}
+      <div className="v2-library-layout">
+      <div className="v2-library-results">
+      <div className="v2-result-line v2-browse-controls" aria-label="Browse controls"><span role="status">{category.length === 0 ? "All brands" : category.length === 1 ? category[0].replaceAll("-", " ") : "Selected categories"} <b>{visible.length}</b></span><div className="v2-expansion-filters"><V2Select aria-label="Filter by industry" value={industry} onChange={(event) => setIndustry(event.target.value)}><option value="">All industries</option>{industries.map((value) => <option key={value} value={value}>{value.replaceAll("-", " ")}</option>)}</V2Select><V2Select aria-label="Filter by operating country" value={market} onChange={(event) => setMarket(event.target.value)}><option value="">All markets</option>{[...new Set(["NG", ...expansionBrands.flatMap((brand) => brand.operating_countries)])].sort().map((code) => <option key={code} value={code}>{new Intl.DisplayNames(["en"], { type: "region" }).of(code)}</option>)}</V2Select></div><div className="v2-result-actions">{query || category.length || industry || market || sort !== "popular" ? <button className="v2-reset-filters" aria-label="Reset all filters" title="Reset all filters" onClick={resetFilters}><RotateCcw size={16} /></button> : null}<V2Select aria-label="Sort brands" value={sort} onChange={(event) => setSort(event.target.value as BrandSort)}><option value="popular">Most popular</option><option value="name">Name: A-Z</option><option value="newest">Newest added</option></V2Select></div></div>
+      <div className="v2-grid">{visible.map((logo) => <article className="v2-brand" key={logo.slug}><button className="v2-preview" onClick={() => open(logo)} aria-label={`View ${logo.name}`}><img loading="lazy" src={preview(logo.formats)} alt={`${logo.name} logo`} /></button><div className="v2-card-label"><button onClick={() => open(logo)}><strong>{logo.name}</strong><small>{brandCategory(logo.slug, logo.category)}</small></button><button className="v2-icon" aria-label={`Add ${logo.name} to download bag`} onClick={() => add({ slug: logo.slug, variation: "primary", format: logo.formats[0].type })}><Plus size={18} /></button></div></article>)}</div>
+      {!visible.length ? <div className="v2-empty"><p>No brands match your search. Try another name or category.</p><a href="/v2/requests" onClick={(event) => { if (!event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey) { event.preventDefault(); openRequest(); } }}>Request a missing brand</a></div> : null}
+      </div>
+      </div>
+    </>}</main>}
+    <footer className="v2-footer"><span>V2 / Coming soon</span><a href="/">V1 interface <ArrowUpRight size={13} /></a><a href="/v2/requests" onClick={(event) => { if (!event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey) { event.preventDefault(); openRequest(); } }}>Missing a brand? Request it <ArrowUpRight size={13} /></a></footer>
+    </div>
+    {selected || selectedFlag || bagOpen || requestOpen || infoPage ? <div className="v2-backdrop" onMouseDown={(event) => { if (event.target === event.currentTarget) { closePanels(); } }}><aside ref={panelRef} className="v2-panel" role="dialog" aria-modal="true" aria-label={selectedFlag ? `${selectedFlag.name} flag` : reportOpen && selected ? `Report logo: ${selected.name}` : infoPage ? infoTitles[infoPage] : requestOpen ? "Request a brand" : selected?.name ?? "Download bag"}><button className="v2-close" aria-label="Close panel" onClick={() => { closePanels(); }}><X size={22} /></button>
+      {selectedFlag ? <FlagDetails key={selectedFlag.code} flag={selectedFlag} onAdd={add} onDownload={downloadFlag} onCopy={copy} readAsset={fetchAsset} /> : reportOpen && selected && asset ? <V2Report key={`${selected.slug}-${variation}-${asset.type}`} name={selected.name} slug={selected.slug} variation={variation} versionName={variation === "primary" ? "Primary logo" : selected.variations.find((item) => item.id === variation)?.name ?? variation} format={asset.type} onBack={() => setReportOpen(false)} /> : infoPage ? <V2Info page={infoPage} onRequest={openRequest} onNewest={() => { closePanels(); setQuery(""); setCategory([]); setSort("newest"); }} onBrand={(slug) => { const logo = logos.find((item) => item.slug === slug); if (logo) { closePanels(); open(logo); } }} /> : requestOpen ? <V2Request embedded onBrowse={closePanels} onSelectBrand={(slug) => { const logo = logos.find((item) => item.slug === slug); if (logo) { setRequestOpen(false); open(logo); } }} /> : <>
+      {selected ? <><p className="v2-eyebrow">{brandCategory(selected.slug, selected.category)}</p><h2>{selected.name}</h2><div className="v2-detail-preview"><img src={preview(selectedFormats)} alt={`${selected.name} ${variation} logo`} /></div><label className="v2-field">Logo version<V2Select value={variation} onChange={(event) => { setVariation(event.target.value); setFormat(formatsFor({ slug: selected.slug, variation: event.target.value, format }).at(0)?.type ?? "svg"); }}><option value="primary">Primary logo</option>{selected.variations.map((entry) => <option key={entry.id} value={entry.id}>{entry.name}{entry.status === "old" ? " (previous version)" : ""}</option>)}</V2Select></label><div className="v2-formats">{selectedFormats.map((entry) => <button className={asset?.type === entry.type ? "active" : ""} key={entry.type} onClick={() => setFormat(entry.type)}>{entry.type.toUpperCase()}</button>)}</div><div className="v2-actions"><button className="v2-primary" onClick={download}><ArrowDownToLine size={17} />Download {asset?.type.toUpperCase()}</button><button onClick={() => asset && add({ slug: selected.slug, variation, format: asset.type })}><Plus size={17} />Add to bag</button></div><section className="v2-code"><div><h3><Code2 size={17} />Use in your project</h3><div className="v2-code-language" role="group" aria-label="Code language">{(["html", "react"] as const).map((language) => <button key={language} type="button" aria-pressed={codeType === language} onClick={() => setCodeType(language)}>{language === "html" ? "HTML" : "React"}</button>)}</div></div><pre>{snippet()}</pre><button onClick={() => copy(snippet())}><Copy size={16} />Copy {codeType === "html" ? "HTML" : "React"}</button>{asset?.type === "svg" ? <button onClick={copySvg}><Copy size={16} />Copy SVG</button> : null}</section>{expansionBySlug.has(selected.slug) ? <section className="v2-brand-provenance"><h3>Brand details</h3>{(["origin_country", "headquarters_country"] as const).map((field) => <p key={field}>{field === "origin_country" ? "Origin" : "Headquarters"}: {expansionBySlug.get(selected.slug)![field] ? new Intl.DisplayNames(["en"], { type: "region" }).of(expansionBySlug.get(selected.slug)![field]!) : "Not yet confirmed"}</p>)}<p>Confirmed markets: {expansionBySlug.get(selected.slug)!.operating_countries.map((code) => new Intl.DisplayNames(["en"], { type: "region" }).of(code)).join(", ")}</p><a href={selected.source_url} target="_blank" rel="noreferrer">Artwork source <ExternalLink size={14} /></a><p>{selected.status === "verified" ? "Sourced from the official website." : "Community artwork, manually reviewed. Not officially verified."} Trademarks belong to their respective owners.</p></section> : null}<div className="v2-source"><a href={selected.website} target="_blank" rel="noreferrer">Official website <ExternalLink size={14} /></a><button onClick={() => copy(`${location.origin}/v2?brand=${selected.slug}`, "Brand link copied")}><Copy size={14} />Share brand</button></div></> : <><p className="v2-eyebrow">YOUR COLLECTION</p><h2>Download bag <span>{bag.length}</span></h2>{bag.map((item, index) => <div className="v2-bag-row" key={`${item.slug}-${item.variation}-${item.format}`}><img src={preview(formatsFor(item))} alt="" /><div><strong>{(flagForSlug(item.slug) ? `${flagForSlug(item.slug)!.name} flag` : logos.find((logo) => logo.slug === item.slug)?.name) ?? item.slug}</strong><small>{item.variation} / {item.format.toUpperCase()}</small></div><button aria-label={`Remove ${item.slug}`} onClick={() => setBag((entries) => entries.filter((_, position) => position !== index))}><Trash2 size={17} /></button></div>)}{bag.length ? <button className="v2-primary" disabled={busy} onClick={downloadBag}><ArrowDownToLine size={17} />{busy ? "Preparing bundle..." : "Download ZIP"}</button> : <p className="v2-empty">Your bag is empty. Add a brand asset to start a collection.</p>}</>}
       {selected && asset?.type === "svg" ? <section className="v2-code"><div><h3>Inline SVG code</h3><button onClick={() => setCodeMode((mode) => mode === "inline" ? "image" : "inline")}>{codeMode === "inline" ? "Hide code" : "Show code"}</button></div>{codeMode === "inline" ? <><p className="v2-eyebrow">{codeType === "react" ? "REACT JSX" : "HTML SVG"}</p>{codeError ? <p role="alert" className="v2-error">{codeError}</p> : <pre>{inlineCode || "Loading SVG..."}</pre>}<button disabled={!inlineCode} onClick={() => copy(inlineCode, `${codeType === "react" ? "JSX" : "Inline SVG"} copied`)}><Copy size={16} />Copy inline code</button></> : null}</section> : null}
+      {selected && asset && !reportOpen ? <section className="v2-report-entry"><div><strong>Found an issue?</strong><p>Help us keep this artwork accurate.</p></div><button onClick={() => setReportOpen(true)}><Flag size={16} />Report logo</button></section> : null}
+      </>}
     </aside></div> : null}
     {feedback ? <div className="v2-toast" role="status"><Check size={16} />{feedback}</div> : null}
   </div>;

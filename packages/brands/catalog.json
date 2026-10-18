@@ -1,0 +1,2582 @@
+{
+  "schema_version": 1,
+  "brands": [
+    {
+      "preview_background": "light",
+      "slug": "air-peace",
+      "name": "Air Peace",
+      "aliases": [],
+      "industry": "transport-logistics",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "NG"
+      ],
+      "website": "https://www.flyairpeace.com/",
+      "source_url": "https://flyairpeace.com/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Visually reviewed the company artwork on light and dark backgrounds against its official website. Excluded promotional imagery, partner logos and product-only marks. Official sourcing is not a trademark licence.",
+      "evidence": [
+        {
+          "url": "https://flyairpeace.com/",
+          "note": "Official airline website advertises Nigerian domestic services alongside regional and international flights.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "africa-100-02",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/056f690ded535259fe393e70d909f1e1b66cb8edaa8ecd2efb5678bdb980b18a.png",
+          "checksum": "056f690ded535259fe393e70d909f1e1b66cb8edaa8ecd2efb5678bdb980b18a",
+          "mime_type": "image/png",
+          "width": 1024,
+          "height": 216,
+          "repository_path": "assets/dbe34c68b10915f48070c065718512ccfd59fa85a46b2bc97ecf42f77fb12ded.webp"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/db1af042fd58cbbf57d14984f45f32805c90de26778da52c141882ee54839985.webp",
+          "checksum": "db1af042fd58cbbf57d14984f45f32805c90de26778da52c141882ee54839985",
+          "mime_type": "image/webp",
+          "width": 1024,
+          "height": 216,
+          "repository_path": "assets/dbe34c68b10915f48070c065718512ccfd59fa85a46b2bc97ecf42f77fb12ded.webp"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
+      "slug": "airtel-nigeria",
+      "name": "Airtel Nigeria",
+      "aliases": [
+        "Airtel",
+        "Airtel Networks Limited"
+      ],
+      "industry": "telecommunications",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "NG"
+      ],
+      "website": "https://www.airtel.com.ng/",
+      "source_url": "https://www.airtel.com.ng/min/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Visually reviewed the official company identity on light and dark backgrounds. Recovered from a reviewed official page, embedded brand SVG or official media-kit download. Official sourcing does not grant a trademark licence.",
+      "evidence": [
+        {
+          "url": "https://www.airtel.com.ng/nin/pdf/Indemnity.pdf",
+          "note": "Official Airtel Networks Limited document identifies the Nigerian registered company and its Lagos address.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "africa-coverage-recovery-03",
+      "formats": [
+        {
+          "type": "svg",
+          "url": "/catalog/v2/assets/033a0ff1fb1c89f06d9074202790b047682c6cdca6287cee3dad3bbb4ac869f5.svg",
+          "checksum": "033a0ff1fb1c89f06d9074202790b047682c6cdca6287cee3dad3bbb4ac869f5",
+          "mime_type": "image/svg+xml",
+          "width": 54,
+          "height": 57,
+          "repository_path": "assets/5e73b9fa81eb6839057b412930f2717f5e8babe5f67f4a696a039152a6ebeedf.svg"
+        },
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/55d2e08d37882d29296de19861a4a89dcd53bca37c1804946c70999d26503124.png",
+          "checksum": "55d2e08d37882d29296de19861a4a89dcd53bca37c1804946c70999d26503124",
+          "mime_type": "image/png",
+          "width": 492,
+          "height": 512,
+          "repository_path": "assets/5e73b9fa81eb6839057b412930f2717f5e8babe5f67f4a696a039152a6ebeedf.svg"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/108e953f290e64470fc0707623b03a1b910c1f13712fe2e48e790b91b459b719.webp",
+          "checksum": "108e953f290e64470fc0707623b03a1b910c1f13712fe2e48e790b91b459b719",
+          "mime_type": "image/webp",
+          "width": 492,
+          "height": 512,
+          "repository_path": "assets/5e73b9fa81eb6839057b412930f2717f5e8babe5f67f4a696a039152a6ebeedf.svg"
+        }
+      ]
+    },
+    {
+      "preview_background": "dark",
+      "slug": "aiteo",
+      "name": "Aiteo",
+      "aliases": [],
+      "industry": "energy-utilities",
+      "origin_country": null,
+      "headquarters_country": "NG",
+      "operating_countries": [
+        "NG"
+      ],
+      "website": "https://www.aiteogroup.com/",
+      "source_url": "https://www.aiteogroup.com/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Visually reviewed the company logo on light and dark backgrounds. Selected the corporate identity, not partner or product artwork. Official provenance does not grant a trademark licence.",
+      "evidence": [
+        {
+          "url": "https://www.aiteogroup.com/our-focus.php",
+          "note": "Official company profile identifies Lagos headquarters and offshore operations in the Niger Delta, Nigeria.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "africa-cross-industry-04",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/c4f7af8c370ae0ee843e6e52d51f93b346ce2c68839db3f6dd5b4e41c4e9c60b.png",
+          "checksum": "c4f7af8c370ae0ee843e6e52d51f93b346ce2c68839db3f6dd5b4e41c4e9c60b",
+          "mime_type": "image/png",
+          "width": 1024,
+          "height": 175,
+          "repository_path": "assets/05baee9954cf070d91f1531b1ba471a31dee723dab99261f7cebf2dca6f7621a.png"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/1992a729cfd992bdc8a4fdc919cec5206de814c0fe6f7913e30d01d9ac10ae0b.webp",
+          "checksum": "1992a729cfd992bdc8a4fdc919cec5206de814c0fe6f7913e30d01d9ac10ae0b",
+          "mime_type": "image/webp",
+          "width": 1024,
+          "height": 175,
+          "repository_path": "assets/05baee9954cf070d91f1531b1ba471a31dee723dab99261f7cebf2dca6f7621a.png"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
+      "slug": "altschool-africa",
+      "name": "AltSchool Africa",
+      "aliases": [
+        "AltSchool",
+        "Alt School Africa"
+      ],
+      "industry": "education",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "NG"
+      ],
+      "website": "https://altschoolafrica.com/",
+      "source_url": "https://altschoolafrica.com/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Visually reviewed the company logo on light and dark backgrounds. Selected the corporate identity, not partner or product artwork. Official provenance does not grant a trademark licence.",
+      "evidence": [
+        {
+          "url": "https://store.altschoolafrica.com/docs/alt-AltSchoolAfricaImpactReport2025.1-1749652617138984221.pdf",
+          "note": "Official impact report documents Nigerian learner participation and the company's African education footprint.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "africa-cross-industry-04",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/51e281c4981f37fea2d61c8d57f0e4c62cbd4d8164f34706a29fcb94d0dcd0e2.png",
+          "checksum": "51e281c4981f37fea2d61c8d57f0e4c62cbd4d8164f34706a29fcb94d0dcd0e2",
+          "mime_type": "image/png",
+          "width": 942,
+          "height": 512,
+          "repository_path": "assets/4230acfdc5d4424ba6050c2ec17690493ed384ebde47aa31c358c4188d8602c9.png"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/1fc9f57130520d5649e31d4bd7bcaa795beb495cb4f0ad97e31d0b0bf8e40b0b.webp",
+          "checksum": "1fc9f57130520d5649e31d4bd7bcaa795beb495cb4f0ad97e31d0b0bf8e40b0b",
+          "mime_type": "image/webp",
+          "width": 942,
+          "height": 512,
+          "repository_path": "assets/4230acfdc5d4424ba6050c2ec17690493ed384ebde47aa31c358c4188d8602c9.png"
+        }
+      ]
+    },
+    {
+      "preview_background": "dark",
+      "slug": "arik-air",
+      "name": "Arik Air",
+      "aliases": [],
+      "industry": "transport-logistics",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "NG"
+      ],
+      "website": "https://www.arikair.com/",
+      "source_url": "https://www.arikair.com/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Artwork visually inspected on light and dark backgrounds against the logo served by the official company website. Official sourcing does not imply trademark ownership or a redistribution licence.",
+      "evidence": [
+        {
+          "url": "https://www.fly.arikair.com/",
+          "note": "Official airline website lists domestic Nigerian routes and Lagos contact address.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "africa-100-01",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/c83a8511e2c287143eecb47901c1ca327b2ae5bb1f22059ee7448f8c9dbaa003.png",
+          "checksum": "c83a8511e2c287143eecb47901c1ca327b2ae5bb1f22059ee7448f8c9dbaa003",
+          "mime_type": "image/png",
+          "width": 1024,
+          "height": 437,
+          "repository_path": "assets/d31f72de524512afe582b84a6d6aaf9d58ab338519d6e06e8f15f07ffe67a5e7.png"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/ccf5da2edc811f1f520c0ce86a4b980d2115629c1ce0437fc925e43747a90e2a.webp",
+          "checksum": "ccf5da2edc811f1f520c0ce86a4b980d2115629c1ce0437fc925e43747a90e2a",
+          "mime_type": "image/webp",
+          "width": 1024,
+          "height": 437,
+          "repository_path": "assets/d31f72de524512afe582b84a6d6aaf9d58ab338519d6e06e8f15f07ffe67a5e7.png"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
+      "slug": "arise-news",
+      "name": "Arise News",
+      "aliases": [
+        "ARISE"
+      ],
+      "industry": "media-entertainment",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "NG"
+      ],
+      "website": "https://www.arise.tv/",
+      "source_url": "https://www.arise.tv/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Visually reviewed the company logo on light and dark backgrounds. Selected the corporate identity, not partner or product artwork. Official provenance does not grant a trademark licence.",
+      "evidence": [
+        {
+          "url": "https://www.arise.tv/contact-us/",
+          "note": "Official broadcaster contact page lists its Nigeria-Lagos operation.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "africa-cross-industry-04",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/e1a14d9f6010fd739301c32c58f2b5ad1562c157ef99245400329a7aeca8c9bb.png",
+          "checksum": "e1a14d9f6010fd739301c32c58f2b5ad1562c157ef99245400329a7aeca8c9bb",
+          "mime_type": "image/png",
+          "width": 720,
+          "height": 512,
+          "repository_path": "assets/af26a30b26df8fa3ffe6b37d782cc9620d4a863fb5f621916bb6f856614fff29.png"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/f3d9e4ee8d13487edd40572bb897af3954cdbedb80f4241fff1bab1a161abfdf.webp",
+          "checksum": "f3d9e4ee8d13487edd40572bb897af3954cdbedb80f4241fff1bab1a161abfdf",
+          "mime_type": "image/webp",
+          "width": 720,
+          "height": 512,
+          "repository_path": "assets/af26a30b26df8fa3ffe6b37d782cc9620d4a863fb5f621916bb6f856614fff29.png"
+        }
+      ]
+    },
+    {
+      "preview_background": "dark",
+      "slug": "baines-credit",
+      "name": "Baines Credit",
+      "aliases": [],
+      "industry": "financial-services",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "NG"
+      ],
+      "website": "https://bainescredit.com/",
+      "source_url": "https://www.bainescredit.com/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Visually reviewed the company artwork on light and dark backgrounds against its official website. Excluded promotional imagery, partner logos and product-only marks. Official sourcing is not a trademark licence.",
+      "evidence": [
+        {
+          "url": "https://www.bainescredit.com/",
+          "note": "Official homepage describes banking services for individuals and businesses across Nigeria.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "africa-100-02",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/4735c091d9b2462a625d41c3fdd4b5d83fb3278642cfbda4bda6e042aba6056a.png",
+          "checksum": "4735c091d9b2462a625d41c3fdd4b5d83fb3278642cfbda4bda6e042aba6056a",
+          "mime_type": "image/png",
+          "width": 1024,
+          "height": 231,
+          "repository_path": "assets/ce4e7cc444b21c9eea0e669e74ed6ed101673376884adde85c40fb384ec5bbad.webp"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/ed9b361cf17e8e883e3b745b3ec9140ac6c06e9bc15cf9fc0109203902b24894.webp",
+          "checksum": "ed9b361cf17e8e883e3b745b3ec9140ac6c06e9bc15cf9fc0109203902b24894",
+          "mime_type": "image/webp",
+          "width": 1024,
+          "height": 231,
+          "repository_path": "assets/ce4e7cc444b21c9eea0e669e74ed6ed101673376884adde85c40fb384ec5bbad.webp"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
+      "slug": "bakhresa-group",
+      "name": "Bakhresa Group",
+      "aliases": [],
+      "industry": "manufacturing-consumer-goods",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "TZ"
+      ],
+      "website": "https://www.bakhresa.com/",
+      "source_url": "https://bakhresa.com/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Artwork visually inspected on light and dark backgrounds against the logo served by the official company website. Official sourcing does not imply trademark ownership or a redistribution licence.",
+      "evidence": [
+        {
+          "url": "https://bakhresa.com/contact/",
+          "note": "Official contact page lists the group office in Dar es Salaam, Tanzania.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "africa-100-01",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/ce1667fc26750a12aabefc50d5e4f26dfdef43f97586b35ece9a9703a213130d.png",
+          "checksum": "ce1667fc26750a12aabefc50d5e4f26dfdef43f97586b35ece9a9703a213130d",
+          "mime_type": "image/png",
+          "width": 1024,
+          "height": 320,
+          "repository_path": "assets/9aad74746dc642e0e43d2df179690a47a38159f99e0fad2ba02aeea446163722.png"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/b7c6ab1224eccb652fb31ba40d255c14175b8073c3cd04c0f519ce8e5a797cd9.webp",
+          "checksum": "b7c6ab1224eccb652fb31ba40d255c14175b8073c3cd04c0f519ce8e5a797cd9",
+          "mime_type": "image/webp",
+          "width": 1024,
+          "height": 320,
+          "repository_path": "assets/9aad74746dc642e0e43d2df179690a47a38159f99e0fad2ba02aeea446163722.png"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
+      "slug": "bua-cement",
+      "name": "BUA Cement",
+      "aliases": [],
+      "industry": "manufacturing-consumer-goods",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "NG"
+      ],
+      "website": "https://www.buacement.com/",
+      "source_url": "https://www.buacement.com/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Visually reviewed the company logo on light and dark backgrounds. Selected the corporate identity, not partner or product artwork. Official provenance does not grant a trademark licence.",
+      "evidence": [
+        {
+          "url": "https://www.buacement.com/",
+          "note": "Official company website describes cement manufacturing plants in Edo and Sokoto, Nigeria.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "africa-cross-industry-04",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/dc8502d127e0192f9a69c368f4dcd1be1ea118128a91977f67b54f74121026f2.png",
+          "checksum": "dc8502d127e0192f9a69c368f4dcd1be1ea118128a91977f67b54f74121026f2",
+          "mime_type": "image/png",
+          "width": 485,
+          "height": 512,
+          "repository_path": "assets/5f4d4b27c021ad5807fc5e27523f57382940b683893b72b7fa5c741a8453bdd4.png"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/90728edccdfbfa3abd51e35cc9a0e2b7992a900bdf33f2221c36468b83fa2d63.webp",
+          "checksum": "90728edccdfbfa3abd51e35cc9a0e2b7992a900bdf33f2221c36468b83fa2d63",
+          "mime_type": "image/webp",
+          "width": 485,
+          "height": 512,
+          "repository_path": "assets/5f4d4b27c021ad5807fc5e27523f57382940b683893b72b7fa5c741a8453bdd4.png"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
+      "slug": "channels-television",
+      "name": "Channels Television",
+      "aliases": [
+        "Channels TV"
+      ],
+      "industry": "media-entertainment",
+      "origin_country": "NG",
+      "headquarters_country": null,
+      "operating_countries": [
+        "NG"
+      ],
+      "website": "https://www.channelstv.com/",
+      "source_url": "https://www.channelstv.com/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Visually reviewed the company logo on light and dark backgrounds. Selected the corporate identity, not partner or product artwork. Official provenance does not grant a trademark licence.",
+      "evidence": [
+        {
+          "url": "https://www.channelstv.com/aboutus/",
+          "note": "Official corporate profile identifies Nigerian founders and broadcast operations in Lagos, Abuja, Edo and Kano.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "africa-cross-industry-04",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/2ea5830c2ed4724f5029d56703184e15f0a900de89d29e1e4f1a2a95994d056a.png",
+          "checksum": "2ea5830c2ed4724f5029d56703184e15f0a900de89d29e1e4f1a2a95994d056a",
+          "mime_type": "image/png",
+          "width": 518,
+          "height": 512,
+          "repository_path": "assets/41940b78f4068df8a36905140d27f3125bf943d3abb4616c18eda859f4a4d581.png"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/63990b4bbc9fbf152cdbcf635ed6ccb424ae1748ec253819ec9840d98e8ebdb5.webp",
+          "checksum": "63990b4bbc9fbf152cdbcf635ed6ccb424ae1748ec253819ec9840d98e8ebdb5",
+          "mime_type": "image/webp",
+          "width": 518,
+          "height": 512,
+          "repository_path": "assets/41940b78f4068df8a36905140d27f3125bf943d3abb4616c18eda859f4a4d581.png"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
+      "slug": "churchgate",
+      "name": "Churchgate",
+      "aliases": [],
+      "industry": "real-estate-construction",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "NG"
+      ],
+      "website": "https://www.churchgate.com/",
+      "source_url": "https://churchgate.com/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Visually reviewed the company artwork on light and dark backgrounds against its official website. Excluded promotional imagery, partner logos and product-only marks. Official sourcing is not a trademark licence.",
+      "evidence": [
+        {
+          "url": "https://churchgate.com/",
+          "note": "Official company portfolio lists property developments in Abuja and Lagos, Nigeria.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "africa-100-02",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/9f00526dd0ea2dfa965d2e57b41d5ca86252a32c3d6f405dd7b232f3c2094d41.png",
+          "checksum": "9f00526dd0ea2dfa965d2e57b41d5ca86252a32c3d6f405dd7b232f3c2094d41",
+          "mime_type": "image/png",
+          "width": 1024,
+          "height": 135,
+          "repository_path": "assets/a1626be28722f69a03fcf64de08a01278c3a5b5a74bed919058af064e37fda33.png"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/ef2042640ac6c5013bb64b48ab0c09c493d2184cbcf2ec32a673358ce1bcf611.webp",
+          "checksum": "ef2042640ac6c5013bb64b48ab0c09c493d2184cbcf2ec32a673358ce1bcf611",
+          "mime_type": "image/webp",
+          "width": 1024,
+          "height": 135,
+          "repository_path": "assets/a1626be28722f69a03fcf64de08a01278c3a5b5a74bed919058af064e37fda33.png"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
+      "slug": "crdb-bank",
+      "name": "CRDB Bank",
+      "aliases": [],
+      "industry": "financial-services",
+      "origin_country": null,
+      "headquarters_country": "TZ",
+      "operating_countries": [
+        "TZ",
+        "BI",
+        "CD"
+      ],
+      "website": "https://crdbbank.co.tz/",
+      "source_url": "https://crdbbank.co.tz/en",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Artwork visually inspected on light and dark backgrounds against the logo served by the official company website. Official sourcing does not imply trademark ownership or a redistribution licence.",
+      "evidence": [
+        {
+          "url": "https://www.crdbbank.co.tz/en/about-us/group",
+          "note": "Official profile identifies headquarters in Dar es Salaam and operations in Tanzania, Burundi and DR Congo.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "africa-100-01",
+      "formats": [
+        {
+          "type": "svg",
+          "url": "/catalog/v2/assets/6225f07d0b48c6712fe8d6725ff04a853b8106bda4eb622d17e8585717c317ad.svg",
+          "checksum": "6225f07d0b48c6712fe8d6725ff04a853b8106bda4eb622d17e8585717c317ad",
+          "mime_type": "image/svg+xml",
+          "width": 341,
+          "height": 130,
+          "repository_path": "assets/6225f07d0b48c6712fe8d6725ff04a853b8106bda4eb622d17e8585717c317ad.svg"
+        },
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/4861213030b55bc5b0abb146d5a5786ff8530b46f704604e7c144e4fbd821a5b.png",
+          "checksum": "4861213030b55bc5b0abb146d5a5786ff8530b46f704604e7c144e4fbd821a5b",
+          "mime_type": "image/png",
+          "width": 1024,
+          "height": 390,
+          "repository_path": "assets/6225f07d0b48c6712fe8d6725ff04a853b8106bda4eb622d17e8585717c317ad.svg"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/02fba8d78db51d042ecc62d6f35dcb07c5a94f03e4e758bcedcb64d69e2e7001.webp",
+          "checksum": "02fba8d78db51d042ecc62d6f35dcb07c5a94f03e4e758bcedcb64d69e2e7001",
+          "mime_type": "image/webp",
+          "width": 1024,
+          "height": 390,
+          "repository_path": "assets/6225f07d0b48c6712fe8d6725ff04a853b8106bda4eb622d17e8585717c317ad.svg"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
+      "slug": "credit-direct",
+      "name": "Credit Direct",
+      "aliases": [],
+      "industry": "financial-services",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "NG"
+      ],
+      "website": "https://www.creditdirect.ng/",
+      "source_url": "https://www.creditdirect.ng/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Artwork visually inspected on light and dark backgrounds against the logo served by the official company website. Official sourcing does not imply trademark ownership or a redistribution licence.",
+      "evidence": [
+        {
+          "url": "https://www.creditdirect.ng/",
+          "note": "Official website describes financial services for Nigerians.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "africa-100-01",
+      "formats": [
+        {
+          "type": "svg",
+          "url": "/catalog/v2/assets/bafb12d2f10a934b37323ad048eb38bd023a3971aa1d0d999d10143043c6d235.svg",
+          "checksum": "bafb12d2f10a934b37323ad048eb38bd023a3971aa1d0d999d10143043c6d235",
+          "mime_type": "image/svg+xml",
+          "width": 252,
+          "height": 48,
+          "repository_path": "assets/5c3b753260b14b89943a321763dee45f4c12240e3426fc16c365d47491c52628.svg"
+        },
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/d522f979ad2d652a5b42ad7831b6a6714e524340ddedb1ac13c785d039cc8ed7.png",
+          "checksum": "d522f979ad2d652a5b42ad7831b6a6714e524340ddedb1ac13c785d039cc8ed7",
+          "mime_type": "image/png",
+          "width": 1024,
+          "height": 195,
+          "repository_path": "assets/5c3b753260b14b89943a321763dee45f4c12240e3426fc16c365d47491c52628.svg"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/547d40345f9d7d4332ae83809450bf6a914e6a970fa56cfd8ad92a53a543471e.webp",
+          "checksum": "547d40345f9d7d4332ae83809450bf6a914e6a970fa56cfd8ad92a53a543471e",
+          "mime_type": "image/webp",
+          "width": 1024,
+          "height": 195,
+          "repository_path": "assets/5c3b753260b14b89943a321763dee45f4c12240e3426fc16c365d47491c52628.svg"
+        }
+      ]
+    },
+    {
+      "preview_background": "dark",
+      "slug": "decagon",
+      "name": "Decagon",
+      "aliases": [],
+      "industry": "technology",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "NG"
+      ],
+      "website": "https://decagonhq.com/",
+      "source_url": "https://decagonhq.com/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Visually reviewed the company logo on light and dark backgrounds. Selected the corporate identity, not partner or product artwork. Official provenance does not grant a trademark licence.",
+      "evidence": [
+        {
+          "url": "https://decagonhq.com/",
+          "note": "Official company website explicitly identifies Lagos, Nigeria as an operating base for its software engineering services.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "africa-cross-industry-04",
+      "formats": [
+        {
+          "type": "svg",
+          "url": "/catalog/v2/assets/7cf45a9d9c649503f990eb41429237b2b67486e9a054f0914d34a5c4de4cbed0.svg",
+          "checksum": "7cf45a9d9c649503f990eb41429237b2b67486e9a054f0914d34a5c4de4cbed0",
+          "mime_type": "image/svg+xml",
+          "width": 155,
+          "height": 37,
+          "repository_path": "assets/be8dd35439b117c1525bfafe331b41dba9b0fb19861865420c88f2ee936a4098.svg"
+        },
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/faefe70701b7d65e3fa8c906a0221a443e192a7cc3d9c47696dff7b1f44cf4f8.png",
+          "checksum": "faefe70701b7d65e3fa8c906a0221a443e192a7cc3d9c47696dff7b1f44cf4f8",
+          "mime_type": "image/png",
+          "width": 1024,
+          "height": 244,
+          "repository_path": "assets/be8dd35439b117c1525bfafe331b41dba9b0fb19861865420c88f2ee936a4098.svg"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/ef190bb680d585dc7e45b8e0d8af1cc551ec0a306b35d49412461c39d1a79dd9.webp",
+          "checksum": "ef190bb680d585dc7e45b8e0d8af1cc551ec0a306b35d49412461c39d1a79dd9",
+          "mime_type": "image/webp",
+          "width": 1024,
+          "height": 244,
+          "repository_path": "assets/be8dd35439b117c1525bfafe331b41dba9b0fb19861865420c88f2ee936a4098.svg"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
+      "slug": "egbin-power",
+      "name": "Egbin Power",
+      "aliases": [],
+      "industry": "energy-utilities",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "NG"
+      ],
+      "website": "https://egbin-power.com/",
+      "source_url": "https://egbin-power.com/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Visually reviewed the company logo on light and dark backgrounds. Selected the corporate identity, not partner or product artwork. Official provenance does not grant a trademark licence.",
+      "evidence": [
+        {
+          "url": "https://egbin-power.com/",
+          "note": "Official generating company website describes its six-unit plant supplying Nigeria's national electricity grid.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "africa-cross-industry-04",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/7877d60efbc75eb7077732948dfaff6a868fd440615460a6a956c11adf43c7f1.png",
+          "checksum": "7877d60efbc75eb7077732948dfaff6a868fd440615460a6a956c11adf43c7f1",
+          "mime_type": "image/png",
+          "width": 1024,
+          "height": 351,
+          "repository_path": "assets/ae938a6a204ed41d39ac6f9c58cbb9abe02abf89a3d4f8c9526312176943f810.png"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/b10985275f8b86c8ea7f0c4e77073a68218479fbc5e24767b2252b96372da0b7.webp",
+          "checksum": "b10985275f8b86c8ea7f0c4e77073a68218479fbc5e24767b2252b96372da0b7",
+          "mime_type": "image/webp",
+          "width": 1024,
+          "height": 351,
+          "repository_path": "assets/ae938a6a204ed41d39ac6f9c58cbb9abe02abf89a3d4f8c9526312176943f810.png"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
+      "slug": "emzor",
+      "name": "Emzor",
+      "aliases": [],
+      "industry": "healthcare",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "NG"
+      ],
+      "website": "https://www.emzorpharma.com/",
+      "source_url": "https://www.emzorpharma.com/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Visually reviewed the company artwork on light and dark backgrounds against its official website. Excluded promotional imagery, partner logos and product-only marks. Official sourcing is not a trademark licence.",
+      "evidence": [
+        {
+          "url": "https://www.emzorpharma.com/",
+          "note": "Official manufacturer website identifies Nigerian pharmaceutical operations and its Isolo, Nigeria contact address.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "africa-100-02",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/009af323f67dc975479e1855246839e0212d6825a80fdb4d9d9ebfdcc0ca2e35.png",
+          "checksum": "009af323f67dc975479e1855246839e0212d6825a80fdb4d9d9ebfdcc0ca2e35",
+          "mime_type": "image/png",
+          "width": 1024,
+          "height": 460,
+          "repository_path": "assets/24c6d9151939467e5c7a9ce40d90da618cdb77fc3116d4f57b040a1bfa42f887.jpeg"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/71e172871027ccd48eb20e3734ae2edc1317f9c598e4b35138a26e853e857fb4.webp",
+          "checksum": "71e172871027ccd48eb20e3734ae2edc1317f9c598e4b35138a26e853e857fb4",
+          "mime_type": "image/webp",
+          "width": 1024,
+          "height": 460,
+          "repository_path": "assets/24c6d9151939467e5c7a9ce40d90da618cdb77fc3116d4f57b040a1bfa42f887.jpeg"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
+      "slug": "fidson-healthcare",
+      "name": "Fidson Healthcare",
+      "aliases": [],
+      "industry": "healthcare",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "NG"
+      ],
+      "website": "https://fidson.com/",
+      "source_url": "https://fidson.com/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Artwork visually inspected on light and dark backgrounds against the logo served by the official company website. Official sourcing does not imply trademark ownership or a redistribution licence.",
+      "evidence": [
+        {
+          "url": "https://fidson.com/",
+          "note": "Official website identifies Fidson as a pharmaceutical company in Nigeria.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "africa-100-01",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/eb88432af830640989183b526aa1d40dc87d998556d4f4c493055c098ffdeeba.png",
+          "checksum": "eb88432af830640989183b526aa1d40dc87d998556d4f4c493055c098ffdeeba",
+          "mime_type": "image/png",
+          "width": 512,
+          "height": 512,
+          "repository_path": "assets/a18b0fdf67d7a1ee7061319c0c615c9abd308907164017e8f99462f41d5ec158.png"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/3317aa13f523052f507eef203e1643b71166ba216a30aa67ae5baef5341fc287.webp",
+          "checksum": "3317aa13f523052f507eef203e1643b71166ba216a30aa67ae5baef5341fc287",
+          "mime_type": "image/webp",
+          "width": 512,
+          "height": 512,
+          "repository_path": "assets/a18b0fdf67d7a1ee7061319c0c615c9abd308907164017e8f99462f41d5ec158.png"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
+      "slug": "food-concepts",
+      "name": "Food Concepts",
+      "aliases": [],
+      "industry": "food-beverages",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "NG"
+      ],
+      "website": "https://foodconceptsplc.com/",
+      "source_url": "https://foodconceptsplc.com/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Artwork visually inspected on light and dark backgrounds against the logo served by the official company website. Official sourcing does not imply trademark ownership or a redistribution licence.",
+      "evidence": [
+        {
+          "url": "https://foodconceptsplc.com/wp-content/uploads/2023/12/FoodConceptsPlc_2022AnnuaReport.pdf",
+          "note": "Official annual report documents restaurant operations in Nigerian states.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "africa-100-01",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/f249c448efa623a167746769f3b1ce4e3cc4352882c463ef65a1b82d240ad34b.png",
+          "checksum": "f249c448efa623a167746769f3b1ce4e3cc4352882c463ef65a1b82d240ad34b",
+          "mime_type": "image/png",
+          "width": 1024,
+          "height": 179,
+          "repository_path": "assets/86fa89686dcdd6e721d54ffdde8228a0bae71b1276a5f979c91fc580d3a0c758.png"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/7753b8d5967baf9ddf09d8a0d24fad3c4e7ca12a722fc39189987846a0c2902e.webp",
+          "checksum": "7753b8d5967baf9ddf09d8a0d24fad3c4e7ca12a722fc39189987846a0c2902e",
+          "mime_type": "image/webp",
+          "width": 1024,
+          "height": 179,
+          "repository_path": "assets/86fa89686dcdd6e721d54ffdde8228a0bae71b1276a5f979c91fc580d3a0c758.png"
+        }
+      ]
+    },
+    {
+      "preview_background": "dark",
+      "slug": "gig-logistics",
+      "name": "GIG Logistics",
+      "aliases": [],
+      "industry": "transport-logistics",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "NG"
+      ],
+      "website": "https://giglogistics.com/",
+      "source_url": "https://giglogistics.com/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Artwork visually inspected on light and dark backgrounds against the logo served by the official company website. Official sourcing does not imply trademark ownership or a redistribution licence.",
+      "evidence": [
+        {
+          "url": "https://giglogistics.com/",
+          "note": "Official website offers domestic shipping across all 36 Nigerian states.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "africa-100-01",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/0b1d378b05b91697ffb8c790ac1bc285b8e66ced7bb0bf4d0780e0beb3e437da.png",
+          "checksum": "0b1d378b05b91697ffb8c790ac1bc285b8e66ced7bb0bf4d0780e0beb3e437da",
+          "mime_type": "image/png",
+          "width": 709,
+          "height": 512,
+          "repository_path": "assets/48cfb3cc6d2b9fe34ff4325e7fcc75e18c9a1c493f02e0ef82698a24554de143.webp"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/18a1e51b1ff6d562b4a6ea8e0591dc8ff3e0ebccca3583a2499e1bf9351cb23b.webp",
+          "checksum": "18a1e51b1ff6d562b4a6ea8e0591dc8ff3e0ebccca3583a2499e1bf9351cb23b",
+          "mime_type": "image/webp",
+          "width": 709,
+          "height": 512,
+          "repository_path": "assets/48cfb3cc6d2b9fe34ff4325e7fcc75e18c9a1c493f02e0ef82698a24554de143.webp"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
+      "slug": "globacom",
+      "name": "Globacom",
+      "aliases": [
+        "Glo",
+        "Glo Nigeria",
+        "Globacom Nigeria"
+      ],
+      "industry": "telecommunications",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "NG"
+      ],
+      "website": "https://www.gloworld.com/",
+      "source_url": "https://www.gloworld.com/ng",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Visually reviewed the official company identity on light and dark backgrounds. Recovered from a reviewed official page, embedded brand SVG or official media-kit download. Official sourcing does not grant a trademark licence.",
+      "evidence": [
+        {
+          "url": "https://www.gloworld.com/ng",
+          "note": "Official Nigerian country site provides Glo-branded telecommunications services and publishes the reviewed Glo logo.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "africa-coverage-recovery-03",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/b6d550e628705e40d4d9fea3e67ba76183c361eaae4de1ee2b773b5ed603dab6.png",
+          "checksum": "b6d550e628705e40d4d9fea3e67ba76183c361eaae4de1ee2b773b5ed603dab6",
+          "mime_type": "image/png",
+          "width": 512,
+          "height": 512,
+          "repository_path": "assets/2c1996530bfa224b567f4cfe60e1536382ddbc15e57b368a3f0231a3b085acfb.png"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/0ed3335e65153c8d917066a5a87aa12856d0fc13f22bf833df81c34173ff1fe3.webp",
+          "checksum": "0ed3335e65153c8d917066a5a87aa12856d0fc13f22bf833df81c34173ff1fe3",
+          "mime_type": "image/webp",
+          "width": 512,
+          "height": 512,
+          "repository_path": "assets/2c1996530bfa224b567f4cfe60e1536382ddbc15e57b368a3f0231a3b085acfb.png"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
+      "slug": "hubtel",
+      "name": "Hubtel",
+      "aliases": [],
+      "industry": "technology",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "GH"
+      ],
+      "website": "https://hubtel.com/",
+      "source_url": "https://hubtel.com/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Artwork visually inspected on light and dark backgrounds against the logo served by the official company website. Official sourcing does not imply trademark ownership or a redistribution licence.",
+      "evidence": [
+        {
+          "url": "https://hubtel.com/",
+          "note": "Official website describes business payment services in more than eight Ghanaian cities.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "africa-100-01",
+      "formats": [
+        {
+          "type": "svg",
+          "url": "/catalog/v2/assets/c7479a297f8d72b6700c72a0ab9a57057ffea726b2fbca3937c6a7ee0fa2de0e.svg",
+          "checksum": "c7479a297f8d72b6700c72a0ab9a57057ffea726b2fbca3937c6a7ee0fa2de0e",
+          "mime_type": "image/svg+xml",
+          "width": 96,
+          "height": 22,
+          "repository_path": "assets/bbef7d94cc1229dd2573d9010c3b49480328db64fe3b415f98b8315e4edf2c80.svg"
+        },
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/d575a939ff8cc077ecb71f14a80659baa30043c47b3f1711ae54f53215a3b9d5.png",
+          "checksum": "d575a939ff8cc077ecb71f14a80659baa30043c47b3f1711ae54f53215a3b9d5",
+          "mime_type": "image/png",
+          "width": 1024,
+          "height": 235,
+          "repository_path": "assets/bbef7d94cc1229dd2573d9010c3b49480328db64fe3b415f98b8315e4edf2c80.svg"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/7719aa7daffbc8f8392ede5d0836ac85a9d99a36b27835e32ae2381bcd0ac002.webp",
+          "checksum": "7719aa7daffbc8f8392ede5d0836ac85a9d99a36b27835e32ae2381bcd0ac002",
+          "mime_type": "image/webp",
+          "width": 1024,
+          "height": 235,
+          "repository_path": "assets/bbef7d94cc1229dd2573d9010c3b49480328db64fe3b415f98b8315e4edf2c80.svg"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
+      "slug": "innoson-vehicles",
+      "name": "Innoson Vehicles",
+      "aliases": [],
+      "industry": "manufacturing-consumer-goods",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "NG"
+      ],
+      "website": "https://www.innosonvehicles.com/",
+      "source_url": "https://www.innosonvehicles.com/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Artwork visually inspected on light and dark backgrounds against the logo served by the official company website. Official sourcing does not imply trademark ownership or a redistribution licence.",
+      "evidence": [
+        {
+          "url": "https://www.innosonvehicles.com/about-ivm/",
+          "note": "Official company history identifies vehicle manufacturing in Nnewi, Nigeria.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "africa-100-01",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/17c5e3837b96778845b141772ef2134fdbef01879a22c8b5f432c7215bd9fd59.png",
+          "checksum": "17c5e3837b96778845b141772ef2134fdbef01879a22c8b5f432c7215bd9fd59",
+          "mime_type": "image/png",
+          "width": 1024,
+          "height": 217,
+          "repository_path": "assets/4c7ddca27d59f1c1e840b9c2b74e79d8b020f2b167b94852a1a1d3673476f665.png"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/31bb3e0b5d8a2e710a4bcdc1f9e2d03258bf9f8357c1c12e2cebc572b38ce94c.webp",
+          "checksum": "31bb3e0b5d8a2e710a4bcdc1f9e2d03258bf9f8357c1c12e2cebc572b38ce94c",
+          "mime_type": "image/webp",
+          "width": 1024,
+          "height": 217,
+          "repository_path": "assets/4c7ddca27d59f1c1e840b9c2b74e79d8b020f2b167b94852a1a1d3673476f665.png"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
+      "slug": "ipnx",
+      "name": "ipNX",
+      "aliases": [],
+      "industry": "telecommunications",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "NG"
+      ],
+      "website": "https://www.ipnxnigeria.net/",
+      "source_url": "https://www.ipnxnigeria.net/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Artwork visually inspected on light and dark backgrounds against the logo served by the official company website. Official sourcing does not imply trademark ownership or a redistribution licence.",
+      "evidence": [
+        {
+          "url": "https://www.ipnxnigeria.net/",
+          "note": "Official website identifies its Nigerian fibre broadband services.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "africa-100-01",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/d3aa97f91066635ae4e954dcb7389ab44a53cfe318c5b5018ff208f6e6e2bb81.png",
+          "checksum": "d3aa97f91066635ae4e954dcb7389ab44a53cfe318c5b5018ff208f6e6e2bb81",
+          "mime_type": "image/png",
+          "width": 937,
+          "height": 512,
+          "repository_path": "assets/b6f307ad65bb7569cb4add16b01e8e2dcc841aa6e5fc34c7c8726b0888120acd.png"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/3b29a94fdddaef9f24605052c67c60214f135979b9d3a2e6cf486dff119f65ca.webp",
+          "checksum": "3b29a94fdddaef9f24605052c67c60214f135979b9d3a2e6cf486dff119f65ca",
+          "mime_type": "image/webp",
+          "width": 937,
+          "height": 512,
+          "repository_path": "assets/b6f307ad65bb7569cb4add16b01e8e2dcc841aa6e5fc34c7c8726b0888120acd.png"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
+      "slug": "jumia-nigeria",
+      "name": "Jumia Nigeria",
+      "aliases": [
+        "Jumia"
+      ],
+      "industry": "retail-commerce",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "NG"
+      ],
+      "website": "https://www.jumia.com.ng/",
+      "source_url": "https://group.jumia.com/press/media-kit",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Visually reviewed the official company identity on light and dark backgrounds. Recovered from a reviewed official page, embedded brand SVG or official media-kit download. Official sourcing does not grant a trademark licence.",
+      "evidence": [
+        {
+          "url": "https://group.jumia.com/press/media-kit",
+          "note": "Official Jumia media kit provides the downloadable company logo used for this brand entry.",
+          "retrieved_at": "2026-10-18"
+        },
+        {
+          "url": "https://www.jumia.com.ng/",
+          "note": "Official Nigerian marketplace describes shopping and delivery for customers in Nigeria.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "africa-coverage-recovery-03",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/3b34a11eba0738c43485f551812007401f78a215d0a97978efeab4d9bb4d5d4b.png",
+          "checksum": "3b34a11eba0738c43485f551812007401f78a215d0a97978efeab4d9bb4d5d4b",
+          "mime_type": "image/png",
+          "width": 1024,
+          "height": 167,
+          "repository_path": "assets/7e0f11569a37ea482268b27c9200bb6ae0ec02551803776bd0c5ad1e7696a5c2.png"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/31b2d452ef4e2ce3950d516e03cf847e78180d19b045e0f6a68393a2894ea4b5.webp",
+          "checksum": "31b2d452ef4e2ce3950d516e03cf847e78180d19b045e0f6a68393a2894ea4b5",
+          "mime_type": "image/webp",
+          "width": 1024,
+          "height": 167,
+          "repository_path": "assets/7e0f11569a37ea482268b27c9200bb6ae0ec02551803776bd0c5ad1e7696a5c2.png"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
+      "slug": "kasapreko",
+      "name": "Kasapreko",
+      "aliases": [],
+      "industry": "food-beverages",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "GH"
+      ],
+      "website": "https://kasapreko.com/",
+      "source_url": "https://kasapreko.com/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Visually reviewed the company artwork on light and dark backgrounds against its official website. Excluded promotional imagery, partner logos and product-only marks. Official sourcing is not a trademark licence.",
+      "evidence": [
+        {
+          "url": "https://kasapreko.com/contact-us/",
+          "note": "Official contact page lists the beverage company's location in Greater Accra, Ghana.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "africa-100-02",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/542e1f8ea606473922a6950226ade1b876a309e8f3bdcff6ba16ebda38f1dd0a.png",
+          "checksum": "542e1f8ea606473922a6950226ade1b876a309e8f3bdcff6ba16ebda38f1dd0a",
+          "mime_type": "image/png",
+          "width": 512,
+          "height": 512,
+          "repository_path": "assets/1d7ea6e020634a0f28c95722f0eaca0ca47c83fbdfe9203b7d2698b459ca8a73.png"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/237b59da3def297cbf1a2f4f82887eac9bea72626121ccf09a0c38d9a70baa85.webp",
+          "checksum": "237b59da3def297cbf1a2f4f82887eac9bea72626121ccf09a0c38d9a70baa85",
+          "mime_type": "image/webp",
+          "width": 512,
+          "height": 512,
+          "repository_path": "assets/1d7ea6e020634a0f28c95722f0eaca0ca47c83fbdfe9203b7d2698b459ca8a73.png"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
+      "slug": "kcb-group",
+      "name": "KCB Group",
+      "aliases": [],
+      "industry": "financial-services",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "KE"
+      ],
+      "website": "https://kcbgroup.com/",
+      "source_url": "https://kcbgroup.com/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Artwork visually inspected on light and dark backgrounds against the logo served by the official company website. Official sourcing does not imply trademark ownership or a redistribution licence.",
+      "evidence": [
+        {
+          "url": "https://kcbgroup.com/contact-us/",
+          "note": "Official group contact page lists Kencom House, Nairobi, Kenya.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "africa-100-01",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/518e7c87d2a1db0eafd569a7d4f367d53eaac0b576f4c066211c784ef2ee8e35.png",
+          "checksum": "518e7c87d2a1db0eafd569a7d4f367d53eaac0b576f4c066211c784ef2ee8e35",
+          "mime_type": "image/png",
+          "width": 993,
+          "height": 512,
+          "repository_path": "assets/62f06f98b19093c6821c5b9863141932b1e0250faa672923a75cf580b49140eb.png"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/b8a7ef7e2f7d224db7af305cebc7cba2b3e069d0cb341d4dcfa51d40821e4e9c.webp",
+          "checksum": "b8a7ef7e2f7d224db7af305cebc7cba2b3e069d0cb341d4dcfa51d40821e4e9c",
+          "mime_type": "image/webp",
+          "width": 993,
+          "height": 512,
+          "repository_path": "assets/62f06f98b19093c6821c5b9863141932b1e0250faa672923a75cf580b49140eb.png"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
+      "slug": "konga",
+      "name": "Konga",
+      "aliases": [],
+      "industry": "retail-commerce",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "NG"
+      ],
+      "website": "https://www.konga.com/",
+      "source_url": "https://www.konga.com/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Visually reviewed the company artwork on light and dark backgrounds against its official website. Excluded promotional imagery, partner logos and product-only marks. Official sourcing is not a trademark licence.",
+      "evidence": [
+        {
+          "url": "https://www.konga.com/content/about-us?mobile_menu=open",
+          "note": "Official company information identifies Konga.com Online Shopping Limited and its Lagos, Nigeria address.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "africa-100-02",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/4a4955e0abed4a3476df045d833e555a13eb9b6b17fd49ac3951a4663040e33a.png",
+          "checksum": "4a4955e0abed4a3476df045d833e555a13eb9b6b17fd49ac3951a4663040e33a",
+          "mime_type": "image/png",
+          "width": 1024,
+          "height": 280,
+          "repository_path": "assets/3e2330e5034f86f4e71627d0a7ae69db37c90e4de3ef948f401cd1d54b06c9ec.webp"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/9ad2785f07563782d40046d0acd083cb943c1d03cc157eb3167b9dc1540a042b.webp",
+          "checksum": "9ad2785f07563782d40046d0acd083cb943c1d03cc157eb3167b9dc1540a042b",
+          "mime_type": "image/webp",
+          "width": 1024,
+          "height": 280,
+          "repository_path": "assets/3e2330e5034f86f4e71627d0a7ae69db37c90e4de3ef948f401cd1d54b06c9ec.webp"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
+      "slug": "mixta-africa",
+      "name": "Mixta Africa",
+      "aliases": [],
+      "industry": "real-estate-construction",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "NG"
+      ],
+      "website": "https://mixtafrica.com/",
+      "source_url": "https://mixtafrica.com/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Visually reviewed the company logo on light and dark backgrounds. Selected the corporate identity, not partner or product artwork. Official provenance does not grant a trademark licence.",
+      "evidence": [
+        {
+          "url": "https://mixtafrica.com/contact-us/",
+          "note": "Official developer contact page lists its Nigerian sales team and Lagos office.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "africa-cross-industry-04",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/51187a62f427146ace5e89fe109604579dedd7614b7ff584279f0fb6d69561d1.png",
+          "checksum": "51187a62f427146ace5e89fe109604579dedd7614b7ff584279f0fb6d69561d1",
+          "mime_type": "image/png",
+          "width": 1019,
+          "height": 512,
+          "repository_path": "assets/2e6d1e0f2bcafe0fbc1d5782111b0b608ebe09ad25bb74557e5cd1fd7de3a827.png"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/9627c4b1b64531be5bfecf7d640d0fe7506e097c004fc6eb9d8153480a2308e2.webp",
+          "checksum": "9627c4b1b64531be5bfecf7d640d0fe7506e097c004fc6eb9d8153480a2308e2",
+          "mime_type": "image/webp",
+          "width": 1019,
+          "height": 512,
+          "repository_path": "assets/2e6d1e0f2bcafe0fbc1d5782111b0b608ebe09ad25bb74557e5cd1fd7de3a827.png"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
+      "slug": "mpharma",
+      "name": "mPharma",
+      "aliases": [],
+      "industry": "healthcare",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "GH",
+        "NG"
+      ],
+      "website": "https://mpharma.com/",
+      "source_url": "https://mpharma.com/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Visually reviewed the company logo on light and dark backgrounds. Selected the corporate identity, not partner or product artwork. Official provenance does not grant a trademark licence.",
+      "evidence": [
+        {
+          "url": "https://wellness.mpharma.com/hpv",
+          "note": "Official mPharma programme page describes healthcare services delivered across Ghana and Nigeria.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "africa-cross-industry-04",
+      "formats": [
+        {
+          "type": "svg",
+          "url": "/catalog/v2/assets/7aef91b5221bf7390d828b103113d25c7036ece7d44de00f883b33a4362ceb8e.svg",
+          "checksum": "7aef91b5221bf7390d828b103113d25c7036ece7d44de00f883b33a4362ceb8e",
+          "mime_type": "image/svg+xml",
+          "width": 160,
+          "height": 28,
+          "repository_path": "assets/4895e7a42091d90ada18c035ccac110f3157d266b46a5f82c10c9569dfa01b80.svg"
+        },
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/08b881a0002f4193d2483d2337e3abd15cc15235abe6a63cd2cf45e47bbb34f5.png",
+          "checksum": "08b881a0002f4193d2483d2337e3abd15cc15235abe6a63cd2cf45e47bbb34f5",
+          "mime_type": "image/png",
+          "width": 1024,
+          "height": 179,
+          "repository_path": "assets/4895e7a42091d90ada18c035ccac110f3157d266b46a5f82c10c9569dfa01b80.svg"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/de0f643626c84df601c7ce141fad8f07a5c7d2717e38fa8d78cc9141d00259e6.webp",
+          "checksum": "de0f643626c84df601c7ce141fad8f07a5c7d2717e38fa8d78cc9141d00259e6",
+          "mime_type": "image/webp",
+          "width": 1024,
+          "height": 179,
+          "repository_path": "assets/4895e7a42091d90ada18c035ccac110f3157d266b46a5f82c10c9569dfa01b80.svg"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
+      "slug": "mtn-group",
+      "name": "MTN Group",
+      "aliases": [],
+      "industry": "telecommunications",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "ZA"
+      ],
+      "website": "https://www.mtn.com/",
+      "source_url": "https://www.mtn.com/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Artwork visually inspected on light and dark backgrounds against the logo served by the official company website. Official sourcing does not imply trademark ownership or a redistribution licence.",
+      "evidence": [
+        {
+          "url": "https://www.mtn.com/contact-us/",
+          "note": "Official group contact page lists the South African physical address in Gauteng.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "africa-100-01",
+      "formats": [
+        {
+          "type": "svg",
+          "url": "/catalog/v2/assets/1a00dfd52f10538962c4757488138bb3c222205d6a0d843b68dad1656101f5cb.svg",
+          "checksum": "1a00dfd52f10538962c4757488138bb3c222205d6a0d843b68dad1656101f5cb",
+          "mime_type": "image/svg+xml",
+          "width": 567,
+          "height": 283,
+          "repository_path": "assets/1a00dfd52f10538962c4757488138bb3c222205d6a0d843b68dad1656101f5cb.svg"
+        },
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/7da3386055955af85a99f89b139df013a059e2cac7476a66703d83a1a282304d.png",
+          "checksum": "7da3386055955af85a99f89b139df013a059e2cac7476a66703d83a1a282304d",
+          "mime_type": "image/png",
+          "width": 1024,
+          "height": 512,
+          "repository_path": "assets/1a00dfd52f10538962c4757488138bb3c222205d6a0d843b68dad1656101f5cb.svg"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/e9ac6b0aae6d6a6344e42050b6a8d0bb82a5c2068b94e55ca4de60500555b1cd.webp",
+          "checksum": "e9ac6b0aae6d6a6344e42050b6a8d0bb82a5c2068b94e55ca4de60500555b1cd",
+          "mime_type": "image/webp",
+          "width": 1024,
+          "height": 512,
+          "repository_path": "assets/1a00dfd52f10538962c4757488138bb3c222205d6a0d843b68dad1656101f5cb.svg"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
+      "slug": "naspers",
+      "name": "Naspers",
+      "aliases": [],
+      "industry": "technology",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "ZA"
+      ],
+      "website": "https://www.naspers.com/",
+      "source_url": "https://www.naspers.com/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Visually reviewed the company logo on light and dark backgrounds. Selected the corporate identity, not partner or product artwork. Official provenance does not grant a trademark licence.",
+      "evidence": [
+        {
+          "url": "https://www.naspers.com/~/media/Files/N/Naspers-Corp-V2/investor/results-reports-events/results-reports-and-events-archive/financial-results/full-year/2022/financial-results-booklet.pdf",
+          "note": "Official company financial report identifies its Cape Town, South Africa head office.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "africa-cross-industry-04",
+      "formats": [
+        {
+          "type": "svg",
+          "url": "/catalog/v2/assets/407def961239b80dba4fa4b52fb47fc1121b4a9439b9539f72fa293535b64515.svg",
+          "checksum": "407def961239b80dba4fa4b52fb47fc1121b4a9439b9539f72fa293535b64515",
+          "mime_type": "image/svg+xml",
+          "width": 870,
+          "height": 514,
+          "repository_path": "assets/407def961239b80dba4fa4b52fb47fc1121b4a9439b9539f72fa293535b64515.svg"
+        },
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/ab9e76a8f65a7015d8dc3baa8e16169af33db60bd29b5d6a4007639d2909d35d.png",
+          "checksum": "ab9e76a8f65a7015d8dc3baa8e16169af33db60bd29b5d6a4007639d2909d35d",
+          "mime_type": "image/png",
+          "width": 865,
+          "height": 512,
+          "repository_path": "assets/407def961239b80dba4fa4b52fb47fc1121b4a9439b9539f72fa293535b64515.svg"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/a753432b791b68324656de67849538147f8e80c2f2adcbc553ad6096146ccfce.webp",
+          "checksum": "a753432b791b68324656de67849538147f8e80c2f2adcbc553ad6096146ccfce",
+          "mime_type": "image/webp",
+          "width": 865,
+          "height": 512,
+          "repository_path": "assets/407def961239b80dba4fa4b52fb47fc1121b4a9439b9539f72fa293535b64515.svg"
+        }
+      ]
+    },
+    {
+      "preview_background": "dark",
+      "slug": "nigerian-breweries",
+      "name": "Nigerian Breweries",
+      "aliases": [],
+      "industry": "food-beverages",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "NG"
+      ],
+      "website": "https://www.nbplc.com/",
+      "source_url": "https://www.nbplc.com/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Visually reviewed the official company identity on light and dark backgrounds. Recovered from a reviewed official page, embedded brand SVG or official media-kit download. Official sourcing does not grant a trademark licence.",
+      "evidence": [
+        {
+          "url": "https://www.nbplc.com/",
+          "note": "Official Nigerian Breweries website identifies its brewing operations in Nigeria; selected artwork is its corporate header logo, not a product brand.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "africa-coverage-recovery-03",
+      "formats": [
+        {
+          "type": "svg",
+          "url": "/catalog/v2/assets/6896a75a5776ef72c6c0e6419f8e244fd0a0d88ae6e94ba8bce17649d430fbe4.svg",
+          "checksum": "6896a75a5776ef72c6c0e6419f8e244fd0a0d88ae6e94ba8bce17649d430fbe4",
+          "mime_type": "image/svg+xml",
+          "width": 1805,
+          "height": 560,
+          "repository_path": "assets/a8a94c6a19a0f5ca030e3303417e48cbbd7195206c75898f645a6459e3b1be97.svg"
+        },
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/02ef0a0161636374f45170a39a5b2bc03ace9ddabb085a57eff3fd5824fac00d.png",
+          "checksum": "02ef0a0161636374f45170a39a5b2bc03ace9ddabb085a57eff3fd5824fac00d",
+          "mime_type": "image/png",
+          "width": 1024,
+          "height": 318,
+          "repository_path": "assets/a8a94c6a19a0f5ca030e3303417e48cbbd7195206c75898f645a6459e3b1be97.svg"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/9019093de8c82105defc24e6a2b693cdc9c3c02c57f6824715ec9443f5846ca8.webp",
+          "checksum": "9019093de8c82105defc24e6a2b693cdc9c3c02c57f6824715ec9443f5846ca8",
+          "mime_type": "image/webp",
+          "width": 1024,
+          "height": 318,
+          "repository_path": "assets/a8a94c6a19a0f5ca030e3303417e48cbbd7195206c75898f645a6459e3b1be97.svg"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
+      "slug": "oando",
+      "name": "Oando",
+      "aliases": [],
+      "industry": "energy-utilities",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "NG"
+      ],
+      "website": "https://www.oandoplc.com/",
+      "source_url": "https://oandoplc.com/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Visually reviewed the company logo on light and dark backgrounds. Selected the corporate identity, not partner or product artwork. Official provenance does not grant a trademark licence.",
+      "evidence": [
+        {
+          "url": "https://www.oandoplc.com/",
+          "note": "Official Oando company site identifies Nigerian energy operations and its primary Nigerian stock exchange listing.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "africa-cross-industry-04",
+      "formats": [
+        {
+          "type": "svg",
+          "url": "/catalog/v2/assets/47f94c4f1fd79a11c6bb402749014d5380933dd4cb16d7237a47587314f3c330.svg",
+          "checksum": "47f94c4f1fd79a11c6bb402749014d5380933dd4cb16d7237a47587314f3c330",
+          "mime_type": "image/svg+xml",
+          "width": 120,
+          "height": 41,
+          "repository_path": "assets/4a00edbbaa406d0b0a2b599ba9101a78415286e7b7fb2bc73d1c1a8bd928d067.svg"
+        },
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/08dc77e19b13e730ed3a116ee6ff1a04d8fe0921db40c5e2a1929bc639be7d23.png",
+          "checksum": "08dc77e19b13e730ed3a116ee6ff1a04d8fe0921db40c5e2a1929bc639be7d23",
+          "mime_type": "image/png",
+          "width": 1024,
+          "height": 350,
+          "repository_path": "assets/4a00edbbaa406d0b0a2b599ba9101a78415286e7b7fb2bc73d1c1a8bd928d067.svg"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/e0d3c250b57fb53f2cebd3f2282a5af516939d0a87469be5bab31dbe7221313a.webp",
+          "checksum": "e0d3c250b57fb53f2cebd3f2282a5af516939d0a87469be5bab31dbe7221313a",
+          "mime_type": "image/webp",
+          "width": 1024,
+          "height": 350,
+          "repository_path": "assets/4a00edbbaa406d0b0a2b599ba9101a78415286e7b7fb2bc73d1c1a8bd928d067.svg"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
+      "slug": "orange-cote-d-ivoire",
+      "name": "Orange Cote d'Ivoire",
+      "aliases": [],
+      "industry": "telecommunications",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "CI"
+      ],
+      "website": "https://www.orange.ci/",
+      "source_url": "https://www.orange.ci/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Visually reviewed the company artwork on light and dark backgrounds against its official website. Excluded promotional imagery, partner logos and product-only marks. Official sourcing is not a trademark licence.",
+      "evidence": [
+        {
+          "url": "https://www.orange.ci/fr/telephonie-d-entreprise.html",
+          "note": "Official operator page describes Orange's telecommunications services and established presence in Cote d'Ivoire.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "africa-100-02",
+      "formats": [
+        {
+          "type": "svg",
+          "url": "/catalog/v2/assets/9eb6e3d59fabd07cb6186e273896a15132419ae69f38e77514fd51a79e841721.svg",
+          "checksum": "9eb6e3d59fabd07cb6186e273896a15132419ae69f38e77514fd51a79e841721",
+          "mime_type": "image/svg+xml",
+          "width": 283,
+          "height": 283,
+          "repository_path": "assets/d5a5bf13bc8f3588bb752a9532752e935743fac1f9d99ed493b36c2fb2f8f688.svg"
+        },
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/309cdadc057a374135ba1a4bffa190fedb648e6243ab521209af2f5964772494.png",
+          "checksum": "309cdadc057a374135ba1a4bffa190fedb648e6243ab521209af2f5964772494",
+          "mime_type": "image/png",
+          "width": 512,
+          "height": 512,
+          "repository_path": "assets/d5a5bf13bc8f3588bb752a9532752e935743fac1f9d99ed493b36c2fb2f8f688.svg"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/25faed56f63436130de30222e9b840e117a736779044ebb3f9ba1470e9b73a07.webp",
+          "checksum": "25faed56f63436130de30222e9b840e117a736779044ebb3f9ba1470e9b73a07",
+          "mime_type": "image/webp",
+          "width": 512,
+          "height": 512,
+          "repository_path": "assets/d5a5bf13bc8f3588bb752a9532752e935743fac1f9d99ed493b36c2fb2f8f688.svg"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
+      "slug": "page-financials",
+      "name": "Page Financials",
+      "aliases": [
+        "Page Financials"
+      ],
+      "industry": "financial-services",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "NG"
+      ],
+      "website": "https://pagefinancials.com/",
+      "source_url": "https://pagefinancials.com/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Visually reviewed the company logo on light and dark backgrounds. Selected the corporate identity, not partner or product artwork. Official provenance does not grant a trademark licence.",
+      "evidence": [
+        {
+          "url": "https://pagefinancials.com/",
+          "note": "Official company website describes its Nigerian financial services and domestic banking channels.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "africa-cross-industry-04",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/3f8a1788b196d8efd463fea8ddaa4fea57fe6411f344b69b4952d069fd9e303d.png",
+          "checksum": "3f8a1788b196d8efd463fea8ddaa4fea57fe6411f344b69b4952d069fd9e303d",
+          "mime_type": "image/png",
+          "width": 1024,
+          "height": 490,
+          "repository_path": "assets/e95a823b93366874a948326414b419b5b30bd7dca57c3f4b44d2650f458e918b.png"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/1e5b519954cd3d2a2190909aaf85c3204a002ae81c404fedccce0590bdbc24a4.webp",
+          "checksum": "1e5b519954cd3d2a2190909aaf85c3204a002ae81c404fedccce0590bdbc24a4",
+          "mime_type": "image/webp",
+          "width": 1024,
+          "height": 490,
+          "repository_path": "assets/e95a823b93366874a948326414b419b5b30bd7dca57c3f4b44d2650f458e918b.png"
+        }
+      ]
+    },
+    {
+      "preview_background": "dark",
+      "slug": "paps",
+      "name": "PAPS",
+      "aliases": [],
+      "industry": "transport-logistics",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "SN",
+        "CI"
+      ],
+      "website": "https://www.paps.sn/",
+      "source_url": "https://papslogistics.com/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Artwork visually inspected on light and dark backgrounds against the logo served by the official company website. Official sourcing does not imply trademark ownership or a redistribution licence.",
+      "evidence": [
+        {
+          "url": "https://papslogistics.com/",
+          "note": "Official website describes logistics services in Senegal and Cote d'Ivoire.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "africa-100-01",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/17df2bd876d95b8768159a46fcd5199e6a6b3fc7472c44e008705be558467c44.png",
+          "checksum": "17df2bd876d95b8768159a46fcd5199e6a6b3fc7472c44e008705be558467c44",
+          "mime_type": "image/png",
+          "width": 512,
+          "height": 512,
+          "repository_path": "assets/15197ec3f6b2e002f5fdb0d98d923508f037a920dac9ac4572f8f23149031ca7.png"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/9d0c8789eb80f94afa0fac0c032affd601f841cd16f1cf8fba07e90376d038d9.webp",
+          "checksum": "9d0c8789eb80f94afa0fac0c032affd601f841cd16f1cf8fba07e90376d038d9",
+          "mime_type": "image/webp",
+          "width": 512,
+          "height": 512,
+          "repository_path": "assets/15197ec3f6b2e002f5fdb0d98d923508f037a920dac9ac4572f8f23149031ca7.png"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
+      "slug": "propertypro",
+      "name": "PropertyPro",
+      "aliases": [],
+      "industry": "real-estate-construction",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "NG"
+      ],
+      "website": "https://www.propertypro.ng/",
+      "source_url": "https://propertypro.ng/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Visually reviewed the company artwork on light and dark backgrounds against its official website. Excluded promotional imagery, partner logos and product-only marks. Official sourcing is not a trademark licence.",
+      "evidence": [
+        {
+          "url": "https://propertypro.ng/",
+          "note": "Official property platform offers Nigerian property listings for sale, rent and lease.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "africa-100-02",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/8c7f7ef750ef985b89eca84e0402d4374d415b6ad2a2d39bb440fba62b437ca6.png",
+          "checksum": "8c7f7ef750ef985b89eca84e0402d4374d415b6ad2a2d39bb440fba62b437ca6",
+          "mime_type": "image/png",
+          "width": 1024,
+          "height": 181,
+          "repository_path": "assets/f1c435eef6c66274b46aa49e7d7d77da5d8472e08089c36b6f9a1599ba77c8ae.png"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/4136dcdc84bc7b996e135f03dc743af88ad8c1c74836096e0a26703058ed5266.webp",
+          "checksum": "4136dcdc84bc7b996e135f03dc743af88ad8c1c74836096e0a26703058ed5266",
+          "mime_type": "image/webp",
+          "width": 1024,
+          "height": 181,
+          "repository_path": "assets/f1c435eef6c66274b46aa49e7d7d77da5d8472e08089c36b6f9a1599ba77c8ae.png"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
+      "slug": "royal-air-maroc",
+      "name": "Royal Air Maroc",
+      "aliases": [],
+      "industry": "transport-logistics",
+      "origin_country": null,
+      "headquarters_country": "MA",
+      "operating_countries": [
+        "MA"
+      ],
+      "website": "https://www.royalairmaroc.com/",
+      "source_url": "https://www.royalairmaroc.com/ng-en",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Visually reviewed the company artwork on light and dark backgrounds against its official website. Excluded promotional imagery, partner logos and product-only marks. Official sourcing is not a trademark licence.",
+      "evidence": [
+        {
+          "url": "https://www.royalairmaroc.com/ma-fr/mentions-legales",
+          "note": "Official legal notice identifies Royal Air Maroc's registered company address in Casablanca, Morocco.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "africa-100-02",
+      "formats": [
+        {
+          "type": "svg",
+          "url": "/catalog/v2/assets/132503e4671f316bfd508eac61c6e991d9d1e013099e104b7402ff92ed473b7a.svg",
+          "checksum": "132503e4671f316bfd508eac61c6e991d9d1e013099e104b7402ff92ed473b7a",
+          "mime_type": "image/svg+xml",
+          "width": 80,
+          "height": 59,
+          "repository_path": "assets/132503e4671f316bfd508eac61c6e991d9d1e013099e104b7402ff92ed473b7a.svg"
+        },
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/ce7a6a10303d56ae2b5d844f53178f26344283499d2742ccb41f2833a4a73f2a.png",
+          "checksum": "ce7a6a10303d56ae2b5d844f53178f26344283499d2742ccb41f2833a4a73f2a",
+          "mime_type": "image/png",
+          "width": 694,
+          "height": 512,
+          "repository_path": "assets/132503e4671f316bfd508eac61c6e991d9d1e013099e104b7402ff92ed473b7a.svg"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/f8efd5256ee0e2bca81afffaccc900c09e32b467cfeab7380ff562e06765fbb3.webp",
+          "checksum": "f8efd5256ee0e2bca81afffaccc900c09e32b467cfeab7380ff562e06765fbb3",
+          "mime_type": "image/webp",
+          "width": 694,
+          "height": 512,
+          "repository_path": "assets/132503e4671f316bfd508eac61c6e991d9d1e013099e104b7402ff92ed473b7a.svg"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
+      "slug": "seamlesshr",
+      "name": "SeamlessHR",
+      "aliases": [],
+      "industry": "technology",
+      "origin_country": "NG",
+      "headquarters_country": null,
+      "operating_countries": [
+        "NG",
+        "KE",
+        "GH"
+      ],
+      "website": "https://seamlesshr.com/",
+      "source_url": "https://seamlesshr.com/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Artwork visually inspected on light and dark backgrounds against the logo served by the official company website. Official sourcing does not imply trademark ownership or a redistribution licence.",
+      "evidence": [
+        {
+          "url": "https://seamlesshr.com/about/",
+          "note": "Company history describes Nigerian founders and offices in Lagos, Nairobi and Accra.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "africa-100-01",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/af98e608430cf7754d52a66deecb85d4998923e1d8e023e1d33d4dfce585aaf3.png",
+          "checksum": "af98e608430cf7754d52a66deecb85d4998923e1d8e023e1d33d4dfce585aaf3",
+          "mime_type": "image/png",
+          "width": 1024,
+          "height": 212,
+          "repository_path": "assets/dee188b7f7698a9cd3e5ab7796e6fecfba9314b52c8bd8b9c384338e02f6d161.webp"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/b4070578b599b48898ccf90f20424565e228873699b2763e61649471bbf481e5.webp",
+          "checksum": "b4070578b599b48898ccf90f20424565e228873699b2763e61649471bbf481e5",
+          "mime_type": "image/webp",
+          "width": 1024,
+          "height": 212,
+          "repository_path": "assets/dee188b7f7698a9cd3e5ab7796e6fecfba9314b52c8bd8b9c384338e02f6d161.webp"
+        }
+      ]
+    },
+    {
+      "preview_background": "dark",
+      "slug": "shoprite",
+      "name": "Shoprite",
+      "aliases": [],
+      "industry": "retail-commerce",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "ZA",
+        "NG"
+      ],
+      "website": "https://shoprite.ng/",
+      "source_url": "https://shoprite.ng/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Visually reviewed the official Shoprite Nigerian retail brand logo on dark and light backgrounds. This is the retail brand, not the holding company corporate identity. Nigerian stores have a separately identified operator; shared ownership is not assumed. Official sourcing does not grant a trademark licence.",
+      "evidence": [
+        {
+          "url": "https://shoprite.ng/locate-a-store/",
+          "note": "Official Nigerian retail brand site lists Nigerian stores and identifies Retail Supermarkets Nigeria as the local operator.",
+          "retrieved_at": "2026-10-18"
+        },
+        {
+          "url": "https://www.shopriteholdings.co.za/docs/2021-sr.pdf",
+          "note": "Official group sustainability report documents the Shoprite retail brand and its South African operations; local brand operators are not assumed to share ownership.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "africa-coverage-recovery-03",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/62b6ea27990b7e2a7847b680176fdca2b003eaca48deb71b388178bf70ba2ead.png",
+          "checksum": "62b6ea27990b7e2a7847b680176fdca2b003eaca48deb71b388178bf70ba2ead",
+          "mime_type": "image/png",
+          "width": 1024,
+          "height": 273,
+          "repository_path": "assets/cc478fcd590e94515ebf27af7375a9408d9aa96bbeb98494fac540266bba3351.png"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/a6172d4444543df2c742c1dec2819bd4f654af87755e047951eaa20c9c640356.webp",
+          "checksum": "a6172d4444543df2c742c1dec2819bd4f654af87755e047951eaa20c9c640356",
+          "mime_type": "image/webp",
+          "width": 1024,
+          "height": 273,
+          "repository_path": "assets/cc478fcd590e94515ebf27af7375a9408d9aa96bbeb98494fac540266bba3351.png"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
+      "slug": "sifca",
+      "name": "SIFCA",
+      "aliases": [],
+      "industry": "manufacturing-consumer-goods",
+      "origin_country": "CI",
+      "headquarters_country": "CI",
+      "operating_countries": [
+        "CI"
+      ],
+      "website": "https://www.groupesifca.com/",
+      "source_url": "https://groupesifca.com/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Artwork visually inspected on light and dark backgrounds against the logo served by the official company website. Official sourcing does not imply trademark ownership or a redistribution licence.",
+      "evidence": [
+        {
+          "url": "https://groupesifca.com/presentation-du-groupe-sifca/",
+          "note": "Official profile describes an Ivorian group founded in 1964 with headquarters in Abidjan.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "africa-100-01",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/e30dd43684559c2ae2d89dc3b97058160796887e75635195c48c2f4c9b297901.png",
+          "checksum": "e30dd43684559c2ae2d89dc3b97058160796887e75635195c48c2f4c9b297901",
+          "mime_type": "image/png",
+          "width": 1024,
+          "height": 478,
+          "repository_path": "assets/66df49a4cca6dec71d8891192271ab222df72acc36f6d50d41f4fd5bea28de5e.png"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/a395c8f2e7370ffa8d19cae5c5287bb2961cb13081616a0348c005545d97dada.webp",
+          "checksum": "a395c8f2e7370ffa8d19cae5c5287bb2961cb13081616a0348c005545d97dada",
+          "mime_type": "image/webp",
+          "width": 1024,
+          "height": 478,
+          "repository_path": "assets/66df49a4cca6dec71d8891192271ab222df72acc36f6d50d41f4fd5bea28de5e.png"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
+      "slug": "slot",
+      "name": "Slot",
+      "aliases": [],
+      "industry": "retail-commerce",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "NG"
+      ],
+      "website": "https://slot.ng/",
+      "source_url": "https://slot.ng/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Visually reviewed the company artwork on light and dark backgrounds against its official website. Excluded promotional imagery, partner logos and product-only marks. Official sourcing is not a trademark licence.",
+      "evidence": [
+        {
+          "url": "https://slot.ng/",
+          "note": "Official retailer website identifies SLOT Nigeria and offers nationwide Nigerian delivery.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "africa-100-02",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/4b545634c0ab51cba502d7506a869918858a1d46af5d951a6ab47f028c4fb9df.png",
+          "checksum": "4b545634c0ab51cba502d7506a869918858a1d46af5d951a6ab47f028c4fb9df",
+          "mime_type": "image/png",
+          "width": 1024,
+          "height": 347,
+          "repository_path": "assets/2b5c14496bc19e4d4291fd499eb96961f8f5c567a69f979d735e0f462c804392.webp"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/d7e9bd93c4e7715923148f7e48527c2e4dee50de24e9f6824ce9f932fc527204.webp",
+          "checksum": "d7e9bd93c4e7715923148f7e48527c2e4dee50de24e9f6824ce9f932fc527204",
+          "mime_type": "image/webp",
+          "width": 1024,
+          "height": 347,
+          "repository_path": "assets/2b5c14496bc19e4d4291fd499eb96961f8f5c567a69f979d735e0f462c804392.webp"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
+      "slug": "societe-ivoirienne-de-banque",
+      "name": "Societe Ivoirienne de Banque",
+      "aliases": [
+        "SIB"
+      ],
+      "industry": "financial-services",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "CI"
+      ],
+      "website": "https://www.sib.ci/",
+      "source_url": "https://sib.ci/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Visually reviewed the company logo on light and dark backgrounds. Selected the corporate identity, not partner or product artwork. Official provenance does not grant a trademark licence.",
+      "evidence": [
+        {
+          "url": "https://sib.ci/nos-agences-centres-professionnels-et-centres-entreprises/",
+          "note": "Official banking site lists its branch network serving Cote d'Ivoire.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "africa-cross-industry-04",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/00235e999a11675401383a76b485b2b23293a0d1332c7d788ff2ff2667d48641.png",
+          "checksum": "00235e999a11675401383a76b485b2b23293a0d1332c7d788ff2ff2667d48641",
+          "mime_type": "image/png",
+          "width": 1024,
+          "height": 341,
+          "repository_path": "assets/0c088ec77c3150b1d824d7fccf266bc1f133e054099ef259a7517595e825760d.png"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/5ffeea33c6df3e6af82673748bc5b4faa4191850cac4556f00963d24e1679dbe.webp",
+          "checksum": "5ffeea33c6df3e6af82673748bc5b4faa4191850cac4556f00963d24e1679dbe",
+          "mime_type": "image/webp",
+          "width": 1024,
+          "height": 341,
+          "repository_path": "assets/0c088ec77c3150b1d824d7fccf266bc1f133e054099ef259a7517595e825760d.png"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
+      "slug": "spar-nigeria",
+      "name": "SPAR Nigeria",
+      "aliases": [
+        "SPAR",
+        "SPAR Market"
+      ],
+      "industry": "retail-commerce",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "NG"
+      ],
+      "website": "https://sparnigeria.com/",
+      "source_url": "https://sparnigeria.com/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Official SPAR Market artwork sourced from the Nigerian operator; do not conflate the retail brand operator with worldwide SPAR ownership. Visually reviewed the company logo on light and dark backgrounds. Selected the corporate identity, not partner or product artwork. Official provenance does not grant a trademark licence.",
+      "evidence": [
+        {
+          "url": "https://sparnigeria.com/",
+          "note": "Official SPAR Market Nigeria site identifies Artee Industries Limited as the local retail brand operator.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "africa-cross-industry-04",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/d224d20c05267a85c4660636f01986d18eadff6d3103dd6a46823f8778131d32.png",
+          "checksum": "d224d20c05267a85c4660636f01986d18eadff6d3103dd6a46823f8778131d32",
+          "mime_type": "image/png",
+          "width": 1024,
+          "height": 313,
+          "repository_path": "assets/deccd6a7512ea01f5f854e73fc23f6cb52e0f6122b5f7afbf3a2d4b69f713da1.png"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/49954351e44f629a83cc568220e4c8816b06d43f46474521f7a3406215df42cb.webp",
+          "checksum": "49954351e44f629a83cc568220e4c8816b06d43f46474521f7a3406215df42cb",
+          "mime_type": "image/webp",
+          "width": 1024,
+          "height": 313,
+          "repository_path": "assets/deccd6a7512ea01f5f854e73fc23f6cb52e0f6122b5f7afbf3a2d4b69f713da1.png"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
+      "slug": "spectranet",
+      "name": "Spectranet",
+      "aliases": [],
+      "industry": "telecommunications",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "NG"
+      ],
+      "website": "https://www.spectranet.com.ng/",
+      "source_url": "https://www.spectranet.com.ng/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Visually reviewed the company artwork on light and dark backgrounds against its official website. Excluded promotional imagery, partner logos and product-only marks. Official sourcing is not a trademark licence.",
+      "evidence": [
+        {
+          "url": "https://www.spectranet.com.ng/",
+          "note": "Official website lists broadband coverage in Lagos, Abuja, Port Harcourt and other Nigerian towns.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "africa-100-02",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/9474ae055591683b371deb75588748f843f147098c7a7dfb54fdd8f1d72785d2.png",
+          "checksum": "9474ae055591683b371deb75588748f843f147098c7a7dfb54fdd8f1d72785d2",
+          "mime_type": "image/png",
+          "width": 1024,
+          "height": 406,
+          "repository_path": "assets/0c60578cfcb8cfc22d5ebfac13cfb99855d465cde6bdd66727fcf94f8af9ff43.webp"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/99787819fc0894721764aa03dff229286168b9a1cfd48810e223d15e920fb00d.webp",
+          "checksum": "99787819fc0894721764aa03dff229286168b9a1cfd48810e223d15e920fb00d",
+          "mime_type": "image/webp",
+          "width": 1024,
+          "height": 406,
+          "repository_path": "assets/0c60578cfcb8cfc22d5ebfac13cfb99855d465cde6bdd66727fcf94f8af9ff43.webp"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
+      "slug": "swvl",
+      "name": "Swvl",
+      "aliases": [],
+      "industry": "transport-logistics",
+      "origin_country": "EG",
+      "headquarters_country": "AE",
+      "operating_countries": [
+        "EG"
+      ],
+      "website": "https://www.swvl.com/",
+      "source_url": "https://www.swvl.com/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Visually reviewed the company logo on light and dark backgrounds. Selected the corporate identity, not partner or product artwork. Official provenance does not grant a trademark licence.",
+      "evidence": [
+        {
+          "url": "https://www.sec.gov/Archives/edgar/data/1875609/000110465926045255/swvl-20251231x20f.htm",
+          "note": "Company annual filing identifies Egyptian operations and its principal executive office in Dubai, United Arab Emirates.",
+          "retrieved_at": "2026-10-18"
+        },
+        {
+          "url": "https://www.swvl.com/about-us",
+          "note": "Official company history describes the business beginning in Cairo, Egypt.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "africa-cross-industry-04",
+      "formats": [
+        {
+          "type": "svg",
+          "url": "/catalog/v2/assets/332fb552ddb180de12ed53bdf2dde598e3e7bbec52b3fbfbb26be2d443f8a831.svg",
+          "checksum": "332fb552ddb180de12ed53bdf2dde598e3e7bbec52b3fbfbb26be2d443f8a831",
+          "mime_type": "image/svg+xml",
+          "width": 119,
+          "height": 33,
+          "repository_path": "assets/4743fd8da00bce424f8512fe551fd567e7130d26bb5530f7dc91bad111e9ebbd.svg"
+        },
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/56a72783c4e3cb342caf4d7bbea5e01e3f58b2e8ba394da46956517eab0b9559.png",
+          "checksum": "56a72783c4e3cb342caf4d7bbea5e01e3f58b2e8ba394da46956517eab0b9559",
+          "mime_type": "image/png",
+          "width": 1024,
+          "height": 285,
+          "repository_path": "assets/4743fd8da00bce424f8512fe551fd567e7130d26bb5530f7dc91bad111e9ebbd.svg"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/248abb92be318a675895afde40f9a622e1491e6e37e7194698d3c88437038521.webp",
+          "checksum": "248abb92be318a675895afde40f9a622e1491e6e37e7194698d3c88437038521",
+          "mime_type": "image/webp",
+          "width": 1024,
+          "height": 285,
+          "repository_path": "assets/4743fd8da00bce424f8512fe551fd567e7130d26bb5530f7dc91bad111e9ebbd.svg"
+        }
+      ]
+    },
+    {
+      "preview_background": "dark",
+      "slug": "tvc-communications",
+      "name": "TVC Communications",
+      "aliases": [
+        "TVC"
+      ],
+      "industry": "media-entertainment",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "NG"
+      ],
+      "website": "https://www.tvccommunications.tv/",
+      "source_url": "https://www.tvccommunications.tv/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Visually reviewed the company logo on light and dark backgrounds. Selected the corporate identity, not partner or product artwork. Official provenance does not grant a trademark licence.",
+      "evidence": [
+        {
+          "url": "https://www.tvccommunications.tv/",
+          "note": "Official company website identifies Nigerian television and radio broadcasting operations.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "africa-cross-industry-04",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/ca6dc88055d59c2fd08c156a34b60b554c4395c1fc011e1064e0a176748d5286.png",
+          "checksum": "ca6dc88055d59c2fd08c156a34b60b554c4395c1fc011e1064e0a176748d5286",
+          "mime_type": "image/png",
+          "width": 1024,
+          "height": 181,
+          "repository_path": "assets/fc40f4ec1435b053c58a0a6de30f64833614d75ea15eddadd95fdbe3165173c6.png"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/612aff0e8eb0ac1fdda9e603688754fc80c47d0500f57b9b97d6b14f002451a6.webp",
+          "checksum": "612aff0e8eb0ac1fdda9e603688754fc80c47d0500f57b9b97d6b14f002451a6",
+          "mime_type": "image/webp",
+          "width": 1024,
+          "height": 181,
+          "repository_path": "assets/fc40f4ec1435b053c58a0a6de30f64833614d75ea15eddadd95fdbe3165173c6.png"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
+      "slug": "venture-garden-group",
+      "name": "Venture Garden Group",
+      "aliases": [
+        "VGG"
+      ],
+      "industry": "technology",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "NG"
+      ],
+      "website": "https://venturegardengroup.com/",
+      "source_url": "https://venturegardengroup.com/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Visually reviewed the company logo on light and dark backgrounds. Selected the corporate identity, not partner or product artwork. Official provenance does not grant a trademark licence.",
+      "evidence": [
+        {
+          "url": "https://venturegardengroup.com/about-us/",
+          "note": "Official company history describes the founders starting their first Nigerian business in 2011.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "africa-cross-industry-04",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/73181de10f6f600274cf772122415d566abb82e24a77d6349251dbae8344dedc.png",
+          "checksum": "73181de10f6f600274cf772122415d566abb82e24a77d6349251dbae8344dedc",
+          "mime_type": "image/png",
+          "width": 1024,
+          "height": 190,
+          "repository_path": "assets/f34b694fd8cc474fe6546e78448e4658569725d513bd3a8244a1394ab45e9a0b.png"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/c0526602fe1c01ae0728456b1ae9991f8a044e453f100d31da0de8fdce67990c.webp",
+          "checksum": "c0526602fe1c01ae0728456b1ae9991f8a044e453f100d31da0de8fdce67990c",
+          "mime_type": "image/webp",
+          "width": 1024,
+          "height": 190,
+          "repository_path": "assets/f34b694fd8cc474fe6546e78448e4658569725d513bd3a8244a1394ab45e9a0b.png"
+        }
+      ]
+    },
+    {
+      "preview_background": "dark",
+      "slug": "vezeeta",
+      "name": "Vezeeta",
+      "aliases": [],
+      "industry": "healthcare",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "EG",
+        "NG"
+      ],
+      "website": "https://www.vezeeta.com/",
+      "source_url": "https://www.vezeeta.com.ng/en",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Visually reviewed the company artwork on light and dark backgrounds against its official website. Excluded promotional imagery, partner logos and product-only marks. Official sourcing is not a trademark licence.",
+      "evidence": [
+        {
+          "url": "https://www.vezeeta.com/en",
+          "note": "Official Egyptian website offers doctor bookings in Egypt; the separately sourced Nigerian site confirms Nigerian services.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "africa-100-02",
+      "formats": [
+        {
+          "type": "svg",
+          "url": "/catalog/v2/assets/6fe41aadd681464aa90442df9ca7da543f9896889be87127e30f903c35ed4b4a.svg",
+          "checksum": "6fe41aadd681464aa90442df9ca7da543f9896889be87127e30f903c35ed4b4a",
+          "mime_type": "image/svg+xml",
+          "width": 128,
+          "height": 31,
+          "repository_path": "assets/5e6ce273bf17b39d9abc6b68a74b16147a50c8768cb06f6cd88828c8df52a26b.svg"
+        },
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/79cd00d3762ff8fa1fad4bd25218d8fd276e555e69f2f3a9a7f617435b5c525f.png",
+          "checksum": "79cd00d3762ff8fa1fad4bd25218d8fd276e555e69f2f3a9a7f617435b5c525f",
+          "mime_type": "image/png",
+          "width": 1024,
+          "height": 248,
+          "repository_path": "assets/5e6ce273bf17b39d9abc6b68a74b16147a50c8768cb06f6cd88828c8df52a26b.svg"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/df18c78b9810ee4567bd11c7f9e06166a8b52c3f4ced24c4e3622214f6d5643b.webp",
+          "checksum": "df18c78b9810ee4567bd11c7f9e06166a8b52c3f4ced24c4e3622214f6d5643b",
+          "mime_type": "image/webp",
+          "width": 1024,
+          "height": 248,
+          "repository_path": "assets/5e6ce273bf17b39d9abc6b68a74b16147a50c8768cb06f6cd88828c8df52a26b.svg"
+        }
+      ]
+    }
+  ]
+}
