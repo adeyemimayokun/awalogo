@@ -6,6 +6,12 @@ maintainers and shows a confirmation in the website.
 
 ## How it works
 
+In V2, the primary Request logo navigation button and the centered empty-search
+request button open the existing request side panel. Name suggestions reuse the
+normalized alias/former-name search before submission. `Alt+R` opens the same panel;
+this remains a logo/company request even when browsing flags. These interface
+changes do not create a new API or alter delivery configuration below.
+
 1. `POST /api/logo-requests` validates the submitted fields and rejects the
    hidden spam-trap field when it is filled.
 2. The private contributor email and request details are delivered to the

@@ -3,6 +3,119 @@
   "brands": [
     {
       "preview_background": "light",
+      "slug": "21st-century-technologies",
+      "name": "21st Century Technologies",
+      "aliases": [
+        "21CTL",
+        "21st Century"
+      ],
+      "industry": "telecommunications",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "NG"
+      ],
+      "website": "https://www.21ctl.com/",
+      "source_url": "https://www.21ctl.com/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Official header identity visually checked on light and dark backgrounds. Partner and app-store artwork excluded. Source bytes retained; blank padding trimmed only where noted. Official sourcing does not confer trademark rights.",
+      "evidence": [
+        {
+          "url": "https://www.21ctl.com/",
+          "note": "Official Nigerian 21st Century Technologies website describes telecommunications, connectivity, voice and data infrastructure services.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "telecom-nigeria-07",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/60fe5298edeb5ceb31c2fa21d11eab9e4b94796e1178bcbe9fdb4d99b9715b0b.png",
+          "checksum": "60fe5298edeb5ceb31c2fa21d11eab9e4b94796e1178bcbe9fdb4d99b9715b0b",
+          "mime_type": "image/png",
+          "width": 652,
+          "height": 512,
+          "repository_path": "assets/acb7659f9eeb2b99ef75d1991a900138ebb48d41deb2135ecf3076473bd8b01b.png"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/302f55cc47ce5c3161f5da6787ba23d5ee0f5e2dfdde4bd11e4dbdcbd6c6ed85.webp",
+          "checksum": "302f55cc47ce5c3161f5da6787ba23d5ee0f5e2dfdde4bd11e4dbdcbd6c6ed85",
+          "mime_type": "image/webp",
+          "width": 652,
+          "height": 512,
+          "repository_path": "assets/acb7659f9eeb2b99ef75d1991a900138ebb48d41deb2135ecf3076473bd8b01b.png"
+        }
+      ]
+    },
+    {
+      "preview_background": "dark",
+      "slug": "africell",
+      "name": "Africell",
+      "aliases": [],
+      "industry": "telecommunications",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "AO",
+        "CD",
+        "SL",
+        "GM"
+      ],
+      "website": "https://www.africell.com/",
+      "source_url": "https://www.africell.com/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Official website identity visually reviewed on light and dark backgrounds; partner, product and payment artwork excluded. Trademark ownership remains with the operator; sourcing does not grant a redistribution licence.",
+      "evidence": [
+        {
+          "url": "https://www.africell.com/",
+          "note": "Official operator website explicitly lists Angola, DRC, Sierra Leone and The Gambia as its four markets.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "telecom-africa-05",
+      "formats": [
+        {
+          "type": "svg",
+          "url": "/catalog/v2/assets/63a1cebddf963bc6ada6191a723d67917d926708f3735b5a78354e8ca8ccfb70.svg",
+          "checksum": "63a1cebddf963bc6ada6191a723d67917d926708f3735b5a78354e8ca8ccfb70",
+          "mime_type": "image/svg+xml",
+          "width": 114,
+          "height": 38,
+          "repository_path": "assets/af17739e81d3ebfb4527e6b829f5ecda5d807ac0ffaa39905b609e78883fa676.svg"
+        },
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/20715014edf325d60e2c4f9a7c1c1666633154a904f916de4e6ae84152121036.png",
+          "checksum": "20715014edf325d60e2c4f9a7c1c1666633154a904f916de4e6ae84152121036",
+          "mime_type": "image/png",
+          "width": 228,
+          "height": 76,
+          "repository_path": "assets/af17739e81d3ebfb4527e6b829f5ecda5d807ac0ffaa39905b609e78883fa676.svg"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/29821bd456253ee9ba5f364cae8eb6230c18a6641fcef040a9742aae76c44f7c.webp",
+          "checksum": "29821bd456253ee9ba5f364cae8eb6230c18a6641fcef040a9742aae76c44f7c",
+          "mime_type": "image/webp",
+          "width": 228,
+          "height": 76,
+          "repository_path": "assets/af17739e81d3ebfb4527e6b829f5ecda5d807ac0ffaa39905b609e78883fa676.svg"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
       "slug": "air-peace",
       "name": "Air Peace",
       "aliases": [],
@@ -157,6 +270,66 @@
           "width": 1024,
           "height": 175,
           "repository_path": "assets/05baee9954cf070d91f1531b1ba471a31dee723dab99261f7cebf2dca6f7621a.png"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
+      "slug": "almadar-aljadid",
+      "name": "Almadar Aljadid",
+      "aliases": [
+        "Almadar"
+      ],
+      "industry": "telecommunications",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "LY"
+      ],
+      "website": "https://www.almadar.ly/",
+      "source_url": "https://www.almadar.ly/ar/Pages/Home.aspx",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Official website identity visually reviewed on light and dark backgrounds; partner, product and payment artwork excluded. Trademark ownership remains with the operator; sourcing does not grant a redistribution licence.",
+      "evidence": [
+        {
+          "url": "https://www.almadar.ly/ar/Pages/Home.aspx",
+          "note": "Official Libya-facing operator website offers telecommunications or broadband services under this identity.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "telecom-africa-06",
+      "formats": [
+        {
+          "type": "svg",
+          "url": "/catalog/v2/assets/0f649771b0f591d93e85d76971f64610c9fb71d3741827f53b2933dfa3e5be7e.svg",
+          "checksum": "0f649771b0f591d93e85d76971f64610c9fb71d3741827f53b2933dfa3e5be7e",
+          "mime_type": "image/svg+xml",
+          "width": 188,
+          "height": 65,
+          "repository_path": "assets/7a7edc81ee9c8a1172f3fb5fe0a0e20c257b1638b04b4a4ffb7f0d30bf38f44c.svg"
+        },
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/427dbe045315acf6231324efe449b3ad18866ff341e48dcafa886fc65c72414f.png",
+          "checksum": "427dbe045315acf6231324efe449b3ad18866ff341e48dcafa886fc65c72414f",
+          "mime_type": "image/png",
+          "width": 377,
+          "height": 130,
+          "repository_path": "assets/7a7edc81ee9c8a1172f3fb5fe0a0e20c257b1638b04b4a4ffb7f0d30bf38f44c.svg"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/6eb000b85d93352c3a3b1e8015673668e83dac4f8a0faa15afef24032812b359.webp",
+          "checksum": "6eb000b85d93352c3a3b1e8015673668e83dac4f8a0faa15afef24032812b359",
+          "mime_type": "image/webp",
+          "width": 377,
+          "height": 130,
+          "repository_path": "assets/7a7edc81ee9c8a1172f3fb5fe0a0e20c257b1638b04b4a4ffb7f0d30bf38f44c.svg"
         }
       ]
     },
@@ -461,6 +634,57 @@
     },
     {
       "preview_background": "light",
+      "slug": "cameroon-telecommunications",
+      "name": "Cameroon Telecommunications",
+      "aliases": [
+        "Camtel"
+      ],
+      "industry": "telecommunications",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "CM"
+      ],
+      "website": "https://camtel.cm/",
+      "source_url": "https://camtel.cm/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Official website identity visually reviewed on light and dark backgrounds; partner, product and payment artwork excluded. Trademark ownership remains with the operator; sourcing does not grant a redistribution licence.",
+      "evidence": [
+        {
+          "url": "https://camtel.cm/",
+          "note": "Official Cameroon-facing operator website offers telecommunications or broadband services under this identity.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "telecom-africa-06",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/a8568d4c1cdfa828c350c95859d4f0d1425023bf6e1d561dfabf46e76baec72a.png",
+          "checksum": "a8568d4c1cdfa828c350c95859d4f0d1425023bf6e1d561dfabf46e76baec72a",
+          "mime_type": "image/png",
+          "width": 388,
+          "height": 388,
+          "repository_path": "assets/a31fc721b0fe004e0853abd8c7a4b4402399a308d97e7be4ba81e14d966fb70c.png"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/b274afbf4c24f3abb630e8a68d9fe0c713e604feb58a6fc3eb346908b1112efd.webp",
+          "checksum": "b274afbf4c24f3abb630e8a68d9fe0c713e604feb58a6fc3eb346908b1112efd",
+          "mime_type": "image/webp",
+          "width": 388,
+          "height": 388,
+          "repository_path": "assets/a31fc721b0fe004e0853abd8c7a4b4402399a308d97e7be4ba81e14d966fb70c.png"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
       "slug": "channels-television",
       "name": "Channels Television",
       "aliases": [
@@ -556,6 +780,106 @@
           "width": 1024,
           "height": 135,
           "repository_path": "assets/a1626be28722f69a03fcf64de08a01278c3a5b5a74bed919058af064e37fda33.png"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
+      "slug": "cobranet",
+      "name": "Cobranet",
+      "aliases": [],
+      "industry": "telecommunications",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "NG"
+      ],
+      "website": "https://www.cobranet.ng/",
+      "source_url": "https://www.cobranet.ng/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Official website identity visually reviewed on light and dark backgrounds; partner, product and payment artwork excluded. Trademark ownership remains with the operator; sourcing does not grant a redistribution licence.",
+      "evidence": [
+        {
+          "url": "https://www.cobranet.ng/",
+          "note": "Official Nigeria-facing operator website offers telecommunications or broadband services under this identity.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "telecom-africa-05",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/7a075a0b306ef5b92a7abc6ca6a6c55235e865811252e8e3bf694b854f5d9c2d.png",
+          "checksum": "7a075a0b306ef5b92a7abc6ca6a6c55235e865811252e8e3bf694b854f5d9c2d",
+          "mime_type": "image/png",
+          "width": 115,
+          "height": 96,
+          "repository_path": "assets/4a47aa727dfad6daa41a6ce7622107ebdbca1ddf43bc4fe8c98b9ed3989834d9.png"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/6c3da708faa4e8e16e7eeb0174e50ddf966a4e078e73beb6045e31645174cf48.webp",
+          "checksum": "6c3da708faa4e8e16e7eeb0174e50ddf966a4e078e73beb6045e31645174cf48",
+          "mime_type": "image/webp",
+          "width": 115,
+          "height": 96,
+          "repository_path": "assets/4a47aa727dfad6daa41a6ce7622107ebdbca1ddf43bc4fe8c98b9ed3989834d9.png"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
+      "slug": "coollink",
+      "name": "Coollink",
+      "aliases": [
+        "Coollink Nigeria"
+      ],
+      "industry": "telecommunications",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "NG"
+      ],
+      "website": "https://www.coollink.ng/",
+      "source_url": "https://www.coollink.ng/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Official website identity visually reviewed on light and dark backgrounds; partner, product and payment artwork excluded. Trademark ownership remains with the operator; sourcing does not grant a redistribution licence.",
+      "evidence": [
+        {
+          "url": "https://www.coollink.ng/",
+          "note": "Official Nigeria-facing operator website offers telecommunications or broadband services under this identity.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "telecom-africa-05",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/6c30de7243b82dc319f45880115c6a304059dd755fa8c7d4647bc5b4a0549988.png",
+          "checksum": "6c30de7243b82dc319f45880115c6a304059dd755fa8c7d4647bc5b4a0549988",
+          "mime_type": "image/png",
+          "width": 1024,
+          "height": 399,
+          "repository_path": "assets/7125a0b8b5ce71cdb83105632adefd85039fc10ecc0e1ed066613c2addda087b.webp"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/be6f006cb2a44cf3a59a11542fd7942493e1835b4169c8eb4747ac9c6803e4de.webp",
+          "checksum": "be6f006cb2a44cf3a59a11542fd7942493e1835b4169c8eb4747ac9c6803e4de",
+          "mime_type": "image/webp",
+          "width": 1024,
+          "height": 399,
+          "repository_path": "assets/7125a0b8b5ce71cdb83105632adefd85039fc10ecc0e1ed066613c2addda087b.webp"
         }
       ]
     },
@@ -737,6 +1061,106 @@
     },
     {
       "preview_background": "light",
+      "slug": "djibouti-telecom",
+      "name": "Djibouti Telecom",
+      "aliases": [],
+      "industry": "telecommunications",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "DJ"
+      ],
+      "website": "https://www.djiboutitelecom.dj/",
+      "source_url": "https://www.djiboutitelecom.dj/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Official website identity visually reviewed on light and dark backgrounds; partner, product and payment artwork excluded. Trademark ownership remains with the operator; sourcing does not grant a redistribution licence.",
+      "evidence": [
+        {
+          "url": "https://www.djiboutitelecom.dj/",
+          "note": "Official Djibouti-facing operator website offers telecommunications or broadband services under this identity.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "telecom-africa-06",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/636e0895b11838785f021f4e8dc678366e6947f92dcaf84d00b70bfe6cf45909.png",
+          "checksum": "636e0895b11838785f021f4e8dc678366e6947f92dcaf84d00b70bfe6cf45909",
+          "mime_type": "image/png",
+          "width": 332,
+          "height": 96,
+          "repository_path": "assets/9f57e1e7b5689093385a1803718a2c76a51ad4debfddd6025ff06f19f47b2f33.png"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/03be5277ccf39e7507a7d66ac5a66855c41b25300122b76258cd882fa9f7e99b.webp",
+          "checksum": "03be5277ccf39e7507a7d66ac5a66855c41b25300122b76258cd882fa9f7e99b",
+          "mime_type": "image/webp",
+          "width": 332,
+          "height": 96,
+          "repository_path": "assets/9f57e1e7b5689093385a1803718a2c76a51ad4debfddd6025ff06f19f47b2f33.png"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
+      "slug": "econet-wireless-zimbabwe",
+      "name": "Econet Wireless Zimbabwe",
+      "aliases": [
+        "Econet"
+      ],
+      "industry": "telecommunications",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "ZW"
+      ],
+      "website": "https://www.econet.co.zw/",
+      "source_url": "https://www.econet.co.zw/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Official website identity visually reviewed on light and dark backgrounds; partner, product and payment artwork excluded. Trademark ownership remains with the operator; sourcing does not grant a redistribution licence.",
+      "evidence": [
+        {
+          "url": "https://www.econet.co.zw/",
+          "note": "Official Zimbabwe-facing operator website offers telecommunications or broadband services under this identity.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "telecom-africa-05",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/4a3e77990a5c8e4143ee5b657fa268225ef2a949dd3db1875f7c08d61a29b8df.png",
+          "checksum": "4a3e77990a5c8e4143ee5b657fa268225ef2a949dd3db1875f7c08d61a29b8df",
+          "mime_type": "image/png",
+          "width": 195,
+          "height": 43,
+          "repository_path": "assets/38f75dc4aeaea57af857eafbc0bb49d9cdb382a893145a3af5e46d42306437f5.png"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/bf08d668c680de79b4de5281ff32d1b80f442359ef453d2cfa0311b09b9e7990.webp",
+          "checksum": "bf08d668c680de79b4de5281ff32d1b80f442359ef453d2cfa0311b09b9e7990",
+          "mime_type": "image/webp",
+          "width": 195,
+          "height": 43,
+          "repository_path": "assets/38f75dc4aeaea57af857eafbc0bb49d9cdb382a893145a3af5e46d42306437f5.png"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
       "slug": "egbin-power",
       "name": "Egbin Power",
       "aliases": [],
@@ -786,6 +1210,55 @@
     },
     {
       "preview_background": "light",
+      "slug": "emtel",
+      "name": "Emtel",
+      "aliases": [],
+      "industry": "telecommunications",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "MU"
+      ],
+      "website": "https://www.emtel.com/",
+      "source_url": "https://www.emtel.com/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Official website identity visually reviewed on light and dark backgrounds; partner, product and payment artwork excluded. Trademark ownership remains with the operator; sourcing does not grant a redistribution licence.",
+      "evidence": [
+        {
+          "url": "https://www.emtel.com/",
+          "note": "Official Mauritius-facing operator website offers telecommunications or broadband services under this identity.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "telecom-africa-06",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/60b186c0bf1082366b97a779d86e3806174365e8402cab9ff3b056fd7a3903b9.png",
+          "checksum": "60b186c0bf1082366b97a779d86e3806174365e8402cab9ff3b056fd7a3903b9",
+          "mime_type": "image/png",
+          "width": 185,
+          "height": 74,
+          "repository_path": "assets/4c5e054526051d5c780111381a5adb118b7dcfde5f562af5993b5d3b5a2f9685.png"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/0809f82112645465c91dec447f3b93b3f3ac7d7c519798b62ac9b4463d323c92.webp",
+          "checksum": "0809f82112645465c91dec447f3b93b3f3ac7d7c519798b62ac9b4463d323c92",
+          "mime_type": "image/webp",
+          "width": 185,
+          "height": 74,
+          "repository_path": "assets/4c5e054526051d5c780111381a5adb118b7dcfde5f562af5993b5d3b5a2f9685.png"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
       "slug": "emzor",
       "name": "Emzor",
       "aliases": [],
@@ -830,6 +1303,59 @@
           "width": 1024,
           "height": 460,
           "repository_path": "assets/24c6d9151939467e5c7a9ce40d90da618cdb77fc3116d4f57b040a1bfa42f887.jpeg"
+        }
+      ]
+    },
+    {
+      "preview_background": "dark",
+      "slug": "fiberone",
+      "name": "FiberOne",
+      "aliases": [
+        "FiberOne Broadband",
+        "FibreOne",
+        "FOB"
+      ],
+      "industry": "telecommunications",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "NG"
+      ],
+      "website": "https://fob.ng/",
+      "source_url": "https://fob.ng/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Official header identity visually checked on light and dark backgrounds. Partner and app-store artwork excluded. Source bytes retained; blank padding trimmed only where noted. Official sourcing does not confer trademark rights.",
+      "evidence": [
+        {
+          "url": "https://fob.ng/contact-us/",
+          "note": "Official FiberOne website lists broadband services and physical customer locations in Lagos, Abuja and Ilorin.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "telecom-nigeria-07",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/90cb9dd05babdb1bd6cb0df1dc67eba93d6e138d1c4f3b763b84f18ee7b0b01d.png",
+          "checksum": "90cb9dd05babdb1bd6cb0df1dc67eba93d6e138d1c4f3b763b84f18ee7b0b01d",
+          "mime_type": "image/png",
+          "width": 1024,
+          "height": 198,
+          "repository_path": "assets/363e90e91476f26ff4e5df278c0de816a1e2c1ba439fbbfe98271a46dfaf189e.png"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/0b28a231a82626f6c4b581bbbaf7040df5ced971753f8374a2d3d4d6b245f2f5.webp",
+          "checksum": "0b28a231a82626f6c4b581bbbaf7040df5ced971753f8374a2d3d4d6b245f2f5",
+          "mime_type": "image/webp",
+          "width": 1024,
+          "height": 198,
+          "repository_path": "assets/363e90e91476f26ff4e5df278c0de816a1e2c1ba439fbbfe98271a46dfaf189e.png"
         }
       ]
     },
@@ -928,6 +1454,55 @@
           "width": 1024,
           "height": 179,
           "repository_path": "assets/86fa89686dcdd6e721d54ffdde8228a0bae71b1276a5f979c91fc580d3a0c758.png"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
+      "slug": "gamtel",
+      "name": "Gamtel",
+      "aliases": [],
+      "industry": "telecommunications",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "GM"
+      ],
+      "website": "https://www.gamtel.gm/",
+      "source_url": "https://gamtel.gm/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Official website identity visually reviewed on light and dark backgrounds; partner, product and payment artwork excluded. Trademark ownership remains with the operator; sourcing does not grant a redistribution licence.",
+      "evidence": [
+        {
+          "url": "https://gamtel.gm/",
+          "note": "Official Gambia-facing operator website offers telecommunications or broadband services under this identity.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "telecom-africa-05",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/87233c52106376a96330fdd1b3b2c2190931db893db39ac0757a54b3503a1f58.png",
+          "checksum": "87233c52106376a96330fdd1b3b2c2190931db893db39ac0757a54b3503a1f58",
+          "mime_type": "image/png",
+          "width": 200,
+          "height": 200,
+          "repository_path": "assets/d5da941d203465bfffb97c231865be4165a5ee538deac1d775a6444ccf7b8cc7.png"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/ed461940db3f5514d04e0eb279a32be30d3836472136abaecb043c975d06cb2c.webp",
+          "checksum": "ed461940db3f5514d04e0eb279a32be30d3836472136abaecb043c975d06cb2c",
+          "mime_type": "image/webp",
+          "width": 200,
+          "height": 200,
+          "repository_path": "assets/d5da941d203465bfffb97c231865be4165a5ee538deac1d775a6444ccf7b8cc7.png"
         }
       ]
     },
@@ -1035,6 +1610,55 @@
     },
     {
       "preview_background": "light",
+      "slug": "halotel",
+      "name": "Halotel",
+      "aliases": [],
+      "industry": "telecommunications",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "TZ"
+      ],
+      "website": "https://halotel.co.tz/",
+      "source_url": "https://halotel.co.tz/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Official website identity visually reviewed on light and dark backgrounds; partner, product and payment artwork excluded. Trademark ownership remains with the operator; sourcing does not grant a redistribution licence.",
+      "evidence": [
+        {
+          "url": "https://halotel.co.tz/",
+          "note": "Official Tanzania-facing operator website offers telecommunications or broadband services under this identity.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "telecom-africa-05",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/92e1a9f0bb53b1e095434ce8d5b995dc8d6b59f4532fdd537cc0a1b8711e4176.png",
+          "checksum": "92e1a9f0bb53b1e095434ce8d5b995dc8d6b59f4532fdd537cc0a1b8711e4176",
+          "mime_type": "image/png",
+          "width": 204,
+          "height": 40,
+          "repository_path": "assets/cca9d617c98656bea32b25f6a21e729da7465d10cb87e05b70c1cb5bb2bc5c97.png"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/706393d617a2fe65b53e1a0a9644bae927a34b3a78a5b8871423eb56b264e472.webp",
+          "checksum": "706393d617a2fe65b53e1a0a9644bae927a34b3a78a5b8871423eb56b264e472",
+          "mime_type": "image/webp",
+          "width": 204,
+          "height": 40,
+          "repository_path": "assets/cca9d617c98656bea32b25f6a21e729da7465d10cb87e05b70c1cb5bb2bc5c97.png"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
       "slug": "hubtel",
       "name": "Hubtel",
       "aliases": [],
@@ -1088,6 +1712,55 @@
           "width": 1024,
           "height": 235,
           "repository_path": "assets/bbef7d94cc1229dd2573d9010c3b49480328db64fe3b415f98b8315e4edf2c80.svg"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
+      "slug": "hyperia",
+      "name": "Hyperia",
+      "aliases": [],
+      "industry": "telecommunications",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "NG"
+      ],
+      "website": "https://www.hyperia.com/",
+      "source_url": "https://www.hyperia.com/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Official website identity visually reviewed on light and dark backgrounds; partner, product and payment artwork excluded. Trademark ownership remains with the operator; sourcing does not grant a redistribution licence.",
+      "evidence": [
+        {
+          "url": "https://www.hyperia.com/",
+          "note": "Official Nigeria-facing operator website offers telecommunications or broadband services under this identity.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "telecom-africa-05",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/97981894e7dad80bbf0146bb60a5ad7506982b8b47f15ae0e2edeac08cc683c8.png",
+          "checksum": "97981894e7dad80bbf0146bb60a5ad7506982b8b47f15ae0e2edeac08cc683c8",
+          "mime_type": "image/png",
+          "width": 384,
+          "height": 97,
+          "repository_path": "assets/901026edbf87e1ec3d1f50089b7bdbc1b46ada5735e8f618b4a33fb414b5e8fe.webp"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/cd33e7069690defb907c2101e6948a07e262323f3d99a0a8a08293afa3954fd3.webp",
+          "checksum": "cd33e7069690defb907c2101e6948a07e262323f3d99a0a8a08293afa3954fd3",
+          "mime_type": "image/webp",
+          "width": 384,
+          "height": 97,
+          "repository_path": "assets/901026edbf87e1ec3d1f50089b7bdbc1b46ada5735e8f618b4a33fb414b5e8fe.webp"
         }
       ]
     },
@@ -1393,6 +2066,164 @@
       ]
     },
     {
+      "preview_background": "dark",
+      "slug": "libyana",
+      "name": "Libyana",
+      "aliases": [],
+      "industry": "telecommunications",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "LY"
+      ],
+      "website": "https://libyana.ly/",
+      "source_url": "https://libyana.ly/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Official website identity visually reviewed on light and dark backgrounds; partner, product and payment artwork excluded. Trademark ownership remains with the operator; sourcing does not grant a redistribution licence.",
+      "evidence": [
+        {
+          "url": "https://libyana.ly/",
+          "note": "Official Libya-facing operator website offers telecommunications or broadband services under this identity.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "telecom-africa-06",
+      "formats": [
+        {
+          "type": "svg",
+          "url": "/catalog/v2/assets/68fcd06afc46c7e9a81e3695bf3046ee549bfbabec55f4be964b059db1542369.svg",
+          "checksum": "68fcd06afc46c7e9a81e3695bf3046ee549bfbabec55f4be964b059db1542369",
+          "mime_type": "image/svg+xml",
+          "width": 240,
+          "height": 42,
+          "repository_path": "assets/7271c431ca33a592db47fc10a2499d3ae3c0a79e0370fd05a289ca2fcfa79fc9.svg"
+        },
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/3fa632ab001fedad34dbfe4811e544497e2d658e967c1a37bbd393e88c1b2157.png",
+          "checksum": "3fa632ab001fedad34dbfe4811e544497e2d658e967c1a37bbd393e88c1b2157",
+          "mime_type": "image/png",
+          "width": 480,
+          "height": 84,
+          "repository_path": "assets/7271c431ca33a592db47fc10a2499d3ae3c0a79e0370fd05a289ca2fcfa79fc9.svg"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/823b5a3f8366065289542ca161c51c5a0d8733efde6440bf00d20246e6ec3dd0.webp",
+          "checksum": "823b5a3f8366065289542ca161c51c5a0d8733efde6440bf00d20246e6ec3dd0",
+          "mime_type": "image/webp",
+          "width": 480,
+          "height": 84,
+          "repository_path": "assets/7271c431ca33a592db47fc10a2499d3ae3c0a79e0370fd05a289ca2fcfa79fc9.svg"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
+      "slug": "liquid-intelligent-technologies",
+      "name": "Liquid Intelligent Technologies",
+      "aliases": [
+        "Liquid Telecom"
+      ],
+      "industry": "telecommunications",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "ZA"
+      ],
+      "website": "https://liquid.tech/",
+      "source_url": "https://liquid.tech/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Official website identity visually reviewed on light and dark backgrounds; partner, product and payment artwork excluded. Trademark ownership remains with the operator; sourcing does not grant a redistribution licence.",
+      "evidence": [
+        {
+          "url": "https://liquid.tech/",
+          "note": "Official South Africa-facing operator website offers telecommunications or broadband services under this identity.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "telecom-africa-05",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/ddb4ca6154ca7c6649e105cfa6543aeded45447a6c24036e611a35c0a366025d.png",
+          "checksum": "ddb4ca6154ca7c6649e105cfa6543aeded45447a6c24036e611a35c0a366025d",
+          "mime_type": "image/png",
+          "width": 1024,
+          "height": 299,
+          "repository_path": "assets/707a5958e9c8bb768e92a1cfbc1e686d5bb68b156c1f37b9f31f01464b16a21a.png"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/9f61888b22dc7f7acd49dc73f1d8edc0b6d7331b52f3585a0a8ec561e0fb88a4.webp",
+          "checksum": "9f61888b22dc7f7acd49dc73f1d8edc0b6d7331b52f3585a0a8ec561e0fb88a4",
+          "mime_type": "image/webp",
+          "width": 1024,
+          "height": 299,
+          "repository_path": "assets/707a5958e9c8bb768e92a1cfbc1e686d5bb68b156c1f37b9f31f01464b16a21a.png"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
+      "slug": "mascom",
+      "name": "Mascom",
+      "aliases": [],
+      "industry": "telecommunications",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "BW"
+      ],
+      "website": "https://mascom.bw/",
+      "source_url": "https://mascom.bw/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Official website identity visually reviewed on light and dark backgrounds; partner, product and payment artwork excluded. Trademark ownership remains with the operator; sourcing does not grant a redistribution licence.",
+      "evidence": [
+        {
+          "url": "https://mascom.bw/",
+          "note": "Official Botswana-facing operator website offers telecommunications or broadband services under this identity.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "telecom-africa-05",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/68b96213e1ce879da50cf31a985141bb38a8535ee4e41f87179e0ccdcae824ce.png",
+          "checksum": "68b96213e1ce879da50cf31a985141bb38a8535ee4e41f87179e0ccdcae824ce",
+          "mime_type": "image/png",
+          "width": 806,
+          "height": 214,
+          "repository_path": "assets/9dd26813eda6914c989ee8e8f4f554db92c5f7de5ca39049ec740e273f3002c4.png"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/c023cbb236be5989c528f69168544d3ea88361dc12bb5ad7c8970e98d0a92329.webp",
+          "checksum": "c023cbb236be5989c528f69168544d3ea88361dc12bb5ad7c8970e98d0a92329",
+          "mime_type": "image/webp",
+          "width": 806,
+          "height": 214,
+          "repository_path": "assets/9dd26813eda6914c989ee8e8f4f554db92c5f7de5ca39049ec740e273f3002c4.png"
+        }
+      ]
+    },
+    {
       "preview_background": "light",
       "slug": "mixta-africa",
       "name": "Mixta Africa",
@@ -1438,6 +2269,66 @@
           "width": 1019,
           "height": 512,
           "repository_path": "assets/2e6d1e0f2bcafe0fbc1d5782111b0b608ebe09ad25bb74557e5cd1fd7de3a827.png"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
+      "slug": "mobilis",
+      "name": "Mobilis",
+      "aliases": [
+        "ATM Mobilis"
+      ],
+      "industry": "telecommunications",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "DZ"
+      ],
+      "website": "https://mobilis.dz/",
+      "source_url": "https://mobilis.dz/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Official website identity visually reviewed on light and dark backgrounds; partner, product and payment artwork excluded. Trademark ownership remains with the operator; sourcing does not grant a redistribution licence.",
+      "evidence": [
+        {
+          "url": "https://mobilis.dz/",
+          "note": "Official Algeria-facing operator website offers telecommunications or broadband services under this identity.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "telecom-africa-05",
+      "formats": [
+        {
+          "type": "svg",
+          "url": "/catalog/v2/assets/f2f146c7731f12b352bbc2e2c603c153747abde67957746bd071871cfb58f4fa.svg",
+          "checksum": "f2f146c7731f12b352bbc2e2c603c153747abde67957746bd071871cfb58f4fa",
+          "mime_type": "image/svg+xml",
+          "width": 243,
+          "height": 61,
+          "repository_path": "assets/9746928f56f2cc5424d2253d96a0f99a610ce83e0fc71f25497ddb2771e3c059.svg"
+        },
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/a89713b41e7cea14b64b40db34b6516bf37d297d573d80ccb32362be71d4e220.png",
+          "checksum": "a89713b41e7cea14b64b40db34b6516bf37d297d573d80ccb32362be71d4e220",
+          "mime_type": "image/png",
+          "width": 485,
+          "height": 121,
+          "repository_path": "assets/9746928f56f2cc5424d2253d96a0f99a610ce83e0fc71f25497ddb2771e3c059.svg"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/a021e0eab3ad152a26bea1fe63c1aefb20b3260171c06ad8e030e2aaa45dfd42.webp",
+          "checksum": "a021e0eab3ad152a26bea1fe63c1aefb20b3260171c06ad8e030e2aaa45dfd42",
+          "mime_type": "image/webp",
+          "width": 485,
+          "height": 121,
+          "repository_path": "assets/9746928f56f2cc5424d2253d96a0f99a610ce83e0fc71f25497ddb2771e3c059.svg"
         }
       ]
     },
@@ -1497,6 +2388,57 @@
           "width": 1024,
           "height": 179,
           "repository_path": "assets/4895e7a42091d90ada18c035ccac110f3157d266b46a5f82c10c9569dfa01b80.svg"
+        }
+      ]
+    },
+    {
+      "preview_background": "dark",
+      "slug": "mtc-namibia",
+      "name": "MTC Namibia",
+      "aliases": [
+        "MTC"
+      ],
+      "industry": "telecommunications",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "NA"
+      ],
+      "website": "https://www.mtc.com.na/",
+      "source_url": "https://www.mtc.com.na/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Official website identity visually reviewed on light and dark backgrounds; partner, product and payment artwork excluded. Trademark ownership remains with the operator; sourcing does not grant a redistribution licence.",
+      "evidence": [
+        {
+          "url": "https://www.mtc.com.na/",
+          "note": "Official Namibia-facing operator website offers telecommunications or broadband services under this identity.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "telecom-africa-05",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/bee250669111649bc4c5c0a113093ff989d31c47244fe495f4f9b520e0cc76c4.png",
+          "checksum": "bee250669111649bc4c5c0a113093ff989d31c47244fe495f4f9b520e0cc76c4",
+          "mime_type": "image/png",
+          "width": 412,
+          "height": 80,
+          "repository_path": "assets/81d0b6dc8b7832367baab97990982cfb0c97120267da24eb1fba2f31ce7f6f92.png"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/b15bcd9e81df9d91510a97b56c4af389b71823460e0208ee20f2cf53dd8a9bd9.webp",
+          "checksum": "b15bcd9e81df9d91510a97b56c4af389b71823460e0208ee20f2cf53dd8a9bd9",
+          "mime_type": "image/webp",
+          "width": 412,
+          "height": 80,
+          "repository_path": "assets/81d0b6dc8b7832367baab97990982cfb0c97120267da24eb1fba2f31ce7f6f92.png"
         }
       ]
     },
@@ -1617,6 +2559,57 @@
       ]
     },
     {
+      "preview_background": "light",
+      "slug": "ngcom",
+      "name": "Ngcom",
+      "aliases": [
+        "Ngcom Networks"
+      ],
+      "industry": "telecommunications",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "NG"
+      ],
+      "website": "https://ngcomnetworks.com/",
+      "source_url": "https://ngcomnetworks.com/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Official website identity visually reviewed on light and dark backgrounds; partner, product and payment artwork excluded. Trademark ownership remains with the operator; sourcing does not grant a redistribution licence.",
+      "evidence": [
+        {
+          "url": "https://ngcomnetworks.com/",
+          "note": "Official Nigeria-facing operator website offers telecommunications or broadband services under this identity.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "telecom-africa-05",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/c51c0b674789ffde6948bd73557b82a959bc38af0653751b635304e3fb3bfdbc.png",
+          "checksum": "c51c0b674789ffde6948bd73557b82a959bc38af0653751b635304e3fb3bfdbc",
+          "mime_type": "image/png",
+          "width": 1024,
+          "height": 281,
+          "repository_path": "assets/c5c7752572c536642e1e675ab7c56d071462e0a049c957bc648d04d6dcff111e.png"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/7b604ced7f321d6ae35ed93aa35ad062637f5a37fd44c894d87a3e7197740007.webp",
+          "checksum": "7b604ced7f321d6ae35ed93aa35ad062637f5a37fd44c894d87a3e7197740007",
+          "mime_type": "image/webp",
+          "width": 1024,
+          "height": 281,
+          "repository_path": "assets/c5c7752572c536642e1e675ab7c56d071462e0a049c957bc648d04d6dcff111e.png"
+        }
+      ]
+    },
+    {
       "preview_background": "dark",
       "slug": "nigerian-breweries",
       "name": "Nigerian Breweries",
@@ -1729,6 +2722,67 @@
           "width": 1024,
           "height": 350,
           "repository_path": "assets/4a00edbbaa406d0b0a2b599ba9101a78415286e7b7fb2bc73d1c1a8bd928d067.svg"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
+      "slug": "ooredoo-algeria",
+      "name": "Ooredoo Algeria",
+      "aliases": [
+        "Ooredoo",
+        "Nedjma"
+      ],
+      "industry": "telecommunications",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "DZ"
+      ],
+      "website": "https://www.ooredoo.dz/",
+      "source_url": "https://www.ooredoo.dz/fr/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Official website identity visually reviewed on light and dark backgrounds; partner, product and payment artwork excluded. Trademark ownership remains with the operator; sourcing does not grant a redistribution licence.",
+      "evidence": [
+        {
+          "url": "https://www.ooredoo.dz/fr/",
+          "note": "Official Algeria-facing operator website offers telecommunications or broadband services under this identity.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "telecom-africa-05",
+      "formats": [
+        {
+          "type": "svg",
+          "url": "/catalog/v2/assets/02a0d87a051aa751175184a392af3f3da72d9c3789b1e8ce9bbf50a8e64d0efc.svg",
+          "checksum": "02a0d87a051aa751175184a392af3f3da72d9c3789b1e8ce9bbf50a8e64d0efc",
+          "mime_type": "image/svg+xml",
+          "width": 208,
+          "height": 40,
+          "repository_path": "assets/d2310221909adf826a51d9ca56623e974243fb25fecb572bf997f726b547200e.svg"
+        },
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/4c92666bde8bb7ca695d3cd1ab0c548f6016771b13761b15323ed55fb2745a4d.png",
+          "checksum": "4c92666bde8bb7ca695d3cd1ab0c548f6016771b13761b15323ed55fb2745a4d",
+          "mime_type": "image/png",
+          "width": 416,
+          "height": 80,
+          "repository_path": "assets/d2310221909adf826a51d9ca56623e974243fb25fecb572bf997f726b547200e.svg"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/afc7a8fc0db346aa3673eb77706e39c49651182d2c72845b03732b7eb15a3172.webp",
+          "checksum": "afc7a8fc0db346aa3673eb77706e39c49651182d2c72845b03732b7eb15a3172",
+          "mime_type": "image/webp",
+          "width": 416,
+          "height": 80,
+          "repository_path": "assets/d2310221909adf826a51d9ca56623e974243fb25fecb572bf997f726b547200e.svg"
         }
       ]
     },
@@ -1893,6 +2947,59 @@
     },
     {
       "preview_background": "light",
+      "slug": "paratus",
+      "name": "Paratus",
+      "aliases": [
+        "Paratus Africa"
+      ],
+      "industry": "telecommunications",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "NA",
+        "AO",
+        "ZM"
+      ],
+      "website": "https://paratus.africa/",
+      "source_url": "https://paratus.africa/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Official website identity visually reviewed on light and dark backgrounds; partner, product and payment artwork excluded. Trademark ownership remains with the operator; sourcing does not grant a redistribution licence.",
+      "evidence": [
+        {
+          "url": "https://paratus.africa/",
+          "note": "Official website lists data centres and local services in Namibia, Angola and Zambia.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "telecom-africa-05",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/13d795cf8801cf66560e153cda99f722365307484aaa46e009bc0a7dc83657c0.png",
+          "checksum": "13d795cf8801cf66560e153cda99f722365307484aaa46e009bc0a7dc83657c0",
+          "mime_type": "image/png",
+          "width": 300,
+          "height": 111,
+          "repository_path": "assets/932e0aadd2d14ff3f37d0f7dbc0867e50c61cb2db638241e0dbd57fefd519cf3.webp"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/ed2e398c91222ec9ee204cf87ecef6704f0024d3a8365bc663a4a5ea498d1b22.webp",
+          "checksum": "ed2e398c91222ec9ee204cf87ecef6704f0024d3a8365bc663a4a5ea498d1b22",
+          "mime_type": "image/webp",
+          "width": 300,
+          "height": 111,
+          "repository_path": "assets/932e0aadd2d14ff3f37d0f7dbc0867e50c61cb2db638241e0dbd57fefd519cf3.webp"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
       "slug": "propertypro",
       "name": "PropertyPro",
       "aliases": [],
@@ -1937,6 +3044,55 @@
           "width": 1024,
           "height": 181,
           "repository_path": "assets/f1c435eef6c66274b46aa49e7d7d77da5d8472e08089c36b6f9a1599ba77c8ae.png"
+        }
+      ]
+    },
+    {
+      "preview_background": "dark",
+      "slug": "qcell",
+      "name": "QCell",
+      "aliases": [],
+      "industry": "telecommunications",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "GM"
+      ],
+      "website": "https://www.qcell.gm/",
+      "source_url": "https://qcell.gm/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Official website identity visually reviewed on light and dark backgrounds; partner, product and payment artwork excluded. Trademark ownership remains with the operator; sourcing does not grant a redistribution licence.",
+      "evidence": [
+        {
+          "url": "https://qcell.gm/",
+          "note": "Official Gambia-facing operator website offers telecommunications or broadband services under this identity.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "telecom-africa-05",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/1c72d7183fd273562fe49280d23c73dbbd9168774d66572f9ffa407e05916188.png",
+          "checksum": "1c72d7183fd273562fe49280d23c73dbbd9168774d66572f9ffa407e05916188",
+          "mime_type": "image/png",
+          "width": 1024,
+          "height": 290,
+          "repository_path": "assets/ac408672f3eb8a9f0df6812e481fef0dcc2c2347d3f76454ce27308067e048a7.png"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/7011c8b7521bf957544f292fc6bf9dcfd69120eb13140e71529fb561833e9a36.webp",
+          "checksum": "7011c8b7521bf957544f292fc6bf9dcfd69120eb13140e71529fb561833e9a36",
+          "mime_type": "image/webp",
+          "width": 1024,
+          "height": 290,
+          "repository_path": "assets/ac408672f3eb8a9f0df6812e481fef0dcc2c2347d3f76454ce27308067e048a7.png"
         }
       ]
     },
@@ -1995,6 +3151,68 @@
           "width": 694,
           "height": 512,
           "repository_path": "assets/132503e4671f316bfd508eac61c6e991d9d1e013099e104b7402ff92ed473b7a.svg"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
+      "slug": "seacom",
+      "name": "SEACOM",
+      "aliases": [],
+      "industry": "telecommunications",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "ZA",
+        "MZ",
+        "TZ",
+        "KE",
+        "DJ"
+      ],
+      "website": "https://seacom.com/",
+      "source_url": "https://seacom.com/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Official website identity visually reviewed on light and dark backgrounds; partner, product and payment artwork excluded. Trademark ownership remains with the operator; sourcing does not grant a redistribution licence.",
+      "evidence": [
+        {
+          "url": "https://seacom.com/",
+          "note": "Official company website describes its cable network serving South Africa, Mozambique, Tanzania, Kenya and Djibouti.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "telecom-africa-05",
+      "formats": [
+        {
+          "type": "svg",
+          "url": "/catalog/v2/assets/0b5a735e95e6aff0cbada44d7bdb8a0f1ef9cd576bcf553980a0ef06859bff84.svg",
+          "checksum": "0b5a735e95e6aff0cbada44d7bdb8a0f1ef9cd576bcf553980a0ef06859bff84",
+          "mime_type": "image/svg+xml",
+          "width": 785,
+          "height": 238,
+          "repository_path": "assets/e60e2fb55a44f78d2b9fbfd3777692da60f3768a2a4bdc8375f8d9812e847a8f.svg"
+        },
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/1cca1c2a3c91a2a863b81933fb1cce4ea2ef09c1e71f58335ed3a1dc9f525daa.png",
+          "checksum": "1cca1c2a3c91a2a863b81933fb1cce4ea2ef09c1e71f58335ed3a1dc9f525daa",
+          "mime_type": "image/png",
+          "width": 1024,
+          "height": 311,
+          "repository_path": "assets/e60e2fb55a44f78d2b9fbfd3777692da60f3768a2a4bdc8375f8d9812e847a8f.svg"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/fa935dd168c6e4b1eb2d97b0f50ccb5fb0803b482cd293512e98fbd3a6d41a45.webp",
+          "checksum": "fa935dd168c6e4b1eb2d97b0f50ccb5fb0803b482cd293512e98fbd3a6d41a45",
+          "mime_type": "image/webp",
+          "width": 1024,
+          "height": 311,
+          "repository_path": "assets/e60e2fb55a44f78d2b9fbfd3777692da60f3768a2a4bdc8375f8d9812e847a8f.svg"
         }
       ]
     },
@@ -2255,6 +3473,104 @@
     },
     {
       "preview_background": "light",
+      "slug": "somtel",
+      "name": "Somtel",
+      "aliases": [],
+      "industry": "telecommunications",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "SO"
+      ],
+      "website": "https://www.somtelnetwork.net/",
+      "source_url": "https://www.somtelnetwork.net/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Official website identity visually reviewed on light and dark backgrounds; partner, product and payment artwork excluded. Trademark ownership remains with the operator; sourcing does not grant a redistribution licence. Blank outer padding trimmed in derived downloads; original source bytes retained.",
+      "evidence": [
+        {
+          "url": "https://www.somtelnetwork.net/",
+          "note": "Official Somalia-facing operator website offers telecommunications or broadband services under this identity.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "telecom-africa-06",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/55ea670d9b405548c902f8206c4bca757697db950186b41dd655981cf0003e9e.png",
+          "checksum": "55ea670d9b405548c902f8206c4bca757697db950186b41dd655981cf0003e9e",
+          "mime_type": "image/png",
+          "width": 496,
+          "height": 217,
+          "repository_path": "assets/a60501b1c9ea157d96c50b6b66dfdbb14948e1ea8602d3bf05fa533a323e1ef8.png"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/b9bd3b44d92daf8bae9f33dafd2750e6f35dd77ed08aea545c60288a296a1060.webp",
+          "checksum": "b9bd3b44d92daf8bae9f33dafd2750e6f35dd77ed08aea545c60288a296a1060",
+          "mime_type": "image/webp",
+          "width": 496,
+          "height": 217,
+          "repository_path": "assets/a60501b1c9ea157d96c50b6b66dfdbb14948e1ea8602d3bf05fa533a323e1ef8.png"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
+      "slug": "sonatel",
+      "name": "Sonatel",
+      "aliases": [],
+      "industry": "telecommunications",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "SN"
+      ],
+      "website": "https://sonatel.sn/",
+      "source_url": "https://sonatel.sn/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Official website identity visually reviewed on light and dark backgrounds; partner, product and payment artwork excluded. Trademark ownership remains with the operator; sourcing does not grant a redistribution licence.",
+      "evidence": [
+        {
+          "url": "https://sonatel.sn/",
+          "note": "Official Senegal-facing operator website offers telecommunications or broadband services under this identity.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "telecom-africa-05",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/379f7eed24dd059c0edc883b65aaf6a40870dac8702af1b540581e3fa4ee2c69.png",
+          "checksum": "379f7eed24dd059c0edc883b65aaf6a40870dac8702af1b540581e3fa4ee2c69",
+          "mime_type": "image/png",
+          "width": 189,
+          "height": 50,
+          "repository_path": "assets/33816284ca271c0b79dae1c91d25e32a60e006fb815f163292584e2076556464.png"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/991404a55f9b5f3dbd6500bd799b8a3072532d8fb2a8a24b74e894bcd2f59e03.webp",
+          "checksum": "991404a55f9b5f3dbd6500bd799b8a3072532d8fb2a8a24b74e894bcd2f59e03",
+          "mime_type": "image/webp",
+          "width": 189,
+          "height": 50,
+          "repository_path": "assets/33816284ca271c0b79dae1c91d25e32a60e006fb815f163292584e2076556464.png"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
       "slug": "spar-nigeria",
       "name": "SPAR Nigeria",
       "aliases": [
@@ -2356,6 +3672,108 @@
     },
     {
       "preview_background": "light",
+      "slug": "sudani",
+      "name": "Sudani",
+      "aliases": [
+        "Sudatel Sudani"
+      ],
+      "industry": "telecommunications",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "SD"
+      ],
+      "website": "https://sudani.sd/",
+      "source_url": "https://sudani.sd/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Official website identity visually reviewed on light and dark backgrounds; partner, product and payment artwork excluded. Trademark ownership remains with the operator; sourcing does not grant a redistribution licence. Blank outer padding trimmed in derived downloads; original source bytes retained.",
+      "evidence": [
+        {
+          "url": "https://sudani.sd/",
+          "note": "Official Sudan-facing operator website offers telecommunications or broadband services under this identity.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "telecom-africa-06",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/21e0569a5ee2b17488cc1937c39a778bb57ca07b77da3c3540fbaf49bc27929a.png",
+          "checksum": "21e0569a5ee2b17488cc1937c39a778bb57ca07b77da3c3540fbaf49bc27929a",
+          "mime_type": "image/png",
+          "width": 294,
+          "height": 262,
+          "repository_path": "assets/7aea85691840116f0b87a09b865a254d9704b90bb03aa78fd8eea4fd76f45843.png"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/0e9946a5359db87f254f407089173f573b544c02f225f72591b536b48cf86989.webp",
+          "checksum": "0e9946a5359db87f254f407089173f573b544c02f225f72591b536b48cf86989",
+          "mime_type": "image/webp",
+          "width": 294,
+          "height": 262,
+          "repository_path": "assets/7aea85691840116f0b87a09b865a254d9704b90bb03aa78fd8eea4fd76f45843.png"
+        }
+      ]
+    },
+    {
+      "preview_background": "dark",
+      "slug": "swift-networks",
+      "name": "Swift Networks",
+      "aliases": [
+        "SWIFT"
+      ],
+      "industry": "telecommunications",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "NG"
+      ],
+      "website": "https://www.swiftng.com/",
+      "source_url": "https://www.swiftng.com/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Official website identity visually reviewed on light and dark backgrounds; partner, product and payment artwork excluded. Trademark ownership remains with the operator; sourcing does not grant a redistribution licence.",
+      "evidence": [
+        {
+          "url": "https://www.swiftng.com/",
+          "note": "Official Nigeria-facing operator website offers telecommunications or broadband services under this identity.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "telecom-africa-05",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/e7a322079af5c212a4c2ab9d04d794f92a619fbd4cc8d066b23c1aff5d238972.png",
+          "checksum": "e7a322079af5c212a4c2ab9d04d794f92a619fbd4cc8d066b23c1aff5d238972",
+          "mime_type": "image/png",
+          "width": 460,
+          "height": 101,
+          "repository_path": "assets/674dd9875eea0c91f69e3e73f74227794dd51f2df6d65b1beb3de65df243908a.png"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/a4d35f2641479f142955c5f6d2cd7aebaf3eeb0843cb46702adde08014f8efb1.webp",
+          "checksum": "a4d35f2641479f142955c5f6d2cd7aebaf3eeb0843cb46702adde08014f8efb1",
+          "mime_type": "image/webp",
+          "width": 460,
+          "height": 101,
+          "repository_path": "assets/674dd9875eea0c91f69e3e73f74227794dd51f2df6d65b1beb3de65df243908a.png"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
       "slug": "swvl",
       "name": "Swvl",
       "aliases": [],
@@ -2418,6 +3836,269 @@
       ]
     },
     {
+      "preview_background": "light",
+      "slug": "t2-mobile",
+      "name": "T2 Mobile",
+      "aliases": [
+        "T2mobile",
+        "9mobile",
+        "Etisalat Nigeria"
+      ],
+      "industry": "telecommunications",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "NG"
+      ],
+      "website": "https://t2mobile.com.ng/",
+      "source_url": "https://t2mobile.com.ng/about-us",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Official website identity visually reviewed on light and dark backgrounds; partner, product and payment artwork excluded. Trademark ownership remains with the operator; sourcing does not grant a redistribution licence. Blank outer padding trimmed in derived downloads; original source bytes retained.",
+      "evidence": [
+        {
+          "url": "https://t2mobile.com.ng/about-us",
+          "note": "Official About page explicitly identifies T2mobile as the Nigerian NCC-licensed operator formerly known as 9mobile.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "telecom-africa-05",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/3109af3852f7103e7eb0f023ef5b9063ad4e0db56cf44ca1cc0270215d931e38.png",
+          "checksum": "3109af3852f7103e7eb0f023ef5b9063ad4e0db56cf44ca1cc0270215d931e38",
+          "mime_type": "image/png",
+          "width": 681,
+          "height": 512,
+          "repository_path": "assets/ea170ec0bd4c7d8e3a9475d25f24aa1b5c8661b9db9fbcf50a3a0d8bfeb2be18.png"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/3aa37bc3410ff5d26a985483f8345e6dbc13250bbd5e76ae47d93929f6c5a45c.webp",
+          "checksum": "3aa37bc3410ff5d26a985483f8345e6dbc13250bbd5e76ae47d93929f6c5a45c",
+          "mime_type": "image/webp",
+          "width": 681,
+          "height": 512,
+          "repository_path": "assets/ea170ec0bd4c7d8e3a9475d25f24aa1b5c8661b9db9fbcf50a3a0d8bfeb2be18.png"
+        }
+      ]
+    },
+    {
+      "preview_background": "dark",
+      "slug": "telecom-egypt",
+      "name": "Telecom Egypt",
+      "aliases": [
+        "WE",
+        "TelecomEgypt"
+      ],
+      "industry": "telecommunications",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "EG"
+      ],
+      "website": "https://te.eg/",
+      "source_url": "https://te.eg/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Official website identity visually reviewed on light and dark backgrounds; partner, product and payment artwork excluded. Trademark ownership remains with the operator; sourcing does not grant a redistribution licence.",
+      "evidence": [
+        {
+          "url": "https://te.eg/",
+          "note": "Official Egypt-facing operator website offers telecommunications or broadband services under this identity.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "telecom-africa-05",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/5bba39fb8590c501c54554cab7ddedee778f9988ffdfce26d16d62a04744c37f.png",
+          "checksum": "5bba39fb8590c501c54554cab7ddedee778f9988ffdfce26d16d62a04744c37f",
+          "mime_type": "image/png",
+          "width": 496,
+          "height": 140,
+          "repository_path": "assets/73e1eca030895e47b03a4a2605bde346a5ec6b3c89506f8ee830fa226dc09c0c.png"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/604d3b8d98ab02f42bcab84980a38c086ad4ecd3aaab7c6164851525d5e21884.webp",
+          "checksum": "604d3b8d98ab02f42bcab84980a38c086ad4ecd3aaab7c6164851525d5e21884",
+          "mime_type": "image/webp",
+          "width": 496,
+          "height": 140,
+          "repository_path": "assets/73e1eca030895e47b03a4a2605bde346a5ec6b3c89506f8ee830fa226dc09c0c.png"
+        }
+      ]
+    },
+    {
+      "preview_background": "dark",
+      "slug": "telkom-kenya",
+      "name": "Telkom Kenya",
+      "aliases": [],
+      "industry": "telecommunications",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "KE"
+      ],
+      "website": "https://telkom.co.ke/",
+      "source_url": "https://telkom.co.ke/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Official website identity visually reviewed on light and dark backgrounds; partner, product and payment artwork excluded. Trademark ownership remains with the operator; sourcing does not grant a redistribution licence.",
+      "evidence": [
+        {
+          "url": "https://telkom.co.ke/",
+          "note": "Official Kenya-facing operator website offers telecommunications or broadband services under this identity.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "telecom-africa-05",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/802b5c54c8fda4e0660e1f5d602d09a5466eea025bbebc47be2a90e854ea31af.png",
+          "checksum": "802b5c54c8fda4e0660e1f5d602d09a5466eea025bbebc47be2a90e854ea31af",
+          "mime_type": "image/png",
+          "width": 119,
+          "height": 46,
+          "repository_path": "assets/931a91c2d574a8eb0cd792d51bf07ada0a4f1cb1acd01cf776b794dbfa7c942f.png"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/1c274d4591de1b01d0a44ccece209fd2d4f82138e92f6f7da7d6823af70a014b.webp",
+          "checksum": "1c274d4591de1b01d0a44ccece209fd2d4f82138e92f6f7da7d6823af70a014b",
+          "mime_type": "image/webp",
+          "width": 119,
+          "height": 46,
+          "repository_path": "assets/931a91c2d574a8eb0cd792d51bf07ada0a4f1cb1acd01cf776b794dbfa7c942f.png"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
+      "slug": "telone",
+      "name": "TelOne",
+      "aliases": [],
+      "industry": "telecommunications",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "ZW"
+      ],
+      "website": "https://www.telone.co.zw/",
+      "source_url": "https://www.telone.co.zw/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Official website identity visually reviewed on light and dark backgrounds; partner, product and payment artwork excluded. Trademark ownership remains with the operator; sourcing does not grant a redistribution licence.",
+      "evidence": [
+        {
+          "url": "https://www.telone.co.zw/",
+          "note": "Official Zimbabwe-facing operator website offers telecommunications or broadband services under this identity.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "telecom-africa-05",
+      "formats": [
+        {
+          "type": "svg",
+          "url": "/catalog/v2/assets/ac2c83cc9c3a953e22b27396b466722d9df3f9f8e0edf3300c43768aceb72ec8.svg",
+          "checksum": "ac2c83cc9c3a953e22b27396b466722d9df3f9f8e0edf3300c43768aceb72ec8",
+          "mime_type": "image/svg+xml",
+          "width": 723,
+          "height": 270,
+          "repository_path": "assets/ac2c83cc9c3a953e22b27396b466722d9df3f9f8e0edf3300c43768aceb72ec8.svg"
+        },
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/804fc748e851d045206696ea2d7a12f8aef005d6eedbd475ed7de9b8c1c813f4.png",
+          "checksum": "804fc748e851d045206696ea2d7a12f8aef005d6eedbd475ed7de9b8c1c813f4",
+          "mime_type": "image/png",
+          "width": 1024,
+          "height": 383,
+          "repository_path": "assets/ac2c83cc9c3a953e22b27396b466722d9df3f9f8e0edf3300c43768aceb72ec8.svg"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/d99c92fcf6d4bbcbb751b0efbd66c3189a8bcf689ba6eca631c14016cae6c9bb.webp",
+          "checksum": "d99c92fcf6d4bbcbb751b0efbd66c3189a8bcf689ba6eca631c14016cae6c9bb",
+          "mime_type": "image/webp",
+          "width": 1024,
+          "height": 383,
+          "repository_path": "assets/ac2c83cc9c3a953e22b27396b466722d9df3f9f8e0edf3300c43768aceb72ec8.svg"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
+      "slug": "tmcel",
+      "name": "Tmcel",
+      "aliases": [
+        "TMCEL"
+      ],
+      "industry": "telecommunications",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "MZ"
+      ],
+      "website": "https://www.tmcel.mz/",
+      "source_url": "https://www.tmcel.mz/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Official website identity visually reviewed on light and dark backgrounds; partner, product and payment artwork excluded. Trademark ownership remains with the operator; sourcing does not grant a redistribution licence.",
+      "evidence": [
+        {
+          "url": "https://www.tmcel.mz/",
+          "note": "Official Mozambique-facing operator website offers telecommunications or broadband services under this identity.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "telecom-africa-05",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/36e2b24da69d06e04442f5d08d65af0f7e44affc28704dc65350a35add455502.png",
+          "checksum": "36e2b24da69d06e04442f5d08d65af0f7e44affc28704dc65350a35add455502",
+          "mime_type": "image/png",
+          "width": 267,
+          "height": 139,
+          "repository_path": "assets/f39ec7616922fdb79da5086f30001b6e10cb1eab25e7cc1eb2aca43e8af76deb.png"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/e1faa5df616f921f4bf076d50cefadc8045a6fae8a0abe5dc712e5d2a4dac0c9.webp",
+          "checksum": "e1faa5df616f921f4bf076d50cefadc8045a6fae8a0abe5dc712e5d2a4dac0c9",
+          "mime_type": "image/webp",
+          "width": 267,
+          "height": 139,
+          "repository_path": "assets/f39ec7616922fdb79da5086f30001b6e10cb1eab25e7cc1eb2aca43e8af76deb.png"
+        }
+      ]
+    },
+    {
       "preview_background": "dark",
       "slug": "tvc-communications",
       "name": "TVC Communications",
@@ -2465,6 +4146,109 @@
           "width": 1024,
           "height": 181,
           "repository_path": "assets/fc40f4ec1435b053c58a0a6de30f64833614d75ea15eddadd95fdbe3165173c6.png"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
+      "slug": "unitel-t-plus",
+      "name": "Unitel T Plus",
+      "aliases": [
+        "Unitel T+",
+        "Unitel Tmais"
+      ],
+      "industry": "telecommunications",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "CV"
+      ],
+      "website": "https://www.uniteltmais.cv/",
+      "source_url": "https://www.uniteltmais.cv/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Official website identity visually reviewed on light and dark backgrounds; partner, product and payment artwork excluded. Trademark ownership remains with the operator; sourcing does not grant a redistribution licence.",
+      "evidence": [
+        {
+          "url": "https://www.uniteltmais.cv/",
+          "note": "Official Cape Verde-facing operator website offers telecommunications or broadband services under this identity.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "telecom-africa-06",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/d9b07ed4ed164ecf8a57f00e65dcc9f46d280b99e9d94164a02f9f9583945c0e.png",
+          "checksum": "d9b07ed4ed164ecf8a57f00e65dcc9f46d280b99e9d94164a02f9f9583945c0e",
+          "mime_type": "image/png",
+          "width": 214,
+          "height": 33,
+          "repository_path": "assets/518b5957ec8e081480bb4529ab22c7f9ec211b1c2d29437c6977820488e6a5d1.png"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/8c224d6cc7ac3b070a840d22b7b59b5ad4541df0ce6a7646704a5a4164388d96.webp",
+          "checksum": "8c224d6cc7ac3b070a840d22b7b59b5ad4541df0ce6a7646704a5a4164388d96",
+          "mime_type": "image/webp",
+          "width": 214,
+          "height": 33,
+          "repository_path": "assets/518b5957ec8e081480bb4529ab22c7f9ec211b1c2d29437c6977820488e6a5d1.png"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
+      "slug": "vdt-communications",
+      "name": "VDT Communications",
+      "aliases": [
+        "VDT"
+      ],
+      "industry": "telecommunications",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "NG"
+      ],
+      "website": "https://vdtcomms.com/",
+      "source_url": "https://vdtcomms.com/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Official website identity visually reviewed on light and dark backgrounds; partner, product and payment artwork excluded. Trademark ownership remains with the operator; sourcing does not grant a redistribution licence.",
+      "evidence": [
+        {
+          "url": "https://vdtcomms.com/",
+          "note": "Official Nigeria-facing operator website offers telecommunications or broadband services under this identity.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "telecom-africa-05",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/e274c93a38eaa3db84d1842751fae7e37012a69738bc1b906092600abbf900f3.png",
+          "checksum": "e274c93a38eaa3db84d1842751fae7e37012a69738bc1b906092600abbf900f3",
+          "mime_type": "image/png",
+          "width": 150,
+          "height": 78,
+          "repository_path": "assets/c3a53d067de089dc1867590b054190b24045fbfeea927c4f9b62e5cc74293630.png"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/354e24baf376089fdb6fbac264fb52088327749faa76036a09a18eeb769d0b64.webp",
+          "checksum": "354e24baf376089fdb6fbac264fb52088327749faa76036a09a18eeb769d0b64",
+          "mime_type": "image/webp",
+          "width": 150,
+          "height": 78,
+          "repository_path": "assets/c3a53d067de089dc1867590b054190b24045fbfeea927c4f9b62e5cc74293630.png"
         }
       ]
     },
@@ -2575,6 +4359,64 @@
           "width": 1024,
           "height": 248,
           "repository_path": "assets/5e6ce273bf17b39d9abc6b68a74b16147a50c8768cb06f6cd88828c8df52a26b.svg"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
+      "slug": "vodacom",
+      "name": "Vodacom",
+      "aliases": [],
+      "industry": "telecommunications",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "ZA"
+      ],
+      "website": "https://www.vodacom.com/",
+      "source_url": "https://www.vodacom.com/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-18",
+      "updated_at": "2026-10-18",
+      "reviewed_at": "2026-10-18",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Official website identity visually reviewed on light and dark backgrounds; partner, product and payment artwork excluded. Trademark ownership remains with the operator; sourcing does not grant a redistribution licence.",
+      "evidence": [
+        {
+          "url": "https://www.vodacom.com/",
+          "note": "Official South Africa-facing operator website offers telecommunications or broadband services under this identity.",
+          "retrieved_at": "2026-10-18"
+        }
+      ],
+      "batch": "telecom-africa-05",
+      "formats": [
+        {
+          "type": "svg",
+          "url": "/catalog/v2/assets/2a548f183e457fe3e29d422113e04d78763588e8f9f6b32fc3b3f54e048526b7.svg",
+          "checksum": "2a548f183e457fe3e29d422113e04d78763588e8f9f6b32fc3b3f54e048526b7",
+          "mime_type": "image/svg+xml",
+          "width": 57,
+          "height": 57,
+          "repository_path": "assets/86ad40679b318bc612555c7dd033df815821101a239bdcb1f0d01ccd3e329f7d.svg"
+        },
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/c3d5004cd340938fadde0b8e2f98c9142bfd6a41001c2fd145ad14343cdaef0f.png",
+          "checksum": "c3d5004cd340938fadde0b8e2f98c9142bfd6a41001c2fd145ad14343cdaef0f",
+          "mime_type": "image/png",
+          "width": 114,
+          "height": 115,
+          "repository_path": "assets/86ad40679b318bc612555c7dd033df815821101a239bdcb1f0d01ccd3e329f7d.svg"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/6e45a345b7e47f303f212ab2f0fea881f60632242a13e38030edebdf507712ca.webp",
+          "checksum": "6e45a345b7e47f303f212ab2f0fea881f60632242a13e38030edebdf507712ca",
+          "mime_type": "image/webp",
+          "width": 114,
+          "height": 115,
+          "repository_path": "assets/86ad40679b318bc612555c7dd033df815821101a239bdcb1f0d01ccd3e329f7d.svg"
         }
       ]
     }

@@ -5,6 +5,7 @@ import { createHash } from "node:crypto";
 import { load } from "cheerio";
 import sharp from "sharp";
 import { normalizeIdentity } from "../packages/brands/identity.mjs";
+import { publishHistoricalBrands } from "./publish-historical-brands.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const packageRoot = join(root, "packages/brands");
@@ -48,12 +49,15 @@ for (const review of reviews) {
     svg.attr("xmlns", "http://www.w3.org/2000/svg");
     source = Buffer.from($.xml(svg));
   }
+  if (review.trim_padding === true && asset.format !== "svg") {
+    source = await sharp(source).trim({ threshold: 4 }).png().toBuffer();
+  }
   const sourceHash = createHash("sha256").update(source).digest("hex");
   if (checksums.has(sourceHash)) throw new Error(`Duplicate artwork: ${entry.slug}`);
   checksums.add(sourceHash);
   const formats = [];
   for (const type of [...(asset.format === "svg" ? ["svg"] : []), "png", "webp"]) {
-    const renderer = sharp(source, { density: 144 }).resize({ width: 1024, height: 512, fit: "inside" });
+    const renderer = sharp(source, { density: 144 }).resize({ width: 1024, height: 512, fit: "inside", withoutEnlargement: review.without_enlargement === true });
     const bytes = type === "svg" ? source : type === "png" ? await renderer.png().toBuffer() : await renderer.webp({ lossless: true, effort: 3 }).toBuffer();
     const checksum = createHash("sha256").update(bytes).digest("hex");
     const meta = await sharp(bytes).metadata();
@@ -75,4 +79,5 @@ const dispositions = research.entries.map((entry) => {
 });
 const report = `# African Brand Expansion: ${research.entries.length} Candidates\n\nExisting logos are unchanged. ${published.length} additions approved for V2 only.\n\n| Company | Target market | Industry | Disposition | Notes | Official source |\n|---|---|---|---|---|---|\n${dispositions.map((entry) => `| ${entry.name} | ${entry.target_market} | ${entry.industry} | ${entry.disposition} | ${entry.reason.replaceAll("|", "/")} | ${entry.sources.map((source) => source.url).join(", ")} |`).join("\n")}\n`;
 await output(join(packageRoot, "research/source-report.md"), report);
+await publishHistoricalBrands(root, check);
 console.log(`${check ? "Checked" : "Published"} ${published.length} V2-only brands; no legacy files modified.`);

@@ -12,6 +12,11 @@ a separate correction/replacement proposal, not a migration.
 - `research/source-report.md`: final disposition of every candidate.
 - `assets/`: approved original source bytes; reproducible builds need no network.
 - `catalog.json`: generated V2-only projection. V1 never imports this file.
+- `research/telecom-brand-history.json`: former-name display evidence.
+- `research/historical-assets.json` and `historical-catalog.json`: reviewed historical
+  variations and generated formats, without replacing the current primary artwork.
+- `research/affiliations.json`: explicitly sourced V2 corporate links for suggestions;
+  no inferred ownership from industry/name/logo similarity.
 - `legacy-baseline.json`: checksums captured before the expansion.
 
 Run `pnpm brands:research` to investigate candidates. Staging is private and ignored.
@@ -32,3 +37,10 @@ Do not overwrite the baseline to make a failing check pass.
 Website builds regenerate static V2 assets before deployment. V2 remains Coming
 soon. The current Figma plugin continues using `/catalog/v1`; supporting this
 collection in the plugin requires a separate compatibility release.
+
+As of 18 October 2026, 84 independent company additions combine with 228 existing
+logos in V2 (312 companies). Telecom coverage tracks 89 candidates, of which 41
+are available; this is not an exhaustive operator list. See the
+[telecom audit](../../docs/nigerian-telecom-audit.md). Historical 9mobile remains a
+community-sourced previous version under T2; spaced-name search selects its artwork.
+The publisher also generates historical formats and verifies their source checksums.

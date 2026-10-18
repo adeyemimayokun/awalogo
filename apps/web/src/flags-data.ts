@@ -7,6 +7,7 @@ export const flagSource = data.source;
 export function flagForSlug(slug: string) { return slug.startsWith("flag-") ? flags.find((flag) => flag.code.toLowerCase() === slug.slice(5)) : undefined; }
 
 export function findFlags(query: string, region: string): CountryFlag[] {
-  const text = query.trim().toLowerCase();
-  return flags.filter((flag) => (region === "all" || flag.region === region) && `${flag.name} ${flag.code}`.toLowerCase().includes(text));
+  const normalize = (value: string) => value.normalize("NFKD").replace(/\p{M}/gu, "").toLowerCase().replace(/[^\p{L}\p{N}]/gu, "");
+  const text = normalize(query);
+  return flags.filter((flag) => (region === "all" || flag.region === region) && [flag.name, flag.code].some((value) => normalize(value).includes(text)));
 }

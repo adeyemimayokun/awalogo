@@ -10,7 +10,9 @@ import { discoverBrandArtwork } from "./lib/brand-artwork.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const research = join(root, "packages/brands/research");
-const seeds = [...JSON.parse(await readFile(join(research, "candidates.json"), "utf8")), ...JSON.parse(await readFile(join(research, "supplemental-candidates.json"), "utf8"))];
+const seedFiles = ["candidates.json", "supplemental-candidates.json", "telecom-candidates.json"];
+const allSeeds = (await Promise.all(seedFiles.map(async (file) => JSON.parse(await readFile(join(research, file), "utf8"))))).flat();
+const seeds = [...new Map(allSeeds.map((entry) => [entry[0].toLowerCase(), entry])).values()];
 const overrides = JSON.parse(await readFile(join(research, "source-overrides.json"), "utf8"));
 const only = process.argv.find((arg) => arg.startsWith("--only="))?.slice(7).split(",");
 const legacy = JSON.parse(await readFile(join(root, "packages/catalog-ui/src/generated/runtime-catalog.json"), "utf8")).items.map((item) => item.logo);

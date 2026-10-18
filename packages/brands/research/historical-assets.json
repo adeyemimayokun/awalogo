@@ -1,0 +1,19 @@
+[
+  {
+    "slug": "t2-mobile",
+    "id": "9mobile-previous",
+    "name": "9mobile",
+    "brand_name": "9mobile",
+    "status": "needs-review",
+    "variation_status": "old",
+    "source_path": "assets/9mobile-previous.svg",
+    "source_checksum": "29be14135747d9a94270f78317e8a33ccb36a31a700d967dba4404e7adcb4759",
+    "source_type": "community-catalog",
+    "source_url": "https://github.com/josephajibodu/utility-providers-assets/blob/main/network-providers/9mobile.svg",
+    "identity_evidence": "https://t2mobile.com.ng/about-us",
+    "reviewer": "Codex assisted visual review",
+    "reviewed_at": "2026-10-18",
+    "visual_reviewed": true,
+    "review_notes": "Community-sourced historical 9mobile identity, not the current T2 logo. Source is not officially verified; trademarks remain with their respective owners."
+  }
+]

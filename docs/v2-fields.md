@@ -2,7 +2,10 @@
 
 `apps/web/src/v2-fields.css` owns interaction states for text inputs, native
 selects, report textareas, compound search fields and category picker triggers.
-Keep page-specific sizing in the owning layout, not in the state rules.
+Keep sizing separate from state rules. `v2-compact.css` provides shared density:
+36px desktop buttons/selects/inputs, 40px search and at least 44px coarse-pointer
+targets. Textareas retain comfortable editing space. The shared field radius is
+12px; navigation controls match it. Logo and flag controls use the same rules.
 
 - Default: surface background, line border and the shared field radius.
 - Hover: muted border on enabled fields, only on devices supporting hover.
@@ -15,6 +18,11 @@ Keep page-specific sizing in the owning layout, not in the state rules.
 - Checkboxes and radios retain native interaction with a theme-aware accent
   and visible keyboard outline. Hidden theme radios use their existing label.
 - Reduced motion disables field transitions.
+
+Primary request actions appear in navigation and the centered empty-logo state.
+The navigation CTA explicitly overrides legacy muted dock text so text and icons
+contrast with the primary background in both themes and interaction states.
+The centered empty-flag state uses a primary reset action instead of a logo request.
 
 Search places its border on the label wrapper, never on the inner input.
 Use native constraints for native validation. Set `aria-invalid` only for

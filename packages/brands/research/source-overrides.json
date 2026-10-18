@@ -1,4 +1,8 @@
 {
+  "fiberone": { "aliases": ["FiberOne Broadband", "FibreOne", "FOB"], "pages": ["https://fob.ng/"] },
+  "legend-internet": { "aliases": ["Legend", "Legend Fiber"], "pages": ["https://legend.ng/"] },
+  "tizeti": { "aliases": ["Wifi.com.ng", "Tizeti Network"], "pages": ["https://www.tizeti.com/home/wifi/", "https://www.tizeti.com/news/"] },
+  "t2-mobile": { "aliases": ["T2mobile", "9mobile", "Etisalat Nigeria"], "pages": ["https://t2mobile.com.ng/about-us", "https://t2mobile.com.ng/"] },
   "globacom": { "aliases": ["Glo", "Glo Nigeria", "Globacom Nigeria"] },
   "shoprite": { "pages": ["https://shoprite.ng/", "https://www.shoprite.co.za/"] },
   "mainone": { "pages": ["https://mainone.net/"] },

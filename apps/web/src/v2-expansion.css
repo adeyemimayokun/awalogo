@@ -15,3 +15,5 @@
 .v2-brand-provenance h3 { font-size: 14px; margin: 0 0 12px; }
 .v2-brand-provenance p { line-height: 1.6; opacity: .75; }
 .v2-brand-provenance a { display: inline-flex; align-items: center; gap: 6px; }
+.v2-card-label .v2-former-name { display:inline; margin-left:6px; color:var(--muted); font-size:10px; font-weight:400; }
+.v2-panel .v2-brand-history { margin:-10px 0 18px; color:var(--muted); font-size:12px; }

@@ -1,6 +1,13 @@
 # Country Flags
 
-V2 includes 249 ISO country/territory entries at `/v2/flags`, accessible through the Logos/Flags collection switch and More > Country flags. Navigation stays in the same workspace. Search supports country names and two-letter codes; a region filter narrows results.
+V2 includes 249 ISO country/territory entries at `/v2/flags`, accessible through Flags in the top navigation and More > Country flags. Navigation stays in the same workspace. Search supports normalized country names and two-letter codes (including accents/punctuation); a region filter narrows results. V2 remains Coming soon.
+
+Unfiltered lists show 20 items per page. The shared paginator shows the current
+page, up to three previous and two next pages, and first/previous/next/last controls.
+Search and region-filtered results are unpaginated; changes reset to page one.
+Up to eight similar-name suggestions follow search results, respect the region
+filter, and exclude direct matches. They do not imply visual or political relationships.
+Empty results show a centered message with a primary reset action.
 
 ## Source and Artwork
 
@@ -13,6 +20,13 @@ V2 includes 249 ISO country/territory entries at `/v2/flags`, accessible through
 ## Workflows
 
 Flags support previews, individual downloads, raw SVG copying, HTML/React image snippets, share links, and the existing persistent 50-item/100MB download bag. Mixed logo/flag ZIPs contain source metadata and `FLAGS-LICENSE.txt`. Flag downloads do not inflate logo-popularity counts. Flags do not enter the existing logo-only runtime catalog or Figma plugin in this release.
+
+The floating bag is shared with logos: Pack into bag, Drop item, Drop all, an
+eight-second bulk undo, ZIP-time mutation locks, animations and saved position.
+Compact controls, themes, languages and the persisted sound preference apply here.
+Navigation search and `/` focus flag search rather than switching to logos;
+`Alt+B` opens the collection. `Alt+R` still requests a logo, not a new flag entry.
+Flag details do not use the logo-report endpoint or logo-only inline JSX mode.
 
 ## Regeneration
 

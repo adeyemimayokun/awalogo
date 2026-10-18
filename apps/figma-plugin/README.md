@@ -46,6 +46,13 @@ Figma reloads the generated files; run the development plugin again after a rebu
 ## Runtime boundary
 
 The plugin restricts network access to `www.awalogo.com/catalog/`. It loads the same
-versioned catalog used by the website, validates asset checksums, and keeps a
+versioned catalog used by V1, validates asset checksums, and keeps a
 bounded cache in `figma.clientStorage` for offline fallback. No CMS credentials,
 analytics, or website admin code execute inside Figma.
+## V2 Compatibility Note
+
+The current plugin continues to consume `/catalog/v1` and its 228 financial logos.
+The V2 web preview separately combines 84 company additions and 249 flags;
+historical expansion artwork, floating pack/drop bag, V2 language/sound settings
+and V2 browsing changes are not a plugin feature release. Broader support requires
+a separate compatibility update. This note does not change plugin/catalog behavior.

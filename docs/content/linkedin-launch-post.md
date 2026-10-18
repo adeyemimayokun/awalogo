@@ -1,5 +1,10 @@
 # Introducing awalogo
 
+> Editorial status: V1 launch draft. This post describes the 228-logo V1 catalog,
+> not a V2 launch announcement. As of 18 October 2026, the separate Coming soon
+> V2 preview has 312 companies and 249 flags; the plugin keeps its original catalog.
+> Verify deployed status before reusing this copy. See [the guide](../v2-guide.md).
+
 I kept running into the same problem while designing products at [Sycamore](https://sycamore.ng).
 
 Whenever we needed the logo of a bank, fintech, or payment provider, the design team could search the web and add it to a prototype. But once the product moved into development, that workaround became inefficient.

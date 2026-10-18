@@ -9,3 +9,9 @@ Only successfully prepared individual and ZIP downloads count. Copying code and 
 Run `supabase/popularity.sql` against the same production Supabase project configured by Vercel's `SUPABASE_URL` and `SUPABASE_SECRET_KEY`, then deploy. The tables and RPC are service-role-only with RLS enabled. The API uses the existing logo request function's `?view=popularity` branch, so no extra serverless function is created. GET exposes only aggregate counts; POST validates catalog slugs and same-origin requests. Downloads never fail because tracking is unavailable.
 
 Until the database setup is applied, the gallery uses the editorial baseline. The plain Vite development server does not serve Vercel APIs; use the deployed API or Vercel development runtime to verify persistent counts. This implementation covers V2 web downloads, not V1 or Figma insertion events.
+
+Ranking happens before 20-item default pagination; changing sort resets the page.
+Search and filtered lists remain unpaginated. Similar-brand suggestions are a
+separate name/verified-affiliation ranking, not popularity scores. Packing, dropping,
+undoing or browsing does not count as downloading. Flags do not contribute to
+logo download totals, including when packed in a mixed ZIP.

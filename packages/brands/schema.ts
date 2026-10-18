@@ -6,6 +6,7 @@ const httpUrl = z.string().url().refine((value) => {
   const url = new URL(value);
   return url.protocol === "https:" && !url.username && !url.password;
 }, "Expected a public HTTPS source URL");
+export const expansionAssetSchema = z.object({ type: z.enum(["svg", "png", "webp", "jpeg"]), url: z.string().regex(/^\/catalog\/v2\/assets\/[a-f0-9]{64}\.(svg|png|webp|jpg)$/), repository_path: z.string(), mime_type: z.enum(["image/svg+xml", "image/png", "image/webp", "image/jpeg"]), checksum: z.string().regex(/^[a-f0-9]{64}$/), width: z.number().positive(), height: z.number().positive() });
 export const expansionBrandSchema = z.object({
   slug: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/), name: z.string().min(2), aliases: z.array(z.string()),
   industry: z.enum(industries), origin_country: country.nullable(), headquarters_country: country.nullable(),
@@ -15,7 +16,7 @@ export const expansionBrandSchema = z.object({
   status: z.enum(["verified", "needs-review"]), added_at: z.string(), updated_at: z.string(),
   reviewed_at: z.string(), reviewer: z.string().min(2), review_notes: z.string().min(10), batch: z.string().min(1),
   evidence: z.array(z.object({ url: httpUrl, note: z.string().min(10), retrieved_at: z.string() })).min(1),
-  formats: z.array(z.object({ type: z.enum(["svg", "png", "webp", "jpeg"]), url: z.string().regex(/^\/catalog\/v2\/assets\/[a-f0-9]{64}\.(svg|png|webp|jpg)$/), repository_path: z.string(), mime_type: z.enum(["image/svg+xml", "image/png", "image/webp", "image/jpeg"]), checksum: z.string().regex(/^[a-f0-9]{64}$/), width: z.number().positive(), height: z.number().positive() })).min(2)
+  formats: z.array(expansionAssetSchema).min(2)
 }).superRefine((brand, ctx) => {
   if (brand.source_type === "community-catalog" && brand.status === "verified") ctx.addIssue({ code: "custom", message: "Community artwork cannot be marked officially verified" });
   for (const asset of brand.formats) {

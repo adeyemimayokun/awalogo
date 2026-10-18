@@ -1,0 +1,12 @@
+[
+  {
+    "slug": "mtn-group",
+    "aliases": ["MTN Nigeria", "MTN Ghana", "MTN Rwanda", "MTN Uganda"],
+    "operating_countries": ["NG", "GH", "RW", "UG"],
+    "evidence": {
+      "url": "https://www.mtn.com/listed-operating-companies/",
+      "note": "MTN's official operating-company investor page lists Nigeria, Ghana, Rwanda and Uganda. Reuse the existing MTN brand artwork rather than creating duplicate logos.",
+      "retrieved_at": "2026-10-18"
+    }
+  }
+]

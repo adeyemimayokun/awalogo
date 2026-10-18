@@ -2,6 +2,11 @@
 
 Typed metadata and downloadable assets for Nigerian financial institution logos.
 
+This package remains the original V1/current-plugin catalog. New Nigerian and
+African company additions live separately in `packages/brands`; flag metadata
+and artwork use the web's dedicated flag pipeline. V2 combines these resources
+without rewriting existing records. See [the V2 guide](../../docs/v2-guide.md).
+
 Verified entries preserve an official SVG or raster source. Community-catalog
 imports remain clearly marked `needs-review` until an institution-owned source
 confirms the artwork. Every entry includes generated PNG and WebP variants. The

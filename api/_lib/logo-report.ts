@@ -3,6 +3,7 @@ import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { z } from "zod";
 import catalog from "../../packages/catalog-ui/src/generated/runtime-catalog.json";
 import expansion from "../../packages/brands/catalog.json";
+import historical from "../../packages/brands/historical-catalog.json";
 import { methodNotAllowed, requireSameOrigin } from "./http.js";
 import { sendLogoReport } from "./email.js";
 
@@ -31,7 +32,7 @@ export async function handleLogoReport(request: VercelRequest, response: VercelR
   if (!parsed.success) { response.status(400).json({ error: parsed.error.issues[0]?.message ?? "Check the report and try again." }); return; }
   const report = parsed.data;
   const logo = catalog.items.find((item) => item.logo.slug === report.slug)?.logo ?? expansion.brands.map((brand) => ({ ...brand, variations: [] as { id: string; formats: typeof brand.formats }[] })).find((brand) => brand.slug === report.slug);
-  const formats = report.variation === "primary" ? logo?.formats : logo?.variations.find((variation) => variation.id === report.variation)?.formats;
+  const formats = report.variation === "primary" ? logo?.formats : logo?.variations.find((variation) => variation.id === report.variation)?.formats ?? historical.variations.find((variation) => variation.slug === report.slug && variation.id === report.variation)?.formats;
   if (!logo || !formats?.some((asset) => asset.type === report.format)) { response.status(400).json({ error: "This logo version or format is no longer available. Reopen the logo and try again." }); return; }
   const ip = request.headers["x-vercel-forwarded-for"] || request.socket?.remoteAddress || "unknown";
   const key = createHmac("sha256", secret).update(Array.isArray(ip) ? ip[0] : ip).digest("hex");

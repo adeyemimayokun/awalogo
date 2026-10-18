@@ -1,0 +1,811 @@
+{
+  "scope": "Reviewed V2 expansion inventory; not an exhaustive census of licensed African telecom operators.",
+  "summary": {
+    "available": 41,
+    "unresolved": 34,
+    "pending-review": 14
+  },
+  "entries": [
+    {
+      "slug": "africell",
+      "name": "Africell",
+      "target_market": "AO",
+      "status": "available",
+      "website": "https://www.africell.com/",
+      "staged_artwork": 2,
+      "note": "Official website identity visually reviewed on light and dark backgrounds; partner, product and payment artwork excluded. Trademark ownership remains with the operator; sourcing does not grant a redistribution licence."
+    },
+    {
+      "slug": "angola-telecom",
+      "name": "Angola Telecom",
+      "target_market": "AO",
+      "status": "unresolved",
+      "website": "https://www.angolatelecom.ao/",
+      "staged_artwork": 0,
+      "note": "Website/artwork research incomplete: fetch failed"
+    },
+    {
+      "slug": "movicel",
+      "name": "Movicel",
+      "target_market": "AO",
+      "status": "pending-review",
+      "website": "https://movicel.co.ao/",
+      "staged_artwork": 0,
+      "note": "Official website retrieved; identity, market evidence, and artwork await manual review."
+    },
+    {
+      "slug": "unitel-angola",
+      "name": "Unitel Angola",
+      "target_market": "AO",
+      "status": "unresolved",
+      "website": "https://www.unitel.ao/",
+      "staged_artwork": 0,
+      "note": "Website/artwork research incomplete: fetch failed"
+    },
+    {
+      "slug": "lumitel",
+      "name": "Lumitel",
+      "target_market": "BI",
+      "status": "pending-review",
+      "website": "https://lumitel.bi/",
+      "staged_artwork": 0,
+      "note": "Official website retrieved; identity, market evidence, and artwork await manual review."
+    },
+    {
+      "slug": "benin-celtiis",
+      "name": "Benin Celtiis",
+      "target_market": "BJ",
+      "status": "pending-review",
+      "website": "https://www.celtiis.bj/",
+      "staged_artwork": 1,
+      "note": "Only a small rounded app-style icon was discovered; hold for a complete corporate logo and adequate resolution."
+    },
+    {
+      "slug": "botswana-telecommunications-corporation",
+      "name": "Botswana Telecommunications Corporation",
+      "target_market": "BW",
+      "status": "unresolved",
+      "website": "https://www.btc.bw/",
+      "staged_artwork": 0,
+      "note": "Website/artwork research incomplete: Site returned a challenge or insufficient research content"
+    },
+    {
+      "slug": "mascom",
+      "name": "Mascom",
+      "target_market": "BW",
+      "status": "available",
+      "website": "https://mascom.bw/",
+      "staged_artwork": 1,
+      "note": "Official website identity visually reviewed on light and dark backgrounds; partner, product and payment artwork excluded. Trademark ownership remains with the operator; sourcing does not grant a redistribution licence."
+    },
+    {
+      "slug": "orange-cote-d-ivoire",
+      "name": "Orange Cote d'Ivoire",
+      "target_market": "CI",
+      "status": "available",
+      "website": "https://www.orange.ci/",
+      "staged_artwork": 2,
+      "note": "Visually reviewed the company artwork on light and dark backgrounds against its official website. Excluded promotional imagery, partner logos and product-only marks. Official sourcing is not a trademark licence."
+    },
+    {
+      "slug": "cameroon-telecommunications",
+      "name": "Cameroon Telecommunications",
+      "target_market": "CM",
+      "status": "available",
+      "website": "https://camtel.cm/",
+      "staged_artwork": 1,
+      "note": "Official website identity visually reviewed on light and dark backgrounds; partner, product and payment artwork excluded. Trademark ownership remains with the operator; sourcing does not grant a redistribution licence."
+    },
+    {
+      "slug": "nexttel",
+      "name": "Nexttel",
+      "target_market": "CM",
+      "status": "unresolved",
+      "website": "https://nexttel.cm/",
+      "staged_artwork": 0,
+      "note": "Website/artwork research incomplete: getaddrinfo ENOTFOUND nexttel.cm"
+    },
+    {
+      "slug": "cvtelecom",
+      "name": "CVTelecom",
+      "target_market": "CV",
+      "status": "unresolved",
+      "website": "https://www.cvtelecom.cv/",
+      "staged_artwork": 0,
+      "note": "Website/artwork research incomplete: fetch failed"
+    },
+    {
+      "slug": "unitel-t-plus",
+      "name": "Unitel T Plus",
+      "target_market": "CV",
+      "status": "available",
+      "website": "https://www.uniteltmais.cv/",
+      "staged_artwork": 2,
+      "note": "Official website identity visually reviewed on light and dark backgrounds; partner, product and payment artwork excluded. Trademark ownership remains with the operator; sourcing does not grant a redistribution licence."
+    },
+    {
+      "slug": "djibouti-telecom",
+      "name": "Djibouti Telecom",
+      "target_market": "DJ",
+      "status": "available",
+      "website": "https://www.djiboutitelecom.dj/",
+      "staged_artwork": 3,
+      "note": "Official website identity visually reviewed on light and dark backgrounds; partner, product and payment artwork excluded. Trademark ownership remains with the operator; sourcing does not grant a redistribution licence."
+    },
+    {
+      "slug": "djezzy",
+      "name": "Djezzy",
+      "target_market": "DZ",
+      "status": "pending-review",
+      "website": "https://www.djezzy.dz/",
+      "staged_artwork": 1,
+      "note": "The staged candidate is a Visa/Mastercard payment mark, not Djezzy. Hold for corporate artwork."
+    },
+    {
+      "slug": "mobilis",
+      "name": "Mobilis",
+      "target_market": "DZ",
+      "status": "available",
+      "website": "https://mobilis.dz/",
+      "staged_artwork": 3,
+      "note": "Official website identity visually reviewed on light and dark backgrounds; partner, product and payment artwork excluded. Trademark ownership remains with the operator; sourcing does not grant a redistribution licence."
+    },
+    {
+      "slug": "ooredoo-algeria",
+      "name": "Ooredoo Algeria",
+      "target_market": "DZ",
+      "status": "available",
+      "website": "https://www.ooredoo.dz/fr/",
+      "staged_artwork": 2,
+      "note": "Official website identity visually reviewed on light and dark backgrounds; partner, product and payment artwork excluded. Trademark ownership remains with the operator; sourcing does not grant a redistribution licence."
+    },
+    {
+      "slug": "e-and-egypt",
+      "name": "e and Egypt",
+      "target_market": "EG",
+      "status": "unresolved",
+      "website": "https://www.etisalat.eg/StaticFiles/portal/etisalat/index.html",
+      "staged_artwork": 0,
+      "note": "Website/artwork research incomplete: Site returned a challenge or insufficient research content"
+    },
+    {
+      "slug": "telecom-egypt",
+      "name": "Telecom Egypt",
+      "target_market": "EG",
+      "status": "available",
+      "website": "https://te.eg/",
+      "staged_artwork": 10,
+      "note": "Official website identity visually reviewed on light and dark backgrounds; partner, product and payment artwork excluded. Trademark ownership remains with the operator; sourcing does not grant a redistribution licence."
+    },
+    {
+      "slug": "ethio-telecom",
+      "name": "Ethio telecom",
+      "target_market": "ET",
+      "status": "unresolved",
+      "website": "https://www.ethiotelecom.et/",
+      "staged_artwork": 0,
+      "note": "Website/artwork research incomplete: fetch failed"
+    },
+    {
+      "slug": "at-ghana",
+      "name": "AT Ghana",
+      "target_market": "GH",
+      "status": "unresolved",
+      "website": "https://at.com.gh/",
+      "staged_artwork": 0,
+      "note": "Website/artwork research incomplete: Site returned a challenge or insufficient research content"
+    },
+    {
+      "slug": "telecel-ghana",
+      "name": "Telecel Ghana",
+      "target_market": "GH",
+      "status": "pending-review",
+      "website": "https://telecel.com.gh/",
+      "staged_artwork": 0,
+      "note": "Official website retrieved; identity, market evidence, and artwork await manual review."
+    },
+    {
+      "slug": "comium-gambia",
+      "name": "Comium Gambia",
+      "target_market": "GM",
+      "status": "unresolved",
+      "website": "https://www.comium.gm/",
+      "staged_artwork": 0,
+      "note": "Website/artwork research incomplete: Site returned a challenge or insufficient research content"
+    },
+    {
+      "slug": "gamtel",
+      "name": "Gamtel",
+      "target_market": "GM",
+      "status": "available",
+      "website": "https://gamtel.gm/",
+      "staged_artwork": 1,
+      "note": "Official website identity visually reviewed on light and dark backgrounds; partner, product and payment artwork excluded. Trademark ownership remains with the operator; sourcing does not grant a redistribution licence."
+    },
+    {
+      "slug": "qcell",
+      "name": "QCell",
+      "target_market": "GM",
+      "status": "available",
+      "website": "https://qcell.gm/",
+      "staged_artwork": 2,
+      "note": "Official website identity visually reviewed on light and dark backgrounds; partner, product and payment artwork excluded. Trademark ownership remains with the operator; sourcing does not grant a redistribution licence."
+    },
+    {
+      "slug": "safaricom",
+      "name": "Safaricom",
+      "target_market": "KE",
+      "status": "unresolved",
+      "website": "https://www.safaricom.co.ke/",
+      "staged_artwork": 0,
+      "note": "Website/artwork research incomplete: HTTP 403"
+    },
+    {
+      "slug": "telkom-kenya",
+      "name": "Telkom Kenya",
+      "target_market": "KE",
+      "status": "available",
+      "website": "https://telkom.co.ke/",
+      "staged_artwork": 2,
+      "note": "Official website identity visually reviewed on light and dark backgrounds; partner, product and payment artwork excluded. Trademark ownership remains with the operator; sourcing does not grant a redistribution licence."
+    },
+    {
+      "slug": "lonestar-cell-mtn",
+      "name": "Lonestar Cell MTN",
+      "target_market": "LR",
+      "status": "unresolved",
+      "website": "https://www.lonestarcell.com/",
+      "staged_artwork": 0,
+      "note": "Website/artwork research incomplete: getaddrinfo ENOTFOUND lonestarcell.com"
+    },
+    {
+      "slug": "almadar-aljadid",
+      "name": "Almadar Aljadid",
+      "target_market": "LY",
+      "status": "available",
+      "website": "https://www.almadar.ly/ar/Pages/Home.aspx",
+      "staged_artwork": 3,
+      "note": "Official website identity visually reviewed on light and dark backgrounds; partner, product and payment artwork excluded. Trademark ownership remains with the operator; sourcing does not grant a redistribution licence."
+    },
+    {
+      "slug": "libyana",
+      "name": "Libyana",
+      "target_market": "LY",
+      "status": "available",
+      "website": "https://libyana.ly/",
+      "staged_artwork": 12,
+      "note": "Official website identity visually reviewed on light and dark backgrounds; partner, product and payment artwork excluded. Trademark ownership remains with the operator; sourcing does not grant a redistribution licence."
+    },
+    {
+      "slug": "inwi",
+      "name": "inwi",
+      "target_market": "MA",
+      "status": "unresolved",
+      "website": "https://inwi.ma/",
+      "staged_artwork": 0,
+      "note": "Website/artwork research incomplete: fetch failed"
+    },
+    {
+      "slug": "maroc-telecom",
+      "name": "Maroc Telecom",
+      "target_market": "MA",
+      "status": "unresolved",
+      "website": "https://www.iam.ma/",
+      "staged_artwork": 0,
+      "note": "Website/artwork research incomplete: HTTP 403"
+    },
+    {
+      "slug": "mattel",
+      "name": "Mattel",
+      "target_market": "MR",
+      "status": "unresolved",
+      "website": "https://www.mattel.mr/",
+      "staged_artwork": 0,
+      "note": "Website/artwork research incomplete: fetch failed"
+    },
+    {
+      "slug": "mauritel",
+      "name": "Mauritel",
+      "target_market": "MR",
+      "status": "unresolved",
+      "website": "https://www.mauritel.mr/",
+      "staged_artwork": 0,
+      "note": "Website/artwork research incomplete: fetch failed"
+    },
+    {
+      "slug": "emtel",
+      "name": "Emtel",
+      "target_market": "MU",
+      "status": "available",
+      "website": "https://www.emtel.com/",
+      "staged_artwork": 2,
+      "note": "Official website identity visually reviewed on light and dark backgrounds; partner, product and payment artwork excluded. Trademark ownership remains with the operator; sourcing does not grant a redistribution licence."
+    },
+    {
+      "slug": "mauritius-telecom",
+      "name": "Mauritius Telecom",
+      "target_market": "MU",
+      "status": "unresolved",
+      "website": "https://www.telecom.mu/",
+      "staged_artwork": 0,
+      "note": "Website/artwork research incomplete: Site returned a challenge or insufficient research content"
+    },
+    {
+      "slug": "malawi-telecommunications",
+      "name": "Malawi Telecommunications",
+      "target_market": "MW",
+      "status": "unresolved",
+      "website": "https://www.mtl.mw/",
+      "staged_artwork": 0,
+      "note": "Website/artwork research incomplete: fetch failed"
+    },
+    {
+      "slug": "tnm",
+      "name": "TNM",
+      "target_market": "MW",
+      "status": "unresolved",
+      "website": "https://www.tnm.co.mw/",
+      "staged_artwork": 0,
+      "note": "Website/artwork research incomplete: Site returned a challenge or insufficient research content"
+    },
+    {
+      "slug": "movitel",
+      "name": "Movitel",
+      "target_market": "MZ",
+      "status": "unresolved",
+      "website": "https://movitel.co.mz/",
+      "staged_artwork": 0,
+      "note": "Website/artwork research incomplete: Site returned a challenge or insufficient research content"
+    },
+    {
+      "slug": "tmcel",
+      "name": "Tmcel",
+      "target_market": "MZ",
+      "status": "available",
+      "website": "https://www.tmcel.mz/",
+      "staged_artwork": 2,
+      "note": "Official website identity visually reviewed on light and dark backgrounds; partner, product and payment artwork excluded. Trademark ownership remains with the operator; sourcing does not grant a redistribution licence."
+    },
+    {
+      "slug": "mtc-namibia",
+      "name": "MTC Namibia",
+      "target_market": "NA",
+      "status": "available",
+      "website": "https://www.mtc.com.na/",
+      "staged_artwork": 1,
+      "note": "Official website identity visually reviewed on light and dark backgrounds; partner, product and payment artwork excluded. Trademark ownership remains with the operator; sourcing does not grant a redistribution licence."
+    },
+    {
+      "slug": "paratus",
+      "name": "Paratus",
+      "target_market": "NA",
+      "status": "available",
+      "website": "https://paratus.africa/",
+      "staged_artwork": 2,
+      "note": "Official website identity visually reviewed on light and dark backgrounds; partner, product and payment artwork excluded. Trademark ownership remains with the operator; sourcing does not grant a redistribution licence."
+    },
+    {
+      "slug": "telecom-namibia",
+      "name": "Telecom Namibia",
+      "target_market": "NA",
+      "status": "unresolved",
+      "website": "https://www.telecom.na/",
+      "staged_artwork": 0,
+      "note": "Website/artwork research incomplete: Site returned a challenge or insufficient research content"
+    },
+    {
+      "slug": "21st-century-technologies",
+      "name": "21st Century Technologies",
+      "target_market": "NG",
+      "status": "available",
+      "website": "https://www.21ctl.com/",
+      "staged_artwork": 1,
+      "note": "Official header identity visually checked on light and dark backgrounds. Partner and app-store artwork excluded. Source bytes retained; blank padding trimmed only where noted. Official sourcing does not confer trademark rights."
+    },
+    {
+      "slug": "airtel-nigeria",
+      "name": "Airtel Nigeria",
+      "target_market": "NG",
+      "status": "available",
+      "website": "https://www.airtel.com.ng/min/",
+      "staged_artwork": 1,
+      "note": "Visually reviewed the official company identity on light and dark backgrounds. Recovered from a reviewed official page, embedded brand SVG or official media-kit download. Official sourcing does not grant a trademark licence."
+    },
+    {
+      "slug": "cobranet",
+      "name": "Cobranet",
+      "target_market": "NG",
+      "status": "available",
+      "website": "https://www.cobranet.ng/",
+      "staged_artwork": 2,
+      "note": "Official website identity visually reviewed on light and dark backgrounds; partner, product and payment artwork excluded. Trademark ownership remains with the operator; sourcing does not grant a redistribution licence."
+    },
+    {
+      "slug": "coollink",
+      "name": "Coollink",
+      "target_market": "NG",
+      "status": "available",
+      "website": "https://www.coollink.ng/",
+      "staged_artwork": 5,
+      "note": "Official website identity visually reviewed on light and dark backgrounds; partner, product and payment artwork excluded. Trademark ownership remains with the operator; sourcing does not grant a redistribution licence."
+    },
+    {
+      "slug": "cyberspace",
+      "name": "Cyberspace",
+      "target_market": "NG",
+      "status": "unresolved",
+      "website": "https://www.cyberspace.net.ng/",
+      "staged_artwork": 0,
+      "note": "Website/artwork research incomplete: HTTP 500"
+    },
+    {
+      "slug": "fiberone",
+      "name": "FiberOne",
+      "target_market": "NG",
+      "status": "available",
+      "website": "https://fob.ng/",
+      "staged_artwork": 3,
+      "note": "Official header identity visually checked on light and dark backgrounds. Partner and app-store artwork excluded. Source bytes retained; blank padding trimmed only where noted. Official sourcing does not confer trademark rights."
+    },
+    {
+      "slug": "galaxy-backbone",
+      "name": "Galaxy Backbone",
+      "target_market": "NG",
+      "status": "unresolved",
+      "website": "https://galaxybackbone.com.ng/",
+      "staged_artwork": 0,
+      "note": "Website/artwork research incomplete: fetch failed"
+    },
+    {
+      "slug": "globacom",
+      "name": "Globacom",
+      "target_market": "NG",
+      "status": "available",
+      "website": "https://www.gloworld.com/ng",
+      "staged_artwork": 1,
+      "note": "Visually reviewed the official company identity on light and dark backgrounds. Recovered from a reviewed official page, embedded brand SVG or official media-kit download. Official sourcing does not grant a trademark licence."
+    },
+    {
+      "slug": "hyperia",
+      "name": "Hyperia",
+      "target_market": "NG",
+      "status": "available",
+      "website": "https://www.hyperia.com/",
+      "staged_artwork": 12,
+      "note": "Official website identity visually reviewed on light and dark backgrounds; partner, product and payment artwork excluded. Trademark ownership remains with the operator; sourcing does not grant a redistribution licence."
+    },
+    {
+      "slug": "ipnx",
+      "name": "ipNX",
+      "target_market": "NG",
+      "status": "available",
+      "website": "https://www.ipnxnigeria.net/",
+      "staged_artwork": 1,
+      "note": "Artwork visually inspected on light and dark backgrounds against the logo served by the official company website. Official sourcing does not imply trademark ownership or a redistribution licence."
+    },
+    {
+      "slug": "legend-internet",
+      "name": "Legend Internet",
+      "target_market": "NG",
+      "status": "pending-review",
+      "website": "https://legend.ng/",
+      "staged_artwork": 0,
+      "note": "Official website retrieved; identity, market evidence, and artwork await manual review."
+    },
+    {
+      "slug": "mainone",
+      "name": "MainOne",
+      "target_market": "NG",
+      "status": "unresolved",
+      "website": "https://www.mainone.net/",
+      "staged_artwork": 0,
+      "note": "Website/artwork research incomplete: HTTP 403"
+    },
+    {
+      "slug": "ngcom",
+      "name": "Ngcom",
+      "target_market": "NG",
+      "status": "available",
+      "website": "https://ngcomnetworks.com/",
+      "staged_artwork": 3,
+      "note": "Official website identity visually reviewed on light and dark backgrounds; partner, product and payment artwork excluded. Trademark ownership remains with the operator; sourcing does not grant a redistribution licence."
+    },
+    {
+      "slug": "ntel",
+      "name": "ntel",
+      "target_market": "NG",
+      "status": "pending-review",
+      "website": "https://ntel.com.ng/",
+      "staged_artwork": 2,
+      "note": "Discovered artwork is a decorative motif, not a standalone ntel identity. Do not publish it as a company logo."
+    },
+    {
+      "slug": "smile-nigeria",
+      "name": "Smile Nigeria",
+      "target_market": "NG",
+      "status": "pending-review",
+      "website": "https://smile.com.ng/",
+      "staged_artwork": 4,
+      "note": "The staged header artwork includes a Beta qualifier; hold for confirmation of the current clean corporate identity."
+    },
+    {
+      "slug": "spectranet",
+      "name": "Spectranet",
+      "target_market": "NG",
+      "status": "available",
+      "website": "https://www.spectranet.com.ng/",
+      "staged_artwork": 2,
+      "note": "Visually reviewed the company artwork on light and dark backgrounds against its official website. Excluded promotional imagery, partner logos and product-only marks. Official sourcing is not a trademark licence."
+    },
+    {
+      "slug": "swift-networks",
+      "name": "Swift Networks",
+      "target_market": "NG",
+      "status": "available",
+      "website": "https://www.swiftng.com/",
+      "staged_artwork": 3,
+      "note": "Official website identity visually reviewed on light and dark backgrounds; partner, product and payment artwork excluded. Trademark ownership remains with the operator; sourcing does not grant a redistribution licence."
+    },
+    {
+      "slug": "t2-mobile",
+      "name": "T2 Mobile",
+      "target_market": "NG",
+      "status": "available",
+      "website": "https://t2mobile.com.ng/",
+      "staged_artwork": 3,
+      "note": "Official website identity visually reviewed on light and dark backgrounds; partner, product and payment artwork excluded. Trademark ownership remains with the operator; sourcing does not grant a redistribution licence. Blank outer padding trimmed in derived downloads; original source bytes retained."
+    },
+    {
+      "slug": "tizeti",
+      "name": "Tizeti",
+      "target_market": "NG",
+      "status": "unresolved",
+      "website": "https://www.tizeti.com/",
+      "staged_artwork": 0,
+      "note": "Website/artwork research incomplete: fetch failed"
+    },
+    {
+      "slug": "vdt-communications",
+      "name": "VDT Communications",
+      "target_market": "NG",
+      "status": "available",
+      "website": "https://vdtcomms.com/",
+      "staged_artwork": 1,
+      "note": "Official website identity visually reviewed on light and dark backgrounds; partner, product and payment artwork excluded. Trademark ownership remains with the operator; sourcing does not grant a redistribution licence."
+    },
+    {
+      "slug": "waccl",
+      "name": "WACCL",
+      "target_market": "NG",
+      "status": "unresolved",
+      "website": "https://waccl.com/",
+      "staged_artwork": 0,
+      "note": "Website/artwork research incomplete: getaddrinfo ENOTFOUND waccl.com"
+    },
+    {
+      "slug": "airtel-seychelles",
+      "name": "Airtel Seychelles",
+      "target_market": "SC",
+      "status": "pending-review",
+      "website": "https://www.airtel.sc/",
+      "staged_artwork": 1,
+      "note": "The staged global Airtel symbol overlaps the existing Airtel Nigeria brand family. Hold for explicit identity and country-coverage resolution; do not duplicate artwork."
+    },
+    {
+      "slug": "cable-and-wireless-seychelles",
+      "name": "Cable and Wireless Seychelles",
+      "target_market": "SC",
+      "status": "unresolved",
+      "website": "https://www.cwseychelles.com/",
+      "staged_artwork": 0,
+      "note": "Website/artwork research incomplete: fetch failed"
+    },
+    {
+      "slug": "sudani",
+      "name": "Sudani",
+      "target_market": "SD",
+      "status": "available",
+      "website": "https://sudani.sd/",
+      "staged_artwork": 2,
+      "note": "Official website identity visually reviewed on light and dark backgrounds; partner, product and payment artwork excluded. Trademark ownership remains with the operator; sourcing does not grant a redistribution licence. Blank outer padding trimmed in derived downloads; original source bytes retained."
+    },
+    {
+      "slug": "zain-sudan",
+      "name": "Zain Sudan",
+      "target_market": "SD",
+      "status": "unresolved",
+      "website": "https://www.sd.zain.com/",
+      "staged_artwork": 0,
+      "note": "Website/artwork research incomplete: HTTP 403"
+    },
+    {
+      "slug": "sonatel",
+      "name": "Sonatel",
+      "target_market": "SN",
+      "status": "available",
+      "website": "https://sonatel.sn/",
+      "staged_artwork": 3,
+      "note": "Official website identity visually reviewed on light and dark backgrounds; partner, product and payment artwork excluded. Trademark ownership remains with the operator; sourcing does not grant a redistribution licence."
+    },
+    {
+      "slug": "hormuud-telecom",
+      "name": "Hormuud Telecom",
+      "target_market": "SO",
+      "status": "unresolved",
+      "website": "https://www.hormuud.com/",
+      "staged_artwork": 0,
+      "note": "Website/artwork research incomplete: Site returned a challenge or insufficient research content"
+    },
+    {
+      "slug": "somtel",
+      "name": "Somtel",
+      "target_market": "SO",
+      "status": "available",
+      "website": "https://www.somtelnetwork.net/",
+      "staged_artwork": 2,
+      "note": "Official website identity visually reviewed on light and dark backgrounds; partner, product and payment artwork excluded. Trademark ownership remains with the operator; sourcing does not grant a redistribution licence. Blank outer padding trimmed in derived downloads; original source bytes retained."
+    },
+    {
+      "slug": "eswatini-mobile",
+      "name": "Eswatini Mobile",
+      "target_market": "SZ",
+      "status": "pending-review",
+      "website": "https://eswatinimobile.co.sz/",
+      "staged_artwork": 2,
+      "note": "The staged artwork is e-Mali mobile-money product artwork, not the Eswatini Mobile corporate identity."
+    },
+    {
+      "slug": "moov-africa",
+      "name": "Moov Africa",
+      "target_market": "TG",
+      "status": "unresolved",
+      "website": "https://moov-africa.tg/",
+      "staged_artwork": 0,
+      "note": "Website/artwork research incomplete: fetch failed"
+    },
+    {
+      "slug": "tunisie-telecom",
+      "name": "Tunisie Telecom",
+      "target_market": "TN",
+      "status": "unresolved",
+      "website": "https://www.tunisietelecom.tn/",
+      "staged_artwork": 0,
+      "note": "Website/artwork research incomplete: fetch failed"
+    },
+    {
+      "slug": "halotel",
+      "name": "Halotel",
+      "target_market": "TZ",
+      "status": "available",
+      "website": "https://halotel.co.tz/",
+      "staged_artwork": 2,
+      "note": "Official website identity visually reviewed on light and dark backgrounds; partner, product and payment artwork excluded. Trademark ownership remains with the operator; sourcing does not grant a redistribution licence."
+    },
+    {
+      "slug": "ttcl",
+      "name": "TTCL",
+      "target_market": "TZ",
+      "status": "pending-review",
+      "website": "https://www.ttcl.co.tz/",
+      "staged_artwork": 1,
+      "note": "Only a small raster emblem was retrieved; hold for higher-resolution corporate artwork."
+    },
+    {
+      "slug": "yas-tanzania",
+      "name": "Yas Tanzania",
+      "target_market": "TZ",
+      "status": "pending-review",
+      "website": "https://yas.co.tz/",
+      "staged_artwork": 0,
+      "note": "Official website retrieved; identity, market evidence, and artwork await manual review."
+    },
+    {
+      "slug": "cell-c",
+      "name": "Cell C",
+      "target_market": "ZA",
+      "status": "unresolved",
+      "website": "https://www.cellc.co.za/",
+      "staged_artwork": 0,
+      "note": "Website/artwork research incomplete: The operation was aborted due to timeout"
+    },
+    {
+      "slug": "liquid-intelligent-technologies",
+      "name": "Liquid Intelligent Technologies",
+      "target_market": "ZA",
+      "status": "available",
+      "website": "https://liquid.tech/",
+      "staged_artwork": 2,
+      "note": "Official website identity visually reviewed on light and dark backgrounds; partner, product and payment artwork excluded. Trademark ownership remains with the operator; sourcing does not grant a redistribution licence."
+    },
+    {
+      "slug": "mtn-group",
+      "name": "MTN Group",
+      "target_market": "ZA",
+      "status": "available",
+      "website": "https://www.mtn.com/",
+      "staged_artwork": 3,
+      "note": "Artwork visually inspected on light and dark backgrounds against the logo served by the official company website. Official sourcing does not imply trademark ownership or a redistribution licence."
+    },
+    {
+      "slug": "rain",
+      "name": "Rain",
+      "target_market": "ZA",
+      "status": "pending-review",
+      "website": "https://www.rain.co.za/",
+      "staged_artwork": 0,
+      "note": "Official website retrieved; identity, market evidence, and artwork await manual review."
+    },
+    {
+      "slug": "seacom",
+      "name": "SEACOM",
+      "target_market": "ZA",
+      "status": "available",
+      "website": "https://seacom.com/",
+      "staged_artwork": 5,
+      "note": "Official website identity visually reviewed on light and dark backgrounds; partner, product and payment artwork excluded. Trademark ownership remains with the operator; sourcing does not grant a redistribution licence."
+    },
+    {
+      "slug": "telkom-south-africa",
+      "name": "Telkom South Africa",
+      "target_market": "ZA",
+      "status": "pending-review",
+      "website": "https://www.telkom.co.za/",
+      "staged_artwork": 10,
+      "note": "Discovered candidates are voucher and product artwork, not the Telkom corporate identity. Await reviewed official logo."
+    },
+    {
+      "slug": "vodacom",
+      "name": "Vodacom",
+      "target_market": "ZA",
+      "status": "available",
+      "website": "https://www.vodacom.com/",
+      "staged_artwork": 1,
+      "note": "Official website identity visually reviewed on light and dark backgrounds; partner, product and payment artwork excluded. Trademark ownership remains with the operator; sourcing does not grant a redistribution licence."
+    },
+    {
+      "slug": "zamtel",
+      "name": "Zamtel",
+      "target_market": "ZM",
+      "status": "unresolved",
+      "website": "https://www.zamtel.zm/",
+      "staged_artwork": 0,
+      "note": "Website/artwork research incomplete: Site returned a challenge or insufficient research content"
+    },
+    {
+      "slug": "econet-wireless-zimbabwe",
+      "name": "Econet Wireless Zimbabwe",
+      "target_market": "ZW",
+      "status": "available",
+      "website": "https://www.econet.co.zw/",
+      "staged_artwork": 6,
+      "note": "Official website identity visually reviewed on light and dark backgrounds; partner, product and payment artwork excluded. Trademark ownership remains with the operator; sourcing does not grant a redistribution licence."
+    },
+    {
+      "slug": "netone",
+      "name": "NetOne",
+      "target_market": "ZW",
+      "status": "unresolved",
+      "website": "https://www.netone.co.zw/",
+      "staged_artwork": 0,
+      "note": "Website/artwork research incomplete: fetch failed"
+    },
+    {
+      "slug": "telecel-zimbabwe",
+      "name": "Telecel Zimbabwe",
+      "target_market": "ZW",
+      "status": "unresolved",
+      "website": "https://www.telecel.co.zw/",
+      "staged_artwork": 0,
+      "note": "Website/artwork research incomplete: HTTP 403"
+    },
+    {
+      "slug": "telone",
+      "name": "TelOne",
+      "target_market": "ZW",
+      "status": "available",
+      "website": "https://www.telone.co.zw/",
+      "staged_artwork": 2,
+      "note": "Official website identity visually reviewed on light and dark backgrounds; partner, product and payment artwork excluded. Trademark ownership remains with the operator; sourcing does not grant a redistribution licence."
+    }
+  ]
+}

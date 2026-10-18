@@ -15,6 +15,13 @@ function res() {
 }
 afterEach(() => vi.clearAllMocks());
 describe("logo reports", () => {
+  it("accepts the separately sourced historical 9mobile variation", async () => {
+    vi.mocked(sendLogoReport).mockResolvedValue();
+    const response = res();
+    await handleLogoReport(req({ ...valid, slug: "t2-mobile", variation: "9mobile-previous" }), response);
+    expect(response.status).toHaveBeenCalledWith(202);
+    expect(sendLogoReport).toHaveBeenCalledWith(expect.objectContaining({ variation: "9mobile-previous" }), "T2 Mobile");
+  });
   it("accepts V2 additions and rejects invented SVGs for raster-only brands", async () => {
     vi.mocked(sendLogoReport).mockResolvedValue();
     const response = res();

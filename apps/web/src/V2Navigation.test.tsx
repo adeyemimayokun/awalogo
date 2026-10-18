@@ -5,7 +5,7 @@ import V2Navigation from "./V2Navigation";
 
 const noop = () => {};
 function navigation(showCategories = true, isRequest = false) {
-  return load(renderToStaticMarkup(<V2Navigation isRequest={isRequest} showCategories={showCategories} bagCount={3} category={[]} categories={[]} total={277} theme="light" onTheme={noop} onCategory={noop} onBag={noop} onRequest={noop} onLibrary={noop} onSearch={noop} onFlags={noop} onInfo={noop} />));
+  return load(renderToStaticMarkup(<V2Navigation isRequest={isRequest} showCategories={showCategories} category={[]} categories={[]} total={277} theme="light" onTheme={noop} onCategory={noop} onRequest={noop} onLibrary={noop} onSearch={noop} onFlags={noop} onInfo={noop} />));
 }
 describe("V2 top navigation", () => {
   it("keeps the brand, primary sections and utility controls accessible", () => {
@@ -15,7 +15,7 @@ describe("V2 top navigation", () => {
     expect($(".v2-topnav-links").text()).toContain("Browse");
     expect($(".v2-topnav-links").text()).toContain("Flags");
     expect($('a[href^="https://www.figma.com/community/plugin/"]').length).toBe(1);
-    expect($('button[aria-label="Download bag, 3 assets"]').length).toBe(1);
+    expect($('button[aria-label="Download bag, 3 assets"]').length).toBe(0);
     expect($('button[aria-label="Request a brand"]').length).toBe(1);
     expect($('button[aria-label="Search brands"]').length).toBe(1);
   });

@@ -2,6 +2,12 @@
 
 V2 logo details include a Report logo action. The form stays in the existing side panel and attaches the canonical logo slug, selected variation, and format. Cancel returns to the same asset without changing the user's search or selected format.
 
+Found an issue? is the last section of the logo side panel, with space separating
+it from source/code content. The handler accepts reviewed historical variations
+under their parent company, including T2's `9mobile-previous`; it validates the
+actual selected asset, not a replacement current identity. Flags do not use this
+logo-only form or endpoint.
+
 Reasons: Outdated logo, Wrong color, Wrong asset, Broken download, Other. Notes and an official-source URL are optional, except Other requires a description. Reports do not change or remove artwork automatically.
 
 ## Delivery

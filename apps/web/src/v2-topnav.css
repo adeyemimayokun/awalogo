@@ -4,6 +4,10 @@
 .v2-topnav-brand small { padding:3px 5px; border:1px solid var(--line); border-radius:4px; font-size:9px; font-weight:500; }
 .v2-topnav-links,.v2-topnav-actions { display:flex; align-items:center; gap:4px; min-width:0; }
 .v2-topnav-actions { justify-self:end; }
+.v2-topnav .v2-language-menu { left:auto; right:0; width:200px; }
+.v2-language-menu .v2-dock-category { display:flex; justify-content:space-between; gap:12px; }
+.v2-language-menu > strong { display:block; padding:8px 12px; font-size:12px; }
+.v2-topnav-links { overflow-wrap:anywhere; }
 .v2-topnav .v2-dock-item { flex-direction:row; gap:7px; min-height:40px; min-width:40px; padding:9px 12px; border-radius:var(--field-radius); background:transparent; font-size:13px !important; }
 .v2-topnav-links .v2-dock-item > svg:first-child:not(:last-child) { display:none; }
 .v2-topnav .v2-dock-item:hover,.v2-topnav .v2-dock-item[aria-expanded="true"] { box-shadow:none; background:color-mix(in srgb,var(--ink) 5%,transparent); }
@@ -14,14 +18,14 @@
 .v2-topnav .v2-dock-theme,.v2-topnav .v2-dock-more { left:auto; right:0; }
 .v2-topnav .v2-dock-item small { position:static; }
 .v2-topnav .v2-dock-filter-dot { position:static; }
-.v2-topnav-actions .v2-dock-item[title="Download bag"] > span { display:none; }
+.v2-topnav-actions .v2-dock-item:has(> .lucide-shopping-bag) > span { display:none; }
 .v2-app .v2-toast { bottom:24px; }
 @media (max-width:1100px) {
   .v2-app .v2-topnav { gap:12px; padding-inline:20px; }
   .v2-topnav .v2-topnav-plugin { display:none; }
   .v2-topnav .v2-dock-item { padding-inline:9px; font-size:12px !important; }
 }
-@media (max-width:760px) {
+@media (max-width:1200px) {
   .v2-app .v2-topnav { grid-template-columns:1fr auto; gap:0 8px; padding:8px 12px 0; }
   .v2-topnav-brand { grid-row:1; font-size:21px; }
   .v2-topnav-actions { grid-column:2; grid-row:1; }
@@ -31,5 +35,12 @@
   .v2-topnav-request span { display:none; }
   .v2-topnav .v2-dock-popover { position:fixed; top:120px; left:12px; right:12px; width:auto; max-height:calc(100dvh - 140px); }
   .v2-topnav .v2-dock-theme,.v2-topnav .v2-dock-more { top:64px; left:auto; right:12px; width:260px; max-width:calc(100vw - 24px); }
+  .v2-topnav .v2-language-menu { top:64px; left:auto; right:12px; width:200px; }
+}
+@media (max-width:760px) {
+  .v2-topnav-actions > button[aria-label] { flex-shrink:0; }
+  .v2-topnav-links { justify-content:flex-start; overflow-x:auto; }
+  .v2-topnav-links > :is(a,button,div) { flex-shrink:0; }
+  .v2-topnav-actions > button:first-of-type { display:none; }
 }
 @media (max-width:420px) { .v2-topnav-actions > button[aria-label="Search brands"] { display:none; } .v2-topnav-brand { font-size:20px; gap:5px; } }
