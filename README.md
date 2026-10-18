@@ -169,6 +169,12 @@ See the [V2 user guide](docs/v2-guide.md), [implemented behavior](docs/v2-browse
 [flags](docs/flags.md), [languages](docs/v2-languages.md), and
 [delivery plan](docs/v2-product-and-delivery-plan.md). Public web help is at `/docs#v2`.
 
+Production visit tracking uses Vercel Web Analytics with private-route exclusions,
+URL query/fragment redaction and preview/local/opt-out protection. It requires an
+explicit production flag and release; staging remains excluded. See
+[analytics setup and verification](docs/analytics.md). This is not logo download
+counting and does not enable tracking inside the Figma plugin.
+
 ## Adding Logos
 
 For **new V2 companies**, use the separate [company expansion workflow](packages/brands/README.md).
