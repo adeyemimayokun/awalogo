@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const industries = ["financial-services", "technology", "telecommunications", "retail-commerce", "food-beverages", "transport-logistics", "energy-utilities", "healthcare", "education", "media-entertainment", "manufacturing-consumer-goods", "real-estate-construction"] as const;
+export const industries = ["financial-services", "technology", "telecommunications", "retail-commerce", "food-beverages", "transport-logistics", "energy-utilities", "healthcare", "education", "media-entertainment", "manufacturing-consumer-goods", "real-estate-construction", "hospitality-leisure"] as const;
 const country = z.string().regex(/^[A-Z]{2}$/);
 const httpUrl = z.string().url().refine((value) => {
   const url = new URL(value);

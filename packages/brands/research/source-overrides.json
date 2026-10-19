@@ -1,4 +1,8 @@
 {
+  "bua-foods": { "pages": ["https://www.buafoodsplc.com/media/"] },
+  "dangote-sugar": { "pages": ["https://sugar.dangote.com/"] },
+  "dangote-cement": { "pages": ["https://cement.dangote.com/"] },
+  "chocolate-city": { "pages": ["https://chocolatecitymusic.com/"] },
   "fiberone": { "aliases": ["FiberOne Broadband", "FibreOne", "FOB"], "pages": ["https://fob.ng/"] },
   "legend-internet": { "aliases": ["Legend", "Legend Fiber"], "pages": ["https://legend.ng/"] },
   "tizeti": { "aliases": ["Wifi.com.ng", "Tizeti Network"], "pages": ["https://www.tizeti.com/home/wifi/", "https://www.tizeti.com/news/"] },

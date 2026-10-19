@@ -13,6 +13,20 @@ export function isLanguage(value: unknown): value is Language {
 
 // English keys are also the fallback. Tuple order: Hausa, Yoruba, Igbo, Pidgin.
 export const messages: Record<string, readonly [string, string, string, string]> = {
+  "Sourced from an official filing.": ["An samo daga takardar hukuma.", "A mú un láti inú ìwé ilé-iṣẹ́ osìṣẹ́.", "E si na akwụkwọ ụlọọrụ gọọmentị nweta ya.", "Source na official company filing."],
+  "Brand reference": ["Bayanin kamfani", "Ìtọ́kasí àmì", "Ntụaka akara", "Brand reference"],
+  "Feature tour": ["Yawon fasali", "Ìrìnàjò àwọn ànfààní", "Njegharị atụmatụ", "Feature tour"],
+  "Skip tour": ["Tsallake yawon", "Fò ìrìnàjò", "Gafe njegharị", "Skip tour"],
+  "Back": ["Baya", "Padà", "Laghachi", "Back"],
+  "Next": ["Na gaba", "Tẹ̀síwájú", "Ọzọ", "Next"],
+  "Find your next asset": ["Nemo abin da kake bukata", "Wá ohun tí o nílò", "Chọta ihe ị chọrọ", "Find the asset you need"],
+  "Search by name and narrow the collection with filters.": ["Bincika da suna, ka tace tarin.", "Wá pẹ̀lú orúkọ, kí o sì lo àlẹ̀mọ́.", "Chọọ site na aha ma jiri nzacha belata ndepụta.", "Search by name and use filters to narrow am."],
+  "More than logos": ["Fiye da tambura", "Ó ju àmì lọ", "Karịrị akara", "More than logos"],
+  "Browse company logos or switch to country flags.": ["Duba tamburan kamfanoni ko tutocin ƙasashe.", "Wo àmì ilé-iṣẹ́ tàbí yí sí àsíá orílẹ̀-èdè.", "Lelee akara ụlọọrụ ma ọ bụ gbanwee gaa ọkọlọtọ mba.", "Browse company logos or switch to country flags."],
+  "Pack your collection": ["Tattara abubuwanka", "Kó àkójọpọ̀ rẹ", "Kpokọta ihe gị", "Pack your collection"],
+  "Pack assets into your movable bag, then download them together as a ZIP.": ["Saka abubuwa a jakarka mai motsi, ka sauke su tare a ZIP.", "Kó àwọn ohun sínú àpò tí o lè gbé, kí o sì gba gbogbo rẹ̀ gẹ́gẹ́ bí ZIP.", "Tinye ihe n'akpa ị nwere ike ibugharị, budata ha ọnụ dịka ZIP.", "Pack assets for your movable bag, then download all as ZIP."],
+  "Make it yours": ["Daidaita yadda kake so", "Ṣe é ní tiẹ", "Hazie ya otú ị chọrọ", "Make am your own"],
+  "Choose your language, switch themes, or change action sounds in More options.": ["Zaɓi harshe, canza jigo ko sautin aiki a ƙarin zaɓuɓɓuka.", "Yan èdè, yí àwọ̀ padà, tàbí ṣàtúnṣe ohùn nínú àwọn àṣàyàn míì.", "Họrọ asụsụ, gbanwee isiokwu, ma ọ bụ ụda na Nhọrọ ndị ọzọ.", "Choose language, switch theme or change action sounds for More options."],
   "Search categories": ["Nemo rukuni", "Wá àwọn ẹ̀ka", "Chọọ ụdị", "Search categories"],
   "No categories found": ["Ba a sami rukuni ba", "Kò sí ẹ̀ka tí a rí", "Achọtaghị ụdị", "No category match"],
   "Nigerian and African company logos, plus country flags, for designers and developers.": ["Tamburan kamfanonin Najeriya da Afirka da tutocin ƙasashe, don masu zane da masu haɓaka manhajoji.", "Àmì àwọn ilé-iṣẹ́ Nàìjíríà àti Áfíríkà, pẹ̀lú àsíá orílẹ̀-èdè, fún apẹ̀rẹ̀ àti olùgbékalẹ̀.", "Akara ụlọọrụ Naịjirịa na Afrịka, tinyere ọkọlọtọ mba, maka ndị nrụpụta na ndị mmepe.", "Nigerian and African company logos, plus country flags, for designers and developers."],
@@ -281,6 +295,7 @@ export const messages: Record<string, readonly [string, string, string, string]>
   "Financial services": ["Hidimomin kuɗi", "Iṣẹ́ ìnáwó", "Ọrụ ego", "Finance services"],
   "Retail commerce": ["Kasuwancin sayarwa", "Ìṣòwò ọjà", "Ahịa mkpọsa", "Retail commerce"],
   "Food beverages": ["Abinci da abin sha", "Oúnjẹ àti ohun mímu", "Nri na ihe ọṅụṅụ", "Food and drinks"],
+  "Hospitality leisure": ["Karbar baki da nishadi", "Ìtọ́jú àlejò àti fàájì", "Ile ọbịa na ntụrụndụ", "Hotels and enjoyment"],
   "Transport logistics": ["Sufuri da jigilar kaya", "Ìrìnnà àti ìgbé ẹrù", "Ụgbọ njem na nkwagharị ngwongwo", "Transport and logistics"],
   "Energy utilities": ["Makamashi da hidimomin jama'a", "Agbára àti iṣẹ́ amáyédẹrùn", "Ike na ọrụ ọhaneze", "Energy and utilities"],
   "Media entertainment": ["Labarai da nishaɗi", "Ìròyìn àti eré ìnàjú", "Mgbasa ozi na ntụrụndụ", "Media and entertainment"],

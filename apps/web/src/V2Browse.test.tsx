@@ -9,6 +9,17 @@ import { recommendBrands } from "./browse-tools";
 
 afterEach(() => vi.unstubAllGlobals());
 describe("V2 browse integration", () => {
+  it("only offers logo versions when alternative artwork exists", () => {
+    for (const slug of ["momo-payment-service-bank", "t2-mobile"]) {
+      vi.stubGlobal("location", { pathname:"/v2", search:`?brand=${slug}`, origin:"http://localhost:5180" });
+      vi.stubGlobal("localStorage", { getItem:() => null });
+      vi.stubGlobal("matchMedia", () => ({ matches:false }));
+      const $=load(renderToStaticMarkup(<V2App />));
+      const version=$(".v2-field").filter((_,element)=>$(element).text().includes("Logo version"));
+      expect(version.length).toBe(slug==="t2-mobile" ? 1 : 0);
+      expect($(".v2-actions").text()).toContain("Download");
+    }
+  });
   it("renders 20 default results with accessible pagination and shortcuts", () => {
     vi.stubGlobal("location", { pathname:"/v2", search:"" });
     vi.stubGlobal("localStorage", { getItem:() => null });

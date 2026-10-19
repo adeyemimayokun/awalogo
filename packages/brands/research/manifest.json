@@ -4,7 +4,9 @@
   "policy": "Existing logos immutable; staging is never public; official or manually reviewed community sources only.",
   "summary": {
     "pending-review": 111,
-    "unresolved": 67
+    "unresolved": 71,
+    "approved": 40,
+    "duplicate": 2
   },
   "entries": [
     {
@@ -277,35 +279,28 @@
       "origin_country": null,
       "headquarters_country": null,
       "operating_countries": [],
-      "disposition": "pending-review",
-      "reason": "Official website retrieved; identity, market evidence, and artwork await manual review.",
+      "disposition": "approved",
+      "reason": "Official About page identifies the initial Lagos recruitment and African talent operations. The selected embedded header SVG is Andela, not a testimonial or customer logo. Artwork visually checked on light and dark backgrounds. Source provenance does not grant a trademark licence or imply endorsement.",
       "duplicate_of": null,
       "sources": [
         {
           "url": "https://www.andela.com/",
           "type": "official-website",
-          "retrieved_at": "2026-10-18",
+          "retrieved_at": "2026-10-19",
           "title": "The Human Layer Powering Production AI",
-          "description": "Andela provides the human compute layer behind modern AI systems — training models,  deploying AI-native engineers, and upskilling the teams that build them.",
-          "excerpt": "Optimize GitHub Copilot Token Costs & Boost ProductivityWatch webinarClientsLoginSign InTalentLoginSign UpAndela PayTrain & build AIData Readiness for AITrain AI systems with human-in-the-loop expertiseEnterprise AI RetrievalUnlock enterprise knowledge for AI systemsAI in productionDeploy AI systems into production workflowsExplore all solutionsTalk to an AI architectSchedule nowHire AI engineersBuildersAI Application EngineeringIntegratorsAI Systems EngineeringScalersAI Platform & Production EngineeringLearn about our AI engineersHire AI engineersBook a discovery callAdopt agentic engineeringThree levels of applied learningBuild the judgment and systems to put AI to work.Assessment methodologyAssessment shapes the learning path.The ROI for agentic proficiencyRealize measured value from learning.Explore all training programsUpskill your workforce for AIBook a discovery callFor talentTalent experienceLearn about building with Andela.AI AcademyLevel up your career with AI mastery.Help centerHow can we help you?Learn about building with AndelaExplore open roles in our platformLog into platformAboutAbout usWe connect brilliance with opportunityWhy Andela?The human layer for enterprise AIPress & mediaSee Andela mentioned in the newsLearn about AndelaConnecting brilliance with opportunityBook a discovery callBook a discovery callFor clientManage your hiresLogin for talentFind your next opportunity.Andela payTrack and manage your payouts.LoginSign up clientBuild your dream team.Sign up talentLand your next opportunity.Book a discovery callThe Human Layer ‍Powering Production AIAndela provides the human compute layer behind modern AI systems — training models, deploying AI-native engineers, and upskilling the teams that build them.Train & build AI systemsDeploy AI-native engine",
           "page_checksum": "7fa6823a0a9ea3cee3149fb30821837a916580d41cdbc2570950c6b87129e1b9"
+        },
+        {
+          "url": "https://www.andela.com/about",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "Andela",
+          "excerpt": "Official About page identifies the initial Lagos recruitment and African talent operations. The selected embedded header SVG is Andela, not a testimonial or customer logo."
         }
       ],
       "candidate_assets": [
         {
-          "path": "staging/andela-0-1f01d8f142a5.png",
-          "source_url": "https://cdn.prod.website-files.com/68d70d46269e8933e5f35eee/698d8db40a9edb074c999d83_hgfghf%201.png",
-          "discovered_on": "https://www.andela.com/",
-          "source_type": "official-website",
-          "format": "png",
-          "width": 891,
-          "height": 555,
-          "checksum": "1f01d8f142a50919bdf7ad511d955ed5ab4dd3c6051dc436b1dd144bae92c02e",
-          "retrieved_at": "2026-10-18",
-          "reviewed": false
-        },
-        {
-          "path": "staging/andela-1-8e18b781a5bf.png",
+          "path": "staging/andela-popular-0-8e18b781a5bf.png",
           "source_url": "https://cdn.prod.website-files.com/68d70d46269e8933e5f35eee/698dd51042a77b1882c84383_I1.png",
           "discovered_on": "https://www.andela.com/",
           "source_type": "official-website",
@@ -313,35 +308,23 @@
           "width": 1017,
           "height": 945,
           "checksum": "8e18b781a5bfb65e389deaf27a2606664011ffb1f682a625e8798b80614f82a3",
-          "retrieved_at": "2026-10-18",
+          "retrieved_at": "2026-10-19",
           "reviewed": false
         },
         {
-          "path": "staging/andela-2-a61ed2151476.png",
-          "source_url": "https://cdn.prod.website-files.com/68d70d46269e8933e5f35eee/68dc0fa8e1d6ed4dfa9e592e_isg.png",
+          "path": "staging/andela-popular-1-d84d30448261.svg",
+          "source_url": "https://www.andela.com/#inline-logo-3",
           "discovered_on": "https://www.andela.com/",
           "source_type": "official-website",
-          "format": "png",
-          "width": 96,
-          "height": 96,
-          "checksum": "a61ed21514761bfead52f8aa8e3465f79b7fa59821bb1fc5add3bfec6a7a7775",
-          "retrieved_at": "2026-10-18",
-          "reviewed": false
-        },
-        {
-          "path": "staging/andela-3-a9f0755d8310.png",
-          "source_url": "https://cdn.prod.website-files.com/68d70d46269e8933e5f35eee/68dc10bcf4385aec6f578ff6_Reviewer%20Logo%20Container.png",
-          "discovered_on": "https://www.andela.com/",
-          "source_type": "official-website",
-          "format": "png",
-          "width": 96,
-          "height": 96,
-          "checksum": "a9f0755d8310f83a4d0949442eec69603828f923807c2dd84f9034f23a192d9e",
-          "retrieved_at": "2026-10-18",
+          "format": "svg",
+          "width": 103,
+          "height": 36,
+          "checksum": "d84d304482614043bc94758b5554fddf5029b0a7fd0a761f61996a7d8485757a",
+          "retrieved_at": "2026-10-19",
           "reviewed": false
         }
       ],
-      "review_notes": "Country of origin and headquarters require evidence; target market is a campaign assignment, not verified presence."
+      "review_notes": "Official page retrieval is not artwork approval."
     },
     {
       "slug": "seamlesshr",
@@ -1029,16 +1012,49 @@
       "aliases": [],
       "industry": "food-beverages",
       "target_market": "NG",
-      "website": "https://dangotesugar.com.ng/",
+      "website": "https://sugar.dangote.com/",
       "origin_country": null,
       "headquarters_country": null,
       "operating_countries": [],
-      "disposition": "unresolved",
-      "reason": "Website/artwork research incomplete: getaddrinfo ENOTFOUND dangotesugar.com.ng",
+      "disposition": "approved",
+      "reason": "Official logo visually reviewed against the source site's identity. White artwork uses a dark preview. Source bytes are preserved; transparent padding may be trimmed in derived formats. No trademark licence or endorsement is asserted.",
       "duplicate_of": null,
-      "sources": [],
-      "candidate_assets": [],
-      "review_notes": "Country of origin and headquarters require evidence; target market is a campaign assignment, not verified presence."
+      "sources": [
+        {
+          "url": "https://sugar.dangote.com/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "Home - Welcome to Dangote Sugar Refinery Plc",
+          "page_checksum": "7df99e0fd230e9256aaf334726ed04d2a51db9879ba669c81b3437a556aa3ea4"
+        }
+      ],
+      "candidate_assets": [
+        {
+          "path": "staging/dangote-sugar-popular-0-4855ce789a56.png",
+          "source_url": "https://sugar.dangote.com/wp-content/uploads/elementor/thumbs/DSR-logo-png-ovsmy1g5biet6unu8rmtggy8lkmt961anwp68h3fss.png",
+          "discovered_on": "https://sugar.dangote.com/",
+          "source_type": "official-website",
+          "format": "png",
+          "width": 100,
+          "height": 70,
+          "checksum": "4855ce789a56d1a4f1887fb4a5f5dcfdaeb8657a7476e068e63c96c1689cadd0",
+          "retrieved_at": "2026-10-19",
+          "reviewed": false
+        },
+        {
+          "path": "staging/dangote-sugar-popular-1-a1e185b4e31d.png",
+          "source_url": "https://sugar.dangote.com/wp-content/uploads/elementor/thumbs/TOP-NAV-BAR-LOGO-ov0rw4df6qnkpac0t21alola21trve5tcek7ptmr3w.png",
+          "discovered_on": "https://sugar.dangote.com/",
+          "source_type": "official-website",
+          "format": "png",
+          "width": 100,
+          "height": 70,
+          "checksum": "a1e185b4e31d54fae0459ca4a5c4dfb708c6b9feac0299b3f38448d48aca3dbc",
+          "retrieved_at": "2026-10-19",
+          "reviewed": false
+        }
+      ],
+      "review_notes": "Official page retrieval is not artwork approval."
     },
     {
       "slug": "bua-foods",
@@ -1046,16 +1062,44 @@
       "aliases": [],
       "industry": "food-beverages",
       "target_market": "NG",
-      "website": "https://buafoodsplc.com/",
+      "website": "https://www.buafoodsplc.com/",
       "origin_country": null,
       "headquarters_country": null,
       "operating_countries": [],
-      "disposition": "unresolved",
-      "reason": "Website/artwork research incomplete: fetch failed",
+      "disposition": "approved",
+      "reason": "Official BUA Foods media page supplies the corporate logo and identifies its Lagos, Nigeria contact address. Reviewed visually; distinct from BUA Cement and BUA Group artwork.",
       "duplicate_of": null,
-      "sources": [],
-      "candidate_assets": [],
-      "review_notes": "Country of origin and headquarters require evidence; target market is a campaign assignment, not verified presence."
+      "sources": [
+        {
+          "url": "https://www.buafoodsplc.com/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "BUA Foods PLC",
+          "page_checksum": "1dd6e9f0c390bd6e60a11526f47e49eaf71d72a003067675627036af757dbc3b"
+        },
+        {
+          "url": "https://www.buafoodsplc.com/media/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "Media - BUA Foods",
+          "excerpt": "Official BUA Foods media page supplies the corporate logo and identifies its Lagos, Nigeria contact address. Reviewed visually; distinct from BUA Cement and BUA Group artwork."
+        }
+      ],
+      "candidate_assets": [
+        {
+          "path": "staging/bua-foods-reviewed-a8d0793f9510.svg",
+          "source_url": "https://www.buafoodsplc.com/wp-content/uploads/2021/12/BUA-Foods-Logo.svg",
+          "discovered_on": "https://www.buafoodsplc.com/media/",
+          "source_type": "official-website",
+          "format": "svg",
+          "width": 90,
+          "height": 94,
+          "checksum": "a8d0793f951022503b3c2640a67e9f0f41671da845122d3c92ba7032fde1e7ec",
+          "retrieved_at": "2026-10-19",
+          "reviewed": true
+        }
+      ],
+      "review_notes": "Official page retrieval is not artwork approval."
     },
     {
       "slug": "nigerian-breweries",
@@ -1240,21 +1284,19 @@
       "headquarters_country": null,
       "operating_countries": [],
       "disposition": "unresolved",
-      "reason": "Website/artwork research incomplete: Site returned a challenge or insufficient research content",
+      "reason": "Official site retrieved but no usable logo discovered. Do not substitute product or partner artwork.",
       "duplicate_of": null,
       "sources": [
         {
           "url": "https://dufil.com/",
           "type": "official-website",
-          "retrieved_at": "2026-10-18",
+          "retrieved_at": "2026-10-19",
           "title": "Dufil Prima Foods",
-          "description": "",
-          "excerpt": "",
           "page_checksum": "297335f764d5277045e2ea7371403f5928cde8e7731b3c49320a5cb53966eb7a"
         }
       ],
       "candidate_assets": [],
-      "review_notes": "Country of origin and headquarters require evidence; target market is a campaign assignment, not verified presence."
+      "review_notes": "Official page retrieval is not artwork approval."
     },
     {
       "slug": "food-concepts",
@@ -1930,21 +1972,19 @@
       "headquarters_country": null,
       "operating_countries": [],
       "disposition": "unresolved",
-      "reason": "Website/artwork research incomplete: Site returned a challenge or insufficient research content",
+      "reason": "Official site retrieved but no usable logo discovered. Do not substitute product or partner artwork.",
       "duplicate_of": null,
       "sources": [
         {
           "url": "https://ulesson.com/",
           "type": "official-website",
-          "retrieved_at": "2026-10-18",
+          "retrieved_at": "2026-10-19",
           "title": "uLesson | No. 1 Learning App for Primary, Junior Secondary & Senior Secondary school Students",
-          "description": "uLesson is an Online Learning App for Secondary School Students in Africa. Discover Engaging Quizzes, NECO, JAMB, BECE, Tests & Exams for Junior & Senior Secondary School Students. Download Now.",
-          "excerpt": "",
           "page_checksum": "7d7fb9a6006c6ddbff45ab68561b5b8bd260c53ab4f85739a5e50fd3aa2a60fb"
         }
       ],
       "candidate_assets": [],
-      "review_notes": "Country of origin and headquarters require evidence; target market is a campaign assignment, not verified presence."
+      "review_notes": "Official page retrieval is not artwork approval."
     },
     {
       "slug": "altschool-africa",
@@ -2336,19 +2376,45 @@
     {
       "slug": "chocolate-city",
       "name": "Chocolate City",
-      "aliases": [],
+      "aliases": [
+        "Chocolate City Music",
+        "CCM"
+      ],
       "industry": "media-entertainment",
       "target_market": "NG",
-      "website": "https://www.chocolatecitymusic.com/",
+      "website": "https://chocolatecitymusic.com/",
       "origin_country": null,
       "headquarters_country": null,
-      "operating_countries": [],
-      "disposition": "unresolved",
-      "reason": "Website/artwork research incomplete: fetch failed",
+      "operating_countries": [
+        "NG"
+      ],
+      "disposition": "approved",
+      "reason": "Official About page identifies Chocolate City Music as a Nigerian record label founded in 2005.",
       "duplicate_of": null,
-      "sources": [],
-      "candidate_assets": [],
-      "review_notes": "Country of origin and headquarters require evidence; target market is a campaign assignment, not verified presence."
+      "sources": [
+        {
+          "url": "https://chocolatecitymusic.com/about-us/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "Chocolate City",
+          "excerpt": "Official About page identifies Chocolate City Music as a Nigerian record label founded in 2005."
+        }
+      ],
+      "candidate_assets": [
+        {
+          "path": "staging/chocolate-city-music-ddacf1da950f.svg",
+          "source_url": "https://chocolatecitymusic.com/wp-content/uploads/2026/02/Asset-2.svg",
+          "discovered_on": "https://chocolatecitymusic.com/",
+          "source_type": "official-website",
+          "format": "svg",
+          "width": 246,
+          "height": 246,
+          "checksum": "ddacf1da950fb2c31a6145048eb376ecc6181486bb504c2d0531528f24ad85c3",
+          "retrieved_at": "2026-10-19",
+          "reviewed": true
+        }
+      ],
+      "review_notes": "Official About page identifies Chocolate City Music as a Nigerian record label founded in 2005."
     },
     {
       "slug": "pulse-nigeria",
@@ -2383,16 +2449,49 @@
       "aliases": [],
       "industry": "manufacturing-consumer-goods",
       "target_market": "NG",
-      "website": "https://www.dangotecement.com/",
+      "website": "https://cement.dangote.com/",
       "origin_country": null,
       "headquarters_country": null,
       "operating_countries": [],
-      "disposition": "unresolved",
-      "reason": "Website/artwork research incomplete: fetch failed",
+      "disposition": "approved",
+      "reason": "Official logo visually reviewed against the source site's identity. White artwork uses a dark preview. Source bytes are preserved; transparent padding may be trimmed in derived formats. No trademark licence or endorsement is asserted.",
       "duplicate_of": null,
-      "sources": [],
-      "candidate_assets": [],
-      "review_notes": "Country of origin and headquarters require evidence; target market is a campaign assignment, not verified presence."
+      "sources": [
+        {
+          "url": "https://cement.dangote.com/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "Quality and Affordable Cement in Africa | Dangote Cement",
+          "page_checksum": "3fc56083d0c63b6b527473f4189971b12ce2ff31bb29208d83aae44974244562"
+        }
+      ],
+      "candidate_assets": [
+        {
+          "path": "staging/dangote-cement-popular-0-f72f6eea13bd.png",
+          "source_url": "https://cement.dangote.com/wp-content/uploads/elementor/thumbs/Dangote-Cement-logo-2-rtvhw0v6ktkp1cjj6udxphu9h0uw4vn69c2lbeo724.png",
+          "discovered_on": "https://cement.dangote.com/",
+          "source_type": "official-website",
+          "format": "png",
+          "width": 100,
+          "height": 70,
+          "checksum": "f72f6eea13bd47937f7a48a8d341b0250274304d6c7877f99d60067b9058fe4c",
+          "retrieved_at": "2026-10-19",
+          "reviewed": false
+        },
+        {
+          "path": "staging/dangote-cement-popular-1-c5ecda8dd4a7.png",
+          "source_url": "https://cement.dangote.com/wp-content/uploads/elementor/thumbs/small_Dangote-Cement-logo-1-1-rtvhvzxczwwxytumchzxyihyxoyapzrvqx4aha497e.png",
+          "discovered_on": "https://cement.dangote.com/",
+          "source_type": "official-website",
+          "format": "png",
+          "width": 150,
+          "height": 105,
+          "checksum": "c5ecda8dd4a74c2bb3911cbde98ffa7cd247e24d032a4483baa71e72738e7d38",
+          "retrieved_at": "2026-10-19",
+          "reviewed": false
+        }
+      ],
+      "review_notes": "Official page retrieval is not artwork approval."
     },
     {
       "slug": "bua-cement",
@@ -4316,6 +4415,93 @@
         }
       ],
       "review_notes": "Country of origin and headquarters require evidence; target market is a campaign assignment, not verified presence."
+    },
+    {
+      "slug": "mavin-records",
+      "name": "Mavin Records",
+      "aliases": [
+        "Mavin",
+        "Mavins",
+        "Mavin Global"
+      ],
+      "industry": "media-entertainment",
+      "target_market": "NG",
+      "website": "https://www.mavinrecords.com/",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "NG"
+      ],
+      "disposition": "approved",
+      "reason": "Official record-label website and About page identify Mavin's African entertainment business; Nigerian operations represented by its Lagos contact details.",
+      "duplicate_of": null,
+      "sources": [
+        {
+          "url": "https://www.mavinrecords.com/about/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "Mavin Records",
+          "excerpt": "Official record-label website and About page identify Mavin's African entertainment business; Nigerian operations represented by its Lagos contact details."
+        }
+      ],
+      "candidate_assets": [
+        {
+          "path": "staging/mavin-records-music-4208b97c83e9.png",
+          "source_url": "https://www.mavinrecords.com/wp-content/uploads/2021/04/Mavin-Logo.png",
+          "discovered_on": "https://www.mavinrecords.com/",
+          "source_type": "official-website",
+          "format": "png",
+          "width": 200,
+          "height": 50,
+          "checksum": "4208b97c83e9814486d5938acba3a9a42a73800a3fd1b11f9b4417a3ea301a39",
+          "retrieved_at": "2026-10-19",
+          "reviewed": true
+        }
+      ],
+      "review_notes": "Official record-label website and About page identify Mavin's African entertainment business; Nigerian operations represented by its Lagos contact details."
+    },
+    {
+      "slug": "dapper-music",
+      "name": "Dapper Music",
+      "aliases": [
+        "Dapper Music Entertainment",
+        "Dapper Music and Entertainment"
+      ],
+      "industry": "media-entertainment",
+      "target_market": "NG",
+      "website": "https://dappermusicent.com/",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "NG"
+      ],
+      "disposition": "approved",
+      "reason": "Official About page describes the group's Nigerian entertainment and record-label operations. Logo URL is declared in the official homepage Organization structured data.",
+      "duplicate_of": null,
+      "sources": [
+        {
+          "url": "https://dappermusicent.com/about",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "Dapper Music",
+          "excerpt": "Official About page describes the group's Nigerian entertainment and record-label operations. Logo URL is declared in the official homepage Organization structured data."
+        }
+      ],
+      "candidate_assets": [
+        {
+          "path": "staging/dapper-music-music-d7ce1af35215.png",
+          "source_url": "https://dappermusicent.com/logo.png",
+          "discovered_on": "https://dappermusicent.com/",
+          "source_type": "official-website",
+          "format": "png",
+          "width": 1563,
+          "height": 1563,
+          "checksum": "d7ce1af35215d54fb5d79ffef0d9ff920a985b10e7aba7b6764a63dea5d99fa2",
+          "retrieved_at": "2026-10-19",
+          "reviewed": true
+        }
+      ],
+      "review_notes": "Official About page describes the group's Nigerian entertainment and record-label operations. Logo URL is declared in the official homepage Organization structured data."
     },
     {
       "slug": "smile-nigeria",
@@ -7733,6 +7919,1970 @@
       "sources": [],
       "candidate_assets": [],
       "review_notes": "Country of origin and headquarters require evidence; target market is a campaign assignment, not verified presence."
+    },
+    {
+      "slug": "ybnl-nation",
+      "name": "YBNL Nation",
+      "industry": "media-entertainment",
+      "target_market": "NG",
+      "duplicate_of": null,
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/YBNL",
+          "type": "community-catalog",
+          "retrieved_at": "2026-10-19",
+          "title": "YBNL Nation",
+          "excerpt": "Community encyclopedia identifies YBNL Nation as Olamide's Nigerian record label. Artwork is community-hosted, manually reviewed and not officially verified; no redistribution licence or affiliation is asserted."
+        }
+      ],
+      "candidate_assets": [
+        {
+          "path": "staging/ybnl-nation-music-1b2e073aba1f.jpeg",
+          "source_url": "https://thumb.wikimedia.org/wikipedia/en/thumb/6/64/YBNL_logo.jpeg/250px-YBNL_logo.jpeg",
+          "discovered_on": "https://en.wikipedia.org/wiki/YBNL",
+          "source_type": "community-catalog",
+          "format": "jpeg",
+          "width": 250,
+          "height": 176,
+          "checksum": "1b2e073aba1fbadccde3763d151ddcad105cb87b6906a7bd8198dd7f64f593ef",
+          "retrieved_at": "2026-10-19",
+          "reviewed": true
+        }
+      ],
+      "aliases": [
+        "YBNL",
+        "YBNL Records"
+      ],
+      "website": "https://en.wikipedia.org/wiki/YBNL",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "NG"
+      ],
+      "disposition": "approved",
+      "reason": "Community encyclopedia identifies YBNL Nation as Olamide's Nigerian record label. Artwork is community-hosted, manually reviewed and not officially verified; no redistribution licence or affiliation is asserted.",
+      "review_notes": "Community encyclopedia identifies YBNL Nation as Olamide's Nigerian record label. Artwork is community-hosted, manually reviewed and not officially verified; no redistribution licence or affiliation is asserted."
+    },
+    {
+      "slug": "dangote-group",
+      "name": "Dangote Group",
+      "aliases": [],
+      "industry": "manufacturing-consumer-goods",
+      "target_market": "NG",
+      "website": "https://www.dangote.com/",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [],
+      "disposition": "approved",
+      "reason": "Official logo visually reviewed against the source site's identity. White artwork uses a dark preview. Source bytes are preserved; transparent padding may be trimmed in derived formats. No trademark licence or endorsement is asserted.",
+      "duplicate_of": null,
+      "sources": [
+        {
+          "url": "https://www.dangote.com/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "Dangote Industries Limited – For An Empowered Africa",
+          "page_checksum": "8210cf64e999fe68cea53f5b538374c342c491e244cec18065c89b61f89e9372"
+        }
+      ],
+      "candidate_assets": [
+        {
+          "path": "staging/dangote-group-popular-0-5d586d04a8c1.png",
+          "source_url": "https://www.dangote.com/wp-content/uploads/2025/05/Untitled-design-1.png",
+          "discovered_on": "https://www.dangote.com/",
+          "source_type": "official-website",
+          "format": "png",
+          "width": 604,
+          "height": 370,
+          "checksum": "5d586d04a8c116a0069ea99b9520091722cbd2a24e3c664dce1172695801b609",
+          "retrieved_at": "2026-10-19",
+          "reviewed": false
+        },
+        {
+          "path": "staging/dangote-group-popular-1-97c9949bc983.png",
+          "source_url": "https://www.dangote.com/wp-content/uploads/2020/04/Dangote-logo-svg-2.png",
+          "discovered_on": "https://www.dangote.com/",
+          "source_type": "official-website",
+          "format": "png",
+          "width": 103,
+          "height": 55,
+          "checksum": "97c9949bc9836194efff46991a7ef1fb9245cc5855d22368dd049731ac6bf20b",
+          "retrieved_at": "2026-10-19",
+          "reviewed": false
+        },
+        {
+          "path": "staging/dangote-group-popular-2-c733670d5df5.jpeg",
+          "source_url": "https://www.dangote.com/wp-content/uploads/2026/06/logo-scaled-400x490.jpg",
+          "discovered_on": "https://www.dangote.com/",
+          "source_type": "official-website",
+          "format": "jpeg",
+          "width": 400,
+          "height": 490,
+          "checksum": "c733670d5df51bee85dc35aa59d3ee938e7f9b0c563685d12c0b0ee71b34c042",
+          "retrieved_at": "2026-10-19",
+          "reviewed": false
+        }
+      ],
+      "review_notes": "Official page retrieval is not artwork approval."
+    },
+    {
+      "slug": "dangote-refinery",
+      "name": "Dangote Refinery",
+      "aliases": [],
+      "industry": "energy-utilities",
+      "target_market": "NG",
+      "website": "https://refinery.dangote.com/",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [],
+      "disposition": "approved",
+      "reason": "Official logo visually reviewed against the source site's identity. White artwork uses a dark preview. Source bytes are preserved; transparent padding may be trimmed in derived formats. No trademark licence or endorsement is asserted.",
+      "duplicate_of": null,
+      "sources": [
+        {
+          "url": "https://refinery.dangote.com/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "Dangote Refinery – Dangote Refinery is the centerpiece of Africa’s industrial transformation",
+          "page_checksum": "23168b6e86bb03799dc8122e7462e2f54780ceda95c9139588d1e28dd70e86ca"
+        }
+      ],
+      "candidate_assets": [
+        {
+          "path": "staging/dangote-refinery-popular-0-9379ecd6614c.png",
+          "source_url": "https://refinery.dangote.com/wp-content/uploads/2025/08/imgi_5_Dangote-Petroleum-Refinery-white-q3xlufl2bc12pm41m1w20q3naai4j8s597vrcemlck.png",
+          "discovered_on": "https://refinery.dangote.com/",
+          "source_type": "official-website",
+          "format": "png",
+          "width": 170,
+          "height": 130,
+          "checksum": "9379ecd6614ce1fbb9e533e33f22b67faaf5de12fe4dfdf657b0c30746d0b06c",
+          "retrieved_at": "2026-10-19",
+          "reviewed": false
+        },
+        {
+          "path": "staging/dangote-refinery-popular-1-f289af80c110.png",
+          "source_url": "https://refinery.dangote.com/wp-content/uploads/2025/09/Dangote-Petroleum-Refnery-logo-scaled.png",
+          "discovered_on": "https://refinery.dangote.com/",
+          "source_type": "official-website",
+          "format": "png",
+          "width": 2560,
+          "height": 1754,
+          "checksum": "f289af80c1101ed6e0b32f06b93d351cb3044cbec95ca0160764ed7dee20103e",
+          "retrieved_at": "2026-10-19",
+          "reviewed": false
+        }
+      ],
+      "review_notes": "Official page retrieval is not artwork approval."
+    },
+    {
+      "slug": "dangote-fertiliser",
+      "name": "Dangote Fertiliser",
+      "aliases": [],
+      "industry": "manufacturing-consumer-goods",
+      "target_market": "NG",
+      "website": "https://fertiliser.dangote.com/",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [],
+      "disposition": "approved",
+      "reason": "Official logo visually reviewed against the source site's identity. White artwork uses a dark preview. Source bytes are preserved; transparent padding may be trimmed in derived formats. No trademark licence or endorsement is asserted.",
+      "duplicate_of": null,
+      "sources": [
+        {
+          "url": "https://fertiliser.dangote.com/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "Dangote Fertiliser Limited",
+          "page_checksum": "dfe53c525faacf4f12e5692fc2b6241cab5551413c31fed6444a111d7a7c3344"
+        }
+      ],
+      "candidate_assets": [
+        {
+          "path": "staging/dangote-fertiliser-popular-0-f6acb63c50bf.png",
+          "source_url": "https://fertiliser.dangote.com/wp-content/uploads/elementor/thumbs/logo1-oujrnnbm0awouhcnoxuzeipp9sikvx0bq6sgst9fi4.png",
+          "discovered_on": "https://fertiliser.dangote.com/",
+          "source_type": "official-website",
+          "format": "png",
+          "width": 100,
+          "height": 70,
+          "checksum": "f6acb63c50bf03f4f06bf62b47b19b3cacecf2320be7406227fb842052b0f605",
+          "retrieved_at": "2026-10-19",
+          "reviewed": false
+        },
+        {
+          "path": "staging/dangote-fertiliser-popular-1-d521b9f407fb.png",
+          "source_url": "https://fertiliser.dangote.com/wp-content/uploads/elementor/thumbs/new-white-logo-dfl-pp053ehzynjy2t6h3odaqez4g2hdrwjjz0czeb158c.png",
+          "discovered_on": "https://fertiliser.dangote.com/",
+          "source_type": "official-website",
+          "format": "png",
+          "width": 100,
+          "height": 70,
+          "checksum": "d521b9f407fb5d4f4b759c773078db2e7ec6c43769d5ae4f1c7589e4a8842697",
+          "retrieved_at": "2026-10-19",
+          "reviewed": false
+        }
+      ],
+      "review_notes": "Official page retrieval is not artwork approval."
+    },
+    {
+      "slug": "nascon-allied-industries",
+      "name": "NASCON Allied Industries",
+      "aliases": [],
+      "industry": "food-beverages",
+      "target_market": "NG",
+      "website": "https://salt.dangote.com/",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [],
+      "disposition": "approved",
+      "reason": "Official logo visually reviewed against the source site's identity. White artwork uses a dark preview. Source bytes are preserved; transparent padding may be trimmed in derived formats. No trademark licence or endorsement is asserted.",
+      "duplicate_of": null,
+      "sources": [
+        {
+          "url": "https://salt.dangote.com/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "NASCON Allied Industries Plc",
+          "page_checksum": "4cdb62969160f4da72ae114c46fec51ac39adfd02a5b1f3aa46307c5b410430a"
+        }
+      ],
+      "candidate_assets": [
+        {
+          "path": "staging/nascon-allied-industries-popular-0-2c6847cdb068.png",
+          "source_url": "https://salt.dangote.com/wp-content/uploads/elementor/thumbs/nascon-logo-ovv8zzmo2xit8s463yxk4qynahkbup7v45fgyjd7vk.png",
+          "discovered_on": "https://salt.dangote.com/",
+          "source_type": "official-website",
+          "format": "png",
+          "width": 100,
+          "height": 80,
+          "checksum": "2c6847cdb068617ef756bc3d10ca78bb8f901f997ca480d5410af72b07b49121",
+          "retrieved_at": "2026-10-19",
+          "reviewed": false
+        },
+        {
+          "path": "staging/nascon-allied-industries-popular-1-4b67f80255be.png",
+          "source_url": "https://salt.dangote.com/wp-content/uploads/elementor/thumbs/nascon-logo-ovv8zzmo2xir74dqod2ba1dn93pwq40qusvor8ppz0.png",
+          "discovered_on": "https://salt.dangote.com/",
+          "source_type": "official-website",
+          "format": "png",
+          "width": 100,
+          "height": 70,
+          "checksum": "4b67f80255be191adb4931c4229cabf2a626dc2cc1c6738d80d28ae6bc2d932f",
+          "retrieved_at": "2026-10-19",
+          "reviewed": false
+        }
+      ],
+      "review_notes": "Official page retrieval is not artwork approval."
+    },
+    {
+      "slug": "bua-group",
+      "name": "BUA Group",
+      "aliases": [],
+      "industry": "manufacturing-consumer-goods",
+      "target_market": "NG",
+      "website": "https://buagroup.com/",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [],
+      "disposition": "unresolved",
+      "reason": "Official source unavailable: Command failed: curl --fail --location --silent --show-error --proto =https --proto-redir =https --max-redirs 4 --max-time 25 --max-filesize 5000000 https://buagroup.com/ curl: (56",
+      "duplicate_of": null,
+      "sources": [],
+      "candidate_assets": [],
+      "review_notes": "Official page retrieval is not artwork approval."
+    },
+    {
+      "slug": "flour-mills-of-nigeria",
+      "name": "Flour Mills of Nigeria",
+      "aliases": [],
+      "industry": "food-beverages",
+      "target_market": "NG",
+      "website": "https://www.fmnfoods.com/",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [],
+      "disposition": "unresolved",
+      "reason": "Official source unavailable: Command failed: curl --fail --location --silent --show-error --proto =https --proto-redir =https --max-redirs 4 --max-time 25 --max-filesize 5000000 https://www.fmnfoods.com/ curl:",
+      "duplicate_of": null,
+      "sources": [],
+      "candidate_assets": [],
+      "review_notes": "Official page retrieval is not artwork approval."
+    },
+    {
+      "slug": "momo-psb",
+      "name": "MoMo PSB",
+      "aliases": [],
+      "industry": "financial-services",
+      "target_market": "NG",
+      "website": "https://www.momo.ng/",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [],
+      "disposition": "duplicate",
+      "reason": "Already published in the immutable legacy catalog as momo-payment-service-bank. Keep current assets unchanged; metadata improvements are separate from replacement artwork.",
+      "duplicate_of": "momo-payment-service-bank",
+      "sources": [
+        {
+          "url": "https://www.momo.ng/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "Home - MoMoPSB",
+          "page_checksum": "bfb51ae18d302d231b98ff9e35bb42da52dc970f6c22fbe9ef916ff0ca7c9db0"
+        }
+      ],
+      "candidate_assets": [
+        {
+          "path": "staging/momo-psb-popular-0-cca45c05ab43.png",
+          "source_url": "https://www.momo.ng/wp-content/uploads/2024/10/logo-yellow-1.png?x54108",
+          "discovered_on": "https://www.momo.ng/",
+          "source_type": "official-website",
+          "format": "png",
+          "width": 4907,
+          "height": 2239,
+          "checksum": "cca45c05ab43951879c3f9d4aa28cb60fb547be7710bea43a4d28c647165887d",
+          "retrieved_at": "2026-10-19",
+          "reviewed": false
+        },
+        {
+          "path": "staging/momo-psb-popular-1-f4f87eead80d.svg",
+          "source_url": "https://www.momo.ng/wp-content/themes/mtn-vivid-wp/public/img/mtn-logo-footer.svg?x54108",
+          "discovered_on": "https://www.momo.ng/",
+          "source_type": "official-website",
+          "format": "svg",
+          "width": 567,
+          "height": 284,
+          "checksum": "f4f87eead80da5c43cd19bc3242f3a2581fcfa1f0d67a041b676651828ce8297",
+          "retrieved_at": "2026-10-19",
+          "reviewed": false
+        }
+      ],
+      "review_notes": "Official page retrieval is not artwork approval."
+    },
+    {
+      "slug": "aradel-holdings",
+      "name": "Aradel Holdings",
+      "aliases": [],
+      "industry": "energy-utilities",
+      "target_market": "NG",
+      "website": "https://www.aradel.com/",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [],
+      "disposition": "approved",
+      "reason": "Company-issued Aradel Holdings corporate-action filing on NGX provides its current header logo and Lagos address. The header identity was rasterized and isolated from page 1 without tracing or upscaling; the website returned HTTP 403. Artwork visually checked on light and dark backgrounds. Source provenance does not grant a trademark licence or imply endorsement.",
+      "duplicate_of": null,
+      "sources": [
+        {
+          "url": "https://doclib.ngxgroup.com/Financial_NewsDocs/47232_ARADEL_HOLDINGS_PLC-CORPORATE_ACTION_ANNOUNCEMENT___CORPORATE_ACTIONS_JUNE_2026.pdf",
+          "type": "verified-pdf",
+          "retrieved_at": "2026-10-19",
+          "title": "Aradel Holdings",
+          "excerpt": "Company-issued Aradel Holdings corporate-action filing on NGX provides its current header logo and Lagos address. The header identity was rasterized and isolated from page 1 without tracing or upscaling; the website returned HTTP 403."
+        }
+      ],
+      "candidate_assets": [
+        {
+          "path": "staging/aradel-holdings-reviewed-614724af60dd.png",
+          "source_url": "https://doclib.ngxgroup.com/Financial_NewsDocs/47232_ARADEL_HOLDINGS_PLC-CORPORATE_ACTION_ANNOUNCEMENT___CORPORATE_ACTIONS_JUNE_2026.pdf",
+          "discovered_on": "https://doclib.ngxgroup.com/Financial_NewsDocs/47232_ARADEL_HOLDINGS_PLC-CORPORATE_ACTION_ANNOUNCEMENT___CORPORATE_ACTIONS_JUNE_2026.pdf",
+          "source_type": "verified-pdf",
+          "format": "png",
+          "width": 292,
+          "height": 115,
+          "checksum": "614724af60dd8e92476fd3ca60f270035a4c65f4cc617080af4ed003d4c240b0",
+          "retrieved_at": "2026-10-19",
+          "reviewed": true
+        }
+      ],
+      "review_notes": "Official page retrieval is not artwork approval."
+    },
+    {
+      "slug": "nairametrics",
+      "name": "Nairametrics",
+      "aliases": [],
+      "industry": "media-entertainment",
+      "target_market": "NG",
+      "website": "https://nairametrics.com/",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [],
+      "disposition": "approved",
+      "reason": "Official About page identifies the Nigerian financial and business media operation. Artwork visually checked on light and dark backgrounds. Source provenance does not grant a trademark licence or imply endorsement.",
+      "duplicate_of": null,
+      "sources": [
+        {
+          "url": "https://nairametrics.com/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "Nairametrics | Nigeria Business, Finance & Economic News",
+          "page_checksum": "c9dcf9b850ff459c2a55399c42e214cd162ceb0b1b3d378059522bca9164aa0d"
+        },
+        {
+          "url": "https://nairametrics.com/about-nairametrics/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "Nairametrics",
+          "excerpt": "Official About page identifies the Nigerian financial and business media operation."
+        }
+      ],
+      "candidate_assets": [
+        {
+          "path": "staging/nairametrics-popular-0-c8d30ec2aebd.jpeg",
+          "source_url": "https://cdn.nairametrics.com/wp-content/uploads/2026/09/nairametrics_logo.jpg",
+          "discovered_on": "https://nairametrics.com/",
+          "source_type": "official-website",
+          "format": "jpeg",
+          "width": 664,
+          "height": 75,
+          "checksum": "c8d30ec2aebdf9c58dcc495366828e9fbae98905e6df8a65e7f045592a045311",
+          "retrieved_at": "2026-10-19",
+          "reviewed": false
+        },
+        {
+          "path": "staging/nairametrics-popular-1-3b6651afaa69.webp",
+          "source_url": "https://cdn.nairametrics.com/wp-content/uploads/2026/08/Berger-New-Logo-on-Transparent-Background-1-e1712068727203-2-1-100x72.webp",
+          "discovered_on": "https://nairametrics.com/",
+          "source_type": "official-website",
+          "format": "webp",
+          "width": 100,
+          "height": 72,
+          "checksum": "3b6651afaa69fe4f145eb106f986fddbac86ebd8ca6914e99856f69c69726ab0",
+          "retrieved_at": "2026-10-19",
+          "reviewed": false
+        }
+      ],
+      "review_notes": "Official page retrieval is not artwork approval."
+    },
+    {
+      "slug": "careerbuddy",
+      "name": "CareerBuddy",
+      "aliases": [],
+      "industry": "technology",
+      "target_market": "NG",
+      "website": "https://thecareerbuddy.com/",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [],
+      "disposition": "approved",
+      "reason": "Official About page identifies Lagos headquarters and Nigerian recruitment operations. Artwork visually checked on light and dark backgrounds. Source provenance does not grant a trademark licence or imply endorsement.",
+      "duplicate_of": null,
+      "sources": [
+        {
+          "url": "https://thecareerbuddy.com/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "Attract, Hire & Employ Talent in Africa | CareerBuddy",
+          "page_checksum": "c9a873e9c6893202ecdf827581d266dd3a23ab531bc7a2fb60e37fa0a5ddc94c"
+        },
+        {
+          "url": "https://thecareerbuddy.com/about",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "CareerBuddy",
+          "excerpt": "Official About page identifies Lagos headquarters and Nigerian recruitment operations."
+        }
+      ],
+      "candidate_assets": [
+        {
+          "path": "staging/careerbuddy-popular-0-7581a1d5dd65.png",
+          "source_url": "https://thecareerbuddy.com/assets/logo-wordmark-black-DrHCjvJR.png",
+          "discovered_on": "https://thecareerbuddy.com/",
+          "source_type": "official-website",
+          "format": "png",
+          "width": 500,
+          "height": 76,
+          "checksum": "7581a1d5dd65dcdc12f46d66c9551dc7a1e765e62c51c637b9109a223272747b",
+          "retrieved_at": "2026-10-19",
+          "reviewed": false
+        },
+        {
+          "path": "staging/careerbuddy-popular-1-8ac3d14f86b5.png",
+          "source_url": "https://thecareerbuddy.com/assets/logo-wordmark-orange-DE7pqxVA.png",
+          "discovered_on": "https://thecareerbuddy.com/",
+          "source_type": "official-website",
+          "format": "png",
+          "width": 1343,
+          "height": 203,
+          "checksum": "8ac3d14f86b5eb1bd0a602b3d49310cccb36d1f3e304d464976d943df5945adb",
+          "retrieved_at": "2026-10-19",
+          "reviewed": false
+        }
+      ],
+      "review_notes": "Official page retrieval is not artwork approval."
+    },
+    {
+      "slug": "the-unflux",
+      "name": "The Unflux",
+      "aliases": [],
+      "industry": "education",
+      "target_market": "NG",
+      "website": "https://www.theunflux.com/",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [],
+      "disposition": "approved",
+      "reason": "User-confirmed identity. Official site describes African product-design education and names its chief facilitator; the facilitator's linked self-authored profile identifies The Unflux project and Lagos. Origin and headquarters remain unconfirmed. The exact logo symbol is extracted as a self-contained SVG, preserving path data and opacity; partner marks are excluded. Artwork visually checked on light and dark backgrounds. Source provenance does not grant a trademark licence or imply endorsement.",
+      "duplicate_of": null,
+      "sources": [
+        {
+          "url": "https://www.theunflux.com/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "Welcome | The Unflux",
+          "page_checksum": "a92939e31bf36f7a5c4743c1408fde2d89a25c79e294c1c31cd43c6398c29493"
+        },
+        {
+          "url": "https://www.theunflux.com/about/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "The Unflux",
+          "excerpt": "User-confirmed identity. Official site describes African product-design education and names its chief facilitator; the facilitator's linked self-authored profile identifies The Unflux project and Lagos. Origin and headquarters remain unconfirmed. The exact logo symbol is extracted as a self-contained SVG, preserving path data and opacity; partner marks are excluded."
+        }
+      ],
+      "candidate_assets": [
+        {
+          "path": "staging/the-unflux-popular-0-e0654fa2cba4.svg",
+          "source_url": "https://www.theunflux.com/#inline-logo-0",
+          "discovered_on": "https://www.theunflux.com/",
+          "source_type": "official-website",
+          "format": "svg",
+          "width": 123,
+          "height": 70,
+          "checksum": "e0654fa2cba4410028864b7c56597575c1ec6073304582e7d216a7b2eee24031",
+          "retrieved_at": "2026-10-19",
+          "reviewed": false
+        },
+        {
+          "path": "staging/the-unflux-popular-1-8f65b3238562.svg",
+          "source_url": "https://www.theunflux.com/#inline-logo-6",
+          "discovered_on": "https://www.theunflux.com/",
+          "source_type": "official-website",
+          "format": "svg",
+          "width": 99,
+          "height": 26,
+          "checksum": "8f65b323856254bbb16f0f1df2a89541b89e23a0acb8fe2cb14356811f2a9842",
+          "retrieved_at": "2026-10-19",
+          "reviewed": false
+        },
+        {
+          "path": "staging/the-unflux-reviewed-e2450931054f.svg",
+          "source_url": "https://www.theunflux.com/assets/svg/icons.svg#logo",
+          "discovered_on": "https://www.theunflux.com/",
+          "source_type": "official-website",
+          "format": "svg",
+          "width": 225,
+          "height": 44,
+          "checksum": "e2450931054f60ff00511a5123434ddfeb3aed79705a74a8cfd4b62ed548fa93",
+          "retrieved_at": "2026-10-19",
+          "reviewed": true
+        }
+      ],
+      "review_notes": "Official page retrieval is not artwork approval."
+    },
+    {
+      "slug": "utiva",
+      "name": "Utiva",
+      "aliases": [],
+      "industry": "education",
+      "target_market": "NG",
+      "website": "https://www.utiva.co/",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [],
+      "disposition": "approved",
+      "reason": "Official contact page states Transforming lives from Lagos, Nigeria. The official header image lacks a logo filename and was missed by discovery. Artwork visually checked on light and dark backgrounds. Source provenance does not grant a trademark licence or imply endorsement.",
+      "duplicate_of": null,
+      "sources": [
+        {
+          "url": "https://www.utiva.co/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "Utiva | Learn Global Skills, Hire Top Talent, and Pay Talents Globally",
+          "page_checksum": "3bbf6d636d9dd7c3835cfa1998d6868ab8bb92d36406d9bffc50ffa0db0135a1"
+        },
+        {
+          "url": "https://utiva.co/contact-us/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "Utiva",
+          "excerpt": "Official contact page states Transforming lives from Lagos, Nigeria. The official header image lacks a logo filename and was missed by discovery."
+        }
+      ],
+      "candidate_assets": [
+        {
+          "path": "staging/utiva-reviewed-e7a7d7670ffc.svg",
+          "source_url": "https://www.utiva.co/static/media/utivacolored.7364336b.svg",
+          "discovered_on": "https://www.utiva.co/",
+          "source_type": "official-website",
+          "format": "svg",
+          "width": 86,
+          "height": 26,
+          "checksum": "e7a7d7670ffc4972aef3f8cc388e326577d87c99bbcd26caabc6ea4cbc6be5e6",
+          "retrieved_at": "2026-10-19",
+          "reviewed": true
+        }
+      ],
+      "review_notes": "Official page retrieval is not artwork approval."
+    },
+    {
+      "slug": "jobberman",
+      "name": "Jobberman",
+      "aliases": [],
+      "industry": "technology",
+      "target_market": "NG",
+      "website": "https://www.jobberman.com/",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [],
+      "disposition": "pending-review",
+      "reason": "Official artwork staged; identity and visual review required.",
+      "duplicate_of": null,
+      "sources": [
+        {
+          "url": "https://www.jobberman.com/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "Find the Right Job Vacancies in Nigeria | Jobbermangoogle-icon",
+          "page_checksum": "be7bed703be79dbe58243d86e3e96b96497ee448a7dd5854a7a6379326157b95"
+        }
+      ],
+      "candidate_assets": [
+        {
+          "path": "staging/jobberman-popular-1-ca930865914a.jpeg",
+          "source_url": "https://i.roamcdn.net/kazi/ng/base/O_oWGr1EMle5dSNFvDzkMQ/-/_1Q6tq89LxV7VGluZmpoYgNoQVb2huaG5iaWRqbAzMwekA",
+          "discovered_on": "https://www.jobberman.com/",
+          "source_type": "official-website",
+          "format": "jpeg",
+          "width": 200,
+          "height": 200,
+          "checksum": "ca930865914ac97271302af31ed4546472799ca11b2715b4bf52b966a9393c5d",
+          "retrieved_at": "2026-10-19",
+          "reviewed": false
+        }
+      ],
+      "review_notes": "Official page retrieval is not artwork approval."
+    },
+    {
+      "slug": "techcabal",
+      "name": "TechCabal",
+      "aliases": [],
+      "industry": "media-entertainment",
+      "target_market": "NG",
+      "website": "https://techcabal.com/",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [],
+      "disposition": "approved",
+      "reason": "Official publication and About page establish African technology reporting and Nigerian coverage. Artwork visually checked on light and dark backgrounds. Source provenance does not grant a trademark licence or imply endorsement.",
+      "duplicate_of": null,
+      "sources": [
+        {
+          "url": "https://techcabal.com/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "Homepage - TechCabal",
+          "page_checksum": "76c7b1c62197bf7bfa72b81a43420e4529276eb0ec6845266c28269a5953ff3d"
+        },
+        {
+          "url": "https://techcabal.com/about/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "TechCabal",
+          "excerpt": "Official publication and About page establish African technology reporting and Nigerian coverage."
+        }
+      ],
+      "candidate_assets": [
+        {
+          "path": "staging/techcabal-popular-0-f186aef4229a.png",
+          "source_url": "https://c76c7bbc41.mjedge.net/wp-content/uploads/tc/2025/11/tc-logo-3-300x67-1.png",
+          "discovered_on": "https://techcabal.com/",
+          "source_type": "official-website",
+          "format": "png",
+          "width": 300,
+          "height": 67,
+          "checksum": "f186aef4229a6bddfe6663e8a771cd179cb61a5d31469e8e84f4c36deeb8d90c",
+          "retrieved_at": "2026-10-19",
+          "reviewed": false
+        },
+        {
+          "path": "staging/techcabal-popular-1-69306f56be62.png",
+          "source_url": "https://c76c7bbc41.mjedge.net/wp-content/themes/tc3.0/assets/img/tc-icon.png",
+          "discovered_on": "https://techcabal.com/",
+          "source_type": "official-website",
+          "format": "png",
+          "width": 192,
+          "height": 192,
+          "checksum": "69306f56be622347cd9b5b0037c24a753bbfde7816b3b418ac29192923c90b01",
+          "retrieved_at": "2026-10-19",
+          "reviewed": false
+        }
+      ],
+      "review_notes": "Official page retrieval is not artwork approval."
+    },
+    {
+      "slug": "techpoint-africa",
+      "name": "Techpoint Africa",
+      "aliases": [],
+      "industry": "media-entertainment",
+      "target_market": "NG",
+      "website": "https://techpoint.africa/",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [],
+      "disposition": "unresolved",
+      "reason": "Official source unavailable: Command failed: curl --fail --location --silent --show-error --proto =https --proto-redir =https --max-redirs 4 --max-time 12 --max-filesize 5000000 https://techpoint.africa/ curl:",
+      "duplicate_of": null,
+      "sources": [],
+      "candidate_assets": [],
+      "review_notes": "Official page retrieval is not artwork approval."
+    },
+    {
+      "slug": "presco",
+      "name": "Presco",
+      "aliases": [],
+      "industry": "food-beverages",
+      "target_market": "NG",
+      "website": "https://www.presco-plc.com/",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [],
+      "disposition": "unresolved",
+      "reason": "Official site retrieved but no usable logo discovered. Do not substitute product or partner artwork.",
+      "duplicate_of": null,
+      "sources": [
+        {
+          "url": "https://www.presco-plc.com/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "Home - Presco Plc",
+          "page_checksum": "8d0afc7dbe33f8c99ae32058025aba3c8d0fdd6095ec6a3a772891db021d7c6e"
+        }
+      ],
+      "candidate_assets": [],
+      "review_notes": "Official page retrieval is not artwork approval."
+    },
+    {
+      "slug": "transcorp-group",
+      "name": "Transcorp Group",
+      "aliases": [],
+      "industry": "energy-utilities",
+      "target_market": "NG",
+      "website": "https://transcorpgroup.com/",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [],
+      "disposition": "unresolved",
+      "reason": "Official site retrieved but no usable logo discovered. Do not substitute product or partner artwork.",
+      "duplicate_of": null,
+      "sources": [
+        {
+          "url": "https://transcorpgroup.com/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "You are being redirected...",
+          "page_checksum": "c60d4dcef78d51e93107b8840260abc337c92ad4ab74fca7092b7e2d8920db01"
+        }
+      ],
+      "candidate_assets": [],
+      "review_notes": "Official page retrieval is not artwork approval."
+    },
+    {
+      "slug": "arnergy",
+      "name": "Arnergy",
+      "aliases": [],
+      "industry": "energy-utilities",
+      "target_market": "NG",
+      "website": "https://www.arnergy.com/",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [],
+      "disposition": "approved",
+      "reason": "Official shipping policy identifies Arnergy as a Nigerian enterprise serving Nigeria. Artwork visually checked on light and dark backgrounds. Source provenance does not grant a trademark licence or imply endorsement.",
+      "duplicate_of": null,
+      "sources": [
+        {
+          "url": "https://www.arnergy.com/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "Reliable Solar Solutions for Homes & Businesses - Arnergy",
+          "page_checksum": "5d58f8d46e470b9953c2f8a4b83f05c68ee5ed8353968aa692dc8c405f0d69f2"
+        },
+        {
+          "url": "https://shop.arnergy.com/policies/shipping-policy",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "Arnergy",
+          "excerpt": "Official shipping policy identifies Arnergy as a Nigerian enterprise serving Nigeria."
+        }
+      ],
+      "candidate_assets": [
+        {
+          "path": "staging/arnergy-popular-0-6b75494f473f.png",
+          "source_url": "https://www.arnergy.com/_next/image?url=%2Farnergy-logo.png&w=384&q=75",
+          "discovered_on": "https://www.arnergy.com/",
+          "source_type": "official-website",
+          "format": "png",
+          "width": 384,
+          "height": 140,
+          "checksum": "6b75494f473f567fc34a463431a1ba6233f591424fc42c39c64b9708f306fa79",
+          "retrieved_at": "2026-10-19",
+          "reviewed": false
+        },
+        {
+          "path": "staging/arnergy-popular-1-8891280d0407.png",
+          "source_url": "https://www.arnergy.com/_next/image?url=%2Farnergy-logo.png&w=256&q=75",
+          "discovered_on": "https://www.arnergy.com/",
+          "source_type": "official-website",
+          "format": "png",
+          "width": 256,
+          "height": 93,
+          "checksum": "8891280d04075098ef3e5227db88dd1afca725516237f552952068a84b53b96d",
+          "retrieved_at": "2026-10-19",
+          "reviewed": false
+        }
+      ],
+      "review_notes": "Official page retrieval is not artwork approval."
+    },
+    {
+      "slug": "omniretail",
+      "name": "OmniRetail",
+      "aliases": [],
+      "industry": "technology",
+      "target_market": "NG",
+      "website": "https://www.omniretail.africa/",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [],
+      "disposition": "approved",
+      "reason": "Official homepage supplies the Omni identity and lists its Lagos operations; not confused with unrelated companies using Omni. Artwork visually checked on light and dark backgrounds. Source provenance does not grant a trademark licence or imply endorsement.",
+      "duplicate_of": null,
+      "sources": [
+        {
+          "url": "https://www.omniretail.africa/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "Omni | Pathway to Profit",
+          "page_checksum": "4de799c507d66f7330484ce671f5937eae01c1d4f4bf66d9d2b25172274691df"
+        },
+        {
+          "url": "https://www.omniretail.africa/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "OmniRetail",
+          "excerpt": "Official homepage supplies the Omni identity and lists its Lagos operations; not confused with unrelated companies using Omni."
+        }
+      ],
+      "candidate_assets": [
+        {
+          "path": "staging/omniretail-popular-0-88eb90389de2.png",
+          "source_url": "https://www.omniretail.africa/images/logo/omni_logo.png",
+          "discovered_on": "https://www.omniretail.africa/",
+          "source_type": "official-website",
+          "format": "png",
+          "width": 1295,
+          "height": 404,
+          "checksum": "88eb90389de24a992114c3b9b434a7c3df369fce2b48e61027195e583061e8cb",
+          "retrieved_at": "2026-10-19",
+          "reviewed": false
+        },
+        {
+          "path": "staging/omniretail-popular-1-7d49768cbb6f.png",
+          "source_url": "https://www.omniretail.africa/images/logo/omni_logo_white.png",
+          "discovered_on": "https://www.omniretail.africa/",
+          "source_type": "official-website",
+          "format": "png",
+          "width": 1295,
+          "height": 404,
+          "checksum": "7d49768cbb6f876a800f178d5c0f90bb011e9ae04a7925a5f4d7eba3ad6391a2",
+          "retrieved_at": "2026-10-19",
+          "reviewed": false
+        }
+      ],
+      "review_notes": "Official page retrieval is not artwork approval."
+    },
+    {
+      "slug": "lemfi",
+      "name": "LemFi",
+      "aliases": [],
+      "industry": "financial-services",
+      "target_market": "NG",
+      "website": "https://www.lemfi.com/en-ng/",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [],
+      "disposition": "duplicate",
+      "reason": "Already published in the immutable legacy catalog as lemfi. Keep current assets unchanged; metadata improvements are separate from replacement artwork.",
+      "duplicate_of": "lemfi",
+      "sources": [
+        {
+          "url": "https://www.lemfi.com/en-ng/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "Global Accounts For African Professionals",
+          "page_checksum": "bd6d596b281fd54ad516c5725030fe4780d8d83da1b3af48d6db61b2a2e3b14a"
+        }
+      ],
+      "candidate_assets": [
+        {
+          "path": "staging/lemfi-popular-0-4c916d6ada04.svg",
+          "source_url": "https://www.lemfi.com/en-ng/#inline-logo-0",
+          "discovered_on": "https://www.lemfi.com/en-ng/",
+          "source_type": "official-website",
+          "format": "svg",
+          "width": 792,
+          "height": 151,
+          "checksum": "4c916d6ada04bd3dc8360b41a641b3aaf3d4920d12fb58dfe86ca72d456772c5",
+          "retrieved_at": "2026-10-19",
+          "reviewed": false
+        },
+        {
+          "path": "staging/lemfi-popular-1-c6d2306802cd.svg",
+          "source_url": "https://www.lemfi.com/en-ng/#inline-logo-18",
+          "discovered_on": "https://www.lemfi.com/en-ng/",
+          "source_type": "official-website",
+          "format": "svg",
+          "width": 158,
+          "height": 36,
+          "checksum": "c6d2306802cd03a196d389331127d3b57d973b56678a80d5dbb8473ae4fbcfb0",
+          "retrieved_at": "2026-10-19",
+          "reviewed": false
+        }
+      ],
+      "review_notes": "Official page retrieval is not artwork approval."
+    },
+    {
+      "slug": "abuja-electricity-distribution-company",
+      "name": "Abuja Electricity Distribution Company",
+      "aliases": [],
+      "industry": "energy-utilities",
+      "target_market": "NG",
+      "website": "https://www.abujaelectricity.com/home/",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [],
+      "disposition": "approved",
+      "reason": "Official operator identity visually reviewed on light and dark backgrounds. Company-owned header artwork is used; payment-provider and partner logos are excluded. Raster originals are not traced or upscaled. Distribution-company status is evidenced separately from artwork provenance; no trademark licence is asserted.",
+      "duplicate_of": null,
+      "sources": [
+        {
+          "url": "https://www.abujaelectricity.com/home/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "Home – AEDC",
+          "page_checksum": "41d5403e0f4815613013627e36077c71ddeb7fc84fcb5f266a2c51d6ca0dc601"
+        },
+        {
+          "url": "https://www.abujaelectricity.com/home/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "Abuja Electricity Distribution Company",
+          "excerpt": "Reviewed official operator logo; CSS/application asset references inspected where static discovery missed it."
+        }
+      ],
+      "candidate_assets": [
+        {
+          "path": "staging/abuja-electricity-distribution-company-popular-0-806b11217cf1.png",
+          "source_url": "https://www.abujaelectricity.com/wp-content/uploads/2024/03/header_white_logo.png",
+          "discovered_on": "https://www.abujaelectricity.com/home/",
+          "source_type": "official-website",
+          "format": "png",
+          "width": 250,
+          "height": 120,
+          "checksum": "806b11217cf13081fa97ceb7d6c8e9bc9cfb63020a48f78749a1e9bf107403e7",
+          "retrieved_at": "2026-10-19",
+          "reviewed": false
+        },
+        {
+          "path": "staging/abuja-electricity-distribution-company-popular-1-9b1ac747d186.png",
+          "source_url": "https://www.abujaelectricity.com/wp-content/uploads/2024/01/aedc_logo_02.png",
+          "discovered_on": "https://www.abujaelectricity.com/home/",
+          "source_type": "official-website",
+          "format": "png",
+          "width": 255,
+          "height": 95,
+          "checksum": "9b1ac747d186af40022e022992f514b90eec741acd0c3df8ef8b567a77fccfea",
+          "retrieved_at": "2026-10-19",
+          "reviewed": false
+        }
+      ],
+      "review_notes": "Official page retrieval is not artwork approval."
+    },
+    {
+      "slug": "benin-electricity-distribution-company",
+      "name": "Benin Electricity Distribution Company",
+      "aliases": [],
+      "industry": "energy-utilities",
+      "target_market": "NG",
+      "website": "https://beninelectric.com/",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [],
+      "disposition": "approved",
+      "reason": "Official operator identity visually reviewed on light and dark backgrounds. Company-owned header artwork is used; payment-provider and partner logos are excluded. Raster originals are not traced or upscaled. Distribution-company status is evidenced separately from artwork provenance; no trademark licence is asserted.",
+      "duplicate_of": null,
+      "sources": [
+        {
+          "url": "https://beninelectric.com/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "BEDC Electricity PLC",
+          "page_checksum": "e5aba1d52aea5fd39b6c12f581ff54c0aa004a7e66ab7ff08473cb4013c41d7e"
+        },
+        {
+          "url": "https://beninelectric.com/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "Benin Electricity Distribution Company",
+          "excerpt": "Reviewed official operator logo; CSS/application asset references inspected where static discovery missed it."
+        }
+      ],
+      "candidate_assets": [
+        {
+          "path": "staging/benin-electricity-distribution-company-reviewed-5f37a464b946.png",
+          "source_url": "https://beninelectric.com/images/BEDCLogo.png",
+          "discovered_on": "https://beninelectric.com/",
+          "source_type": "official-website",
+          "format": "png",
+          "width": 406,
+          "height": 99,
+          "checksum": "5f37a464b946cb1a0617af9db5a5c79d7816efb50ba087f43f2969c5e9f53727",
+          "retrieved_at": "2026-10-19",
+          "reviewed": true
+        }
+      ],
+      "review_notes": "Official page retrieval is not artwork approval."
+    },
+    {
+      "slug": "eko-electricity-distribution-company",
+      "name": "Eko Electricity Distribution Company",
+      "aliases": [],
+      "industry": "energy-utilities",
+      "target_market": "NG",
+      "website": "https://ekedp.com/",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [],
+      "disposition": "approved",
+      "reason": "Official operator identity visually reviewed on light and dark backgrounds. Company-owned header artwork is used; payment-provider and partner logos are excluded. Raster originals are not traced or upscaled. Distribution-company status is evidenced separately from artwork provenance; no trademark licence is asserted.",
+      "duplicate_of": null,
+      "sources": [
+        {
+          "url": "https://ekedp.com/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "Eko Electricity Distribution Company || Electricity bill on the go",
+          "page_checksum": "4fc3d40db42565ae1685703549b00bfc1556d54d543de59f6ea92a2811857bd8"
+        },
+        {
+          "url": "https://ekedp.com/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "Eko Electricity Distribution Company",
+          "excerpt": "Reviewed official operator logo; CSS/application asset references inspected where static discovery missed it."
+        }
+      ],
+      "candidate_assets": [
+        {
+          "path": "staging/eko-electricity-distribution-company-popular-0-941e6a9d4237.png",
+          "source_url": "https://ekedp.com/front/assets/images/resources/logo-1.png",
+          "discovered_on": "https://ekedp.com/",
+          "source_type": "official-website",
+          "format": "png",
+          "width": 174,
+          "height": 84,
+          "checksum": "941e6a9d4237e89535af22ed479266d1e1a0b35e53f193c95f57818118d460f6",
+          "retrieved_at": "2026-10-19",
+          "reviewed": false
+        },
+        {
+          "path": "staging/eko-electricity-distribution-company-popular-1-ff3fe5f1e787.png",
+          "source_url": "https://ekedp.com/front/assets/images/footer/footer-logo-1.png",
+          "discovered_on": "https://ekedp.com/",
+          "source_type": "official-website",
+          "format": "png",
+          "width": 103,
+          "height": 49,
+          "checksum": "ff3fe5f1e7870310e8f4bdf6a7e000d7e1349d37262cf486008d5e530711f96a",
+          "retrieved_at": "2026-10-19",
+          "reviewed": false
+        }
+      ],
+      "review_notes": "Official page retrieval is not artwork approval."
+    },
+    {
+      "slug": "enugu-electricity-distribution-company",
+      "name": "Enugu Electricity Distribution Company",
+      "aliases": [],
+      "industry": "energy-utilities",
+      "target_market": "NG",
+      "website": "https://www.enugudisco.com/",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [],
+      "disposition": "approved",
+      "reason": "Official operator identity visually reviewed on light and dark backgrounds. Company-owned header artwork is used; payment-provider and partner logos are excluded. Raster originals are not traced or upscaled. Distribution-company status is evidenced separately from artwork provenance; no trademark licence is asserted.",
+      "duplicate_of": null,
+      "sources": [
+        {
+          "url": "https://www.enugudisco.com/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "Enugu Electricity Distribution Company",
+          "page_checksum": "bb4e7e251ba491f88c81ed1cfae3aa2726dd643431ec344c81678a27231778c2"
+        },
+        {
+          "url": "https://www.enugudisco.com/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "Enugu Electricity Distribution Company",
+          "excerpt": "Reviewed official operator logo; CSS/application asset references inspected where static discovery missed it."
+        }
+      ],
+      "candidate_assets": [
+        {
+          "path": "staging/enugu-electricity-distribution-company-reviewed-a4e1bb99acb7.png",
+          "source_url": "https://www.enugudisco.com/templates/kdsg2/images/s5_logo.png",
+          "discovered_on": "https://www.enugudisco.com/",
+          "source_type": "official-website",
+          "format": "png",
+          "width": 200,
+          "height": 70,
+          "checksum": "a4e1bb99acb7e74ac8dae1e2de8d335de00114642a9413d1b6c940fe26122037",
+          "retrieved_at": "2026-10-19",
+          "reviewed": true
+        }
+      ],
+      "review_notes": "Official page retrieval is not artwork approval."
+    },
+    {
+      "slug": "ibadan-electricity-distribution-company",
+      "name": "Ibadan Electricity Distribution Company",
+      "aliases": [],
+      "industry": "energy-utilities",
+      "target_market": "NG",
+      "website": "https://ibedc.com/",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [],
+      "disposition": "approved",
+      "reason": "Official operator identity visually reviewed on light and dark backgrounds. Company-owned header artwork is used; payment-provider and partner logos are excluded. Raster originals are not traced or upscaled. Distribution-company status is evidenced separately from artwork provenance; no trademark licence is asserted.",
+      "duplicate_of": null,
+      "sources": [
+        {
+          "url": "https://ibedc.com/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "IBEDC - Home",
+          "page_checksum": "fbdd89b0850df3530f6832da9d706462f55590d8f75fbba0d566c6284f4ffd43"
+        },
+        {
+          "url": "https://ibedc.com/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "Ibadan Electricity Distribution Company",
+          "excerpt": "Reviewed official operator logo; CSS/application asset references inspected where static discovery missed it."
+        }
+      ],
+      "candidate_assets": [
+        {
+          "path": "staging/ibadan-electricity-distribution-company-popular-0-edacf0c692ae.png",
+          "source_url": "https://www.ibedc.com/assets/img/logo.png",
+          "discovered_on": "https://ibedc.com/",
+          "source_type": "official-website",
+          "format": "png",
+          "width": 128,
+          "height": 69,
+          "checksum": "edacf0c692ae9830a989c41f2226c8c7b46171bb1a88226f60a0b29d6f4c1533",
+          "retrieved_at": "2026-10-19",
+          "reviewed": false
+        },
+        {
+          "path": "staging/ibadan-electricity-distribution-company-popular-1-2226697a107b.png",
+          "source_url": "https://www.ibedc.com/assets/img/footer-logo.png",
+          "discovered_on": "https://ibedc.com/",
+          "source_type": "official-website",
+          "format": "png",
+          "width": 187,
+          "height": 89,
+          "checksum": "2226697a107bda2b456f45abc946d62252741fa3abeb5df70ec780f2b90e37aa",
+          "retrieved_at": "2026-10-19",
+          "reviewed": false
+        }
+      ],
+      "review_notes": "Official page retrieval is not artwork approval."
+    },
+    {
+      "slug": "ikeja-electric",
+      "name": "Ikeja Electric",
+      "aliases": [],
+      "industry": "energy-utilities",
+      "target_market": "NG",
+      "website": "https://www.ikejaelectric.com/",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [],
+      "disposition": "approved",
+      "reason": "Official operator identity visually reviewed on light and dark backgrounds. Company-owned header artwork is used; payment-provider and partner logos are excluded. Raster originals are not traced or upscaled. Distribution-company status is evidenced separately from artwork provenance; no trademark licence is asserted.",
+      "duplicate_of": null,
+      "sources": [
+        {
+          "url": "https://www.ikejaelectric.com/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "Ikeja Electric - Bringing Energy To Life",
+          "page_checksum": "ec3418d240135d6ed8cbf5d39c521d622a6d5eb3f2298e5e0e047d603d73094e"
+        },
+        {
+          "url": "https://www.ikejaelectric.com/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "Ikeja Electric",
+          "excerpt": "Reviewed official operator logo; CSS/application asset references inspected where static discovery missed it."
+        }
+      ],
+      "candidate_assets": [
+        {
+          "path": "staging/ikeja-electric-popular-0-428a92f254d4.png",
+          "source_url": "https://www.ikejaelectric.com/wp-content/uploads/2020/05/Ikeja-Electric-Logo-new-1.png",
+          "discovered_on": "https://www.ikejaelectric.com/",
+          "source_type": "official-website",
+          "format": "png",
+          "width": 117,
+          "height": 138,
+          "checksum": "428a92f254d4fa282f2d5504287f7bc19a71447ddea500f42ef604ce901e6525",
+          "retrieved_at": "2026-10-19",
+          "reviewed": false
+        },
+        {
+          "path": "staging/ikeja-electric-popular-1-25b5a2fd2c16.png",
+          "source_url": "https://www.ikejaelectric.com/wp-content/uploads/2019/07/sticky-logo.png",
+          "discovered_on": "https://www.ikejaelectric.com/",
+          "source_type": "official-website",
+          "format": "png",
+          "width": 78,
+          "height": 49,
+          "checksum": "25b5a2fd2c168b247ee4f97538493794aae1f522e192473a18de5101e18e4489",
+          "retrieved_at": "2026-10-19",
+          "reviewed": false
+        }
+      ],
+      "review_notes": "Official page retrieval is not artwork approval."
+    },
+    {
+      "slug": "jos-electricity-distribution-company",
+      "name": "Jos Electricity Distribution Company",
+      "aliases": [],
+      "industry": "energy-utilities",
+      "target_market": "NG",
+      "website": "https://www.jedplc.com/",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [],
+      "disposition": "approved",
+      "reason": "Official operator identity visually reviewed on light and dark backgrounds. Company-owned header artwork is used; payment-provider and partner logos are excluded. Raster originals are not traced or upscaled. Distribution-company status is evidenced separately from artwork provenance; no trademark licence is asserted.",
+      "duplicate_of": null,
+      "sources": [
+        {
+          "url": "https://www.jedplc.com/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "Home | JED Plc",
+          "page_checksum": "2864d95fac21455eea73d37bf339b731bb18365235f999e415f9792fa5d1637f"
+        },
+        {
+          "url": "https://www.jedplc.com/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "Jos Electricity Distribution Company",
+          "excerpt": "Reviewed official operator logo; CSS/application asset references inspected where static discovery missed it."
+        }
+      ],
+      "candidate_assets": [
+        {
+          "path": "staging/jos-electricity-distribution-company-popular-0-ce6b4ade14ea.png",
+          "source_url": "https://www.jedplc.com/img/jed-logo.png",
+          "discovered_on": "https://www.jedplc.com/",
+          "source_type": "official-website",
+          "format": "png",
+          "width": 171,
+          "height": 108,
+          "checksum": "ce6b4ade14eaf7de5090cc2ff657b3c00f2a8539ad92d0897e9faf2d96bf7555",
+          "retrieved_at": "2026-10-19",
+          "reviewed": false
+        }
+      ],
+      "review_notes": "Official page retrieval is not artwork approval."
+    },
+    {
+      "slug": "kaduna-electric",
+      "name": "Kaduna Electric",
+      "aliases": [],
+      "industry": "energy-utilities",
+      "target_market": "NG",
+      "website": "https://kadunaelectric.com/",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [],
+      "disposition": "approved",
+      "reason": "Official operator identity visually reviewed on light and dark backgrounds. Company-owned header artwork is used; payment-provider and partner logos are excluded. Raster originals are not traced or upscaled. Distribution-company status is evidenced separately from artwork provenance; no trademark licence is asserted. The official SVG is a wrapper around one embedded PNG, not vector artwork. Original PNG bytes were extracted without tracing, upscaling or introducing external references; SVG is not offered for download.",
+      "duplicate_of": null,
+      "sources": [
+        {
+          "url": "https://kadunaelectric.com/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "Kaduna Electric | Reliable Power Distribution",
+          "page_checksum": "004d4a59daf68821e9d80406547bae12dee600e5120a79fb730edae61222e46c"
+        },
+        {
+          "url": "https://kadunaelectric.com/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "Kaduna Electric",
+          "excerpt": "Reviewed official operator logo; CSS/application asset references inspected where static discovery missed it."
+        }
+      ],
+      "candidate_assets": [
+        {
+          "path": "staging/kaduna-electric-popular-0-5d3a27b3b1c5.svg",
+          "source_url": "https://kadunaelectric.com/static/images/kelogo.svg",
+          "discovered_on": "https://kadunaelectric.com/",
+          "source_type": "official-website",
+          "format": "svg",
+          "width": 171,
+          "height": 44,
+          "checksum": "5d3a27b3b1c5fce23ecb5494eb2793868616e5d5d324f15ff5a96fcb8dac06d8",
+          "retrieved_at": "2026-10-19",
+          "reviewed": false
+        },
+        {
+          "path": "staging/kaduna-electric-popular-1-fcc1fdfcb750.svg",
+          "source_url": "https://kadunaelectric.com/static/images/partners/aku-africa.svg",
+          "discovered_on": "https://kadunaelectric.com/",
+          "source_type": "official-website",
+          "format": "svg",
+          "width": 62,
+          "height": 49,
+          "checksum": "fcc1fdfcb750a381013add796d467a95ce9fb9c65037143ab1a392db175c3828",
+          "retrieved_at": "2026-10-19",
+          "reviewed": false
+        },
+        {
+          "path": "staging/kaduna-electric-embedded-ca396304754f.png",
+          "source_url": "https://kadunaelectric.com/static/images/kelogo.svg",
+          "discovered_on": "https://kadunaelectric.com/",
+          "source_type": "official-website",
+          "format": "png",
+          "width": 726,
+          "height": 189,
+          "checksum": "ca396304754f41755e958182798af4a938d4b2cac7f6efea9ec551b389e5d9bf",
+          "retrieved_at": "2026-10-19",
+          "reviewed": true,
+          "source_container_path": "staging/kaduna-electric-popular-0-5d3a27b3b1c5.svg",
+          "source_container_checksum": "5d3a27b3b1c5fce23ecb5494eb2793868616e5d5d324f15ff5a96fcb8dac06d8"
+        }
+      ],
+      "review_notes": "Official page retrieval is not artwork approval."
+    },
+    {
+      "slug": "kano-electricity-distribution-company",
+      "name": "Kano Electricity Distribution Company",
+      "aliases": [],
+      "industry": "energy-utilities",
+      "target_market": "NG",
+      "website": "https://kedco.ng/",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [],
+      "disposition": "approved",
+      "reason": "Official operator identity visually reviewed on light and dark backgrounds. Company-owned header artwork is used; payment-provider and partner logos are excluded. Raster originals are not traced or upscaled. Distribution-company status is evidenced separately from artwork provenance; no trademark licence is asserted.",
+      "duplicate_of": null,
+      "sources": [
+        {
+          "url": "https://kedco.ng/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "KEDCO – Empowering Lives",
+          "page_checksum": "3d5dbe153464dc5c6e65cb5ce70b8beee29173ade2265eb06f33d8ebbf6a89d3"
+        },
+        {
+          "url": "https://kedco.ng/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "Kano Electricity Distribution Company",
+          "excerpt": "Reviewed official operator logo; CSS/application asset references inspected where static discovery missed it."
+        }
+      ],
+      "candidate_assets": [
+        {
+          "path": "staging/kano-electricity-distribution-company-popular-0-3559f38fdc9b.png",
+          "source_url": "https://kedco.ng/wp-content/uploads/2025/09/cropped-kedco_logokk.png",
+          "discovered_on": "https://kedco.ng/",
+          "source_type": "official-website",
+          "format": "png",
+          "width": 325,
+          "height": 100,
+          "checksum": "3559f38fdc9b4a022d780deaa799c1f12062e09a2e5c21498de253103725709f",
+          "retrieved_at": "2026-10-19",
+          "reviewed": false
+        },
+        {
+          "path": "staging/kano-electricity-distribution-company-popular-1-6d18ebb6cd0d.png",
+          "source_url": "https://kedco.ng/wp-content/uploads/2024/04/klogo-1.png",
+          "discovered_on": "https://kedco.ng/",
+          "source_type": "official-website",
+          "format": "png",
+          "width": 61,
+          "height": 58,
+          "checksum": "6d18ebb6cd0d763e29e5c9dbdd806d67f66b0c876841745b1f955214b3abb19e",
+          "retrieved_at": "2026-10-19",
+          "reviewed": false
+        }
+      ],
+      "review_notes": "Official page retrieval is not artwork approval."
+    },
+    {
+      "slug": "port-harcourt-electricity-distribution-company",
+      "name": "Port Harcourt Electricity Distribution Company",
+      "aliases": [],
+      "industry": "energy-utilities",
+      "target_market": "NG",
+      "website": "https://phed.com.ng/",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [],
+      "disposition": "approved",
+      "reason": "Official operator identity visually reviewed on light and dark backgrounds. Company-owned header artwork is used; payment-provider and partner logos are excluded. Raster originals are not traced or upscaled. Distribution-company status is evidenced separately from artwork provenance; no trademark licence is asserted.",
+      "duplicate_of": null,
+      "sources": [
+        {
+          "url": "https://phed.com.ng/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "Home page -- PHED WebSite",
+          "page_checksum": "8e08dd4b8b52d1c82c0aa625f5c0f15fd0c6402b7f0d8abe168de236d2101417"
+        },
+        {
+          "url": "https://phed.com.ng/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "Port Harcourt Electricity Distribution Company",
+          "excerpt": "Reviewed official operator logo; CSS/application asset references inspected where static discovery missed it."
+        }
+      ],
+      "candidate_assets": [
+        {
+          "path": "staging/port-harcourt-electricity-distribution-company-popular-0-080320e10185.png",
+          "source_url": "https://phed.com.ng/image001.png",
+          "discovered_on": "https://phed.com.ng/",
+          "source_type": "official-website",
+          "format": "png",
+          "width": 230,
+          "height": 85,
+          "checksum": "080320e1018504696ea9e2b94bc42aaebb4cde4f02c284c7036225f550e75639",
+          "retrieved_at": "2026-10-19",
+          "reviewed": false
+        },
+        {
+          "path": "staging/port-harcourt-electricity-distribution-company-popular-1-73565af2cb15.png",
+          "source_url": "https://phed.com.ng/PHED-logo-transparent.png",
+          "discovered_on": "https://phed.com.ng/",
+          "source_type": "official-website",
+          "format": "png",
+          "width": 1920,
+          "height": 624,
+          "checksum": "73565af2cb15e379c22b2ee954a1122e0f19e87a7b6e5c514fcf97c42b838fd6",
+          "retrieved_at": "2026-10-19",
+          "reviewed": false
+        }
+      ],
+      "review_notes": "Official page retrieval is not artwork approval."
+    },
+    {
+      "slug": "yola-electricity-distribution-company",
+      "name": "Yola Electricity Distribution Company",
+      "aliases": [],
+      "industry": "energy-utilities",
+      "target_market": "NG",
+      "website": "https://www.yedc.com.ng/",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [],
+      "disposition": "approved",
+      "reason": "Official operator identity visually reviewed on light and dark backgrounds. Company-owned header artwork is used; payment-provider and partner logos are excluded. Raster originals are not traced or upscaled. Distribution-company status is evidenced separately from artwork provenance; no trademark licence is asserted.",
+      "duplicate_of": null,
+      "sources": [
+        {
+          "url": "https://www.yedc.com.ng/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "Yola Electricity Distribution Company",
+          "page_checksum": "abcbaba0a0879acbf9c17d1fa65af6f4c8d9e4f1d7337520edf0522acbb4fb34"
+        },
+        {
+          "url": "https://www.yedc.com.ng/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "Yola Electricity Distribution Company",
+          "excerpt": "Reviewed official operator logo; CSS/application asset references inspected where static discovery missed it."
+        }
+      ],
+      "candidate_assets": [
+        {
+          "path": "staging/yola-electricity-distribution-company-popular-0-97402343f6d0.png",
+          "source_url": "https://www.yedc.com.ng/assets/images/logo.png",
+          "discovered_on": "https://www.yedc.com.ng/",
+          "source_type": "official-website",
+          "format": "png",
+          "width": 281,
+          "height": 90,
+          "checksum": "97402343f6d02da03cda90c6ce4592400f6c2a34323f8f62e5bf8e5a84102888",
+          "retrieved_at": "2026-10-19",
+          "reviewed": false
+        }
+      ],
+      "review_notes": "Official page retrieval is not artwork approval."
+    },
+    {
+      "slug": "aba-power",
+      "name": "Aba Power",
+      "aliases": [],
+      "industry": "energy-utilities",
+      "target_market": "NG",
+      "website": "https://www.abapower.com/",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [],
+      "disposition": "approved",
+      "reason": "Official operator identity visually reviewed on light and dark backgrounds. Company-owned header artwork is used; payment-provider and partner logos are excluded. Raster originals are not traced or upscaled. Distribution-company status is evidenced separately from artwork provenance; no trademark licence is asserted.",
+      "duplicate_of": null,
+      "sources": [
+        {
+          "url": "https://www.abapower.com/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "Aba Power",
+          "page_checksum": "bb4367ed62740ade4838408600fa7dfcd4c0dab10cf6398cfd2c9a170ca25ae2"
+        },
+        {
+          "url": "https://www.abapower.com/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "Aba Power",
+          "excerpt": "Reviewed official operator logo; CSS/application asset references inspected where static discovery missed it."
+        }
+      ],
+      "candidate_assets": [
+        {
+          "path": "staging/aba-power-reviewed-c629250ab500.jpeg",
+          "source_url": "https://www.abapower.com/apl-logo.jpg",
+          "discovered_on": "https://www.abapower.com/",
+          "source_type": "official-website",
+          "format": "jpeg",
+          "width": 300,
+          "height": 300,
+          "checksum": "c629250ab500cdda0de4b03d19825271b23866858b0464a304115635581b345f",
+          "retrieved_at": "2026-10-19",
+          "reviewed": true
+        }
+      ],
+      "review_notes": "Official page retrieval is not artwork approval."
+    },
+    {
+      "slug": "prince-ebeano",
+      "name": "Prince Ebeano",
+      "aliases": [],
+      "industry": "retail-commerce",
+      "target_market": "NG",
+      "website": "https://princeebeano.com/",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [],
+      "disposition": "approved",
+      "reason": "Official brand artwork visually reviewed against the company website. Parent, payment and partner logos excluded. JavaScript and page configuration references inspected where static discovery missed the logo. Raster originals are not traced or enlarged. Official provenance does not imply a trademark redistribution licence.",
+      "duplicate_of": null,
+      "sources": [
+        {
+          "url": "https://princeebeano.com/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "Prince Ebeano Supermarket | One-Stop Retail Destination",
+          "page_checksum": "27f56006110faf5e70d1502a683ba9686e28a1c62046d2ac79fbf9c137e7f8c9"
+        }
+      ],
+      "candidate_assets": [
+        {
+          "path": "staging/prince-ebeano-popular-0-8dc579f8b799.png",
+          "source_url": "https://princeebeano.com/assets/images/logo/logo.png",
+          "discovered_on": "https://princeebeano.com/",
+          "source_type": "official-website",
+          "format": "png",
+          "width": 220,
+          "height": 220,
+          "checksum": "8dc579f8b799b9520f9346def3e2f4868ff8e952af4ad05f4fe5542d8cd7f80e",
+          "retrieved_at": "2026-10-19",
+          "reviewed": true
+        }
+      ],
+      "review_notes": "Official page retrieval is not artwork approval."
+    },
+    {
+      "slug": "justrite-superstore",
+      "name": "Justrite Superstore",
+      "aliases": [],
+      "industry": "retail-commerce",
+      "target_market": "NG",
+      "website": "https://justriteonline.com/",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [],
+      "disposition": "approved",
+      "reason": "Official brand artwork visually reviewed against the company website. Parent, payment and partner logos excluded. JavaScript and page configuration references inspected where static discovery missed the logo. Raster originals are not traced or enlarged. Official provenance does not imply a trademark redistribution licence.",
+      "duplicate_of": null,
+      "sources": [
+        {
+          "url": "https://justriteonline.com/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "Homepage - Justrite Superstore",
+          "page_checksum": "23cb3ead7e61c66a7ad01add5aa10d30735338525106adce7312dca122a10b8b"
+        }
+      ],
+      "candidate_assets": [
+        {
+          "path": "staging/justrite-superstore-popular-0-b2b5659888aa.png",
+          "source_url": "https://justriteonline.com/wp-content/uploads/2020/08/newlogo2-1.png",
+          "discovered_on": "https://justriteonline.com/",
+          "source_type": "official-website",
+          "format": "png",
+          "width": 1288,
+          "height": 661,
+          "checksum": "b2b5659888aa078cb09614055ec3043bdbb42474919743e176ddd99e8fa58675",
+          "retrieved_at": "2026-10-19",
+          "reviewed": true
+        }
+      ],
+      "review_notes": "Official page retrieval is not artwork approval."
+    },
+    {
+      "slug": "market-square",
+      "name": "Market Square",
+      "aliases": [],
+      "industry": "retail-commerce",
+      "target_market": "NG",
+      "website": "https://marketsquareng.com/",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [],
+      "disposition": "unresolved",
+      "reason": "Official site retrieved but no usable logo discovered. Do not substitute product or partner artwork.",
+      "duplicate_of": null,
+      "sources": [
+        {
+          "url": "https://marketsquareng.com/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "Marketsquare",
+          "page_checksum": "400c0384782989a91482905ecddb70ecd7d9e6d844272194686e75aa2db24d92"
+        }
+      ],
+      "candidate_assets": [],
+      "review_notes": "Official page retrieval is not artwork approval."
+    },
+    {
+      "slug": "foodco",
+      "name": "FoodCo",
+      "aliases": [],
+      "industry": "retail-commerce",
+      "target_market": "NG",
+      "website": "https://foodco.ng/",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [],
+      "disposition": "unresolved",
+      "reason": "Official source unavailable: Command failed: curl --fail --location --silent --show-error --proto =https --proto-redir =https --max-redirs 4 --max-time 12 --max-filesize 5000000 https://foodco.ng/ curl: (56) T",
+      "duplicate_of": null,
+      "sources": [],
+      "candidate_assets": [],
+      "review_notes": "Official page retrieval is not artwork approval."
+    },
+    {
+      "slug": "chicken-republic",
+      "name": "Chicken Republic",
+      "aliases": [],
+      "industry": "food-beverages",
+      "target_market": "NG",
+      "website": "https://www.chicken-republic.com/",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [],
+      "disposition": "approved",
+      "reason": "Official brand artwork visually reviewed against the company website. Parent, payment and partner logos excluded. JavaScript and page configuration references inspected where static discovery missed the logo. Raster originals are not traced or enlarged. Official provenance does not imply a trademark redistribution licence.",
+      "duplicate_of": null,
+      "sources": [
+        {
+          "url": "https://www.chicken-republic.com/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "Homepage - Food Concepts PLC",
+          "page_checksum": "2284d06ff53b37fa949bd69809299123bf771377a83d49e461de86a31bb95183"
+        }
+      ],
+      "candidate_assets": [
+        {
+          "path": "staging/chicken-republic-popular-0-eb2c1e4ef934.png",
+          "source_url": "https://foodconceptsplc.com/wp-content/uploads/2019/10/FoodConcepts_ChickenRepublicHeader.png",
+          "discovered_on": "https://www.chicken-republic.com/",
+          "source_type": "official-website",
+          "format": "png",
+          "width": 199,
+          "height": 45,
+          "checksum": "eb2c1e4ef9347111d1673a3090f59a5ec8320a3d9dea959e8781b552f26f6094",
+          "retrieved_at": "2026-10-19",
+          "reviewed": true
+        },
+        {
+          "path": "staging/chicken-republic-popular-1-86fa89686dcd.png",
+          "source_url": "https://foodconceptsplc.com/wp-content/uploads/2019/10/FoodConcepts_Logo-1.png",
+          "discovered_on": "https://www.chicken-republic.com/",
+          "source_type": "official-website",
+          "format": "png",
+          "width": 348,
+          "height": 61,
+          "checksum": "86fa89686dcdd6e721d54ffdde8228a0bae71b1276a5f979c91fc580d3a0c758",
+          "retrieved_at": "2026-10-19",
+          "reviewed": false
+        }
+      ],
+      "review_notes": "Official page retrieval is not artwork approval."
+    },
+    {
+      "slug": "kilimanjaro-restaurants",
+      "name": "Kilimanjaro Restaurants",
+      "aliases": [],
+      "industry": "food-beverages",
+      "target_market": "NG",
+      "website": "https://kilimanjaro-restaurants.com/",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [],
+      "disposition": "approved",
+      "reason": "Official brand artwork visually reviewed against the company website. Parent, payment and partner logos excluded. JavaScript and page configuration references inspected where static discovery missed the logo. Raster originals are not traced or enlarged. Official provenance does not imply a trademark redistribution licence.",
+      "duplicate_of": null,
+      "sources": [
+        {
+          "url": "https://kilimanjaro-restaurants.com/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "Order Food Online, Delivery, Pickup & Dine-In | Kilimanjaro Restaurant",
+          "page_checksum": "2b84eb66655cba57cda9ac641a1060b3fa2d5dad8241054c4bc670642c6fc376"
+        }
+      ],
+      "candidate_assets": [
+        {
+          "path": "staging/kilimanjaro-restaurants-popular-0-44c4f708959d.svg",
+          "source_url": "https://kilimanjaro-restaurants.com/images/logo.svg",
+          "discovered_on": "https://kilimanjaro-restaurants.com/",
+          "source_type": "official-website",
+          "format": "svg",
+          "width": 173,
+          "height": 43,
+          "checksum": "44c4f708959d22ca48cf61080b20abd11be157bfc1a80a526358d5ae30800302",
+          "retrieved_at": "2026-10-19",
+          "reviewed": true
+        }
+      ],
+      "review_notes": "Official page retrieval is not artwork approval."
+    },
+    {
+      "slug": "the-place",
+      "name": "The Place",
+      "aliases": [],
+      "industry": "hospitality-leisure",
+      "target_market": "NG",
+      "website": "https://theplace.com.ng/",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [],
+      "disposition": "approved",
+      "reason": "Official brand artwork visually reviewed against the company website. Parent, payment and partner logos excluded. JavaScript and page configuration references inspected where static discovery missed the logo. Raster originals are not traced or enlarged. Official provenance does not imply a trademark redistribution licence.",
+      "duplicate_of": null,
+      "sources": [
+        {
+          "url": "https://theplace.com.ng/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "Theplace Website",
+          "page_checksum": "1bd0ecae6700696dd84bc5fb9cd4bb903fa0c0ae58d92d9543cd71f58d91df93"
+        }
+      ],
+      "candidate_assets": [
+        {
+          "path": "staging/the-place-reviewed-fce3da6f3564.png",
+          "source_url": "https://theplace.com.ng/dplace.png",
+          "discovered_on": "https://theplace.com.ng/",
+          "source_type": "official-website",
+          "format": "png",
+          "width": 199,
+          "height": 98,
+          "checksum": "fce3da6f3564ec1b87d8cba4e322eeb50b4b26b8ef254db7cb16f7347aebe78a",
+          "retrieved_at": "2026-10-19",
+          "reviewed": true
+        }
+      ],
+      "review_notes": "Official page retrieval is not artwork approval."
+    },
+    {
+      "slug": "quilox",
+      "name": "Quilox",
+      "aliases": [],
+      "industry": "hospitality-leisure",
+      "target_market": "NG",
+      "website": "https://clubquilox.com/",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [],
+      "disposition": "approved",
+      "reason": "Official brand artwork visually reviewed against the company website. Parent, payment and partner logos excluded. JavaScript and page configuration references inspected where static discovery missed the logo. Raster originals are not traced or enlarged. Official provenance does not imply a trademark redistribution licence.",
+      "duplicate_of": null,
+      "sources": [
+        {
+          "url": "https://clubquilox.com/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "Quilox",
+          "page_checksum": "a8a0df7cc17390630350316a4ef57d58d7ba42718d95c064fc44c5a4fb556432"
+        }
+      ],
+      "candidate_assets": [
+        {
+          "path": "staging/quilox-reviewed-59192287d986.png",
+          "source_url": "https://clubquilox.com/assets/quilox-logo-GSGxLd0D.png",
+          "discovered_on": "https://clubquilox.com/",
+          "source_type": "official-website",
+          "format": "png",
+          "width": 2036,
+          "height": 1362,
+          "checksum": "59192287d986c7c79cebb76ee77875d8b01dfbf990bb920cd68a4abcd39cb491",
+          "retrieved_at": "2026-10-19",
+          "reviewed": true
+        }
+      ],
+      "review_notes": "Official page retrieval is not artwork approval."
+    },
+    {
+      "slug": "eko-hotels-and-suites",
+      "name": "Eko Hotels and Suites",
+      "aliases": [],
+      "industry": "hospitality-leisure",
+      "target_market": "NG",
+      "website": "https://www.ekohotels.com/",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [],
+      "disposition": "approved",
+      "reason": "Official brand artwork visually reviewed against the company website. Parent, payment and partner logos excluded. JavaScript and page configuration references inspected where static discovery missed the logo. Raster originals are not traced or enlarged. Official provenance does not imply a trademark redistribution licence.",
+      "duplicate_of": null,
+      "sources": [
+        {
+          "url": "https://www.ekohotels.com/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "EKO Hotels & Suites",
+          "page_checksum": "34d0f1be6d279d19b2a5558d4deae9ea2c14cf604959187dcfa046ffc4aa5e5c"
+        }
+      ],
+      "candidate_assets": [
+        {
+          "path": "staging/eko-hotels-and-suites-popular-0-5e38380a099b.jpeg",
+          "source_url": "https://www.ekohotels.com/assets/img/logo-header.jpg",
+          "discovered_on": "https://www.ekohotels.com/",
+          "source_type": "official-website",
+          "format": "jpeg",
+          "width": 311,
+          "height": 102,
+          "checksum": "5e38380a099b322e2b296a52911121d5573d5bc558ce8ec1e5f3de26e1f19881",
+          "retrieved_at": "2026-10-19",
+          "reviewed": true
+        },
+        {
+          "path": "staging/eko-hotels-and-suites-popular-1-2cb45b3b1df2.png",
+          "source_url": "https://www.ekohotels.com/assets/img/logo-footer.png",
+          "discovered_on": "https://www.ekohotels.com/",
+          "source_type": "official-website",
+          "format": "png",
+          "width": 128,
+          "height": 144,
+          "checksum": "2cb45b3b1df289495e36da8a2a3c5e6bd1199be046d662635c92cc71999cc465",
+          "retrieved_at": "2026-10-19",
+          "reviewed": false
+        }
+      ],
+      "review_notes": "Official page retrieval is not artwork approval."
+    },
+    {
+      "slug": "lagos-continental",
+      "name": "Lagos Continental",
+      "aliases": [],
+      "industry": "hospitality-leisure",
+      "target_market": "NG",
+      "website": "https://www.thelagoscontinental.com/",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [],
+      "disposition": "approved",
+      "reason": "Official brand artwork visually reviewed against the company website. Parent, payment and partner logos excluded. JavaScript and page configuration references inspected where static discovery missed the logo. Raster originals are not traced or enlarged. Official provenance does not imply a trademark redistribution licence.",
+      "duplicate_of": null,
+      "sources": [
+        {
+          "url": "https://www.thelagoscontinental.com/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "5 Star Hotels in Lagos Nigeria | Lagos Continental Hotel Back to top",
+          "page_checksum": "6b2cf39d119efd77318743d157c7f2c632baa0c4afc98b28ec936946bf2413df"
+        }
+      ],
+      "candidate_assets": [
+        {
+          "path": "staging/lagos-continental-reviewed-2189b520823e.svg",
+          "source_url": "https://image-tc.galaxy.tf/wisvg-55mc6bhwab9ocvp1brx6w50em/lagos-continental-hotel.svg",
+          "discovered_on": "https://www.thelagoscontinental.com/",
+          "source_type": "official-website",
+          "format": "svg",
+          "width": 469,
+          "height": 359,
+          "checksum": "2189b520823e482005812c1ac99ea66ccd24ecac10a235ce9bf7d28f06e6e315",
+          "retrieved_at": "2026-10-19",
+          "reviewed": true
+        }
+      ],
+      "review_notes": "Official page retrieval is not artwork approval."
+    },
+    {
+      "slug": "transcorp-hotels",
+      "name": "Transcorp Hotels",
+      "aliases": [],
+      "industry": "hospitality-leisure",
+      "target_market": "NG",
+      "website": "https://transcorphotels.com/",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [],
+      "disposition": "unresolved",
+      "reason": "Official site retrieved but no usable logo discovered. Do not substitute product or partner artwork.",
+      "duplicate_of": null,
+      "sources": [
+        {
+          "url": "https://transcorphotels.com/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "You are being redirected...",
+          "page_checksum": "b99305099190ba5c254b935a78762100332c1a259b41bf2a4521e80153373562"
+        }
+      ],
+      "candidate_assets": [],
+      "review_notes": "Official page retrieval is not artwork approval."
     }
   ]
 }

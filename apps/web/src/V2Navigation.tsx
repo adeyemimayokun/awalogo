@@ -88,6 +88,7 @@ export default function V2Navigation({ isRequest, category, categories, total, o
         {onSound ? <button className="v2-dock-category" aria-pressed={sound} onClick={onSound}>{sound ? <Volume2 size={16} /> : <VolumeX size={16} />}{t("Action sounds")}</button> : null}
         <a href="https://www.figma.com/community/plugin/1661356348996631383" target="_blank" rel="noreferrer">{t("Figma plugin")}<ArrowUpRight size={15} /></a>
         <button className="v2-dock-category" onClick={() => { setMenu(null); onFlags(); }}>{t("Country flags")}</button>
+        <button className="v2-dock-category" onClick={() => { setMenu(null); onLibrary(); requestAnimationFrame(() => window.dispatchEvent(new Event("awalogo:tour"))); }}>{t("Feature tour")}</button>
         {(["changelog", "about", "contribute", "help", "usage"] as const).map((page) => <button className="v2-dock-category" key={page} onClick={() => { setMenu(null); onInfo(page); }}>{t(({ changelog: "Changelog", about: "About awalogo", contribute: "Contribute", help: "Help & documentation", usage: "Trademark & usage" })[page])}</button>)}
         <a href="https://github.com/adeyemimayokun/awalogo" target="_blank" rel="noreferrer">GitHub <ArrowUpRight size={15} /></a>
         <button className="v2-dock-category" onClick={() => { setMenu(null); onInfo("updates"); }}>{t("Updates")}</button>

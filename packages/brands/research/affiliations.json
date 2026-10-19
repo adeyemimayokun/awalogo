@@ -1,5 +1,9 @@
 [
   {
+    "slugs": ["dangote-group", "dangote-cement", "dangote-sugar", "dangote-refinery", "dangote-fertiliser", "nascon-allied-industries"],
+    "source_url": "https://www.dangote.com/businesses/"
+  },
+  {
     "slugs": ["sonatel", "orange-cote-d-ivoire"],
     "source_url": "https://wholesale.orange.com/wholesale/en/news/orange-wholesale-initiates-via-africa-subsea-cable-project-between-europe-and-africa.html"
   }

@@ -1,7 +1,8 @@
 // Preview-only notes: do not publish these through V1's shared editorial feeds.
+import { logos } from "./v2-brand-data";
 export const previewUpdates = [{
   id:"v2-preview-2026-10-18", title:"V2 preview: more brands, flags and a shared collection",
-  summary:"The Coming soon preview combines 312 company entries and 249 flags. It adds reviewed Nigerian/African companies, historical 9mobile artwork, compact paginated browsing, search suggestions, a floating pack/drop bag, Nigerian languages, shortcuts and action sound preferences. V1 and the current plugin keep their existing catalogs. This is a preview implementation update, not a launch announcement.",
+  summary:`The Coming soon preview combines ${logos.length} company entries and 249 flags. It adds reviewed Nigerian/African companies, historical 9mobile artwork, compact paginated browsing, search suggestions, a floating pack/drop bag, Nigerian languages, shortcuts and action sound preferences. V1 and the current plugin keep their existing catalogs. This is a preview implementation update, not a launch announcement.`,
   published_at:"2026-10-18", action_label:"Browse recent additions", action_href:"/v2?new=true", status:"published"
 }];
 

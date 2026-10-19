@@ -2275,5 +2275,1309 @@
         "retrieved_at": "2026-10-18"
       }
     ]
+  },
+  {
+    "slug": "mavin-records",
+    "decision": "approved",
+    "asset_path": "staging/mavin-records-music-4208b97c83e9.png",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-19",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Official record-label website and About page identify Mavin's African entertainment business; Nigerian operations represented by its Lagos contact details. Artwork visually inspected; original raster retained without vector tracing or upscaling. Trademarks remain with their owners.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "dark",
+    "evidence": [
+      {
+        "url": "https://www.mavinrecords.com/about/",
+        "note": "Official record-label website and About page identify Mavin's African entertainment business; Nigerian operations represented by its Lagos contact details.",
+        "retrieved_at": "2026-10-19"
+      }
+    ],
+    "aliases": [
+      "Mavin",
+      "Mavins",
+      "Mavin Global"
+    ],
+    "website": "https://www.mavinrecords.com/",
+    "source_type": "official-website",
+    "status": "verified",
+    "without_enlargement": true,
+    "batch": "record-labels-2026-10-19"
+  },
+  {
+    "slug": "chocolate-city",
+    "decision": "approved",
+    "asset_path": "staging/chocolate-city-music-ddacf1da950f.svg",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-19",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Official About page identifies Chocolate City Music as a Nigerian record label founded in 2005. Artwork visually inspected; original raster retained without vector tracing or upscaling. Trademarks remain with their owners.",
+    "origin_country": "NG",
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "dark",
+    "evidence": [
+      {
+        "url": "https://chocolatecitymusic.com/about-us/",
+        "note": "Official About page identifies Chocolate City Music as a Nigerian record label founded in 2005.",
+        "retrieved_at": "2026-10-19"
+      }
+    ],
+    "aliases": [
+      "Chocolate City Music",
+      "CCM"
+    ],
+    "website": "https://chocolatecitymusic.com/",
+    "source_type": "official-website",
+    "status": "verified",
+    "without_enlargement": true,
+    "batch": "record-labels-2026-10-19"
+  },
+  {
+    "slug": "dapper-music",
+    "decision": "approved",
+    "asset_path": "staging/dapper-music-music-d7ce1af35215.png",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-19",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Official About page describes the group's Nigerian entertainment and record-label operations. Logo URL is declared in the official homepage Organization structured data. Artwork visually inspected; original raster retained without vector tracing or upscaling. Trademarks remain with their owners.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "dark",
+    "evidence": [
+      {
+        "url": "https://dappermusicent.com/about",
+        "note": "Official About page describes the group's Nigerian entertainment and record-label operations. Logo URL is declared in the official homepage Organization structured data.",
+        "retrieved_at": "2026-10-19"
+      }
+    ],
+    "aliases": [
+      "Dapper Music Entertainment",
+      "Dapper Music and Entertainment"
+    ],
+    "website": "https://dappermusicent.com/",
+    "source_type": "official-website",
+    "status": "verified",
+    "without_enlargement": true,
+    "batch": "record-labels-2026-10-19"
+  },
+  {
+    "slug": "ybnl-nation",
+    "decision": "approved",
+    "asset_path": "staging/ybnl-nation-music-1b2e073aba1f.jpeg",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-19",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Community encyclopedia identifies YBNL Nation as Olamide's Nigerian record label. Artwork is community-hosted, manually reviewed and not officially verified; no redistribution licence or affiliation is asserted. Artwork visually inspected; original raster retained without vector tracing or upscaling. Trademarks remain with their owners.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://en.wikipedia.org/wiki/YBNL",
+        "note": "Community encyclopedia identifies YBNL Nation as Olamide's Nigerian record label. Artwork is community-hosted, manually reviewed and not officially verified; no redistribution licence or affiliation is asserted.",
+        "retrieved_at": "2026-10-19"
+      }
+    ],
+    "aliases": [
+      "YBNL",
+      "YBNL Records"
+    ],
+    "website": "https://en.wikipedia.org/wiki/YBNL",
+    "source_type": "community-catalog",
+    "status": "needs-review",
+    "without_enlargement": true,
+    "batch": "record-labels-2026-10-19"
+  },
+  {
+    "slug": "dangote-group",
+    "decision": "approved",
+    "asset_path": "staging/dangote-group-popular-1-97c9949bc983.png",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-19",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Official logo visually reviewed against the source site's identity. White artwork uses a dark preview. Source bytes are preserved; transparent padding may be trimmed in derived formats. No trademark licence or endorsement is asserted.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "dark",
+    "evidence": [
+      {
+        "url": "https://www.dangote.com/businesses/",
+        "note": "Official Dangote business directory identifies this group/subsidiary and its Nigerian operations. Its own official site supplies the selected identity; a generic parent logo is not substituted for a subsidiary.",
+        "retrieved_at": "2026-10-19"
+      }
+    ],
+    "aliases": [
+      "Dangote",
+      "Dangote Industries",
+      "Dangote Industries Limited"
+    ],
+    "website": "https://www.dangote.com/",
+    "trim_padding": true,
+    "without_enlargement": true,
+    "batch": "popular-brands-2026-10-19"
+  },
+  {
+    "slug": "dangote-cement",
+    "decision": "approved",
+    "asset_path": "staging/dangote-cement-popular-0-f72f6eea13bd.png",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-19",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Official logo visually reviewed against the source site's identity. White artwork uses a dark preview. Source bytes are preserved; transparent padding may be trimmed in derived formats. No trademark licence or endorsement is asserted.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://www.dangote.com/businesses/",
+        "note": "Official Dangote business directory identifies this group/subsidiary and its Nigerian operations. Its own official site supplies the selected identity; a generic parent logo is not substituted for a subsidiary.",
+        "retrieved_at": "2026-10-19"
+      }
+    ],
+    "aliases": [
+      "Dangote Cement Plc",
+      "DCP"
+    ],
+    "website": "https://cement.dangote.com/",
+    "trim_padding": true,
+    "without_enlargement": true,
+    "batch": "popular-brands-2026-10-19"
+  },
+  {
+    "slug": "dangote-sugar",
+    "decision": "approved",
+    "asset_path": "staging/dangote-sugar-popular-0-4855ce789a56.png",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-19",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Official logo visually reviewed against the source site's identity. White artwork uses a dark preview. Source bytes are preserved; transparent padding may be trimmed in derived formats. No trademark licence or endorsement is asserted.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "dark",
+    "evidence": [
+      {
+        "url": "https://www.dangote.com/businesses/",
+        "note": "Official Dangote business directory identifies this group/subsidiary and its Nigerian operations. Its own official site supplies the selected identity; a generic parent logo is not substituted for a subsidiary.",
+        "retrieved_at": "2026-10-19"
+      }
+    ],
+    "aliases": [
+      "Dangote Sugar Refinery",
+      "DSR"
+    ],
+    "website": "https://sugar.dangote.com/",
+    "trim_padding": true,
+    "without_enlargement": true,
+    "batch": "popular-brands-2026-10-19"
+  },
+  {
+    "slug": "dangote-refinery",
+    "decision": "approved",
+    "asset_path": "staging/dangote-refinery-popular-1-f289af80c110.png",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-19",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Official logo visually reviewed against the source site's identity. White artwork uses a dark preview. Source bytes are preserved; transparent padding may be trimmed in derived formats. No trademark licence or endorsement is asserted.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://www.dangote.com/businesses/",
+        "note": "Official Dangote business directory identifies this group/subsidiary and its Nigerian operations. Its own official site supplies the selected identity; a generic parent logo is not substituted for a subsidiary.",
+        "retrieved_at": "2026-10-19"
+      }
+    ],
+    "aliases": [
+      "Dangote Petroleum Refinery",
+      "Dangote Petroleum Refinery and Petrochemicals"
+    ],
+    "website": "https://refinery.dangote.com/",
+    "trim_padding": true,
+    "without_enlargement": true,
+    "batch": "popular-brands-2026-10-19"
+  },
+  {
+    "slug": "dangote-fertiliser",
+    "decision": "approved",
+    "asset_path": "staging/dangote-fertiliser-popular-1-d521b9f407fb.png",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-19",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Official logo visually reviewed against the source site's identity. White artwork uses a dark preview. Source bytes are preserved; transparent padding may be trimmed in derived formats. No trademark licence or endorsement is asserted.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "dark",
+    "evidence": [
+      {
+        "url": "https://www.dangote.com/businesses/",
+        "note": "Official Dangote business directory identifies this group/subsidiary and its Nigerian operations. Its own official site supplies the selected identity; a generic parent logo is not substituted for a subsidiary.",
+        "retrieved_at": "2026-10-19"
+      }
+    ],
+    "aliases": [
+      "Dangote Fertilizer",
+      "Dangote Fertiliser Limited"
+    ],
+    "website": "https://fertiliser.dangote.com/",
+    "trim_padding": true,
+    "without_enlargement": true,
+    "batch": "popular-brands-2026-10-19"
+  },
+  {
+    "slug": "nascon-allied-industries",
+    "decision": "approved",
+    "asset_path": "staging/nascon-allied-industries-popular-0-2c6847cdb068.png",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-19",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Official logo visually reviewed against the source site's identity. White artwork uses a dark preview. Source bytes are preserved; transparent padding may be trimmed in derived formats. No trademark licence or endorsement is asserted.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://www.dangote.com/businesses/",
+        "note": "Official Dangote business directory identifies this group/subsidiary and its Nigerian operations. Its own official site supplies the selected identity; a generic parent logo is not substituted for a subsidiary.",
+        "retrieved_at": "2026-10-19"
+      }
+    ],
+    "aliases": [
+      "NASCON",
+      "Dangote Salt",
+      "Dangote Seasoning"
+    ],
+    "website": "https://salt.dangote.com/",
+    "trim_padding": true,
+    "without_enlargement": true,
+    "batch": "popular-brands-2026-10-19"
+  },
+  {
+    "slug": "bua-foods",
+    "decision": "approved",
+    "asset_path": "staging/bua-foods-reviewed-a8d0793f9510.svg",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-19",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Official BUA Foods media page supplies the corporate logo and identifies its Lagos, Nigeria contact address. Reviewed visually; distinct from BUA Cement and BUA Group artwork.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://www.buafoodsplc.com/media/",
+        "note": "Official BUA Foods media page supplies the corporate logo and identifies its Lagos, Nigeria contact address. Reviewed visually; distinct from BUA Cement and BUA Group artwork.",
+        "retrieved_at": "2026-10-19"
+      }
+    ],
+    "batch": "popular-brands-2026-10-19"
+  },
+  {
+    "slug": "nairametrics",
+    "decision": "approved",
+    "asset_path": "staging/nairametrics-popular-0-c8d30ec2aebd.jpeg",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-19",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Official About page identifies the Nigerian financial and business media operation. Artwork visually checked on light and dark backgrounds. Source provenance does not grant a trademark licence or imply endorsement.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://nairametrics.com/about-nairametrics/",
+        "note": "Official About page identifies the Nigerian financial and business media operation.",
+        "retrieved_at": "2026-10-19"
+      }
+    ],
+    "aliases": [],
+    "source_type": "official-website",
+    "without_enlargement": true,
+    "trim_padding": true,
+    "batch": "requested-and-market-2026-10-19"
+  },
+  {
+    "slug": "careerbuddy",
+    "decision": "approved",
+    "asset_path": "staging/careerbuddy-popular-0-7581a1d5dd65.png",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-19",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Official About page identifies Lagos headquarters and Nigerian recruitment operations. Artwork visually checked on light and dark backgrounds. Source provenance does not grant a trademark licence or imply endorsement.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://thecareerbuddy.com/about",
+        "note": "Official About page identifies Lagos headquarters and Nigerian recruitment operations.",
+        "retrieved_at": "2026-10-19"
+      }
+    ],
+    "aliases": [
+      "Career Buddy"
+    ],
+    "source_type": "official-website",
+    "without_enlargement": true,
+    "trim_padding": true,
+    "batch": "requested-and-market-2026-10-19"
+  },
+  {
+    "slug": "andela",
+    "decision": "approved",
+    "asset_path": "staging/andela-popular-1-d84d30448261.svg",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-19",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Official About page identifies the initial Lagos recruitment and African talent operations. The selected embedded header SVG is Andela, not a testimonial or customer logo. Artwork visually checked on light and dark backgrounds. Source provenance does not grant a trademark licence or imply endorsement.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://www.andela.com/about",
+        "note": "Official About page identifies the initial Lagos recruitment and African talent operations. The selected embedded header SVG is Andela, not a testimonial or customer logo.",
+        "retrieved_at": "2026-10-19"
+      }
+    ],
+    "aliases": [],
+    "source_type": "official-website",
+    "without_enlargement": true,
+    "trim_padding": false,
+    "batch": "requested-and-market-2026-10-19"
+  },
+  {
+    "slug": "techcabal",
+    "decision": "approved",
+    "asset_path": "staging/techcabal-popular-0-f186aef4229a.png",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-19",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Official publication and About page establish African technology reporting and Nigerian coverage. Artwork visually checked on light and dark backgrounds. Source provenance does not grant a trademark licence or imply endorsement.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://techcabal.com/about/",
+        "note": "Official publication and About page establish African technology reporting and Nigerian coverage.",
+        "retrieved_at": "2026-10-19"
+      }
+    ],
+    "aliases": [
+      "Tech Cabal"
+    ],
+    "source_type": "official-website",
+    "without_enlargement": true,
+    "trim_padding": true,
+    "batch": "requested-and-market-2026-10-19"
+  },
+  {
+    "slug": "arnergy",
+    "decision": "approved",
+    "asset_path": "staging/arnergy-popular-0-6b75494f473f.png",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-19",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Official shipping policy identifies Arnergy as a Nigerian enterprise serving Nigeria. Artwork visually checked on light and dark backgrounds. Source provenance does not grant a trademark licence or imply endorsement.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://shop.arnergy.com/policies/shipping-policy",
+        "note": "Official shipping policy identifies Arnergy as a Nigerian enterprise serving Nigeria.",
+        "retrieved_at": "2026-10-19"
+      }
+    ],
+    "aliases": [
+      "Arnergy Solar"
+    ],
+    "source_type": "official-website",
+    "without_enlargement": true,
+    "trim_padding": true,
+    "batch": "requested-and-market-2026-10-19"
+  },
+  {
+    "slug": "omniretail",
+    "decision": "approved",
+    "asset_path": "staging/omniretail-popular-0-88eb90389de2.png",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-19",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Official homepage supplies the Omni identity and lists its Lagos operations; not confused with unrelated companies using Omni. Artwork visually checked on light and dark backgrounds. Source provenance does not grant a trademark licence or imply endorsement.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://www.omniretail.africa/",
+        "note": "Official homepage supplies the Omni identity and lists its Lagos operations; not confused with unrelated companies using Omni.",
+        "retrieved_at": "2026-10-19"
+      }
+    ],
+    "aliases": [
+      "OmniRetail Africa"
+    ],
+    "source_type": "official-website",
+    "without_enlargement": true,
+    "trim_padding": true,
+    "batch": "requested-and-market-2026-10-19"
+  },
+  {
+    "slug": "utiva",
+    "decision": "approved",
+    "asset_path": "staging/utiva-reviewed-e7a7d7670ffc.svg",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-19",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Official contact page states Transforming lives from Lagos, Nigeria. The official header image lacks a logo filename and was missed by discovery. Artwork visually checked on light and dark backgrounds. Source provenance does not grant a trademark licence or imply endorsement.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://utiva.co/contact-us/",
+        "note": "Official contact page states Transforming lives from Lagos, Nigeria. The official header image lacks a logo filename and was missed by discovery.",
+        "retrieved_at": "2026-10-19"
+      }
+    ],
+    "aliases": [],
+    "source_type": "official-website",
+    "without_enlargement": true,
+    "trim_padding": false,
+    "batch": "requested-and-market-2026-10-19"
+  },
+  {
+    "slug": "the-unflux",
+    "decision": "approved",
+    "asset_path": "staging/the-unflux-reviewed-e2450931054f.svg",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-19",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "User-confirmed identity. Official site describes African product-design education and names its chief facilitator; the facilitator's linked self-authored profile identifies The Unflux project and Lagos. Origin and headquarters remain unconfirmed. The exact logo symbol is extracted as a self-contained SVG, preserving path data and opacity; partner marks are excluded. Artwork visually checked on light and dark backgrounds. Source provenance does not grant a trademark licence or imply endorsement.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://www.theunflux.com/about/",
+        "note": "User-confirmed identity. Official site describes African product-design education and names its chief facilitator; the facilitator's linked self-authored profile identifies The Unflux project and Lagos. Origin and headquarters remain unconfirmed. The exact logo symbol is extracted as a self-contained SVG, preserving path data and opacity; partner marks are excluded.",
+        "retrieved_at": "2026-10-19"
+      },
+      {
+        "url": "https://ng.linkedin.com/in/nnamdi-awili-designer",
+        "note": "Profile linked from the official About page identifies the facilitator's Unflux project and Lagos location; not treated as proof of incorporation or headquarters.",
+        "retrieved_at": "2026-10-19"
+      }
+    ],
+    "aliases": [
+      "Unflux"
+    ],
+    "source_type": "official-website",
+    "without_enlargement": true,
+    "trim_padding": false,
+    "batch": "requested-and-market-2026-10-19"
+  },
+  {
+    "slug": "aradel-holdings",
+    "decision": "approved",
+    "asset_path": "staging/aradel-holdings-reviewed-614724af60dd.png",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-19",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Company-issued Aradel Holdings corporate-action filing on NGX provides its current header logo and Lagos address. The header identity was rasterized and isolated from page 1 without tracing or upscaling; the website returned HTTP 403. Artwork visually checked on light and dark backgrounds. Source provenance does not grant a trademark licence or imply endorsement.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://doclib.ngxgroup.com/Financial_NewsDocs/47232_ARADEL_HOLDINGS_PLC-CORPORATE_ACTION_ANNOUNCEMENT___CORPORATE_ACTIONS_JUNE_2026.pdf",
+        "note": "Company-issued Aradel Holdings corporate-action filing on NGX provides its current header logo and Lagos address. The header identity was rasterized and isolated from page 1 without tracing or upscaling; the website returned HTTP 403.",
+        "retrieved_at": "2026-10-19"
+      }
+    ],
+    "aliases": [
+      "Aradel",
+      "Niger Delta Exploration and Production",
+      "NDEP"
+    ],
+    "source_type": "verified-pdf",
+    "without_enlargement": true,
+    "trim_padding": true,
+    "batch": "requested-and-market-2026-10-19"
+  },
+  {
+    "slug": "abuja-electricity-distribution-company",
+    "decision": "approved",
+    "asset_path": "staging/abuja-electricity-distribution-company-popular-1-9b1ac747d186.png",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-19",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Official operator identity visually reviewed on light and dark backgrounds. Company-owned header artwork is used; payment-provider and partner logos are excluded. Raster originals are not traced or upscaled. Distribution-company status is evidenced separately from artwork provenance; no trademark licence is asserted.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://www.abujaelectricity.com/home/",
+        "note": "Official website identifies this Nigerian electricity distribution operator and provides its reviewed brand artwork.",
+        "retrieved_at": "2026-10-19"
+      },
+      {
+        "url": "https://nerc.gov.ng/need-help/services/licencees/",
+        "note": "NERC operator records establish Nigerian electricity distribution operations; historical service boundaries are not asserted as current state-market exclusivity.",
+        "retrieved_at": "2026-10-19"
+      }
+    ],
+    "aliases": [
+      "AEDC",
+      "Abuja DisCo",
+      "Abuja Electric"
+    ],
+    "source_type": "official-website",
+    "trim_padding": true,
+    "without_enlargement": true,
+    "batch": "nigerian-discos-2026-10-19"
+  },
+  {
+    "slug": "benin-electricity-distribution-company",
+    "decision": "approved",
+    "asset_path": "staging/benin-electricity-distribution-company-reviewed-5f37a464b946.png",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-19",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Official operator identity visually reviewed on light and dark backgrounds. Company-owned header artwork is used; payment-provider and partner logos are excluded. Raster originals are not traced or upscaled. Distribution-company status is evidenced separately from artwork provenance; no trademark licence is asserted.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://beninelectric.com/",
+        "note": "Official website identifies this Nigerian electricity distribution operator and provides its reviewed brand artwork.",
+        "retrieved_at": "2026-10-19"
+      },
+      {
+        "url": "https://nerc.gov.ng/need-help/services/licencees/",
+        "note": "NERC operator records establish Nigerian electricity distribution operations; historical service boundaries are not asserted as current state-market exclusivity.",
+        "retrieved_at": "2026-10-19"
+      }
+    ],
+    "aliases": [
+      "BEDC",
+      "Benin Electric",
+      "Benin DisCo"
+    ],
+    "source_type": "official-website",
+    "trim_padding": true,
+    "without_enlargement": true,
+    "batch": "nigerian-discos-2026-10-19"
+  },
+  {
+    "slug": "eko-electricity-distribution-company",
+    "decision": "approved",
+    "asset_path": "staging/eko-electricity-distribution-company-popular-0-941e6a9d4237.png",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-19",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Official operator identity visually reviewed on light and dark backgrounds. Company-owned header artwork is used; payment-provider and partner logos are excluded. Raster originals are not traced or upscaled. Distribution-company status is evidenced separately from artwork provenance; no trademark licence is asserted.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://ekedp.com/",
+        "note": "Official website identifies this Nigerian electricity distribution operator and provides its reviewed brand artwork.",
+        "retrieved_at": "2026-10-19"
+      },
+      {
+        "url": "https://nerc.gov.ng/need-help/services/licencees/",
+        "note": "NERC operator records establish Nigerian electricity distribution operations; historical service boundaries are not asserted as current state-market exclusivity.",
+        "retrieved_at": "2026-10-19"
+      }
+    ],
+    "aliases": [
+      "EKEDC",
+      "EKEDP",
+      "Eko DisCo"
+    ],
+    "source_type": "official-website",
+    "trim_padding": true,
+    "without_enlargement": true,
+    "batch": "nigerian-discos-2026-10-19"
+  },
+  {
+    "slug": "enugu-electricity-distribution-company",
+    "decision": "approved",
+    "asset_path": "staging/enugu-electricity-distribution-company-reviewed-a4e1bb99acb7.png",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-19",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Official operator identity visually reviewed on light and dark backgrounds. Company-owned header artwork is used; payment-provider and partner logos are excluded. Raster originals are not traced or upscaled. Distribution-company status is evidenced separately from artwork provenance; no trademark licence is asserted.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://www.enugudisco.com/",
+        "note": "Official website identifies this Nigerian electricity distribution operator and provides its reviewed brand artwork.",
+        "retrieved_at": "2026-10-19"
+      },
+      {
+        "url": "https://nerc.gov.ng/need-help/services/licencees/",
+        "note": "NERC operator records establish Nigerian electricity distribution operations; historical service boundaries are not asserted as current state-market exclusivity.",
+        "retrieved_at": "2026-10-19"
+      }
+    ],
+    "aliases": [
+      "EEDC",
+      "Enugu DisCo"
+    ],
+    "source_type": "official-website",
+    "trim_padding": true,
+    "without_enlargement": true,
+    "batch": "nigerian-discos-2026-10-19"
+  },
+  {
+    "slug": "ibadan-electricity-distribution-company",
+    "decision": "approved",
+    "asset_path": "staging/ibadan-electricity-distribution-company-popular-0-edacf0c692ae.png",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-19",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Official operator identity visually reviewed on light and dark backgrounds. Company-owned header artwork is used; payment-provider and partner logos are excluded. Raster originals are not traced or upscaled. Distribution-company status is evidenced separately from artwork provenance; no trademark licence is asserted.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://ibedc.com/",
+        "note": "Official website identifies this Nigerian electricity distribution operator and provides its reviewed brand artwork.",
+        "retrieved_at": "2026-10-19"
+      },
+      {
+        "url": "https://nerc.gov.ng/need-help/services/licencees/",
+        "note": "NERC operator records establish Nigerian electricity distribution operations; historical service boundaries are not asserted as current state-market exclusivity.",
+        "retrieved_at": "2026-10-19"
+      }
+    ],
+    "aliases": [
+      "IBEDC",
+      "Ibadan DisCo",
+      "Ibadan Electric"
+    ],
+    "source_type": "official-website",
+    "trim_padding": true,
+    "without_enlargement": true,
+    "batch": "nigerian-discos-2026-10-19"
+  },
+  {
+    "slug": "ikeja-electric",
+    "decision": "approved",
+    "asset_path": "staging/ikeja-electric-popular-1-25b5a2fd2c16.png",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-19",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Official operator identity visually reviewed on light and dark backgrounds. Company-owned header artwork is used; payment-provider and partner logos are excluded. Raster originals are not traced or upscaled. Distribution-company status is evidenced separately from artwork provenance; no trademark licence is asserted.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://www.ikejaelectric.com/",
+        "note": "Official website identifies this Nigerian electricity distribution operator and provides its reviewed brand artwork.",
+        "retrieved_at": "2026-10-19"
+      },
+      {
+        "url": "https://nerc.gov.ng/need-help/services/licencees/",
+        "note": "NERC operator records establish Nigerian electricity distribution operations; historical service boundaries are not asserted as current state-market exclusivity.",
+        "retrieved_at": "2026-10-19"
+      }
+    ],
+    "aliases": [
+      "IKEDC",
+      "Ikeja Electricity Distribution Company",
+      "Ikeja DisCo"
+    ],
+    "source_type": "official-website",
+    "trim_padding": true,
+    "without_enlargement": true,
+    "batch": "nigerian-discos-2026-10-19"
+  },
+  {
+    "slug": "jos-electricity-distribution-company",
+    "decision": "approved",
+    "asset_path": "staging/jos-electricity-distribution-company-popular-0-ce6b4ade14ea.png",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-19",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Official operator identity visually reviewed on light and dark backgrounds. Company-owned header artwork is used; payment-provider and partner logos are excluded. Raster originals are not traced or upscaled. Distribution-company status is evidenced separately from artwork provenance; no trademark licence is asserted.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://www.jedplc.com/",
+        "note": "Official website identifies this Nigerian electricity distribution operator and provides its reviewed brand artwork.",
+        "retrieved_at": "2026-10-19"
+      },
+      {
+        "url": "https://nerc.gov.ng/need-help/services/licencees/",
+        "note": "NERC operator records establish Nigerian electricity distribution operations; historical service boundaries are not asserted as current state-market exclusivity.",
+        "retrieved_at": "2026-10-19"
+      }
+    ],
+    "aliases": [
+      "JED",
+      "JEDC",
+      "Jos DisCo",
+      "Jos Electric"
+    ],
+    "source_type": "official-website",
+    "trim_padding": true,
+    "without_enlargement": true,
+    "batch": "nigerian-discos-2026-10-19"
+  },
+  {
+    "slug": "kaduna-electric",
+    "decision": "approved",
+    "asset_path": "staging/kaduna-electric-embedded-ca396304754f.png",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-19",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Official operator identity visually reviewed on light and dark backgrounds. Company-owned header artwork is used; payment-provider and partner logos are excluded. Raster originals are not traced or upscaled. Distribution-company status is evidenced separately from artwork provenance; no trademark licence is asserted. The official SVG is a wrapper around one embedded PNG, not vector artwork. Original PNG bytes were extracted without tracing, upscaling or introducing external references; SVG is not offered for download.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://kadunaelectric.com/",
+        "note": "Official website identifies this Nigerian electricity distribution operator and provides its reviewed brand artwork.",
+        "retrieved_at": "2026-10-19"
+      },
+      {
+        "url": "https://nerc.gov.ng/need-help/services/licencees/",
+        "note": "NERC operator records establish Nigerian electricity distribution operations; historical service boundaries are not asserted as current state-market exclusivity.",
+        "retrieved_at": "2026-10-19"
+      }
+    ],
+    "aliases": [
+      "KAEDCO",
+      "KDEDC",
+      "Kaduna Electricity Distribution Company",
+      "Kaduna DisCo"
+    ],
+    "source_type": "official-website",
+    "trim_padding": false,
+    "without_enlargement": true,
+    "batch": "nigerian-discos-2026-10-19"
+  },
+  {
+    "slug": "kano-electricity-distribution-company",
+    "decision": "approved",
+    "asset_path": "staging/kano-electricity-distribution-company-popular-0-3559f38fdc9b.png",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-19",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Official operator identity visually reviewed on light and dark backgrounds. Company-owned header artwork is used; payment-provider and partner logos are excluded. Raster originals are not traced or upscaled. Distribution-company status is evidenced separately from artwork provenance; no trademark licence is asserted.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://kedco.ng/",
+        "note": "Official website identifies this Nigerian electricity distribution operator and provides its reviewed brand artwork.",
+        "retrieved_at": "2026-10-19"
+      },
+      {
+        "url": "https://nerc.gov.ng/need-help/services/licencees/",
+        "note": "NERC operator records establish Nigerian electricity distribution operations; historical service boundaries are not asserted as current state-market exclusivity.",
+        "retrieved_at": "2026-10-19"
+      }
+    ],
+    "aliases": [
+      "KEDCO",
+      "KEDC",
+      "Kano DisCo",
+      "Kano Electric"
+    ],
+    "source_type": "official-website",
+    "trim_padding": true,
+    "without_enlargement": true,
+    "batch": "nigerian-discos-2026-10-19"
+  },
+  {
+    "slug": "port-harcourt-electricity-distribution-company",
+    "decision": "approved",
+    "asset_path": "staging/port-harcourt-electricity-distribution-company-popular-0-080320e10185.png",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-19",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Official operator identity visually reviewed on light and dark backgrounds. Company-owned header artwork is used; payment-provider and partner logos are excluded. Raster originals are not traced or upscaled. Distribution-company status is evidenced separately from artwork provenance; no trademark licence is asserted.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://phed.com.ng/",
+        "note": "Official website identifies this Nigerian electricity distribution operator and provides its reviewed brand artwork.",
+        "retrieved_at": "2026-10-19"
+      },
+      {
+        "url": "https://nerc.gov.ng/need-help/services/licencees/",
+        "note": "NERC operator records establish Nigerian electricity distribution operations; historical service boundaries are not asserted as current state-market exclusivity.",
+        "retrieved_at": "2026-10-19"
+      }
+    ],
+    "aliases": [
+      "PHED",
+      "PHEDC",
+      "Port Harcourt DisCo"
+    ],
+    "source_type": "official-website",
+    "trim_padding": true,
+    "without_enlargement": true,
+    "batch": "nigerian-discos-2026-10-19"
+  },
+  {
+    "slug": "yola-electricity-distribution-company",
+    "decision": "approved",
+    "asset_path": "staging/yola-electricity-distribution-company-popular-0-97402343f6d0.png",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-19",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Official operator identity visually reviewed on light and dark backgrounds. Company-owned header artwork is used; payment-provider and partner logos are excluded. Raster originals are not traced or upscaled. Distribution-company status is evidenced separately from artwork provenance; no trademark licence is asserted.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://www.yedc.com.ng/",
+        "note": "Official website identifies this Nigerian electricity distribution operator and provides its reviewed brand artwork.",
+        "retrieved_at": "2026-10-19"
+      },
+      {
+        "url": "https://nerc.gov.ng/need-help/services/licencees/",
+        "note": "NERC operator records establish Nigerian electricity distribution operations; historical service boundaries are not asserted as current state-market exclusivity.",
+        "retrieved_at": "2026-10-19"
+      }
+    ],
+    "aliases": [
+      "YEDC",
+      "Yola DisCo",
+      "Yola Electric"
+    ],
+    "source_type": "official-website",
+    "trim_padding": true,
+    "without_enlargement": true,
+    "batch": "nigerian-discos-2026-10-19"
+  },
+  {
+    "slug": "aba-power",
+    "decision": "approved",
+    "asset_path": "staging/aba-power-reviewed-c629250ab500.jpeg",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-19",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Official operator identity visually reviewed on light and dark backgrounds. Company-owned header artwork is used; payment-provider and partner logos are excluded. Raster originals are not traced or upscaled. Distribution-company status is evidenced separately from artwork provenance; no trademark licence is asserted.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://www.abapower.com/",
+        "note": "Official website identifies this Nigerian electricity distribution operator and provides its reviewed brand artwork.",
+        "retrieved_at": "2026-10-19"
+      },
+      {
+        "url": "https://nerc.gov.ng/wp-content/uploads/2024/11/Aba-Power-Electricity-Distribution-Plc.-Monthly-Energy-Cap-November-2024.pdf",
+        "note": "NERC operator records establish Nigerian electricity distribution operations; historical service boundaries are not asserted as current state-market exclusivity.",
+        "retrieved_at": "2026-10-19"
+      }
+    ],
+    "aliases": [
+      "APLE",
+      "Aba Power Limited Electric",
+      "Aba Electricity",
+      "APL Electric Company"
+    ],
+    "source_type": "official-website",
+    "trim_padding": true,
+    "without_enlargement": true,
+    "batch": "nigerian-discos-2026-10-19"
+  },
+  {
+    "slug": "prince-ebeano",
+    "decision": "approved",
+    "asset_path": "staging/prince-ebeano-popular-0-8dc579f8b799.png",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-19",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Official brand artwork visually reviewed against the company website. Parent, payment and partner logos excluded. JavaScript and page configuration references inspected where static discovery missed the logo. Raster originals are not traced or enlarged. Official provenance does not imply a trademark redistribution licence.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://princeebeano.com/",
+        "note": "Official website establishes Nigerian retail, restaurant, nightlife or hotel operations and provides the selected brand artwork.",
+        "retrieved_at": "2026-10-19"
+      }
+    ],
+    "aliases": [
+      "Ebeano",
+      "Prince Ebeano Supermarket"
+    ],
+    "source_type": "official-website",
+    "trim_padding": true,
+    "without_enlargement": true,
+    "batch": "nigerian-hospitality-2026-10-19"
+  },
+  {
+    "slug": "justrite-superstore",
+    "decision": "approved",
+    "asset_path": "staging/justrite-superstore-popular-0-b2b5659888aa.png",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-19",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Official brand artwork visually reviewed against the company website. Parent, payment and partner logos excluded. JavaScript and page configuration references inspected where static discovery missed the logo. Raster originals are not traced or enlarged. Official provenance does not imply a trademark redistribution licence.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://justriteonline.com/",
+        "note": "Official website establishes Nigerian retail, restaurant, nightlife or hotel operations and provides the selected brand artwork.",
+        "retrieved_at": "2026-10-19"
+      }
+    ],
+    "aliases": [
+      "Justrite",
+      "Justrite Superstores"
+    ],
+    "source_type": "official-website",
+    "trim_padding": true,
+    "without_enlargement": true,
+    "batch": "nigerian-hospitality-2026-10-19"
+  },
+  {
+    "slug": "chicken-republic",
+    "decision": "approved",
+    "asset_path": "staging/chicken-republic-popular-0-eb2c1e4ef934.png",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-19",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Official brand artwork visually reviewed against the company website. Parent, payment and partner logos excluded. JavaScript and page configuration references inspected where static discovery missed the logo. Raster originals are not traced or enlarged. Official provenance does not imply a trademark redistribution licence.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://www.chicken-republic.com/",
+        "note": "Official website establishes Nigerian retail, restaurant, nightlife or hotel operations and provides the selected brand artwork.",
+        "retrieved_at": "2026-10-19"
+      }
+    ],
+    "aliases": [],
+    "identity_resolution": "Chicken Republic is a distinct restaurant brand on Food Concepts' official website. Its named header logo was reviewed; the parent Food Concepts logo is explicitly excluded.",
+    "source_type": "official-website",
+    "trim_padding": true,
+    "without_enlargement": true,
+    "batch": "nigerian-hospitality-2026-10-19"
+  },
+  {
+    "slug": "kilimanjaro-restaurants",
+    "decision": "approved",
+    "asset_path": "staging/kilimanjaro-restaurants-popular-0-44c4f708959d.svg",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-19",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Official brand artwork visually reviewed against the company website. Parent, payment and partner logos excluded. JavaScript and page configuration references inspected where static discovery missed the logo. Raster originals are not traced or enlarged. Official provenance does not imply a trademark redistribution licence.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "dark",
+    "evidence": [
+      {
+        "url": "https://kilimanjaro-restaurants.com/",
+        "note": "Official website establishes Nigerian retail, restaurant, nightlife or hotel operations and provides the selected brand artwork.",
+        "retrieved_at": "2026-10-19"
+      }
+    ],
+    "aliases": [
+      "Kilimanjaro"
+    ],
+    "source_type": "official-website",
+    "trim_padding": false,
+    "without_enlargement": true,
+    "batch": "nigerian-hospitality-2026-10-19"
+  },
+  {
+    "slug": "the-place",
+    "decision": "approved",
+    "asset_path": "staging/the-place-reviewed-fce3da6f3564.png",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-19",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Official brand artwork visually reviewed against the company website. Parent, payment and partner logos excluded. JavaScript and page configuration references inspected where static discovery missed the logo. Raster originals are not traced or enlarged. Official provenance does not imply a trademark redistribution licence.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://theplace.com.ng/",
+        "note": "Official website establishes Nigerian retail, restaurant, nightlife or hotel operations and provides the selected brand artwork.",
+        "retrieved_at": "2026-10-19"
+      }
+    ],
+    "aliases": [
+      "The Place Nigeria"
+    ],
+    "source_type": "official-website",
+    "trim_padding": true,
+    "without_enlargement": true,
+    "batch": "nigerian-hospitality-2026-10-19"
+  },
+  {
+    "slug": "quilox",
+    "decision": "approved",
+    "asset_path": "staging/quilox-reviewed-59192287d986.png",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-19",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Official brand artwork visually reviewed against the company website. Parent, payment and partner logos excluded. JavaScript and page configuration references inspected where static discovery missed the logo. Raster originals are not traced or enlarged. Official provenance does not imply a trademark redistribution licence.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "dark",
+    "evidence": [
+      {
+        "url": "https://clubquilox.com/",
+        "note": "Official website establishes Nigerian retail, restaurant, nightlife or hotel operations and provides the selected brand artwork.",
+        "retrieved_at": "2026-10-19"
+      }
+    ],
+    "aliases": [
+      "Club Quilox",
+      "Quilox Nightclub"
+    ],
+    "source_type": "official-website",
+    "trim_padding": true,
+    "without_enlargement": true,
+    "batch": "nigerian-hospitality-2026-10-19"
+  },
+  {
+    "slug": "eko-hotels-and-suites",
+    "decision": "approved",
+    "asset_path": "staging/eko-hotels-and-suites-popular-0-5e38380a099b.jpeg",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-19",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Official brand artwork visually reviewed against the company website. Parent, payment and partner logos excluded. JavaScript and page configuration references inspected where static discovery missed the logo. Raster originals are not traced or enlarged. Official provenance does not imply a trademark redistribution licence.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://www.ekohotels.com/",
+        "note": "Official website establishes Nigerian retail, restaurant, nightlife or hotel operations and provides the selected brand artwork.",
+        "retrieved_at": "2026-10-19"
+      }
+    ],
+    "aliases": [
+      "Eko Hotels",
+      "Eko Hotel",
+      "Eko Hotels & Suites"
+    ],
+    "source_type": "official-website",
+    "trim_padding": true,
+    "without_enlargement": true,
+    "batch": "nigerian-hospitality-2026-10-19"
+  },
+  {
+    "slug": "lagos-continental",
+    "decision": "approved",
+    "asset_path": "staging/lagos-continental-reviewed-2189b520823e.svg",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-19",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Official brand artwork visually reviewed against the company website. Parent, payment and partner logos excluded. JavaScript and page configuration references inspected where static discovery missed the logo. Raster originals are not traced or enlarged. Official provenance does not imply a trademark redistribution licence.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "dark",
+    "evidence": [
+      {
+        "url": "https://www.thelagoscontinental.com/",
+        "note": "Official website establishes Nigerian retail, restaurant, nightlife or hotel operations and provides the selected brand artwork.",
+        "retrieved_at": "2026-10-19"
+      }
+    ],
+    "aliases": [
+      "Lagos Continental Hotel",
+      "The Lagos Continental"
+    ],
+    "source_type": "official-website",
+    "trim_padding": false,
+    "without_enlargement": true,
+    "batch": "nigerian-hospitality-2026-10-19"
   }
 ]

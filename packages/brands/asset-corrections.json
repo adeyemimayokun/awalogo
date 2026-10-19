@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "corrections": [
+    {
+      "slug": "momo-payment-service-bank",
+      "expected_primary_checksum": "6792313f8af9b4d07bcf0988b687d8fca8d0976d5c2a1a4ec6ede0a0a68674cf",
+      "source_path": "assets/cca45c05ab43951879c3f9d4aa28cb60fb547be7710bea43a4d28c647165887d.png",
+      "source_checksum": "cca45c05ab43951879c3f9d4aa28cb60fb547be7710bea43a4d28c647165887d",
+      "website": "https://www.momo.ng/",
+      "source_url": "https://www.momo.ng/wp-content/uploads/2024/10/logo-yellow-1.png?x54108",
+      "preview_background": "dark",
+      "reviewed_at": "2026-10-19",
+      "visual_reviewed": true,
+      "review_notes": "User explicitly requested correction against momo.ng. Official MoMo PSB identity visually verified; the existing legacy artwork depicts MoMo Agent. Apply only as a V2 overlay, retaining the original record, slug, aliases and legacy asset bytes. The MTN-only footer mark is not substituted for MoMo.",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/1080df62b6c715bda7764c9dd50b25df84554a1044cc9bab7c589bd304523a53.png",
+          "mime_type": "image/png",
+          "checksum": "1080df62b6c715bda7764c9dd50b25df84554a1044cc9bab7c589bd304523a53",
+          "width": 1024,
+          "height": 425,
+          "repository_path": "assets/cca45c05ab43951879c3f9d4aa28cb60fb547be7710bea43a4d28c647165887d.png"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/cc68690e6384eaaaa30999a70c50006f9b2c061fd75f67901f536f96e3fa11a3.webp",
+          "mime_type": "image/webp",
+          "checksum": "cc68690e6384eaaaa30999a70c50006f9b2c061fd75f67901f536f96e3fa11a3",
+          "width": 1024,
+          "height": 425,
+          "repository_path": "assets/cca45c05ab43951879c3f9d4aa28cb60fb547be7710bea43a4d28c647165887d.png"
+        }
+      ]
+    }
+  ]
+}

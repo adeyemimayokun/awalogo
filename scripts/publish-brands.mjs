@@ -6,6 +6,7 @@ import { load } from "cheerio";
 import sharp from "sharp";
 import { normalizeIdentity } from "../packages/brands/identity.mjs";
 import { publishHistoricalBrands } from "./publish-historical-brands.mjs";
+import { publishBrandCorrections } from "./publish-brand-corrections.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const packageRoot = join(root, "packages/brands");
@@ -80,4 +81,5 @@ const dispositions = research.entries.map((entry) => {
 const report = `# African Brand Expansion: ${research.entries.length} Candidates\n\nExisting logos are unchanged. ${published.length} additions approved for V2 only.\n\n| Company | Target market | Industry | Disposition | Notes | Official source |\n|---|---|---|---|---|---|\n${dispositions.map((entry) => `| ${entry.name} | ${entry.target_market} | ${entry.industry} | ${entry.disposition} | ${entry.reason.replaceAll("|", "/")} | ${entry.sources.map((source) => source.url).join(", ")} |`).join("\n")}\n`;
 await output(join(packageRoot, "research/source-report.md"), report);
 await publishHistoricalBrands(root, check);
+await publishBrandCorrections(root, check);
 console.log(`${check ? "Checked" : "Published"} ${published.length} V2-only brands; no legacy files modified.`);

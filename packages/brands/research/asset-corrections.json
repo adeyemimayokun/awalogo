@@ -1,0 +1,14 @@
+[
+  {
+    "slug": "momo-payment-service-bank",
+    "expected_primary_checksum": "6792313f8af9b4d07bcf0988b687d8fca8d0976d5c2a1a4ec6ede0a0a68674cf",
+    "source_path": "assets/cca45c05ab43951879c3f9d4aa28cb60fb547be7710bea43a4d28c647165887d.png",
+    "source_checksum": "cca45c05ab43951879c3f9d4aa28cb60fb547be7710bea43a4d28c647165887d",
+    "website": "https://www.momo.ng/",
+    "source_url": "https://www.momo.ng/wp-content/uploads/2024/10/logo-yellow-1.png?x54108",
+    "preview_background": "dark",
+    "reviewed_at": "2026-10-19",
+    "visual_reviewed": true,
+    "review_notes": "User explicitly requested correction against momo.ng. Official MoMo PSB identity visually verified; the existing legacy artwork depicts MoMo Agent. Apply only as a V2 overlay, retaining the original record, slug, aliases and legacy asset bytes. The MTN-only footer mark is not substituted for MoMo."
+  }
+]

@@ -7,6 +7,13 @@ const brands = [
   { name: "Example Insurance", category: "other", aliases: [] }
 ];
 describe("multi-category filtering", () => {
+  it("finds existing MTN MoMo through separate V2 aliases without mutating legacy metadata", () => {
+    const momo={slug:"momo-payment-service-bank",name:"MoMo Payment Service Bank",category:"payment-bank",aliases:[]};
+    const mono={slug:"mono",name:"Mono",category:"fintech",aliases:[]};
+    for (const query of ["MTN MoMo","MoMo PSB","MoMo from MTN","MTN Mobile Money"]) expect(filterBrands([momo,mono],[],query)).toEqual([momo]);
+    expect(filterBrands([momo,mono],[],"Mono")).toEqual([mono]);
+    expect(momo.aliases).toEqual([]);
+  });
   it("finds rebrands despite spaces, punctuation, case and diacritics", () => {
     const rebrands = [{ name: "T2 Mobile", category: "telecommunications", aliases: ["9mobile", "Etisalat Nigeria"] }];
     for (const query of ["9 mobile", "9-mobile", "9 MOBILE", "9mobile", "t2mobile", "Etisalat Nigeria"]) expect(filterBrands(rebrands, [], query)).toEqual(rebrands);

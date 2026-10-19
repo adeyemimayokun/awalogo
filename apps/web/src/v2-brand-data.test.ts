@@ -7,12 +7,13 @@ import campaign from "../../../packages/brands/research/candidates.json";
 import research from "../../../packages/brands/research/manifest.json";
 import reviews from "../../../packages/brands/research/reviews.json";
 import { expansionBrandSchema } from "../../../packages/brands/schema";
-import { expansionBrands, logos, matchesBrandScope } from "./v2-brand-data";
+import { correctionBySlug, expansionBrands, logos, matchesBrandScope } from "./v2-brand-data";
 
 describe("isolated V2 company expansion", () => {
   it("protects the original catalog and every asset byte", () => {
     expect(execFileSync(process.execPath, ["scripts/brands-baseline.mjs"], { encoding: "utf8" })).toContain("1703");
-    expect(logos.slice(0, existing.length)).toEqual(existing);
+    expect([...correctionBySlug.keys()]).toEqual(["momo-payment-service-bank"]);
+    expect(logos.slice(0, existing.length).filter((item)=>item.slug!=="momo-payment-service-bank")).toEqual(existing.filter((item)=>item.slug!=="momo-payment-service-bank"));
     expect(logos.length).toBe(existing.length + expansionBrands.length);
   });
   it("researches exactly 60 Nigerian and five companies in each of eight hubs", () => {

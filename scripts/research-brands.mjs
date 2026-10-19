@@ -10,7 +10,7 @@ import { discoverBrandArtwork } from "./lib/brand-artwork.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const research = join(root, "packages/brands/research");
-const seedFiles = ["candidates.json", "supplemental-candidates.json", "telecom-candidates.json"];
+const seedFiles = ["candidates.json", "supplemental-candidates.json", "telecom-candidates.json", "popular-candidates.json", "requested-candidates.json", "market-candidates.json", "disco-candidates.json", "hospitality-candidates.json"];
 const allSeeds = (await Promise.all(seedFiles.map(async (file) => JSON.parse(await readFile(join(research, file), "utf8"))))).flat();
 const seeds = [...new Map(allSeeds.map((entry) => [entry[0].toLowerCase(), entry])).values()];
 const overrides = JSON.parse(await readFile(join(research, "source-overrides.json"), "utf8"));

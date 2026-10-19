@@ -10,7 +10,7 @@ const data = { schema_version: 2, items: brands.brands.map((brand) => ({ kind: "
 describe("additive plugin resource catalog", () => {
   it("keeps companies separate from financial institution records and preserves source review status", () => {
     const items = parseResources(data, "https://www.awalogo.com");
-    expect(items).toHaveLength(84);
+    expect(items).toHaveLength(brands.brands.length);
     expect(items.every((item) => item.institutions.length === 0 && !item.institution)).toBe(true);
     expect(items.find((item) => item.logo.slug === "airtel-nigeria")?.categories).toEqual(["telecommunications"]);
     const t2 = items.find((item) => item.logo.slug === "t2-mobile")!;

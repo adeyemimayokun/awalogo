@@ -1,0 +1,31 @@
+import { readFile, writeFile } from "node:fs/promises";
+import { createHash } from "node:crypto";
+import { load } from "cheerio";
+import sharp from "sharp";
+
+const base="packages/brands/research/";
+const manifest=JSON.parse(await readFile(`${base}manifest.json`,"utf8"));
+const reviews=JSON.parse(await readFile(`${base}reviews.json`,"utf8"));
+const entry=manifest.entries.find((item)=>item.slug==="kaduna-electric");
+const review=reviews.find((item)=>item.slug===entry.slug);
+const source=entry.candidate_assets.find((item)=>item.path===review.asset_path);
+if(source.format!=="svg") { console.log("Kaduna embedded PNG already extracted."); process.exit(0); }
+const container=await readFile(`packages/brands/${source.path}`);
+const $=load(container.toString(),{xmlMode:true});
+const image=$("image");
+if(image.length!==1 || $("path,script,foreignObject").length) throw new Error("Not a plain embedded raster container");
+const href=image.attr("xlink:href")??image.attr("href")??"";
+if(!href.startsWith("data:image/png;base64,")) throw new Error("Only embedded PNG data is accepted");
+const bytes=Buffer.from(href.slice("data:image/png;base64,".length),"base64");
+const metadata=await sharp(bytes).metadata();
+if(metadata.format!=="png") throw new Error("Embedded image is not PNG");
+const checksum=createHash("sha256").update(bytes).digest("hex");
+const path=`staging/kaduna-electric-embedded-${checksum.slice(0,12)}.png`;
+await writeFile(`packages/brands/${path}`,bytes);
+entry.candidate_assets.push({...source,path,format:"png",width:metadata.width,height:metadata.height,checksum,reviewed:true,source_container_path:source.path,source_container_checksum:source.checksum});
+review.asset_path=path;
+review.review_notes+=" The official SVG is a wrapper around one embedded PNG, not vector artwork. Original PNG bytes were extracted without tracing, upscaling or introducing external references; SVG is not offered for download.";
+entry.reason=review.review_notes;
+await writeFile(`${base}manifest.json`,`${JSON.stringify(manifest,null,2)}\n`);
+await writeFile(`${base}reviews.json`,`${JSON.stringify(reviews,null,2)}\n`);
+console.log(`Extracted original Kaduna PNG (${metadata.width}x${metadata.height}); SVG security policy unchanged.`);

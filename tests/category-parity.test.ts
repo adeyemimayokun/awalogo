@@ -14,8 +14,8 @@ describe("V2/plugin category parity", () => {
   it("uses exactly the same browse groups, counts and ordering as V2", () => {
     const expected = [...new Set(websiteLogos.map((logo) => logo.category))].sort().map((value) => ({ value, count: websiteLogos.filter((logo) => logo.category === value).length }));
     expect(catalogCategoryOptions(items)).toEqual(expected);
-    expect(expected).toHaveLength(18);
-    expect(expected.reduce((total, entry) => total + entry.count, 0)).toBe(312);
+    expect(expected).toHaveLength(19);
+    expect(expected.reduce((total, entry) => total + entry.count, 0)).toBe(websiteLogos.length);
     expect(expected.find((entry) => entry.value === "other")?.count).toBe(134);
     expect(expected.find((entry) => entry.value === "fintech")?.count).toBe(50);
   });
@@ -27,7 +27,7 @@ describe("V2/plugin category parity", () => {
     }
     const chosen = ["commercial-bank", "fintech"];
     expect(items.filter((item) => matchesCategory(item.logo.category, chosen))).toHaveLength(75);
-    expect(items.filter((item) => matchesCategory(item.logo.category, []))).toHaveLength(312);
+    expect(items.filter((item) => matchesCategory(item.logo.category, []))).toHaveLength(websiteLogos.length);
   });
   it("keeps real detail labels distinct from broad browse buckets", () => {
     for (const item of items) expect(displayCategory(item)).toBe(brandCategory(item.logo.slug, item.logo.category));
