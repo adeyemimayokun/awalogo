@@ -1,25 +1,16 @@
 import type { Institution, InstitutionCategory } from "@awalogo/institutions";
 import type { RuntimeCatalog } from "@awalogo/catalog-ui/runtime-catalog";
 import { hydrateRuntimeLogos, type LogoWithSvg } from "./logo-data";
+import { categoryLabel, primaryCategoryFor, categoryOptions, matchesCategory } from "@awalogo/catalog-ui/catalog-categories";
+export { categoryLabel, matchesCategory };
 
 export type CatalogItem = {
-  institution: Institution;
+  institution?: Institution;
+  kind?: "company" | "flag";
   institutions: Institution[];
   logo: LogoWithSvg;
   displayName: string;
-  categories: InstitutionCategory[];
-};
-
-const categoryOverrides: Partial<Record<InstitutionCategory, string>> = {
-  "crypto-vasp": "Crypto / VASP",
-  "development-finance-institution": "Development finance",
-  "payment-solution-service-provider": "Payment solutions",
-  "payment-terminal-service-provider": "Payment terminals",
-  "payment-service-holding-company": "Payment holding company",
-  "pension-fund-administrator": "Pension administrator",
-  "pension-fund-custodian": "Pension custodian",
-  "remittance-imto": "Remittance / IMTO",
-  "switching-processing": "Switching / processing"
+  categories: string[];
 };
 
 export function catalogItemsFromRuntime(catalog: RuntimeCatalog, origin?: string): CatalogItem[] {
@@ -34,13 +25,13 @@ export function catalogItemsFromRuntime(catalog: RuntimeCatalog, origin?: string
 }
 
 export function availableCategories(items: CatalogItem[]) {
-  return [...new Set(items.flatMap((item) => item.categories))]
-    .sort((a, b) => categoryLabel(a).localeCompare(categoryLabel(b)));
+  return categoryOptions(items.map((item) => item.logo)).map((entry) => entry.value);
 }
 
-export function categoryLabel(category: InstitutionCategory): string {
-  return categoryOverrides[category] ?? category
-    .split("-")
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(" ");
+export function displayCategory(item: CatalogItem): string {
+  return categoryLabel(primaryCategoryFor(item));
+}
+
+export function catalogCategoryOptions(items: CatalogItem[]) {
+  return categoryOptions(items.map((item) => item.logo));
 }

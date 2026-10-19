@@ -63,7 +63,7 @@ export default function V2Navigation({ isRequest, category, categories, total, o
     <a className={`v2-dock-item${!isRequest && showCategories ? " active" : ""}`} title={t("Brand library")} aria-label={t("Brand library")} aria-current={!isRequest && showCategories ? "page" : undefined} href="/v2" onClick={(event) => { if (!isRequest && !event.ctrlKey && !event.metaKey && !event.shiftKey && !event.altKey) { event.preventDefault(); setMenu(null); onLibrary(); } }}><LayoutGrid size={18} /><span>{t("Browse")}</span></a>
     {!isRequest && showCategories ? <div className="v2-dock-group">
       <button className={`v2-dock-item${category.length > 0 ? " active" : ""}`} title={t("Categories")} aria-expanded={menu === "categories"} aria-controls="v2-dock-categories" onClick={() => setMenu(menu === "categories" ? null : "categories")}><SlidersHorizontal size={18} /><span>{t("Categories")}</span><ChevronDown size={13} />{category.length > 0 ? <i className="v2-dock-filter-dot" /> : null}</button>
-      {menu === "categories" ? <div className="v2-dock-popover" id="v2-dock-categories" aria-label="Brand categories">
+      {menu === "categories" ? <div className="v2-dock-popover v2-category-picker" id="v2-dock-categories" aria-label={t("Select categories")}>
         <CategoryChoices options={categories} selected={category} onToggle={choose} onDone={() => { setMenu(null); ref.current?.querySelector<HTMLButtonElement>('button[aria-controls="v2-dock-categories"]')?.focus(); }} />
       </div> : null}
     </div> : null}

@@ -16,6 +16,7 @@ import V2CategoryFilter from "./V2CategoryFilter";
 import { filterBrands, toggleCategory } from "./brand-filters";
 import V2Report from "./V2Report";
 import { brandCategory } from "./brand-category";
+import { categoryOptions as getCategoryOptions } from "../../../packages/catalog-ui/src/catalog-categories";
 import V2Info, { infoTitles, type InfoPage } from "./V2Info";
 import V2Select from "./V2Select";
 import { recordDownloads, sortBrands, type BrandSort, type DownloadCounts } from "./popularity";
@@ -116,6 +117,7 @@ function V2Workspace() {
   const [requestOpen, setRequestOpen] = useState(false);
   const [reportOpen, setReportOpen] = useState(false);
   const [infoPage, setInfoPage] = useState<InfoPage | null>(null);
+  const [aboutPage, setAboutPage] = useState(() => location.pathname === "/v2/about");
   const [theme, setTheme] = useState<"light" | "dark" | "system">(() => {
     try { const saved = localStorage.getItem("awalogo-v2-theme"); return saved === "light" || saved === "dark" ? saved : "system"; } catch { return "system"; }
   });
@@ -161,14 +163,13 @@ function V2Workspace() {
     };
     document.addEventListener("keydown", handle); return () => document.removeEventListener("keydown", handle);
   });
-  const categories = [...new Set(logos.map((logo) => logo.category))].sort();
+  const categoryOptions = getCategoryOptions(logos);
   const visible = sortBrands(filterBrands(logos, category, query).filter((brand) => matchesBrandScope(brand.slug, industry, market)), sort, downloadCounts);
   const paginated = !query.trim() && !category.length && !industry && !market;
   const pagination = paginate(visible, page);
   const shown = paginated ? pagination.items : visible;
   const recommendations = recommendBrands(filterBrands(logos, category, "").filter((brand) => matchesBrandScope(brand.slug, industry, market)), visible, query, affiliations);
   function changePage(next: number) { setPage(next); requestAnimationFrame(() => { resultsHeading.current?.focus({ preventScroll:true }); resultsHeading.current?.scrollIntoView({ block:"start", behavior:matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" }); }); }
-  const categoryOptions = categories.map((value) => ({ value, count: logos.filter((logo) => logo.category === value).length }));
   function changeCategory(value: string) { setCategory((selected) => toggleCategory(selected, value)); }
   function resetFilters() { setQuery(""); setCategory([]); setIndustry(""); setMarket(""); setSort("popular"); searchRef.current?.focus(); }
   const selectedFormats = selected ? (variation === "primary" ? selected.formats : selected.variations.find((entry) => entry.id === variation)?.formats ?? []) : [];
@@ -234,17 +235,17 @@ function V2Workspace() {
     try { const svg = new TextDecoder().decode(await fetchAsset(asset)); await copy(svg, "SVG copied"); } catch { setFeedback("SVG could not be copied. Please try again."); }
   }
   const navigation = <V2Navigation isRequest={isRequest} showCategories={resource === "logos"} onFlags={() => showResource("flags")} category={category}
-    categories={categories.map((value) => ({ value, count: logos.filter((logo) => logo.category === value).length }))}
-    total={logos.length} theme={theme} onTheme={setTheme} sound={sound} onSound={() => { soundAction.current = true; if (sound) cancelActionSounds(); setSound(!sound); }} onSearch={() => { if (isRequest) { location.assign("/v2"); return; } closePanels(); requestAnimationFrame(() => document.querySelector<HTMLInputElement>(".v2-main .v2-search-wrap input")?.focus()); }} onInfo={(page) => { closePanels(); setInfoPage(page); }} onCategory={changeCategory} onRequest={openRequest} onLibrary={() => showResource("logos")} />;
+    categories={categoryOptions}
+    total={logos.length} theme={theme} onTheme={setTheme} sound={sound} onSound={() => { soundAction.current = true; if (sound) cancelActionSounds(); setSound(!sound); }} onSearch={() => { if (isRequest || aboutPage) { location.assign("/v2"); return; } closePanels(); requestAnimationFrame(() => document.querySelector<HTMLInputElement>(".v2-main .v2-search-wrap input")?.focus()); }} onInfo={(page) => { closePanels(); if (page === "about") { history.pushState(null, "", "/v2/about"); setAboutPage(true); window.scrollTo(0, 0); } else setInfoPage(page); }} onCategory={changeCategory} onRequest={openRequest} onLibrary={() => showResource("logos")} />;
   function closePanels() { setSelectedFlag(null); setSelected(null); setBagOpen(false); setRequestOpen(false); setInfoPage(null); setReportOpen(false); }
   function openRequest() { closePanels(); setRequestOpen(true); }
   function showResource(next: "logos" | "flags") {
-    closePanels(); setResource(next);
+    closePanels(); setAboutPage(false); setResource(next);
     const path = next === "flags" ? "/v2/flags" : "/v2";
     if (location.pathname !== path || location.search) history.pushState(null, "", path);
   }
   useEffect(() => {
-    const back = () => { closePanels(); setResource(location.pathname === "/v2/flags" ? "flags" : "logos"); };
+    const back = () => { closePanels(); setAboutPage(location.pathname === "/v2/about"); setResource(location.pathname === "/v2/flags" ? "flags" : "logos"); };
     window.addEventListener("popstate", back); return () => window.removeEventListener("popstate", back);
   }, []);
   async function downloadFlag(asset: FlagAsset, name: string) {
@@ -270,7 +271,7 @@ function V2Workspace() {
     <style>{[...darkPreviewUrls].map((url) => `.v2-app :is(.v2-preview,.v2-detail-preview):has(img[src=${JSON.stringify(url)}]){background:#272727}`).join("\n")}</style>
     {navigation}
     <div className="v2-workspace">
-    {isRequest ? <V2Request /> : <main className="v2-main">{resource === "flags" ? <V2Flags busy={busy} onSelect={(flag) => { closePanels(); setSelectedFlag(flag); }} onAdd={add} /> : <><div className="v2-heading"><div><p>{t("NIGERIAN & AFRICAN BRANDS")}</p><h1>{t("Good brands. Ready to use.")}</h1><p className="v2-description">{t("Explore company logos from Nigeria and across African markets.")}</p></div><span>{logos.length} {t("brands")}<br /><small>{t("One growing library")}</small></span></div>
+    {aboutPage ? <main className="v2-main v2-about-page"><a className="v2-about-back" href="/v2" onClick={(event) => { if (!event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey) { event.preventDefault(); showResource("logos"); } }}>{t("Brand library")}</a><V2Info page="about" fullPage onBrand={() => {}} onNewest={() => showResource("logos")} onRequest={openRequest} /></main> : isRequest ? <V2Request /> : <main className="v2-main">{resource === "flags" ? <V2Flags busy={busy} onSelect={(flag) => { closePanels(); setSelectedFlag(flag); }} onAdd={add} /> : <><div className="v2-heading"><div><p>{t("NIGERIAN & AFRICAN BRANDS")}</p><h1>{t("Good brands. Ready to use.")}</h1><p className="v2-description">{t("Explore company logos from Nigeria and across African markets.")}</p></div><span>{logos.length} {t("brands")}<br /><small>{t("One growing library")}</small></span></div>
       <div className="v2-toolbar"><div className="v2-search-wrap"><label><Search size={20} /><input ref={searchRef} aria-keyshortcuts="/" title={`${t("Search brands")} (/)`} aria-label={t("Search brands")} placeholder={t("Search brands, banks, fintechs...")} value={query} onChange={(event) => setQuery(event.target.value)} /></label>{query ? <button className="v2-search-clear" title={t("Clear search")} aria-label={t("Clear search")} onClick={() => { setQuery(""); searchRef.current?.focus(); }}><X size={16} /></button> : null}</div><V2CategoryFilter options={categoryOptions} selected={category} onToggle={changeCategory} /></div>
       {category.length ? <div className="v2-filter-chips" aria-label={t("Selected categories")}>{category.map((value) => <button key={value} aria-label={`Remove ${t(value.replaceAll("-", " "))} filter`} onClick={() => changeCategory(value)}><span>{t(value.replaceAll("-", " "))}</span><X size={13} /></button>)}</div> : null}
       <div className="v2-library-layout">

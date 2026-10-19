@@ -8,7 +8,8 @@
     "./admin": "./src/admin.ts",
     "./logo-data.plugin": "./src/logo-data.plugin.ts",
     "./runtime-catalog": "./src/runtime-catalog.ts",
-    "./catalog-projection": "./src/catalog-projection.ts"
+    "./catalog-projection": "./src/catalog-projection.ts",
+    "./catalog-categories": "./src/catalog-categories.ts"
   },
   "dependencies": {
     "@awalogo/core": "workspace:*",

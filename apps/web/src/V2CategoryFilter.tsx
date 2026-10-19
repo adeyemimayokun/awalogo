@@ -1,16 +1,20 @@
 import { useEffect, useRef, useState } from "react";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Search, X } from "lucide-react";
 import { useV2Language } from "./V2Language";
 
 export type CategoryOption = { value: string; count: number };
 export function CategoryChoices({ options, selected, onToggle, onDone }: { options: CategoryOption[]; selected: string[]; onToggle: (value: string) => void; onDone: () => void }) {
   const { t } = useV2Language();
+  const [query, setQuery] = useState("");
+  const matching = options.filter(({ value }) => t(value.replaceAll("-", " ")).toLocaleLowerCase().includes(query.trim().toLocaleLowerCase()));
   return <>
     <div className="v2-category-heading"><strong>{t("Categories")}</strong>{selected.length > 0 ? <button onClick={() => onToggle("all")}>{t("Clear")}</button> : null}</div>
+    <div className="v2-category-search"><Search size={16} /><input aria-label={t("Search categories")} placeholder={t("Search categories")} value={query} onChange={(event) => setQuery(event.target.value)} />{query ? <button aria-label={t("Clear search")} onClick={() => setQuery("")}><X size={14} /></button> : null}</div>
     <div className="v2-category-options" role="group" aria-label={t("Select categories")}>
-      {options.map(({ value, count }) => <label key={value}><input type="checkbox" checked={selected.includes(value)} onChange={() => onToggle(value)} /><span>{t(value.replaceAll("-", " "))}</span><small>{count}</small></label>)}
+      {matching.map(({ value, count }) => <label key={value}><input type="checkbox" checked={selected.includes(value)} onChange={() => onToggle(value)} /><span>{t(value.replaceAll("-", " "))}</span><small>{count}</small></label>)}
+      {!matching.length ? <p role="status">{t("No categories found")}</p> : null}
     </div>
-    <button className="v2-category-done" onClick={onDone}>{t("Done")}</button>
+    <div className="v2-category-footer"><span role="status">{t("{count} selected", { count:selected.length })}</span><button className="v2-category-done v2-primary" onClick={onDone}>{t("Done")}</button></div>
   </>;
 }
 

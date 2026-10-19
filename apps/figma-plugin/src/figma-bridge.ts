@@ -12,6 +12,7 @@ export function postToFigma(message: UiToPluginMessage): boolean {
 
 export function subscribeToFigma(handler: (message: PluginToUiMessage) => void): () => void {
   const listener = (event: MessageEvent<PluginMessageEnvelope<PluginToUiMessage>>) => {
+    if (event.source !== window.parent) return;
     const message = event.data?.pluginMessage;
     if (!message || typeof message !== "object" || !("type" in message)) return;
     handler(message);
@@ -22,6 +23,8 @@ export function subscribeToFigma(handler: (message: PluginToUiMessage) => void):
 
 let requestSequence = 0;
 type RequestPayload =
+  | { type: "insert-pack"; items: import("./messages").PackInsertItem[] }
+  | { type: "pack-load" }
   | { type: "catalog-load"; force?: boolean }
   | { type: "asset-load"; url: string; checksum: string };
 
@@ -38,13 +41,13 @@ export function requestFromFigma<T extends PluginToUiMessage>(
     }, timeoutMs);
     const unsubscribe = subscribeToFigma((response) => {
       if (!("requestId" in response) || response.requestId !== requestId) return;
+      if (response.type !== "request-error" && response.type !== expectedType) return;
       window.clearTimeout(timeout);
       unsubscribe();
       if (response.type === "request-error") {
         reject(new Error(response.message));
         return;
       }
-      if (response.type !== expectedType) return;
       resolve(response as T);
     });
     if (!postToFigma({ ...message, requestId } as UiToPluginMessage)) {

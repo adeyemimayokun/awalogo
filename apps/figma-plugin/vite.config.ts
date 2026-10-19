@@ -7,6 +7,7 @@ const root = dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
   root,
+  publicDir: resolve(root, "../web/public"),
   plugins: [react()],
   resolve: {
     alias: [

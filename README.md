@@ -145,7 +145,12 @@ and caches the last successful catalog plus recently used assets for offline fal
 Its network access is restricted to the `www.awalogo.com/catalog/` path.
 
 V1 and the current plugin expose the same generated set of available logos. V2
-additions and flags are not included in the current plugin. Assets
+additions and flags are not included in the currently published plugin. The local
+plugin compatibility build adds a separately versioned supplement with 84 company
+additions and 249 flags, plus Pack/Drop, Undo and mixed ZIP downloads. It requires
+the generated `/catalog/plugin/v2/` files to be deployed before publication; see
+[plugin compatibility notes](apps/figma-plugin/README.md#resource-supplement-and-collection).
+The published Community plugin has not been changed. Assets
 support their available download formats, and official SVGs also support editable
 insertion. Pending records are retained in the repository research data but are
 excluded from both public products.

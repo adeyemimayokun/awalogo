@@ -68,6 +68,9 @@ importers:
       '@vitejs/plugin-react':
         specifier: ^4.3.4
         version: 4.7.0(vite@6.4.3(@types/node@22.20.0)(tsx@4.22.4))
+      fflate:
+        specifier: 0.8.2
+        version: 0.8.2
       lucide-react:
         specifier: ^1.24.0
         version: 1.24.0(react@19.2.7)
@@ -80,6 +83,9 @@ importers:
       vite:
         specifier: ^6.0.7
         version: 6.4.3(@types/node@22.20.0)(tsx@4.22.4)
+      zod:
+        specifier: ^3.24.1
+        version: 3.25.76
     devDependencies:
       '@figma/plugin-typings':
         specifier: ^1.101.0

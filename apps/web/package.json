@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "prebuild": "pnpm --dir ../.. catalog:generate && pnpm --dir ../.. brands:publish && pnpm --dir ../.. brands:check",
-    "build": "vite build",
+    "build": "node ../../scripts/generate-plugin-resources.mjs && vite build",
     "predev": "pnpm --dir ../.. catalog:generate && pnpm --dir ../.. brands:publish",
     "dev": "vite --host 127.0.0.1",
     "typecheck": "tsc -p tsconfig.json"

@@ -1,4 +1,5 @@
 import type { CatalogItem } from "./catalog-data";
+import { categoryLabel } from "@awalogo/catalog-ui/catalog-categories";
 
 export function searchScore(item: CatalogItem, query: string): number {
   const normalizedQuery = normalize(query);
@@ -17,9 +18,12 @@ export function searchScore(item: CatalogItem, query: string): number {
 
   return Math.min(
     fieldScore(item.displayName, normalizedQuery, 0),
+    ...item.logo.aliases.map((value) => fieldScore(value, normalizedQuery, 40)),
+    ...item.logo.variations.map((value) => fieldScore(value.name, normalizedQuery, 60)),
     ...brandNames.map((value) => fieldScore(value, normalizedQuery, 40)),
     ...identityTerms.map((value) => fieldScore(value, normalizedQuery, 80)),
-    ...regulatoryTerms.map((value) => fieldScore(value, normalizedQuery, 120))
+    ...regulatoryTerms.map((value) => fieldScore(value, normalizedQuery, 120)),
+    ...item.categories.map((value) => fieldScore(categoryLabel(value), normalizedQuery, 160))
   );
 }
 
@@ -27,6 +31,7 @@ function fieldScore(value: string, query: string, base: number): number {
   const normalizedValue = normalize(value);
   if (!normalizedValue) return Number.POSITIVE_INFINITY;
   if (normalizedValue === query) return base;
+  if (normalizedValue.replaceAll(" ", "") === query.replaceAll(" ", "")) return base + 1;
   if (normalizedValue.startsWith(query)) {
     return base + 10 + lengthPenalty(normalizedValue.split(" ")[0], query);
   }
@@ -46,7 +51,7 @@ function fieldScore(value: string, query: string, base: number): number {
 }
 
 function normalize(value: string): string {
-  return value.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+  return value.normalize("NFKD").replace(/\p{M}/gu, "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
 }
 
 function lengthPenalty(value: string, query: string): number {

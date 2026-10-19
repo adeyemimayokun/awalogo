@@ -3,6 +3,7 @@ import legacyChangelog from "../../../packages/catalog-ui/src/changelog.json";
 import { previewUpdates, previewChangelog } from "./v2-release-notes";
 import { ArrowUpRight } from "lucide-react";
 import { useV2Language } from "./V2Language";
+import V2About from "./V2About";
 
 export type InfoPage = "updates" | "changelog" | "about" | "usage" | "contribute" | "help";
 export const infoTitles: Record<InfoPage, string> = {
@@ -12,9 +13,11 @@ export const infoTitles: Record<InfoPage, string> = {
 const github = "https://github.com/adeyemimayokun/awalogo";
 const updates = [...previewUpdates, ...legacyUpdates];
 const changelog = [...previewChangelog, ...legacyChangelog];
-export default function V2Info({ page, onBrand, onNewest, onRequest }: { page: InfoPage; onBrand: (slug: string) => void; onNewest: () => void; onRequest: () => void }) {
+export default function V2Info({ page, fullPage = false, onBrand, onNewest, onRequest }: { page: InfoPage; fullPage?: boolean; onBrand: (slug: string) => void; onNewest: () => void; onRequest: () => void }) {
   const { t } = useV2Language();
-  return <div className="v2-info"><p className="v2-eyebrow">AWALOGO</p><h2>{t(infoTitles[page])}</h2>
+  if (page === "about" && fullPage) return <V2About />;
+  const Heading = fullPage ? "h1" : "h2";
+  return <div className="v2-info"><p className="v2-eyebrow">AWALOGO</p><Heading>{t(infoTitles[page])}</Heading>
     {page === "updates" || page === "changelog" ? <p>{t("Editorial updates are currently available in English.")}</p> : null}
     {page === "updates" ? updates.filter((item) => item.status === "published").sort((a, b) => b.published_at.localeCompare(a.published_at)).map((item) => {
       const action = new URL(item.action_href, "https://www.awalogo.com");

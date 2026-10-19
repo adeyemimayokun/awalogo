@@ -13,6 +13,8 @@ export function isLanguage(value: unknown): value is Language {
 
 // English keys are also the fallback. Tuple order: Hausa, Yoruba, Igbo, Pidgin.
 export const messages: Record<string, readonly [string, string, string, string]> = {
+  "Search categories": ["Nemo rukuni", "Wá àwọn ẹ̀ka", "Chọọ ụdị", "Search categories"],
+  "No categories found": ["Ba a sami rukuni ba", "Kò sí ẹ̀ka tí a rí", "Achọtaghị ụdị", "No category match"],
   "Nigerian and African company logos, plus country flags, for designers and developers.": ["Tamburan kamfanonin Najeriya da Afirka da tutocin ƙasashe, don masu zane da masu haɓaka manhajoji.", "Àmì àwọn ilé-iṣẹ́ Nàìjíríà àti Áfíríkà, pẹ̀lú àsíá orílẹ̀-èdè, fún apẹ̀rẹ̀ àti olùgbékalẹ̀.", "Akara ụlọọrụ Naịjirịa na Afrịka, tinyere ọkọlọtọ mba, maka ndị nrụpụta na ndị mmepe.", "Nigerian and African company logos, plus country flags, for designers and developers."],
   "V2 is a Coming soon preview. V1 and the current Figma plugin keep their existing catalogs.": ["V2 samfurin dubawa ne mai zuwa. V1 da ƙarin Figma suna riƙe tarinsu na yanzu.", "V2 jẹ́ àwòkọ́ṣe tó ń bọ̀ láìpẹ́. V1 àti àfikún Figma pa àkójọpọ̀ wọn mọ́.", "V2 bụ nhụchalụ na-abịa n'oge adịghị anya. V1 na mgbakwunye Figma ka nwere katalọgụ ha.", "V2 na Coming soon preview. V1 and current Figma plugin still get their old catalogs."],
   "Official and community artwork retain distinct sources. Logos remain their owners' trademarks.": ["Zanen hukuma da na al'umma suna da maɓuɓɓuga daban. Tambura mallakar masu su ne.", "Àwòrán osìṣẹ́ àti ti àwùjọ ní orísun ọ̀tọ̀. Àwọn àmì jẹ́ ti olówó wọn.", "Ihe osise ụlọọrụ na nke obodo nwere isi mmalite dị iche. Akara ka bụ nke ndị nwe ha.", "Official and community artwork get separate sources. Logos still belong to their owners."],

@@ -1,46 +1,32 @@
 import { useEffect, useLayoutEffect, useMemo, useRef, useState, type FormEvent } from "react";
 import { createRoot } from "react-dom/client";
 import {
-  ArrowUp,
   ArrowUpRight,
-  BadgeDollarSign,
-  BriefcaseBusiness,
-  Building2,
-  ChartLine,
   Check,
   ChevronDown,
   Copy,
   FileCode2,
   FileImage,
-  GitFork,
-  GitPullRequest,
   Globe2,
   History,
   Image as ImageIcon,
   Images,
-  Landmark,
-  Layers3,
   LayoutGrid,
   Lock,
   LockOpen,
   Monitor,
   MessageSquarePlus,
   Moon,
-  Network,
-  RadioTower,
   RefreshCw,
   Search,
-  Send,
-  Scale,
-  ShieldCheck,
-  Smartphone,
   Sun,
-  WalletCards,
+  ShoppingBag,
+  Trash2,
+  Download,
   X,
   type LucideIcon
 } from "lucide-react";
 import { getCatalogLogoBadge, usesDarkLogoPreview, type LogoFormatType } from "@awalogo/core";
-import type { InstitutionCategory } from "@awalogo/institutions";
 import {
   CATALOG_ORIGIN,
   CATALOG_PATH,
@@ -48,9 +34,11 @@ import {
   type RuntimeCatalog
 } from "@awalogo/catalog-ui/runtime-catalog";
 import {
-  availableCategories,
+  catalogCategoryOptions,
   catalogItemsFromRuntime,
   categoryLabel,
+  displayCategory,
+  matchesCategory,
   type CatalogItem
 } from "./catalog-data";
 import { searchScore } from "./catalog-search";
@@ -58,8 +46,16 @@ import { buildCompanyLogoSubmissionUrl, buildLogoRequestUrl } from "./logo-reque
 import { isFigmaPlugin, postToFigma, requestFromFigma, subscribeToFigma } from "./figma-bridge";
 import type { PluginToUiMessage } from "./messages";
 import type { LogoAsset } from "./logo-data";
+import { buildLogoReportUrl, pluginShortcut, type CatalogSort } from "./browse-controls";
+import { PACK_KEY, readPack, type PackEntry } from "./pack";
+import { parseResources } from "./resource-catalog";
+import { PluginFooter } from "./PluginFooter";
+import { PluginSelect } from "./PluginSelect";
+import { usePluginDialog } from "./usePluginDialog";
 import awalogoLogoUrl from "../community-assets/awalogo-logo.svg";
+import type { PackInsertItem } from "./messages";
 import "./styles.css";
+import "./v2-style.css";
 
 type ProjectPanel = "changelog" | "contribute" | "request" | "trademarks";
 type ThemeMode = "system" | "light" | "dark";
@@ -67,28 +63,6 @@ type LogoDimensions = { width: number; height: number };
 
 const PAGE_SIZE = 48;
 const THEME_STORAGE_KEY = "nigerian-bank-logos-theme";
-const categoryIcons: Partial<Record<InstitutionCategory, LucideIcon>> = {
-  "commercial-bank": Landmark,
-  "development-finance-institution": Building2,
-  "digital-broker": ChartLine,
-  "digital-lender": BadgeDollarSign,
-  "financial-holding-company": Layers3,
-  "finance-app": Smartphone,
-  "insurance-broker": BriefcaseBusiness,
-  "insurer": ShieldCheck,
-  "investment-manager": WalletCards,
-  "merchant-bank": Landmark,
-  "microfinance-bank": Building2,
-  "mobile-money-operator": Smartphone,
-  "non-interest-bank": Landmark,
-  "payment-service-holding-company": Layers3,
-  "payment-service-bank": WalletCards,
-  "remittance-imto": Send,
-  "regulator": Scale,
-  "super-agent": Network,
-  "switching-processing": RefreshCw,
-  "stockbroker": ChartLine
-};
 const formatIcons: Record<LogoFormatType, LucideIcon> = {
   svg: FileCode2,
   png: FileImage,
@@ -114,7 +88,7 @@ function getAvailableFormats(logo: LogoAsset) {
   return logo.formats.map((format) => format.type.toUpperCase()).join(" · ");
 }
 
-function getCategorySummary(categories: InstitutionCategory[]) {
+function getCategorySummary(categories: string[]) {
   return categories.map(categoryLabel).join(" · ");
 }
 
@@ -132,7 +106,7 @@ function getInstitutionInitials(name: string) {
 const svgPreviewUrls = new Map<string, string>();
 
 function previewUrl(logo: LogoAsset) {
-  if (!logo.svg) return logo.asset_urls.webp ?? logo.asset_urls.png ?? logo.asset_urls.jpeg ?? "";
+  if (!logo.svg) return logo.asset_urls.svg ?? logo.asset_urls.webp ?? logo.asset_urls.png ?? logo.asset_urls.jpeg ?? "";
   const cachedUrl = svgPreviewUrls.get(logo.svg);
   if (cachedUrl) return cachedUrl;
   const url = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(logo.svg)}`;
@@ -187,37 +161,110 @@ function getInitialTheme(): ThemeMode {
 
 function App() {
   const [runtimeCatalog, setRuntimeCatalog] = useState<RuntimeCatalog | null>(null);
+  const [resources, setResources] = useState<CatalogItem[]>([]);
+  const [resourceState, setResourceState] = useState<"loading" | "ready" | "unavailable">("loading");
+  const [resourceKind, setResourceKind] = useState<"logos" | "flags">("logos");
   const [catalogState, setCatalogState] = useState<"loading" | "fresh" | "cached" | "stale" | "error">("loading");
   const [catalogError, setCatalogError] = useState("");
   const [query, setQuery] = useState("");
-  const [selectedCategories, setSelectedCategories] = useState<InstitutionCategory[]>([]);
+  const [sort, setSort] = useState<CatalogSort>("name");
+  const searchRef = useRef<HTMLInputElement>(null);
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [selectedItem, setSelectedItem] = useState<CatalogItem | null>(null);
   const [selectedFormat, setSelectedFormat] = useState<LogoFormatType>("svg");
   const [visibleLimit, setVisibleLimit] = useState(PAGE_SIZE);
   const [toast, setToast] = useState("");
+  const [collection, setCollection] = useState<PackEntry[]>(() => isFigmaPlugin() ? [] : readPack());
+  const [packLoaded, setPackLoaded] = useState(() => !isFigmaPlugin());
+  const [packStorageReady, setPackStorageReady] = useState(() => !isFigmaPlugin());
+  const [bagOpen, setBagOpen] = useState(false);
+  const [undoPack, setUndoPack] = useState<PackEntry[] | null>(null);
+  const [preparingZip, setPreparingZip] = useState(false);
   const [projectPanel, setProjectPanel] = useState<ProjectPanel | null>(null);
   const [themeMode, setThemeMode] = useState<ThemeMode>(getInitialTheme);
+  const [resolvedTheme, setResolvedTheme] = useState<"light" | "dark">(() => themeMode === "system" ? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light") : themeMode);
   const [themeMenuOpen, setThemeMenuOpen] = useState(false);
   const [categoryPickerOpen, setCategoryPickerOpen] = useState(false);
-  const [draftCategories, setDraftCategories] = useState<InstitutionCategory[]>([]);
+  const [draftCategories, setDraftCategories] = useState<string[]>([]);
   const [categoryQuery, setCategoryQuery] = useState("");
   const categoryPickerRef = useRef<HTMLDivElement>(null);
   const themeMenuRef = useRef<HTMLDivElement>(null);
-  const ActiveThemeIcon = themeMode === "light" ? Sun : themeMode === "dark" ? Moon : Monitor;
+  const ActiveThemeIcon = resolvedTheme === "light" ? Sun : Moon;
   const activeThemeLabel = themeMode === "light" ? "Light" : themeMode === "dark" ? "Dark" : "System";
-  const explorerCatalogItems = useMemo(() => runtimeCatalog ? catalogItemsFromRuntime(runtimeCatalog) : [], [runtimeCatalog]);
-  const availableInstitutionCategories = useMemo(() => availableCategories(explorerCatalogItems), [explorerCatalogItems]);
+  const allCatalogItems = useMemo(() => {
+    const legacy = runtimeCatalog ? catalogItemsFromRuntime(runtimeCatalog) : [];
+    const identities = new Set(legacy.map((item) => item.logo.slug));
+    return [...legacy, ...resources.filter((item) => !identities.has(item.logo.slug))];
+  }, [runtimeCatalog, resources]);
+  const explorerCatalogItems = useMemo(() => allCatalogItems.filter((item) => (item.kind === "flag") === (resourceKind === "flags")), [allCatalogItems, resourceKind]);
+  const browseCategories = useMemo(() => catalogCategoryOptions(explorerCatalogItems), [explorerCatalogItems]);
+  const availableInstitutionCategories = useMemo(() => browseCategories.map((entry) => entry.value), [browseCategories]);
   const availableLogoCount = explorerCatalogItems.length;
-  const categoryCounts = useMemo(() => new Map(availableInstitutionCategories.map((category) => [
-    category,
-    explorerCatalogItems.filter((item) => item.categories.includes(category)).length
-  ])), [availableInstitutionCategories, explorerCatalogItems]);
+  usePluginDialog(projectPanel ?? (bagOpen ? "bag" : selectedItem ? `asset:${selectedItem.logo.slug}` : null));
+  const categoryCounts = useMemo(() => new Map(browseCategories.map(({ value, count }) => [value, count])), [browseCategories]);
   const latestLogoAddedAt = useMemo(() => explorerCatalogItems.reduce((latest, item) => {
     const addedAt = item.logo.added_at;
     return addedAt > latest ? addedAt : latest;
   }, ""), [explorerCatalogItems]);
 
+  useEffect(() => {
+    if (!isFigmaPlugin()) return;
+    let cancelled = false;
+    void requestFromFigma<Extract<PluginToUiMessage, { type: "pack-result" }>>({ type: "pack-load" }, "pack-result").then((response) => {
+      if (!cancelled) { setCollection(response.entries); setPackStorageReady(true); }
+    }).catch(() => { if (!cancelled) setToast("Saved bag is unavailable; changes are available for this session only"); }).finally(() => { if (!cancelled) setPackLoaded(true); });
+    return () => { cancelled = true; };
+  }, []);
+  useEffect(() => {
+    if (!packLoaded || !packStorageReady) return;
+    if (isFigmaPlugin()) { postToFigma({ type: "pack-save", entries: collection }); return; }
+    try { localStorage.setItem(PACK_KEY, JSON.stringify(collection)); } catch { /* Session collection remains usable. */ }
+  }, [collection, packLoaded, packStorageReady]);
+  useEffect(() => {
+    if (!undoPack) return;
+    const timer = window.setTimeout(() => setUndoPack(null), 8000);
+    return () => window.clearTimeout(timer);
+  }, [undoPack]);
+
+  function pack(logo: LogoAsset, format: LogoFormatType) {
+    if (!packLoaded) { setToast("Loading your saved bag"); return; }
+    if (preparingZip) return;
+    if (collection.some((entry) => entry.slug === logo.slug && entry.format === format)) { setToast("Already packed"); return; }
+    if (collection.length >= 50) { setToast("Your bag holds up to 50 assets"); return; }
+    setUndoPack(null);
+    setCollection((entries) => [...entries, { slug: logo.slug, name: logo.name, format }]);
+    setToast(`${logo.name} packed into bag`);
+  }
+  const packedAssets = useMemo(() => new Map<string, LogoAsset>(allCatalogItems.flatMap(({ logo }) => [
+    [logo.slug, logo] as const,
+    ...logo.variations.map((variation) => [`${logo.slug}-${variation.id}`, { ...variation, slug: `${logo.slug}-${variation.id}`, name: `${logo.name} ${variation.name}` }] as const)
+  ])), [allCatalogItems]);
+
+  async function loadResources() {
+    const origin = isFigmaPlugin() ? CATALOG_ORIGIN : window.location.origin;
+    try {
+      const controller = new AbortController();
+      const timeout = window.setTimeout(() => controller.abort(), 8000);
+      let value: unknown;
+      try {
+        const response = await fetch(`${origin}/catalog/plugin/v2/index.json`, { signal: controller.signal });
+        if (!response.ok) throw new Error("Resource supplement unavailable");
+        value = await response.json();
+      } finally { window.clearTimeout(timeout); }
+      setResources(parseResources(value, origin));
+      setResourceState("ready");
+      try { localStorage.setItem("awalogo:plugin-resources:v2", JSON.stringify(value)); } catch { /* Keep network resources for this session. */ }
+    } catch {
+      try {
+        const cached = localStorage.getItem("awalogo:plugin-resources:v2");
+        if (cached) { setResources(parseResources(JSON.parse(cached), origin)); setResourceState("ready"); return; }
+      } catch { /* Never block the legacy catalog for invalid supplement data. */ }
+      setResourceState("unavailable");
+    }
+  }
+
   async function loadCatalog(force = false) {
+    void loadResources();
     setCatalogError("");
     if (!runtimeCatalog) setCatalogState("loading");
     try {
@@ -251,6 +298,7 @@ function App() {
     const applyTheme = () => {
       const resolvedTheme = themeMode === "system" ? (systemTheme.matches ? "dark" : "light") : themeMode;
       document.documentElement.dataset.theme = resolvedTheme;
+      setResolvedTheme(resolvedTheme);
       document.documentElement.dataset.themeMode = themeMode;
     };
 
@@ -273,7 +321,12 @@ function App() {
     }
 
     function closeThemeMenuOnEscape(event: KeyboardEvent) {
-      if (event.key === "Escape") setThemeMenuOpen(false);
+      if (event.key === "Escape") {
+        event.preventDefault();
+        event.stopPropagation();
+        setThemeMenuOpen(false);
+        themeMenuRef.current?.querySelector<HTMLButtonElement>('[aria-haspopup="menu"]')?.focus();
+      }
     }
 
     document.addEventListener("pointerdown", closeThemeMenu);
@@ -286,7 +339,7 @@ function App() {
 
   useEffect(() => {
     return subscribeToFigma((message) => {
-      if (message.type === "catalog-result" || message.type === "asset-result" || message.type === "request-error") return;
+      if (message.type === "catalog-result" || message.type === "asset-result" || message.type === "request-error" || message.type === "pack-result" || message.type === "pack-inserted") return;
       setToast(message.type === "inserted"
         ? `${message.name} inserted`
         : message.type === "inserted-in-frame"
@@ -301,16 +354,35 @@ function App() {
 
   useEffect(() => {
     function closeOnEscape(event: KeyboardEvent) {
+      if (event.defaultPrevented || event.isComposing) return;
       if (event.key === "Escape") {
+        event.preventDefault();
+        if (bagOpen) { setBagOpen(false); return; }
+        if (selectedItem || projectPanel) { setSelectedItem(null); setProjectPanel(null); searchRef.current?.focus(); return; }
+        if (categoryPickerOpen) {
+          setCategoryPickerOpen(false);
+          setCategoryQuery("");
+          categoryPickerRef.current?.querySelector<HTMLButtonElement>(".category-picker-trigger")?.focus();
+          return;
+        }
+        if (themeMenuOpen) return;
         setSelectedItem(null);
         setProjectPanel(null);
-        setCategoryPickerOpen(false);
-        setCategoryQuery("");
+        searchRef.current?.focus();
+        return;
       }
+      const target = event.target as HTMLElement | null;
+      const action = pluginShortcut(event, Boolean(target?.closest("input, textarea, select, [contenteditable]:not([contenteditable='false'])")));
+      if (!action) return;
+      if (action === "search" && (selectedItem || projectPanel || bagOpen)) return;
+      event.preventDefault();
+      if (action === "search" && !selectedItem && !projectPanel) searchRef.current?.focus();
+      if (action === "request") { setCategoryPickerOpen(false); setThemeMenuOpen(false); setBagOpen(false); setSelectedItem(null); setProjectPanel("request"); }
+      if (action === "bag") { setCategoryPickerOpen(false); setThemeMenuOpen(false); setSelectedItem(null); setProjectPanel(null); setBagOpen((open) => !open); }
     }
     window.addEventListener("keydown", closeOnEscape);
     return () => window.removeEventListener("keydown", closeOnEscape);
-  }, []);
+  }, [categoryPickerOpen, themeMenuOpen, selectedItem, projectPanel, bagOpen]);
 
   useEffect(() => {
     if (!categoryPickerOpen) return;
@@ -326,17 +398,16 @@ function App() {
     return () => document.removeEventListener("pointerdown", closeOnOutsideClick);
   }, [categoryPickerOpen]);
 
-  useEffect(() => setVisibleLimit(PAGE_SIZE), [selectedCategories, query]);
+  useEffect(() => setVisibleLimit(PAGE_SIZE), [selectedCategories, query, sort]);
 
   const filteredItems = useMemo(() => explorerCatalogItems
     .map((item) => ({ item, score: searchScore(item, query) }))
     .filter(({ item, score }) => {
-      const categoryMatches = selectedCategories.length === 0 ||
-        selectedCategories.some((category) => item.categories.includes(category));
+      const categoryMatches = matchesCategory(item.logo.category, selectedCategories);
       return categoryMatches && Number.isFinite(score);
     })
-    .sort((a, b) => a.score - b.score || a.item.displayName.localeCompare(b.item.displayName))
-    .map(({ item }) => item), [explorerCatalogItems, selectedCategories, query]);
+    .sort((a, b) => a.score - b.score || (sort === "newest" ? b.item.logo.added_at.localeCompare(a.item.logo.added_at) : 0) || a.item.displayName.localeCompare(b.item.displayName))
+    .map(({ item }) => item), [explorerCatalogItems, selectedCategories, query, sort]);
 
   const visibleItems = filteredItems.slice(0, visibleLimit);
   const visibleCategories = useMemo(() => {
@@ -346,24 +417,24 @@ function App() {
         .toLocaleLowerCase("en-NG")
         .includes(normalizedQuery))
       : availableInstitutionCategories;
-  }, [categoryQuery]);
+  }, [categoryQuery, availableInstitutionCategories]);
   const draftResultCount = useMemo(() => explorerCatalogItems.filter((item) => {
-    const categoryMatches = draftCategories.length === 0 ||
-      draftCategories.some((category) => item.categories.includes(category));
+    const categoryMatches = matchesCategory(item.logo.category, draftCategories);
     return categoryMatches && Number.isFinite(searchScore(item, query));
   }).length, [draftCategories, explorerCatalogItems, query]);
   const categorySelectionLabel = selectedCategories.length === 0
-    ? "All categories"
+    ? (resourceKind === "flags" ? "All regions" : "All categories")
     : selectedCategories.length === 1
       ? categoryLabel(selectedCategories[0])
-      : `${selectedCategories.length} categories`;
+      : `${selectedCategories.length} selected`;
   const categorySelectionSummary = selectedCategories.length === 0
-    ? "Browse every available institution"
+    ? "Browse every available resource"
     : selectedCategories.map(categoryLabel).join(", ");
 
   async function convertRaster(source: string, formatType: LogoFormatType): Promise<Blob | null> {
     if (formatType !== "png" && formatType !== "webp" && formatType !== "jpeg") return null;
     const image = new Image();
+    image.crossOrigin = "anonymous";
     image.src = source;
     await image.decode();
     const canvas = document.createElement("canvas");
@@ -412,6 +483,7 @@ function App() {
 
   async function insertLogo(logo: LogoAsset, formatType: LogoFormatType, dimensions: LogoDimensions) {
     try {
+      if (!isFigmaPlugin()) { setToast("Open the plugin in Figma to insert assets"); return; }
       if (formatType === "svg") {
         const { bytes } = await loadAssetBytes(logo, "svg");
         postToFigma({ type: "insert-logo", name: logo.name, svg: new TextDecoder().decode(bytes), ...dimensions });
@@ -458,10 +530,12 @@ function App() {
     setSelectedItem(item);
   }
 
-  function toggleCategory(category: InstitutionCategory) {
-    setDraftCategories((current) => current.includes(category)
-      ? current.filter((value) => value !== category)
-      : [...current, category]);
+  function toggleCategory(category: string) {
+    const next = draftCategories.includes(category)
+      ? draftCategories.filter((value) => value !== category)
+      : [...draftCategories, category];
+    setDraftCategories(next);
+    setSelectedCategories(next);
   }
 
   function toggleCategoryPicker() {
@@ -476,11 +550,14 @@ function App() {
     setSelectedCategories(draftCategories);
     setCategoryPickerOpen(false);
     setCategoryQuery("");
+    categoryPickerRef.current?.querySelector<HTMLButtonElement>(".category-picker-trigger")?.focus();
   }
 
   function resetCatalog() {
     setQuery("");
     setSelectedCategories([]);
+    setDraftCategories([]);
+    setSort("name");
     setVisibleLimit(PAGE_SIZE);
     setProjectPanel(null);
     requestAnimationFrame(() => {
@@ -491,6 +568,12 @@ function App() {
   function completeLogoRequest() {
     setProjectPanel(null);
     setToast("Submission prepared on GitHub");
+  }
+
+  function chooseTheme(mode: ThemeMode) {
+    setThemeMode(mode);
+    setThemeMenuOpen(false);
+    themeMenuRef.current?.querySelector<HTMLButtonElement>('[aria-haspopup="menu"]')?.focus();
   }
 
   async function downloadLogo(logo: LogoAsset, formatType: LogoFormatType) {
@@ -515,6 +598,41 @@ function App() {
     setToast(`${logo.name} ${formatType.toUpperCase()} downloaded`);
   }
 
+  async function insertPack() {
+    if (preparingZip || !collection.length) return;
+    if (!isFigmaPlugin()) { setToast("Open the plugin in Figma to insert all assets"); return; }
+    setPreparingZip(true);
+    setUndoPack(null);
+    try {
+      const items: PackInsertItem[] = [];
+      let total = 0;
+      for (const entry of collection) {
+        const asset = packedAssets.get(entry.slug);
+        if (!asset) throw new Error(`${entry.name} is not in the current catalog`);
+        const format = entry.format ?? asset.formats[0].type;
+        const source = await logoBlob(asset, format);
+        if (!source) throw new Error(`${entry.name} is unavailable`);
+        const blob = source.type === "image/webp" ? await convertRaster(previewUrl(asset), "png") : source;
+        if (!blob) throw new Error(`${entry.name} could not be converted`);
+        const bytes = new Uint8Array(await blob.arrayBuffer());
+        total += bytes.byteLength;
+        if (total > 100_000_000) throw new Error("Bag exceeds 100 MB");
+        const dimensions = { width: 200, height: 140 };
+        if (format === "svg") items.push({ type: "insert-logo", name: entry.name, svg: new TextDecoder().decode(bytes), ...dimensions });
+        else {
+          const bitmap = await createImageBitmap(blob);
+          dimensions.width = bitmap.width;
+          dimensions.height = bitmap.height;
+          bitmap.close();
+          items.push({ type: "insert-image", name: entry.name, mimeType: blob.type as "image/png" | "image/jpeg", bytes: Array.from(bytes), ...dimensions });
+        }
+      }
+      await requestFromFigma({ type: "insert-pack", items }, "pack-inserted", 60_000);
+      setToast(`${items.length} assets inserted`);
+    } catch (error) { setToast(error instanceof Error ? error.message : "Bag could not be inserted"); }
+    finally { setPreparingZip(false); }
+  }
+
   if (catalogState === "loading" && !runtimeCatalog) {
     return (
       <main className="plugin-shell catalog-connection-state" aria-live="polite">
@@ -525,7 +643,7 @@ function App() {
     );
   }
 
-  if (catalogState === "error" && !runtimeCatalog) {
+  if (catalogState === "error" && !runtimeCatalog && !resources.length && resourceState !== "loading") {
     return (
       <main className="plugin-shell catalog-connection-state" role="alert">
         <Globe2 aria-hidden="true" size={22} />
@@ -543,10 +661,16 @@ function App() {
           <span className="brand-mark" aria-hidden="true"><img src={awalogoLogoUrl} alt="" /></span>
           <div>
             <strong>awalogo</strong>
-            <small>Nigerian Bank Logos</small>
+            <small>Brand assets & flags</small>
           </div>
         </div>
         <div className="topbar-actions">
+          <button className="plugin-bag-trigger" type="button" onClick={() => { setBagOpen((open) => !open); setSelectedItem(null); setProjectPanel(null); }} title="Download bag (Alt+B)" aria-label={`Download bag, ${collection.length} items`} aria-keyshortcuts="Alt+B" aria-expanded={bagOpen}>
+            <ShoppingBag aria-hidden="true" size={16} /><span>{collection.length}</span>
+          </button>
+          <button className="plugin-request-primary" type="button" onClick={() => setProjectPanel("request")} title="Request logo (Alt+R)" aria-keyshortcuts="Alt+R">
+            <MessageSquarePlus aria-hidden="true" size={15} /> Request logo
+          </button>
           <button
             className={`catalog-sync-status ${catalogState}`}
             type="button"
@@ -556,7 +680,10 @@ function App() {
             <RefreshCw aria-hidden="true" size={12} />
             {catalogState === "fresh" ? "Live" : catalogState === "cached" ? "Cached" : catalogState === "stale" ? "Offline" : "Syncing"}
           </button>
-          <div className="theme-menu" ref={themeMenuRef}>
+          <div className="theme-menu" role="group" aria-label="Color theme" ref={themeMenuRef}>
+            <button className="theme-menu-trigger" type="button" aria-label="Switch color theme" title="Switch light / dark theme" onClick={() => setThemeMode(document.documentElement.dataset.theme === "dark" ? "light" : "dark")}>
+              <ActiveThemeIcon aria-hidden="true" size={14} />
+            </button>
             <button
               className="theme-menu-trigger"
               type="button"
@@ -565,18 +692,35 @@ function App() {
               aria-expanded={themeMenuOpen}
               title={`${activeThemeLabel} theme`}
               onClick={() => setThemeMenuOpen((open) => !open)}
+              onKeyDown={(event) => {
+                if (event.key !== "ArrowDown" && event.key !== "ArrowUp") return;
+                event.preventDefault();
+                setThemeMenuOpen(true);
+                const last = event.key === "ArrowUp";
+                requestAnimationFrame(() => {
+                  const options = themeMenuRef.current?.querySelectorAll<HTMLButtonElement>('[role="menuitemradio"]');
+                  (last ? options?.[options.length - 1] : options?.[0])?.focus();
+                });
+              }}
             >
-              <ActiveThemeIcon aria-hidden="true" size={14} strokeWidth={1.75} />
+              <ChevronDown aria-hidden="true" size={14} strokeWidth={1.75} />
             </button>
             {themeMenuOpen ? (
-              <div className="theme-menu-popover" role="menu" aria-label="Color theme">
-                <button className="theme-menu-option" type="button" role="menuitemradio" aria-checked={themeMode === "system"} onClick={() => { setThemeMode("system"); setThemeMenuOpen(false); }}>
+              <div className="theme-menu-popover" role="menu" aria-label="Color theme" onKeyDown={(event) => {
+                if (!["ArrowDown", "ArrowUp", "Home", "End"].includes(event.key)) return;
+                event.preventDefault();
+                const options = Array.from(event.currentTarget.querySelectorAll<HTMLButtonElement>('[role="menuitemradio"]'));
+                const index = options.indexOf(document.activeElement as HTMLButtonElement);
+                const next = event.key === "Home" ? 0 : event.key === "End" ? options.length - 1 : (index + (event.key === "ArrowDown" ? 1 : -1) + options.length) % options.length;
+                options[next]?.focus();
+              }}>
+                <button className="theme-menu-option" type="button" role="menuitemradio" aria-checked={themeMode === "system"} onClick={() => chooseTheme("system")}>
                   <Monitor aria-hidden="true" size={14} strokeWidth={1.75} /><span>System</span>{themeMode === "system" ? <Check aria-hidden="true" size={13} /> : null}
                 </button>
-                <button className="theme-menu-option" type="button" role="menuitemradio" aria-checked={themeMode === "light"} onClick={() => { setThemeMode("light"); setThemeMenuOpen(false); }}>
+                <button className="theme-menu-option" type="button" role="menuitemradio" aria-checked={themeMode === "light"} onClick={() => chooseTheme("light")}>
                   <Sun aria-hidden="true" size={14} strokeWidth={1.75} /><span>Light</span>{themeMode === "light" ? <Check aria-hidden="true" size={13} /> : null}
                 </button>
-                <button className="theme-menu-option" type="button" role="menuitemradio" aria-checked={themeMode === "dark"} onClick={() => { setThemeMode("dark"); setThemeMenuOpen(false); }}>
+                <button className="theme-menu-option" type="button" role="menuitemradio" aria-checked={themeMode === "dark"} onClick={() => chooseTheme("dark")}>
                   <Moon aria-hidden="true" size={14} strokeWidth={1.75} /><span>Dark</span>{themeMode === "dark" ? <Check aria-hidden="true" size={13} /> : null}
                 </button>
               </div>
@@ -589,23 +733,31 @@ function App() {
       </header>
 
       <section className="catalog-intro">
-        <p className="eyebrow">Institution explorer</p>
+        <p className="eyebrow">Resource library</p>
         <h1>Find the right mark.</h1>
-        <p>Browse Nigerian financial institutions and use cataloged brand assets.</p>
+        <p>Browse Nigerian and African brands, financial institutions, and country flags.</p>
       </section>
+
+      <div className="plugin-resource-tabs" role="group" aria-label="Resource type">
+        {(["logos", "flags"] as const).map((kind) => <button type="button" key={kind} aria-pressed={resourceKind === kind} onClick={() => { setResourceKind(kind); setSelectedCategories([]); setDraftCategories([]); setCategoryPickerOpen(false); setCategoryQuery(""); setQuery(""); setVisibleLimit(PAGE_SIZE); }}>{kind === "logos" ? "Logos" : "Flags"}</button>)}
+        {resourceState === "unavailable" ? <span role="status">Additional resources are unavailable. <button type="button" onClick={() => void loadResources()}>Retry</button></span> : null}
+      </div>
 
       <section className="catalog-controls" aria-label="Catalog controls">
         <label className="search-box">
-          <span>Search institutions</span>
+          <span>Search assets</span>
           <Search className="search-icon" aria-hidden="true" size={18} strokeWidth={1.75} />
           <input
+            ref={searchRef}
+            aria-keyshortcuts="/"
+            title="Search assets (/)"
             autoFocus
             value={query}
             onChange={(event) => setQuery(event.target.value)}
             onKeyDown={(event) => {
-              if (event.key === "Escape" && query) setQuery("");
+              if (event.key === "Escape" && query) { event.stopPropagation(); setQuery(""); }
             }}
-            placeholder={'Search logos  — try "Sycamore", "Kuda" ...'}
+            placeholder={resourceKind === "flags" ? "Search country or code…" : "Search brands or aliases…"}
           />
           {query ? (
             <button
@@ -622,13 +774,14 @@ function App() {
         </label>
 
         <div className="catalog-toolbar" ref={categoryPickerRef}>
-          <div className={`category-picker${categoryPickerOpen ? " open" : ""}`}>
+          <div className={`category-picker${categoryPickerOpen ? " open" : ""}`} onClick={(event) => { if (event.target === event.currentTarget) { setCategoryPickerOpen(false); setCategoryQuery(""); } }}>
             <button
               className="category-picker-trigger"
               type="button"
               aria-expanded={categoryPickerOpen}
               aria-controls="category-picker-panel"
               aria-haspopup="dialog"
+              aria-label={resourceKind === "flags" ? "Filter by regions" : "Filter by categories"}
               onClick={toggleCategoryPicker}
             >
               <span className="category-picker-icon" aria-hidden="true">
@@ -645,10 +798,10 @@ function App() {
             </button>
 
             {categoryPickerOpen ? (
-              <div className="category-picker-panel" id="category-picker-panel" role="dialog" aria-label="Choose categories">
+              <div className="category-picker-panel" id="category-picker-panel" role="dialog" aria-label={resourceKind === "flags" ? "Choose regions" : "Choose categories"}>
                 <header className="category-picker-header">
                   <div>
-                    <strong>Categories</strong>
+                    <strong>{resourceKind === "flags" ? "Regions" : "Categories"}</strong>
                     <small>Select one or more</small>
                   </div>
                   <div className="category-picker-header-actions">
@@ -668,12 +821,12 @@ function App() {
 
                 <label className="category-search">
                   <Search aria-hidden="true" size={15} strokeWidth={1.75} />
-                  <span>Search categories</span>
+                  <span>{resourceKind === "flags" ? "Search regions" : "Search categories"}</span>
                   <input
                     autoFocus
                     value={categoryQuery}
                     onChange={(event) => setCategoryQuery(event.target.value)}
-                    placeholder="Find a category"
+                    placeholder={resourceKind === "flags" ? "Find a region" : "Find a category"}
                   />
                   {categoryQuery ? (
                     <button type="button" aria-label="Clear category search" onClick={() => setCategoryQuery("")}>
@@ -682,16 +835,16 @@ function App() {
                   ) : null}
                 </label>
 
-                <div className="category-options" role="group" aria-label="Available categories">
+                <div className="category-options" role="group" aria-label={resourceKind === "flags" ? "Available regions" : "Available categories"}>
                   {categoryQuery === "" ? (
                     <button
                       className={`category-option all-categories${draftCategories.length === 0 ? " selected" : ""}`}
                       type="button"
                       aria-pressed={draftCategories.length === 0}
-                      onClick={() => setDraftCategories([])}
+                      onClick={() => { setDraftCategories([]); setSelectedCategories([]); }}
                     >
                       <LayoutGrid aria-hidden="true" size={16} strokeWidth={1.75} />
-                      <span>All categories</span>
+                      <span>{resourceKind === "flags" ? "All regions" : "All categories"}</span>
                       <small>{explorerCatalogItems.length.toLocaleString("en-NG")}</small>
                       <span className="category-option-check" aria-hidden="true">
                         {draftCategories.length === 0 ? <Check size={14} strokeWidth={2} /> : null}
@@ -700,30 +853,23 @@ function App() {
                   ) : null}
 
                   {visibleCategories.map((category) => {
-                    const Icon = categoryIcons[category] ?? RadioTower;
                     const selected = draftCategories.includes(category);
                     const label = categoryLabel(category);
                     return (
-                      <button
+                      <label
                         className={`category-option${selected ? " selected" : ""}`}
                         key={category}
-                        type="button"
                         title={label}
-                        aria-pressed={selected}
-                        onClick={() => toggleCategory(category)}
                       >
-                        <Icon aria-hidden="true" size={16} strokeWidth={1.75} />
+                        <input type="checkbox" checked={selected} onChange={() => toggleCategory(category)} />
                         <span>{label}</span>
                         <small>{categoryCounts.get(category)}</small>
-                        <span className="category-option-check" aria-hidden="true">
-                          {selected ? <Check size={14} strokeWidth={2} /> : null}
-                        </span>
-                      </button>
+                      </label>
                     );
                   })}
 
                   {visibleCategories.length === 0 ? (
-                    <p className="category-no-results">No matching category</p>
+                    <p className="category-no-results">{resourceKind === "flags" ? "No matching region" : "No matching category"}</p>
                   ) : null}
                 </div>
 
@@ -732,12 +878,12 @@ function App() {
                     className="category-clear-button"
                     type="button"
                     disabled={draftCategories.length === 0}
-                    onClick={() => setDraftCategories([])}
+                    onClick={() => { setDraftCategories([]); setSelectedCategories([]); }}
                   >
                     Clear
                   </button>
                   <button className="category-apply-button" type="button" onClick={applyCategoryFilter}>
-                    Show {draftResultCount.toLocaleString("en-NG")} {draftResultCount === 1 ? "result" : "results"}
+                    Done · {draftResultCount.toLocaleString("en-NG")} {draftResultCount === 1 ? "result" : "results"}
                   </button>
                 </footer>
               </div>
@@ -746,15 +892,25 @@ function App() {
         </div>
       </section>
 
+      {selectedCategories.length ? <div className="plugin-filter-chips" aria-label={resourceKind === "flags" ? "Selected regions" : "Selected categories"}>
+        {selectedCategories.map((category) => <button key={category} type="button" aria-label={`Remove ${categoryLabel(category)} filter`} onClick={() => toggleCategory(category)}><span>{categoryLabel(category)}</span><X size={13} aria-hidden="true" /></button>)}
+      </div> : null}
+
       <div className="results-summary" id="catalog-results" aria-live="polite">
         <span>{filteredItems.length.toLocaleString("en-NG")} {filteredItems.length === 1 ? "result" : "results"}</span>
-        <span>{availableLogoCount.toLocaleString("en-NG")} available logos</span>
+        <div className="plugin-result-actions">
+          {query || selectedCategories.length || sort !== "name" ? <button type="button" onClick={resetCatalog}><RefreshCw aria-hidden="true" size={13} /> Reset filters</button> : null}
+          <PluginSelect aria-label="Sort resources" value={sort} onChange={(event) => setSort(event.target.value as CatalogSort)}>
+            <option value="name">Name A–Z</option>
+            <option value="newest">Recently added</option>
+          </PluginSelect>
+        </div>
       </div>
 
       {filteredItems.length === 0 ? (
         <section className="empty-state">
           <span aria-hidden="true">0</span>
-          <h2>No matching institution</h2>
+          <h2>{resourceKind === "flags" ? "No matching flag" : "No matching brand"}</h2>
           <p>Try another search or request the missing logo.</p>
           <button className="empty-state-action" type="button" onClick={() => setProjectPanel("request")}>
             <MessageSquarePlus aria-hidden="true" size={15} strokeWidth={1.8} /> Request this logo
@@ -762,20 +918,20 @@ function App() {
         </section>
       ) : (
         <>
-          <section className="logo-grid" aria-label="Financial institutions">
+          <section className="logo-grid" aria-label={resourceKind === "flags" ? "Country flags" : "Brand logos"}>
             {visibleItems.map((item, index) => {
-              const { logo, displayName, categories } = item;
+              const { logo, displayName } = item;
               const logoBadge = getCatalogLogoBadge(logo, latestLogoAddedAt);
               return (
                 <button
                   className={`logo-tile${logo ? "" : " logo-pending"}${logoBadge ? ` logo-${logoBadge}` : ""}`}
-                  key={item.institution.slug}
+                  key={logo.slug}
                   type="button"
                   onClick={() => openDetails(item)}
                   style={{ animationDelay: `${(index % 12) * 30}ms` }}
                   aria-label={`View ${displayName} details${logoBadge === "new" ? ", newly added logo" : ""}`}
                 >
-                  <span className={`tile-preview${logo && usesDarkLogoPreview(logo.slug) ? " logo-preview-dark" : ""}`}>
+                  <span className={`tile-preview${logo && (logo.preview_background === "dark" || usesDarkLogoPreview(logo.slug)) ? " logo-preview-dark" : ""}`}>
                     {logoBadge === "new" ? <span className="new-tag" aria-hidden="true">New</span> : null}
                     {logo ? <img src={previewUrl(logo)} alt="" loading="lazy" /> : (
                       <span className="pending-preview" aria-hidden="true">
@@ -786,12 +942,12 @@ function App() {
                   </span>
                   <span className="tile-copy">
                     <strong>{displayName}</strong>
-                    <small>{getCategorySummary(categories)}</small>
+                    <small>{displayCategory(item)}</small>
                   </span>
                   <span className="tile-meta">
                     <span className={logo ? "" : "pending-badge"}>{logo ? getAvailableFormats(logo) : "Asset pending"}</span>
-                    <time dateTime={logo?.added_at ?? item.institution.added_at}>
-                      {formatDate(logo?.added_at ?? item.institution.added_at)}
+                    <time dateTime={logo.added_at}>
+                      {formatDate(logo.added_at)}
                     </time>
                   </span>
                 </button>
@@ -808,65 +964,20 @@ function App() {
         </>
       )}
 
-      <footer className="site-footer">
-        <div className="footer-inner">
-          <span className="frame-register frame-register-top-left" aria-hidden="true" />
-          <span className="frame-register frame-register-top-right" aria-hidden="true" />
-          <span className="frame-register frame-register-bottom-left" aria-hidden="true" />
-          <span className="frame-register frame-register-bottom-right" aria-hidden="true" />
-          <div className="footer-topbar">
-            <div className="footer-brand">
-              <img className="footer-brand-logo" src={awalogoLogoUrl} alt="" />
-              <strong>awalogo</strong>
-            </div>
-            <nav className="footer-nav" aria-label="Project links">
-              <button type="button" onClick={() => setProjectPanel("contribute")} aria-haspopup="dialog">Contribute</button>
-              <button type="button" onClick={() => setProjectPanel("changelog")} aria-haspopup="dialog">Changelog</button>
-              <button type="button" onClick={() => setProjectPanel("trademarks")} aria-haspopup="dialog">Trademark policy</button>
-            </nav>
-          </div>
-
-          <div className="footer-bottom">
-            <div className="footer-meta-links">
-              <a href="https://github.com/adeyemimayokun/awalogo" target="_blank" rel="noreferrer">
-                <GitFork aria-hidden="true" size={15} /> GitHub
-              </a>
-              <a href="https://awalogo.com" target="_blank" rel="noreferrer" title="Visit awalogo.com">
-                <Globe2 aria-hidden="true" size={15} /> Website
-              </a>
-              <a
-                href="https://github.com/adeyemimayokun/awalogo/blob/main/CONTRIBUTING.md"
-                target="_blank"
-                rel="noreferrer"
-                title="Contribute to awalogo"
-              >
-                <GitPullRequest aria-hidden="true" size={15} /> Contribute
-              </a>
-              <span>MIT licensed tooling</span>
-            </div>
-            <div className="footer-copyright">
-              <span>Built for convenience — check each brand&apos;s guidelines before use.</span>
-              <button
-                type="button"
-                aria-label="Back to top"
-                title="Back to top"
-                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              >
-                <ArrowUp aria-hidden="true" size={15} />
-              </button>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <PluginFooter onPanelChange={setProjectPanel} />
 
       {selectedItem ? (
         <DetailSheet
+          key={selectedItem.logo.slug}
+          initialVariationId={selectedItem.logo.variations.find((entry) => entry.status === "old" && query.trim() && entry.name.toLowerCase().replace(/[^a-z0-9]/g, "") === query.toLowerCase().replace(/[^a-z0-9]/g, ""))?.id}
           item={selectedItem}
           selectedFormat={selectedFormat}
           onClose={() => setSelectedItem(null)}
           onFormatChange={setSelectedFormat}
           onCopy={copyLogo}
           onInsert={insertLogo}
+          onDownload={downloadLogo}
+          onPack={pack}
           onRequest={() => {
             setQuery(selectedItem.displayName);
             setSelectedItem(null);
@@ -874,6 +985,23 @@ function App() {
           }}
         />
       ) : null}
+
+      {bagOpen ? <div className="detail-backdrop" onMouseDown={() => setBagOpen(false)}>
+        <aside className="detail-sheet plugin-pack-sheet" role="dialog" aria-modal="true" aria-label="Download bag" onMouseDown={(event) => event.stopPropagation()}>
+          <header className="detail-header"><h2>Download bag <small>{collection.length}</small></h2><button className="close-button" type="button" aria-label="Close bag" onClick={() => setBagOpen(false)}><X size={16} /></button></header>
+          {collection.length ? <button className="plugin-drop-all" type="button" disabled={preparingZip} onClick={() => { setUndoPack(collection); setCollection([]); }}>Drop all</button> : <p>Your bag is empty.</p>}
+          {collection.map((entry) => {
+            const asset = packedAssets.get(entry.slug);
+            return <div className="plugin-pack-row" key={`${entry.slug}:${entry.format}`}>
+              <div><strong>{entry.name}</strong><small>{asset ? (entry.format ?? asset.formats[0].type).toUpperCase() : "Not in the current catalog"}</small></div>
+              {asset ? <button type="button" title={`Download ${entry.name}`} aria-label={`Download ${entry.name}`} onClick={() => void downloadLogo(asset, entry.format ?? asset.formats[0].type)}><Download size={16} /></button> : null}
+              <button type="button" disabled={preparingZip} title="Drop item" aria-label={`Drop ${entry.name}`} onClick={() => { setUndoPack(null); setCollection((entries) => entries.filter((value) => value.slug !== entry.slug || value.format !== entry.format)); }}><Trash2 size={16} /></button>
+            </div>;
+          })}
+          {undoPack ? <div className="plugin-pack-undo" role="status">Items dropped. <button type="button" onClick={() => { setCollection(undoPack); setUndoPack(null); }}>Undo</button></div> : null}
+          {collection.length ? <button className="plugin-request-primary" type="button" disabled={preparingZip} onClick={() => void insertPack()}><LayoutGrid size={15} aria-hidden="true" />{preparingZip ? "Inserting…" : "Insert all"}</button> : null}
+        </aside>
+      </div> : null}
 
       {projectPanel ? (
         <ProjectInfoSheet
@@ -1093,7 +1221,7 @@ function CompanyLogoSubmissionForm({ onSubmitted }: { onSubmitted: () => void })
       <div className="request-field-row">
         <label className="request-field">
           <span>Category</span>
-          <select value={category} onChange={(event) => setCategory(event.target.value)}>
+          <PluginSelect aria-label="Category" value={category} onChange={(event) => setCategory(event.target.value)}>
             <option>Bank</option>
             <option>Fintech</option>
             <option>Insurance</option>
@@ -1101,7 +1229,7 @@ function CompanyLogoSubmissionForm({ onSubmitted }: { onSubmitted: () => void })
             <option>Payments</option>
             <option>Remittance</option>
             <option>Other</option>
-          </select>
+          </PluginSelect>
         </label>
         <label className="request-field">
           <span>Your role</span>
@@ -1117,13 +1245,13 @@ function CompanyLogoSubmissionForm({ onSubmitted }: { onSubmitted: () => void })
       <div className="request-field-row">
         <label className="request-field">
           <span>Primary format</span>
-          <select value={logoFormat} onChange={(event) => setLogoFormat(event.target.value)}>
+          <PluginSelect aria-label="Primary format" value={logoFormat} onChange={(event) => setLogoFormat(event.target.value)}>
             <option>SVG</option>
             <option>PNG</option>
             <option>WebP</option>
             <option>Multiple formats</option>
             <option>Brand kit</option>
-          </select>
+          </PluginSelect>
         </label>
         <label className="request-field">
           <span>Logo or brand-kit URL</span>
@@ -1257,7 +1385,7 @@ function LogoRequestForm({
       <div className="request-field-row">
         <label className="request-field">
           <span>Category</span>
-          <select value={category} onChange={(event) => setCategory(event.target.value)}>
+          <PluginSelect aria-label="Category" value={category} onChange={(event) => setCategory(event.target.value)}>
             <option>Bank</option>
             <option>Finance app</option>
             <option>Fintech</option>
@@ -1265,7 +1393,7 @@ function LogoRequestForm({
             <option>Investment platform</option>
             <option>Payments</option>
             <option>Other</option>
-          </select>
+          </PluginSelect>
         </label>
         <label className="request-field">
           <span>Official website</span>
@@ -1319,37 +1447,43 @@ function LogoRequestForm({
 
 function DetailSheet({
   item,
+  initialVariationId,
   selectedFormat,
   onClose,
   onFormatChange,
   onCopy,
   onInsert,
+  onDownload,
+  onPack,
   onRequest
 }: {
   item: CatalogItem;
+  initialVariationId?: string;
   selectedFormat: LogoFormatType;
   onClose: () => void;
   onFormatChange: (format: LogoFormatType) => void;
   onCopy: (logo: LogoAsset, format: LogoFormatType, dimensions: LogoDimensions) => void;
   onInsert: (logo: LogoAsset, format: LogoFormatType, dimensions: LogoDimensions) => void;
+  onDownload: (logo: LogoAsset, format: LogoFormatType) => void;
+  onPack: (logo: LogoAsset, format: LogoFormatType) => void;
   onRequest: () => void;
 }) {
   const { logo, displayName, categories } = item;
-  const [selectedVariationId, setSelectedVariationId] = useState("primary");
+  const [selectedVariationId, setSelectedVariationId] = useState(initialVariationId ?? "primary");
   const [dimensions, setDimensions] = useState<LogoDimensions>({ width: 512, height: 512 });
   const [aspectRatio, setAspectRatio] = useState(1);
   const [aspectLocked, setAspectLocked] = useState(true);
   if (!logo) {
-    const institutionSource = item.institution.sources[0]?.url;
+    const institutionSource = item.institution?.sources[0]?.url;
     return (
       <div className="detail-backdrop" onMouseDown={onClose}>
-        <aside className="detail-sheet" aria-label={`${displayName} details`} onMouseDown={(event) => event.stopPropagation()}>
+        <aside className="detail-sheet" role="dialog" aria-modal="true" aria-label={`${displayName} details`} onMouseDown={(event) => event.stopPropagation()}>
           <div className="sheet-handle" aria-hidden="true" />
           <header className="detail-header">
             <div>
               <span className="verified-label pending"><span aria-hidden="true" /> Asset pending</span>
               <h2>{displayName}</h2>
-              <p>{getCategorySummary(categories)}</p>
+              <p>{displayCategory(item)}</p>
             </div>
             <button className="close-button" type="button" onClick={onClose} aria-label="Close details" title="Close">×</button>
           </header>
@@ -1368,7 +1502,7 @@ function DetailSheet({
             </div>
             <div>
               <dt>Institution added</dt>
-              <dd>{formatDate(item.institution.added_at)}</dd>
+              <dd>{item.institution ? formatDate(item.institution.added_at) : "Not available"}</dd>
             </div>
             {institutionSource ? (
               <div className="source-row">
@@ -1391,7 +1525,7 @@ function DetailSheet({
   type DetailAsset = { id: string; label: string; kind: "current" | "lockup" | "historical"; previewAssetId: string; retiredAt?: string; asset: LogoAsset };
   const primaryAsset: DetailAsset = {
     id: "primary",
-    label: "Primary",
+    label: item.kind === "flag" ? "4:3 rectangular" : "Primary",
     kind: "current",
     previewAssetId: logo.slug,
     asset: logo
@@ -1438,9 +1572,17 @@ function DetailSheet({
   const allAssets = [...variationAssets, ...versionAssets.slice(1)];
   const activeVariation = allAssets.find((variation) => variation.id === selectedVariationId) ?? primaryAsset;
   const activeLogo = activeVariation.asset;
+  const artworkSource = logo.variations.find((entry) => entry.id === activeVariation.id)?.source_url ?? logo.source_url;
 
   useEffect(() => {
     let cancelled = false;
+    const intrinsic = activeLogo.formats.find((format) => format.width && format.height);
+    if (intrinsic?.width && intrinsic.height) {
+      const scale = Math.min(1, 1024 / Math.max(intrinsic.width, intrinsic.height));
+      setAspectRatio(intrinsic.width / intrinsic.height);
+      setDimensions({ width: Math.max(1, Math.round(intrinsic.width * scale)), height: Math.max(1, Math.round(intrinsic.height * scale)) });
+      return;
+    }
     const image = new Image();
     image.onload = () => {
       if (cancelled || !image.naturalWidth || !image.naturalHeight) return;
@@ -1499,15 +1641,15 @@ function DetailSheet({
 
   return (
     <div className="detail-backdrop" onMouseDown={onClose}>
-      <aside className="detail-sheet" aria-label={`${displayName} details`} onMouseDown={(event) => event.stopPropagation()}>
+      <aside className="detail-sheet" role="dialog" aria-modal="true" aria-label={`${displayName} details`} onMouseDown={(event) => event.stopPropagation()}>
         <div className="sheet-handle" aria-hidden="true" />
         <header className="detail-header">
           <div>
             <span className={`verified-label${logo.status === "verified" ? "" : " community"}`}>
-              <span aria-hidden="true" /> {logo.status === "verified" ? "Verified source" : logo.status === "deprecated" ? "Deprecated asset" : "Unverified"}
+              <span aria-hidden="true" /> {item.kind === "flag" ? "Flag-icons · MIT" : activeVariation.kind === "historical" ? "Historical artwork · review source" : logo.status === "verified" ? "Verified source" : logo.status === "deprecated" ? "Deprecated asset" : "Unverified"}
             </span>
             <h2>{displayName}</h2>
-            <p>{getCategorySummary(categories)}</p>
+            <p>{displayCategory(item)}</p>
           </div>
           <button className="close-button" type="button" onClick={onClose} aria-label="Close details" title="Close">×</button>
         </header>
@@ -1571,12 +1713,13 @@ function DetailSheet({
               );
             })}
           </div>
-          <div className={`detail-preview${usesDarkLogoPreview(activeVariation.previewAssetId) ? " logo-preview-dark" : ""}`}>
+          <div className={`detail-preview${logo.preview_background === "dark" || usesDarkLogoPreview(activeVariation.previewAssetId) ? " logo-preview-dark" : ""}`}>
             <img src={previewUrl(activeLogo)} alt="" />
           </div>
         </div>
 
         <dl className="detail-facts">
+          {item.institutions.length > 0 && categories.length > 1 ? <div className="source-row"><dt>Institution classifications</dt><dd>{getCategorySummary(categories)}</dd></div> : null}
           {versionAssets.length > 1 ? <div><dt>Logo version</dt><dd>{activeVariation.kind === "historical" ? `Previous · retired ${activeVariation.retiredAt ? formatDate(activeVariation.retiredAt) : "date unavailable"}` : "Current"}</dd></div> : null}
           <div>
             <dt>Available formats</dt>
@@ -1587,13 +1730,14 @@ function DetailSheet({
             <dd>{formatDate(logo.added_at)}</dd>
           </div>
           <div className="source-row">
-            <dt>Official website</dt>
+            <dt>{item.kind === "flag" ? "Artwork library" : "Official website"}</dt>
             <dd>
               <a href={websiteUrl} target="_blank" rel="noreferrer" title={`Visit ${displayName} website`}>
                 {getSourceDomain(websiteUrl)}
               </a>
             </dd>
           </div>
+          <div className="source-row"><dt>Artwork source</dt><dd><a href={artworkSource} target="_blank" rel="noreferrer">{getSourceDomain(artworkSource)}</a></dd></div>
         </dl>
 
         <div className="dimension-control">
@@ -1646,6 +1790,14 @@ function DetailSheet({
             Insert {activeVariation.kind === "current" ? displayName : activeVariation.kind === "historical" ? `${displayName} previous logo` : activeVariation.label}
           </button>
         </div>
+        <div className="plugin-secondary-actions">
+          <button type="button" onClick={() => onPack(activeLogo, selectedFormat)}><ShoppingBag size={15} aria-hidden="true" /> Pack into bag</button>
+          <button type="button" onClick={() => onDownload(activeLogo, selectedFormat)}><Download size={15} aria-hidden="true" /> Download {selectedFormat.toUpperCase()}</button>
+        </div>
+        <section className="plugin-report">
+          <strong>Found an issue?</strong>
+          <a href={buildLogoReportUrl(displayName, activeLogo.slug, artworkSource)} target="_blank" rel="noreferrer">{item.kind === "flag" ? "Report flag" : "Report logo"} <ArrowUpRight aria-hidden="true" size={14} /></a>
+        </section>
       </aside>
     </div>
   );

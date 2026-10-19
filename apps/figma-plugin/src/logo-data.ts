@@ -20,6 +20,7 @@ export type LogoVariationWithSvg = RuntimeLogo["variations"][number] & {
 };
 
 export type LogoWithSvg = Omit<RuntimeLogo, "variations"> & LogoAsset & {
+  preview_background?: "light" | "dark";
   variations: LogoVariationWithSvg[];
 };
 

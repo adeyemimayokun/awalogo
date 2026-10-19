@@ -11,6 +11,15 @@ import { messages } from "./v2-translations";
 
 const noop = () => {};
 describe("V2 information and preview documentation", () => {
+  it("uses a page heading for the full-page About view", () => {
+    const $ = load(renderToStaticMarkup(<V2Info page="about" fullPage onBrand={noop} onNewest={noop} onRequest={noop} />));
+    expect($("h1").text()).toBe("awalogo");
+    expect($("section")).toHaveLength(5);
+    expect($("img")).toHaveLength(0);
+    expect($.text()).toContain("Why we built it");
+    expect($.text()).toContain("Sycamore");
+    expect($('a[href="https://www.linkedin.com/in/adeyemimayokun/"]').text()).toBe("Adeyemi Mayokun");
+  });
   it("describes the expanded preview rather than a finance-only launched product", () => {
     const $ = load(renderToStaticMarkup(<V2Info page="about" onBrand={noop} onNewest={noop} onRequest={noop} />));
     expect($.text()).toContain("Nigerian and African company logos");

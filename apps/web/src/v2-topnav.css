@@ -44,3 +44,20 @@
   .v2-topnav-actions > button:first-of-type { display:none; }
 }
 @media (max-width:420px) { .v2-topnav-actions > button[aria-label="Search brands"] { display:none; } .v2-topnav-brand { font-size:20px; gap:5px; } }
+.v2-topnav .v2-category-picker,.v2-category-popover { display:flex; flex-direction:column; width:540px; max-width:calc(100vw - 32px); max-height:min(480px,calc(100dvh - 160px)); overflow:hidden; padding:16px; gap:12px; }
+.v2-category-heading { flex-shrink:0; min-height:24px; }
+.v2-category-heading > button { min-height:28px; padding:0 4px; }
+.v2-category-search { display:flex; align-items:center; gap:8px; border:1px solid var(--line); border-radius:var(--field-radius); padding:0 10px; min-height:36px; flex-shrink:0; color:var(--muted); }
+.v2-category-search:focus-within { border-color:var(--field-focus,#aaa); }
+.v2-category-search input { width:100%; min-width:0; background:transparent; border:0; outline:0; color:var(--ink); height:34px; font:inherit; font-size:12px; }
+.v2-category-search button { border:0; background:transparent; padding:4px; color:inherit; display:flex; align-items:center; }
+.v2-category-options { grid-template-columns:repeat(2,minmax(0,1fr)); align-content:start; overflow-y:auto; overscroll-behavior:contain; min-height:0; margin:0; gap:2px 12px; }
+.v2-category-options label { min-height:36px; padding:7px 6px; }
+.v2-category-options label span { min-width:0; overflow-wrap:anywhere; }
+.v2-category-options label:hover { background:var(--line); }
+.v2-category-options > p { grid-column:1/-1; color:var(--muted); font-size:12px; padding:12px 6px; }
+.v2-category-footer { display:flex; align-items:center; justify-content:space-between; gap:16px; border-top:1px solid var(--line); padding-top:12px; flex-shrink:0; }
+.v2-category-footer > span { font-size:11px; color:var(--muted); }
+.v2-app .v2-category-footer .v2-category-done { flex:0 0 auto; width:auto; min-width:76px; min-height:36px; border:0; margin:0; padding:8px 16px; background:var(--ink); color:var(--surface); border-radius:var(--field-radius); }
+@media (max-width:767px) { .v2-category-options { grid-template-columns:1fr; } }
+@media (pointer:coarse) { .v2-category-options label,.v2-category-search,.v2-category-footer .v2-category-done { min-height:44px; } }
