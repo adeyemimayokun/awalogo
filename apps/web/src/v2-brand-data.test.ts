@@ -12,8 +12,8 @@ import { correctionBySlug, expansionBrands, logos, matchesBrandScope } from "./v
 describe("isolated V2 company expansion", () => {
   it("protects the original catalog and every asset byte", () => {
     expect(execFileSync(process.execPath, ["scripts/brands-baseline.mjs"], { encoding: "utf8" })).toContain("1703");
-    expect([...correctionBySlug.keys()]).toEqual(["momo-payment-service-bank"]);
-    expect(logos.slice(0, existing.length).filter((item)=>item.slug!=="momo-payment-service-bank")).toEqual(existing.filter((item)=>item.slug!=="momo-payment-service-bank"));
+    expect([...correctionBySlug.keys()]).toEqual(["momo-payment-service-bank", "sparkle-microfinance-bank", "nomba", "ratefy", "connectpoint-technology-solutions"]);
+    expect(logos.slice(0, existing.length).filter((item)=>!correctionBySlug.has(item.slug))).toEqual(existing.filter((item)=>!correctionBySlug.has(item.slug)));
     expect(logos.length).toBe(existing.length + expansionBrands.length);
   });
   it("researches exactly 60 Nigerian and five companies in each of eight hubs", () => {

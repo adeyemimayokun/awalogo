@@ -921,6 +921,126 @@
       ]
     },
     {
+      "preview_background": "dark",
+      "slug": "bolt",
+      "name": "Bolt",
+      "aliases": [],
+      "industry": "transport-logistics",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "NG"
+      ],
+      "website": "https://bolt.eu/en-ng/",
+      "source_url": "https://bolt.eu/en-ng/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-19",
+      "updated_at": "2026-10-19",
+      "reviewed_at": "2026-10-19",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Company website or developer-supplied artwork visually reviewed. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence.",
+      "evidence": [
+        {
+          "url": "https://bolt.eu/en-ng/",
+          "note": "Company-controlled website or developer listing supplies the reviewed brand artwork.",
+          "retrieved_at": "2026-10-19"
+        },
+        {
+          "url": "https://bolt.eu/en/cities/lagos/",
+          "note": "Evidence of Nigerian or African brand operations; inclusion does not assert continued service availability for archival identities.",
+          "retrieved_at": "2026-10-19"
+        }
+      ],
+      "batch": "requested-services-mobility-retail-2026-10-19",
+      "formats": [
+        {
+          "type": "svg",
+          "url": "/catalog/v2/assets/dad7f219c6c40595c7f2f555eafb63e65c47225b19e322f874df50f5cdf9253f.svg",
+          "checksum": "dad7f219c6c40595c7f2f555eafb63e65c47225b19e322f874df50f5cdf9253f",
+          "mime_type": "image/svg+xml",
+          "width": 53,
+          "height": 32,
+          "repository_path": "assets/ca5685e65d79ff8800ce377b708087473e58050626a01d8d32e14656dc94b0fb.svg"
+        },
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/92c1fc21a8ff91f936caea93b2cc9b7a64489193211fe3805ced11e4f8065e1b.png",
+          "checksum": "92c1fc21a8ff91f936caea93b2cc9b7a64489193211fe3805ced11e4f8065e1b",
+          "mime_type": "image/png",
+          "width": 106,
+          "height": 64,
+          "repository_path": "assets/ca5685e65d79ff8800ce377b708087473e58050626a01d8d32e14656dc94b0fb.svg"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/5e9b149e02d2bf26e4f344df07cf8161c32c93875e1139b4829726ddc63bef78.webp",
+          "checksum": "5e9b149e02d2bf26e4f344df07cf8161c32c93875e1139b4829726ddc63bef78",
+          "mime_type": "image/webp",
+          "width": 106,
+          "height": 64,
+          "repository_path": "assets/ca5685e65d79ff8800ce377b708087473e58050626a01d8d32e14656dc94b0fb.svg"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
+      "slug": "boxoffice",
+      "name": "BoxOffice",
+      "aliases": [
+        "Box Office",
+        "DStv BoxOffice"
+      ],
+      "industry": "media-entertainment",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "NG"
+      ],
+      "website": "https://www.dstv.com/en-ng/",
+      "source_url": "https://www.nfvf.co.za/wp-content/uploads/2022/06/Box-Office-Report-2021_Infographic.pdf#page=16",
+      "source_type": "community-catalog",
+      "status": "needs-review",
+      "added_at": "2026-10-19",
+      "updated_at": "2026-10-19",
+      "reviewed_at": "2026-10-19",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Manually reviewed third-party artwork; not officially verified. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence. Original raster image extracted without tracing from page 16 of the NFVF 2021 report. This is a historical third-party publication, not official artwork verification by the brand owner; retained as community-source artwork.",
+      "evidence": [
+        {
+          "url": "https://www.nfvf.co.za/wp-content/uploads/2022/06/Box-Office-Report-2021_Infographic.pdf#page=16",
+          "note": "Reviewed third-party artwork source; does not establish official verification or trademark permission.",
+          "retrieved_at": "2026-10-19"
+        },
+        {
+          "url": "https://www.dstv.com/en-ng/buy/dstv-packages/",
+          "note": "Evidence of Nigerian or African brand operations; inclusion does not assert continued service availability for archival identities.",
+          "retrieved_at": "2026-10-19"
+        }
+      ],
+      "batch": "requested-services-media-2026-10-19",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/a9cc48877ecc89bde3a022f8c89e660038350ace64e52eb3de72fb3a5217b5d1.png",
+          "checksum": "a9cc48877ecc89bde3a022f8c89e660038350ace64e52eb3de72fb3a5217b5d1",
+          "mime_type": "image/png",
+          "width": 336,
+          "height": 82,
+          "repository_path": "assets/9cf45c96b3ecfeef99dba5c646d72200705b59ab6c666b1e815fc5778dc88592.jpeg"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/6777c13060446ebe0c204befa028400588605f0c77351b3dea550085c9420821.webp",
+          "checksum": "6777c13060446ebe0c204befa028400588605f0c77351b3dea550085c9420821",
+          "mime_type": "image/webp",
+          "width": 336,
+          "height": 82,
+          "repository_path": "assets/9cf45c96b3ecfeef99dba5c646d72200705b59ab6c666b1e815fc5778dc88592.jpeg"
+        }
+      ]
+    },
+    {
       "preview_background": "light",
       "slug": "bua-cement",
       "name": "BUA Cement",
@@ -1291,6 +1411,69 @@
       ]
     },
     {
+      "preview_background": "dark",
+      "slug": "chowdeck",
+      "name": "Chowdeck",
+      "aliases": [],
+      "industry": "transport-logistics",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "NG"
+      ],
+      "website": "https://chowdeck.com/",
+      "source_url": "https://chowdeck.com/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-19",
+      "updated_at": "2026-10-19",
+      "reviewed_at": "2026-10-19",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Company website or developer-supplied artwork visually reviewed. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence.",
+      "evidence": [
+        {
+          "url": "https://chowdeck.com/",
+          "note": "Company-controlled website or developer listing supplies the reviewed brand artwork.",
+          "retrieved_at": "2026-10-19"
+        },
+        {
+          "url": "https://chowdeck.com/",
+          "note": "Evidence of Nigerian or African brand operations; inclusion does not assert continued service availability for archival identities.",
+          "retrieved_at": "2026-10-19"
+        }
+      ],
+      "batch": "requested-services-mobility-retail-2026-10-19",
+      "formats": [
+        {
+          "type": "svg",
+          "url": "/catalog/v2/assets/50a9c9be61452445efb6388acb63009c56ea7da6c2d7da398cc8b133fdc54543.svg",
+          "checksum": "50a9c9be61452445efb6388acb63009c56ea7da6c2d7da398cc8b133fdc54543",
+          "mime_type": "image/svg+xml",
+          "width": 100,
+          "height": 30,
+          "repository_path": "assets/f3c8867b4633aef54bb6466eebb7483e78afe87e4f30a40d9fd89dc718e05f95.svg"
+        },
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/80e8c5a7f8e07fd01abe1701970b464b40c9a714ed2ccbe9b8cc4909d869c52e.png",
+          "checksum": "80e8c5a7f8e07fd01abe1701970b464b40c9a714ed2ccbe9b8cc4909d869c52e",
+          "mime_type": "image/png",
+          "width": 200,
+          "height": 60,
+          "repository_path": "assets/f3c8867b4633aef54bb6466eebb7483e78afe87e4f30a40d9fd89dc718e05f95.svg"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/6baa414a1a8ed758bfd321cea1a22e934a2cab06673b5ea096eb4153e73ae788.webp",
+          "checksum": "6baa414a1a8ed758bfd321cea1a22e934a2cab06673b5ea096eb4153e73ae788",
+          "mime_type": "image/webp",
+          "width": 200,
+          "height": 60,
+          "repository_path": "assets/f3c8867b4633aef54bb6466eebb7483e78afe87e4f30a40d9fd89dc718e05f95.svg"
+        }
+      ]
+    },
+    {
       "preview_background": "light",
       "slug": "churchgate",
       "name": "Churchgate",
@@ -1436,6 +1619,73 @@
           "width": 1024,
           "height": 399,
           "repository_path": "assets/7125a0b8b5ce71cdb83105632adefd85039fc10ecc0e1ed066613c2addda087b.webp"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
+      "slug": "cowry",
+      "name": "Cowry",
+      "aliases": [
+        "Cowry Card",
+        "Cowry Transport",
+        "Cowry App"
+      ],
+      "industry": "transport-logistics",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "NG"
+      ],
+      "website": "https://cowry.com.ng/",
+      "source_url": "https://cowry.com.ng/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-19",
+      "updated_at": "2026-10-19",
+      "reviewed_at": "2026-10-19",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Company website or developer-supplied artwork visually reviewed. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence. The user confirmed the Lagos transport-payment brand, not Cowrywise.",
+      "evidence": [
+        {
+          "url": "https://cowry.com.ng/",
+          "note": "Company-controlled website or developer listing supplies the reviewed brand artwork.",
+          "retrieved_at": "2026-10-19"
+        },
+        {
+          "url": "https://cowry.com.ng/",
+          "note": "Evidence of Nigerian or African brand operations; inclusion does not assert continued service availability for archival identities.",
+          "retrieved_at": "2026-10-19"
+        }
+      ],
+      "batch": "requested-services-mobility-retail-2026-10-19",
+      "formats": [
+        {
+          "type": "svg",
+          "url": "/catalog/v2/assets/aed1b62be6558e2f09f145de5d4c818e7f634dc29a8f6936a0f9e0cd997c84b8.svg",
+          "checksum": "aed1b62be6558e2f09f145de5d4c818e7f634dc29a8f6936a0f9e0cd997c84b8",
+          "mime_type": "image/svg+xml",
+          "width": 108,
+          "height": 33,
+          "repository_path": "assets/d3228fe21d5a226835871058123765a97ae77e811757f14351f5a975a4888cd6.svg"
+        },
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/4937c8c8f50041a21c388ba0bc7c2a14f39940055ced85c00a1d7a0f4deda291.png",
+          "checksum": "4937c8c8f50041a21c388ba0bc7c2a14f39940055ced85c00a1d7a0f4deda291",
+          "mime_type": "image/png",
+          "width": 216,
+          "height": 66,
+          "repository_path": "assets/d3228fe21d5a226835871058123765a97ae77e811757f14351f5a975a4888cd6.svg"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/95c6a1cac311d562978ba155ab392a16ab0a0002462466b828f1bdd69d8b4ebe.webp",
+          "checksum": "95c6a1cac311d562978ba155ab392a16ab0a0002462466b828f1bdd69d8b4ebe",
+          "mime_type": "image/webp",
+          "width": 216,
+          "height": 66,
+          "repository_path": "assets/d3228fe21d5a226835871058123765a97ae77e811757f14351f5a975a4888cd6.svg"
         }
       ]
     },
@@ -1979,6 +2229,128 @@
     },
     {
       "preview_background": "light",
+      "slug": "dstv",
+      "name": "DStv",
+      "aliases": [
+        "Digital Satellite Television"
+      ],
+      "industry": "media-entertainment",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "NG"
+      ],
+      "website": "https://www.dstv.com/en-ng/",
+      "source_url": "https://en.wikipedia.org/wiki/DStv",
+      "source_type": "community-catalog",
+      "status": "needs-review",
+      "added_at": "2026-10-19",
+      "updated_at": "2026-10-19",
+      "reviewed_at": "2026-10-19",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Manually reviewed third-party artwork; not officially verified. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence. Community-sourced 2023 DStv identity, not the MultiChoice parent logo or MyDStv app icon. Not officially verified.",
+      "evidence": [
+        {
+          "url": "https://en.wikipedia.org/wiki/DStv",
+          "note": "Reviewed third-party artwork source; does not establish official verification or trademark permission.",
+          "retrieved_at": "2026-10-19"
+        },
+        {
+          "url": "https://www.dstv.com/en-ng/",
+          "note": "Evidence of Nigerian or African brand operations; inclusion does not assert continued service availability for archival identities.",
+          "retrieved_at": "2026-10-19"
+        }
+      ],
+      "batch": "requested-services-media-2026-10-19",
+      "formats": [
+        {
+          "type": "svg",
+          "url": "/catalog/v2/assets/07a4b950c537b64d492ea2bebed4e1185d63f51da973c70d7425261d89f06627.svg",
+          "checksum": "07a4b950c537b64d492ea2bebed4e1185d63f51da973c70d7425261d89f06627",
+          "mime_type": "image/svg+xml",
+          "width": 204,
+          "height": 126,
+          "repository_path": "assets/fd2319de87a820be06e2c462d5f1a345e40fe7a258e09b743eb5a9db0b4a90cf.svg"
+        },
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/1d66aa0e9acbf5334e366f143ffe56a926df5323acab47f0c49098e941ac5a4c.png",
+          "checksum": "1d66aa0e9acbf5334e366f143ffe56a926df5323acab47f0c49098e941ac5a4c",
+          "mime_type": "image/png",
+          "width": 408,
+          "height": 252,
+          "repository_path": "assets/fd2319de87a820be06e2c462d5f1a345e40fe7a258e09b743eb5a9db0b4a90cf.svg"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/bb5990588c42d1e1b470b8f219ee738ad48376451c54444a28d629cd9dbfcc64.webp",
+          "checksum": "bb5990588c42d1e1b470b8f219ee738ad48376451c54444a28d629cd9dbfcc64",
+          "mime_type": "image/webp",
+          "width": 408,
+          "height": 252,
+          "repository_path": "assets/fd2319de87a820be06e2c462d5f1a345e40fe7a258e09b743eb5a9db0b4a90cf.svg"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
+      "slug": "ebonylife",
+      "name": "EbonyLife",
+      "aliases": [
+        "EbonyLife TV",
+        "Ebony Life"
+      ],
+      "industry": "media-entertainment",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "NG"
+      ],
+      "website": "https://ebonylifetv.com/",
+      "source_url": "https://en.wikipedia.org/wiki/Ebonylife_TV",
+      "source_type": "community-catalog",
+      "status": "needs-review",
+      "added_at": "2026-10-19",
+      "updated_at": "2026-10-19",
+      "reviewed_at": "2026-10-19",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Manually reviewed third-party artwork; not officially verified. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence. Community EbonyLife TV mark, not the umbrella EbonyLife Media logo or the identities of its newer subsidiaries. Not officially verified; no current broadcast-service availability is asserted.",
+      "evidence": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ebonylife_TV",
+          "note": "Reviewed third-party artwork source; does not establish official verification or trademark permission.",
+          "retrieved_at": "2026-10-19"
+        },
+        {
+          "url": "https://ebonylifetv.com/contact-us-2/",
+          "note": "Evidence of Nigerian or African brand operations; inclusion does not assert continued service availability for archival identities.",
+          "retrieved_at": "2026-10-19"
+        }
+      ],
+      "batch": "requested-services-media-2026-10-19",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/b1677f68ecf08547dc5424402d8931df288cddf80bc2c0feab9604708aa38d01.png",
+          "checksum": "b1677f68ecf08547dc5424402d8931df288cddf80bc2c0feab9604708aa38d01",
+          "mime_type": "image/png",
+          "width": 159,
+          "height": 204,
+          "repository_path": "assets/d703549980c14b09a718dde2e11e909ece5fa762c65bc0bff404f1b38d5b01b5.png"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/92339e1b65b91e46031cc96f9394dca3c8534d0db90733b4288661472b6b7d97.webp",
+          "checksum": "92339e1b65b91e46031cc96f9394dca3c8534d0db90733b4288661472b6b7d97",
+          "mime_type": "image/webp",
+          "width": 159,
+          "height": 204,
+          "repository_path": "assets/d703549980c14b09a718dde2e11e909ece5fa762c65bc0bff404f1b38d5b01b5.png"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
       "slug": "econet-wireless-zimbabwe",
       "name": "Econet Wireless Zimbabwe",
       "aliases": [
@@ -2496,6 +2868,63 @@
     },
     {
       "preview_background": "light",
+      "slug": "foodcourt",
+      "name": "FoodCourt",
+      "aliases": [
+        "Food Court",
+        "CoKitchen"
+      ],
+      "industry": "food-beverages",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "NG"
+      ],
+      "website": "https://www.getfoodcourt.com/",
+      "source_url": "https://www.getfoodcourt.com/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-19",
+      "updated_at": "2026-10-19",
+      "reviewed_at": "2026-10-19",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Company website or developer-supplied artwork visually reviewed. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence. Original PNG bytes extracted from the official header's embedded SVG image; no vector claim, tracing, or enlargement.",
+      "evidence": [
+        {
+          "url": "https://www.getfoodcourt.com/",
+          "note": "Company-controlled website or developer listing supplies the reviewed brand artwork.",
+          "retrieved_at": "2026-10-19"
+        },
+        {
+          "url": "https://www.getfoodcourt.com/",
+          "note": "Evidence of Nigerian or African brand operations; inclusion does not assert continued service availability for archival identities.",
+          "retrieved_at": "2026-10-19"
+        }
+      ],
+      "batch": "requested-services-mobility-retail-2026-10-19",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/f59790ee58d6dfc7d4fa5eb7c6eaa056ba4352815a147b33a00fabf0cced7f1e.png",
+          "checksum": "f59790ee58d6dfc7d4fa5eb7c6eaa056ba4352815a147b33a00fabf0cced7f1e",
+          "mime_type": "image/png",
+          "width": 955,
+          "height": 128,
+          "repository_path": "assets/3f72657e2f194a7601ec53724a826afc02ddd79a8d80ea5b939dc7654a6ce5d8.png"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/7d7c0d06315b4253f0ba9d7ebad0a164fad3ed3ca83a764ff51b0c834700d813.webp",
+          "checksum": "7d7c0d06315b4253f0ba9d7ebad0a164fad3ed3ca83a764ff51b0c834700d813",
+          "mime_type": "image/webp",
+          "width": 955,
+          "height": 128,
+          "repository_path": "assets/3f72657e2f194a7601ec53724a826afc02ddd79a8d80ea5b939dc7654a6ce5d8.png"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
       "slug": "gamtel",
       "name": "Gamtel",
       "aliases": [],
@@ -2594,6 +3023,63 @@
     },
     {
       "preview_background": "light",
+      "slug": "giggo",
+      "name": "GIGGO",
+      "aliases": [
+        "GIG GO",
+        "GIG Logistics App"
+      ],
+      "industry": "transport-logistics",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "NG"
+      ],
+      "website": "https://giglogistics.com/",
+      "source_url": "https://play.google.com/store/apps/details?id=ng.giglogistics.giglgo",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-19",
+      "updated_at": "2026-10-19",
+      "reviewed_at": "2026-10-19",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Company website or developer-supplied artwork visually reviewed. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence. Developer-supplied GIGGO app icon. The GIG Logistics corporate mark and unrelated slider artwork are excluded.",
+      "evidence": [
+        {
+          "url": "https://play.google.com/store/apps/details?id=ng.giglogistics.giglgo",
+          "note": "Company-controlled website or developer listing supplies the reviewed brand artwork.",
+          "retrieved_at": "2026-10-19"
+        },
+        {
+          "url": "https://giglogistics.com/",
+          "note": "Evidence of Nigerian or African brand operations; inclusion does not assert continued service availability for archival identities.",
+          "retrieved_at": "2026-10-19"
+        }
+      ],
+      "batch": "requested-services-mobility-retail-2026-10-19",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/ae340051260f742f6fc6694f7c789a56747fe4bcf656c0e9b163b3d37bb3b4dd.png",
+          "checksum": "ae340051260f742f6fc6694f7c789a56747fe4bcf656c0e9b163b3d37bb3b4dd",
+          "mime_type": "image/png",
+          "width": 512,
+          "height": 512,
+          "repository_path": "assets/6e5162ad2d2163810cf0750be92d627fb066f9fe2992a12287b824e051dc327c.png"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/6fc5d85020c890fbc309e2553062c6d86e88ae7a74a996cd99a275f75e6d5cd2.webp",
+          "checksum": "6fc5d85020c890fbc309e2553062c6d86e88ae7a74a996cd99a275f75e6d5cd2",
+          "mime_type": "image/webp",
+          "width": 512,
+          "height": 512,
+          "repository_path": "assets/6e5162ad2d2163810cf0750be92d627fb066f9fe2992a12287b824e051dc327c.png"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
       "slug": "globacom",
       "name": "Globacom",
       "aliases": [
@@ -2642,6 +3128,197 @@
           "width": 512,
           "height": 512,
           "repository_path": "assets/2c1996530bfa224b567f4cfe60e1536382ddbc15e57b368a3f0231a3b085acfb.png"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
+      "slug": "glovo",
+      "name": "Glovo",
+      "aliases": [],
+      "industry": "transport-logistics",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "NG"
+      ],
+      "website": "https://glovoapp.com/ng/en/",
+      "source_url": "https://glovoapp.com/ng/en/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-19",
+      "updated_at": "2026-10-19",
+      "reviewed_at": "2026-10-19",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Company website or developer-supplied artwork visually reviewed. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence.",
+      "evidence": [
+        {
+          "url": "https://glovoapp.com/ng/en/",
+          "note": "Company-controlled website or developer listing supplies the reviewed brand artwork.",
+          "retrieved_at": "2026-10-19"
+        },
+        {
+          "url": "https://riderhub.glovoapp.com/ng/",
+          "note": "Evidence of Nigerian or African brand operations; inclusion does not assert continued service availability for archival identities.",
+          "retrieved_at": "2026-10-19"
+        }
+      ],
+      "batch": "requested-services-mobility-retail-2026-10-19",
+      "formats": [
+        {
+          "type": "svg",
+          "url": "/catalog/v2/assets/3e0a0861531d97e75e9352b4deac27e180917515f9ffb1e38d3a487c05ff4aac.svg",
+          "checksum": "3e0a0861531d97e75e9352b4deac27e180917515f9ffb1e38d3a487c05ff4aac",
+          "mime_type": "image/svg+xml",
+          "width": 171,
+          "height": 56,
+          "repository_path": "assets/b91e4a413dec2b75e3a68abab98e7f8cc2abbff40f425199f27c915c00d7536a.svg"
+        },
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/185217a3e3183e661ec0bb919fc22070e78aa8a83791033d31dd61ada72a6834.png",
+          "checksum": "185217a3e3183e661ec0bb919fc22070e78aa8a83791033d31dd61ada72a6834",
+          "mime_type": "image/png",
+          "width": 342,
+          "height": 112,
+          "repository_path": "assets/b91e4a413dec2b75e3a68abab98e7f8cc2abbff40f425199f27c915c00d7536a.svg"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/a94dfa4e4284951b579f730e9345e9af9fdf66ad2621745c46053f2402335eab.webp",
+          "checksum": "a94dfa4e4284951b579f730e9345e9af9fdf66ad2621745c46053f2402335eab",
+          "mime_type": "image/webp",
+          "width": 342,
+          "height": 112,
+          "repository_path": "assets/b91e4a413dec2b75e3a68abab98e7f8cc2abbff40f425199f27c915c00d7536a.svg"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
+      "slug": "gokada",
+      "name": "Gokada",
+      "aliases": [],
+      "industry": "transport-logistics",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "NG"
+      ],
+      "website": "https://www.gokada.ng/",
+      "source_url": "https://www.gokada.ng/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-19",
+      "updated_at": "2026-10-19",
+      "reviewed_at": "2026-10-19",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Company website or developer-supplied artwork visually reviewed. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence.",
+      "evidence": [
+        {
+          "url": "https://www.gokada.ng/",
+          "note": "Company-controlled website or developer listing supplies the reviewed brand artwork.",
+          "retrieved_at": "2026-10-19"
+        },
+        {
+          "url": "https://www.gokada.ng/",
+          "note": "Evidence of Nigerian or African brand operations; inclusion does not assert continued service availability for archival identities.",
+          "retrieved_at": "2026-10-19"
+        }
+      ],
+      "batch": "requested-services-mobility-retail-2026-10-19",
+      "formats": [
+        {
+          "type": "svg",
+          "url": "/catalog/v2/assets/7ac9e20eff5c75adcc7409834c43bc7e22d56b44afc1fff7ef715c01be186f56.svg",
+          "checksum": "7ac9e20eff5c75adcc7409834c43bc7e22d56b44afc1fff7ef715c01be186f56",
+          "mime_type": "image/svg+xml",
+          "width": 256,
+          "height": 80,
+          "repository_path": "assets/7ac9e20eff5c75adcc7409834c43bc7e22d56b44afc1fff7ef715c01be186f56.svg"
+        },
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/d6053fde15647e6b1ccf9ba045c76e78802ec407b3600847848a21767f47d7a9.png",
+          "checksum": "d6053fde15647e6b1ccf9ba045c76e78802ec407b3600847848a21767f47d7a9",
+          "mime_type": "image/png",
+          "width": 512,
+          "height": 160,
+          "repository_path": "assets/7ac9e20eff5c75adcc7409834c43bc7e22d56b44afc1fff7ef715c01be186f56.svg"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/80b29b9bc1a0d52f0aefc7f6bcdce6434c9bd585e6a2565bd0333acb1e8ab56d.webp",
+          "checksum": "80b29b9bc1a0d52f0aefc7f6bcdce6434c9bd585e6a2565bd0333acb1e8ab56d",
+          "mime_type": "image/webp",
+          "width": 512,
+          "height": 160,
+          "repository_path": "assets/7ac9e20eff5c75adcc7409834c43bc7e22d56b44afc1fff7ef715c01be186f56.svg"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
+      "slug": "gotv",
+      "name": "GOtv",
+      "aliases": [
+        "GOtv Nigeria"
+      ],
+      "industry": "media-entertainment",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "NG"
+      ],
+      "website": "https://www.gotvafrica.com/en-ng/",
+      "source_url": "https://en.wikipedia.org/wiki/GOtv",
+      "source_type": "community-catalog",
+      "status": "needs-review",
+      "added_at": "2026-10-19",
+      "updated_at": "2026-10-19",
+      "reviewed_at": "2026-10-19",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Manually reviewed third-party artwork; not officially verified. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence. Community GOtv wordmark, not programme artwork, the MultiChoice parent logo or the MyGOtv app icon. Not officially verified.",
+      "evidence": [
+        {
+          "url": "https://en.wikipedia.org/wiki/GOtv",
+          "note": "Reviewed third-party artwork source; does not establish official verification or trademark permission.",
+          "retrieved_at": "2026-10-19"
+        },
+        {
+          "url": "https://www.gotvafrica.com/en-ng/",
+          "note": "Evidence of Nigerian or African brand operations; inclusion does not assert continued service availability for archival identities.",
+          "retrieved_at": "2026-10-19"
+        }
+      ],
+      "batch": "requested-services-media-2026-10-19",
+      "formats": [
+        {
+          "type": "svg",
+          "url": "/catalog/v2/assets/70be6260da9269b8ce478bfbe425cce0dd10ba2f4530e686b1e67ff9251baac4.svg",
+          "checksum": "70be6260da9269b8ce478bfbe425cce0dd10ba2f4530e686b1e67ff9251baac4",
+          "mime_type": "image/svg+xml",
+          "width": 254,
+          "height": 48,
+          "repository_path": "assets/3127ddf37d085eb30f2e4c757a00cf371551508861c2718572dbb692d25d09a0.svg"
+        },
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/20f3a9a93e247b106023bdc9867681c70ac1106bcc33eb5c7d821e036834f639.png",
+          "checksum": "20f3a9a93e247b106023bdc9867681c70ac1106bcc33eb5c7d821e036834f639",
+          "mime_type": "image/png",
+          "width": 509,
+          "height": 96,
+          "repository_path": "assets/3127ddf37d085eb30f2e4c757a00cf371551508861c2718572dbb692d25d09a0.svg"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/d98aefa37f1fc9c3c68f9a27bb2b6ab93c0df6c23f388ef12198982660a3707d.webp",
+          "checksum": "d98aefa37f1fc9c3c68f9a27bb2b6ab93c0df6c23f388ef12198982660a3707d",
+          "mime_type": "image/webp",
+          "width": 509,
+          "height": 96,
+          "repository_path": "assets/3127ddf37d085eb30f2e4c757a00cf371551508861c2718572dbb692d25d09a0.svg"
         }
       ]
     },
@@ -2919,6 +3596,72 @@
     },
     {
       "preview_background": "light",
+      "slug": "indrive",
+      "name": "inDrive",
+      "aliases": [
+        "inDriver",
+        "in Drive"
+      ],
+      "industry": "transport-logistics",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "NG"
+      ],
+      "website": "https://indrive.com/",
+      "source_url": "https://company.indrive.com/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-19",
+      "updated_at": "2026-10-19",
+      "reviewed_at": "2026-10-19",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Company website or developer-supplied artwork visually reviewed. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence.",
+      "evidence": [
+        {
+          "url": "https://company.indrive.com/",
+          "note": "Company-controlled website or developer listing supplies the reviewed brand artwork.",
+          "retrieved_at": "2026-10-19"
+        },
+        {
+          "url": "https://blog.indrive.com/en-ci/article/meet-timothy-oladimeji-country-manager-for-nigeria",
+          "note": "Evidence of Nigerian or African brand operations; inclusion does not assert continued service availability for archival identities.",
+          "retrieved_at": "2026-10-19"
+        }
+      ],
+      "batch": "requested-services-mobility-retail-2026-10-19",
+      "formats": [
+        {
+          "type": "svg",
+          "url": "/catalog/v2/assets/4611801f374aa0b0e4a4a0d578588d2e3848d194ffa038eca829edaff6cacebd.svg",
+          "checksum": "4611801f374aa0b0e4a4a0d578588d2e3848d194ffa038eca829edaff6cacebd",
+          "mime_type": "image/svg+xml",
+          "width": 99,
+          "height": 24,
+          "repository_path": "assets/4611801f374aa0b0e4a4a0d578588d2e3848d194ffa038eca829edaff6cacebd.svg"
+        },
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/a0bb7a9d8bb66510a0fcb546597a566a44ad2da61df9ef9ebfda2d2b6aace70f.png",
+          "checksum": "a0bb7a9d8bb66510a0fcb546597a566a44ad2da61df9ef9ebfda2d2b6aace70f",
+          "mime_type": "image/png",
+          "width": 198,
+          "height": 48,
+          "repository_path": "assets/4611801f374aa0b0e4a4a0d578588d2e3848d194ffa038eca829edaff6cacebd.svg"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/0be86b9b2bdbaf2034d7b6c100f135410486022e45a13ccbe669ac099ec76479.webp",
+          "checksum": "0be86b9b2bdbaf2034d7b6c100f135410486022e45a13ccbe669ac099ec76479",
+          "mime_type": "image/webp",
+          "width": 198,
+          "height": 48,
+          "repository_path": "assets/4611801f374aa0b0e4a4a0d578588d2e3848d194ffa038eca829edaff6cacebd.svg"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
       "slug": "innoson-vehicles",
       "name": "Innoson Vehicles",
       "aliases": [],
@@ -3012,6 +3755,120 @@
           "width": 937,
           "height": 512,
           "repository_path": "assets/b6f307ad65bb7569cb4add16b01e8e2dcc841aa6e5fc34c7c8726b0888120acd.png"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
+      "slug": "irokotv",
+      "name": "IROKOtv",
+      "aliases": [
+        "Iroko TV",
+        "Iroko"
+      ],
+      "industry": "media-entertainment",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "NG"
+      ],
+      "website": "https://irokotv.com/",
+      "source_url": "https://en.wikipedia.org/wiki/Irokotv",
+      "source_type": "community-catalog",
+      "status": "needs-review",
+      "added_at": "2026-10-19",
+      "updated_at": "2026-10-19",
+      "reviewed_at": "2026-10-19",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Manually reviewed third-party artwork; not officially verified. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence. Community IROKOtv image reviewed as an archival brand identity, not an assertion of current app availability. Not officially verified.",
+      "evidence": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Irokotv",
+          "note": "Reviewed third-party artwork source; does not establish official verification or trademark permission.",
+          "retrieved_at": "2026-10-19"
+        },
+        {
+          "url": "https://irokotv.com/",
+          "note": "Evidence of Nigerian or African brand operations; inclusion does not assert continued service availability for archival identities.",
+          "retrieved_at": "2026-10-19"
+        }
+      ],
+      "batch": "requested-services-media-2026-10-19",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/c9564b1915ad182aa2dc86e34a22525a8ef1368d5f673ad99e8d4f78c5d56f27.png",
+          "checksum": "c9564b1915ad182aa2dc86e34a22525a8ef1368d5f673ad99e8d4f78c5d56f27",
+          "mime_type": "image/png",
+          "width": 764,
+          "height": 401,
+          "repository_path": "assets/3ef9f5e44d76f543976bac5ff28a7cae7563801e13a77cab9e6a7ff55eecba0f.jpeg"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/8459940132102a99da6552b8fa59886feb018aeb8b2be48ab2b173b99169836b.webp",
+          "checksum": "8459940132102a99da6552b8fa59886feb018aeb8b2be48ab2b173b99169836b",
+          "mime_type": "image/webp",
+          "width": 764,
+          "height": 401,
+          "repository_path": "assets/3ef9f5e44d76f543976bac5ff28a7cae7563801e13a77cab9e6a7ff55eecba0f.jpeg"
+        }
+      ]
+    },
+    {
+      "preview_background": "dark",
+      "slug": "jendol-superstores",
+      "name": "Jendol Superstores",
+      "aliases": [
+        "Jendol",
+        "Jendol Supermarket"
+      ],
+      "industry": "retail-commerce",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "NG"
+      ],
+      "website": "https://jendolstores.com/",
+      "source_url": "https://jendolstores.com/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-19",
+      "updated_at": "2026-10-19",
+      "reviewed_at": "2026-10-19",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Company website or developer-supplied artwork visually reviewed. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence.",
+      "evidence": [
+        {
+          "url": "https://jendolstores.com/",
+          "note": "Company-controlled website or developer listing supplies the reviewed brand artwork.",
+          "retrieved_at": "2026-10-19"
+        },
+        {
+          "url": "https://jendolstores.com/",
+          "note": "Evidence of Nigerian or African brand operations; inclusion does not assert continued service availability for archival identities.",
+          "retrieved_at": "2026-10-19"
+        }
+      ],
+      "batch": "requested-services-mobility-retail-2026-10-19",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/ae47f52bd829284a1e9a486e8d9447319220428f64f79258db2ead2bc553c4d4.png",
+          "checksum": "ae47f52bd829284a1e9a486e8d9447319220428f64f79258db2ead2bc553c4d4",
+          "mime_type": "image/png",
+          "width": 995,
+          "height": 338,
+          "repository_path": "assets/522344bb453cc3d596265cf36b706b78c7194cce46f4e04b6ff916ff3fba050d.png"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/cd10a5d8493a23ba863835b313b8d11c7e8e5e01404a336b242614169a808d3b.webp",
+          "checksum": "cd10a5d8493a23ba863835b313b8d11c7e8e5e01404a336b242614169a808d3b",
+          "mime_type": "image/webp",
+          "width": 995,
+          "height": 338,
+          "repository_path": "assets/522344bb453cc3d596265cf36b706b78c7194cce46f4e04b6ff916ff3fba050d.png"
         }
       ]
     },
@@ -3351,6 +4208,62 @@
     },
     {
       "preview_background": "light",
+      "slug": "kava",
+      "name": "KAVA",
+      "aliases": [
+        "Kava TV"
+      ],
+      "industry": "media-entertainment",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "NG"
+      ],
+      "website": "https://kava.tv/",
+      "source_url": "https://kava.tv/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-19",
+      "updated_at": "2026-10-19",
+      "reviewed_at": "2026-10-19",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Company website or developer-supplied artwork visually reviewed. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence.",
+      "evidence": [
+        {
+          "url": "https://kava.tv/",
+          "note": "Company-controlled website or developer listing supplies the reviewed brand artwork.",
+          "retrieved_at": "2026-10-19"
+        },
+        {
+          "url": "https://kava.tv/",
+          "note": "Evidence of Nigerian or African brand operations; inclusion does not assert continued service availability for archival identities.",
+          "retrieved_at": "2026-10-19"
+        }
+      ],
+      "batch": "requested-services-media-2026-10-19",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/390c431e04b6c62d522d9248dfb41ffbde6a8ca35562b2197eee320212b13f25.png",
+          "checksum": "390c431e04b6c62d522d9248dfb41ffbde6a8ca35562b2197eee320212b13f25",
+          "mime_type": "image/png",
+          "width": 640,
+          "height": 171,
+          "repository_path": "assets/7d36f0698358a7d50ab66a4a5673d68caa3da404e26792bc5263d5b0ddf86b26.png"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/dceddd8b9ff10f15fd30a653fe4ef72552a5766e7a15d2da1a99aac1644e1857.webp",
+          "checksum": "dceddd8b9ff10f15fd30a653fe4ef72552a5766e7a15d2da1a99aac1644e1857",
+          "mime_type": "image/webp",
+          "width": 640,
+          "height": 171,
+          "repository_path": "assets/7d36f0698358a7d50ab66a4a5673d68caa3da404e26792bc5263d5b0ddf86b26.png"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
       "slug": "kcb-group",
       "name": "KCB Group",
       "aliases": [],
@@ -3508,6 +4421,62 @@
       ]
     },
     {
+      "preview_background": "light",
+      "slug": "kwik",
+      "name": "Kwik",
+      "aliases": [
+        "Kwik Delivery"
+      ],
+      "industry": "transport-logistics",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "NG"
+      ],
+      "website": "https://kwik.delivery/",
+      "source_url": "https://kwik.delivery/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-19",
+      "updated_at": "2026-10-19",
+      "reviewed_at": "2026-10-19",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Company website or developer-supplied artwork visually reviewed. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence.",
+      "evidence": [
+        {
+          "url": "https://kwik.delivery/",
+          "note": "Company-controlled website or developer listing supplies the reviewed brand artwork.",
+          "retrieved_at": "2026-10-19"
+        },
+        {
+          "url": "https://kwik.delivery/",
+          "note": "Evidence of Nigerian or African brand operations; inclusion does not assert continued service availability for archival identities.",
+          "retrieved_at": "2026-10-19"
+        }
+      ],
+      "batch": "requested-services-mobility-retail-2026-10-19",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/04b465401417fed83cdc20da42088be596d53ad40f3f7f4816d94691b8ed204d.png",
+          "checksum": "04b465401417fed83cdc20da42088be596d53ad40f3f7f4816d94691b8ed204d",
+          "mime_type": "image/png",
+          "width": 100,
+          "height": 28,
+          "repository_path": "assets/e90741810ca5df005e2acacfdcb61ab99c597bad86427b76ab797f1d88e50330.png"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/75b180fd36417f4fadbda80bec9df54ff2ad33448d0ecaeb8586191d646ac85e.webp",
+          "checksum": "75b180fd36417f4fadbda80bec9df54ff2ad33448d0ecaeb8586191d646ac85e",
+          "mime_type": "image/webp",
+          "width": 100,
+          "height": 28,
+          "repository_path": "assets/e90741810ca5df005e2acacfdcb61ab99c597bad86427b76ab797f1d88e50330.png"
+        }
+      ]
+    },
+    {
       "preview_background": "dark",
       "slug": "lagos-continental",
       "name": "Lagos Continental",
@@ -3565,6 +4534,63 @@
           "width": 669,
           "height": 512,
           "repository_path": "assets/2189b520823e482005812c1ac99ea66ccd24ecac10a235ce9bf7d28f06e6e315.svg"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
+      "slug": "lagride",
+      "name": "LagRide",
+      "aliases": [
+        "Lagos Ride",
+        "Lagos City Cab"
+      ],
+      "industry": "transport-logistics",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "NG"
+      ],
+      "website": "https://www.lagride.ng/",
+      "source_url": "https://www.lagride.ng/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-19",
+      "updated_at": "2026-10-19",
+      "reviewed_at": "2026-10-19",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Company website or developer-supplied artwork visually reviewed. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence.",
+      "evidence": [
+        {
+          "url": "https://www.lagride.ng/",
+          "note": "Company-controlled website or developer listing supplies the reviewed brand artwork.",
+          "retrieved_at": "2026-10-19"
+        },
+        {
+          "url": "https://lagride.com/",
+          "note": "Evidence of Nigerian or African brand operations; inclusion does not assert continued service availability for archival identities.",
+          "retrieved_at": "2026-10-19"
+        }
+      ],
+      "batch": "requested-services-mobility-retail-2026-10-19",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/97f46d595ec2b9e10521cd884d7b6da6e5b34309bc51dcaccac4247783d1abcb.png",
+          "checksum": "97f46d595ec2b9e10521cd884d7b6da6e5b34309bc51dcaccac4247783d1abcb",
+          "mime_type": "image/png",
+          "width": 1024,
+          "height": 248,
+          "repository_path": "assets/b37896f1e1978eb68495dc3eefb094c25b80f0ae6d9531d0bcd75d00801bf125.jpeg"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/ec97689d54510fd26e91a00dbdff2ab899a86d6b79ae5a0e9a831ae88bede70b.webp",
+          "checksum": "ec97689d54510fd26e91a00dbdff2ab899a86d6b79ae5a0e9a831ae88bede70b",
+          "mime_type": "image/webp",
+          "width": 1024,
+          "height": 248,
+          "repository_path": "assets/b37896f1e1978eb68495dc3eefb094c25b80f0ae6d9531d0bcd75d00801bf125.jpeg"
         }
       ]
     },
@@ -3674,6 +4700,72 @@
           "width": 1024,
           "height": 299,
           "repository_path": "assets/707a5958e9c8bb768e92a1cfbc1e686d5bb68b156c1f37b9f31f01464b16a21a.png"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
+      "slug": "mano",
+      "name": "MANO",
+      "aliases": [
+        "MANO App",
+        "Mano Africa"
+      ],
+      "industry": "retail-commerce",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "NG"
+      ],
+      "website": "https://www.manoafrica.com/",
+      "source_url": "https://www.manoafrica.com/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-19",
+      "updated_at": "2026-10-19",
+      "reviewed_at": "2026-10-19",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Company website or developer-supplied artwork visually reviewed. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence.",
+      "evidence": [
+        {
+          "url": "https://www.manoafrica.com/",
+          "note": "Company-controlled website or developer listing supplies the reviewed brand artwork.",
+          "retrieved_at": "2026-10-19"
+        },
+        {
+          "url": "https://www.manoafrica.com/",
+          "note": "Evidence of Nigerian or African brand operations; inclusion does not assert continued service availability for archival identities.",
+          "retrieved_at": "2026-10-19"
+        }
+      ],
+      "batch": "requested-services-mobility-retail-2026-10-19",
+      "formats": [
+        {
+          "type": "svg",
+          "url": "/catalog/v2/assets/e7c9b712353d34129c539cc34620c8f4e6805df66b2bcc9e679fa59d26b4d6c2.svg",
+          "checksum": "e7c9b712353d34129c539cc34620c8f4e6805df66b2bcc9e679fa59d26b4d6c2",
+          "mime_type": "image/svg+xml",
+          "width": 200,
+          "height": 200,
+          "repository_path": "assets/76dfb45570285725a93d4c4db98f066c45d72e9b9d0cd2011e03af3f4dded780.svg"
+        },
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/83dca07e23f2317742e6b33a96d12b2f92334bd5e014baadc7be6397b06894c8.png",
+          "checksum": "83dca07e23f2317742e6b33a96d12b2f92334bd5e014baadc7be6397b06894c8",
+          "mime_type": "image/png",
+          "width": 400,
+          "height": 400,
+          "repository_path": "assets/76dfb45570285725a93d4c4db98f066c45d72e9b9d0cd2011e03af3f4dded780.svg"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/9e72637db84bf1e26bc1fe36e140d195e5b5be66fb91b5bfc4b9aa0ac01f83e4.webp",
+          "checksum": "9e72637db84bf1e26bc1fe36e140d195e5b5be66fb91b5bfc4b9aa0ac01f83e4",
+          "mime_type": "image/webp",
+          "width": 400,
+          "height": 400,
+          "repository_path": "assets/76dfb45570285725a93d4c4db98f066c45d72e9b9d0cd2011e03af3f4dded780.svg"
         }
       ]
     },
@@ -3885,6 +4977,62 @@
           "width": 485,
           "height": 121,
           "repository_path": "assets/9746928f56f2cc5424d2253d96a0f99a610ce83e0fc71f25497ddb2771e3c059.svg"
+        }
+      ]
+    },
+    {
+      "preview_background": "dark",
+      "slug": "mobitel-nigeria",
+      "name": "Mobitel Nigeria",
+      "aliases": [
+        "Mobitel"
+      ],
+      "industry": "telecommunications",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "NG"
+      ],
+      "website": "https://www.mobitel.com.ng/",
+      "source_url": "https://www.mobitel.com.ng/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-19",
+      "updated_at": "2026-10-19",
+      "reviewed_at": "2026-10-19",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Company website or developer-supplied artwork visually reviewed. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence. Nigerian Mobitel identity from its company domain; availability in this asset library is not a claim that its historical broadband services remain active.",
+      "evidence": [
+        {
+          "url": "https://www.mobitel.com.ng/",
+          "note": "Company-controlled website or developer listing supplies the reviewed brand artwork.",
+          "retrieved_at": "2026-10-19"
+        },
+        {
+          "url": "https://www.mobitel.com.ng/",
+          "note": "Evidence of Nigerian or African brand operations; inclusion does not assert continued service availability for archival identities.",
+          "retrieved_at": "2026-10-19"
+        }
+      ],
+      "batch": "requested-services-mobility-retail-2026-10-19",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/eadf656226b3b413b294efaaddc3374a25250bb5b2cb552e293960226567c986.png",
+          "checksum": "eadf656226b3b413b294efaaddc3374a25250bb5b2cb552e293960226567c986",
+          "mime_type": "image/png",
+          "width": 172,
+          "height": 94,
+          "repository_path": "assets/9501f63f12c1390976e2172d9d9bd7261a841baeac8a5799ff9a04a2bfb90aad.png"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/3393b69bf3a33069d43177911419684bf0252b75882ec0ab622b415a4f59c26a.webp",
+          "checksum": "3393b69bf3a33069d43177911419684bf0252b75882ec0ab622b415a4f59c26a",
+          "mime_type": "image/webp",
+          "width": 172,
+          "height": 94,
+          "repository_path": "assets/9501f63f12c1390976e2172d9d9bd7261a841baeac8a5799ff9a04a2bfb90aad.png"
         }
       ]
     },
@@ -4268,6 +5416,63 @@
       ]
     },
     {
+      "preview_background": "light",
+      "slug": "nibss",
+      "name": "NIBSS",
+      "aliases": [
+        "Nigeria Inter-Bank Settlement System",
+        "Nigeria Interbank Settlement System"
+      ],
+      "industry": "financial-services",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "NG"
+      ],
+      "website": "https://nibss-plc.com.ng/",
+      "source_url": "https://nibss-plc.com.ng/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-19",
+      "updated_at": "2026-10-19",
+      "reviewed_at": "2026-10-19",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Company website or developer-supplied artwork visually reviewed. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence.",
+      "evidence": [
+        {
+          "url": "https://nibss-plc.com.ng/",
+          "note": "Company-controlled website or developer listing supplies the reviewed brand artwork.",
+          "retrieved_at": "2026-10-19"
+        },
+        {
+          "url": "https://nibss-plc.com.ng/",
+          "note": "Evidence of Nigerian or African brand operations; inclusion does not assert continued service availability for archival identities.",
+          "retrieved_at": "2026-10-19"
+        }
+      ],
+      "batch": "requested-services-mobility-retail-2026-10-19",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/f71a5f351a68ab7a67ce87c09ee0863931860ae659854638042f0723bc7012c2.png",
+          "checksum": "f71a5f351a68ab7a67ce87c09ee0863931860ae659854638042f0723bc7012c2",
+          "mime_type": "image/png",
+          "width": 395,
+          "height": 208,
+          "repository_path": "assets/35a17686c90db8510d69502c3170cb2167d9b2435b018cfd291c1dc48c96e92d.png"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/99fea3848c301376360e65af3ddd10e3e7f10bf60fb83a082d317e8b4a5fdae9.webp",
+          "checksum": "99fea3848c301376360e65af3ddd10e3e7f10bf60fb83a082d317e8b4a5fdae9",
+          "mime_type": "image/webp",
+          "width": 395,
+          "height": 208,
+          "repository_path": "assets/35a17686c90db8510d69502c3170cb2167d9b2435b018cfd291c1dc48c96e92d.png"
+        }
+      ]
+    },
+    {
       "preview_background": "dark",
       "slug": "nigerian-breweries",
       "name": "Nigerian Breweries",
@@ -4322,6 +5527,62 @@
           "width": 1024,
           "height": 318,
           "repository_path": "assets/a8a94c6a19a0f5ca030e3303417e48cbbd7195206c75898f645a6459e3b1be97.svg"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
+      "slug": "nollistream",
+      "name": "NolliStream",
+      "aliases": [
+        "Nolli Stream"
+      ],
+      "industry": "media-entertainment",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "NG"
+      ],
+      "website": "https://nollistream.com/",
+      "source_url": "https://play.google.com/store/apps/details?id=com.nollistream.app",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-19",
+      "updated_at": "2026-10-19",
+      "reviewed_at": "2026-10-19",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Company website or developer-supplied artwork visually reviewed. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence. Developer-supplied app icon linked from the official NolliStream website; homepage film poster and generic app-store badges explicitly excluded.",
+      "evidence": [
+        {
+          "url": "https://play.google.com/store/apps/details?id=com.nollistream.app",
+          "note": "Company-controlled website or developer listing supplies the reviewed brand artwork.",
+          "retrieved_at": "2026-10-19"
+        },
+        {
+          "url": "https://nollistream.com/",
+          "note": "Evidence of Nigerian or African brand operations; inclusion does not assert continued service availability for archival identities.",
+          "retrieved_at": "2026-10-19"
+        }
+      ],
+      "batch": "requested-services-media-2026-10-19",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/99c9ba829bf850600a8b93ef15fce9cb7517f10a263600e8134b78afc017f192.png",
+          "checksum": "99c9ba829bf850600a8b93ef15fce9cb7517f10a263600e8134b78afc017f192",
+          "mime_type": "image/png",
+          "width": 512,
+          "height": 512,
+          "repository_path": "assets/6186214025a26d611d4b3b414e0caff4bbe01fbcecb050674f2d24b53e92cfff.png"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/358f090e97a277191533562defd0ea13f7c8baf8c51ab1872678b1b3b6028da8.webp",
+          "checksum": "358f090e97a277191533562defd0ea13f7c8baf8c51ab1872678b1b3b6028da8",
+          "mime_type": "image/webp",
+          "width": 512,
+          "height": 512,
+          "repository_path": "assets/6186214025a26d611d4b3b414e0caff4bbe01fbcecb050674f2d24b53e92cfff.png"
         }
       ]
     },
@@ -4969,6 +6230,63 @@
     },
     {
       "preview_background": "light",
+      "slug": "renee-supermarket",
+      "name": "Renee Supermarket",
+      "aliases": [
+        "Renee",
+        "Renee Supermarket and Malls"
+      ],
+      "industry": "retail-commerce",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "NG"
+      ],
+      "website": "https://www.instagram.com/reneesupermarket/",
+      "source_url": "https://www.instagram.com/reneesupermarket/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-19",
+      "updated_at": "2026-10-19",
+      "reviewed_at": "2026-10-19",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Company website or developer-supplied artwork visually reviewed. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence. Official social profile explicitly supplied by the user; original small profile artwork retained without upscaling.",
+      "evidence": [
+        {
+          "url": "https://www.instagram.com/reneesupermarket/",
+          "note": "Company-controlled website or developer listing supplies the reviewed brand artwork.",
+          "retrieved_at": "2026-10-19"
+        },
+        {
+          "url": "https://www.instagram.com/reneesupermarket/",
+          "note": "Evidence of Nigerian or African brand operations; inclusion does not assert continued service availability for archival identities.",
+          "retrieved_at": "2026-10-19"
+        }
+      ],
+      "batch": "requested-services-mobility-retail-2026-10-19",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/bcd049a7b86378b31f7e27f782c1bb2be85d3a30b603450d045f9cd2e2a602b2.png",
+          "checksum": "bcd049a7b86378b31f7e27f782c1bb2be85d3a30b603450d045f9cd2e2a602b2",
+          "mime_type": "image/png",
+          "width": 89,
+          "height": 65,
+          "repository_path": "assets/5a2bbca7b354dc8d59c1e15c9f8b6eba7d5e8dd622900c4e161d86136ad4ed48.jpeg"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/0de2c633c6d40deda3d8f13bf981f45449affeef6b9ad3cb177b88ebab3b07ac.webp",
+          "checksum": "0de2c633c6d40deda3d8f13bf981f45449affeef6b9ad3cb177b88ebab3b07ac",
+          "mime_type": "image/webp",
+          "width": 89,
+          "height": 65,
+          "repository_path": "assets/5a2bbca7b354dc8d59c1e15c9f8b6eba7d5e8dd622900c4e161d86136ad4ed48.jpeg"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
       "slug": "royal-air-maroc",
       "name": "Royal Air Maroc",
       "aliases": [],
@@ -5139,6 +6457,62 @@
       ]
     },
     {
+      "preview_background": "light",
+      "slug": "sendbox",
+      "name": "Sendbox",
+      "aliases": [
+        "Send Box"
+      ],
+      "industry": "transport-logistics",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "NG"
+      ],
+      "website": "https://sendbox.co/",
+      "source_url": "https://sendbox.co/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-19",
+      "updated_at": "2026-10-19",
+      "reviewed_at": "2026-10-19",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Company website or developer-supplied artwork visually reviewed. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence.",
+      "evidence": [
+        {
+          "url": "https://sendbox.co/",
+          "note": "Company-controlled website or developer listing supplies the reviewed brand artwork.",
+          "retrieved_at": "2026-10-19"
+        },
+        {
+          "url": "https://sendbox.co/",
+          "note": "Evidence of Nigerian or African brand operations; inclusion does not assert continued service availability for archival identities.",
+          "retrieved_at": "2026-10-19"
+        }
+      ],
+      "batch": "requested-services-mobility-retail-2026-10-19",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/0c4b1f8bc0ee82744ff515e0bb72915fd7b89ef92051427fd07a7e0f83887bf8.png",
+          "checksum": "0c4b1f8bc0ee82744ff515e0bb72915fd7b89ef92051427fd07a7e0f83887bf8",
+          "mime_type": "image/png",
+          "width": 73,
+          "height": 108,
+          "repository_path": "assets/0892daf6bf3706c5e08dabaeb80ab590490eecddce636c353d2e9761a6b4c2f3.png"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/9ebadcc50c187a59b896232c9192a276f5cfca92f6cf971307d63a15eb0de68a.webp",
+          "checksum": "9ebadcc50c187a59b896232c9192a276f5cfca92f6cf971307d63a15eb0de68a",
+          "mime_type": "image/webp",
+          "width": 73,
+          "height": 108,
+          "repository_path": "assets/0892daf6bf3706c5e08dabaeb80ab590490eecddce636c353d2e9761a6b4c2f3.png"
+        }
+      ]
+    },
+    {
       "preview_background": "dark",
       "slug": "shoprite",
       "name": "Shoprite",
@@ -5190,6 +6564,132 @@
           "width": 1024,
           "height": 273,
           "repository_path": "assets/cc478fcd590e94515ebf27af7375a9408d9aa96bbeb98494fac540266bba3351.png"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
+      "slug": "showmax",
+      "name": "Showmax",
+      "aliases": [],
+      "industry": "media-entertainment",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "NG"
+      ],
+      "website": "https://www.showmax.com/",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Showmax_Logo.svg",
+      "source_type": "community-catalog",
+      "status": "needs-review",
+      "added_at": "2026-10-19",
+      "updated_at": "2026-10-19",
+      "reviewed_at": "2026-10-19",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Manually reviewed third-party artwork; not officially verified. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence. Community 2024-era Showmax wordmark, not officially verified. CANAL+ announced Showmax's forthcoming discontinuation in 2026: https://www.canalplusgroup.com/en/mandatoryoffermultichoice/multichoice-post-76 . This is an archived brand identity, not a claim of current service availability.",
+      "evidence": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/File:Showmax_Logo.svg",
+          "note": "Reviewed third-party artwork source; does not establish official verification or trademark permission.",
+          "retrieved_at": "2026-10-19"
+        },
+        {
+          "url": "https://www.dstv.com/en-ng/",
+          "note": "Evidence of Nigerian or African brand operations; inclusion does not assert continued service availability for archival identities.",
+          "retrieved_at": "2026-10-19"
+        }
+      ],
+      "batch": "requested-services-media-2026-10-19",
+      "formats": [
+        {
+          "type": "svg",
+          "url": "/catalog/v2/assets/8c50fe933020cb968eae61840e42195a34e8892b9297951aba36d57d88ef29ad.svg",
+          "checksum": "8c50fe933020cb968eae61840e42195a34e8892b9297951aba36d57d88ef29ad",
+          "mime_type": "image/svg+xml",
+          "width": 104,
+          "height": 24,
+          "repository_path": "assets/822b0d3542a7afbd9e60082378fb942d4706de2c5f9c2238e8bf0f26d67b9343.svg"
+        },
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/35427814bad792d1d86a180299b81c70c3dad7d19890875c31ff228568267950.png",
+          "checksum": "35427814bad792d1d86a180299b81c70c3dad7d19890875c31ff228568267950",
+          "mime_type": "image/png",
+          "width": 208,
+          "height": 48,
+          "repository_path": "assets/822b0d3542a7afbd9e60082378fb942d4706de2c5f9c2238e8bf0f26d67b9343.svg"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/460dc953edd77ddc921a014153aaea58cfa8c31d9d73a16b77b0c5cf46eed463.webp",
+          "checksum": "460dc953edd77ddc921a014153aaea58cfa8c31d9d73a16b77b0c5cf46eed463",
+          "mime_type": "image/webp",
+          "width": 208,
+          "height": 48,
+          "repository_path": "assets/822b0d3542a7afbd9e60082378fb942d4706de2c5f9c2238e8bf0f26d67b9343.svg"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
+      "slug": "shuttlers",
+      "name": "Shuttlers",
+      "aliases": [],
+      "industry": "transport-logistics",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "NG"
+      ],
+      "website": "https://www.shuttlers.co/",
+      "source_url": "https://www.shuttlers.co/",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-19",
+      "updated_at": "2026-10-19",
+      "reviewed_at": "2026-10-19",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Company website or developer-supplied artwork visually reviewed. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence.",
+      "evidence": [
+        {
+          "url": "https://www.shuttlers.co/",
+          "note": "Company-controlled website or developer listing supplies the reviewed brand artwork.",
+          "retrieved_at": "2026-10-19"
+        },
+        {
+          "url": "https://www.shuttlers.co/",
+          "note": "Evidence of Nigerian or African brand operations; inclusion does not assert continued service availability for archival identities.",
+          "retrieved_at": "2026-10-19"
+        }
+      ],
+      "batch": "requested-services-mobility-retail-2026-10-19",
+      "formats": [
+        {
+          "type": "svg",
+          "url": "/catalog/v2/assets/001192cb6dbd109b0f4c64c752a0b3e62d308b5c7bea60b6746e578fdf52bf39.svg",
+          "checksum": "001192cb6dbd109b0f4c64c752a0b3e62d308b5c7bea60b6746e578fdf52bf39",
+          "mime_type": "image/svg+xml",
+          "width": 128,
+          "height": 24,
+          "repository_path": "assets/192eb5b784505ef984307de6b13d3338de09402219f83d6d96d33e98b6caca59.svg"
+        },
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/3ef787672740ad50f3c535d22bd440c88719aad2a920cc8db565e46129d3e022.png",
+          "checksum": "3ef787672740ad50f3c535d22bd440c88719aad2a920cc8db565e46129d3e022",
+          "mime_type": "image/png",
+          "width": 256,
+          "height": 48,
+          "repository_path": "assets/192eb5b784505ef984307de6b13d3338de09402219f83d6d96d33e98b6caca59.svg"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/a80e9bcbe7c85647372744fd7bb56aa147d853783f800eb6fee5b0754943eb43.webp",
+          "checksum": "a80e9bcbe7c85647372744fd7bb56aa147d853783f800eb6fee5b0754943eb43",
+          "mime_type": "image/webp",
+          "width": 256,
+          "height": 48,
+          "repository_path": "assets/192eb5b784505ef984307de6b13d3338de09402219f83d6d96d33e98b6caca59.svg"
         }
       ]
     },
@@ -5288,6 +6788,63 @@
           "width": 1024,
           "height": 347,
           "repository_path": "assets/2b5c14496bc19e4d4291fd499eb96961f8f5c567a69f979d735e0f462c804392.webp"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
+      "slug": "smile-communications",
+      "name": "Smile Communications",
+      "aliases": [
+        "Smile",
+        "Smile Nigeria"
+      ],
+      "industry": "telecommunications",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "NG"
+      ],
+      "website": "https://smile.com.ng/home",
+      "source_url": "https://smile.com.ng/home",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-19",
+      "updated_at": "2026-10-19",
+      "reviewed_at": "2026-10-19",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Company website or developer-supplied artwork visually reviewed. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence. The retrieved company website supplies this logo with a Beta label; no lettering was removed or recreated.",
+      "evidence": [
+        {
+          "url": "https://smile.com.ng/home",
+          "note": "Company-controlled website or developer listing supplies the reviewed brand artwork.",
+          "retrieved_at": "2026-10-19"
+        },
+        {
+          "url": "https://smile.com.ng/home",
+          "note": "Evidence of Nigerian or African brand operations; inclusion does not assert continued service availability for archival identities.",
+          "retrieved_at": "2026-10-19"
+        }
+      ],
+      "batch": "requested-services-mobility-retail-2026-10-19",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/72323af2021ea25402122ca77e1d5579c57cfaafa35419c10ca65ced88ba4b01.png",
+          "checksum": "72323af2021ea25402122ca77e1d5579c57cfaafa35419c10ca65ced88ba4b01",
+          "mime_type": "image/png",
+          "width": 390,
+          "height": 100,
+          "repository_path": "assets/c5eca9423770a66956c6a020789c6a16f97e0ec338f0df6df9593ca2ad35a526.png"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/8adef4dab8d16e321cd0f16949ba0b14a9cd0b5bae5bd3d635344b48e66c76b9.webp",
+          "checksum": "8adef4dab8d16e321cd0f16949ba0b14a9cd0b5bae5bd3d635344b48e66c76b9",
+          "mime_type": "image/webp",
+          "width": 390,
+          "height": 100,
+          "repository_path": "assets/c5eca9423770a66956c6a020789c6a16f97e0ec338f0df6df9593ca2ad35a526.png"
         }
       ]
     },
@@ -5538,6 +7095,120 @@
           "width": 1024,
           "height": 406,
           "repository_path": "assets/0c60578cfcb8cfc22d5ebfac13cfb99855d465cde6bdd66727fcf94f8af9ff43.webp"
+        }
+      ]
+    },
+    {
+      "preview_background": "dark",
+      "slug": "startimes",
+      "name": "StarTimes",
+      "aliases": [
+        "Star Times",
+        "StarTimes Nigeria"
+      ],
+      "industry": "media-entertainment",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "NG"
+      ],
+      "website": "https://www.startimestv.com/",
+      "source_url": "https://m.startimestv.com/browser",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-19",
+      "updated_at": "2026-10-19",
+      "reviewed_at": "2026-10-19",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Company website or developer-supplied artwork visually reviewed. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence.",
+      "evidence": [
+        {
+          "url": "https://m.startimestv.com/browser",
+          "note": "Company-controlled website or developer listing supplies the reviewed brand artwork.",
+          "retrieved_at": "2026-10-19"
+        },
+        {
+          "url": "https://m.startimestv.com/browser/program/list",
+          "note": "Evidence of Nigerian or African brand operations; inclusion does not assert continued service availability for archival identities.",
+          "retrieved_at": "2026-10-19"
+        }
+      ],
+      "batch": "requested-services-media-2026-10-19",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/b64542f42ae9b22623563ae68eb4219b57b261c321e0bce41db6f1204fd314c8.png",
+          "checksum": "b64542f42ae9b22623563ae68eb4219b57b261c321e0bce41db6f1204fd314c8",
+          "mime_type": "image/png",
+          "width": 92,
+          "height": 80,
+          "repository_path": "assets/3b0035ef2219fa69d2657928e40dc1ebf248dd4432d48b2be68d2d5dd2acf629.png"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/d2cec05142a47149be16e062cacfb87e3e925338262f21f0f8ca159a85299815.webp",
+          "checksum": "d2cec05142a47149be16e062cacfb87e3e925338262f21f0f8ca159a85299815",
+          "mime_type": "image/webp",
+          "width": 92,
+          "height": 80,
+          "repository_path": "assets/3b0035ef2219fa69d2657928e40dc1ebf248dd4432d48b2be68d2d5dd2acf629.png"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
+      "slug": "startimes-on",
+      "name": "StarTimes ON",
+      "aliases": [
+        "StarTimesON",
+        "Star Times ON"
+      ],
+      "industry": "media-entertainment",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "NG"
+      ],
+      "website": "https://m.startimestv.com/browser",
+      "source_url": "https://apps.apple.com/us/app/startimes/id1168518958",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-19",
+      "updated_at": "2026-10-19",
+      "reviewed_at": "2026-10-19",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Company website or developer-supplied artwork visually reviewed. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence.",
+      "evidence": [
+        {
+          "url": "https://apps.apple.com/us/app/startimes/id1168518958",
+          "note": "Company-controlled website or developer listing supplies the reviewed brand artwork.",
+          "retrieved_at": "2026-10-19"
+        },
+        {
+          "url": "https://www.mtn.ng/play/startimes-on/",
+          "note": "Evidence of Nigerian or African brand operations; inclusion does not assert continued service availability for archival identities.",
+          "retrieved_at": "2026-10-19"
+        }
+      ],
+      "batch": "requested-services-media-2026-10-19",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/50860ebe39c7c952d95705539774fe7eaff1f78c69e840d274a21446d0f1c616.png",
+          "checksum": "50860ebe39c7c952d95705539774fe7eaff1f78c69e840d274a21446d0f1c616",
+          "mime_type": "image/png",
+          "width": 430,
+          "height": 431,
+          "repository_path": "assets/9a4b1586b5b51e6ac952a0eac3fc857f03a4fa6eac01b658df381ac83fd196fe.jpeg"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/7b6ecb5b731894c0b3017c564319ef6bf7a57d561c15175ed91667e65bd79ec7.webp",
+          "checksum": "7b6ecb5b731894c0b3017c564319ef6bf7a57d561c15175ed91667e65bd79ec7",
+          "mime_type": "image/webp",
+          "width": 430,
+          "height": 431,
+          "repository_path": "assets/9a4b1586b5b51e6ac952a0eac3fc857f03a4fa6eac01b658df381ac83fd196fe.jpeg"
         }
       ]
     },
@@ -6513,6 +8184,60 @@
           "width": 114,
           "height": 115,
           "repository_path": "assets/86ad40679b318bc612555c7dd033df815821101a239bdcb1f0d01ccd3e329f7d.svg"
+        }
+      ]
+    },
+    {
+      "preview_background": "light",
+      "slug": "wakanow",
+      "name": "Wakanow",
+      "aliases": [],
+      "industry": "transport-logistics",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [
+        "NG"
+      ],
+      "website": "https://www.wakanow.com/",
+      "source_url": "https://play.google.com/store/apps/details?id=com.wakanow.android",
+      "source_type": "official-website",
+      "status": "verified",
+      "added_at": "2026-10-19",
+      "updated_at": "2026-10-19",
+      "reviewed_at": "2026-10-19",
+      "reviewer": "Codex assisted source and visual review",
+      "review_notes": "Company website or developer-supplied artwork visually reviewed. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence. Developer-supplied Wakanow app emblem; the unconfirmed regional-domain wordmark was excluded.",
+      "evidence": [
+        {
+          "url": "https://play.google.com/store/apps/details?id=com.wakanow.android",
+          "note": "Company-controlled website or developer listing supplies the reviewed brand artwork.",
+          "retrieved_at": "2026-10-19"
+        },
+        {
+          "url": "https://www.wakanow.com/",
+          "note": "Evidence of Nigerian or African brand operations; inclusion does not assert continued service availability for archival identities.",
+          "retrieved_at": "2026-10-19"
+        }
+      ],
+      "batch": "requested-services-mobility-retail-2026-10-19",
+      "formats": [
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/f87fe5e50a27c82cfab5b49cfd601dcb6f6ded6fad299a7c6abaf80ab4e47c36.png",
+          "checksum": "f87fe5e50a27c82cfab5b49cfd601dcb6f6ded6fad299a7c6abaf80ab4e47c36",
+          "mime_type": "image/png",
+          "width": 474,
+          "height": 474,
+          "repository_path": "assets/f4911cacc1fe32406b2dfbb39b9de716119db5535e35966ab30172653daf4962.png"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/65c490fe7fbcb32c5ccbcb8c6caee8ca4b9db37d00525a5b1c61ce884d9001b1.webp",
+          "checksum": "65c490fe7fbcb32c5ccbcb8c6caee8ca4b9db37d00525a5b1c61ce884d9001b1",
+          "mime_type": "image/webp",
+          "width": 474,
+          "height": 474,
+          "repository_path": "assets/f4911cacc1fe32406b2dfbb39b9de716119db5535e35966ab30172653daf4962.png"
         }
       ]
     },

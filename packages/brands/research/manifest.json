@@ -5,7 +5,7 @@
   "summary": {
     "pending-review": 111,
     "unresolved": 71,
-    "approved": 40,
+    "approved": 69,
     "duplicate": 2
   },
   "entries": [
@@ -9882,6 +9882,1385 @@
         }
       ],
       "candidate_assets": [],
+      "review_notes": "Official page retrieval is not artwork approval."
+    },
+    {
+      "slug": "jendol-superstores",
+      "name": "Jendol Superstores",
+      "aliases": [],
+      "industry": "retail-commerce",
+      "target_market": "NG",
+      "website": "https://jendolstores.com/",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [],
+      "disposition": "approved",
+      "reason": "Company website or developer-supplied artwork visually reviewed. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence.",
+      "duplicate_of": null,
+      "sources": [
+        {
+          "url": "https://jendolstores.com/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "Jendol Superstores – Shop With Smile",
+          "page_checksum": "ca5c4c624e70b3a32af0f26a92ee14e0405e9cd0bbf80e57188289377be96005"
+        }
+      ],
+      "candidate_assets": [
+        {
+          "path": "staging/jendol-superstores-popular-0-59b6155ce3b4.png",
+          "source_url": "https://jendolstores.com/wp-content/uploads/2025/08/cropped-jendol_logo1.png",
+          "discovered_on": "https://jendolstores.com/",
+          "source_type": "official-website",
+          "format": "png",
+          "width": 615,
+          "height": 361,
+          "checksum": "59b6155ce3b4e7137e0c03d700eefdc8186eaf1b35970355ee51c41f7df891f3",
+          "retrieved_at": "2026-10-19",
+          "reviewed": false
+        },
+        {
+          "path": "staging/jendol-superstores-popular-1-522344bb453c.png",
+          "source_url": "https://jendolstores.com/wp-content/uploads/2025/09/logo-horizontal_w_1-1024x368.png",
+          "discovered_on": "https://jendolstores.com/",
+          "source_type": "official-website",
+          "format": "png",
+          "width": 1024,
+          "height": 368,
+          "checksum": "522344bb453cc3d596265cf36b706b78c7194cce46f4e04b6ff916ff3fba050d",
+          "retrieved_at": "2026-10-19",
+          "reviewed": true
+        }
+      ],
+      "review_notes": "Official page retrieval is not artwork approval."
+    },
+    {
+      "slug": "smile-communications",
+      "name": "Smile Communications",
+      "aliases": [],
+      "industry": "telecommunications",
+      "target_market": "NG",
+      "website": "https://smile.com.ng/home",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [],
+      "disposition": "approved",
+      "reason": "Company website or developer-supplied artwork visually reviewed. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence. The retrieved company website supplies this logo with a Beta label; no lettering was removed or recreated.",
+      "duplicate_of": null,
+      "sources": [
+        {
+          "url": "https://smile.com.ng/home",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "Home page",
+          "page_checksum": "d1426d7b3974e7c8e3983c5420bd70675a45da7e45114e7a498bcdb18a82f23d"
+        }
+      ],
+      "candidate_assets": [
+        {
+          "path": "staging/smile-communications-popular-0-c5eca9423770.png",
+          "source_url": "https://smile.com.ng/pub/media/logo/stores/1/smile-logo-beta.png",
+          "discovered_on": "https://smile.com.ng/home",
+          "source_type": "official-website",
+          "format": "png",
+          "width": 390,
+          "height": 100,
+          "checksum": "c5eca9423770a66956c6a020789c6a16f97e0ec338f0df6df9593ca2ad35a526",
+          "retrieved_at": "2026-10-19",
+          "reviewed": true
+        },
+        {
+          "path": "staging/smile-communications-popular-1-d67b2acb4c32.png",
+          "source_url": "https://smile.com.ng/pub/media/wysiwyg/Apple-App-Store-Logo.png",
+          "discovered_on": "https://smile.com.ng/home",
+          "source_type": "official-website",
+          "format": "png",
+          "width": 500,
+          "height": 148,
+          "checksum": "d67b2acb4c323fe52db082acb327cb759935f7ea677b5c43e3c1a291bafc444a",
+          "retrieved_at": "2026-10-19",
+          "reviewed": false
+        }
+      ],
+      "review_notes": "Official page retrieval is not artwork approval."
+    },
+    {
+      "slug": "mobitel-nigeria",
+      "name": "Mobitel Nigeria",
+      "aliases": [],
+      "industry": "telecommunications",
+      "target_market": "NG",
+      "website": "https://www.mobitel.com.ng/",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [],
+      "disposition": "approved",
+      "reason": "Company website or developer-supplied artwork visually reviewed. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence. Nigerian Mobitel identity from its company domain; availability in this asset library is not a claim that its historical broadband services remain active.",
+      "duplicate_of": null,
+      "sources": [
+        {
+          "url": "https://www.mobitel.com.ng/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "mobitel",
+          "page_checksum": "7fff338aeb303f30e2b6aed38c84b3e59b210c69e376173919f0d15fd14ca36a"
+        }
+      ],
+      "candidate_assets": [
+        {
+          "path": "staging/mobitel-nigeria-popular-0-9501f63f12c1.png",
+          "source_url": "https://www.mobitel.com.ng/images/home/logo.png",
+          "discovered_on": "https://www.mobitel.com.ng/",
+          "source_type": "official-website",
+          "format": "png",
+          "width": 172,
+          "height": 94,
+          "checksum": "9501f63f12c1390976e2172d9d9bd7261a841baeac8a5799ff9a04a2bfb90aad",
+          "retrieved_at": "2026-10-19",
+          "reviewed": true
+        }
+      ],
+      "review_notes": "Official page retrieval is not artwork approval."
+    },
+    {
+      "slug": "cowry",
+      "name": "Cowry",
+      "aliases": [],
+      "industry": "transport-logistics",
+      "target_market": "NG",
+      "website": "https://cowry.com.ng/",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [],
+      "disposition": "approved",
+      "reason": "Company website or developer-supplied artwork visually reviewed. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence. The user confirmed the Lagos transport-payment brand, not Cowrywise.",
+      "duplicate_of": null,
+      "sources": [
+        {
+          "url": "https://cowry.com.ng/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "Home | Cowry",
+          "page_checksum": "04458d3dbf1665fff0001f233f357b85365ff7e6e34c723b8fbf641ebaa7e427"
+        },
+        {
+          "url": "https://cowry.com.ng/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "Home | Cowry",
+          "page_checksum": "04458d3dbf1665fff0001f233f357b85365ff7e6e34c723b8fbf641ebaa7e427"
+        }
+      ],
+      "candidate_assets": [
+        {
+          "path": "staging/cowry-reviewed-d3228fe21d5a.svg",
+          "source_url": "https://cowry.com.ng/#reviewed-inline-logo",
+          "discovered_on": "https://cowry.com.ng/",
+          "source_type": "official-website",
+          "format": "svg",
+          "width": 108,
+          "height": 33,
+          "checksum": "d3228fe21d5a226835871058123765a97ae77e811757f14351f5a975a4888cd6",
+          "retrieved_at": "2026-10-19",
+          "reviewed": true
+        }
+      ],
+      "review_notes": "Official page retrieval is not artwork approval."
+    },
+    {
+      "slug": "wakanow",
+      "name": "Wakanow",
+      "aliases": [],
+      "industry": "transport-logistics",
+      "target_market": "NG",
+      "website": "https://www.wakanow.com/",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [],
+      "disposition": "approved",
+      "reason": "Company website or developer-supplied artwork visually reviewed. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence. Developer-supplied Wakanow app emblem; the unconfirmed regional-domain wordmark was excluded.",
+      "duplicate_of": null,
+      "sources": [
+        {
+          "url": "https://www.wakanow.com/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "",
+          "page_checksum": "d02032286070b4dd9d8fbd985a7bdca8af8edf52b89ff177db3bfcb2c8a9c43d"
+        },
+        {
+          "url": "https://www.wakanow.bj/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "Wakanow - Cheap Flights, Hotels & Holiday Packages | Book & Pay in Naira",
+          "page_checksum": "ab9a6292c2629c4d59e0498332f2846d4ae470cab40cd6d1bf06ace607eb9814"
+        },
+        {
+          "url": "https://play.google.com/store/apps/details?id=com.wakanow.android",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "Wakanow: Flights, Hotels, Cars - Apps on Google Play",
+          "page_checksum": "8c7b6d6ddc6df0289830b88105323b0abc683430f1a4b4a9824756ff19e77609"
+        }
+      ],
+      "candidate_assets": [
+        {
+          "path": "staging/wakanow-reviewed-4e3867877ae6.svg",
+          "source_url": "https://www.wakanow.bj/wakanow-logo.svg",
+          "discovered_on": "https://www.wakanow.bj/",
+          "source_type": "official-website",
+          "format": "svg",
+          "width": 132,
+          "height": 35,
+          "checksum": "4e3867877ae666f79008d7cc1c7af17300c17cfb65d4141a2d347cc05696df91",
+          "retrieved_at": "2026-10-19",
+          "reviewed": false
+        },
+        {
+          "path": "staging/wakanow-reviewed-f4911cacc1fe.png",
+          "source_url": "https://play-lh.googleusercontent.com/fhWp5EIpw9YgJj3rly5w2LmEJUltgmHKdBzVqEEzOLDyZR4XFx0yzlPeB7_RoKKOuBoeM0dwZSzj9hV63NBsXck=s0-br30",
+          "discovered_on": "https://play.google.com/store/apps/details?id=com.wakanow.android",
+          "source_type": "official-website",
+          "format": "png",
+          "width": 512,
+          "height": 512,
+          "checksum": "f4911cacc1fe32406b2dfbb39b9de716119db5535e35966ab30172653daf4962",
+          "retrieved_at": "2026-10-19",
+          "reviewed": true
+        }
+      ],
+      "review_notes": "Official page retrieval is not artwork approval."
+    },
+    {
+      "slug": "lagride",
+      "name": "LagRide",
+      "aliases": [],
+      "industry": "transport-logistics",
+      "target_market": "NG",
+      "website": "https://lagride.com/",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [],
+      "disposition": "approved",
+      "reason": "Company website or developer-supplied artwork visually reviewed. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence.",
+      "duplicate_of": null,
+      "sources": [
+        {
+          "url": "https://www.lagride.ng/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "Lagride - Lagos City Cab",
+          "page_checksum": "be7e4a0e5c7a899321c450d38c781692f70631860fd1eab14a931d28ef7eb1ae"
+        }
+      ],
+      "candidate_assets": [
+        {
+          "path": "staging/lagride-reviewed-b37896f1e197.jpeg",
+          "source_url": "https://www.lagride.ng/lagride-logo-hires.jpg",
+          "discovered_on": "https://www.lagride.ng/",
+          "source_type": "official-website",
+          "format": "jpeg",
+          "width": 4500,
+          "height": 4500,
+          "checksum": "b37896f1e1978eb68495dc3eefb094c25b80f0ae6d9531d0bcd75d00801bf125",
+          "retrieved_at": "2026-10-19",
+          "reviewed": true
+        }
+      ],
+      "review_notes": "Official page retrieval is not artwork approval."
+    },
+    {
+      "slug": "shuttlers",
+      "name": "Shuttlers",
+      "aliases": [],
+      "industry": "transport-logistics",
+      "target_market": "NG",
+      "website": "https://www.shuttlers.co/",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [],
+      "disposition": "approved",
+      "reason": "Company website or developer-supplied artwork visually reviewed. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence.",
+      "duplicate_of": null,
+      "sources": [
+        {
+          "url": "https://www.shuttlers.co/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "Shuttlers - Experience a simpler, better way to commute",
+          "page_checksum": "e767591b7bea4a46c1fea951578c9aa8eb2fbbc0d5af3e8e5647d580f6c3571f"
+        }
+      ],
+      "candidate_assets": [
+        {
+          "path": "staging/shuttlers-reviewed-192eb5b78450.svg",
+          "source_url": "https://cdn.sanity.io/images/sltjb2w4/production/26df4813a7813f0886e5bb1eb13f595426bc9ea9-128x24.svg",
+          "discovered_on": "https://www.shuttlers.co/",
+          "source_type": "official-website",
+          "format": "svg",
+          "width": 128,
+          "height": 24,
+          "checksum": "192eb5b784505ef984307de6b13d3338de09402219f83d6d96d33e98b6caca59",
+          "retrieved_at": "2026-10-19",
+          "reviewed": true
+        }
+      ],
+      "review_notes": "Official page retrieval is not artwork approval."
+    },
+    {
+      "slug": "chowdeck",
+      "name": "Chowdeck",
+      "aliases": [],
+      "industry": "transport-logistics",
+      "target_market": "NG",
+      "website": "https://chowdeck.com/",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [],
+      "disposition": "approved",
+      "reason": "Company website or developer-supplied artwork visually reviewed. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence.",
+      "duplicate_of": null,
+      "sources": [
+        {
+          "url": "https://chowdeck.com/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "Food, Groceries & Local Markets Delivery Near You | Chowdeck",
+          "page_checksum": "ce9d710c4a1796ae2bf756ea3cb28b40f5726c51a86113ebea864f42c66ef6d6"
+        },
+        {
+          "url": "https://chowdeck.com/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "Food, Groceries & Local Markets Delivery Near You | Chowdeck",
+          "page_checksum": "ce9d710c4a1796ae2bf756ea3cb28b40f5726c51a86113ebea864f42c66ef6d6"
+        }
+      ],
+      "candidate_assets": [
+        {
+          "path": "staging/chowdeck-reviewed-f3c8867b4633.svg",
+          "source_url": "https://chowdeck.com/#reviewed-inline-logo",
+          "discovered_on": "https://chowdeck.com/",
+          "source_type": "official-website",
+          "format": "svg",
+          "width": 100,
+          "height": 30,
+          "checksum": "f3c8867b4633aef54bb6466eebb7483e78afe87e4f30a40d9fd89dc718e05f95",
+          "retrieved_at": "2026-10-19",
+          "reviewed": true
+        }
+      ],
+      "review_notes": "Official page retrieval is not artwork approval."
+    },
+    {
+      "slug": "glovo",
+      "name": "Glovo",
+      "aliases": [],
+      "industry": "transport-logistics",
+      "target_market": "NG",
+      "website": "https://glovoapp.com/ng/en/",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [],
+      "disposition": "approved",
+      "reason": "Company website or developer-supplied artwork visually reviewed. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence.",
+      "duplicate_of": null,
+      "sources": [
+        {
+          "url": "https://glovoapp.com/ng/en/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "Glovo delivery in Nigeria: Order food, grocery, parapharmacies online now | Glovo",
+          "page_checksum": "aa45fa6edb4b8cb13bbe446f209e2269288770a6873d374e8a3985e69c5e2ba5"
+        }
+      ],
+      "candidate_assets": [
+        {
+          "path": "staging/glovo-popular-0-b91e4a413dec.svg",
+          "source_url": "https://glovoapp.com/ng/en/#inline-logo-0",
+          "discovered_on": "https://glovoapp.com/ng/en/",
+          "source_type": "official-website",
+          "format": "svg",
+          "width": 171,
+          "height": 56,
+          "checksum": "b91e4a413dec2b75e3a68abab98e7f8cc2abbff40f425199f27c915c00d7536a",
+          "retrieved_at": "2026-10-19",
+          "reviewed": true
+        },
+        {
+          "path": "staging/glovo-popular-1-4fd65ffbf48b.svg",
+          "source_url": "https://glovoapp.com/ng/en/#inline-logo-5",
+          "discovered_on": "https://glovoapp.com/ng/en/",
+          "source_type": "official-website",
+          "format": "svg",
+          "width": 171,
+          "height": 56,
+          "checksum": "4fd65ffbf48bff3f3331f83da36d1067df6e3827894ecaea985a533bccbc9a1e",
+          "retrieved_at": "2026-10-19",
+          "reviewed": false
+        }
+      ],
+      "review_notes": "Official page retrieval is not artwork approval."
+    },
+    {
+      "slug": "dstv",
+      "name": "DStv",
+      "aliases": [],
+      "industry": "media-entertainment",
+      "target_market": "NG",
+      "website": "https://www.dstv.com/en-ng/",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [],
+      "disposition": "approved",
+      "reason": "Manually reviewed third-party artwork; not officially verified. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence. Community-sourced 2023 DStv identity, not the MultiChoice parent logo or MyDStv app icon. Not officially verified.",
+      "duplicate_of": null,
+      "sources": [
+        {
+          "url": "https://www.dstv.com/en-ng/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "Get the latest Sport, Movies, Series and Shows with DStv Nigeria",
+          "page_checksum": "362d6ff808a9ea14c48dc8de64cead2e0df7bf5c47b1737a3107115ef4e5d9e2"
+        },
+        {
+          "url": "https://play.google.com/store/apps/details?id=com.multichoice.mydstv.thiane",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "MyDStv - Apps on Google Play",
+          "page_checksum": "ba23c015d78d7131d68130674dc285df4f9125fc178045a97e69938e505cc116"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/DStv",
+          "type": "community-catalog",
+          "retrieved_at": "2026-10-19",
+          "title": "DStv - Wikipedia",
+          "page_checksum": "04c4c4aba8fd2f7ccffc55299bab779596e7c748d29d2dc34ea3823e57134574"
+        }
+      ],
+      "candidate_assets": [
+        {
+          "path": "staging/dstv-popular-0-651c9694a47b.svg",
+          "source_url": "https://www.dstv.com/media/ew5nsyr3/mc_ccompagny_rgb_black_bg-1.svg",
+          "discovered_on": "https://www.dstv.com/en-ng/",
+          "source_type": "official-website",
+          "format": "svg",
+          "width": 2140,
+          "height": 1335,
+          "checksum": "651c9694a47b2592c023951dacec9233d8d3e51936a2699aeb31984ea01542f9",
+          "retrieved_at": "2026-10-19",
+          "reviewed": false
+        },
+        {
+          "path": "staging/dstv-reviewed-49d0d6a3c422.png",
+          "source_url": "https://play-lh.googleusercontent.com/BFb_X-95BludYGhpyyeRTnWRVhGJdNAGpMjFXAcQqnqfRiyljH4YkkHc5zu08QlDS3VuAyresZQm6bYcjqN9gA=s0-br30",
+          "discovered_on": "https://play.google.com/store/apps/details?id=com.multichoice.mydstv.thiane",
+          "source_type": "official-website",
+          "format": "png",
+          "width": 512,
+          "height": 512,
+          "checksum": "49d0d6a3c4224b2a3646d4413a8f18cba1eb6bd782f11c4e5cca1a0cb65a7e4c",
+          "retrieved_at": "2026-10-19",
+          "reviewed": false
+        },
+        {
+          "path": "staging/dstv-reviewed-fd2319de87a8.svg",
+          "source_url": "https://upload.wikimedia.org/wikipedia/commons/5/59/DStv_Logo_%282023%29.svg",
+          "discovered_on": "https://en.wikipedia.org/wiki/DStv",
+          "source_type": "community-catalog",
+          "format": "svg",
+          "width": 204,
+          "height": 126,
+          "checksum": "fd2319de87a820be06e2c462d5f1a345e40fe7a258e09b743eb5a9db0b4a90cf",
+          "retrieved_at": "2026-10-19",
+          "reviewed": true
+        }
+      ],
+      "review_notes": "Official page retrieval is not artwork approval."
+    },
+    {
+      "slug": "gotv",
+      "name": "GOtv",
+      "aliases": [],
+      "industry": "media-entertainment",
+      "target_market": "NG",
+      "website": "https://www.gotvafrica.com/en-ng/",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [],
+      "disposition": "approved",
+      "reason": "Manually reviewed third-party artwork; not officially verified. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence. Community GOtv wordmark, not programme artwork, the MultiChoice parent logo or the MyGOtv app icon. Not officially verified.",
+      "duplicate_of": null,
+      "sources": [
+        {
+          "url": "https://www.gotvafrica.com/en-ng/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "GOtv Nigeria | Experience the best of sports & entertainment",
+          "page_checksum": "bc5bafb63704a7b98dbe03db6349829d4ccdfa8723d4b0358978d778686dba08"
+        },
+        {
+          "url": "https://play.google.com/store/apps/details?id=com.dstv.mygotv",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "MyGOtv - Apps on Google Play",
+          "page_checksum": "14265b72210e861be6ebf556cfdcf77f42787c8cf14df8b8e120dc8fb2c42380"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/GOtv",
+          "type": "community-catalog",
+          "retrieved_at": "2026-10-19",
+          "title": "GOtv - Wikipedia",
+          "page_checksum": "237a77542ba20cd4289d442febd11a606c80626ad40f1608c9b18c29567cceca"
+        }
+      ],
+      "candidate_assets": [
+        {
+          "path": "staging/gotv-popular-0-4231bcee3334.png",
+          "source_url": "https://www.gotvafrica.com/media/tbwmhgo4/novelas-article-500-280-gotv.png",
+          "discovered_on": "https://www.gotvafrica.com/en-ng/",
+          "source_type": "official-website",
+          "format": "png",
+          "width": 500,
+          "height": 280,
+          "checksum": "4231bcee3334a46432bf7ee273c398dd5e53f0e538b508529860ab5271a70115",
+          "retrieved_at": "2026-10-19",
+          "reviewed": false
+        },
+        {
+          "path": "staging/gotv-popular-1-50dbc0a5af00.png",
+          "source_url": "https://www.gotvafrica.com/media/0ewlzktv/mal-logo.png",
+          "discovered_on": "https://www.gotvafrica.com/en-ng/",
+          "source_type": "official-website",
+          "format": "png",
+          "width": 142,
+          "height": 89,
+          "checksum": "50dbc0a5af003472b7b02bba3a4b0d18f9cfeb705c0c080dab2ada1949bedfdb",
+          "retrieved_at": "2026-10-19",
+          "reviewed": false
+        },
+        {
+          "path": "staging/gotv-reviewed-6b79c22ac1ca.png",
+          "source_url": "https://play-lh.googleusercontent.com/noQ9DIJRWAybgB5WTcijuIVWWXWd9z9KJWYTN3JRwso6Xgagq_p58lHS27wRSstxcIYMsYVqgqQ15YsYBQPpAfY=s0-br30",
+          "discovered_on": "https://play.google.com/store/apps/details?id=com.dstv.mygotv",
+          "source_type": "official-website",
+          "format": "png",
+          "width": 512,
+          "height": 512,
+          "checksum": "6b79c22ac1cad6152c9513c242df0a0c09328a12c037fb8af3966a37f79a6a35",
+          "retrieved_at": "2026-10-19",
+          "reviewed": false
+        },
+        {
+          "path": "staging/gotv-reviewed-3127ddf37d08.svg",
+          "source_url": "https://upload.wikimedia.org/wikipedia/commons/5/59/GOtv_2015_logo.svg",
+          "discovered_on": "https://en.wikipedia.org/wiki/GOtv",
+          "source_type": "community-catalog",
+          "format": "svg",
+          "width": 254,
+          "height": 48,
+          "checksum": "3127ddf37d085eb30f2e4c757a00cf371551508861c2718572dbb692d25d09a0",
+          "retrieved_at": "2026-10-19",
+          "reviewed": true
+        }
+      ],
+      "review_notes": "Official page retrieval is not artwork approval."
+    },
+    {
+      "slug": "startimes",
+      "name": "StarTimes",
+      "aliases": [],
+      "industry": "media-entertainment",
+      "target_market": "NG",
+      "website": "https://www.startimestv.com/",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [],
+      "disposition": "approved",
+      "reason": "Company website or developer-supplied artwork visually reviewed. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence.",
+      "duplicate_of": null,
+      "sources": [
+        {
+          "url": "https://m.startimestv.com/browser",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "StarTimes ON",
+          "page_checksum": "9352e8b0d876183079ed731985870925867d79fb0dd536551625f3827f33cd50"
+        }
+      ],
+      "candidate_assets": [
+        {
+          "path": "staging/startimes-reviewed-3b0035ef2219.png",
+          "source_url": "https://m.startimestv.com/_nuxt/img/6672906.png",
+          "discovered_on": "https://m.startimestv.com/browser",
+          "source_type": "official-website",
+          "format": "png",
+          "width": 92,
+          "height": 80,
+          "checksum": "3b0035ef2219fa69d2657928e40dc1ebf248dd4432d48b2be68d2d5dd2acf629",
+          "retrieved_at": "2026-10-19",
+          "reviewed": true
+        }
+      ],
+      "review_notes": "Official page retrieval is not artwork approval."
+    },
+    {
+      "slug": "startimes-on",
+      "name": "StarTimes ON",
+      "aliases": [],
+      "industry": "media-entertainment",
+      "target_market": "NG",
+      "website": "https://www.startimestv.com/startimeson/",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [],
+      "disposition": "approved",
+      "reason": "Company website or developer-supplied artwork visually reviewed. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence.",
+      "duplicate_of": null,
+      "sources": [
+        {
+          "url": "https://m.startimestv.com/browser",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "StarTimes ON",
+          "page_checksum": "0e2b0cc02476d2242e16f5a0bf1d71f706e3c39c937a05dba244b640b25d93f2"
+        },
+        {
+          "url": "https://apps.apple.com/us/app/startimes/id1168518958",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "‎StarTimes ON App - App Store",
+          "page_checksum": "1f54d5ce2373ec2a6354d175a6840a6c1b72ebf332bea86db83e9b652fe8874c"
+        }
+      ],
+      "candidate_assets": [
+        {
+          "path": "staging/startimes-on-reviewed-3b0035ef2219.png",
+          "source_url": "https://m.startimestv.com/_nuxt/img/6672906.png",
+          "discovered_on": "https://m.startimestv.com/browser",
+          "source_type": "official-website",
+          "format": "png",
+          "width": 92,
+          "height": 80,
+          "checksum": "3b0035ef2219fa69d2657928e40dc1ebf248dd4432d48b2be68d2d5dd2acf629",
+          "retrieved_at": "2026-10-19",
+          "reviewed": false
+        },
+        {
+          "path": "staging/startimes-on-reviewed-9a4b1586b5b5.jpeg",
+          "source_url": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/65/77/4f/65774f91-0d76-da6c-190b-269ad2ffcd95/Placeholder.mill/1200x630wa.jpg",
+          "discovered_on": "https://apps.apple.com/us/app/startimes/id1168518958",
+          "source_type": "official-website",
+          "format": "jpeg",
+          "width": 1200,
+          "height": 630,
+          "checksum": "9a4b1586b5b51e6ac952a0eac3fc857f03a4fa6eac01b658df381ac83fd196fe",
+          "retrieved_at": "2026-10-19",
+          "reviewed": true
+        }
+      ],
+      "review_notes": "Official page retrieval is not artwork approval."
+    },
+    {
+      "slug": "boxoffice",
+      "name": "BoxOffice",
+      "aliases": [],
+      "industry": "media-entertainment",
+      "target_market": "NG",
+      "website": "https://boxoffice.dstv.com/",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [],
+      "disposition": "approved",
+      "reason": "Manually reviewed third-party artwork; not officially verified. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence. Original raster image extracted without tracing from page 16 of the NFVF 2021 report. This is a historical third-party publication, not official artwork verification by the brand owner; retained as community-source artwork.",
+      "duplicate_of": null,
+      "sources": [],
+      "candidate_assets": [
+        {
+          "path": "staging/boxoffice-reviewed-9cf45c96b3ec.jpeg",
+          "source_url": "https://www.nfvf.co.za/wp-content/uploads/2022/06/Box-Office-Report-2021_Infographic.pdf#page=16",
+          "discovered_on": "https://www.nfvf.co.za/wp-content/uploads/2022/06/Box-Office-Report-2021_Infographic.pdf#page=16",
+          "source_type": "community-catalog",
+          "format": "jpeg",
+          "width": 392,
+          "height": 129,
+          "checksum": "9cf45c96b3ecfeef99dba5c646d72200705b59ab6c666b1e815fc5778dc88592",
+          "retrieved_at": "2026-10-19",
+          "reviewed": true
+        }
+      ],
+      "review_notes": "Official page retrieval is not artwork approval."
+    },
+    {
+      "slug": "irokotv",
+      "name": "IROKOtv",
+      "aliases": [],
+      "industry": "media-entertainment",
+      "target_market": "NG",
+      "website": "https://irokotv.com/",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [],
+      "disposition": "approved",
+      "reason": "Manually reviewed third-party artwork; not officially verified. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence. Community IROKOtv image reviewed as an archival brand identity, not an assertion of current app availability. Not officially verified.",
+      "duplicate_of": null,
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Irokotv",
+          "type": "community-catalog",
+          "retrieved_at": "2026-10-19",
+          "title": "irokotv - Wikipedia",
+          "page_checksum": "7b10e6e6f8b677590a7baf0660147965446309077fc917bfef186a00b9072ca8"
+        }
+      ],
+      "candidate_assets": [
+        {
+          "path": "staging/irokotv-reviewed-3ef9f5e44d76.jpeg",
+          "source_url": "https://upload.wikimedia.org/wikipedia/commons/3/34/Irokotv_updated_logo.jpg",
+          "discovered_on": "https://en.wikipedia.org/wiki/Irokotv",
+          "source_type": "community-catalog",
+          "format": "jpeg",
+          "width": 764,
+          "height": 401,
+          "checksum": "3ef9f5e44d76f543976bac5ff28a7cae7563801e13a77cab9e6a7ff55eecba0f",
+          "retrieved_at": "2026-10-19",
+          "reviewed": true
+        }
+      ],
+      "review_notes": "Official page retrieval is not artwork approval."
+    },
+    {
+      "slug": "ebonylife",
+      "name": "EbonyLife",
+      "aliases": [],
+      "industry": "media-entertainment",
+      "target_market": "NG",
+      "website": "https://ebonylifetv.com/",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [],
+      "disposition": "approved",
+      "reason": "Manually reviewed third-party artwork; not officially verified. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence. Community EbonyLife TV mark, not the umbrella EbonyLife Media logo or the identities of its newer subsidiaries. Not officially verified; no current broadcast-service availability is asserted.",
+      "duplicate_of": null,
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ebonylife_TV",
+          "type": "community-catalog",
+          "retrieved_at": "2026-10-19",
+          "title": "Ebonylife TV - Wikipedia",
+          "page_checksum": "148ca998728d3703fb4e3a269b2a6624df3c214493bd333a9b7823fd46c0a197"
+        }
+      ],
+      "candidate_assets": [
+        {
+          "path": "staging/ebonylife-reviewed-d703549980c1.png",
+          "source_url": "https://upload.wikimedia.org/wikipedia/en/5/5c/Ebonylife_TV.png",
+          "discovered_on": "https://en.wikipedia.org/wiki/Ebonylife_TV",
+          "source_type": "community-catalog",
+          "format": "png",
+          "width": 295,
+          "height": 206,
+          "checksum": "d703549980c14b09a718dde2e11e909ece5fa762c65bc0bff404f1b38d5b01b5",
+          "retrieved_at": "2026-10-19",
+          "reviewed": true
+        }
+      ],
+      "review_notes": "Official page retrieval is not artwork approval."
+    },
+    {
+      "slug": "kava",
+      "name": "KAVA",
+      "aliases": [],
+      "industry": "media-entertainment",
+      "target_market": "NG",
+      "website": "https://kava.tv/",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [],
+      "disposition": "approved",
+      "reason": "Company website or developer-supplied artwork visually reviewed. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence.",
+      "duplicate_of": null,
+      "sources": [
+        {
+          "url": "https://kava.tv/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "Kava — The Home of Premium Nollywood & African Cinema",
+          "page_checksum": "116f327d22cee7d89424c62379d3a6e1b7736e599cf50b386340eae86dcdfc41"
+        }
+      ],
+      "candidate_assets": [
+        {
+          "path": "staging/kava-popular-0-7d36f0698358.png",
+          "source_url": "https://kava.tv/images/kava-logo.png",
+          "discovered_on": "https://kava.tv/",
+          "source_type": "official-website",
+          "format": "png",
+          "width": 640,
+          "height": 171,
+          "checksum": "7d36f0698358a7d50ab66a4a5673d68caa3da404e26792bc5263d5b0ddf86b26",
+          "retrieved_at": "2026-10-19",
+          "reviewed": true
+        }
+      ],
+      "review_notes": "Official page retrieval is not artwork approval."
+    },
+    {
+      "slug": "nollistream",
+      "name": "NolliStream",
+      "aliases": [],
+      "industry": "media-entertainment",
+      "target_market": "NG",
+      "website": "https://nollistream.com/",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [],
+      "disposition": "approved",
+      "reason": "Company website or developer-supplied artwork visually reviewed. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence. Developer-supplied app icon linked from the official NolliStream website; homepage film poster and generic app-store badges explicitly excluded.",
+      "duplicate_of": null,
+      "sources": [
+        {
+          "url": "https://nollistream.com/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "NolliStream: Best Streaming Services for Nollywood Movies",
+          "page_checksum": "ba8bf742934454d26acbebf80a7736a84a7fbae24a16cbc5a952923c05fe6ed3"
+        },
+        {
+          "url": "https://nollistream.com/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "NolliStream: Best Streaming Services for Nollywood Movies",
+          "page_checksum": "ba8bf742934454d26acbebf80a7736a84a7fbae24a16cbc5a952923c05fe6ed3"
+        },
+        {
+          "url": "https://play.google.com/store/apps/details?id=com.nollistream.app",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "NolliStream - Apps on Google Play",
+          "page_checksum": "3eb4a2ba27156d2e7484287af1e01d86edb7d63dba4922e3db22bd928e61476a"
+        }
+      ],
+      "candidate_assets": [
+        {
+          "path": "staging/nollistream-reviewed-23fb4ce8ae48.jpeg",
+          "source_url": "https://img1.wsimg.com/isteam/ip/5c05cb3c-947a-4040-83af-e2a00384cb8f/IMG_0984.png",
+          "discovered_on": "https://nollistream.com/",
+          "source_type": "official-website",
+          "format": "jpeg",
+          "width": 1080,
+          "height": 1080,
+          "checksum": "23fb4ce8ae48ab151dedb055f3c63d6e55144d8814ed14f44fa580a568be76bf",
+          "retrieved_at": "2026-10-19",
+          "reviewed": false
+        },
+        {
+          "path": "staging/nollistream-reviewed-6186214025a2.png",
+          "source_url": "https://play-lh.googleusercontent.com/5-zEUbCWBwgTqPhj5xOrAyDEBkfCThEE2dzjJ9lapT02ruhntEvVizRxaKv8PLVgOQNnI0uueMcycTvdAhpRUg=s0-br30",
+          "discovered_on": "https://play.google.com/store/apps/details?id=com.nollistream.app",
+          "source_type": "official-website",
+          "format": "png",
+          "width": 512,
+          "height": 512,
+          "checksum": "6186214025a26d611d4b3b414e0caff4bbe01fbcecb050674f2d24b53e92cfff",
+          "retrieved_at": "2026-10-19",
+          "reviewed": true
+        }
+      ],
+      "review_notes": "Official page retrieval is not artwork approval."
+    },
+    {
+      "slug": "showmax",
+      "name": "Showmax",
+      "aliases": [],
+      "industry": "media-entertainment",
+      "target_market": "NG",
+      "website": "https://www.showmax.com/",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [],
+      "disposition": "approved",
+      "reason": "Manually reviewed third-party artwork; not officially verified. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence. Community 2024-era Showmax wordmark, not officially verified. CANAL+ announced Showmax's forthcoming discontinuation in 2026: https://www.canalplusgroup.com/en/mandatoryoffermultichoice/multichoice-post-76 . This is an archived brand identity, not a claim of current service availability.",
+      "duplicate_of": null,
+      "sources": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/File:Showmax_Logo.svg",
+          "type": "community-catalog",
+          "retrieved_at": "2026-10-19",
+          "title": "File:Showmax Logo.svg - Wikimedia Commons",
+          "page_checksum": "771314b832bac191c646ccfe3533be5f1323033adf5de1d1ebd125451800edee"
+        }
+      ],
+      "candidate_assets": [
+        {
+          "path": "staging/showmax-reviewed-822b0d3542a7.svg",
+          "source_url": "https://upload.wikimedia.org/wikipedia/commons/9/91/Showmax_Logo.svg",
+          "discovered_on": "https://commons.wikimedia.org/wiki/File:Showmax_Logo.svg",
+          "source_type": "community-catalog",
+          "format": "svg",
+          "width": 104,
+          "height": 24,
+          "checksum": "822b0d3542a7afbd9e60082378fb942d4706de2c5f9c2238e8bf0f26d67b9343",
+          "retrieved_at": "2026-10-19",
+          "reviewed": true
+        }
+      ],
+      "review_notes": "Official page retrieval is not artwork approval."
+    },
+    {
+      "slug": "nibss",
+      "name": "NIBSS",
+      "aliases": [],
+      "industry": "financial-services",
+      "target_market": "NG",
+      "website": "https://nibss-plc.com.ng/",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [],
+      "disposition": "approved",
+      "reason": "Company website or developer-supplied artwork visually reviewed. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence.",
+      "duplicate_of": null,
+      "sources": [
+        {
+          "url": "https://nibss-plc.com.ng/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "Home - NIBSS",
+          "page_checksum": "8a9b976daf08976fbb4951b43d069985b648f1e8a15a2edc148ab8d757250697"
+        }
+      ],
+      "candidate_assets": [
+        {
+          "path": "staging/nibss-popular-0-35a17686c90d.png",
+          "source_url": "https://nibss-plc.com.ng/wp-content/uploads/2022/09/nibbs_logo.png",
+          "discovered_on": "https://nibss-plc.com.ng/",
+          "source_type": "official-website",
+          "format": "png",
+          "width": 656,
+          "height": 208,
+          "checksum": "35a17686c90db8510d69502c3170cb2167d9b2435b018cfd291c1dc48c96e92d",
+          "retrieved_at": "2026-10-19",
+          "reviewed": true
+        },
+        {
+          "path": "staging/nibss-popular-1-42bbe1c8fc52.png",
+          "source_url": "https://nibss-plc.com.ng/wp-content/uploads/2022/09/logo_footer.png",
+          "discovered_on": "https://nibss-plc.com.ng/",
+          "source_type": "official-website",
+          "format": "png",
+          "width": 395,
+          "height": 208,
+          "checksum": "42bbe1c8fc52971f98b96d9a52b85cb751de8ae657025dd09ac506addf4f8a5c",
+          "retrieved_at": "2026-10-19",
+          "reviewed": false
+        }
+      ],
+      "review_notes": "Official page retrieval is not artwork approval."
+    },
+    {
+      "slug": "indrive",
+      "name": "inDrive",
+      "aliases": [],
+      "industry": "transport-logistics",
+      "target_market": "NG",
+      "website": "https://indrive.com/",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [],
+      "disposition": "approved",
+      "reason": "Company website or developer-supplied artwork visually reviewed. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence.",
+      "duplicate_of": null,
+      "sources": [
+        {
+          "url": "https://company.indrive.com/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "About Company - inDrive",
+          "page_checksum": "c20279f6228063a5ae72f8bcd3a0528a79168b13c72c96371fb3ac47c1c93c17"
+        }
+      ],
+      "candidate_assets": [
+        {
+          "path": "staging/indrive-reviewed-4611801f374a.svg",
+          "source_url": "https://cdn.prod.website-files.com/6a3912f6feb0e8f6db9bc388/6a4f81aa6eb03c91f5074def_logo-name--dark.svg",
+          "discovered_on": "https://company.indrive.com/",
+          "source_type": "official-website",
+          "format": "svg",
+          "width": 99,
+          "height": 24,
+          "checksum": "4611801f374aa0b0e4a4a0d578588d2e3848d194ffa038eca829edaff6cacebd",
+          "retrieved_at": "2026-10-19",
+          "reviewed": true
+        }
+      ],
+      "review_notes": "Official page retrieval is not artwork approval."
+    },
+    {
+      "slug": "bolt",
+      "name": "Bolt",
+      "aliases": [],
+      "industry": "transport-logistics",
+      "target_market": "NG",
+      "website": "https://bolt.eu/en-ng/",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [],
+      "disposition": "approved",
+      "reason": "Company website or developer-supplied artwork visually reviewed. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence.",
+      "duplicate_of": null,
+      "sources": [
+        {
+          "url": "https://bolt.eu/en-ng/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "Explore Bolt services | The all-in-one mobility app | Bolt",
+          "page_checksum": "1594080a10dfb45db221b53d9d17f11cb6f058f9e296c708945351eec3806b6c"
+        }
+      ],
+      "candidate_assets": [
+        {
+          "path": "staging/bolt-popular-0-ca5685e65d79.svg",
+          "source_url": "https://assets.homepage.bolt.eu/1.24.5/public/common-assets/bolt-logo-white.svg",
+          "discovered_on": "https://bolt.eu/en-ng/",
+          "source_type": "official-website",
+          "format": "svg",
+          "width": 53,
+          "height": 32,
+          "checksum": "ca5685e65d79ff8800ce377b708087473e58050626a01d8d32e14656dc94b0fb",
+          "retrieved_at": "2026-10-19",
+          "reviewed": true
+        }
+      ],
+      "review_notes": "Official page retrieval is not artwork approval."
+    },
+    {
+      "slug": "mano",
+      "name": "MANO",
+      "aliases": [],
+      "industry": "retail-commerce",
+      "target_market": "NG",
+      "website": "https://www.manoafrica.com/",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [],
+      "disposition": "approved",
+      "reason": "Company website or developer-supplied artwork visually reviewed. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence.",
+      "duplicate_of": null,
+      "sources": [
+        {
+          "url": "https://www.manoafrica.com/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "Mano App",
+          "page_checksum": "cccfa1bc6d7b4a61ec82c7d5573b0a20ea708f317d94865dd2f0c0c66606b231"
+        }
+      ],
+      "candidate_assets": [
+        {
+          "path": "staging/mano-popular-0-76dfb4557028.svg",
+          "source_url": "https://cdn.prod.website-files.com/660e5d9a29d9b568cab7f1a1/660e6f7ec55bf60808ce12a4_Logo.svg",
+          "discovered_on": "https://www.manoafrica.com/",
+          "source_type": "official-website",
+          "format": "svg",
+          "width": 200,
+          "height": 200,
+          "checksum": "76dfb45570285725a93d4c4db98f066c45d72e9b9d0cd2011e03af3f4dded780",
+          "retrieved_at": "2026-10-19",
+          "reviewed": true
+        }
+      ],
+      "review_notes": "Official page retrieval is not artwork approval."
+    },
+    {
+      "slug": "gokada",
+      "name": "Gokada",
+      "aliases": [],
+      "industry": "transport-logistics",
+      "target_market": "NG",
+      "website": "https://www.gokada.ng/",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [],
+      "disposition": "approved",
+      "reason": "Company website or developer-supplied artwork visually reviewed. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence.",
+      "duplicate_of": null,
+      "sources": [
+        {
+          "url": "https://www.gokada.ng/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "Gokada - We Always Deliver",
+          "page_checksum": "c7d8fc04e08ac6bde71a9bc927f6b8aece4f8fa6778001884ea298116d3f15ca"
+        }
+      ],
+      "candidate_assets": [
+        {
+          "path": "staging/gokada-popular-0-1a99274c838b.svg",
+          "source_url": "https://cdn.prod.website-files.com/5e8785b1f99d7c2b576740dd/60e8af113bb9b8511a979c75_gokada-logo-hor.svg",
+          "discovered_on": "https://www.gokada.ng/",
+          "source_type": "official-website",
+          "format": "svg",
+          "width": 256,
+          "height": 80,
+          "checksum": "1a99274c838b2ee5109d3b75e6c12c6ad044516ca7eb9c5e5e36390f2c508f0a",
+          "retrieved_at": "2026-10-19",
+          "reviewed": false
+        },
+        {
+          "path": "staging/gokada-popular-1-7ac9e20eff5c.svg",
+          "source_url": "https://cdn.prod.website-files.com/5e8785b1f99d7c2b576740dd/60f0727a3f50ae46aeae36af_gokada-logo-hor-black.svg",
+          "discovered_on": "https://www.gokada.ng/",
+          "source_type": "official-website",
+          "format": "svg",
+          "width": 256,
+          "height": 80,
+          "checksum": "7ac9e20eff5c75adcc7409834c43bc7e22d56b44afc1fff7ef715c01be186f56",
+          "retrieved_at": "2026-10-19",
+          "reviewed": true
+        }
+      ],
+      "review_notes": "Official page retrieval is not artwork approval."
+    },
+    {
+      "slug": "giggo",
+      "name": "GIGGO",
+      "aliases": [],
+      "industry": "transport-logistics",
+      "target_market": "NG",
+      "website": "https://giglogistics.com/",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [],
+      "disposition": "approved",
+      "reason": "Company website or developer-supplied artwork visually reviewed. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence. Developer-supplied GIGGO app icon. The GIG Logistics corporate mark and unrelated slider artwork are excluded.",
+      "duplicate_of": null,
+      "sources": [
+        {
+          "url": "https://giglogistics.com/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "\nGIGL | Africa's Leading Logistics Company | Express Delivery |\nGIGL | Africa's Leading Logistics Company | Express Delivery",
+          "page_checksum": "8e8ec55714fb299bba66592b2f33b84eb9adc375e78e5057ffe82d4726ef550a"
+        },
+        {
+          "url": "https://play.google.com/store/apps/details?id=ng.giglogistics.giglgo",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "GIGGO - Apps on Google Play",
+          "page_checksum": "c0a9bce789c8754c02ff0ee2d7b0af32f5d0a3b4fabfe61b70d01c7c653e720e"
+        }
+      ],
+      "candidate_assets": [
+        {
+          "path": "staging/giggo-popular-0-48cfb3cc6d2b.webp",
+          "source_url": "https://giglogistics.com/wp-content/uploads/2025/12/gig_logo.webp",
+          "discovered_on": "https://giglogistics.com/",
+          "source_type": "official-website",
+          "format": "webp",
+          "width": 522,
+          "height": 377,
+          "checksum": "48cfb3cc6d2b9fe34ff4325e7fcc75e18c9a1c493f02e0ef82698a24554de143",
+          "retrieved_at": "2026-10-19",
+          "reviewed": false
+        },
+        {
+          "path": "staging/giggo-popular-1-64baa4af5f93.svg",
+          "source_url": "https://giglogistics.com/wp-content/uploads/2026/01/img_slider_item1.svg",
+          "discovered_on": "https://giglogistics.com/",
+          "source_type": "official-website",
+          "format": "svg",
+          "width": 120,
+          "height": 120,
+          "checksum": "64baa4af5f9337b4ddaf999ed705bff1702ef7cb420ac556fe2e5b543b3cf69b",
+          "retrieved_at": "2026-10-19",
+          "reviewed": false
+        },
+        {
+          "path": "staging/giggo-reviewed-6e5162ad2d21.png",
+          "source_url": "https://play-lh.googleusercontent.com/tygIQ0vJD-uP_Hu_Ikcxkdh2_SJJkN4V8bo9CcTFhs_mAudFpdsjOUwKP3BpycOYTgLdicnp-axA61zzI5bT=s0-br30",
+          "discovered_on": "https://play.google.com/store/apps/details?id=ng.giglogistics.giglgo",
+          "source_type": "official-website",
+          "format": "png",
+          "width": 512,
+          "height": 512,
+          "checksum": "6e5162ad2d2163810cf0750be92d627fb066f9fe2992a12287b824e051dc327c",
+          "retrieved_at": "2026-10-19",
+          "reviewed": true
+        }
+      ],
+      "review_notes": "Official page retrieval is not artwork approval."
+    },
+    {
+      "slug": "kwik",
+      "name": "Kwik",
+      "aliases": [],
+      "industry": "transport-logistics",
+      "target_market": "NG",
+      "website": "https://kwik.delivery/",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [],
+      "disposition": "approved",
+      "reason": "Company website or developer-supplied artwork visually reviewed. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence.",
+      "duplicate_of": null,
+      "sources": [
+        {
+          "url": "https://kwik.delivery/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "Kwik – ecommerce logistics made easy",
+          "page_checksum": "7c300395916a1f75fe1f63b08ec7e746aba376acd67dff81af9b4142c87464d0"
+        }
+      ],
+      "candidate_assets": [
+        {
+          "path": "staging/kwik-popular-0-e90741810ca5.png",
+          "source_url": "https://kwik.delivery/wp-content/uploads/2023/05/kwick_secondary_logo_RGB_green_transparent_background-e1685121401616.png",
+          "discovered_on": "https://kwik.delivery/",
+          "source_type": "official-website",
+          "format": "png",
+          "width": 100,
+          "height": 28,
+          "checksum": "e90741810ca5df005e2acacfdcb61ab99c597bad86427b76ab797f1d88e50330",
+          "retrieved_at": "2026-10-19",
+          "reviewed": true
+        }
+      ],
+      "review_notes": "Official page retrieval is not artwork approval."
+    },
+    {
+      "slug": "sendbox",
+      "name": "Sendbox",
+      "aliases": [],
+      "industry": "transport-logistics",
+      "target_market": "NG",
+      "website": "https://sendbox.co/",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [],
+      "disposition": "approved",
+      "reason": "Company website or developer-supplied artwork visually reviewed. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence.",
+      "duplicate_of": null,
+      "sources": [
+        {
+          "url": "https://sendbox.co/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "Sendbox | Social commerce app for deliveries, payments and online shopping",
+          "page_checksum": "6c0a8b467fc85650baed44b524b32ab1b2395c001e70426bdc08847ab517f157"
+        },
+        {
+          "url": "https://sendbox.co/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "Sendbox | Social commerce app for deliveries, payments and online shopping",
+          "page_checksum": "6c0a8b467fc85650baed44b524b32ab1b2395c001e70426bdc08847ab517f157"
+        }
+      ],
+      "candidate_assets": [
+        {
+          "path": "staging/sendbox-reviewed-0892daf6bf37.png",
+          "source_url": "https://sendbox.co/static/images/logo.png",
+          "discovered_on": "https://sendbox.co/",
+          "source_type": "official-website",
+          "format": "png",
+          "width": 120,
+          "height": 111,
+          "checksum": "0892daf6bf3706c5e08dabaeb80ab590490eecddce636c353d2e9761a6b4c2f3",
+          "retrieved_at": "2026-10-19",
+          "reviewed": true
+        }
+      ],
+      "review_notes": "Official page retrieval is not artwork approval."
+    },
+    {
+      "slug": "foodcourt",
+      "name": "FoodCourt",
+      "aliases": [],
+      "industry": "food-beverages",
+      "target_market": "NG",
+      "website": "https://www.getfoodcourt.com/",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [],
+      "disposition": "approved",
+      "reason": "Company website or developer-supplied artwork visually reviewed. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence. Original PNG bytes extracted from the official header's embedded SVG image; no vector claim, tracing, or enlargement.",
+      "duplicate_of": null,
+      "sources": [
+        {
+          "url": "https://www.getfoodcourt.com/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "FoodCourt",
+          "page_checksum": "437e215b6913ca4ea178dc3f00ae7dcc1c756a636b89f96c408446b25a114549"
+        },
+        {
+          "url": "https://www.getfoodcourt.com/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "FoodCourt",
+          "page_checksum": "437e215b6913ca4ea178dc3f00ae7dcc1c756a636b89f96c408446b25a114549"
+        }
+      ],
+      "candidate_assets": [
+        {
+          "path": "staging/foodcourt-reviewed-3f72657e2f19.png",
+          "source_url": "https://www.getfoodcourt.com/#reviewed-inline-logo",
+          "discovered_on": "https://www.getfoodcourt.com/",
+          "source_type": "official-website",
+          "format": "png",
+          "width": 1080,
+          "height": 204,
+          "checksum": "3f72657e2f194a7601ec53724a826afc02ddd79a8d80ea5b939dc7654a6ce5d8",
+          "retrieved_at": "2026-10-19",
+          "reviewed": true
+        }
+      ],
+      "review_notes": "Official page retrieval is not artwork approval."
+    },
+    {
+      "slug": "renee-supermarket",
+      "name": "Renee Supermarket",
+      "aliases": [],
+      "industry": "retail-commerce",
+      "target_market": "NG",
+      "website": "https://www.instagram.com/reneesupermarket/",
+      "origin_country": null,
+      "headquarters_country": null,
+      "operating_countries": [],
+      "disposition": "approved",
+      "reason": "Company website or developer-supplied artwork visually reviewed. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence. Official social profile explicitly supplied by the user; original small profile artwork retained without upscaling.",
+      "duplicate_of": null,
+      "sources": [
+        {
+          "url": "https://www.instagram.com/reneesupermarket/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "ReneeSupermarket (@reneesupermarket) • Instagram photos and videosInstagramDown chevron icon",
+          "page_checksum": "da91e8416e36d13b3a3d8cc945ffb2b574930e7bfcac16e1824664644481787b"
+        },
+        {
+          "url": "https://www.instagram.com/reneesupermarket/",
+          "type": "official-website",
+          "retrieved_at": "2026-10-19",
+          "title": "ReneeSupermarket (@reneesupermarket) • Instagram photos and videosInstagramDown chevron icon",
+          "page_checksum": "cec4cde3d1ade81ab1272d4b2fc8cadbc3e4e28778ec4a7a1cb4978ebf08368d"
+        }
+      ],
+      "candidate_assets": [
+        {
+          "path": "staging/renee-supermarket-reviewed-5a2bbca7b354.jpeg",
+          "source_url": "https://scontent.cdninstagram.com/v/t51.2885-19/120459075_2742141469402258_2104846294912172830_n.jpg?stp=dst-jpg_s100x100_tt6&_nc_cat=110&ccb=7-5&_nc_sid=bf7eb4&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4xMDczLkMzIn0%3D&_nc_ohc=FVFRhTpwqA8Q7kNvwEjjh_a&_nc_oc=Adr7WqO2uC5vwZCg-dOHFNjqwf4wTKMWk8-mB5Fh5XwsCXGv43z0MAGk-VAq0ytvFsk&_nc_zt=24&_nc_ht=scontent.cdninstagram.com&_nc_ss=70a02&oh=00_AQP2bUh3BUt48hOHGrgA_T92Ev7xhZOb1yjXdmYmEYa6tA&oe=6ADB94EC",
+          "discovered_on": "https://www.instagram.com/reneesupermarket/",
+          "source_type": "official-website",
+          "format": "jpeg",
+          "width": 100,
+          "height": 100,
+          "checksum": "5a2bbca7b354dc8d59c1e15c9f8b6eba7d5e8dd622900c4e161d86136ad4ed48",
+          "retrieved_at": "2026-10-19",
+          "reviewed": true
+        }
+      ],
       "review_notes": "Official page retrieval is not artwork approval."
     }
   ]

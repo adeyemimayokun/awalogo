@@ -2,7 +2,7 @@
 
 Reviewed V2 expansion inventory; not an exhaustive census of licensed African telecom operators.
 
-89 brands tracked. 41 available in V2. Existing logos and V1 are unchanged. Unresolved and pending candidates are not published.
+91 brands tracked. 43 available in V2. Existing logos and V1 are unchanged. Unresolved and pending candidates are not published.
 
 | Brand | Target market | Status | Staged artwork | Source |
 |---|---|---|---|---|
@@ -61,8 +61,10 @@ Reviewed V2 expansion inventory; not an exhaustive census of licensed African te
 | ipNX | NG | available | 1 | https://www.ipnxnigeria.net/ |
 | Legend Internet | NG | pending-review | 0 | https://legend.ng/ |
 | MainOne | NG | unresolved | 0 | https://www.mainone.net/ |
+| Mobitel Nigeria | NG | available | 1 | https://www.mobitel.com.ng/ |
 | Ngcom | NG | available | 3 | https://ngcomnetworks.com/ |
 | ntel | NG | pending-review | 2 | https://ntel.com.ng/ |
+| Smile Communications | NG | available | 2 | https://smile.com.ng/home |
 | Smile Nigeria | NG | pending-review | 4 | https://smile.com.ng/ |
 | Spectranet | NG | available | 2 | https://www.spectranet.com.ng/ |
 | Swift Networks | NG | available | 3 | https://www.swiftng.com/ |

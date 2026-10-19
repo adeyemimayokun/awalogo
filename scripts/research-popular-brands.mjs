@@ -7,7 +7,7 @@ import { discoverBrandArtwork } from "./lib/brand-artwork.mjs";
 import { identityCollision } from "../packages/brands/identity.mjs";
 
 const seedFile = process.argv.find((arg) => arg.startsWith("--seeds="))?.slice(8) ?? "popular-candidates.json";
-if (!["popular-candidates.json","requested-candidates.json","market-candidates.json","disco-candidates.json","hospitality-candidates.json"].includes(seedFile)) throw new Error("Unknown research campaign");
+if (!["popular-candidates.json","requested-candidates.json","market-candidates.json","disco-candidates.json","hospitality-candidates.json","services-candidates.json"].includes(seedFile)) throw new Error("Unknown research campaign");
 const seeds = JSON.parse(await readFile(`packages/brands/research/${seedFile}`, "utf8"));
 const only = process.argv.find((arg)=>arg.startsWith("--only="))?.slice(7).split(",");
 const manifestPath = "packages/brands/research/manifest.json";

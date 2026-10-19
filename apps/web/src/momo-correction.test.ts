@@ -9,7 +9,7 @@ describe("approved V2 MoMo asset correction", () => {
   it("keeps one identity and all unrelated legacy records unchanged", () => {
     const slug="momo-payment-service-bank";
     expect(logos.filter((item)=>item.slug===slug)).toHaveLength(1);
-    for(const item of legacy.filter((item)=>item.slug!==slug)) expect(logos.find((logo)=>logo.slug===item.slug)).toBe(item);
+    for(const item of legacy.filter((item)=>!correctionBySlug.has(item.slug))) expect(logos.find((logo)=>logo.slug===item.slug)).toBe(item);
     const before=legacy.find((item)=>item.slug===slug)!;
     const after=logos.find((item)=>item.slug===slug)!;
     expect(before.formats[0].checksum).toBe("6792313f8af9b4d07bcf0988b687d8fca8d0976d5c2a1a4ec6ede0a0a68674cf");

@@ -20,9 +20,22 @@ describe("official brand artwork discovery", () => {
   });
   it("finds official press-kit downloads and srcset-only logos", () => {
     const results = discover('<a href="/press/logos/company.png">Download</a><img alt="Example logo" srcset="/example.webp 1x, /example-2.webp 2x">');
-    expect(results.map((item) => item.url)).toEqual(["https://example.com/press/logos/company.png", "https://example.com/example.webp"]);
+    expect(results.map((item) => item.url)).toEqual(["https://example.com/press/logos/company.png", "https://example.com/example-2.webp"]);
   });
   it("does not return unsafe network URLs", () => {
     expect(discover('<img alt="Example logo" src="javascript:alert(1)"><a href="http://example.com/logo.svg">Logo</a>')).toEqual([]);
+  });
+  it("finds embedded raster home-link logos that previously fell back to footer marks", () => {
+    const payload = Buffer.from("reviewed raster candidate").toString("base64");
+    const results = discover(`<nav><a href="/"><img src="data:image/png;base64,${payload}"></a></nav><footer><img alt="Example footer logo mark" src="/footer-mark.png"></footer>`);
+    expect(results[0].url).toContain("#embedded-header-logo-");
+    expect(results[0].bytes.toString()).toBe("reviewed raster candidate");
+  });
+  it("excludes data URI placeholders outside branded headers and data SVGs", () => {
+    expect(discover('<img alt="Example logo" src="data:image/png;base64,YQ=="><nav><a href="/"><img src="data:image/svg+xml;base64,YQ=="></a></nav>')).toEqual([]);
+  });
+  it("finds named headers with hashed URLs and prefers higher-resolution srcsets", () => {
+    const results = discover('<header><img alt="Example" src="/small.png" srcset="/small.png 120w, /large.png 600w"></header><footer><img alt="Example logo" src="/footer-logo.png"></footer>');
+    expect(results[0].url).toBe("https://example.com/large.png");
   });
 });

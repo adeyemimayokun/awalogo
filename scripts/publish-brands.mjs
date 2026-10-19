@@ -7,12 +7,14 @@ import sharp from "sharp";
 import { normalizeIdentity } from "../packages/brands/identity.mjs";
 import { publishHistoricalBrands } from "./publish-historical-brands.mjs";
 import { publishBrandCorrections } from "./publish-brand-corrections.mjs";
+import { withoutRasterEnlargement } from "./lib/raster-quality.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const packageRoot = join(root, "packages/brands");
 const check = process.argv.includes("--check");
 const research = JSON.parse(await readFile(join(packageRoot, "research/manifest.json"), "utf8"));
 const reviews = JSON.parse(await readFile(join(packageRoot, "research/reviews.json"), "utf8"));
+const rasterCompatibility = JSON.parse(await readFile(join(packageRoot, "research/raster-scale-compatibility.json"), "utf8"));
 const legacy = JSON.parse(await readFile(join(root, "packages/catalog-ui/src/generated/runtime-catalog.json"), "utf8")).items.map((item) => item.logo);
 legacy.push(...JSON.parse(await readFile(join(root, "packages/logos/src/promoted-catalog.json"), "utf8")));
 const normalize = normalizeIdentity;
@@ -58,7 +60,7 @@ for (const review of reviews) {
   checksums.add(sourceHash);
   const formats = [];
   for (const type of [...(asset.format === "svg" ? ["svg"] : []), "png", "webp"]) {
-    const renderer = sharp(source, { density: 144 }).resize({ width: 1024, height: 512, fit: "inside", withoutEnlargement: review.without_enlargement === true });
+    const renderer = sharp(source, { density: 144 }).resize({ width: 1024, height: 512, fit: "inside", withoutEnlargement: withoutRasterEnlargement(review, asset, rasterCompatibility) });
     const bytes = type === "svg" ? source : type === "png" ? await renderer.png().toBuffer() : await renderer.webp({ lossless: true, effort: 3 }).toBuffer();
     const checksum = createHash("sha256").update(bytes).digest("hex");
     const meta = await sharp(bytes).metadata();

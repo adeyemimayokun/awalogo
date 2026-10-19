@@ -3579,5 +3579,1057 @@
     "trim_padding": false,
     "without_enlargement": true,
     "batch": "nigerian-hospitality-2026-10-19"
+  },
+  {
+    "slug": "jendol-superstores",
+    "decision": "approved",
+    "asset_path": "staging/jendol-superstores-popular-1-522344bb453c.png",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-19",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Company website or developer-supplied artwork visually reviewed. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "dark",
+    "evidence": [
+      {
+        "url": "https://jendolstores.com/",
+        "note": "Company-controlled website or developer listing supplies the reviewed brand artwork.",
+        "retrieved_at": "2026-10-19"
+      },
+      {
+        "url": "https://jendolstores.com/",
+        "note": "Evidence of Nigerian or African brand operations; inclusion does not assert continued service availability for archival identities.",
+        "retrieved_at": "2026-10-19"
+      }
+    ],
+    "aliases": [
+      "Jendol",
+      "Jendol Supermarket"
+    ],
+    "source_type": "official-website",
+    "status": "verified",
+    "trim_padding": true,
+    "without_enlargement": true,
+    "batch": "requested-services-mobility-retail-2026-10-19"
+  },
+  {
+    "slug": "renee-supermarket",
+    "decision": "approved",
+    "asset_path": "staging/renee-supermarket-reviewed-5a2bbca7b354.jpeg",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-19",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Company website or developer-supplied artwork visually reviewed. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence. Official social profile explicitly supplied by the user; original small profile artwork retained without upscaling.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://www.instagram.com/reneesupermarket/",
+        "note": "Company-controlled website or developer listing supplies the reviewed brand artwork.",
+        "retrieved_at": "2026-10-19"
+      },
+      {
+        "url": "https://www.instagram.com/reneesupermarket/",
+        "note": "Evidence of Nigerian or African brand operations; inclusion does not assert continued service availability for archival identities.",
+        "retrieved_at": "2026-10-19"
+      }
+    ],
+    "aliases": [
+      "Renee",
+      "Renee Supermarket and Malls"
+    ],
+    "source_type": "official-website",
+    "status": "verified",
+    "trim_padding": true,
+    "without_enlargement": true,
+    "batch": "requested-services-mobility-retail-2026-10-19"
+  },
+  {
+    "slug": "smile-communications",
+    "decision": "approved",
+    "asset_path": "staging/smile-communications-popular-0-c5eca9423770.png",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-19",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Company website or developer-supplied artwork visually reviewed. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence. The retrieved company website supplies this logo with a Beta label; no lettering was removed or recreated.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://smile.com.ng/home",
+        "note": "Company-controlled website or developer listing supplies the reviewed brand artwork.",
+        "retrieved_at": "2026-10-19"
+      },
+      {
+        "url": "https://smile.com.ng/home",
+        "note": "Evidence of Nigerian or African brand operations; inclusion does not assert continued service availability for archival identities.",
+        "retrieved_at": "2026-10-19"
+      }
+    ],
+    "aliases": [
+      "Smile",
+      "Smile Nigeria"
+    ],
+    "source_type": "official-website",
+    "status": "verified",
+    "trim_padding": true,
+    "without_enlargement": true,
+    "batch": "requested-services-mobility-retail-2026-10-19"
+  },
+  {
+    "slug": "mobitel-nigeria",
+    "decision": "approved",
+    "asset_path": "staging/mobitel-nigeria-popular-0-9501f63f12c1.png",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-19",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Company website or developer-supplied artwork visually reviewed. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence. Nigerian Mobitel identity from its company domain; availability in this asset library is not a claim that its historical broadband services remain active.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "dark",
+    "evidence": [
+      {
+        "url": "https://www.mobitel.com.ng/",
+        "note": "Company-controlled website or developer listing supplies the reviewed brand artwork.",
+        "retrieved_at": "2026-10-19"
+      },
+      {
+        "url": "https://www.mobitel.com.ng/",
+        "note": "Evidence of Nigerian or African brand operations; inclusion does not assert continued service availability for archival identities.",
+        "retrieved_at": "2026-10-19"
+      }
+    ],
+    "aliases": [
+      "Mobitel"
+    ],
+    "source_type": "official-website",
+    "status": "verified",
+    "trim_padding": true,
+    "without_enlargement": true,
+    "batch": "requested-services-mobility-retail-2026-10-19"
+  },
+  {
+    "slug": "cowry",
+    "decision": "approved",
+    "asset_path": "staging/cowry-reviewed-d3228fe21d5a.svg",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-19",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Company website or developer-supplied artwork visually reviewed. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence. The user confirmed the Lagos transport-payment brand, not Cowrywise.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://cowry.com.ng/",
+        "note": "Company-controlled website or developer listing supplies the reviewed brand artwork.",
+        "retrieved_at": "2026-10-19"
+      },
+      {
+        "url": "https://cowry.com.ng/",
+        "note": "Evidence of Nigerian or African brand operations; inclusion does not assert continued service availability for archival identities.",
+        "retrieved_at": "2026-10-19"
+      }
+    ],
+    "aliases": [
+      "Cowry Card",
+      "Cowry Transport",
+      "Cowry App"
+    ],
+    "source_type": "official-website",
+    "status": "verified",
+    "trim_padding": false,
+    "without_enlargement": true,
+    "batch": "requested-services-mobility-retail-2026-10-19"
+  },
+  {
+    "slug": "wakanow",
+    "decision": "approved",
+    "asset_path": "staging/wakanow-reviewed-f4911cacc1fe.png",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-19",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Company website or developer-supplied artwork visually reviewed. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence. Developer-supplied Wakanow app emblem; the unconfirmed regional-domain wordmark was excluded.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://play.google.com/store/apps/details?id=com.wakanow.android",
+        "note": "Company-controlled website or developer listing supplies the reviewed brand artwork.",
+        "retrieved_at": "2026-10-19"
+      },
+      {
+        "url": "https://www.wakanow.com/",
+        "note": "Evidence of Nigerian or African brand operations; inclusion does not assert continued service availability for archival identities.",
+        "retrieved_at": "2026-10-19"
+      }
+    ],
+    "aliases": [],
+    "source_type": "official-website",
+    "status": "verified",
+    "trim_padding": true,
+    "without_enlargement": true,
+    "batch": "requested-services-mobility-retail-2026-10-19"
+  },
+  {
+    "slug": "lagride",
+    "decision": "approved",
+    "asset_path": "staging/lagride-reviewed-b37896f1e197.jpeg",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-19",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Company website or developer-supplied artwork visually reviewed. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://www.lagride.ng/",
+        "note": "Company-controlled website or developer listing supplies the reviewed brand artwork.",
+        "retrieved_at": "2026-10-19"
+      },
+      {
+        "url": "https://lagride.com/",
+        "note": "Evidence of Nigerian or African brand operations; inclusion does not assert continued service availability for archival identities.",
+        "retrieved_at": "2026-10-19"
+      }
+    ],
+    "aliases": [
+      "Lagos Ride",
+      "Lagos City Cab"
+    ],
+    "website": "https://www.lagride.ng/",
+    "source_type": "official-website",
+    "status": "verified",
+    "trim_padding": true,
+    "without_enlargement": true,
+    "batch": "requested-services-mobility-retail-2026-10-19"
+  },
+  {
+    "slug": "shuttlers",
+    "decision": "approved",
+    "asset_path": "staging/shuttlers-reviewed-192eb5b78450.svg",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-19",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Company website or developer-supplied artwork visually reviewed. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://www.shuttlers.co/",
+        "note": "Company-controlled website or developer listing supplies the reviewed brand artwork.",
+        "retrieved_at": "2026-10-19"
+      },
+      {
+        "url": "https://www.shuttlers.co/",
+        "note": "Evidence of Nigerian or African brand operations; inclusion does not assert continued service availability for archival identities.",
+        "retrieved_at": "2026-10-19"
+      }
+    ],
+    "aliases": [],
+    "source_type": "official-website",
+    "status": "verified",
+    "trim_padding": false,
+    "without_enlargement": true,
+    "batch": "requested-services-mobility-retail-2026-10-19"
+  },
+  {
+    "slug": "chowdeck",
+    "decision": "approved",
+    "asset_path": "staging/chowdeck-reviewed-f3c8867b4633.svg",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-19",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Company website or developer-supplied artwork visually reviewed. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "dark",
+    "evidence": [
+      {
+        "url": "https://chowdeck.com/",
+        "note": "Company-controlled website or developer listing supplies the reviewed brand artwork.",
+        "retrieved_at": "2026-10-19"
+      },
+      {
+        "url": "https://chowdeck.com/",
+        "note": "Evidence of Nigerian or African brand operations; inclusion does not assert continued service availability for archival identities.",
+        "retrieved_at": "2026-10-19"
+      }
+    ],
+    "aliases": [],
+    "source_type": "official-website",
+    "status": "verified",
+    "trim_padding": false,
+    "without_enlargement": true,
+    "batch": "requested-services-mobility-retail-2026-10-19"
+  },
+  {
+    "slug": "glovo",
+    "decision": "approved",
+    "asset_path": "staging/glovo-popular-0-b91e4a413dec.svg",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-19",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Company website or developer-supplied artwork visually reviewed. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://glovoapp.com/ng/en/",
+        "note": "Company-controlled website or developer listing supplies the reviewed brand artwork.",
+        "retrieved_at": "2026-10-19"
+      },
+      {
+        "url": "https://riderhub.glovoapp.com/ng/",
+        "note": "Evidence of Nigerian or African brand operations; inclusion does not assert continued service availability for archival identities.",
+        "retrieved_at": "2026-10-19"
+      }
+    ],
+    "aliases": [],
+    "source_type": "official-website",
+    "status": "verified",
+    "trim_padding": false,
+    "without_enlargement": true,
+    "batch": "requested-services-mobility-retail-2026-10-19"
+  },
+  {
+    "slug": "dstv",
+    "decision": "approved",
+    "asset_path": "staging/dstv-reviewed-fd2319de87a8.svg",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-19",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Manually reviewed third-party artwork; not officially verified. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence. Community-sourced 2023 DStv identity, not the MultiChoice parent logo or MyDStv app icon. Not officially verified.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://en.wikipedia.org/wiki/DStv",
+        "note": "Reviewed third-party artwork source; does not establish official verification or trademark permission.",
+        "retrieved_at": "2026-10-19"
+      },
+      {
+        "url": "https://www.dstv.com/en-ng/",
+        "note": "Evidence of Nigerian or African brand operations; inclusion does not assert continued service availability for archival identities.",
+        "retrieved_at": "2026-10-19"
+      }
+    ],
+    "aliases": [
+      "Digital Satellite Television"
+    ],
+    "source_type": "community-catalog",
+    "status": "needs-review",
+    "trim_padding": false,
+    "without_enlargement": true,
+    "batch": "requested-services-media-2026-10-19"
+  },
+  {
+    "slug": "gotv",
+    "decision": "approved",
+    "asset_path": "staging/gotv-reviewed-3127ddf37d08.svg",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-19",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Manually reviewed third-party artwork; not officially verified. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence. Community GOtv wordmark, not programme artwork, the MultiChoice parent logo or the MyGOtv app icon. Not officially verified.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://en.wikipedia.org/wiki/GOtv",
+        "note": "Reviewed third-party artwork source; does not establish official verification or trademark permission.",
+        "retrieved_at": "2026-10-19"
+      },
+      {
+        "url": "https://www.gotvafrica.com/en-ng/",
+        "note": "Evidence of Nigerian or African brand operations; inclusion does not assert continued service availability for archival identities.",
+        "retrieved_at": "2026-10-19"
+      }
+    ],
+    "aliases": [
+      "GOtv Nigeria"
+    ],
+    "source_type": "community-catalog",
+    "status": "needs-review",
+    "trim_padding": false,
+    "without_enlargement": true,
+    "batch": "requested-services-media-2026-10-19"
+  },
+  {
+    "slug": "startimes",
+    "decision": "approved",
+    "asset_path": "staging/startimes-reviewed-3b0035ef2219.png",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-19",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Company website or developer-supplied artwork visually reviewed. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "dark",
+    "evidence": [
+      {
+        "url": "https://m.startimestv.com/browser",
+        "note": "Company-controlled website or developer listing supplies the reviewed brand artwork.",
+        "retrieved_at": "2026-10-19"
+      },
+      {
+        "url": "https://m.startimestv.com/browser/program/list",
+        "note": "Evidence of Nigerian or African brand operations; inclusion does not assert continued service availability for archival identities.",
+        "retrieved_at": "2026-10-19"
+      }
+    ],
+    "aliases": [
+      "Star Times",
+      "StarTimes Nigeria"
+    ],
+    "source_type": "official-website",
+    "status": "verified",
+    "trim_padding": true,
+    "without_enlargement": true,
+    "batch": "requested-services-media-2026-10-19"
+  },
+  {
+    "slug": "startimes-on",
+    "decision": "approved",
+    "asset_path": "staging/startimes-on-reviewed-9a4b1586b5b5.jpeg",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-19",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Company website or developer-supplied artwork visually reviewed. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://apps.apple.com/us/app/startimes/id1168518958",
+        "note": "Company-controlled website or developer listing supplies the reviewed brand artwork.",
+        "retrieved_at": "2026-10-19"
+      },
+      {
+        "url": "https://www.mtn.ng/play/startimes-on/",
+        "note": "Evidence of Nigerian or African brand operations; inclusion does not assert continued service availability for archival identities.",
+        "retrieved_at": "2026-10-19"
+      }
+    ],
+    "aliases": [
+      "StarTimesON",
+      "Star Times ON"
+    ],
+    "identity_resolution": "StarTimes ON is the separately branded StarTimes streaming app. The corporate StarTimes mark and the distinct ON developer app icon are separate identities, not duplicate company replacements.",
+    "website": "https://m.startimestv.com/browser",
+    "source_type": "official-website",
+    "status": "verified",
+    "trim_padding": true,
+    "without_enlargement": true,
+    "batch": "requested-services-media-2026-10-19"
+  },
+  {
+    "slug": "boxoffice",
+    "decision": "approved",
+    "asset_path": "staging/boxoffice-reviewed-9cf45c96b3ec.jpeg",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-19",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Manually reviewed third-party artwork; not officially verified. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence. Original raster image extracted without tracing from page 16 of the NFVF 2021 report. This is a historical third-party publication, not official artwork verification by the brand owner; retained as community-source artwork.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://www.nfvf.co.za/wp-content/uploads/2022/06/Box-Office-Report-2021_Infographic.pdf#page=16",
+        "note": "Reviewed third-party artwork source; does not establish official verification or trademark permission.",
+        "retrieved_at": "2026-10-19"
+      },
+      {
+        "url": "https://www.dstv.com/en-ng/buy/dstv-packages/",
+        "note": "Evidence of Nigerian or African brand operations; inclusion does not assert continued service availability for archival identities.",
+        "retrieved_at": "2026-10-19"
+      }
+    ],
+    "aliases": [
+      "Box Office",
+      "DStv BoxOffice"
+    ],
+    "identity_resolution": "BoxOffice is the separately named DStv movie rental product. It uses the historical product identity, never the parent DStv or MultiChoice logo.",
+    "website": "https://www.dstv.com/en-ng/",
+    "source_type": "community-catalog",
+    "status": "needs-review",
+    "trim_padding": true,
+    "without_enlargement": true,
+    "batch": "requested-services-media-2026-10-19"
+  },
+  {
+    "slug": "irokotv",
+    "decision": "approved",
+    "asset_path": "staging/irokotv-reviewed-3ef9f5e44d76.jpeg",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-19",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Manually reviewed third-party artwork; not officially verified. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence. Community IROKOtv image reviewed as an archival brand identity, not an assertion of current app availability. Not officially verified.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Irokotv",
+        "note": "Reviewed third-party artwork source; does not establish official verification or trademark permission.",
+        "retrieved_at": "2026-10-19"
+      },
+      {
+        "url": "https://irokotv.com/",
+        "note": "Evidence of Nigerian or African brand operations; inclusion does not assert continued service availability for archival identities.",
+        "retrieved_at": "2026-10-19"
+      }
+    ],
+    "aliases": [
+      "Iroko TV",
+      "Iroko"
+    ],
+    "source_type": "community-catalog",
+    "status": "needs-review",
+    "trim_padding": true,
+    "without_enlargement": true,
+    "batch": "requested-services-media-2026-10-19"
+  },
+  {
+    "slug": "ebonylife",
+    "decision": "approved",
+    "asset_path": "staging/ebonylife-reviewed-d703549980c1.png",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-19",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Manually reviewed third-party artwork; not officially verified. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence. Community EbonyLife TV mark, not the umbrella EbonyLife Media logo or the identities of its newer subsidiaries. Not officially verified; no current broadcast-service availability is asserted.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Ebonylife_TV",
+        "note": "Reviewed third-party artwork source; does not establish official verification or trademark permission.",
+        "retrieved_at": "2026-10-19"
+      },
+      {
+        "url": "https://ebonylifetv.com/contact-us-2/",
+        "note": "Evidence of Nigerian or African brand operations; inclusion does not assert continued service availability for archival identities.",
+        "retrieved_at": "2026-10-19"
+      }
+    ],
+    "aliases": [
+      "EbonyLife TV",
+      "Ebony Life"
+    ],
+    "source_type": "community-catalog",
+    "status": "needs-review",
+    "trim_padding": true,
+    "without_enlargement": true,
+    "batch": "requested-services-media-2026-10-19"
+  },
+  {
+    "slug": "kava",
+    "decision": "approved",
+    "asset_path": "staging/kava-popular-0-7d36f0698358.png",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-19",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Company website or developer-supplied artwork visually reviewed. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://kava.tv/",
+        "note": "Company-controlled website or developer listing supplies the reviewed brand artwork.",
+        "retrieved_at": "2026-10-19"
+      },
+      {
+        "url": "https://kava.tv/",
+        "note": "Evidence of Nigerian or African brand operations; inclusion does not assert continued service availability for archival identities.",
+        "retrieved_at": "2026-10-19"
+      }
+    ],
+    "aliases": [
+      "Kava TV"
+    ],
+    "source_type": "official-website",
+    "status": "verified",
+    "trim_padding": true,
+    "without_enlargement": true,
+    "batch": "requested-services-media-2026-10-19"
+  },
+  {
+    "slug": "nollistream",
+    "decision": "approved",
+    "asset_path": "staging/nollistream-reviewed-6186214025a2.png",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-19",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Company website or developer-supplied artwork visually reviewed. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence. Developer-supplied app icon linked from the official NolliStream website; homepage film poster and generic app-store badges explicitly excluded.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://play.google.com/store/apps/details?id=com.nollistream.app",
+        "note": "Company-controlled website or developer listing supplies the reviewed brand artwork.",
+        "retrieved_at": "2026-10-19"
+      },
+      {
+        "url": "https://nollistream.com/",
+        "note": "Evidence of Nigerian or African brand operations; inclusion does not assert continued service availability for archival identities.",
+        "retrieved_at": "2026-10-19"
+      }
+    ],
+    "aliases": [
+      "Nolli Stream"
+    ],
+    "source_type": "official-website",
+    "status": "verified",
+    "trim_padding": true,
+    "without_enlargement": true,
+    "batch": "requested-services-media-2026-10-19"
+  },
+  {
+    "slug": "showmax",
+    "decision": "approved",
+    "asset_path": "staging/showmax-reviewed-822b0d3542a7.svg",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-19",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Manually reviewed third-party artwork; not officially verified. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence. Community 2024-era Showmax wordmark, not officially verified. CANAL+ announced Showmax's forthcoming discontinuation in 2026: https://www.canalplusgroup.com/en/mandatoryoffermultichoice/multichoice-post-76 . This is an archived brand identity, not a claim of current service availability.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://commons.wikimedia.org/wiki/File:Showmax_Logo.svg",
+        "note": "Reviewed third-party artwork source; does not establish official verification or trademark permission.",
+        "retrieved_at": "2026-10-19"
+      },
+      {
+        "url": "https://www.dstv.com/en-ng/",
+        "note": "Evidence of Nigerian or African brand operations; inclusion does not assert continued service availability for archival identities.",
+        "retrieved_at": "2026-10-19"
+      }
+    ],
+    "aliases": [],
+    "source_type": "community-catalog",
+    "status": "needs-review",
+    "trim_padding": false,
+    "without_enlargement": true,
+    "batch": "requested-services-media-2026-10-19"
+  },
+  {
+    "slug": "nibss",
+    "decision": "approved",
+    "asset_path": "staging/nibss-popular-0-35a17686c90d.png",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-19",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Company website or developer-supplied artwork visually reviewed. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://nibss-plc.com.ng/",
+        "note": "Company-controlled website or developer listing supplies the reviewed brand artwork.",
+        "retrieved_at": "2026-10-19"
+      },
+      {
+        "url": "https://nibss-plc.com.ng/",
+        "note": "Evidence of Nigerian or African brand operations; inclusion does not assert continued service availability for archival identities.",
+        "retrieved_at": "2026-10-19"
+      }
+    ],
+    "aliases": [
+      "Nigeria Inter-Bank Settlement System",
+      "Nigeria Interbank Settlement System"
+    ],
+    "source_type": "official-website",
+    "status": "verified",
+    "trim_padding": true,
+    "without_enlargement": true,
+    "batch": "requested-services-mobility-retail-2026-10-19"
+  },
+  {
+    "slug": "indrive",
+    "decision": "approved",
+    "asset_path": "staging/indrive-reviewed-4611801f374a.svg",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-19",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Company website or developer-supplied artwork visually reviewed. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://company.indrive.com/",
+        "note": "Company-controlled website or developer listing supplies the reviewed brand artwork.",
+        "retrieved_at": "2026-10-19"
+      },
+      {
+        "url": "https://blog.indrive.com/en-ci/article/meet-timothy-oladimeji-country-manager-for-nigeria",
+        "note": "Evidence of Nigerian or African brand operations; inclusion does not assert continued service availability for archival identities.",
+        "retrieved_at": "2026-10-19"
+      }
+    ],
+    "aliases": [
+      "inDriver",
+      "in Drive"
+    ],
+    "source_type": "official-website",
+    "status": "verified",
+    "trim_padding": false,
+    "without_enlargement": true,
+    "batch": "requested-services-mobility-retail-2026-10-19"
+  },
+  {
+    "slug": "bolt",
+    "decision": "approved",
+    "asset_path": "staging/bolt-popular-0-ca5685e65d79.svg",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-19",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Company website or developer-supplied artwork visually reviewed. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "dark",
+    "evidence": [
+      {
+        "url": "https://bolt.eu/en-ng/",
+        "note": "Company-controlled website or developer listing supplies the reviewed brand artwork.",
+        "retrieved_at": "2026-10-19"
+      },
+      {
+        "url": "https://bolt.eu/en/cities/lagos/",
+        "note": "Evidence of Nigerian or African brand operations; inclusion does not assert continued service availability for archival identities.",
+        "retrieved_at": "2026-10-19"
+      }
+    ],
+    "aliases": [],
+    "source_type": "official-website",
+    "status": "verified",
+    "trim_padding": false,
+    "without_enlargement": true,
+    "batch": "requested-services-mobility-retail-2026-10-19"
+  },
+  {
+    "slug": "mano",
+    "decision": "approved",
+    "asset_path": "staging/mano-popular-0-76dfb4557028.svg",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-19",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Company website or developer-supplied artwork visually reviewed. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://www.manoafrica.com/",
+        "note": "Company-controlled website or developer listing supplies the reviewed brand artwork.",
+        "retrieved_at": "2026-10-19"
+      },
+      {
+        "url": "https://www.manoafrica.com/",
+        "note": "Evidence of Nigerian or African brand operations; inclusion does not assert continued service availability for archival identities.",
+        "retrieved_at": "2026-10-19"
+      }
+    ],
+    "aliases": [
+      "MANO App",
+      "Mano Africa"
+    ],
+    "source_type": "official-website",
+    "status": "verified",
+    "trim_padding": false,
+    "without_enlargement": true,
+    "batch": "requested-services-mobility-retail-2026-10-19"
+  },
+  {
+    "slug": "gokada",
+    "decision": "approved",
+    "asset_path": "staging/gokada-popular-1-7ac9e20eff5c.svg",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-19",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Company website or developer-supplied artwork visually reviewed. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://www.gokada.ng/",
+        "note": "Company-controlled website or developer listing supplies the reviewed brand artwork.",
+        "retrieved_at": "2026-10-19"
+      },
+      {
+        "url": "https://www.gokada.ng/",
+        "note": "Evidence of Nigerian or African brand operations; inclusion does not assert continued service availability for archival identities.",
+        "retrieved_at": "2026-10-19"
+      }
+    ],
+    "aliases": [],
+    "source_type": "official-website",
+    "status": "verified",
+    "trim_padding": false,
+    "without_enlargement": true,
+    "batch": "requested-services-mobility-retail-2026-10-19"
+  },
+  {
+    "slug": "giggo",
+    "decision": "approved",
+    "asset_path": "staging/giggo-reviewed-6e5162ad2d21.png",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-19",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Company website or developer-supplied artwork visually reviewed. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence. Developer-supplied GIGGO app icon. The GIG Logistics corporate mark and unrelated slider artwork are excluded.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://play.google.com/store/apps/details?id=ng.giglogistics.giglgo",
+        "note": "Company-controlled website or developer listing supplies the reviewed brand artwork.",
+        "retrieved_at": "2026-10-19"
+      },
+      {
+        "url": "https://giglogistics.com/",
+        "note": "Evidence of Nigerian or African brand operations; inclusion does not assert continued service availability for archival identities.",
+        "retrieved_at": "2026-10-19"
+      }
+    ],
+    "aliases": [
+      "GIG GO",
+      "GIG Logistics App"
+    ],
+    "source_type": "official-website",
+    "status": "verified",
+    "trim_padding": true,
+    "without_enlargement": true,
+    "batch": "requested-services-mobility-retail-2026-10-19",
+    "identity_resolution": "GIGGO is the separately branded delivery app published by GIG Logistics. The official developer listing establishes this relationship. Its GIGGO app icon is distinct from the existing parent-company logo, which remains unchanged."
+  },
+  {
+    "slug": "kwik",
+    "decision": "approved",
+    "asset_path": "staging/kwik-popular-0-e90741810ca5.png",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-19",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Company website or developer-supplied artwork visually reviewed. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://kwik.delivery/",
+        "note": "Company-controlled website or developer listing supplies the reviewed brand artwork.",
+        "retrieved_at": "2026-10-19"
+      },
+      {
+        "url": "https://kwik.delivery/",
+        "note": "Evidence of Nigerian or African brand operations; inclusion does not assert continued service availability for archival identities.",
+        "retrieved_at": "2026-10-19"
+      }
+    ],
+    "aliases": [
+      "Kwik Delivery"
+    ],
+    "source_type": "official-website",
+    "status": "verified",
+    "trim_padding": true,
+    "without_enlargement": true,
+    "batch": "requested-services-mobility-retail-2026-10-19"
+  },
+  {
+    "slug": "sendbox",
+    "decision": "approved",
+    "asset_path": "staging/sendbox-reviewed-0892daf6bf37.png",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-19",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Company website or developer-supplied artwork visually reviewed. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://sendbox.co/",
+        "note": "Company-controlled website or developer listing supplies the reviewed brand artwork.",
+        "retrieved_at": "2026-10-19"
+      },
+      {
+        "url": "https://sendbox.co/",
+        "note": "Evidence of Nigerian or African brand operations; inclusion does not assert continued service availability for archival identities.",
+        "retrieved_at": "2026-10-19"
+      }
+    ],
+    "aliases": [
+      "Send Box"
+    ],
+    "source_type": "official-website",
+    "status": "verified",
+    "trim_padding": true,
+    "without_enlargement": true,
+    "batch": "requested-services-mobility-retail-2026-10-19"
+  },
+  {
+    "slug": "foodcourt",
+    "decision": "approved",
+    "asset_path": "staging/foodcourt-reviewed-3f72657e2f19.png",
+    "reviewer": "Codex assisted source and visual review",
+    "reviewed_at": "2026-10-19",
+    "ownership_checked": true,
+    "visual_reviewed": true,
+    "review_notes": "Company website or developer-supplied artwork visually reviewed. Parent, partner, programme artwork and unrelated app badges excluded. Raster originals are not traced or upscaled. Artwork provenance is not a trademark licence. Original PNG bytes extracted from the official header's embedded SVG image; no vector claim, tracing, or enlargement.",
+    "origin_country": null,
+    "headquarters_country": null,
+    "operating_countries": [
+      "NG"
+    ],
+    "preview_background": "light",
+    "evidence": [
+      {
+        "url": "https://www.getfoodcourt.com/",
+        "note": "Company-controlled website or developer listing supplies the reviewed brand artwork.",
+        "retrieved_at": "2026-10-19"
+      },
+      {
+        "url": "https://www.getfoodcourt.com/",
+        "note": "Evidence of Nigerian or African brand operations; inclusion does not assert continued service availability for archival identities.",
+        "retrieved_at": "2026-10-19"
+      }
+    ],
+    "aliases": [
+      "Food Court",
+      "CoKitchen"
+    ],
+    "source_type": "official-website",
+    "status": "verified",
+    "trim_padding": true,
+    "without_enlargement": true,
+    "batch": "requested-services-mobility-retail-2026-10-19"
   }
 ]

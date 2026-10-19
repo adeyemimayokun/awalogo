@@ -16,10 +16,12 @@ export async function publishBrandCorrections(root, check) {
   for(const review of reviews) {
     const current=legacy.find((item)=>item.slug===review.slug);
     if(!current || seen.has(review.slug) || current.formats[0]?.checksum!==review.expected_primary_checksum) throw new Error(`Unexpected correction target: ${review.slug}`);
-    if(review.visual_reviewed!==true || !review.reviewed_at || review.review_notes.length<20 || !["light","dark"].includes(review.preview_background) || !/^assets\/[a-f0-9]{64}\.png$/.test(review.source_path)) throw new Error("Incomplete correction approval");
+    if(review.visual_reviewed!==true || !review.reviewed_at || review.review_notes.length<20 || !["light","dark"].includes(review.preview_background) || !/^assets\/[a-f0-9]{64}\.(png|webp)$/.test(review.source_path)) throw new Error("Incomplete correction approval");
     for(const value of [review.website,review.source_url]) if(new URL(value).protocol!=="https:") throw new Error("HTTPS correction source required");
     const source=await readFile(join(base,review.source_path));
     if(hash(source)!==review.source_checksum) throw new Error("Correction source checksum mismatch");
+    const sourceMetadata=await sharp(source).metadata();
+    if(!["png","webp"].includes(sourceMetadata.format) || !review.source_path.endsWith(`.${sourceMetadata.format}`)) throw new Error("Correction source format mismatch");
     const trimmed=await sharp(source).trim({threshold:4}).toBuffer();
     const formats=[];
     for(const type of ["png","webp"]) {
