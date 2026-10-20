@@ -13,6 +13,7 @@ export function isLanguage(value: unknown): value is Language {
 
 // English keys are also the fallback. Tuple order: Hausa, Yoruba, Igbo, Pidgin.
 export const messages: Record<string, readonly [string, string, string, string]> = {
+  "Brand assets from Nigeria & Africa.": ["Tamburan kamfanoni daga Najeriya da Afirka.", "Àwọn àmì ilé-iṣẹ́ láti Nàìjíríà àti Áfíríkà.", "Akara ụlọọrụ si Naịjirịa na Afrịka.", "Brand assets from Nigeria and Africa."],
   "Sourced from an official filing.": ["An samo daga takardar hukuma.", "A mú un láti inú ìwé ilé-iṣẹ́ osìṣẹ́.", "E si na akwụkwọ ụlọọrụ gọọmentị nweta ya.", "Source na official company filing."],
   "Brand reference": ["Bayanin kamfani", "Ìtọ́kasí àmì", "Ntụaka akara", "Brand reference"],
   "Feature tour": ["Yawon fasali", "Ìrìnàjò àwọn ànfààní", "Njegharị atụmatụ", "Feature tour"],

@@ -25,6 +25,10 @@ describe("V2 browse integration", () => {
     vi.stubGlobal("localStorage", { getItem:() => null });
     vi.stubGlobal("matchMedia", () => ({ matches:false }));
     const $ = load(renderToStaticMarkup(<V2App />));
+    expect($(".v2-brand-hero h1").text()).toBe("Brand assets from Nigeria & Africa.");
+    expect($(".v2-brand-hero[aria-labelledby='v2-brand-hero-title']")).toHaveLength(1);
+    expect($(".v2-hero-lines")).toHaveLength(0);
+    expect($(".v2-hero-meta").text()).toContain(`${logos.length} brands`);
     expect($(".v2-grid > article")).toHaveLength(20);
     expect($(".v2-pagination button[aria-current=page]").text()).toBe("1");
     expect($(".v2-pagination").text()).toContain(`1–20 of ${logos.length}`);
