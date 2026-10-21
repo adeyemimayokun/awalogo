@@ -2,7 +2,7 @@ import { formerBrandName } from "./brand-history";
 import V2Select from "./V2Select";
 import { useV2Language } from "./V2Language";
 import { useEffect, useState, type FormEvent } from "react";
-import { ArrowLeft, Check, Send } from "lucide-react";
+import { ArrowLeft, Check, Send } from "./icons";
 import { logos } from "./v2-brand-data";
 import { filterBrands } from "./brand-filters";
 

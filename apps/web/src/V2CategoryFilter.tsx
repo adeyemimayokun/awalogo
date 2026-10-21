@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { ChevronDown, Search, X } from "lucide-react";
+import { ChevronDown, Search, X } from "./icons";
 import { useV2Language } from "./V2Language";
 
 export type CategoryOption = { value: string; count: number };

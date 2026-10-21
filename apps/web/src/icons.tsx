@@ -1,0 +1,72 @@
+import type { ComponentType } from "react";
+import type { BoxIconProps } from "@boxicons/react";
+import { ArrowToBottomStroke as BxArrowToBottomStroke } from "@boxicons/react/ArrowToBottomStroke";
+import { ArrowLeftStroke as BxArrowLeftStroke } from "@boxicons/react/ArrowLeftStroke";
+import { ArrowRightStroke as BxArrowRightStroke } from "@boxicons/react/ArrowRightStroke";
+import { ArrowUpRightStroke as BxArrowUpRightStroke } from "@boxicons/react/ArrowUpRightStroke";
+import { Bell as BxBell } from "@boxicons/react/Bell";
+import { Check as BxCheck } from "@boxicons/react/Check";
+import { ChevronDown as BxChevronDown } from "@boxicons/react/ChevronDown";
+import { ArrowToLeft as BxArrowToLeft } from "@boxicons/react/ArrowToLeft";
+import { ArrowToRight as BxArrowToRight } from "@boxicons/react/ArrowToRight";
+import { ChevronLeft as BxChevronLeft } from "@boxicons/react/ChevronLeft";
+import { ChevronRight as BxChevronRight } from "@boxicons/react/ChevronRight";
+import { Code as BxCode } from "@boxicons/react/Code";
+import { Copy as BxCopy } from "@boxicons/react/Copy";
+import { ArrowOutUpRightSquare as BxArrowOutUpRightSquare } from "@boxicons/react/ArrowOutUpRightSquare";
+import { Flag as BxFlag } from "@boxicons/react/Flag";
+import { Translate as BxTranslate } from "@boxicons/react/Translate";
+import { Grid as BxGrid } from "@boxicons/react/Grid";
+import { Moon as BxMoon } from "@boxicons/react/Moon";
+import { DotsHorizontalRounded as BxDotsHorizontalRounded } from "@boxicons/react/DotsHorizontalRounded";
+import { Plus as BxPlus } from "@boxicons/react/Plus";
+import { RotateCcw as BxRotateCcw } from "@boxicons/react/RotateCcw";
+import { Search as BxSearch } from "@boxicons/react/Search";
+import { Send as BxSend } from "@boxicons/react/Send";
+import { ShoppingBag as BxShoppingBag } from "@boxicons/react/ShoppingBag";
+import { SliderAlt as BxSliderAlt } from "@boxicons/react/SliderAlt";
+import { Sun as BxSun } from "@boxicons/react/Sun";
+import { Trash as BxTrash } from "@boxicons/react/Trash";
+import { VolumeFull as BxVolumeFull } from "@boxicons/react/VolumeFull";
+import { VolumeMute as BxVolumeMute } from "@boxicons/react/VolumeMute";
+import { X as BxX } from "@boxicons/react/X";
+
+type IconProps = Omit<BoxIconProps, "size" | "pack"> & { size?: number };
+function icon(Component: ComponentType<BoxIconProps>, name: string) {
+  function Icon({ size = 24, className, style, ...props }: IconProps) {
+    return <Component pack="basic" width={size} height={size} fill="currentColor" aria-hidden="true" focusable="false" className={`boxicon boxicon-${name}${className ? ` ${className}` : ""}`} style={{ flexShrink:0, verticalAlign:"middle", ...style }} {...props} />;
+  }
+  Icon.displayName = `Boxicon(${name})`;
+  return Icon;
+}
+
+export const ArrowDownToLine = icon(BxArrowToBottomStroke, "arrow-down-to-line");
+export const ArrowLeft = icon(BxArrowLeftStroke, "arrow-left");
+export const ArrowRight = icon(BxArrowRightStroke, "arrow-right");
+export const ArrowUpRight = icon(BxArrowUpRightStroke, "arrow-up-right");
+export const Bell = icon(BxBell, "bell");
+export const Check = icon(BxCheck, "check");
+export const ChevronDown = icon(BxChevronDown, "chevron-down");
+export const ChevronFirst = icon(BxArrowToLeft, "chevron-first");
+export const ChevronLast = icon(BxArrowToRight, "chevron-last");
+export const ChevronLeft = icon(BxChevronLeft, "chevron-left");
+export const ChevronRight = icon(BxChevronRight, "chevron-right");
+export const Code2 = icon(BxCode, "code2");
+export const Copy = icon(BxCopy, "copy");
+export const ExternalLink = icon(BxArrowOutUpRightSquare, "external-link");
+export const Flag = icon(BxFlag, "flag");
+export const Languages = icon(BxTranslate, "languages");
+export const LayoutGrid = icon(BxGrid, "layout-grid");
+export const Moon = icon(BxMoon, "moon");
+export const MoreHorizontal = icon(BxDotsHorizontalRounded, "more-horizontal");
+export const Plus = icon(BxPlus, "plus");
+export const RotateCcw = icon(BxRotateCcw, "rotate-ccw");
+export const Search = icon(BxSearch, "search");
+export const Send = icon(BxSend, "send");
+export const ShoppingBag = icon(BxShoppingBag, "shopping-bag");
+export const SlidersHorizontal = icon(BxSliderAlt, "sliders-horizontal");
+export const Sun = icon(BxSun, "sun");
+export const Trash2 = icon(BxTrash, "trash2");
+export const Volume2 = icon(BxVolumeFull, "volume2");
+export const VolumeX = icon(BxVolumeMute, "volume-x");
+export const X = icon(BxX, "x");

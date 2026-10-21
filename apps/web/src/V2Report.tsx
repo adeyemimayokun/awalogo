@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from "react";
-import { ArrowLeft, Check, Send } from "lucide-react";
+import { ArrowLeft, Check, Send } from "./icons";
 import V2Select from "./V2Select";
 import { useV2Language } from "./V2Language";
 

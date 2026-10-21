@@ -13,6 +13,10 @@ export function isLanguage(value: unknown): value is Language {
 
 // English keys are also the fallback. Tuple order: Hausa, Yoruba, Igbo, Pidgin.
 export const messages: Record<string, readonly [string, string, string, string]> = {
+  "Search logos and flags": ["Nemo tambura da tutoci", "Wá àmì ilé-iṣẹ́ àti àsíá", "Chọọ akara na ọkọlọtọ", "Search logos and flags"],
+  "Search brands or countries...": ["Nemo kamfanoni ko ƙasashe...", "Wá ilé-iṣẹ́ tàbí orílẹ̀-èdè...", "Chọọ ụlọọrụ ma ọ bụ mba...", "Search brands or countries..."],
+  "Search results": ["Sakamakon bincike", "Àwọn èsì ìwádìí", "Nsonaazụ ọchụchọ", "Search results"],
+  "No assets match your search. Try another name or country.": ["Babu kayan da suka dace da bincikenka. Gwada wani suna ko ƙasa.", "Kò sí àwòrán tó bá ìwádìí rẹ mu. Gbìyànjú orúkọ tàbí orílẹ̀-èdè mìíràn.", "Ọ dịghị ihe dabara na ọchụchọ gị. Nwaa aha ma ọ bụ mba ọzọ.", "No asset match your search. Try another name or country."],
   "Brand assets from Nigeria & Africa.": ["Tamburan kamfanoni daga Najeriya da Afirka.", "Àwọn àmì ilé-iṣẹ́ láti Nàìjíríà àti Áfíríkà.", "Akara ụlọọrụ si Naịjirịa na Afrịka.", "Brand assets from Nigeria and Africa."],
   "Sourced from an official filing.": ["An samo daga takardar hukuma.", "A mú un láti inú ìwé ilé-iṣẹ́ osìṣẹ́.", "E si na akwụkwọ ụlọọrụ gọọmentị nweta ya.", "Source na official company filing."],
   "Brand reference": ["Bayanin kamfani", "Ìtọ́kasí àmì", "Ntụaka akara", "Brand reference"],

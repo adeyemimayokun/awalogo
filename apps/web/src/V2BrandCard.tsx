@@ -1,4 +1,4 @@
-import { Plus } from "lucide-react";
+import { Plus } from "./icons";
 import { formerBrandName, searchedHistoricalVersion } from "./brand-history";
 import { brandCategory } from "./brand-category";
 import { useV2Language } from "./V2Language";

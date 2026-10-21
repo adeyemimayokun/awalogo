@@ -4,10 +4,16 @@ import { load } from "cheerio";
 import V2Navigation from "./V2Navigation";
 
 const noop = () => {};
-function navigation(showCategories = true, isRequest = false) {
-  return load(renderToStaticMarkup(<V2Navigation isRequest={isRequest} showCategories={showCategories} category={[]} categories={[]} total={277} theme="light" onTheme={noop} onCategory={noop} onRequest={noop} onLibrary={noop} onSearch={noop} onFlags={noop} onInfo={noop} />));
+function navigation(showCategories = true, isRequest = false, theme: "light" | "dark" = "light") {
+  return load(renderToStaticMarkup(<V2Navigation isRequest={isRequest} showCategories={showCategories} category={[]} categories={[]} total={277} theme={theme} onTheme={noop} onCategory={noop} onRequest={noop} onLibrary={noop} onSearch={noop} onFlags={noop} onInfo={noop} />));
 }
 describe("V2 top navigation", () => {
+  it("shows the destination theme icon rather than the current theme", () => {
+    const light = navigation();
+    expect(light('button[aria-label="Switch to dark mode"] .boxicon-moon')).toHaveLength(1);
+    const dark = navigation(true, false, "dark");
+    expect(dark('button[aria-label="Switch to light mode"] .boxicon-sun')).toHaveLength(1);
+  });
   it("keeps the brand, primary sections and utility controls accessible", () => {
     const $ = navigation();
     expect($("nav.v2-topnav").length).toBe(1);

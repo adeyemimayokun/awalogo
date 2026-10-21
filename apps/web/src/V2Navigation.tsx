@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from "react";
-import { ArrowUpRight, Bell, ChevronDown, Flag, LayoutGrid, Moon, MoreHorizontal, Plus, Search, SlidersHorizontal, Sun } from "lucide-react";
+import { ArrowUpRight, Bell, ChevronDown, Flag, LayoutGrid, Moon, MoreHorizontal, Plus, Search, SlidersHorizontal, Sun } from "./icons";
 import type { InfoPage } from "./V2Info";
 import { CategoryChoices } from "./V2CategoryFilter";
 import { useV2Language } from "./V2Language";
 import { isLanguage, languages } from "./v2-translations";
-import { Languages, Volume2, VolumeX } from "lucide-react";
+import { Languages, Volume2, VolumeX } from "./icons";
 
 type Props = {
   isRequest: boolean;
@@ -79,7 +79,7 @@ export default function V2Navigation({ isRequest, category, categories, total, o
     <button className="v2-dock-item" aria-keyshortcuts="/" title={`${t(showCategories ? "Search brands" : "Search flags")} (/)`} aria-label={t(showCategories ? "Search brands" : "Search flags")} onClick={() => { setMenu(null); onSearch(); }}><Search size={18} /></button>
     <div className="v2-dock-group">
       <button className="v2-dock-item" title={t(`Switch to ${nextTheme} mode`)} aria-label={t(`Switch to ${nextTheme} mode`)} onClick={() => { setMenu(null); onTheme(nextTheme); }}>
-        {dark ? <Moon size={18} /> : <Sun size={18} />}
+        {dark ? <Sun size={18} /> : <Moon size={18} />}
       </button>
     </div>
     <div className="v2-dock-group">

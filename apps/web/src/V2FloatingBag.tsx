@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
-import { ShoppingBag, X } from "lucide-react";
+import { ShoppingBag, X } from "./icons";
 import V2CollectionFolder, { type CollectionPreview } from "./V2CollectionFolder";
 import { useV2Language } from "./V2Language";
 import { assetFlight, bagPopoverLayout, BAG_POSITION_KEY, constrainBag, restoreBag, type BagPosition } from "./floating-bag";

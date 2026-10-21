@@ -18,7 +18,7 @@
 .v2-topnav .v2-dock-theme,.v2-topnav .v2-dock-more { left:auto; right:0; }
 .v2-topnav .v2-dock-item small { position:static; }
 .v2-topnav .v2-dock-filter-dot { position:static; }
-.v2-topnav-actions .v2-dock-item:has(> .lucide-shopping-bag) > span { display:none; }
+.v2-topnav-actions .v2-dock-item:has(> .boxicon-shopping-bag) > span { display:none; }
 .v2-app .v2-toast { bottom:24px; }
 @media (max-width:1100px) {
   .v2-app .v2-topnav { gap:12px; padding-inline:20px; }

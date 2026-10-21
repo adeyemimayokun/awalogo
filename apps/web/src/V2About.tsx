@@ -1,4 +1,4 @@
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "./icons";
 import { useV2Language } from "./V2Language";
 
 const github = "https://github.com/adeyemimayokun/awalogo";

@@ -1,23 +1,48 @@
 .v2-workspace:has(.v2-brand-hero) { max-width:none; }
+.v2-main:has(> .v2-brand-hero) .v2-results-heading:focus { outline:none; }
+.v2-search-flags { margin:24px 0 28px; }
+.v2-search-flags .v2-results-heading span { color:var(--muted); margin-left:6px; }
 .v2-main:has(> .v2-brand-hero) > :is(.v2-toolbar,.v2-filter-chips,.v2-library-layout) { max-width:1136px; margin-inline:auto; }
 .v2-brand-hero {
   --hero-grid:color-mix(in srgb,var(--ink) 4%,transparent);
   position:relative;
+  z-index:2;
   isolation:isolate;
   display:flex;
   align-items:center;
   min-height:clamp(360px,56svh,560px);
-  overflow:hidden;
+  overflow:visible;
   margin:-48px -32px 32px;
   padding:64px 32px 44px;
   background:transparent;
 }
-.v2-hero-content { position:relative; z-index:1; width:100%; max-width:1136px; margin-inline:auto; }
-.v2-brand-hero .v2-hero-eyebrow { display:flex; align-items:center; gap:9px; margin-bottom:22px; font-size:11px; font-weight:550; }
+.v2-hero-content { position:relative; z-index:1; width:100%; max-width:1136px; margin-inline:auto; text-align:center; }
+.v2-brand-hero h1,.v2-brand-hero .v2-description { margin-inline:auto; }
+.v2-hero-search { width:min(100%,780px); margin:28px auto 0; padding:0; gap:0; align-items:center; border:1px solid var(--line); border-radius:var(--field-radius); background:var(--surface); transition:border-color var(--field-duration) ease; }
+.v2-hero-search:focus-within { border-color:var(--field-focus); }
+.v2-hero-search .v2-category-filter { flex:0 0 170px; min-width:0; }
+.v2-app .v2-hero-search .v2-category-trigger { border:0; border-right:1px solid var(--line); border-radius:0; background:transparent; box-shadow:none; transition:color var(--field-duration) ease; }
+@media (min-width:601px) {
+  .v2-app .v2-brand-hero .v2-hero-search .v2-category-filter .v2-category-trigger { border:0; border-right:1px solid var(--line); border-radius:0; background:transparent; box-shadow:none; transition:none; }
+  .v2-app .v2-brand-hero .v2-hero-search .v2-category-filter .v2-category-trigger:is(:focus,:focus-within,[aria-expanded="true"]):not(:disabled) { border:0; border-right:1px solid var(--line); border-radius:0; background:transparent; outline:none; box-shadow:none; transition:none; }
+  .v2-app .v2-brand-hero .v2-hero-search .v2-search-wrap > label:is(:focus,:focus-within):not(:has(input:disabled)) { border:0; outline:none; box-shadow:none; transition:none; }
+}
+.v2-hero-search .v2-category-popover { left:0; right:auto; text-align:left; }
+.v2-hero-search .v2-category-options small { margin-top:0; }
+.v2-app .v2-hero-search .v2-search-wrap > label { border:0; box-shadow:none; background:transparent; padding-right:88px; }
+.v2-app .v2-hero-search .v2-search-clear { right:40px; width:32px; }
+.v2-app .v2-brand-hero .v2-hero-search .v2-hero-submit { position:absolute; right:4px; top:50%; transform:translateY(-50%); width:32px; min-width:32px; max-width:32px; height:32px; min-height:32px; max-height:32px; flex:none; padding:0; display:grid; place-items:center; border:0; border-radius:calc(var(--field-radius) - 4px); }
+.v2-hero-shortcuts { display:flex; justify-content:center; align-items:center; flex-wrap:wrap; gap:8px 20px; margin:20px auto 0; }
+.v2-hero-shortcuts :is(button,a) { display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:6px 8px; border:0; border-radius:var(--field-radius); background:transparent; color:var(--muted); font:inherit; font-size:12px; text-decoration:none; min-height:36px; }
+.v2-hero-shortcuts :is(button,a):hover { color:var(--ink); background:color-mix(in srgb,var(--ink) 5%,transparent); }
+.v2-hero-shortcuts :is(button,a):focus-visible { outline:2px solid var(--field-focus); outline-offset:2px; }
+.v2-hero-shortcuts svg { flex-shrink:0; }
+.v2-hero-shortcuts b { background:#128242; color:#fff; min-width:18px; height:18px; padding:0 4px; border-radius:50%; display:grid; place-items:center; font-size:10px; font-weight:600; }
+.v2-brand-hero .v2-hero-eyebrow { display:flex; justify-content:center; align-items:center; gap:9px; margin-bottom:22px; font-size:11px; font-weight:550; }
 .v2-hero-eyebrow::before { content:""; width:6px; height:6px; flex-shrink:0; border-radius:50%; background:#29966d; }
 .v2-brand-hero h1 { max-width:710px; font-size:56px; font-weight:650; line-height:1.12; text-wrap:balance; overflow-wrap:break-word; }
 .v2-brand-hero .v2-description { max-width:540px; margin-top:22px; font-size:16px; line-height:1.65; }
-.v2-hero-meta { display:flex; align-items:center; flex-wrap:wrap; gap:12px; margin-top:28px; color:var(--muted); font-size:12px; line-height:1.5; }
+.v2-hero-meta { display:flex; justify-content:center; align-items:center; flex-wrap:wrap; gap:12px; margin-top:24px; color:var(--muted); font-size:12px; line-height:1.5; }
 .v2-hero-meta b { color:var(--ink); font-weight:600; }
 .v2-hero-meta > span + span { border-left:1px solid var(--line); padding-left:12px; }
 .v2-hero-grid { position:absolute; inset:0; z-index:-2; display:grid; grid-template-columns:repeat(18,minmax(0,1fr)); pointer-events:none; }
@@ -38,4 +63,16 @@
   .v2-hero-meta { margin-top:22px; font-size:11px; }
   .v2-hero-grid { grid-template-columns:repeat(6,minmax(0,1fr)); }
   .v2-hero-grid i:nth-child(n+7) { display:none; }
+  .v2-hero-search { flex-direction:column; border:0; background:transparent; gap:8px; }
+  .v2-hero-search .v2-category-filter { flex:auto; width:100%; }
+  .v2-app .v2-hero-search .v2-category-trigger { border:1px solid var(--line); border-radius:var(--field-radius); background:var(--surface); }
+  .v2-app .v2-hero-search .v2-search-wrap > label { border:1px solid var(--line); background:var(--surface); }
+  .v2-hero-shortcuts { gap:4px 8px; }
+  .v2-hero-shortcuts :is(button,a) { flex:0 1 calc(50% - 8px); min-width:0; }
+}
+@media (pointer:coarse) {
+  .v2-app .v2-brand-hero .v2-hero-search .v2-hero-submit { width:44px; min-width:44px; max-width:44px; height:44px; min-height:44px; max-height:44px; }
+  .v2-app .v2-brand-hero .v2-hero-search.v2-toolbar .v2-search-wrap > label { height:52px; min-height:52px; }
+  .v2-app .v2-hero-search .v2-search-clear { right:48px; width:44px; height:52px; }
+  .v2-hero-shortcuts :is(button,a) { min-height:44px; }
 }

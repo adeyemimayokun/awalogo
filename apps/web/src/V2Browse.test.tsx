@@ -33,8 +33,11 @@ describe("V2 browse integration", () => {
     expect($(".v2-pagination button[aria-current=page]").text()).toBe("1");
     expect($(".v2-pagination").text()).toContain(`1–20 of ${logos.length}`);
     expect($('input[aria-keyshortcuts="/"]')).toHaveLength(1);
-    expect($('[aria-keyshortcuts="Alt+R"]')).toHaveLength(1);
-    expect($('[aria-keyshortcuts="Alt+B"]')).toHaveLength(1);
+    expect($('[aria-keyshortcuts="Alt+R"]')).toHaveLength(2);
+    expect($('[aria-keyshortcuts="Alt+B"]')).toHaveLength(2);
+    expect($(".v2-brand-hero .v2-search-wrap input")).toHaveLength(1);
+    expect($(".v2-main > .v2-toolbar")).toHaveLength(0);
+    expect($(".v2-hero-shortcuts > *")).toHaveLength(4);
   });
   it("shares historical artwork, labels and busy guards between result sections", () => {
     const brand = logos.find((entry) => entry.slug === "t2-mobile")!;

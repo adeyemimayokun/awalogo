@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import { paginate, recommendBrands } from "./browse-tools";
 import V2Pagination from "./V2Pagination";
+import V2FlagCard from "./V2FlagCard";
 import { assetUrl } from "./asset-url";
-import { ArrowDownToLine, Copy, ExternalLink, Plus, RotateCcw, Search, X } from "lucide-react";
+import { ArrowDownToLine, Copy, ExternalLink, Plus, RotateCcw, Search, X } from "./icons";
 import { findFlags, flags, flagSource, type CountryFlag, type FlagAsset } from "./flags-data";
 import V2Select from "./V2Select";
 import { useV2Language } from "./V2Language";
@@ -25,7 +26,7 @@ export default function V2Flags({ onSelect, onAdd, busy = false }: { busy?: bool
   function reset() { setQuery(""); setRegion("all"); setPage(1); search.current?.focus(); }
   function changePage(next: number) { setPage(next); requestAnimationFrame(() => { heading.current?.focus({ preventScroll:true }); heading.current?.scrollIntoView({ block:"start", behavior:matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" }); }); }
   function card(flag: CountryFlag, recommended = false) {
-    return <article className="v2-brand" key={flag.code}><button className="v2-preview v2-flag-preview" aria-label={t("View {name}", { name:`${flag.name} ${t("flag")}` })} onClick={() => onSelect(flag)}><img src={flag.variants[0].formats[0].url} loading="lazy" alt={`${flag.name} flag`} width={104} height={78} /></button><div className="v2-card-label"><button onClick={() => onSelect(flag)}><strong>{flag.name}</strong><small>{recommended ? t("Similar name") : `${flag.code} / ${t(flag.region)}`}</small></button><button className="v2-icon" disabled={busy} title={t("Pack into bag")} aria-label={`${t("Pack into bag")}: ${flag.name}`} onClick={(event) => onAdd({ slug:`flag-${flag.code.toLowerCase()}`, variation:"4x3", format:"svg" }, event.currentTarget)}><Plus size={18} /></button></div></article>;
+    return <V2FlagCard key={flag.code} flag={flag} recommended={recommended} busy={busy} onSelect={onSelect} onAdd={onAdd} />;
   }
   return <>
     <div className="v2-heading"><div><p>{t("COUNTRIES & TERRITORIES")}</p><h1>{t("Country flags")}</h1></div><span>{flags.length} {t("flags")}<small>SVG, PNG & WebP</small></span></div>

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { ArrowLeft, ArrowRight, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, X } from "./icons";
 import { useV2Language } from "./V2Language";
 import "./v2-tour.css";
 

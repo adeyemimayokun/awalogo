@@ -1,4 +1,4 @@
-import { ChevronFirst, ChevronLast, ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronFirst, ChevronLast, ChevronLeft, ChevronRight } from "./icons";
 import { pageWindow } from "./browse-tools";
 import { useV2Language } from "./V2Language";
 

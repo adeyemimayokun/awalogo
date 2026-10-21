@@ -1,7 +1,7 @@
 import legacyUpdates from "../../../packages/catalog-ui/src/site-updates.json";
 import legacyChangelog from "../../../packages/catalog-ui/src/changelog.json";
 import { previewUpdates, previewChangelog } from "./v2-release-notes";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "./icons";
 import { useV2Language } from "./V2Language";
 import V2About from "./V2About";
 
