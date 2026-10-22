@@ -1592,7 +1592,7 @@
       "updated_at": "2026-10-18",
       "reviewed_at": "2026-10-18",
       "reviewer": "Codex assisted source and visual review",
-      "review_notes": "Official website identity visually reviewed on light and dark backgrounds; partner, product and payment artwork excluded. Trademark ownership remains with the operator; sourcing does not grant a redistribution licence.",
+      "review_notes": "Official website identity visually reviewed on light and dark backgrounds; partner, product and payment artwork excluded. Trademark ownership remains with the operator; sourcing does not grant a redistribution licence. Approved raster normalized to PNG for reproducible cross-platform publishing; original official-site WebP retained without tracing or enlargement.",
       "evidence": [
         {
           "url": "https://www.coollink.ng/",
@@ -1609,7 +1609,7 @@
           "mime_type": "image/png",
           "width": 1024,
           "height": 399,
-          "repository_path": "assets/7125a0b8b5ce71cdb83105632adefd85039fc10ecc0e1ed066613c2addda087b.webp"
+          "repository_path": "assets/6c30de7243b82dc319f45880115c6a304059dd755fa8c7d4647bc5b4a0549988.png"
         },
         {
           "type": "webp",
@@ -1618,7 +1618,7 @@
           "mime_type": "image/webp",
           "width": 1024,
           "height": 399,
-          "repository_path": "assets/7125a0b8b5ce71cdb83105632adefd85039fc10ecc0e1ed066613c2addda087b.webp"
+          "repository_path": "assets/6c30de7243b82dc319f45880115c6a304059dd755fa8c7d4647bc5b4a0549988.png"
         }
       ]
     },

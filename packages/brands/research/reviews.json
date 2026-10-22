@@ -1337,12 +1337,12 @@
   {
     "slug": "coollink",
     "decision": "approved",
-    "asset_path": "staging/coollink-0-7125a0b8b5ce.webp",
+    "asset_path": "staging/coollink-normalized-6c30de7243b8.png",
     "reviewer": "Codex assisted source and visual review",
     "reviewed_at": "2026-10-18",
     "ownership_checked": true,
     "visual_reviewed": true,
-    "review_notes": "Official website identity visually reviewed on light and dark backgrounds; partner, product and payment artwork excluded. Trademark ownership remains with the operator; sourcing does not grant a redistribution licence.",
+    "review_notes": "Official website identity visually reviewed on light and dark backgrounds; partner, product and payment artwork excluded. Trademark ownership remains with the operator; sourcing does not grant a redistribution licence. Approved raster normalized to PNG for reproducible cross-platform publishing; original official-site WebP retained without tracing or enlargement.",
     "origin_country": null,
     "headquarters_country": null,
     "operating_countries": [
