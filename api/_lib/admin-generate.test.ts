@@ -29,6 +29,13 @@ describe("admin generated artifacts", () => {
         expect(change.content?.equals(existing), change.path).toBe(true);
       }
     });
+  it("preserves normalized raster checksums and original provenance", async () => {
+    vi.stubEnv("AWALOGO_LOCAL_ADMIN_BYPASS", "1");
+    vi.stubEnv("VERCEL", "");
+    const path = "packages/brands/research/reviews.json";
+    const changes = await generateAdminOutputs([{ path, content: await readFile(path) }], "coollink");
+    for (const change of changes) expect(change.content?.equals(await readFile(change.path)), change.path).toBe(true);
+  });
   it("matches historical public files and metadata exactly", async () => {
     vi.stubEnv("AWALOGO_LOCAL_ADMIN_BYPASS", "1");
     vi.stubEnv("VERCEL", "");

@@ -4779,20 +4779,6 @@
           "checksum": "bba72a89b255c6822acda1ee74b5debc259616f8967c6b667d826e1e2f14a306",
           "retrieved_at": "2026-10-18",
           "reviewed": false
-        },
-        {
-          "path": "staging/coollink-normalized-6c30de7243b8.png",
-          "source_url": "https://images.squarespace-cdn.com/content/v1/641d80981c9c91060dcc5735/8e300597-a072-489c-9b3f-ba50945eec59/coollink+logo+HD+big.png?format=1500w",
-          "discovered_on": "https://www.coollink.ng/",
-          "source_type": "official-website",
-          "format": "png",
-          "width": 1024,
-          "height": 399,
-          "checksum": "6c30de7243b82dc319f45880115c6a304059dd755fa8c7d4647bc5b4a0549988",
-          "retrieved_at": "2026-10-18",
-          "reviewed": false,
-          "normalized_from": "staging/coollink-0-7125a0b8b5ce.webp",
-          "normalization_note": "Lossless PNG snapshot of the approved 1024px raster output; original official-site WebP retained. Avoids architecture-dependent WebP decoding during catalog regeneration."
         }
       ],
       "review_notes": "Country of origin and headquarters require evidence; target market is a campaign assignment, not verified presence."

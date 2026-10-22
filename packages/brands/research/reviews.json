@@ -1337,12 +1337,12 @@
   {
     "slug": "coollink",
     "decision": "approved",
-    "asset_path": "staging/coollink-normalized-6c30de7243b8.png",
+    "asset_path": "staging/coollink-0-7125a0b8b5ce.webp",
     "reviewer": "Codex assisted source and visual review",
     "reviewed_at": "2026-10-18",
     "ownership_checked": true,
     "visual_reviewed": true,
-    "review_notes": "Official website identity visually reviewed on light and dark backgrounds; partner, product and payment artwork excluded. Trademark ownership remains with the operator; sourcing does not grant a redistribution licence. Approved raster normalized to PNG for reproducible cross-platform publishing; original official-site WebP retained without tracing or enlargement.",
+    "review_notes": "Official website identity visually reviewed on light and dark backgrounds; partner, product and payment artwork excluded. Trademark ownership remains with the operator; sourcing does not grant a redistribution licence.",
     "origin_country": null,
     "headquarters_country": null,
     "operating_countries": [
@@ -1360,7 +1360,12 @@
         "note": "Official Nigeria-facing operator website offers telecommunications or broadband services under this identity.",
         "retrieved_at": "2026-10-18"
       }
-    ]
+    ],
+    "raster_normalization": {
+      "original_checksum": "7125a0b8b5ce71cdb83105632adefd85039fc10ecc0e1ed066613c2addda087b",
+      "path": "assets/6c30de7243b82dc319f45880115c6a304059dd755fa8c7d4647bc5b4a0549988.png",
+      "note": "Lossless PNG snapshot of the approved 1024px raster output. Preserve original WebP provenance and published metadata; avoid architecture-dependent WebP decoding during regeneration."
+    }
   },
   {
     "slug": "cobranet",

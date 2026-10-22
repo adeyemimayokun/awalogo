@@ -98,6 +98,13 @@ export async function generateAdminOutputs(
       }
       if (review.trim_padding === true && asset.format !== "svg")
         source = await sharp(source).trim({ threshold: 4 }).png().toBuffer();
+      const normalized = review.raster_normalization;
+      if (asset.format !== "svg" && normalized?.original_checksum === asset.checksum) {
+        if (!/^assets\/[a-f0-9]{64}\.png$/.test(normalized.path)) throw new Error("Invalid normalized raster path");
+        source = await bytes(`packages/brands/${normalized.path}`);
+        if (!source) throw new Error("Normalized raster unavailable");
+        if (createHash("sha256").update(source).digest("hex") !== normalized.path.slice(7, -4)) throw new Error("Normalized raster checksum mismatch");
+      }
       const sourceType = review.source_type || asset.source_type;
       brand = {
         preview_background: review.preview_background || "light",

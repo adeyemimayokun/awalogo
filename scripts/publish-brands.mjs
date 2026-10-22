@@ -55,6 +55,13 @@ for (const review of reviews) {
   if (review.trim_padding === true && asset.format !== "svg") {
     source = await sharp(source).trim({ threshold: 4 }).png().toBuffer();
   }
+  // A reviewed PNG rendering can pin lossy decoder output without changing source provenance.
+  const normalized = review.raster_normalization;
+  if (asset.format !== "svg" && normalized?.original_checksum === asset.checksum) {
+    if (!/^assets\/[a-f0-9]{64}\.png$/.test(normalized.path)) throw new Error("Invalid normalized raster path");
+    source = await readFile(join(packageRoot, normalized.path));
+    if (createHash("sha256").update(source).digest("hex") !== normalized.path.slice(7, -4)) throw new Error("Normalized raster checksum mismatch");
+  }
   const sourceHash = createHash("sha256").update(source).digest("hex");
   if (checksums.has(sourceHash)) throw new Error(`Duplicate artwork: ${entry.slug}`);
   checksums.add(sourceHash);

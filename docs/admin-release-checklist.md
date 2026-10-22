@@ -53,3 +53,21 @@ activation decision. No paid integrations are required or purchased.
 Record the previous READY production deployment before promotion. On a regression,
 roll back to that deployment through Vercel. Database migrations in this release are
 additive; do not drop the audit, report, snapshot, or aggregate tables on rollback.
+
+## Current acceptance status
+
+The independent staging session secret and `adeyemimayokun` maintainer allowlist
+were configured with the owner's explicit approval. The staging `PUBLIC_SITE_URL`
+is `https://nigerian-bank-logos-git-staging-ship-with-ai.vercel.app`; use that as the
+OAuth Homepage URL and append `/api/auth/callback` for its callback URL. The OAuth
+client ID and secret still need to be supplied by the owner.
+
+Preview attempts failed before build startup with `Resource provisioning failed`;
+no build events were returned. The latest investigated failure was
+`dpl_7wwB53KoXsLEyRcGsbGnxhzYbSo4`. The user sees no errored integration, while
+integration inspection through the connected API returns 403. Provider/account-side
+investigation is required before authenticated deployment checks can run.
+
+The current ready production rollback baseline is
+`dpl_CX1TvDV6iTX86kJ7tnSmvQXAyqFZ` at main commit
+`dab8c9c1267d42dbf552ffa25f0b57c0dcad0526`. It has not been promoted or changed.
