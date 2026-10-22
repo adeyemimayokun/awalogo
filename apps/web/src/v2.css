@@ -1,4 +1,5 @@
-.v2-app { --ink:#252525; --muted:#70706e; --line:#e5e5e2; --surface:#fff; color:var(--ink); background:#fff; min-height:100vh; font:14px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; -webkit-font-smoothing:antialiased; }
+@import "../../../packages/catalog-ui/src/v2-tokens.css";
+.v2-app { --ink:var(--v2-ink); --muted:var(--v2-muted); --line:var(--v2-line); --surface:var(--v2-surface); color:var(--ink); background:#fff; min-height:100vh; font:14px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; -webkit-font-smoothing:antialiased; }
 .v2-app * { box-sizing:border-box; letter-spacing:0; }
 .v2-app :is(button,input,select) { font:inherit; color:inherit; }
 .v2-app :is(button,a,select) { touch-action:manipulation; }
@@ -7,7 +8,7 @@
 .v2-app button:disabled { cursor:wait; opacity:.55; }
 .v2-app a { color:inherit; text-decoration:none; }
 .v2-app :is(button,a):focus-visible { outline:2px solid #555; outline-offset:4px; }
-.v2-app { --field-radius:12px; }
+.v2-app { --field-radius:var(--v2-field-radius); }
 .v2-app .v2-search-wrap > label,.v2-app .v2-select select,.v2-app .v2-result-line .v2-select select,.v2-app .v2-request input:not([type="checkbox"]):not([type="radio"]) { border-radius:var(--field-radius); }
 .v2-app svg { flex-shrink:0; stroke-width:1.6; }
 .v2-rail { position:fixed; inset:18px auto 18px 18px; width:222px; padding:20px 12px 14px; border:1px solid var(--line); border-radius:20px; background:#fff; display:flex; flex-direction:column; z-index:20; overflow-y:auto; }
@@ -243,7 +244,7 @@
 .v2-theme-options input { position:absolute; opacity:0; width:1px; height:1px; }
 .v2-theme-options label:has(input:checked) { border-color:var(--muted); }
 .v2-theme-options label:has(input:focus-visible) { outline:2px solid var(--field-focus, #92928e); outline-offset:2px; }
-.v2-app[data-v2-theme="dark"] { --ink:#ededeb; --muted:#aaa; --line:#3b3b3b; --surface:#1c1c1c; background:#151515; color-scheme:dark; }
+.v2-app[data-v2-theme="dark"] { --ink:var(--v2-ink); --muted:var(--v2-muted); --line:var(--v2-line); --surface:var(--v2-surface); background:#151515; color-scheme:dark; }
 .v2-app[data-v2-theme="dark"] :where(.v2-panel,.v2-dock,.v2-dock-popover,.v2-dock-item,.v2-dock-category,.v2-search-wrap > label,.v2-select select,.v2-request input,.v2-request select,.v2-actions button,.v2-bag-row button,.v2-code pre,.v2-close,.v2-formats button.active) { background:var(--surface); color:var(--ink); }
 .v2-app[data-v2-theme="dark"] :is(.v2-preview,.v2-detail-preview) { background:#fff; border-color:#3b3b3b; }
 .v2-app[data-v2-theme="dark"] .v2-primary { background:#ededeb; color:#202020; border-color:#ededeb; }

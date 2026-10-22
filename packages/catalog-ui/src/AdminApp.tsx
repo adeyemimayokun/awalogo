@@ -1,5 +1,13 @@
+import { WorkspaceSelect } from "./WorkspaceControls";
+import { AdminOverview, AdminAssets, AdminAnalytics, AdminPlugin, AdminReports, AdminV2Editorial } from "./AdminDashboard";
 import { useEffect, useMemo, useRef, useState, type FormEvent, type ReactNode } from "react";
 import {
+  LayoutDashboard,
+  BarChart3,
+  Puzzle,
+  Menu,
+  Sun,
+  Moon,
   ArrowLeft,
   ArrowDownToLine,
   Bell,
@@ -36,6 +44,8 @@ import { availableInstitutionCategories, categoryLabel } from "./catalog-data";
 import { logos as bundledLogos } from "./logo-data";
 import { getReviewQueue, getReviewQueuePosition, sourceClassificationLabel } from "./review-queue";
 import "./admin.css";
+import "./admin-dashboard.css";
+import "./admin-workspace.css";
 
 type Session = { login: string; avatarUrl: string; local?: boolean; repositoryAccess?: boolean };
 type Format = { type: string; path: string };
@@ -57,7 +67,7 @@ type Logo = {
 type CatalogResponse = { catalog: Logo[]; variations: Record<string, Variation[]>; lockedSlugs: string[]; localPreview?: boolean };
 type MutationResult = { pullRequest?: { number: number; url: string }; localPreview?: boolean };
 type IntegrationState = { available: boolean; message?: string };
-type AdminMode = "requests" | "manage" | "add" | "updates" | "changelog" | "notifications";
+type AdminMode = "overview" | "assets" | "analytics" | "plugin" | "requests" | "manage" | "add" | "updates" | "changelog" | "notifications";
 type LogoRequestStatus = "pending" | "in-review" | "needs-info" | "approved" | "completed" | "rejected";
 type LogoRequest = {
   id: string;
@@ -297,7 +307,18 @@ export function AdminApp() {
   const [auth, setAuth] = useState<"loading" | "signed-out" | "signed-in">("loading");
   const [session, setSession] = useState<Session | null>(null);
   const [data, setData] = useState<CatalogResponse | null>(null);
-  const [mode, setMode] = useState<AdminMode>("manage");
+  const [mode, setMode] = useState<AdminMode>(() => { const section=new URLSearchParams(location.search).get("section"); return (["overview","assets","analytics","plugin","requests","updates","changelog","notifications","manage","add"].includes(section??"") ? section : "overview") as AdminMode; });
+  const [theme,setTheme]=useState(()=>{try{return localStorage.getItem('awalogo-admin-theme')??'light';}catch{return 'light';}});
+  useEffect(()=>{try{localStorage.setItem('awalogo-admin-theme',theme);}catch{}document.documentElement.dataset.adminTheme=theme;return()=>{delete document.documentElement.dataset.adminTheme;};},[theme]);
+  useEffect(()=>{const params=new URLSearchParams(location.search);params.set('section',mode);history.replaceState(null,'',location.pathname+'?'+params);},[mode]);
+  const [navigationOpen,setNavigationOpen]=useState(false);
+  const [compactNavigation,setCompactNavigation]=useState(()=>matchMedia('(max-width:1000px)').matches);
+  const sidebarRef=useRef<HTMLElement>(null);
+  useEffect(()=>{const media=matchMedia('(max-width:1000px)');const change=()=>{setCompactNavigation(media.matches);setNavigationOpen(false);};media.addEventListener('change',change);return()=>media.removeEventListener('change',change);},[]);
+  useEffect(()=>{setNavigationOpen(false);},[mode]);
+  useEffect(()=>{if(!compactNavigation||!navigationOpen)return;const previousFocus=document.activeElement instanceof HTMLElement?document.activeElement:null;const previousOverflow=document.body.style.overflow;document.body.style.overflow='hidden';sidebarRef.current?.querySelector<HTMLButtonElement>('.admin-tabs button')?.focus();const keydown=(event:KeyboardEvent)=>{if(event.key==='Escape'){event.preventDefault();setNavigationOpen(false);}if(sidebarRef.current)keepFocusInDialog(event,sidebarRef.current);};document.addEventListener('keydown',keydown);return()=>{document.body.style.overflow=previousOverflow;document.removeEventListener('keydown',keydown);previousFocus?.focus();};},[compactNavigation,navigationOpen]);
+  const [requestsTab,setRequestsTab]=useState<'requests'|'reports'>('requests');
+  const [editorialTab,setEditorialTab]=useState<'v2'|'v1'|'changelog'>('v2');
   const [unreadNotifications, setUnreadNotifications] = useState(0);
   const [selectedSlug, setSelectedSlug] = useState("");
   const [query, setQuery] = useState("");
@@ -393,33 +414,20 @@ export function AdminApp() {
   }
 
   return (
-    <div className="admin-shell">
-      <header className="admin-header">
-        <div className="admin-header-inner">
-          <div className="admin-header-primary">
-            <a className="admin-brand" href="/">
-              <span className="admin-brand-mark"><img src={awalogoLogoUrl} alt="awalogo" /></span>
-              <div><strong>Logo Admin</strong><small>Repository CMS</small></div>
-            </a>
-            <div className="admin-account">
-              <img src={session?.avatarUrl} alt="" />
-              <span>{session?.local ? "Local sandbox" : `@${session?.login}`}</span>
-              <button type="button" onClick={logout} aria-label="Sign out" title="Sign out"><LogOut size={17} /></button>
-            </div>
-          </div>
-          <div className="admin-header-secondary">
-            <nav className="admin-tabs" aria-label="Admin sections">
-              <button aria-current={mode === "requests" ? "page" : undefined} className={mode === "requests" ? "active" : ""} onClick={() => setMode("requests")}><ClipboardList size={18} /> Requests</button>
-              <button aria-current={mode === "manage" ? "page" : undefined} className={mode === "manage" ? "active" : ""} onClick={() => setMode("manage")}><FileCode2 size={18} /> Manage logos</button>
-              <button aria-current={mode === "add" ? "page" : undefined} className={mode === "add" ? "active" : ""} onClick={() => setMode("add")}><Plus size={18} /> Add logo</button>
-              <button aria-current={mode === "updates" ? "page" : undefined} className={mode === "updates" ? "active" : ""} onClick={() => setMode("updates")}><Megaphone size={18} /> Website updates</button>
-              <button aria-current={mode === "changelog" ? "page" : undefined} className={mode === "changelog" ? "active" : ""} onClick={() => setMode("changelog")}><ScrollText size={18} /> Changelog</button>
-              <button aria-current={mode === "notifications" ? "page" : undefined} className={mode === "notifications" ? "active" : ""} onClick={() => setMode("notifications")}><Bell size={18} /> Notifications{unreadNotifications ? <span className="admin-nav-count">{unreadNotifications}</span> : null}</button>
-            </nav>
-            <span className="admin-managed-count">{data?.catalog.length ?? 0} managed entries</span>
-          </div>
-        </div>
-      </header>
+    <div className="admin-shell" data-theme={theme}>
+      {navigationOpen&&compactNavigation?<div className="ad-nav-scrim" onClick={()=>setNavigationOpen(false)} aria-hidden="true"/>:null}
+      <aside className={`admin-sidebar${navigationOpen?' is-open':''}`} ref={sidebarRef} id="admin-navigation" role={compactNavigation?'dialog':undefined} aria-modal={compactNavigation&&navigationOpen?true:undefined} aria-label="Admin navigation" aria-hidden={compactNavigation&&!navigationOpen?true:undefined} inert={compactNavigation&&!navigationOpen}>
+        <div className="ad-sidebar-brand"><a className="admin-brand" href="/"><span className="admin-brand-mark"><img src={awalogoLogoUrl} alt="awalogo"/></span><div><strong>awalogo</strong><small>Admin workspace</small></div></a><button className="ad-sidebar-close" aria-label="Close navigation" onClick={()=>setNavigationOpen(false)}><X size={18}/></button></div>
+        <p className="ad-navigation-label">Workspace</p>
+        <nav className="admin-tabs" aria-label="Admin sections">
+          {([{key:'overview',label:'Overview',icon:LayoutDashboard},{key:'assets',label:'Assets',icon:FileCode2},{key:'requests',label:'Requests & reports',icon:ClipboardList},{key:'updates',label:'Updates',icon:Megaphone},{key:'analytics',label:'Analytics',icon:BarChart3},{key:'plugin',label:'Plugin',icon:Puzzle},{key:'notifications',label:'Notifications',icon:Bell}] as const).map(({key,label,icon:Icon})=>{const active=mode===key||(key==='assets'&&(mode==='manage'||mode==='add'))||(key==='updates'&&mode==='changelog');return <button key={key} aria-current={active?'page':undefined} className={active?'active':''} onClick={()=>{setMode(key);setNavigationOpen(false);}}><Icon size={18} strokeWidth={1.6}/><span>{label}</span>{key==='notifications'&&unreadNotifications?<span className="admin-nav-count">{unreadNotifications}</span>:null}</button>;})}
+        </nav>
+        <div className="ad-sidebar-footer"><div className="ad-review-note"><ShieldCheck size={18}/><div><strong>Reviewed publishing</strong><p>Catalog changes go through a pull request before publication.</p></div></div><a href="/v2" className="ad-view-library">View public library <ExternalLink size={14}/></a></div>
+      </aside>
+      <header className="admin-header"><div className="admin-header-inner"><div className="admin-header-primary">
+        <div className="ad-topbar-context"><button className="ad-nav-toggle" type="button" aria-label="Open navigation" aria-controls="admin-navigation" aria-expanded={navigationOpen} onClick={()=>setNavigationOpen(true)}><Menu size={20}/></button><span className="ad-breadcrumb-root">Admin</span><ChevronRight size={14}/><strong>{{overview:'Overview',assets:'Assets',requests:'Requests & reports',updates:'Updates',analytics:'Analytics',plugin:'Plugin',notifications:'Notifications',manage:'Asset details',add:'Add logo',changelog:'Changelog'}[mode]}</strong></div>
+        <div className="admin-account"><span className="ad-environment"><i/>{session?.local?'Local preview':'Maintainer workspace'}</span><button className="ad-theme-button" aria-label={theme==='light'?'Switch to dark theme':'Switch to light theme'} type="button" onClick={()=>setTheme(theme==='light'?'dark':'light')}>{theme==='light'?<Moon size={16} aria-hidden="true"/>:<Sun size={16} aria-hidden="true"/>}<span>{theme==='light'?'Dark':'Light'} theme</span></button>{session?.avatarUrl?<img src={session.avatarUrl} alt=""/>:null}<span className="ad-account-name">{session?.local?'Sandbox':`@${session?.login}`}</span><button type="button" onClick={logout} aria-label="Sign out" title="Sign out"><LogOut size={17}/></button></div>
+      </div></div></header>
 
       {!session?.local && !session?.repositoryAccess ? (
         <div className="admin-banner access" role="status">
@@ -440,9 +448,13 @@ export function AdminApp() {
         </div>
       ) : null}
 
-      {mode === "add" ? <AddLogoForm key={addFormVersion} busy={busy} onBack={() => setMode("manage")} onSubmit={mutate} /> :
-      mode === "requests" ? <RequestsManager /> :
-      mode === "updates" ? <SiteUpdatesManager /> :
+      {mode === "overview" ? <AdminOverview onAssets={()=>setMode('assets')}/> :
+      mode === "assets" ? <AdminAssets onLegacy={slug=>{setSelectedSlug(slug);setMode('manage');}}/> :
+      mode === "analytics" ? <AdminAnalytics/> :
+      mode === "plugin" ? <AdminPlugin/> :
+      mode === "add" ? <AddLogoForm key={addFormVersion} busy={busy} onBack={() => setMode("manage")} onSubmit={mutate} /> :
+      mode === "requests" ? <><nav className="ad-subnav" aria-label="Request workspace"><button aria-pressed={requestsTab==='requests'} onClick={()=>setRequestsTab('requests')}>Logo requests</button><button aria-pressed={requestsTab==='reports'} onClick={()=>setRequestsTab('reports')}>Artwork reports</button></nav>{requestsTab==='requests'?<RequestsManager/>:<AdminReports/>}</> :
+      mode === "updates" ? <><nav className="ad-subnav" aria-label="Editorial feeds">{(['v2','v1','changelog'] as const).map(tab=><button key={tab} aria-pressed={editorialTab===tab} onClick={()=>setEditorialTab(tab)}>{tab==='v2'?'V2 preview':tab==='v1'?'V1 updates':'V1 changelog'}</button>)}</nav>{editorialTab==='v2'?<AdminV2Editorial/>:editorialTab==='v1'?<SiteUpdatesManager/>:<ChangelogManager/>}</> :
       mode === "changelog" ? <ChangelogManager /> :
       mode === "notifications" ? <NotificationsManager onUnreadChange={setUnreadNotifications} /> : (
         <main className="admin-workspace">
@@ -485,6 +497,7 @@ export function AdminApp() {
                   <FormatFiles formats={selected.formats} slug={selected.slug} local={session?.local} />
                 </section>
               </div>
+              <FinancialMetadata key={'meta-'+selected.slug} logo={selected} busy={busy} locked={data?.lockedSlugs.includes(selected.slug)??false} mutate={mutate}/>
               <VerificationManager logo={selected} busy={busy} locked={data?.lockedSlugs.includes(selected.slug) ?? false} mutate={mutate} />
               <VariationManager logo={selected} variations={selectedVariations} busy={busy} local={session?.local} mutate={mutate} />
               <DangerZone logo={selected} locked={data?.lockedSlugs.includes(selected.slug) ?? false} busy={busy} mutate={mutate} />
@@ -572,7 +585,7 @@ function ReviewQueue({ logos, busy, lockedSlugs, mutate }: {
 
       <nav className="admin-review-navigation" aria-label="Review queue navigation">
         <button type="button" disabled={!position.previousSlug} onClick={() => position.previousSlug && setSelectedSlug(position.previousSlug)}><ChevronLeft size={17} /> Previous</button>
-        <label><span>Jump to entry</span><select value={selected.slug} onChange={(event) => setSelectedSlug(event.target.value)}>{logos.map((logo, index) => <option key={logo.slug} value={logo.slug}>{index + 1}. {logo.name}</option>)}</select></label>
+        <label><span>Jump to entry</span><WorkspaceSelect value={selected.slug} onChange={(event) => setSelectedSlug(event.target.value)}>{logos.map((logo, index) => <option key={logo.slug} value={logo.slug}>{index + 1}. {logo.name}</option>)}</WorkspaceSelect></label>
         <button type="button" disabled={!position.nextSlug} onClick={() => position.nextSlug && setSelectedSlug(position.nextSlug)}>Next <ChevronRight size={17} /></button>
       </nav>
     </main>
@@ -646,7 +659,7 @@ function VerificationManager({ logo, busy, locked, mutate, onVerified }: {
         <div className="admin-verify-dialog-icon"><ShieldCheck size={20} /></div>
         <p className="admin-kicker">{logo.name}</p><h2 id="verify-logo-title">Mark logo as verified</h2>
         <p className="admin-dialog-intro">Use the exact page where the current artwork is published. Verification changes the public status after the pull request is reviewed and merged.</p>
-        <div className="admin-fields"><label><span>Official source URL</span><input required name="sourceUrl" type="url" defaultValue={existingOfficialSource} placeholder="https://company.com/brand" /></label><label><span>Source type</span><select name="sourceType" required defaultValue={existingOfficialSourceType}>{sourceTypes.map(([value, label]) => <option key={value} value={value}>{label}</option>)}</select></label></div>
+        <div className="admin-fields"><label><span>Official source URL</span><input required name="sourceUrl" type="url" defaultValue={existingOfficialSource} placeholder="https://company.com/brand" /></label><label><span>Source type</span><WorkspaceSelect name="sourceType" required defaultValue={existingOfficialSourceType}>{sourceTypes.map(([value, label]) => <option key={value} value={value}>{label}</option>)}</WorkspaceSelect></label></div>
         <button className="admin-primary-button" disabled={busy} type="submit"><GitFork size={17} /> Create verification pull request</button>
       </form></div> : null}
     </section>
@@ -711,7 +724,7 @@ function LogoVersionAction({ logo, locked, busy, mutate }: { logo: Logo; locked:
           <div className="admin-fields two">
             <label><span>Old version name</span><input required value={archiveName} onChange={(event) => setArchiveName(event.target.value)} /></label>
             <label><span>Old version ID</span><input required pattern="[a-z0-9]+(?:-[a-z0-9]+)*" value={archiveId} onChange={(event) => setArchiveId(event.target.value)} /></label>
-            <label><span>New source type</span><select value={sourceType} onChange={(event) => setSourceType(event.target.value)}>{sourceTypes.map(([value, label]) => <option key={value} value={value}>{label}</option>)}<option value="community-catalog">Community catalog</option></select></label>
+            <label><span>New source type</span><WorkspaceSelect value={sourceType} onChange={(event) => setSourceType(event.target.value)}>{sourceTypes.map(([value, label]) => <option key={value} value={value}>{label}</option>)}<option value="community-catalog">Community catalog</option></WorkspaceSelect></label>
             <label><span>New source URL</span><input required={sourceType !== "community-catalog"} type="url" value={sourceUrl} onChange={(event) => setSourceUrl(event.target.value)} placeholder="https://company.com/brand" /></label>
           </div>
           <UploadField file={file} onFile={setFile} />
@@ -829,7 +842,7 @@ function RequestsManager() {
   return (
     <main className="admin-request-dashboard">
       <header className="admin-cms-heading request-page-heading">
-        <div><p className="admin-kicker">Request operations</p><h1>Request dashboard</h1><p>Review community requests, verify supplied assets, and keep publication status current.</p></div>
+        <div><p className="admin-kicker">Request operations</p><h1>Logo requests</h1><p>Review community requests, verify supplied assets, and keep publication status current.</p></div>
         <div className="admin-heading-actions">
           <button type="button" disabled={loading} onClick={loadRequests}><RefreshCw className={loading ? "spin" : ""} size={17} /> Refresh</button>
         </div>
@@ -842,8 +855,8 @@ function RequestsManager() {
       </section>
       <div className="admin-request-filters">
         <label className="admin-search"><Search size={17} /><span className="admin-visually-hidden">Search requests</span><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search by institution, category, or issue" /></label>
-        <label className="admin-filter"><span>Type</span><select value={category} onChange={(event) => setCategory(event.target.value)}><option value="all">All request types</option>{requestCategories.map((value) => <option key={value} value={value}>{value}</option>)}</select></label>
-        <label className="admin-filter"><span>Status</span><select value={status} onChange={(event) => setStatus(event.target.value as LogoRequestStatus | "all")}><option value="all">All statuses</option>{requestStatusOptions.map(([value, label]) => <option key={value} value={value}>{label}</option>)}</select></label>
+        <label className="admin-filter"><span>Type</span><WorkspaceSelect value={category} onChange={(event) => setCategory(event.target.value)}><option value="all">All request types</option>{requestCategories.map((value) => <option key={value} value={value}>{value}</option>)}</WorkspaceSelect></label>
+        <label className="admin-filter"><span>Status</span><WorkspaceSelect value={status} onChange={(event) => setStatus(event.target.value as LogoRequestStatus | "all")}><option value="all">All statuses</option>{requestStatusOptions.map(([value, label]) => <option key={value} value={value}>{label}</option>)}</WorkspaceSelect></label>
       </div>
       {integrationMessage ? <div className="admin-inline-message warning" role="status"><TriangleAlert size={17} /> {integrationMessage}</div> : null}
       {error ? <div className="admin-inline-message error" role="alert"><X size={17} /> {error}</div> : null}
@@ -880,7 +893,7 @@ function RequestsManager() {
                   <div><h3>Publication status</h3><p>{selectedRequest.source === "email" ? "Add this delivered request to GitHub to begin review." : "Update the request as it moves through review."}</p></div>
                   {selectedRequest.source === "email"
                     ? <button className="admin-version-button" type="button" disabled={saving === selectedRequest.id} onClick={() => recoverRequest(selectedRequest)}><GitFork size={15} /> Add to GitHub</button>
-                    : <label className="admin-status-select"><span className="admin-visually-hidden">Status for {selectedRequest.institution}</span><select className={`status-${selectedRequest.status}`} disabled={saving === selectedRequest.id} value={selectedRequest.status} onChange={(event) => updateStatus(selectedRequest, event.target.value as LogoRequestStatus)}>{requestStatusOptions.map(([value, label]) => <option key={value} value={value}>{label}</option>)}</select></label>}
+                    : <label className="admin-status-select"><span className="admin-visually-hidden">Status for {selectedRequest.institution}</span><WorkspaceSelect className={`status-${selectedRequest.status}`} disabled={saving === selectedRequest.id} value={selectedRequest.status} onChange={(event) => updateStatus(selectedRequest, event.target.value as LogoRequestStatus)}>{requestStatusOptions.map(([value, label]) => <option key={value} value={value}>{label}</option>)}</WorkspaceSelect></label>}
                 </section>
               </>
             ) : (
@@ -1047,7 +1060,7 @@ function SiteUpdatesManager() {
           </div>
           <div className="admin-fields two">
             <label><span>Publication date</span><input required type="date" value={draft.publishedAt} onChange={(event) => setDraft((current) => current ? { ...current, publishedAt: event.target.value } : current)} /></label>
-            <label><span>Visibility</span><select value={draft.status} onChange={(event) => setDraft((current) => current ? { ...current, status: event.target.value as SiteUpdateDraft["status"] } : current)}><option value="draft">Draft</option><option value="published">Published</option></select></label>
+            <label><span>Visibility</span><WorkspaceSelect value={draft.status} onChange={(event) => setDraft((current) => current ? { ...current, status: event.target.value as SiteUpdateDraft["status"] } : current)}><option value="draft">Draft</option><option value="published">Published</option></WorkspaceSelect></label>
             <label><span>Button label</span><input required value={draft.actionLabel} maxLength={50} onChange={(event) => setDraft((current) => current ? { ...current, actionLabel: event.target.value } : current)} placeholder="View new logos" /></label>
             <label><span>Button link</span><input required value={draft.actionHref} onChange={(event) => setDraft((current) => current ? { ...current, actionHref: event.target.value } : current)} placeholder="/?new=true" /></label>
           </div>
@@ -1233,7 +1246,7 @@ function ChangelogManager() {
           <div className="admin-fields two">
             <label><span>Version</span><input required readOnly={!draft.creating} pattern="v[1-9][0-9]*\.0\.0" value={draft.version} onChange={(event) => setDraft((current) => current ? { ...current, version: event.target.value } : current)} placeholder="v2.0.0" /></label>
             <label><span>Release date</span><input required type="date" value={draft.date} onChange={(event) => setDraft((current) => current ? { ...current, date: event.target.value } : current)} /></label>
-            <label><span>Visibility</span><select value={draft.status} onChange={(event) => setDraft((current) => current ? { ...current, status: event.target.value as ChangelogDraft["status"] } : current)}><option value="draft">Draft</option><option value="published">Published</option></select></label>
+            <label><span>Visibility</span><WorkspaceSelect value={draft.status} onChange={(event) => setDraft((current) => current ? { ...current, status: event.target.value as ChangelogDraft["status"] } : current)}><option value="draft">Draft</option><option value="published">Published</option></WorkspaceSelect></label>
             <label><span>Release title</span><input required maxLength={100} value={draft.title} onChange={(event) => setDraft((current) => current ? { ...current, title: event.target.value } : current)} placeholder="A major catalog update" /></label>
           </div>
           <div className="admin-fields"><label className="admin-release-notes-field"><span>Release notes</span><textarea required maxLength={9000} value={draft.changesText} onChange={(event) => setDraft((current) => current ? { ...current, changesText: event.target.value } : current)} placeholder={"Added new logo categories\nImproved search and filtering\nUpdated the Figma plugin"} /><small>One change per line. Up to 30 notes.</small></label></div>
@@ -1312,7 +1325,7 @@ function NotificationsManager({ onUnreadChange }: { onUnreadChange: (count: numb
   return (
     <main className="admin-notification-dashboard">
       <header className="admin-cms-heading notification-page-heading">
-        <div><p className="admin-kicker">Automatic publication alerts</p><h1>Logo notifications</h1><p>Review request activity, publication updates, and repository events from one queue.</p></div>
+        <div><p className="admin-kicker">Automatic publication alerts</p><h1>Notifications</h1><p>Review request activity, publication updates, and repository events from one queue.</p></div>
         <div className="admin-heading-actions">
           <button type="button" disabled={loading} onClick={loadNotifications}><RefreshCw className={loading ? "spin" : ""} size={17} /> Refresh</button>
           <button className="primary" type="button" disabled={checking || loading} onClick={runCheck}><Send size={17} /> {checking ? "Checking" : "Run automatic check"}</button>
@@ -1568,7 +1581,7 @@ function AddLogoForm({ busy, onBack, onSubmit }: { busy: boolean; onBack: () => 
             {officialSourceUnavailable ? (
               <div className="admin-source-classification"><span>Source classification</span><strong>Community supplied</strong><small>The entry remains needs-review and is never presented as officially verified.</small></div>
             ) : (
-              <label><span>Source type</span><select name="sourceType" required>{sourceTypes.map(([value, label]) => <option key={value} value={value}>{label}</option>)}</select></label>
+              <label><span>Source type</span><WorkspaceSelect name="sourceType" required>{sourceTypes.map(([value, label]) => <option key={value} value={value}>{label}</option>)}</WorkspaceSelect></label>
             )}
           </div>
         </section>
@@ -1700,3 +1713,5 @@ function ConfirmDialog({ title, token, value, onChange, busy, onCancel, onConfir
   const titleId = `confirm-${token}`;
   return <div className="admin-dialog-backdrop" onMouseDown={(event) => { if (event.target === event.currentTarget) onCancel(); }}><div className="admin-dialog confirm" role="dialog" aria-modal="true" aria-labelledby={titleId}><div className="admin-danger-icon"><Trash2 size={19} /></div><h2 id={titleId}>{title}</h2><p>Type <strong>{token}</strong> to confirm.</p><label><span>Confirmation</span><input autoFocus value={value} onChange={(event) => onChange(event.target.value)} /></label><div className="admin-dialog-actions"><button onClick={onCancel}>Cancel</button><button className="danger" disabled={busy || value !== token} onClick={onConfirm}>Remove in pull request</button></div></div></div>;
 }
+
+function FinancialMetadata({logo,busy,locked,mutate}:{logo:Logo;busy:boolean;locked:boolean;mutate:(payload:Record<string,unknown>)=>Promise<boolean>}){return <section className="ad-page"><details><summary>Edit financial-logo metadata</summary><form className="ad-editor" onSubmit={event=>{event.preventDefault();const f=new FormData(event.currentTarget);void mutate({operation:'edit-logo',slug:logo.slug,name:f.get('name'),website:f.get('website'),aliases:String(f.get('aliases')??'').split(',').map(v=>v.trim()).filter(Boolean),categories:f.getAll('categories')});}}><label>Name<input name="name" required defaultValue={logo.name}/></label><label>Website<input name="website" type="url" required defaultValue={logo.website}/></label><label>Aliases<input name="aliases" defaultValue={(logo as Logo&{aliases?:string[]}).aliases?.join(', ')??''}/></label><label>Categories<WorkspaceSelect name="categories" multiple required defaultValue={logo.categories??[logo.category]}>{availableInstitutionCategories.map(value=><option key={value} value={value}>{categoryLabel(value)}</option>)}</WorkspaceSelect></label><button disabled={busy||locked}>Create metadata pull request</button></form></details><details><summary>Archive financial logo</summary><form onSubmit={event=>{event.preventDefault();void mutate({operation:'archive-logo',slug:logo.slug,confirmation:new FormData(event.currentTarget).get('confirmation')});}}><p>Archiving marks the entry deprecated after review and deployment. Type {logo.slug} to confirm.</p><label>Confirmation<input name="confirmation" required pattern={logo.slug}/></label><button disabled={busy||locked}>Create archival pull request</button></form></details></section>;}

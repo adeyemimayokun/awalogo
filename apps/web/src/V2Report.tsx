@@ -1,3 +1,4 @@
+import { trackProduct } from './product-events';
 import { useState, type FormEvent } from "react";
 import { ArrowLeft, Check, Send } from "./icons";
 import V2Select from "./V2Select";
@@ -22,7 +23,7 @@ export default function V2Report({ name, slug, variation, versionName, format, o
       });
       const body = await response.json().catch(() => null);
       if (!response.ok || body?.ok !== true) throw new Error(body?.error ?? "Your report could not be delivered. Please try again shortly.");
-      setSent(true);
+      trackProduct('report'); setSent(true);
     } catch (caught) { setError(caught instanceof Error && caught.name !== "TimeoutError" ? caught.message : "The request timed out. Your details are still here; please try again."); }
     finally { setBusy(false); }
   }

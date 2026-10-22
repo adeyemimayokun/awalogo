@@ -1,3 +1,4 @@
+import { adminStore, adminStoreConfigured } from './admin-store.js';
 import { createHmac, randomUUID } from "node:crypto";
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { z } from "zod";
@@ -42,7 +43,9 @@ export async function handleLogoReport(request: VercelRequest, response: VercelR
   if (bucket.count >= 5 || attempts.size >= 10000) { response.setHeader("Retry-After", "3600"); response.status(429).json({ error: "Too many reports. Please try again later." }); return; }
   bucket.count += 1; attempts.set(key, bucket);
   try {
-    await sendLogoReport(report, logo.name);
+    let stored=false;
+    if(adminStoreConfigured()) { await adminStore('asset_reports?on_conflict=submission_id',{method:'POST',headers:{Prefer:'resolution=ignore-duplicates,return=minimal'},body:JSON.stringify({submission_id:report.submissionId,slug:report.slug,variation:report.variation,format:report.format,reason:report.reason,note:report.note,official_source:report.officialSource})});stored=true; }
+    try { await sendLogoReport(report, logo.name); } catch (error) { if(!stored) throw error; }
     response.status(202).json({ ok: true, reportId: report.submissionId });
   } catch {
     response.status(503).json({ error: "Your report could not be delivered. Your details are still here; please try again shortly." });

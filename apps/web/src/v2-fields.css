@@ -1,5 +1,5 @@
-.v2-app { --field-focus:#92928e; --field-error:#b42318; --field-duration:160ms; }
-.v2-app[data-v2-theme="dark"] { --field-focus:#92928e; --field-error:#ffb4ab; }
+.v2-app { --field-focus:var(--v2-focus); --field-error:var(--v2-error); --field-duration:160ms; }
+.v2-app[data-v2-theme="dark"] { --field-focus:var(--v2-focus); --field-error:var(--v2-error); }
 
 /* A single border-based interaction model, including compound search fields. */
 .v2-app :is(.v2-select select,.v2-request input:not([type="checkbox"]):not([type="radio"]),.v2-report input,.v2-report textarea,.v2-search-wrap > label,.v2-category-trigger) {

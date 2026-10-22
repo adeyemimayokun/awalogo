@@ -1,3 +1,5 @@
+import { dashboardMutation } from "../_lib/admin-dashboard.js";
+import { prepareResourceMutation } from "../_lib/admin-resource-mutations.js";
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { ZodError } from "zod";
 import { requireAdmin } from "../_lib/auth.js";
@@ -13,6 +15,13 @@ export default async function handler(request: VercelRequest, response: VercelRe
   const admin = requireAdmin(request, response);
   if (!admin) return;
   try {
+    if (typeof request.query.view === "string") {
+      if (["plugin", "report-triage"].includes(request.query.view)) { response.status(200).json(await dashboardMutation(request.query.view, request.body, admin.login)); return; }
+      if (request.query.view !== "resource") throw new Error("Unknown mutation view");
+      const prepared = await prepareResourceMutation(request.body, admin.login, admin.githubToken);
+      const pr = await createCatalogPullRequest({...prepared, sessionToken:admin.githubToken});
+      response.status(201).json(pr.local ? {localPreview:true} : {pullRequest:{number:pr.number,url:pr.html_url},status:"pending-review"}); return;
+    }
     const mutation = mutationSchema.parse(request.body);
     const [catalog, variations, manifest] = await Promise.all([
       readRepositoryJson(catalogPaths.catalog, admin.githubToken),

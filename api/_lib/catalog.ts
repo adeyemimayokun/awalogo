@@ -21,6 +21,8 @@ const stagedVariationSchema = z.object({
 });
 
 export const mutationSchema = z.discriminatedUnion("operation", [
+  mutationBase.extend({operation:z.literal('edit-logo'),slug,name:z.string().trim().min(2).max(100),aliases:z.array(z.string().trim().min(1).max(100)).max(20),website:z.string().url(),categories:z.array(institutionCategorySchema).min(1).max(12)}),
+  mutationBase.extend({operation:z.literal('archive-logo'),slug,confirmation:z.string()}),
   mutationBase.extend({
     operation: z.literal("add-logo"),
     name: z.string().trim().min(2).max(100),
@@ -319,6 +321,13 @@ export async function buildMutationChanges(
     changes.push(...fileChanges(mutation.slug, nextSvg, nextRendered.png, nextRendered.webp));
   }
 
+  if(mutation.operation==='edit-logo'||mutation.operation==='archive-logo'){
+    if((CORE_LOGO_SLUGS as readonly string[]).includes(mutation.slug))throw new Error('This logo is a locked core entry');
+    const entry=catalog.find(item=>item.slug===mutation.slug);if(!entry)throw new Error('Logo not found');
+    if(mutation.operation==='archive-logo'){if(mutation.confirmation!==mutation.slug)throw new Error('Confirmation does not match the logo slug');entry.status='deprecated';}
+    else {entry.name=mutation.name;entry.aliases=mutation.aliases;entry.website=mutation.website;entry.categories=mutation.categories;}
+    entry.updated_at=today;
+  }
   if (mutation.operation === "verify-logo") {
     const entry = catalog.find((item) => item.slug === mutation.slug);
     if (!entry) throw new Error("This logo is a locked core entry or does not exist in the managed catalog");

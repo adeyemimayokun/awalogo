@@ -1,3 +1,4 @@
+import { dashboardView } from "../_lib/admin-dashboard.js";
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import bundledCatalogJson from "../../packages/logos/src/promoted-catalog.json";
 import bundledVariationsJson from "../../packages/logos/src/variations.json";
@@ -43,9 +44,11 @@ function bundledCatalogState(): {
 
 export default async function handler(request: VercelRequest, response: VercelResponse): Promise<void> {
   if (request.method !== "GET") return methodNotAllowed(response, ["GET"]);
-  if (!requireAdmin(request, response)) return;
+  const admin = requireAdmin(request, response);
+  if (!admin) return;
   response.setHeader("Cache-Control", "no-store");
   try {
+    if (typeof request.query.view === "string") { response.status(200).json(await dashboardView(request.query.view, request.query, admin.githubToken)); return; }
     const state = isLocalRepositoryMode()
       ? await Promise.all([
           readRepositoryJson<PreviewEntry[]>(catalogPaths.catalog),

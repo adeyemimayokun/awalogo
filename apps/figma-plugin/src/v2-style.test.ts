@@ -3,10 +3,12 @@ import { describe, expect, it } from "vitest";
 
 const css = readFileSync(new URL("./v2-style.css", import.meta.url), "utf8");
 const v2 = readFileSync(new URL("../../web/src/v2.css", import.meta.url), "utf8");
+const foundations = readFileSync(new URL("../../../packages/catalog-ui/src/v2-tokens.css", import.meta.url), "utf8");
 describe("plugin V2 design contract", () => {
   it("matches V2's light and dark neutral tokens", () => {
     for (const [token, value] of [["ink", "#252525"], ["muted", "#70706e"], ["line", "#e5e5e2"], ["surface", "#fff"], ["ink", "#ededeb"], ["line", "#3b3b3b"], ["surface", "#1c1c1c"]]) {
-      expect(v2).toContain(`--${token}:${value}`);
+      expect(v2).toContain(`--${token}:var(--v2-${token})`);
+      expect(foundations).toContain(`--v2-${token}:${value}`);
       expect(css).toContain(`--plugin-${token}: ${value}`);
     }
     expect(css).toContain("--plugin-control-radius: 12px");

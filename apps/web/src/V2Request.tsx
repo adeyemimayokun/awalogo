@@ -1,3 +1,4 @@
+import { trackProduct } from './product-events';
 import { formerBrandName } from "./brand-history";
 import V2Select from "./V2Select";
 import { useV2Language } from "./V2Language";
@@ -32,7 +33,7 @@ export default function V2Request({ embedded = false, onBrowse, onSelectBrand }:
       const response = await fetch("/api/logo-requests", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({
         submissionId, trackingToken, institutionName: name, officialWebsite: data.get("website"), email: data.get("email"), category: data.get("category"), logoAssetUrl: data.get("asset") || "", notifyWhenAvailable: data.get("notify") === "on", websiteConfirm: data.get("websiteConfirm") || ""
       }) });
-      const body = await response.json(); if (!response.ok) throw new Error(body.error ?? "Your request could not be saved"); setResult(body);
+      const body = await response.json(); if (!response.ok) throw new Error(body.error ?? "Your request could not be saved"); trackProduct('request'); setResult(body);
     } catch (caught) { setError(caught instanceof Error ? caught.message : "Your request could not be saved"); } finally { setBusy(false); }
   }
   return <section className={`v2-request${embedded ? " v2-request-embedded" : ""}`} aria-label={t("Brand request")}><a href="/v2" onClick={(event) => { if (onBrowse && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey) { event.preventDefault(); onBrowse(); } }}><ArrowLeft size={16} />{t("Back to the library")}</a><p className="v2-eyebrow">{t("GROW THE LIBRARY")}</p><h1>{token ? t("Your request") : result ? t("Request received") : t("Request a brand asset")}</h1>
