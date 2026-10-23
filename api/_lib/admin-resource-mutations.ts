@@ -335,7 +335,7 @@ export async function safeArtwork(file: {
       throw new Error("Unsafe SVG");
     for (const el of $("*").toArray())
       for (const [k, v] of Object.entries(
-        ("attribs" in el ? el.attribs : {}) as Record<string, string>,
+        (typeof el === "object" && el !== null && "attribs" in el ? el.attribs : {}) as Record<string, string>,
       ))
         if (
           /^on/i.test(k) ||
