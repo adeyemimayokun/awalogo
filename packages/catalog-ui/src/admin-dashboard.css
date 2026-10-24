@@ -156,7 +156,7 @@
   background: none;
   color: inherit;
 }
-.ad-stats span {
+.ad-stats > :is(div, button) > span:not(.ad-metric-icon) {
   display: block;
   color: var(--ad-muted);
   font-size: 12px;

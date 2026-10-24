@@ -172,6 +172,7 @@ html[data-admin-theme="dark"],.admin-shell[data-theme="dark"] {
 /* V2 component states and metrics. Semantic error/success colors remain distinct. */
 .admin-shell { --admin-subtle:var(--v2-surface); --admin-ink:var(--v2-ink); --admin-muted:var(--v2-muted); --admin-line:var(--v2-line); --admin-line-strong:var(--v2-focus); --admin-success:var(--v2-ink); --admin-success-soft:var(--v2-hover); --admin-danger:var(--v2-error); font-family:var(--v2-font); -webkit-font-smoothing:antialiased; }
 .admin-shell svg { stroke-width:1.6; }
+:where(.admin-shell) svg { display:block; flex-shrink:0; }
 .admin-shell .admin-sidebar .admin-tabs button.active { background:var(--v2-hover); }
 .admin-shell[data-theme="dark"] .admin-sidebar .admin-tabs button.active>svg { color:var(--v2-ink); }
 .admin-shell :is(.ad-heading h1,.admin-cms-heading h1,.admin-page-heading h1) { font-weight:620; letter-spacing:0; }
