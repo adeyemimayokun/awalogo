@@ -80,12 +80,23 @@ function Heading({ title, detail, action }: { title: string; detail: string; act
     </header>
   );
 }
+function SkeletonLines({ rows = 3 }: { rows?: number }) {
+  return <div className="dashboard-skeleton-lines" aria-hidden="true">{Array.from({ length: rows }, (_, i) => <span className="dashboard-skeleton-line" key={i} />)}</div>;
+}
+function DashboardSkeleton({ overview = false }: { overview?: boolean }) {
+  return <div className="dashboard-skeleton" role="status" aria-label="Loading dashboard" aria-busy="true">
+    <span className="dashboard-sr-only">Loading dashboard…</span>
+    {overview ? <>
+      <div className="dashboard-stats" aria-hidden="true">{Array.from({ length: 4 }, (_, i) => <div className="dashboard-skeleton-metric" key={i}><span className="dashboard-skeleton-icon"/><SkeletonLines rows={2}/></div>)}</div>
+      <div className="dashboard-overview-grid" aria-hidden="true">
+        <div className="dashboard-overview-main">{[3, 2].map((rows, i) => <section className="dashboard-panel dashboard-skeleton-panel" key={i}><span className="dashboard-skeleton-line dashboard-skeleton-title"/><SkeletonLines rows={rows}/></section>)}</div>
+        <div className="dashboard-overview-side">{[2, 3].map((rows, i) => <section className="dashboard-panel dashboard-skeleton-panel" key={i}><span className="dashboard-skeleton-line dashboard-skeleton-title"/><SkeletonLines rows={rows}/></section>)}</div>
+      </div>
+    </> : <section className="dashboard-panel dashboard-skeleton-panel" aria-hidden="true"><SkeletonLines rows={5}/></section>}
+  </div>;
+}
 function Loading({ error }: { error: string }) {
-  return (
-    <p role={error ? "alert" : "status"} className="dashboard-state">
-      {error || "Loading workspace…"}
-    </p>
-  );
+  return error ? <p role="alert" className="dashboard-state">{error}</p> : <DashboardSkeleton />;
 }
 export function AdminOverview({ onAssets }: { onAssets: () => void }) {
   const { data, error, reload } = useView("overview");
@@ -96,8 +107,7 @@ export function AdminOverview({ onAssets }: { onAssets: () => void }) {
           title="Overview"
           detail="Catalog coverage, review work, and publication activity."
         />
-        <Loading error={error} />
-        <button onClick={reload}>Retry</button>
+        {error ? <><Loading error={error} /><button onClick={reload}>Retry</button></> : <DashboardSkeleton overview />}
       </main>
     );
   const resources = data.resources as AdminResource[];
