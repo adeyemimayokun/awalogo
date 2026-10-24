@@ -60,7 +60,7 @@ function useView(view: string) {
 }
 function State({ panel }: { panel: Panel }) {
   return (
-    <p className="ad-state" role="status">
+    <p className="dashboard-state" role="status">
       {panel.message ??
         (panel.state === "empty"
           ? "No data recorded for this period."
@@ -70,19 +70,19 @@ function State({ panel }: { panel: Panel }) {
 }
 function Heading({ title, detail, action }: { title: string; detail: string; action?: ReactNode }) {
   return (
-    <header className="ad-heading">
+    <header className="dashboard-heading">
       <div>
         <p className="admin-kicker">Workspace</p>
         <h1>{title}</h1>
         <p>{detail}</p>
       </div>
-      {action && <div className="ad-heading-action">{action}</div>}
+      {action && <div className="dashboard-heading-action">{action}</div>}
     </header>
   );
 }
 function Loading({ error }: { error: string }) {
   return (
-    <p role={error ? "alert" : "status"} className="ad-state">
+    <p role={error ? "alert" : "status"} className="dashboard-state">
       {error || "Loading workspace…"}
     </p>
   );
@@ -91,7 +91,7 @@ export function AdminOverview({ onAssets }: { onAssets: () => void }) {
   const { data, error, reload } = useView("overview");
   if (!data)
     return (
-      <main className="ad-page">
+      <main className="dashboard-page">
         <Heading
           title="Overview"
           detail="Catalog coverage, review work, and publication activity."
@@ -119,32 +119,32 @@ export function AdminOverview({ onAssets }: { onAssets: () => void }) {
     }).slice(0, 3);
   };
   return (
-    <main className="ad-page">
-      <Heading title="Overview" detail="Your catalog, review work, and publication activity at a glance." action={<WorkspaceButton className="ad-primary-action" onClick={onAssets}>Browse assets <ArrowUpRight size={15} /></WorkspaceButton>} />
-      <div className="ad-stats">
-        {[...collections.map(c => ({label:c.title, value:count(c.key), icon:c.icon})), {label:"Artwork needing review",value:reviewCount,icon:ShieldCheck}].map(({label,value,icon:Icon}) => <button className="ad-metric" key={label} onClick={onAssets}><span className="ad-metric-icon"><Icon size={21}/></span><span>{label}</span><strong>{value.toLocaleString()}</strong><ChevronRight className="ad-metric-arrow" size={14}/></button>)}
+    <main className="dashboard-page">
+      <Heading title="Overview" detail="Your catalog, review work, and publication activity at a glance." action={<WorkspaceButton className="dashboard-primary-action" onClick={onAssets}>Browse assets <ArrowUpRight size={15} /></WorkspaceButton>} />
+      <div className="dashboard-stats">
+        {[...collections.map(c => ({label:c.title, value:count(c.key), icon:c.icon})), {label:"Artwork needing review",value:reviewCount,icon:ShieldCheck}].map(({label,value,icon:Icon}) => <button className="dashboard-metric" key={label} onClick={onAssets}><span className="dashboard-metric-icon"><Icon size={21}/></span><span>{label}</span><strong>{value.toLocaleString()}</strong><ChevronRight className="dashboard-metric-arrow" size={14}/></button>)}
       </div>
-      <div className="ad-overview-grid">
-        <div className="ad-overview-main">
-          <section className="ad-panel">
-            <div className="ad-panel-header"><div><h2>Catalog coverage</h2><p>All collections in one workspace.</p></div><button className="ad-text-action" onClick={onAssets}>View assets <ChevronRight size={13}/></button></div>
-            <div className="ad-coverage-list">{collections.map(c => <button className="ad-coverage-row" key={c.key} onClick={onAssets}><span className="ad-coverage-previews">{preview(c.key).length ? preview(c.key).map(r => <span key={r.id}><img src={r.preview || r.formats.find(f => f.url)?.url} alt=""/></span>) : <span><c.icon size={20}/></span>}</span><span className="ad-coverage-copy"><strong>{c.title}</strong><small>{c.detail}</small></span><span className="ad-coverage-count">{count(c.key)}<br/><small>resources</small></span><ChevronRight size={14}/></button>)}</div>
+      <div className="dashboard-overview-grid">
+        <div className="dashboard-overview-main">
+          <section className="dashboard-panel">
+            <div className="dashboard-panel-header"><div><h2>Catalog coverage</h2><p>All collections in one workspace.</p></div><button className="dashboard-text-action" onClick={onAssets}>View assets <ChevronRight size={13}/></button></div>
+            <div className="dashboard-coverage-list">{collections.map(c => <button className="dashboard-coverage-row" key={c.key} onClick={onAssets}><span className="dashboard-coverage-previews">{preview(c.key).length ? preview(c.key).map(r => <span key={r.id}><img src={r.preview || r.formats.find(f => f.url)?.url} alt=""/></span>) : <span><c.icon size={20}/></span>}</span><span className="dashboard-coverage-copy"><strong>{c.title}</strong><small>{c.detail}</small></span><span className="dashboard-coverage-count">{count(c.key)}<br/><small>resources</small></span><ChevronRight size={14}/></button>)}</div>
           </section>
-          <section className="ad-panel">
-            <div className="ad-panel-header"><div><h2>Review workspace</h2><p>Keep your catalog accurate and up to date.</p></div></div>
-            <div className="ad-review-grid">
-              {[{title:"Artwork review",icon:ShieldCheck,value:reviewCount + " awaiting review",state:"Review queue"},{title:"Asset requests",icon:FileText,value:data.requests?.rows ? data.requests.rows.length + " unresolved" : "Connection required",state:data.requests?.state ?? "unavailable"},{title:"Asset reports",icon:Flag,value:data.reports?.rows ? data.reports.rows.length + " unresolved" : "Connection required",state:data.reports?.state ?? "unavailable"}].map(({title,icon:Icon,value,state}) => <div className="ad-review-item" key={title}><Icon size={19}/><h3>{title}</h3><p>{value}</p><span className="ad-status-label">{state}</span></div>)}
+          <section className="dashboard-panel">
+            <div className="dashboard-panel-header"><div><h2>Review workspace</h2><p>Keep your catalog accurate and up to date.</p></div></div>
+            <div className="dashboard-review-grid">
+              {[{title:"Artwork review",icon:ShieldCheck,value:reviewCount + " awaiting review",state:"Review queue"},{title:"Asset requests",icon:FileText,value:data.requests?.rows ? data.requests.rows.length + " unresolved" : "Connection required",state:data.requests?.state ?? "unavailable"},{title:"Asset reports",icon:Flag,value:data.reports?.rows ? data.reports.rows.length + " unresolved" : "Connection required",state:data.reports?.state ?? "unavailable"}].map(({title,icon:Icon,value,state}) => <div className="dashboard-review-item" key={title}><Icon size={19}/><h3>{title}</h3><p>{value}</p><span className="dashboard-status-label">{state}</span></div>)}
             </div>
           </section>
         </div>
-        <div className="ad-overview-side">
-          <section className="ad-panel"><div className="ad-panel-header"><div><h2>Publication activity</h2><p>Reviewed changes awaiting deployment.</p></div></div>
-            {data.publications.state !== "ready" ? <State panel={data.publications}/> : data.publications.rows.length ? data.publications.rows.map((row:Row)=><p key={row.number}><a href={row.html_url} target="_blank" rel="noreferrer">#{row.number} {row.title}</a> · {row.publicationState}</p>) : <div className="ad-publication-empty"><GitPullRequest size={28}/><strong>No pending changes</strong><p>New catalog changes appear here when a review pull request is created.</p></div>}
+        <div className="dashboard-overview-side">
+          <section className="dashboard-panel"><div className="dashboard-panel-header"><div><h2>Publication activity</h2><p>Reviewed changes awaiting deployment.</p></div></div>
+            {data.publications.state !== "ready" ? <State panel={data.publications}/> : data.publications.rows.length ? data.publications.rows.map((row:Row)=><p key={row.number}><a href={row.html_url} target="_blank" rel="noreferrer">#{row.number} {row.title}</a> · {row.publicationState}</p>) : <div className="dashboard-publication-empty"><GitPullRequest size={28}/><strong>No pending changes</strong><p>New catalog changes appear here when a review pull request is created.</p></div>}
           </section>
-          <section className="ad-panel"><div className="ad-panel-header"><div><h2>Connections</h2><p>Availability of workspace integrations.</p></div></div><div className="ad-connection-list">{[{label:"Admin database",value:data.database,icon:Database},{label:"Website analytics",value:data.traffic,icon:BarChart3},{label:"Product tracking",value:data.productTracking,icon:Activity}].map(({label,value,icon:Icon})=><div className="ad-connection-row" key={label}><Icon size={16}/><span>{label}</span><span className={"ad-status-label " + (value === "configured" || value === "enabled" ? "connected" : "disabled")}>{value}</span></div>)}</div></section>
+          <section className="dashboard-panel"><div className="dashboard-panel-header"><div><h2>Connections</h2><p>Availability of workspace integrations.</p></div></div><div className="dashboard-connection-list">{[{label:"Admin database",value:data.database,icon:Database},{label:"Website analytics",value:data.traffic,icon:BarChart3},{label:"Product tracking",value:data.productTracking,icon:Activity}].map(({label,value,icon:Icon})=><div className="dashboard-connection-row" key={label}><Icon size={16}/><span>{label}</span><span className={"dashboard-status-label " + (value === "configured" || value === "enabled" ? "connected" : "disabled")}>{value}</span></div>)}</div></section>
         </div>
       </div>
-      <section className="ad-panel ad-workflow-panel"><div className="ad-workflow-intro"><h2>Reviewed publishing</h2><p>A clear path from edit to live.</p></div><div className="ad-workflow-steps">{[["Draft","Prepare your changes"],["Review","Approve the pull request"],["Deploy","Publish validated outputs"]].map(([title,detail],i)=><div className="ad-workflow-step" key={title}><b>{i+1}</b><span><strong>{title}</strong><small>{detail}</small></span></div>)}</div></section>
+      <section className="dashboard-panel dashboard-workflow-panel"><div className="dashboard-workflow-intro"><h2>Reviewed publishing</h2><p>A clear path from edit to live.</p></div><div className="dashboard-workflow-steps">{[["Draft","Prepare your changes"],["Review","Approve the pull request"],["Deploy","Publish validated outputs"]].map(([title,detail],i)=><div className="dashboard-workflow-step" key={title}><b>{i+1}</b><span><strong>{title}</strong><small>{detail}</small></span></div>)}</div></section>
     </main>
   );
 }
@@ -186,7 +186,7 @@ function ResourceFilter({
   }, []);
   return (
     <details
-      className="ad-filter-group"
+      className="dashboard-filter-group"
       ref={root}
       onKeyDown={(event) => {
         if (event.key === "Escape" && root.current) {
@@ -199,9 +199,9 @@ function ResourceFilter({
         {label}
         <span>{selected.length || "All"}</span>
       </summary>
-      <div className="ad-filter-options">
+      <div className="dashboard-filter-options">
         {options.length > 8 ? (
-          <label className="ad-filter-search">
+          <label className="dashboard-filter-search">
             <span className="admin-visually-hidden">
               Search {label.toLowerCase()}
             </span>
@@ -212,7 +212,7 @@ function ResourceFilter({
             />
           </label>
         ) : null}
-        <div className="ad-filter-checkboxes">
+        <div className="dashboard-filter-checkboxes">
           {options
             .filter((value) =>
               value.toLowerCase().includes(query.toLowerCase()),
@@ -277,12 +277,12 @@ export function AdminAssets({
   const pages = Math.max(1, Math.ceil(matches.length / 25));
   const page = Math.min(filters.page ?? 1, pages);
   return (
-    <main className="ad-page">
+    <main className="dashboard-page">
       <Heading
         title="Assets"
         detail="Browse all deployed artwork. Changes create reviewable pull requests."
       />
-      <div className="ad-toolbar">
+      <div className="dashboard-toolbar">
         <label>
           Search
           <input
@@ -314,7 +314,7 @@ export function AdminAssets({
           Clear all
         </button>
       </div>
-      <details className="ad-filter-panel">
+      <details className="dashboard-filter-panel">
         <summary>
           Filter assets · {matches.length} artwork record
           {matches.length === 1 ? "" : "s"}
@@ -323,7 +323,7 @@ export function AdminAssets({
           Choose one or more values in each filter. Your selections appear
           below.
         </p>
-        <div className="ad-filters">
+        <div className="dashboard-filters">
           {filterKeys.map((key) => (
             <ResourceFilter
               key={key}
@@ -337,7 +337,7 @@ export function AdminAssets({
           ))}
         </div>
       </details>
-      <div className="ad-chips">
+      <div className="dashboard-chips">
         {filterKeys.flatMap((key) =>
           (filters[key] ?? []).map((value) => (
             <button
@@ -361,7 +361,7 @@ export function AdminAssets({
             {new Set(matches.map((r) => r.collection + ":" + r.slug)).size}{" "}
             resources · deployment snapshot
           </p>
-          <div className="ad-table-wrap">
+          <div className="dashboard-table-wrap">
             <table>
               <thead>
                 <tr>
@@ -377,8 +377,8 @@ export function AdminAssets({
                 {matches.slice((page - 1) * 25, page * 25).map((r) => (
                   <tr key={r.id}>
                     <td>
-                      <div className="ad-asset-cell">
-                        <span className="ad-asset-thumb">
+                      <div className="dashboard-asset-cell">
+                        <span className="dashboard-asset-thumb">
                           {r.formats.find((f) => f.url) ? (
                             <img
                               src={
@@ -404,7 +404,7 @@ export function AdminAssets({
                     </td>
                     <td>
                       {r.collection}
-                      <small className="ad-resource-id" title={r.id}>
+                      <small className="dashboard-resource-id" title={r.id}>
                         {r.id}
                       </small>
                     </td>
@@ -418,14 +418,14 @@ export function AdminAssets({
                       </small>
                     </td>
                     <td>
-                      <span className="ad-status">
+                      <span className="dashboard-status">
                         {r.status.replaceAll("-", " ")}
                       </span>
                       <small>{r.provenance}</small>
                     </td>
                     <td>
                       <button
-                        className="ad-inspect"
+                        className="dashboard-inspect"
                         onClick={() => setSelected(r)}
                       >
                         Inspect
@@ -437,7 +437,7 @@ export function AdminAssets({
             </table>
           </div>
           {!matches.length ? <p>No assets match these filters.</p> : null}
-          <nav className="ad-pagination" aria-label="Asset pages">
+          <nav className="dashboard-pagination" aria-label="Asset pages">
             <button
               disabled={page <= 1}
               onClick={() => change({ page: page - 1 })}
@@ -579,14 +579,14 @@ function ResourceEditor({
   }
   return (
     <div
-      className="ad-drawer-backdrop"
+      className="dashboard-drawer-backdrop"
       onMouseDown={(event) => {
         if (event.target === event.currentTarget) onClose();
       }}
     >
       <section
         ref={drawerRef}
-        className="ad-editor ad-resource-editor"
+        className="dashboard-editor dashboard-resource-editor"
         role="dialog"
         aria-modal="true"
         aria-label={`Maintain ${r.name}`}
@@ -596,7 +596,7 @@ function ResourceEditor({
           <button onClick={onClose}>Close</button>
         </header>
         {r.formats.some((f) => f.url) ? (
-          <div className="ad-resource-preview">
+          <div className="dashboard-resource-preview">
             <img
               src={
                 r.formats.find((f) => f.type === "png" && f.url)?.url ??
@@ -612,7 +612,7 @@ function ResourceEditor({
             </span>
           </div>
         ) : null}
-        <dl className="ad-facts">
+        <dl className="dashboard-facts">
           <div>
             <dt>Resource ID</dt>
             <dd>{r.id}</dd>
@@ -637,7 +637,7 @@ function ResourceEditor({
             </dd>
           </div>
         </dl>
-        <div className="ad-files">
+        <div className="dashboard-files">
           {r.formats
             .filter((f) => f.url)
             .map((f) => (
@@ -815,7 +815,7 @@ function ResourceEditor({
               Review / resolution notes
               <textarea name="notes" minLength={10} maxLength={2000} required />
             </label>
-            <WorkspaceButton type="submit" className="ad-primary-action" disabled={busy}>
+            <WorkspaceButton type="submit" className="dashboard-primary-action" disabled={busy}>
               {busy ? "Preparing…" : "Create review pull request"}
             </WorkspaceButton>
           </form>
@@ -857,7 +857,7 @@ export function AdminReports() {
     }
   }
   return (
-    <section className="ad-page">
+    <section className="dashboard-page">
       <Heading
         title="Artwork reports"
         detail="Review reported artwork issues and record resolution decisions."
@@ -871,7 +871,7 @@ export function AdminReports() {
         <Loading error={error} />
       ) : data.rows?.length ? (
         data.rows.map((r: Row) => (
-          <article className="ad-report" key={r.submission_id}>
+          <article className="dashboard-report" key={r.submission_id}>
             <h3>
               {r.slug} / {r.variation} · {r.format}
             </h3>
@@ -937,12 +937,12 @@ export function AdminPlugin() {
   }
   const latest = data?.rows?.[0];
   return (
-    <main className="ad-page ad-plugin-page">
+    <main className="dashboard-page dashboard-plugin-page">
       <Heading
         title="Plugin"
         detail="Published Community count, recorded with source evidence."
       />
-      <div className="ad-plugin-grid"><section className="ad-panel"><div className="ad-panel-header"><div><h2>Published install count</h2><p>Manually updated from the Community listing.</p></div></div>
+      <div className="dashboard-plugin-grid"><section className="dashboard-panel"><div className="dashboard-panel-header"><div><h2>Published install count</h2><p>Manually updated from the Community listing.</p></div></div>
       {!data ? (
         <Loading error={error} />
       ) : latest ? (
@@ -953,7 +953,7 @@ export function AdminPlugin() {
               ? "Stale (older than seven days)"
               : "Recent snapshot"}
           </p>
-          <strong className="ad-big-number">
+          <strong className="dashboard-big-number">
             {Number(latest.count).toLocaleString()}
           </strong>
           <p>
@@ -966,9 +966,9 @@ export function AdminPlugin() {
           </a>
         </section>
       ) : (
-        <div className="ad-plugin-empty"><strong className="ad-big-number">—</strong><p>No snapshot recorded</p><State panel={data as Panel} /></div>
+        <div className="dashboard-plugin-empty"><strong className="dashboard-big-number">—</strong><p>No snapshot recorded</p><State panel={data as Panel} /></div>
       )}
-      </section><form onSubmit={submit} className="ad-editor">
+      </section><form onSubmit={submit} className="dashboard-editor">
         <h2>Record published count</h2>
         <p>
           Copy the count from the Community listing. This is not active plugin
@@ -1073,7 +1073,7 @@ function Breakdown({
       ) : null}
       {panel.state === "empty" ? <State panel={panel} /> : null}
       {panel.rows?.map((r, i) => (
-        <div className="ad-bar-row" key={i}>
+        <div className="dashboard-bar-row" key={i}>
           <span>{String(r[dimension] ?? r.timestamp ?? "Unknown")}</span>
           <meter
             min={0}
@@ -1098,12 +1098,12 @@ export function AdminAnalytics() {
     0,
   );
   return (
-    <main className="ad-page">
+    <main className="dashboard-page">
       <Heading
         title="Analytics"
         detail="Production website traffic and aggregate product activity. Dates use UTC."
       />
-      <div className="ad-toolbar">
+      <div className="dashboard-toolbar">
         {[7, 30, 90].map((days) => (
           <button
             key={days}
@@ -1148,8 +1148,8 @@ export function AdminAnalytics() {
             {data.range.since} through {data.range.until}. Provider retention
             limits apply; unavailable periods are labeled.
           </p>
-          {data.traffic.day.state === "unconfigured" && <div className="ad-integration-notice" role="status"><BarChart3 size={19}/><div><strong>Website analytics is not connected</strong><p>{data.traffic.day.message}</p></div></div>}
-          <div className="ad-stats">
+          {data.traffic.day.state === "unconfigured" && <div className="dashboard-integration-notice" role="status"><BarChart3 size={19}/><div><strong>Website analytics is not connected</strong><p>{data.traffic.day.message}</p></div></div>}
+          <div className="dashboard-stats">
             <div>
               <span>Pageviews</span>
               <strong>
@@ -1177,7 +1177,7 @@ export function AdminAnalytics() {
               </small>
             </div>
           </div>
-          <div className="ad-columns">
+          <div className="dashboard-columns">
             {[
               ["day", "Daily pageviews"],
               ["requestPath", "Top pages"],
@@ -1207,7 +1207,7 @@ export function AdminAnalytics() {
               describe prepared downloads, not confirmed disk saves.
             </p>
             {data.product.rows ? (
-              <div className="ad-table-wrap">
+              <div className="dashboard-table-wrap">
                 <table>
                   <thead>
                     <tr>
@@ -1362,13 +1362,13 @@ export function AdminV2Editorial() {
     }
   }
   return (
-    <main className="ad-page ad-editorial-page">
+    <main className="dashboard-page dashboard-editorial-page">
       <Heading
         title="V2 preview updates"
         detail="Maintain preview announcements and release notes. Changes go live after review and deployment."
       />
-      <div className="ad-editorial-toolbar">
-        <div className="ad-editorial-tabs" aria-label="V2 editorial content">
+      <div className="dashboard-editorial-toolbar">
+        <div className="dashboard-editorial-tabs" aria-label="V2 editorial content">
           <button
             aria-pressed={kind === "updates"}
             onClick={() => {
@@ -1409,7 +1409,7 @@ export function AdminV2Editorial() {
         </p>
       ) : null}
       {removed ? (
-        <p className="ad-editorial-undo" role="status">
+        <p className="dashboard-editorial-undo" role="status">
           Entry removed from draft.{" "}
           <button
             onClick={() => {
@@ -1422,9 +1422,9 @@ export function AdminV2Editorial() {
           </button>
         </p>
       ) : null}
-      <div className="ad-editorial-layout">
+      <div className="dashboard-editorial-layout">
         <nav
-          className="ad-editorial-index"
+          className="dashboard-editorial-index"
           aria-label={kind === "updates" ? "Announcements" : "Release notes"}
         >
           {draft[kind].map((row, i) => (
@@ -1449,12 +1449,12 @@ export function AdminV2Editorial() {
             </p>
           ) : null}
         </nav>
-        <form className="ad-editorial-form" onSubmit={save}>
+        <form className="dashboard-editorial-form" onSubmit={save}>
           {kind === "updates" && update ? (
             <>
-              <div className="ad-form-heading">
+              <div className="dashboard-form-heading">
                 <h2>Announcement details</h2>
-                <span className="ad-status">{update.status}</span>
+                <span className="dashboard-status">{update.status}</span>
               </div>
               <label>
                 Title
@@ -1479,7 +1479,7 @@ export function AdminV2Editorial() {
                   collection totals current.
                 </small>
               </label>
-              <div className="ad-form-two">
+              <div className="dashboard-form-two">
                 <label>
                   Publication date
                   <input
@@ -1502,7 +1502,7 @@ export function AdminV2Editorial() {
                   </WorkspaceSelect>
                 </label>
               </div>
-              <div className="ad-form-two">
+              <div className="dashboard-form-two">
                 <label>
                   Link label
                   <input
@@ -1527,9 +1527,9 @@ export function AdminV2Editorial() {
             </>
           ) : kind === "changelog" && release ? (
             <>
-              <div className="ad-form-heading">
+              <div className="dashboard-form-heading">
                 <h2>Release details</h2>
-                <span className="ad-status">{release.status}</span>
+                <span className="dashboard-status">{release.status}</span>
               </div>
               <label>
                 Release title
@@ -1540,7 +1540,7 @@ export function AdminV2Editorial() {
                   minLength={2}
                 />
               </label>
-              <div className="ad-form-two">
+              <div className="dashboard-form-two">
                 <label>
                   Version / preview label
                   <input
@@ -1585,14 +1585,14 @@ export function AdminV2Editorial() {
           ) : (
             <p>Select an entry or add a new draft.</p>
           )}
-          <footer className="ad-form-actions">
+          <footer className="dashboard-form-actions">
             <button type="submit" disabled={busy}>
               {busy ? "Preparing…" : "Create review pull request"}
             </button>
             {draft[kind][index] ? (
               <button
                 type="button"
-                className="ad-remove-entry"
+                className="dashboard-remove-entry"
                 onClick={() => {
                   setRemoved(structuredClone(draft));
                   setDraft((current) =>
