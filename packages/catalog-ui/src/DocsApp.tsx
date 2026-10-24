@@ -19,6 +19,7 @@ const GITHUB_URL = "https://github.com/adeyemimayokun/awalogo";
 const sections = [
   { id: "overview", label: "Overview", icon: BookOpen },
   { id: "website", label: "Using the website", icon: Landmark },
+  { id: "v2", label: "V2 preview", icon: BookOpen },
   { id: "developer", label: "Developer setup", icon: PackageOpen },
   { id: "contributing", label: "Contributing", icon: GitPullRequest },
   { id: "verification", label: "Verification and use", icon: ShieldCheck }
@@ -79,7 +80,7 @@ export function DocsApp({ aboutMarkdown = "" }: { aboutMarkdown?: string }) {
 
     document.title = "Docs | awalogo";
     const description = document.querySelector<HTMLMetaElement>('meta[name="description"]');
-    if (description) description.content = "Documentation for using and contributing to awalogo, the Nigerian financial logo library.";
+    if (description) description.content = "Documentation for awalogo: V1 financial logos, the V2 Nigerian and African brand/flag preview, and contribution workflows.";
 
     return () => systemTheme.removeEventListener("change", applyTheme);
   }, [themeMode]);
@@ -103,7 +104,7 @@ export function DocsApp({ aboutMarkdown = "" }: { aboutMarkdown?: string }) {
         <span className="frame-register frame-register-bottom-right" aria-hidden="true" />
         <p className="eyebrow"><FileCode2 aria-hidden="true" size={13} strokeWidth={1.75} /> Documentation</p>
         <h1>Build with awalogo.</h1>
-        <p>Use verified Nigerian financial logos on the web, in product interfaces, and inside Figma. Learn how the catalog is structured and how to contribute safely.</p>
+        <p>Use reviewed brand resources on the web and financial logos inside Figma. Explore the V1 catalog, the separate V2 company/flag preview, and safe contribution workflows.</p>
         <nav className="docs-jump-links" aria-label="Documentation sections">
           {sections.slice(1, 4).map(({ id, label }) => <a key={id} href={`#${id}`}>{label}</a>)}
         </nav>
@@ -127,7 +128,7 @@ export function DocsApp({ aboutMarkdown = "" }: { aboutMarkdown?: string }) {
         <article className="docs-content">
           <section id="overview" className="docs-section">
             <h2>Overview</h2>
-            <p>awalogo is an open source catalog of Nigerian banks, fintechs, payment providers, insurers, investment firms, regulators, and related financial institutions.</p>
+            <p>awalogo began with an open source catalog of Nigerian banks, fintechs, payment providers, insurers, investment firms, regulators, and related financial institutions. V1 and the current plugin retain that catalog; the <a href="#v2">V2 preview</a> adds independently reviewed companies across industries and country flags.</p>
             <p>Each accepted record connects recognizable brand metadata to reviewed SVG or raster assets. The website provides the public browsing and download experience.</p>
             <div className="docs-note">
               <strong>Distribution status</strong>
@@ -148,6 +149,19 @@ export function DocsApp({ aboutMarkdown = "" }: { aboutMarkdown?: string }) {
               <div><strong>PNG</strong><p>Best for documents and tools that need broad raster support.</p></div>
               <div><strong>WebP</strong><p>Best for compact web delivery when vector artwork is unnecessary.</p></div>
             </div>
+          </section>
+
+          <section id="v2" className="docs-section">
+            <h2>V2 preview: companies and flags</h2>
+            <p><a href="/v2">V2</a> remains Coming soon. It adds reviewed Nigerian companies across industries, African companies and <a href="/v2/flags">country/territory flags</a> without replacing V1 artwork. The current Figma plugin still uses the original catalog; these additions are web-only.</p>
+            <p>Unfiltered logo and flag lists show 20 items per page. Pagination includes up to three previous and two next page numbers, plus first/last jumps. Searches and filtered results remain unpaginated. Logo filters support multiple categories, industry and operating market; flags use regions and country names/codes.</p>
+            <p>Separate search suggestions use similar names and explicitly sourced corporate affiliations. Flag suggestions use names only. Former names are searchable; searching 9mobile opens its community-sourced historical artwork under T2 rather than replacing the current logo.</p>
+            <p>The draggable floating download bag supports Pack into bag, Drop item and Drop all. Bulk drop offers an eight-second Undo; later changes dismiss that snapshot. Mixed logo/flag ZIPs retain the 50-item/100 MB limits and include source metadata and the flag artwork license. Preparation locks collection changes.</p>
+            <p>Asset panels expose available formats, versions, code copying and share links. Logo reporting stays at the end of the panel; flags do not use that endpoint. Source verification is not trademark permission, and reviewed community artwork is not officially verified.</p>
+            <p>V2 supports light/dark themes and English, Hausa, Yoruba, Igbo and Nigerian Pidgin. Translations await fluent review. Action sounds are enabled after interaction unless muted in More options; page load, typing, hover and dragging remain silent.</p>
+            <p>Keyboard shortcuts: <kbd>/</kbd> focuses the current collection search, <kbd>Alt+B</kbd> toggles the bag, <kbd>Alt+R</kbd> opens logo requests, and <kbd>Escape</kbd> closes the active layer. Global shortcuts ignore typing and composition. Focused bag arrow keys move it; Home restores its position.</p>
+            <p>Flags use pinned MIT-licensed flag-icons artwork in standardized 4:3 and square variants, not guaranteed official national proportions. Brand colors, PDF guidelines, owner publishing, SEO/prerendering and V2 plugin support remain planned. Preview implementation does not imply production launch or completed browser/audio/mobile checks.</p>
+            <a href={`${GITHUB_URL}/blob/main/docs/v2-guide.md`} target="_blank" rel="noreferrer">Read the detailed V2 guide</a>
           </section>
 
           <section id="developer" className="docs-section">
@@ -172,7 +186,7 @@ export function DocsApp({ aboutMarkdown = "" }: { aboutMarkdown?: string }) {
 
           <section id="contributing" className="docs-section">
             <h2>Contributing</h2>
-            <p>Contributions should improve accuracy, provenance, coverage, or tooling. New logos require an official source and should never be recreated by tracing a raster image.</p>
+            <p>Contributions should improve accuracy, provenance, coverage, or tooling. Officially verified logos require an official source and should never be recreated by tracing a raster image. New V2 companies use the separate packages/brands review workflow; explicitly reviewed community artwork keeps a non-official status. Do not rewrite existing financial records to add other industries.</p>
             <h3>Add or update a logo</h3>
             <ol className="docs-steps docs-steps-compact">
               <li><strong>Add the source</strong><span>Place official artwork under <code>packages/logos/src</code> and keep the filename aligned with its slug.</span></li>
@@ -193,12 +207,13 @@ export function DocsApp({ aboutMarkdown = "" }: { aboutMarkdown?: string }) {
             <h2>Verification and acceptable use</h2>
             <div className="docs-definition-list">
               <div><dt>Verified</dt><dd>Artwork has a current institution-owned source such as an official website, media kit, annual report, or regulatory PDF.</dd></div>
-              <div><dt>Needs review</dt><dd>Artwork may be useful for research but is not presented as officially verified until provenance is confirmed.</dd></div>
+              <div><dt>Needs review</dt><dd>Artwork is not officially verified. V2 can publish manually reviewed community artwork with explicit provenance, including historical versions; unresolved/unapproved candidates remain unpublished.</dd></div>
               <div><dt>Raster only</dt><dd>Official PNG, WebP, or JPEG artwork may be accepted when no official vector is published. It is never traced to manufacture an SVG.</dd></div>
             </div>
             <h3>Trademark notice</h3>
             <p>Code, metadata, and tooling are available under the MIT License. Logo artwork and company names remain trademarks of their respective owners and are not relicensed by awalogo.</p>
             <p>Downloading an asset does not grant permission to imply affiliation, partnership, or endorsement. Check each institution's current brand guidelines before use.</p>
+            <p>Flag artwork has a separate upstream MIT license, included with mixed ZIPs. Standardized flag dimensions do not establish official national proportions. Community review does not turn company artwork into an MIT-licensed or officially verified asset.</p>
           </section>
         </article>
       </div>

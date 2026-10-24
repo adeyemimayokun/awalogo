@@ -1,6 +1,11 @@
 # awalogo Figma Community Submission Pack
 
-Last reviewed: 21 July 2026
+Listing copy last reviewed: 21 July 2026. Compatibility note reviewed: 18 October 2026.
+
+This submission describes the current V1-compatible financial-logo plugin only.
+Do not advertise V2 company additions, flags, translations, sounds or the floating
+bag as plugin capabilities; those are web-preview features pending a separate
+compatibility release. V2 remains Coming soon.
 
 This document contains the copy and settings needed to publish awalogo to the
 Figma Community. Text inside fenced blocks is ready to paste into Figma.

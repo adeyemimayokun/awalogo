@@ -32,9 +32,12 @@ The process began with a structured list of Nigerian financial institutions. Log
 
 The approved artwork was then prepared in practical formats—including SVG, PNG, and WebP—so it could support different design and development workflows. Raster logos are preserved in their original format rather than being inaccurately traced or redrawn as vectors.
 
-The project also includes a searchable public catalog and a repository-synced Figma plugin. Both consume the same versioned runtime catalog, while contribution and review workflows allow the collection to grow with clear sourcing and quality standards.
+The project also includes a searchable public V1 catalog and a repository-synced Figma plugin. Those two consume the same versioned runtime catalog, while the separate V2 preview adds reviewed resources without changing that compatibility boundary. Contribution and review workflows keep sourcing and quality standards explicit.
 
-Today, awalogo publishes **228 available logos**, with more institutions being researched and added over time.
+V1 and the current Figma plugin publish **228 available financial logos**. As of
+18 October 2026, the separate **Coming soon V2 preview** combines those unchanged
+records with 84 reviewed company additions (312 companies) and 249 country/territory
+flags. These preview additions are not included in the current plugin.
 
 ## Built for the community
 
@@ -42,6 +45,14 @@ awalogo is an open-source project built on the belief that a resource called “
 
 The code and supporting tools are free to use and improve. The logos themselves remain trademarks of their respective owners, and their inclusion does not transfer ownership or imply endorsement.
 
-This is only the beginning. The long-term vision is to expand beyond financial services into other Nigerian industries and, eventually, include institutions from across Africa and the rest of the world.
+That expansion beyond finance is now underway in the V2 preview: Nigerian companies
+across industries and African companies, with provenance kept separate from the
+original catalog. Discovery includes aliases, previous identities, filters, compact
+pagination and sourced/name recommendations. A floating pack/drop bag, mixed ZIPs,
+code copying, reporting, themes and Nigerian-language drafts support reuse.
+
+The preview is not a public launch or a complete company registry. Owner publishing,
+brand colors, guidelines and wider plugin support remain planned. See the
+[V2 guide](https://github.com/adeyemimayokun/awalogo/blob/main/docs/v2-guide.md).
 
 Designers looking for assets, developers building products, and contributors with verified corrections are all invited to use awalogo and help make it better.

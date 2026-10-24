@@ -4,6 +4,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import { CatalogApp, DocsApp, NotFoundApp } from "@awalogo/catalog-ui";
 import aboutMarkdown from "../../../docs/content/about.md?raw";
+import { sanitizeAnalyticsEvent, shouldTrackAnalytics } from "./site-analytics";
 
 const AdminApp = lazy(() => import("@awalogo/catalog-ui/admin").then((module) => ({
   default: module.AdminApp
@@ -14,7 +15,12 @@ const isV2Route = window.location.pathname === "/v2" || window.location.pathname
 const isAdminRoute = window.location.pathname.startsWith("/admin");
 const isDocsRoute = window.location.pathname === "/docs" || window.location.pathname.startsWith("/docs/");
 const isCatalogRoute = window.location.pathname === "/";
-const analyticsEnabled = import.meta.env.PROD && import.meta.env.VITE_ENABLE_VERCEL_ANALYTICS === "true";
+const analyticsEnabled = shouldTrackAnalytics({
+  productionBuild:import.meta.env.PROD,
+  enabled:import.meta.env.VITE_ENABLE_VERCEL_ANALYTICS,
+  url:window.location.href,
+  privacyOptOut:navigator.doNotTrack === "1" || (navigator as Navigator & { globalPrivacyControl?:boolean }).globalPrivacyControl === true
+});
 const speedInsightsEnabled = import.meta.env.PROD && import.meta.env.VITE_ENABLE_VERCEL_SPEED_INSIGHTS === "true";
 if (isAdminRoute) document.documentElement.dataset.admin = "true";
 
@@ -35,7 +41,7 @@ root.render(
     ) : (
       <NotFoundApp aboutMarkdown={aboutMarkdown} />
     )}
-    {analyticsEnabled && window.location.pathname !== "/v2/requests" ? <Analytics /> : null}
+    {analyticsEnabled ? <Analytics mode="production" debug={false} beforeSend={sanitizeAnalyticsEvent} /> : null}
     {speedInsightsEnabled && window.location.pathname !== "/v2/requests" ? <SpeedInsights /> : null}
   </>
 );

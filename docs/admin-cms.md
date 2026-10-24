@@ -25,3 +25,11 @@ For local end-to-end testing, use `vercel dev` so both the Vite frontend and `/a
 - Typed confirmation for destructive actions.
 
 New logos are created with `needs-review` status. A maintainer must verify the official source and change the status during pull-request review before the asset appears in the public catalog.
+## V2 Preview Boundary
+
+The existing admin workflows do not constitute the planned V2 brand-owner portal.
+Independent company and historical additions use the reviewed `packages/brands`
+pipeline; flags use their pinned importer. The V2 preview-only updates/changelog
+live in `apps/web/src/v2-release-notes.ts`, separate from the shared V1 editorial
+feeds managed here. Do not advertise owner claims, direct owner publishing,
+colors/guidelines or plugin expansion as completed. See [the V2 guide](v2-guide.md).

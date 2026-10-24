@@ -1,0 +1,209 @@
+/* V2 visual contract, isolated from the published V1 website and controller. */
+:root {
+  --plugin-ink: #252525;
+  --plugin-muted: #70706e;
+  --plugin-line: #e5e5e2;
+  --plugin-surface: #fff;
+  --plugin-canvas: #fff;
+  --plugin-hover: #f4f4f4;
+  --plugin-focus: #92928e;
+  --plugin-error: #b42318;
+  --plugin-control-radius: 12px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--plugin-ink);
+  background: var(--plugin-canvas);
+  -webkit-font-smoothing: antialiased;
+}
+html[data-theme="dark"] {
+  --plugin-ink: #ededeb;
+  --plugin-muted: #aaa;
+  --plugin-line: #3b3b3b;
+  --plugin-surface: #1c1c1c;
+  --plugin-canvas: #151515;
+  --plugin-hover: #282828;
+  --plugin-error: #ffb4ab;
+}
+html[data-theme] body { background: var(--plugin-canvas); color: var(--plugin-ink); }
+html[data-theme] .plugin-shell { max-width: 1200px; font-size: 14px; line-height: 1.5; }
+html[data-theme] .plugin-shell * { letter-spacing: 0; }
+html[data-theme] .plugin-shell :is(button, input, select, textarea) { font-family: inherit; }
+html[data-theme] .plugin-shell :is(button, a, select) { touch-action: manipulation; }
+html[data-theme] .plugin-shell :is(button, a) { transition: background 160ms ease-out, border-color 160ms ease-out, color 160ms ease-out; }
+html[data-theme] .plugin-shell :is(button, input, select, textarea, a):focus-visible { outline: 2px solid var(--plugin-focus); outline-offset: 3px; }
+
+html[data-theme] .plugin-shell :is(.topbar, .results-summary, .logo-grid, .logo-tile, .empty-state, .load-more-row, .site-footer) {
+  background: transparent; border-color: var(--plugin-line); color: var(--plugin-ink);
+}
+html[data-theme] .plugin-shell .topbar { min-height: 64px; padding: 12px 20px; gap: 16px; }
+html[data-theme] .plugin-shell .topbar-actions { gap: 8px; }
+html[data-theme] .plugin-shell .brand strong { font-size: 22px; color: var(--plugin-ink); }
+html[data-theme] .plugin-shell .brand-mark { border: 0; background: transparent; }
+html[data-theme] .plugin-shell .brand small { font-size: 10px; color: var(--plugin-muted); }
+html[data-theme] .plugin-shell .catalog-intro { padding: 32px 20px 24px; }
+html[data-theme] .plugin-shell .catalog-intro h1 { font-size: 28px; line-height: 1.25; font-weight: 620; color: var(--plugin-ink); }
+html[data-theme] .plugin-shell .catalog-intro > p:last-child { font-size: 13px; line-height: 1.7; max-width: 60ch; color: var(--plugin-muted); }
+html[data-theme] .plugin-shell .eyebrow { font-family: inherit; font-size: 10px; line-height: 1.5; font-weight: 550; color: var(--plugin-muted); }
+html[data-theme] .plugin-shell .catalog-controls { padding: 0 20px; }
+html[data-theme] .plugin-shell .plugin-resource-tabs { padding: 0 20px 20px; }
+html[data-theme] .plugin-shell .results-summary { padding: 20px; font-family: inherit; font-size: 12px; color: var(--plugin-muted); border: 0; flex-wrap: wrap; }
+
+html[data-theme] .plugin-shell :is(.theme-menu-trigger, .theme-menu-popover, .asset-count, .search-box input, .category-picker-trigger, .category-picker-panel, .category-search, .request-consent, .dimension-field, .aspect-lock, .copy-button, .download-button, .plugin-bag-trigger, .plugin-result-actions button, .plugin-result-actions select, .plugin-secondary-actions button, .plugin-pack-row button, .plugin-drop-all, .plugin-pack-undo button, .load-more-row button) {
+  background: var(--plugin-surface); color: var(--plugin-ink); border-color: var(--plugin-line); border-radius: var(--plugin-control-radius); box-shadow: none;
+}
+html[data-theme] .plugin-shell :is(.theme-menu-option, .category-option, .plugin-resource-tabs button, .category-clear-button, .category-picker-header-actions button, .category-search button, .search-clear, .close-button) {
+  background: transparent; color: var(--plugin-ink); border-color: var(--plugin-line); box-shadow: none;
+}
+html[data-theme] .plugin-shell :is(.theme-menu-trigger, .plugin-bag-trigger) { width: 36px; min-height: 36px; padding: 6px; }
+html[data-theme] .plugin-shell .theme-menu { display: inline-flex; gap: 0; flex-shrink: 0; border: 1px solid var(--plugin-line); border-radius: var(--plugin-control-radius); background: var(--plugin-surface); }
+html[data-theme] .plugin-shell .theme-menu > .theme-menu-trigger { height: 34px; min-height: 34px; border: 0; box-shadow: none; border-radius: 11px 0 0 11px; background: transparent; }
+html[data-theme] .plugin-shell .theme-menu > .theme-menu-trigger[aria-haspopup="menu"] { width: 28px; border-left: 1px solid var(--plugin-line); border-radius: 0 11px 11px 0; }
+html[data-theme] .plugin-shell .theme-menu:focus-within { border-color: var(--plugin-focus); }
+html[data-theme] .plugin-shell .theme-menu > .theme-menu-trigger:is(:hover, :focus-visible, [aria-expanded="true"]) { outline: none; outline-offset: 0; background: var(--plugin-hover); }
+html[data-theme] .plugin-shell .plugin-bag-trigger { width: auto; padding-inline: 10px; }
+html[data-theme] .plugin-shell :is(.plugin-request-primary, .plugin-result-actions button, .plugin-result-actions select, .plugin-secondary-actions button, .plugin-pack-row button, .plugin-drop-all, .plugin-pack-undo button, .category-picker-actions button, .load-more-row button) { min-height: 36px; font-size: 12px; font-weight: 500; }
+html[data-theme] .plugin-shell .category-picker-trigger { min-height: 36px; padding: 8px 12px; }
+html[data-theme] .plugin-shell .category-picker-copy strong { font-size: 12px; font-weight: 500; }
+html[data-theme] .plugin-shell .category-picker-icon { background: transparent; color: var(--plugin-muted); }
+html[data-theme] .plugin-shell .category-picker-trigger[aria-expanded="true"] { border-color: var(--plugin-focus); box-shadow: inset 0 0 0 1px var(--plugin-focus); }
+html[data-theme] .plugin-shell .category-picker-panel { box-shadow: 0 8px 30px #0002; }
+html[data-theme] .plugin-shell :is(.category-picker-header, .category-picker-actions) { border-color: var(--plugin-line); }
+html[data-theme] .plugin-shell :is(.category-picker-header small, .category-picker-header-actions > span, .category-picker-result-count, .category-picker-chevron, .category-option small, .category-no-results, .search-icon) { color: var(--plugin-muted); }
+html[data-theme] .plugin-shell .category-option { border-color: transparent; min-height: 36px; font-size: 12px; }
+html[data-theme] .plugin-shell .category-options label.category-option { grid-template-columns: 16px minmax(0, 1fr) max-content; gap: 10px; padding: 8px 10px; cursor: pointer; }
+html[data-theme] .plugin-shell .category-options label.category-option > input { width: 16px; height: 16px; margin: 0; accent-color: var(--plugin-ink); cursor: pointer; }
+html[data-theme] .plugin-shell .category-options label.category-option > span { white-space: normal; overflow: visible; overflow-wrap: anywhere; line-height: 1.5; }
+html[data-theme] .plugin-shell .category-options label.category-option.selected { font-weight: 600; }
+html[data-theme] .plugin-shell .plugin-filter-chips { display: flex; flex-wrap: wrap; gap: 8px; padding: 16px 20px 0; }
+html[data-theme] .plugin-shell .plugin-filter-chips button { display: inline-flex; align-items: center; gap: 10px; min-height: 36px; max-width: 100%; padding: 7px 10px; border: 1px solid var(--plugin-line); border-radius: var(--plugin-control-radius); background: var(--plugin-surface); color: var(--plugin-ink); font-size: 12px; text-align: left; overflow-wrap: anywhere; }
+html[data-theme] .plugin-shell .plugin-filter-chips button:hover { border-color: var(--plugin-focus); }
+html[data-theme] .plugin-shell .plugin-filter-chips svg { flex-shrink: 0; }
+html[data-theme] .plugin-shell :is(.category-option.selected, .theme-menu-option[aria-checked="true"], .plugin-resource-tabs button[aria-pressed="true"]) { background: var(--plugin-hover); color: var(--plugin-ink); border-color: transparent; }
+html[data-theme] .plugin-shell :is(.category-option.selected small, .category-option.selected > svg, .category-option-check) { color: var(--plugin-ink); }
+html[data-theme] .plugin-shell .category-search input { background: transparent; color: var(--plugin-ink); font-size: 12px; }
+html[data-theme] .plugin-shell .category-search { min-width: 0; margin: 10px 12px; border: 1px solid var(--plugin-line); }
+html[data-theme] .plugin-shell .category-search input { min-width: 0; height: 40px; }
+/* Compound fields expose focus on their rounded container, not the inner input. */
+html[data-theme] .plugin-shell :is(.category-search, .dimension-field) input:focus-visible { outline: none; outline-offset: 0; box-shadow: none; }
+html[data-theme] .plugin-shell :is(.search-box input, .request-field input, .request-field select, .request-field textarea) { background: var(--plugin-surface); color: var(--plugin-ink); border: 1px solid var(--plugin-line); border-radius: var(--plugin-control-radius); box-shadow: none; font-size: 12px; }
+html[data-theme] .plugin-shell .search-box input { height: 40px; }
+html[data-theme] .plugin-shell :is(.request-field input, .request-field select) { height: 36px; }
+html[data-theme] .plugin-shell .request-field textarea { min-height: 110px; padding: 12px; }
+html[data-theme] .plugin-shell :is(.search-box input, .category-search input, .request-field input, .request-field textarea)::placeholder { color: var(--plugin-muted); opacity: 1; }
+html[data-theme] .plugin-shell :is(.search-box input, .request-field input, .request-field select, .request-field textarea):focus,
+html[data-theme] .plugin-shell :is(.dimension-field, .category-search):focus-within { outline: none; border-color: var(--plugin-focus); box-shadow: inset 0 0 0 1px var(--plugin-focus); }
+html[data-theme] .plugin-shell .request-field [aria-invalid="true"] { border-color: var(--plugin-error); }
+html[data-theme] .plugin-shell .request-error { color: var(--plugin-error) !important; font-size: 12px !important; }
+html[data-theme] .plugin-shell input[type="checkbox"] { accent-color: var(--plugin-ink); }
+html[data-theme] .plugin-shell .plugin-select { position: relative; display: inline-flex; min-width: 0; max-width: 100%; }
+html[data-theme] .plugin-shell .plugin-select select { appearance: none; -webkit-appearance: none; display: block; box-sizing: border-box; min-width: 0; max-width: 100%; width: 100%; height: 36px; padding: 7px 40px 7px 12px; border: 1px solid var(--plugin-line); border-radius: var(--plugin-control-radius); background: var(--plugin-surface); color: var(--plugin-ink); font: inherit; font-size: 12px; cursor: pointer; }
+html[data-theme] .plugin-shell .plugin-select > svg { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); pointer-events: none; color: var(--plugin-muted); }
+html[data-theme] .plugin-shell .request-field > .plugin-select { width: 100%; }
+html[data-theme] .plugin-shell .plugin-result-actions > .plugin-select { width: 164px; }
+html[data-theme] .plugin-shell .plugin-select select:is(:focus, :focus-visible) { outline: none; outline-offset: 0; border-color: var(--plugin-focus); box-shadow: inset 0 0 0 1px var(--plugin-focus); }
+html[data-theme] .plugin-shell .plugin-select select:disabled { cursor: not-allowed; opacity: .55; }
+html[data-theme] .plugin-shell .plugin-select select[aria-invalid="true"] { border-color: var(--plugin-error); }
+
+html[data-theme] .plugin-shell .logo-grid { gap: 24px 20px; border: 0; padding: 0 20px; }
+html[data-theme] .plugin-shell .logo-grid .logo-tile { display: block; border: 0; padding: 0; background: transparent; border-radius: 8px; }
+html[data-theme] .plugin-shell .tile-preview { height: auto; aspect-ratio: 2 / 1; min-height: 110px; background: #fff; border: 1px solid var(--plugin-line); border-radius: 8px; padding: 20px; }
+html[data-theme] .plugin-shell :is(.tile-preview, .detail-preview).logo-preview-dark { background: #252525; }
+html[data-theme] .plugin-shell .tile-preview img { max-width: 100%; max-height: 72px; }
+html[data-theme] .plugin-shell .tile-copy { display: grid; gap: 3px; margin-top: 10px; }
+html[data-theme] .plugin-shell .tile-copy strong { color: var(--plugin-ink); font-size: 12px; line-height: 1.5; font-weight: 600; white-space: normal; overflow-wrap: anywhere; }
+html[data-theme] .plugin-shell .tile-copy small { color: var(--plugin-muted); font-size: 10px; line-height: 1.5; white-space: normal; overflow-wrap: anywhere; }
+html[data-theme] .plugin-shell .tile-meta { display: flex; flex-wrap: wrap; gap: 4px 8px; margin-top: 8px; font-family: inherit; font-size: 10px; line-height: 1.5; color: var(--plugin-muted); }
+html[data-theme] .plugin-shell .tile-meta > span { border: 0; padding: 0; color: var(--plugin-muted); }
+html[data-theme] .plugin-shell .new-tag { background: var(--plugin-surface); color: var(--plugin-muted); border: 1px solid var(--plugin-line); border-radius: 4px; }
+
+html[data-theme] .plugin-shell .detail-backdrop { justify-content: center; align-items: center; padding: 12px; background: #20202045; backdrop-filter: blur(4px); }
+html[data-theme] .plugin-shell :is(.detail-sheet, .project-sheet) { width: 480px; max-width: 100%; height: 100%; max-height: calc(100dvh - 24px); margin: 0; padding: 24px 20px; background: var(--plugin-surface); color: var(--plugin-ink); border: 1px solid var(--plugin-line); border-radius: 16px; box-shadow: 0 16px 70px #0002; animation: plugin-panel-in 240ms cubic-bezier(.2,.8,.2,1) both; }
+html[data-theme] .plugin-shell .detail-header { padding: 0; gap: 16px; }
+html[data-theme] .plugin-shell .detail-sheet { height: auto; }
+html[data-theme] .plugin-shell .detail-header h2 { margin: 6px 0 10px; font-size: 22px; line-height: 1.3; font-weight: 620; color: var(--plugin-ink); overflow-wrap: anywhere; }
+html[data-theme] .plugin-shell .detail-header p { font-size: 12px; color: var(--plugin-muted); }
+html[data-theme] .plugin-shell .close-button { flex: 0 0 36px; width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--plugin-line); }
+html[data-theme] .plugin-shell :is(.verified-label, .verified-label.community) { background: transparent; color: var(--plugin-muted); font-family: inherit; font-size: 10px; letter-spacing: 0; }
+html[data-theme] .plugin-shell .verified-label > span { background: var(--plugin-muted); }
+html[data-theme] .plugin-shell .detail-media { margin-top: 20px; border: 0; }
+html[data-theme] .plugin-shell .detail-preview { height: 152px; background: #fff; border: 1px solid var(--plugin-line); border-radius: 8px; padding: 24px; }
+html[data-theme] .plugin-shell .format-picker { margin-bottom: 16px; border-color: var(--plugin-line); }
+html[data-theme] .plugin-shell .format-picker button { min-height: 36px; background: transparent; color: var(--plugin-muted); border: 0; border-bottom: 2px solid transparent; font-family: inherit; font-size: 12px; line-height: 1.5; font-weight: 500; }
+html[data-theme] .plugin-shell .format-picker button.active { background: transparent; color: var(--plugin-ink); border-bottom-color: var(--plugin-ink); }
+html[data-theme] .plugin-shell :is(.detail-facts, .detail-facts > div, .detail-facts > div:first-child, .dimension-control, .project-sheet-content, .request-submit-row, .plugin-report, .plugin-pack-row, .changelog-entry, .changelog-entry header > span) { border-color: var(--plugin-line); }
+html[data-theme] .plugin-shell :is(.detail-facts dt, .dimension-title, .dimension-field > span, .dimension-field > small, .variation-picker > span, .request-field > span) { color: var(--plugin-muted); font-family: inherit; font-size: 11px; text-transform: none; }
+html[data-theme] .plugin-shell :is(.detail-facts dd, .detail-facts a, .dimension-field input, .request-consent strong, .changelog-entry h3) { color: var(--plugin-ink); font-family: inherit; font-size: 12px; }
+html[data-theme] .plugin-shell .dimension-field { height: 36px; }
+html[data-theme] .plugin-shell .aspect-lock[aria-pressed="true"] { background: var(--plugin-hover); color: var(--plugin-ink); border-color: var(--plugin-focus); }
+html[data-theme] .plugin-shell .variation-picker > div { background: transparent; border-color: var(--plugin-line); border-radius: var(--plugin-control-radius); }
+html[data-theme] .plugin-shell .variation-picker button { min-height: 36px; border-radius: var(--plugin-control-radius); background: transparent; color: var(--plugin-muted); border-color: transparent; font-family: inherit; }
+html[data-theme] .plugin-shell .variation-picker button.active { background: var(--plugin-hover); color: var(--plugin-ink); border-color: var(--plugin-line); }
+html[data-theme] .plugin-shell :is(.detail-actions.plugin-actions, .plugin-secondary-actions) { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+html[data-theme] .plugin-shell .plugin-secondary-actions { padding: 0; margin-top: 10px; }
+html[data-theme] .plugin-shell :is(.detail-actions.plugin-actions, .plugin-secondary-actions) > button { width: 100%; min-width: 0; height: auto; justify-content: center; white-space: normal; overflow-wrap: anywhere; line-height: 1.5; }
+html[data-theme] .plugin-shell :is(.detail-actions.plugin-actions, .plugin-secondary-actions) > button svg { flex-shrink: 0; }
+html[data-theme] .plugin-shell .plugin-report { margin-top: 40px; padding: 24px 0 0; color: var(--plugin-muted); }
+html[data-theme] .plugin-shell .plugin-pack-sheet .detail-header { margin-bottom: 20px; }
+html[data-theme] .plugin-shell .plugin-pack-row { padding: 16px 0; }
+html[data-theme] .plugin-shell .plugin-pack-row small { color: var(--plugin-muted); }
+html[data-theme] .plugin-shell .plugin-pack-row button { flex-shrink: 0; }
+html[data-theme] .plugin-shell .plugin-pack-undo { border: 1px solid var(--plugin-line); border-radius: var(--plugin-control-radius); padding: 10px 12px; }
+html[data-theme] .plugin-shell :is(.project-sheet-content p, .project-sheet-content ol, .changelog-entry ul, .changelog-entry time, .request-consent small, .request-submit-row > p) { font-family: inherit; color: var(--plugin-muted); font-size: 12px; line-height: 1.7; }
+html[data-theme] .plugin-shell .request-field-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+html[data-theme] .plugin-shell .request-consent { border-radius: var(--plugin-control-radius); }
+html[data-theme] .plugin-shell .changelog-entry { background: transparent; border-radius: 0; box-shadow: none; }
+html[data-theme] .plugin-shell .changelog-entry header > span { background: var(--plugin-hover); color: var(--plugin-muted); border-radius: 4px; }
+
+html[data-theme] .plugin-shell :is(.plugin-request-primary, .insert-button, .project-sheet-action, .category-apply-button, .empty-state-action) { background: var(--plugin-ink); color: var(--plugin-surface); border: 1px solid var(--plugin-ink); border-radius: var(--plugin-control-radius); min-height: 36px; padding: 8px 14px; font-size: 12px; font-weight: 500; }
+html[data-theme] .plugin-shell :is(.copy-button, .download-button) { min-height: 36px; padding: 8px 14px; font-size: 12px; font-weight: 500; }
+html[data-theme] .plugin-shell .site-footer { width: auto; margin: 32px 20px 0; padding: 20px 0; border-top: 1px solid var(--plugin-line); }
+html[data-theme] .plugin-shell .footer-inner { width: 100%; border: 0; padding: 0; }
+html[data-theme] .plugin-shell .frame-register { display: none; }
+html[data-theme] .plugin-shell .footer-topbar { padding: 0 0 16px; border-color: var(--plugin-line); }
+html[data-theme] .plugin-shell :is(.footer-brand, .footer-nav button, .footer-bottom, .footer-meta-links a) { color: var(--plugin-muted); font-family: inherit; font-size: 11px; }
+html[data-theme] .plugin-shell .footer-copyright button { border-color: var(--plugin-line); background: var(--plugin-surface); color: var(--plugin-ink); }
+html[data-theme] .plugin-shell .plugin-footer { display: grid; gap: 12px; }
+html[data-theme] .plugin-shell .plugin-footer-header { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+html[data-theme] .plugin-shell .plugin-footer-brand { display: inline-flex; align-items: center; gap: 8px; color: var(--plugin-ink); font-size: 14px; }
+html[data-theme] .plugin-shell .plugin-footer-brand img { display: block; object-fit: contain; }
+html[data-theme] .plugin-shell .plugin-footer-links { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 16px; min-width: 0; }
+html[data-theme] .plugin-shell .plugin-footer-links :is(button, a) { display: inline-flex; align-items: center; gap: 6px; min-height: 36px; max-width: 100%; padding: 4px 0; border: 0; border-radius: 4px; background: transparent; color: var(--plugin-ink); text-decoration: none; font-size: 12px; line-height: 1.5; white-space: normal; overflow-wrap: anywhere; }
+html[data-theme] .plugin-shell .plugin-footer-external a { color: var(--plugin-muted); }
+html[data-theme] .plugin-shell .plugin-footer-links :is(button, a):hover { color: var(--plugin-ink); text-decoration: underline; text-underline-offset: 4px; }
+html[data-theme] .plugin-shell .plugin-footer-top { display: grid; place-items: center; flex: 0 0 36px; width: 36px; min-height: 36px; border: 1px solid var(--plugin-line); border-radius: var(--plugin-control-radius); background: transparent; color: var(--plugin-muted); }
+html[data-theme] .plugin-shell .plugin-footer-top:hover { border-color: var(--plugin-focus); color: var(--plugin-ink); }
+html[data-theme] .plugin-shell .plugin-footer-note { margin: 0; max-width: 65ch; color: var(--plugin-muted); font-size: 11px; line-height: 1.7; overflow-wrap: anywhere; }
+html[data-theme] .plugin-shell .toast { background: var(--plugin-ink); color: var(--plugin-surface); border: 1px solid var(--plugin-line); border-radius: var(--plugin-control-radius); font-family: inherit; font-size: 12px; }
+html[data-theme] .plugin-shell .empty-state { border: 0; color: var(--plugin-muted); padding: 48px 20px; }
+html[data-theme] .plugin-shell .empty-state :is(h2, p), html[data-theme] .plugin-shell .empty-state > span { color: var(--plugin-muted); }
+html[data-theme] .catalog-connection-state { background: var(--plugin-canvas); color: var(--plugin-ink); }
+html[data-theme] .catalog-connection-state h1 { font-size: 22px; font-weight: 620; }
+html[data-theme] .catalog-connection-state p { color: var(--plugin-muted); font-size: 13px; }
+html[data-theme] .catalog-connection-state button { min-height: 36px; border: 1px solid var(--plugin-ink); border-radius: var(--plugin-control-radius); background: var(--plugin-ink); color: var(--plugin-surface); padding: 8px 14px; }
+
+@media (hover: hover) {
+  html[data-theme] .plugin-shell :is(.theme-menu-trigger, .theme-menu-option, .category-option, .category-clear-button, .search-clear, .close-button, .copy-button, .download-button, .plugin-secondary-actions button, .plugin-pack-row button, .load-more-row button, .aspect-lock, .variation-picker button):hover:not(:disabled) { background: var(--plugin-hover); color: var(--plugin-ink); border-color: var(--plugin-focus); }
+  html[data-theme] .plugin-shell :is(.plugin-request-primary, .insert-button, .project-sheet-action, .category-apply-button, .empty-state-action):hover:not(:disabled) { background: var(--plugin-ink); color: var(--plugin-surface); opacity: .9; }
+  html[data-theme] .plugin-shell .logo-tile:hover .tile-preview { border-color: var(--plugin-focus); }
+}
+@media (max-width: 640px) {
+  html[data-theme] .plugin-shell .logo-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 16px; }
+  html[data-theme] .plugin-shell .topbar { flex-wrap: wrap; }
+  html[data-theme] .plugin-shell .category-picker-panel { border-radius: 16px; }
+}
+@media (max-width: 380px) {
+  html[data-theme] .plugin-shell .request-field-row { grid-template-columns: minmax(0, 1fr); }
+  html[data-theme] .plugin-shell .dimension-control { grid-template-columns: minmax(0, 1fr) 36px minmax(0, 1fr); }
+  html[data-theme] .plugin-shell .dimension-title { grid-column: 1 / -1; }
+  html[data-theme] .plugin-shell :is(.detail-actions.plugin-actions, .plugin-secondary-actions) { grid-template-columns: minmax(0, 1fr); }
+}
+@media (pointer: coarse) {
+  html[data-theme] .plugin-shell :is(button, select, .request-field input, .search-box input) { min-height: 44px; height: auto; }
+  html[data-theme] .plugin-shell :is(.theme-menu-trigger, .close-button, .aspect-lock) { min-width: 44px; }
+  html[data-theme] .plugin-shell .theme-menu > .theme-menu-trigger { height: 44px; min-height: 44px; }
+  html[data-theme] .plugin-shell .plugin-select select { height: 44px; min-height: 44px; }
+  html[data-theme] .plugin-shell .category-options label.category-option { min-height: 44px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html[data-theme] .plugin-shell *, html[data-theme] .plugin-shell *::before, html[data-theme] .plugin-shell *::after { animation-duration: .01ms; transition-duration: .01ms; }
+}
+@keyframes plugin-panel-in { from { opacity: 0; transform: translateX(12px); } to { opacity: 1; transform: translateX(0); } }

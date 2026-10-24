@@ -110,6 +110,7 @@ export function validateCatalog(): ValidationIssue[] {
         if (existsSync(variationAssetPath)) {
           const svg = readFileSync(variationAssetPath, "utf8").trim();
           const rootSvgTag = svg.match(/^<svg\b[^>]*>/i)?.[0] ?? "";
+          if (!/\sxmlns\s*=\s*["']http:\/\/www\.w3\.org\/2000\/svg["']/.test(rootSvgTag)) issues.push({ slug: variationSlug, message: "Root SVG must declare the SVG namespace for standalone image previews." });
           if (!svg.startsWith("<svg")) issues.push({ slug: variationSlug, message: "SVG asset must start with an <svg> element." });
           if (!/\bviewBox\s*=\s*["'][^"']+["']/i.test(rootSvgTag)) issues.push({ slug: variationSlug, message: "Root SVG must declare a viewBox." });
           if (/<script[\s>]/i.test(svg)) issues.push({ slug: variationSlug, message: "SVG asset contains a script tag." });
@@ -133,6 +134,9 @@ export function validateCatalog(): ValidationIssue[] {
     }
 
     const rootSvgTag = svg.match(/^<svg\b[^>]*>/i)?.[0] ?? "";
+    if (!/\sxmlns\s*=\s*["']http:\/\/www\.w3\.org\/2000\/svg["']/.test(rootSvgTag)) {
+      issues.push({ slug: entry.slug, message: "Root SVG must declare the SVG namespace for standalone image previews." });
+    }
     if (!/\bviewBox\s*=\s*["'][^"']+["']/i.test(rootSvgTag)) {
       issues.push({ slug: entry.slug, message: "Root SVG must declare a viewBox to prevent clipped previews." });
     }

@@ -1,0 +1,11 @@
+.v2-tour-layer { position:fixed; inset:0; z-index:1000; isolation:isolate; }
+.v2-tour-spotlight { position:fixed; border:2px solid #b8b8b8; border-radius:12px; box-shadow:0 0 0 200vmax #0009; pointer-events:none; }
+.v2-tour-shade { position:absolute; inset:0; background:#0009; }
+.v2-tour-dialog { position:fixed; width:360px; max-width:calc(100vw - 32px); max-height:calc(100dvh - 32px); overflow:auto; padding:20px; border:1px solid var(--line); border-radius:12px; background:var(--surface); color:var(--ink); box-shadow:0 16px 48px #0003; outline:none; }
+.v2-tour-dialog header,.v2-tour-dialog footer,.v2-tour-dialog footer>div { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+.v2-tour-dialog header span { font-size:11px; color:var(--muted); }
+.v2-tour-dialog h2 { font-size:18px; line-height:1.3; margin:16px 0 10px; }
+.v2-tour-dialog p { font-size:13px; line-height:1.6; margin:0 0 20px; }
+.v2-tour-dialog button { display:inline-flex; align-items:center; justify-content:center; gap:8px; border:0; background:transparent; padding:8px; min-height:36px; border-radius:var(--field-radius); font-size:12px; }
+.v2-tour-dialog button.v2-primary { background:var(--ink); color:var(--surface); padding-inline:16px; }
+@media(pointer:coarse) { .v2-tour-dialog button { min-height:44px; min-width:44px; } }

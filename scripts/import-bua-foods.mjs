@@ -1,0 +1,24 @@
+import { readFile, writeFile, copyFile } from "node:fs/promises";
+import { createHash } from "node:crypto";
+import sharp from "sharp";
+
+const directory="packages/brands/research/";
+const manifest=JSON.parse(await readFile(`${directory}manifest.json`,"utf8"));
+const reviews=JSON.parse(await readFile(`${directory}reviews.json`,"utf8"));
+if (reviews.some((item) => item.slug==="bua-foods")) throw new Error("BUA Foods already reviewed");
+const bytes=await readFile("/tmp/bua-foods-logo.svg");
+const checksum=createHash("sha256").update(bytes).digest("hex");
+const metadata=await sharp(bytes).metadata();
+const path=`staging/bua-foods-reviewed-${checksum.slice(0,12)}.svg`;
+await copyFile("/tmp/bua-foods-logo.svg",`packages/brands/${path}`);
+const entry=manifest.entries.find((item) => item.slug==="bua-foods");
+const page="https://www.buafoodsplc.com/media/";
+const note="Official BUA Foods media page supplies the corporate logo and identifies its Lagos, Nigeria contact address. Reviewed visually; distinct from BUA Cement and BUA Group artwork.";
+entry.candidate_assets=[{path,source_url:"https://www.buafoodsplc.com/wp-content/uploads/2021/12/BUA-Foods-Logo.svg",discovered_on:page,source_type:"official-website",format:"svg",width:metadata.width,height:metadata.height,checksum,retrieved_at:"2026-10-19",reviewed:true}];
+entry.sources.push({url:page,type:"official-website",retrieved_at:"2026-10-19",title:"Media - BUA Foods",excerpt:note});
+entry.disposition="approved";entry.reason=note;
+reviews.push({slug:"bua-foods",decision:"approved",asset_path:path,reviewer:"Codex assisted source and visual review",reviewed_at:"2026-10-19",ownership_checked:true,visual_reviewed:true,review_notes:note,origin_country:null,headquarters_country:null,operating_countries:["NG"],preview_background:"light",evidence:[{url:page,note,retrieved_at:"2026-10-19"}],batch:"popular-brands-2026-10-19"});
+for (const entry of manifest.entries) entry.reason=entry.reason.replace(/\s+/g," ");
+await writeFile(`${directory}manifest.json`,`${JSON.stringify(manifest,null,2)}\n`);
+await writeFile(`${directory}reviews.json`,`${JSON.stringify(reviews,null,2)}\n`);
+console.log("Recorded reviewed BUA Foods addition from its official media page.");

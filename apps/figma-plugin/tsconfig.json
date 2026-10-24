@@ -12,6 +12,7 @@
     "vite.main.config.ts",
     "../../packages/logos/src",
     "../../packages/institutions/src",
-    "../../packages/catalog-ui/src/runtime-catalog.ts"
+    "../../packages/catalog-ui/src/runtime-catalog.ts",
+    "../../packages/catalog-ui/src/catalog-categories.ts"
   ]
 }

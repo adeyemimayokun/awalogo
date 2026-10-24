@@ -2,6 +2,8 @@ import { isUiToPluginMessage, type PluginToUiMessage } from "./messages";
 import { CATALOG_ORIGIN, CATALOG_PATH, parseRuntimeCatalog, type RuntimeCatalog } from "@awalogo/catalog-ui/runtime-catalog";
 import { trimAssetCache, type AssetCacheEntry } from "./cache-policy";
 import { readResponseHeader } from "./response-headers";
+import { PACK_KEY, parsePack } from "./pack";
+import { packLayout } from "./pack-layout";
 
 figma.showUI(__html__, {
   width: 420,
@@ -47,8 +49,8 @@ function errorMessage(error: unknown, fallback: string) {
 }
 
 function catalogAssetUrl(value: string) {
-  const prefix = `${CATALOG_ORIGIN}/catalog/v1/assets/`;
-  return value.startsWith(prefix) && !value.slice(prefix.length).includes("/") ? value : null;
+  const prefixes = [`${CATALOG_ORIGIN}/catalog/v1/assets/`, `${CATALOG_ORIGIN}/catalog/plugin/v2/assets/`];
+  return prefixes.some((prefix) => value.startsWith(prefix) && /^[a-f0-9]{64}\.(svg|png|webp|jpg)$/.test(value.slice(prefix.length))) ? value : null;
 }
 
 async function withTimeout<T>(promise: Promise<T>, timeoutMs: number): Promise<T> {
@@ -240,6 +242,58 @@ figma.ui.onmessage = async (message: unknown) => {
 
   if (message.type === "close") {
     figma.closePlugin();
+    return;
+  }
+
+  if (message.type === "insert-pack") {
+    const nodes: InsertedLogoNode[] = [];
+    let group: GroupNode | undefined;
+    try {
+      for (const item of message.items) {
+        const node = item.type === "insert-logo" ? figma.createNodeFromSvg(item.svg) : figma.createRectangle();
+        nodes.push(node);
+        if (item.type === "insert-image") {
+          const image = figma.createImage(new Uint8Array(item.bytes));
+          node.fills = [{ type: "IMAGE", imageHash: image.hash, scaleMode: "FIT" }];
+          node.resize(item.width, item.height);
+        }
+        node.name = item.name;
+        markInsertedLogo(node);
+      }
+      const layout = packLayout(nodes);
+      nodes.forEach((node, index) => {
+        figma.currentPage.appendChild(node);
+        const cell = layout[index];
+        if (node.type === "FRAME") node.rescale(cell.width / node.width);
+        else node.resize(cell.width, cell.height);
+        node.x = cell.x;
+        node.y = cell.y;
+      });
+      group = figma.group(nodes, figma.currentPage);
+      group.name = "awalogo · Packed assets";
+      group.x = figma.viewport.center.x - group.width / 2;
+      group.y = figma.viewport.center.y - group.height / 2;
+      figma.currentPage.selection = [group];
+      figma.viewport.scrollAndZoomIntoView([group]);
+      figma.notify(`${nodes.length} assets inserted`, { timeout: 1800 });
+      postToUi({ type: "pack-inserted", requestId: message.requestId, count: nodes.length });
+    } catch (error) {
+      if (group && !group.removed) group.remove();
+      nodes.forEach((node) => { if (!node.removed) node.remove(); });
+      requestError(message.requestId, errorMessage(error, "Could not insert bag"), "unavailable");
+    }
+    return;
+  }
+
+  if (message.type === "pack-load") {
+    try {
+      const entries = await figma.clientStorage.getAsync(PACK_KEY);
+      postToUi({ type: "pack-result", requestId: message.requestId, entries: parsePack(JSON.stringify(entries)) });
+    } catch { requestError(message.requestId, "Saved bag is unavailable", "unavailable"); }
+    return;
+  }
+  if (message.type === "pack-save") {
+    await figma.clientStorage.setAsync(PACK_KEY, parsePack(JSON.stringify(message.entries))).catch(() => postToUi({ type: "error", message: "Bag changes are available for this session only" }));
     return;
   }
 

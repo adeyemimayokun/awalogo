@@ -2,7 +2,11 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "composite": true,
-    "types": ["vite/client", "react", "react-dom"],
+    "types": [
+      "vite/client",
+      "react",
+      "react-dom"
+    ],
     "rootDir": "../.."
   },
   "include": [
@@ -12,6 +16,8 @@
     "../../api/**/*.ts",
     "../../packages/catalog-ui/src",
     "../../packages/logos/src",
-    "../../packages/institutions/src"
+    "../../packages/brands",
+    "../../packages/institutions/src",
+    "../../packages/admin"
   ]
 }

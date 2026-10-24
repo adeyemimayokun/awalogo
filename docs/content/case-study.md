@@ -88,7 +88,7 @@ The solution now provides:
 - A process for requesting, contributing, reviewing, and correcting assets.
 - A reusable technical foundation for future developer packages and integrations.
 
-Not every institution has approved artwork available yet, and not every approved logo has an official vector version. Instead of filling those gaps with unverified images, awalogo makes incomplete coverage visible while the correct assets are researched.
+Not every institution has approved artwork available yet, and not every approved logo has an official vector version. Unresolved candidates are tracked in research reports rather than shown as broken or placeholder artwork. Reviewed community material remains explicitly non-official.
 
 ## What I Learned
 
@@ -100,9 +100,28 @@ Finally, starting with a focused market made the idea more useful. Concentrating
 
 ## The Future
 
-The vision for awalogo extends beyond Nigerian financial services.
+The vision for awalogo extends beyond Nigerian financial services. This section
+was updated on 18 October 2026 to distinguish delivered preview work from the
+original financial-catalog outcome above.
 
-The next stage is to deepen coverage across banks, fintechs, regulators, insurers, and related institutions while continuing to improve the design and developer experience. From there, I plan to expand into other Nigerian industries and eventually include institutions from other African and international markets.
+The V2 Coming soon preview now combines the original 228 logos with 84 separately
+reviewed company additions (312 companies), plus 249 country/territory flags.
+Nigerian companies across industries and African companies retain reviewed origin,
+market and artwork provenance rather than being forced into financial records.
+V1 and the current plugin remain unchanged.
+
+V2 adds normalized/former-name search, multi-category and country/industry filters,
+popularity sorting, compact 20-item default pages, and separate name/sourced-link
+suggestions. A draggable floating bag supports pack/drop, bulk undo and mixed ZIPs.
+Other implemented work includes asset panels, code/share/report flows, themes,
+five-language interface drafts, keyboard shortcuts and saved action sound settings.
+Flags share applicable browsing/collection workflows without inferred affiliations.
+
+Implementation is not launch readiness. Browser/audio/mobile checks, production
+smoke tests and fluent translation review remain release gates. Owner publishing,
+brand colors, PDF guidelines, SEO/prerendering and expanded plugin support remain
+planned. The [V2 guide](https://github.com/adeyemimayokun/awalogo/blob/main/docs/v2-guide.md)
+records current behavior and limitations.
 
 awalogo is open source so designers, developers, institutions, and contributors can help shape that future.
 

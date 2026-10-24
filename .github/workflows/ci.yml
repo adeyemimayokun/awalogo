@@ -21,8 +21,13 @@ jobs:
       - run: pnpm validate
       - run: pnpm logos:check-formats
       - run: pnpm catalog:check
+      - run: pnpm catalog:generate
+      - run: pnpm brands:publish
+      - run: pnpm brands:check
+      - run: git diff --exit-code -- packages/brands/catalog.json packages/brands/research/source-report.md
       - run: pnpm institutions:check
       - run: pnpm vercel:check-functions
       - run: pnpm test
       - run: pnpm typecheck
       - run: pnpm build:plugin
+      - run: pnpm build:web

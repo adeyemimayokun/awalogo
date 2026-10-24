@@ -1,0 +1,119 @@
+{
+  "momo-payment-service-bank": {
+    "aliases": [
+      "MTN MoMo",
+      "MoMo from MTN",
+      "MoMo PSB",
+      "MTN Mobile Money"
+    ],
+    "source_url": "https://www.mtn.ng/software-labs/momo"
+  },
+  "abuja-electricity-distribution-company": {
+    "aliases": [
+      "DisCo",
+      "DisCos",
+      "electricity distribution",
+      "electricity distribution companies"
+    ],
+    "source_url": "https://nerc.gov.ng/need-help/services/licencees/"
+  },
+  "benin-electricity-distribution-company": {
+    "aliases": [
+      "DisCo",
+      "DisCos",
+      "electricity distribution",
+      "electricity distribution companies"
+    ],
+    "source_url": "https://nerc.gov.ng/need-help/services/licencees/"
+  },
+  "eko-electricity-distribution-company": {
+    "aliases": [
+      "DisCo",
+      "DisCos",
+      "electricity distribution",
+      "electricity distribution companies"
+    ],
+    "source_url": "https://nerc.gov.ng/need-help/services/licencees/"
+  },
+  "enugu-electricity-distribution-company": {
+    "aliases": [
+      "DisCo",
+      "DisCos",
+      "electricity distribution",
+      "electricity distribution companies"
+    ],
+    "source_url": "https://nerc.gov.ng/need-help/services/licencees/"
+  },
+  "ibadan-electricity-distribution-company": {
+    "aliases": [
+      "DisCo",
+      "DisCos",
+      "electricity distribution",
+      "electricity distribution companies"
+    ],
+    "source_url": "https://nerc.gov.ng/need-help/services/licencees/"
+  },
+  "ikeja-electric": {
+    "aliases": [
+      "DisCo",
+      "DisCos",
+      "electricity distribution",
+      "electricity distribution companies"
+    ],
+    "source_url": "https://nerc.gov.ng/need-help/services/licencees/"
+  },
+  "jos-electricity-distribution-company": {
+    "aliases": [
+      "DisCo",
+      "DisCos",
+      "electricity distribution",
+      "electricity distribution companies"
+    ],
+    "source_url": "https://nerc.gov.ng/need-help/services/licencees/"
+  },
+  "kaduna-electric": {
+    "aliases": [
+      "DisCo",
+      "DisCos",
+      "electricity distribution",
+      "electricity distribution companies"
+    ],
+    "source_url": "https://nerc.gov.ng/need-help/services/licencees/"
+  },
+  "kano-electricity-distribution-company": {
+    "aliases": [
+      "DisCo",
+      "DisCos",
+      "electricity distribution",
+      "electricity distribution companies"
+    ],
+    "source_url": "https://nerc.gov.ng/need-help/services/licencees/"
+  },
+  "port-harcourt-electricity-distribution-company": {
+    "aliases": [
+      "DisCo",
+      "DisCos",
+      "electricity distribution",
+      "electricity distribution companies"
+    ],
+    "source_url": "https://nerc.gov.ng/need-help/services/licencees/"
+  },
+  "yola-electricity-distribution-company": {
+    "aliases": [
+      "DisCo",
+      "DisCos",
+      "electricity distribution",
+      "electricity distribution companies"
+    ],
+    "source_url": "https://nerc.gov.ng/need-help/services/licencees/"
+  },
+  "aba-power": {
+    "aliases": [
+      "DisCo",
+      "DisCos",
+      "electricity distribution",
+      "electricity distribution companies"
+    ],
+    "source_url": "https://nerc.gov.ng/wp-content/uploads/2024/11/Aba-Power-Electricity-Distribution-Plc.-Monthly-Energy-Cap-November-2024.pdf"
+  }
+}

@@ -1,6 +1,37 @@
 # Contributing
 
-Thanks for helping make Nigerian financial brand assets easier to use.
+Thanks for helping make Nigerian and African brand resources easier to use.
+
+## Choose The Correct Collection
+
+The legacy instructions below apply to the financial catalog shared by V1 and the
+current plugin. New V2 companies must use [packages/brands](packages/brands/README.md),
+not financial-institution records. Preserve existing catalog/asset checksums; do not
+replace old identities automatically or reset baselines to hide differences.
+
+V2 accepts official artwork and explicitly reviewed community artwork with distinct
+provenance; community material must never be marked officially verified. Historical
+artwork is a previous variation, not a second company or a current identity.
+Flags use the separately pinned [flag workflow](docs/flags.md) and upstream license.
+
+For V2 UI work, preserve shared logo/flag pagination, controls, pack/drop/undo,
+keyboard, audio and language behavior. Add all four translated values for new keys;
+draft translations still need fluent-speaker review. Source affiliation metadata
+explicitly; do not infer relationships from similar logos, names or industries.
+
+```sh
+pnpm brands:publish
+pnpm brands:check
+pnpm test
+pnpm --filter @awalogo/web typecheck
+pnpm build:web
+pnpm build:plugin
+```
+
+Also verify desktop/mobile, both themes, keyboard-only operation, mute/reduced-motion
+preferences and mixed ZIPs. A plain Vite server does not run Vercel APIs; test report,
+request and persistent popularity delivery in the correct runtime without sending
+real emails from automated tests. See the [V2 guide](docs/v2-guide.md).
 
 ## Logo Acceptance Rules
 

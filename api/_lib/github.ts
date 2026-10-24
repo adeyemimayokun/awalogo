@@ -397,3 +397,21 @@ export async function createCatalogPullRequest(options: {
     body: JSON.stringify({ title: options.title, body: options.body, head, base })
   }, options.sessionToken);
 }
+
+export async function listPendingPublications(sessionToken?: string): Promise<Array<{number:number;title:string;html_url:string;publicationState:string;deploymentUrl?:string}>> {
+  if (isLocalRepositoryMode()) return [];
+  const {owner,repo}=repository();
+  const rows=await github<Array<{number:number;title:string;html_url:string;state:string;merged_at:string|null;merge_commit_sha:string|null;head:{ref:string}}>>(
+    `/repos/${owner}/${repo}/pulls?state=all&sort=updated&direction=desc&per_page=100`,{},sessionToken);
+  const relevant=rows.filter(row=>row.head.ref.startsWith('cms/')&&(row.state==='open'||row.merged_at&&Date.now()-Date.parse(row.merged_at)<30*86400000)).slice(0,20);
+  return Promise.all(relevant.map(async row=>{
+    let publicationState=row.state==='open'?'Pending review':'Merged · deployment unverified';let deploymentUrl:string|undefined;
+    if(row.merged_at&&row.merge_commit_sha){try{
+      const status=await github<{state:string;statuses:Array<{context:string;target_url:string|null}>}>(`/repos/${owner}/${repo}/commits/${row.merge_commit_sha}/status`,{},sessionToken);
+      publicationState=status.state==='success'?'Checks passed · deployed catalog unverified':status.state==='failure'||status.state==='error'?'Checks failed · publication requires attention':'Merged · checks pending';
+      const target=status.statuses.find(item=>/vercel/i.test(item.context))?.target_url;
+      if(target&&/^https:\/\//.test(target))deploymentUrl=target;
+    }catch{publicationState='Merged · deployment status unavailable';}}
+    return {number:row.number,title:row.title,html_url:row.html_url,publicationState,deploymentUrl};
+  }));
+}

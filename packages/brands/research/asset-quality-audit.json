@@ -1,0 +1,1883 @@
+{
+  "scope": "Heuristic source-quality audit, not a claim that every icon or enlarged logo is incorrect. No legacy or existing expansion records are rewritten.",
+  "reviewed_at": "2026-10-19",
+  "brands_checked": 381,
+  "entries": [
+    {
+      "slug": "advansio",
+      "name": "advansio",
+      "collection": "legacy",
+      "source_url": "https://advansio.com/img/sticky-logo.png",
+      "original_dimensions": [
+        177,
+        56
+      ],
+      "published_dimensions": [
+        1024,
+        324
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "african-alliance-insurance",
+      "name": "African Alliance Insurance",
+      "collection": "legacy",
+      "source_url": "https://www.africanallianceplc.com/wp-content/uploads/2018/11/AAI_OnWhite.png",
+      "original_dimensions": [
+        262,
+        145
+      ],
+      "published_dimensions": [
+        1024,
+        567
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "alliance-and-general-insurance-company",
+      "name": "Alliance & General Insurance Company",
+      "collection": "legacy",
+      "source_url": "https://aginsuranceplc.com/wp-content/uploads/2020/03/A-G-removebg-preview.png",
+      "original_dimensions": [
+        511,
+        284
+      ],
+      "published_dimensions": [
+        1024,
+        569
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "arm-securities",
+      "name": "ARM Securities",
+      "collection": "legacy",
+      "source_url": "https://www.arm.com.ng/wp-content/uploads/2021/07/securities-logo.webp",
+      "original_dimensions": [
+        116,
+        57
+      ],
+      "published_dimensions": [
+        1024,
+        503
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "bank-of-industry",
+      "name": "Bank of Industry",
+      "collection": "legacy",
+      "source_url": "https://www.boi.ng/wp-content/uploads/2024/10/BOI-Logo-sm.webp",
+      "original_dimensions": [
+        600,
+        149
+      ],
+      "published_dimensions": [
+        1024,
+        254
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "boff-and-co-insurance-brokers-l-t-d",
+      "name": "Boff & Co.Insurance Brokers L.t.d",
+      "collection": "legacy",
+      "source_url": "https://boffbrokers.com/media/2026/04/ae1ee086-283a-44f6-a10b-43caf1d0f718-LOGO-for-WEB.png",
+      "original_dimensions": [
+        478,
+        173
+      ],
+      "published_dimensions": [
+        1024,
+        371
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "capital-express-indemnity-insurance",
+      "name": "Capital Express Indemnity Insurance",
+      "collection": "legacy",
+      "source_url": "https://ceiil.ng/wp-content/uploads/2024/06/cropped-ceiil-litt.png",
+      "original_dimensions": [
+        216,
+        70
+      ],
+      "published_dimensions": [
+        1024,
+        332
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "cardinal-stone-pensions",
+      "name": "Cardinal Stone Pensions",
+      "collection": "legacy",
+      "source_url": "https://cardinalstonepensions.com/wp-content/uploads/2024/11/cardinalstone-Pensions-2Artboard-4.png",
+      "original_dimensions": [
+        538,
+        195
+      ],
+      "published_dimensions": [
+        1024,
+        371
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "cardinalstone-securities",
+      "name": "CardinalStone",
+      "collection": "legacy",
+      "source_url": "https://www.cardinalstone.com/wp-content/uploads/2019/09/cardinalstone-logo.png",
+      "original_dimensions": [
+        250,
+        63
+      ],
+      "published_dimensions": [
+        1024,
+        258
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "central-bank-of-nigeria",
+      "name": "Central Bank of Nigeria",
+      "collection": "legacy",
+      "source_url": "https://www.cbn.gov.ng/images/CBN_Logo_Wordmark.png",
+      "original_dimensions": [
+        288,
+        100
+      ],
+      "published_dimensions": [
+        1024,
+        356
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "chapel-hill-denham",
+      "name": "Chapel Hill Denham",
+      "collection": "legacy",
+      "source_url": "https://chapelhilldenham.com/wp-content/uploads/2024/04/chapel-hill-denham-logo-retina-white-version.png",
+      "original_dimensions": [
+        450,
+        139
+      ],
+      "published_dimensions": [
+        1024,
+        316
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "citizens-pensions",
+      "name": "Citizens Pensions",
+      "collection": "legacy",
+      "source_url": "https://citizenspensions.com/wp-content/uploads/2025/03/CITIZENS-PENSIONS.png",
+      "original_dimensions": [
+        458,
+        104
+      ],
+      "published_dimensions": [
+        1024,
+        233
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "ckk-insurance-brokers",
+      "name": "CKK INSURANCE BROKERS",
+      "collection": "legacy",
+      "source_url": "https://ckkcapital.com.ng/assets/img/logo-2.png",
+      "original_dimensions": [
+        164,
+        60
+      ],
+      "published_dimensions": [
+        1024,
+        375
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "connectpoint-technology-solutions",
+      "name": "Connectpoint Technology Solutions",
+      "collection": "legacy",
+      "source_url": "https://connectpoint.com.ng/wp-content/uploads/2025/07/ConnectPoint-favicon-1.png",
+      "original_dimensions": [
+        512,
+        512
+      ],
+      "published_dimensions": [
+        1024,
+        1024
+      ],
+      "flags": [
+        "raster-enlarged",
+        "icon-source"
+      ],
+      "disposition": "reviewed-v2-correction"
+    },
+    {
+      "slug": "coralpay",
+      "name": "CoralPay",
+      "collection": "legacy",
+      "source_url": "https://contacts.zoho.com/file?ot=8&t=serviceorg&ID=798870174",
+      "original_dimensions": [
+        350,
+        350
+      ],
+      "published_dimensions": [
+        1024,
+        1024
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "cordros-insurance-brokers",
+      "name": "CORDROS INSURANCE BROKERS",
+      "collection": "legacy",
+      "source_url": "https://cordros.com/_next/static/media/capital-logo.1ezr-1cy8xqkf.png",
+      "original_dimensions": [
+        315,
+        87
+      ],
+      "published_dimensions": [
+        1024,
+        283
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "cornerstone-insurance",
+      "name": "Cornerstone Insurance",
+      "collection": "legacy",
+      "source_url": "https://cornerstone.com.ng/assets/images/my-img/logo.png",
+      "original_dimensions": [
+        117,
+        52
+      ],
+      "published_dimensions": [
+        1024,
+        455
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "creditstar-microinsurance",
+      "name": "CREDITSTAR MICROINSURANCE",
+      "collection": "legacy",
+      "source_url": "https://www.mycreditstar.com/assets/img/creditstarlogo.png",
+      "original_dimensions": [
+        382,
+        141
+      ],
+      "published_dimensions": [
+        1024,
+        378
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "crown-takaful-insurance",
+      "name": "Crown Takaful Insurance",
+      "collection": "legacy",
+      "source_url": "https://crowntakaful.com/wp-content/uploads/2025/07/CTI-Logo.png",
+      "original_dimensions": [
+        514,
+        482
+      ],
+      "published_dimensions": [
+        1024,
+        960
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "dunbell-insurance-brokers",
+      "name": "Dunbell Insurance Brokers",
+      "collection": "legacy",
+      "source_url": "https://insurance.dunbellinvestmentgroup.com/wp-content/uploads/2022/07/LOGO.png",
+      "original_dimensions": [
+        402,
+        127
+      ],
+      "published_dimensions": [
+        1024,
+        324
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "fairmoney-microfinance-bank",
+      "name": "FairMoney",
+      "collection": "legacy",
+      "source_url": "https://fairmoney.io/assets/fairmoney-logo-DR-jkARz.png",
+      "original_dimensions": [
+        582,
+        96
+      ],
+      "published_dimensions": [
+        1024,
+        169
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "fcmb-group",
+      "name": "FCMB Group",
+      "collection": "legacy",
+      "source_url": "https://www.fcmbgroup.com/images/logo4.png",
+      "original_dimensions": [
+        117,
+        130
+      ],
+      "published_dimensions": [
+        922,
+        1024
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "fcmb-pensions",
+      "name": "FCMB Pensions",
+      "collection": "legacy",
+      "source_url": "https://fcmbpensions.com/img/FCMBPensions-New-Logo-i.png",
+      "original_dimensions": [
+        250,
+        120
+      ],
+      "published_dimensions": [
+        1024,
+        492
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "fin-insurance-company",
+      "name": "FIN Insurance Company",
+      "collection": "legacy",
+      "source_url": "https://finsurance.com.ng/media-assets/file1720790621.png",
+      "original_dimensions": [
+        177,
+        54
+      ],
+      "published_dimensions": [
+        1024,
+        312
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "first-adequate-benefit-insurance-brokers-l-t-d",
+      "name": "First Adequate Benefit Insurance Brokers L.t.d",
+      "collection": "legacy",
+      "source_url": "https://firstadequatebrokers.com/wp-content/uploads/2025/10/first-adequate-logo.webp",
+      "original_dimensions": [
+        149,
+        66
+      ],
+      "published_dimensions": [
+        1024,
+        454
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "flex-financial-technologies",
+      "name": "FLEXFINANCE",
+      "collection": "legacy",
+      "source_url": "https://useflexfinance.com/assets/img/photos/Logo.webp",
+      "original_dimensions": [
+        118,
+        48
+      ],
+      "published_dimensions": [
+        1024,
+        417
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "fsdh-merchant-bank",
+      "name": "FSDH Merchant Bank",
+      "collection": "legacy",
+      "source_url": "https://fsdhmerchantbank.com/wp-content/uploads/2020/09/Merchant-logo.png",
+      "original_dimensions": [
+        99,
+        80
+      ],
+      "published_dimensions": [
+        1024,
+        827
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "goxi-microinsurance-company",
+      "name": "Goxi Microinsurance Company",
+      "collection": "legacy",
+      "source_url": "https://goximicroinsurance.com/assets/img/active/logo.png",
+      "original_dimensions": [
+        394,
+        237
+      ],
+      "published_dimensions": [
+        1024,
+        616
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "great-nigeria-insurance",
+      "name": "Great Nigeria Insurance",
+      "collection": "legacy",
+      "source_url": "https://greatnigeriaplc.com/images/logo.png",
+      "original_dimensions": [
+        227,
+        75
+      ],
+      "published_dimensions": [
+        1024,
+        338
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "green-leaf-insurance-brokers",
+      "name": "GREEN LEAF INSURANCE BROKERS",
+      "collection": "legacy",
+      "source_url": "https://www.greenleafib.com/wp-content/uploads/2021/09/gl3-188x41.png",
+      "original_dimensions": [
+        188,
+        41
+      ],
+      "published_dimensions": [
+        1024,
+        223
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "guaranty-trust-pension-managers",
+      "name": "Guaranty Trust Pension Managers",
+      "collection": "legacy",
+      "source_url": "https://www.gtpensionmanagers.com/wp-content/uploads/2025/05/Pension-Managers-logo-new.png",
+      "original_dimensions": [
+        579,
+        374
+      ],
+      "published_dimensions": [
+        1024,
+        661
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "guinea-insurance",
+      "name": "Guinea Insurance",
+      "collection": "legacy",
+      "source_url": "https://guineainsurance.com/public/media-assets//file1706788434.png",
+      "original_dimensions": [
+        250,
+        130
+      ],
+      "published_dimensions": [
+        1024,
+        532
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "hilal-takaful",
+      "name": "Hilal Takaful",
+      "collection": "legacy",
+      "source_url": "https://hilaltakaful.com.ng/web/image/website/1/logo/Hilal%20Takaful%20Nig.%20Ltd?unique=31eac42",
+      "original_dimensions": [
+        228,
+        114
+      ],
+      "published_dimensions": [
+        1024,
+        512
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "industrial-and-general-insurance",
+      "name": "Industrial & General Insurance",
+      "collection": "legacy",
+      "source_url": "https://www.iginigeria.com/wp-content/uploads/2019/06/logo-69x50.png",
+      "original_dimensions": [
+        69,
+        50
+      ],
+      "published_dimensions": [
+        1024,
+        742
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "jaiz-takaful",
+      "name": "Jaiz Takaful",
+      "collection": "legacy",
+      "source_url": "https://jaiztakafulinsurance.com/images/img/transperent.png",
+      "original_dimensions": [
+        216,
+        63
+      ],
+      "published_dimensions": [
+        1024,
+        299
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "keystone-bank",
+      "name": "Keystone Bank",
+      "collection": "legacy",
+      "source_url": "https://www.keystonebankng.com/wp-content/uploads/2020/11/cropped-keystone-bank-logo.png",
+      "original_dimensions": [
+        348,
+        108
+      ],
+      "published_dimensions": [
+        1024,
+        318
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "kiakia-bits",
+      "name": "KIA KIA P2P",
+      "collection": "legacy",
+      "source_url": "https://kiakia.co/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.1c368d6b.png&w=384&q=75",
+      "original_dimensions": [
+        139,
+        39
+      ],
+      "published_dimensions": [
+        1024,
+        287
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "lasaco-assurance",
+      "name": "LASACO Assurance",
+      "collection": "legacy",
+      "source_url": "https://lasacoassurance.com/assets/uploads/logo.png",
+      "original_dimensions": [
+        200,
+        73
+      ],
+      "published_dimensions": [
+        1024,
+        374
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "lead-fort-insurance-brokers-l-t-d",
+      "name": "Lead Fort Insurance Brokers L.t.d",
+      "collection": "legacy",
+      "source_url": "https://leadfortbrokers.com/img/leadfort.png",
+      "original_dimensions": [
+        396,
+        177
+      ],
+      "published_dimensions": [
+        1024,
+        458
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "leadway-assurance-company",
+      "name": "Leadway Assurance Company",
+      "collection": "legacy",
+      "source_url": "https://www.leadway.com/wp-content/uploads/2025/03/leadway_logo.webp",
+      "original_dimensions": [
+        432,
+        544
+      ],
+      "published_dimensions": [
+        813,
+        1024
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "momo-payment-service-bank",
+      "name": "MoMo Payment Service Bank",
+      "collection": "legacy",
+      "source_url": "https://www.momoagent.com/cdn/shop/files/momo-img.png?v=1683684664&width=500",
+      "original_dimensions": [
+        415,
+        253
+      ],
+      "published_dimensions": [
+        1024,
+        624
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "reviewed-v2-correction"
+    },
+    {
+      "slug": "moneymaster-payment-service-bank",
+      "name": "MoneyMaster Payment Service Bank",
+      "collection": "legacy",
+      "source_url": "https://moneymasterpsb.com/wp-content/uploads/2022/07/mmpsb-logo.png",
+      "original_dimensions": [
+        348,
+        96
+      ],
+      "published_dimensions": [
+        1024,
+        282
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "mutual-aid-microsinsurance",
+      "name": "Mutual Aid Microsinsurance",
+      "collection": "legacy",
+      "source_url": "https://mutualspecialists.com/wp-content/uploads/2024/02/DDD.png",
+      "original_dimensions": [
+        336,
+        126
+      ],
+      "published_dimensions": [
+        1024,
+        384
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "national-insurance-commission",
+      "name": "NAICOM",
+      "collection": "legacy",
+      "source_url": "https://naicom.gov.ng/wp-content/uploads/2020/07/NAICOM-SmallX3-Size-Logo.png",
+      "original_dimensions": [
+        152,
+        145
+      ],
+      "published_dimensions": [
+        1024,
+        977
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "nigeria-deposit-insurance-corporation",
+      "name": "NDIC",
+      "collection": "legacy",
+      "source_url": "https://ndic.gov.ng/wp-content/uploads/2020/08/ndic_small_logo_v2.png",
+      "original_dimensions": [
+        129,
+        50
+      ],
+      "published_dimensions": [
+        1024,
+        397
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "nem-insurance",
+      "name": "NEM Insurance",
+      "collection": "legacy",
+      "source_url": "https://nem-insurance.com/assets/uploads/logo.jpg",
+      "original_dimensions": [
+        113,
+        152
+      ],
+      "published_dimensions": [
+        761,
+        1024
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "nomba",
+      "name": "nomba",
+      "collection": "legacy",
+      "source_url": "https://nomba.com/favicon.png",
+      "original_dimensions": [
+        1024,
+        1024
+      ],
+      "published_dimensions": [
+        1024,
+        1024
+      ],
+      "flags": [
+        "icon-source"
+      ],
+      "disposition": "reviewed-v2-correction"
+    },
+    {
+      "slug": "npf-pension-managers",
+      "name": "NPF Pension Managers",
+      "collection": "legacy",
+      "source_url": "https://npfpensions.com.ng/images/logo.png",
+      "original_dimensions": [
+        60,
+        60
+      ],
+      "published_dimensions": [
+        1024,
+        1024
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "nsia-insurance-company",
+      "name": "NSIA Insurance Company",
+      "collection": "legacy",
+      "source_url": "https://nsiainsurance.com.ng/wp-content/uploads/2022/07/Logo-NSIA-Insurance-2-White-background-1.png",
+      "original_dimensions": [
+        876,
+        383
+      ],
+      "published_dimensions": [
+        1024,
+        448
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "palmpay",
+      "name": "PALMPAY",
+      "collection": "legacy",
+      "source_url": "https://www.palmpay.com/_next/static/media/logo.0wv~imdq~cwkl.png",
+      "original_dimensions": [
+        272,
+        64
+      ],
+      "published_dimensions": [
+        1024,
+        241
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "parthian-pensions",
+      "name": "Parthian Pensions",
+      "collection": "legacy",
+      "source_url": "https://parthianpensions.com/wp-content/uploads/2025/06/Logo1-PP.png",
+      "original_dimensions": [
+        604,
+        180
+      ],
+      "published_dimensions": [
+        1024,
+        305
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "payfixy",
+      "name": "Payfixy",
+      "collection": "legacy",
+      "source_url": "https://stage.payfixy.com/wp-content/uploads/2022/09/cropped-Payfixy_3@2400x-e1664296465560.png",
+      "original_dimensions": [
+        806,
+        250
+      ],
+      "published_dimensions": [
+        1024,
+        318
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "polaris-bank",
+      "name": "Polaris Bank",
+      "collection": "legacy",
+      "source_url": "https://www.polarisbanklimited.com/wp-content/uploads/2022/12/logo-new-small.png",
+      "original_dimensions": [
+        105,
+        105
+      ],
+      "published_dimensions": [
+        1024,
+        1024
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "premium-pension",
+      "name": "Premium Pension",
+      "collection": "legacy",
+      "source_url": "https://premiumpension.com/favicon.png",
+      "original_dimensions": [
+        85,
+        87
+      ],
+      "published_dimensions": [
+        1000,
+        1024
+      ],
+      "flags": [
+        "raster-enlarged",
+        "icon-source"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "prestige-assurance",
+      "name": "Prestige Assurance",
+      "collection": "legacy",
+      "source_url": "https://prestigeassuranceplc.com/media-assets//file1709101331.png",
+      "original_dimensions": [
+        369,
+        90
+      ],
+      "published_dimensions": [
+        1024,
+        250
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "prudential-zenith-life-assurance-company",
+      "name": "Prudential Zenith Life Assurance Company",
+      "collection": "legacy",
+      "source_url": "https://prudentialzenith.com/logo192.png",
+      "original_dimensions": [
+        192,
+        192
+      ],
+      "published_dimensions": [
+        1024,
+        1024
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "ratefy",
+      "name": "Ratefy",
+      "collection": "legacy",
+      "source_url": "https://ratefy.co/ratefy-icon.png",
+      "original_dimensions": [
+        370,
+        370
+      ],
+      "published_dimensions": [
+        1024,
+        1024
+      ],
+      "flags": [
+        "raster-enlarged",
+        "icon-source"
+      ],
+      "disposition": "reviewed-v2-correction"
+    },
+    {
+      "slug": "regency-alliance-insurance",
+      "name": "Regency Alliance Insurance",
+      "collection": "legacy",
+      "source_url": "https://regencyalliance.com/wp-content/uploads/2018/04/regency-logo.png",
+      "original_dimensions": [
+        153,
+        120
+      ],
+      "published_dimensions": [
+        1024,
+        803
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "rex-insurance",
+      "name": "Rex Insurance",
+      "collection": "legacy",
+      "source_url": "https://rexinsure.com/wp-content/uploads/2023/06/Rex-Insurance-Limited.png",
+      "original_dimensions": [
+        391,
+        80
+      ],
+      "published_dimensions": [
+        1024,
+        210
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "royal-exchange-prudential-life",
+      "name": "Royal Exchange Prudential Life",
+      "collection": "legacy",
+      "source_url": "https://royalexchangelife.com/wp-content/uploads/2019/09/logo-prudential.png",
+      "original_dimensions": [
+        295,
+        64
+      ],
+      "published_dimensions": [
+        1024,
+        222
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "salam-takaful",
+      "name": "Salam Takaful",
+      "collection": "legacy",
+      "source_url": "https://static.wixstatic.com/media/c13b3c_e69e4542dbad43928d29546210f13d84~mv2.jpg/v1/fill/w_147,h_202,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/Salam_logoBandG_edited.jpg",
+      "original_dimensions": [
+        147,
+        202
+      ],
+      "published_dimensions": [
+        745,
+        1024
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "signature-bank",
+      "name": "Signature Bank",
+      "collection": "legacy",
+      "source_url": "https://cba.signaturebankng.com/assets/images/single-logo.png",
+      "original_dimensions": [
+        44,
+        47
+      ],
+      "published_dimensions": [
+        959,
+        1024
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "sovereign-trust-insurance",
+      "name": "Sovereign Trust Insurance",
+      "collection": "legacy",
+      "source_url": "https://stiplc.com/sti/images/logo.png",
+      "original_dimensions": [
+        278,
+        75
+      ],
+      "published_dimensions": [
+        1024,
+        276
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "sparkle-microfinance-bank",
+      "name": "Sparkle",
+      "collection": "legacy",
+      "source_url": "https://sparkle.ng/static/sparkle-footer-logo-mark-134ea17c6ab8373466954464cadaa38e.png",
+      "original_dimensions": [
+        160,
+        159
+      ],
+      "published_dimensions": [
+        1024,
+        1018
+      ],
+      "flags": [
+        "raster-enlarged",
+        "icon-source"
+      ],
+      "disposition": "reviewed-v2-correction"
+    },
+    {
+      "slug": "suntrust-bank",
+      "name": "SunTrust Bank",
+      "collection": "legacy",
+      "source_url": "https://suntrustng.com/wp-content/uploads/2021/06/cropped-SUNTRUST-LOGO-1.png",
+      "original_dimensions": [
+        150,
+        150
+      ],
+      "published_dimensions": [
+        1024,
+        1024
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "sunu-assurances",
+      "name": "Sunu Assurances",
+      "collection": "legacy",
+      "source_url": "https://sunu-group.com/assets/images/logo.png",
+      "original_dimensions": [
+        92,
+        65
+      ],
+      "published_dimensions": [
+        1024,
+        723
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "tajbank",
+      "name": "TAJBank",
+      "collection": "legacy",
+      "source_url": "https://tajbank.com/wp-content/uploads/2022/07/logo.png",
+      "original_dimensions": [
+        144,
+        70
+      ],
+      "published_dimensions": [
+        1024,
+        498
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "timon",
+      "name": "Timon",
+      "collection": "legacy",
+      "source_url": "https://www.usetimon.com/logo.png",
+      "original_dimensions": [
+        452,
+        96
+      ],
+      "published_dimensions": [
+        1024,
+        217
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "trove-finance",
+      "name": "Trove",
+      "collection": "legacy",
+      "source_url": "https://www.trovefinance.com/wp-content/uploads/2022/07/Trove-logo.png",
+      "original_dimensions": [
+        439,
+        195
+      ],
+      "published_dimensions": [
+        1024,
+        455
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "union-bank-of",
+      "name": "Union Bank",
+      "collection": "legacy",
+      "source_url": "https://www.unionbankng.com/wp-content/uploads/2026/04/UnionHorseLogo.png",
+      "original_dimensions": [
+        520,
+        196
+      ],
+      "published_dimensions": [
+        1024,
+        386
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "unity-bank",
+      "name": "Unity Bank",
+      "collection": "legacy",
+      "source_url": "https://unity1.unitybankng.com/statement/Images/unitylogo.png",
+      "original_dimensions": [
+        307,
+        122
+      ],
+      "published_dimensions": [
+        1024,
+        407
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "universal-insurance",
+      "name": "Universal Insurance",
+      "collection": "legacy",
+      "source_url": "https://universalinsuranceplc.com//wp-content/uploads/2024/08/univinsure-logo.png",
+      "original_dimensions": [
+        672,
+        122
+      ],
+      "published_dimensions": [
+        1024,
+        186
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "vfd-microfinance-bank",
+      "name": "VBank",
+      "collection": "legacy",
+      "source_url": "https://play.google.com/store/apps/details?id=com.vfd.app",
+      "original_dimensions": [
+        512,
+        512
+      ],
+      "published_dimensions": [
+        1024,
+        1024
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "verifyme",
+      "name": "VerifyMe",
+      "collection": "legacy",
+      "source_url": "https://verifyme.ng/web-images/d2/logo-full-verifyme.png",
+      "original_dimensions": [
+        300,
+        80
+      ],
+      "published_dimensions": [
+        1024,
+        273
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "veritas-glanvills-pensions",
+      "name": "Veritas Glanvills Pensions",
+      "collection": "legacy",
+      "source_url": "https://vgpensions.com/wp-content/uploads/2022/03/Veritas-Pensions-Logo-PNG-300x137-1.png",
+      "original_dimensions": [
+        300,
+        137
+      ],
+      "published_dimensions": [
+        1024,
+        468
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "xca-insurance-brokers",
+      "name": "XCA Insurance Brokers",
+      "collection": "legacy",
+      "source_url": "https://xcelloncapital.com/wp-content/uploads/2023/08/XCA_Main_Logo.png",
+      "original_dimensions": [
+        800,
+        202
+      ],
+      "published_dimensions": [
+        1024,
+        259
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "air-peace",
+      "name": "Air Peace",
+      "collection": "expansion",
+      "source_url": "https://flyairpeace.com/",
+      "original_dimensions": [
+        256,
+        54
+      ],
+      "published_dimensions": [
+        1024,
+        216
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "aiteo",
+      "name": "Aiteo",
+      "collection": "expansion",
+      "source_url": "https://www.aiteogroup.com/",
+      "original_dimensions": [
+        240,
+        41
+      ],
+      "published_dimensions": [
+        1024,
+        175
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "arik-air",
+      "name": "Arik Air",
+      "collection": "expansion",
+      "source_url": "https://www.arikair.com/",
+      "original_dimensions": [
+        129,
+        55
+      ],
+      "published_dimensions": [
+        1024,
+        437
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "baines-credit",
+      "name": "Baines Credit",
+      "collection": "expansion",
+      "source_url": "https://www.bainescredit.com/",
+      "original_dimensions": [
+        222,
+        50
+      ],
+      "published_dimensions": [
+        1024,
+        231
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "bakhresa-group",
+      "name": "Bakhresa Group",
+      "collection": "expansion",
+      "source_url": "https://bakhresa.com/",
+      "original_dimensions": [
+        605,
+        189
+      ],
+      "published_dimensions": [
+        1024,
+        320
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "bua-cement",
+      "name": "BUA Cement",
+      "collection": "expansion",
+      "source_url": "https://www.buacement.com/",
+      "original_dimensions": [
+        54,
+        57
+      ],
+      "published_dimensions": [
+        485,
+        512
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "channels-television",
+      "name": "Channels Television",
+      "collection": "expansion",
+      "source_url": "https://www.channelstv.com/",
+      "original_dimensions": [
+        85,
+        84
+      ],
+      "published_dimensions": [
+        518,
+        512
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "churchgate",
+      "name": "Churchgate",
+      "collection": "expansion",
+      "source_url": "https://churchgate.com/",
+      "original_dimensions": [
+        341,
+        45
+      ],
+      "published_dimensions": [
+        1024,
+        135
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "egbin-power",
+      "name": "Egbin Power",
+      "collection": "expansion",
+      "source_url": "https://egbin-power.com/",
+      "original_dimensions": [
+        292,
+        100
+      ],
+      "published_dimensions": [
+        1024,
+        351
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "food-concepts",
+      "name": "Food Concepts",
+      "collection": "expansion",
+      "source_url": "https://foodconceptsplc.com/",
+      "original_dimensions": [
+        348,
+        61
+      ],
+      "published_dimensions": [
+        1024,
+        179
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "gig-logistics",
+      "name": "GIG Logistics",
+      "collection": "expansion",
+      "source_url": "https://giglogistics.com/",
+      "original_dimensions": [
+        522,
+        377
+      ],
+      "published_dimensions": [
+        709,
+        512
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "globacom",
+      "name": "Globacom",
+      "collection": "expansion",
+      "source_url": "https://www.gloworld.com/ng",
+      "original_dimensions": [
+        74,
+        74
+      ],
+      "published_dimensions": [
+        512,
+        512
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "innoson-vehicles",
+      "name": "Innoson Vehicles",
+      "collection": "expansion",
+      "source_url": "https://www.innosonvehicles.com/",
+      "original_dimensions": [
+        350,
+        74
+      ],
+      "published_dimensions": [
+        1024,
+        217
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "ipnx",
+      "name": "ipNX",
+      "collection": "expansion",
+      "source_url": "https://www.ipnxnigeria.net/",
+      "original_dimensions": [
+        130,
+        71
+      ],
+      "published_dimensions": [
+        937,
+        512
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "jumia-nigeria",
+      "name": "Jumia Nigeria",
+      "collection": "expansion",
+      "source_url": "https://group.jumia.com/press/media-kit",
+      "original_dimensions": [
+        899,
+        147
+      ],
+      "published_dimensions": [
+        1024,
+        167
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "kasapreko",
+      "name": "Kasapreko",
+      "collection": "expansion",
+      "source_url": "https://kasapreko.com/",
+      "original_dimensions": [
+        150,
+        150
+      ],
+      "published_dimensions": [
+        512,
+        512
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "kcb-group",
+      "name": "KCB Group",
+      "collection": "expansion",
+      "source_url": "https://kcbgroup.com/",
+      "original_dimensions": [
+        128,
+        66
+      ],
+      "published_dimensions": [
+        993,
+        512
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "konga",
+      "name": "Konga",
+      "collection": "expansion",
+      "source_url": "https://www.konga.com/",
+      "original_dimensions": [
+        256,
+        70
+      ],
+      "published_dimensions": [
+        1024,
+        280
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "mixta-africa",
+      "name": "Mixta Africa",
+      "collection": "expansion",
+      "source_url": "https://mixtafrica.com/",
+      "original_dimensions": [
+        187,
+        94
+      ],
+      "published_dimensions": [
+        1019,
+        512
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "page-financials",
+      "name": "Page Financials",
+      "collection": "expansion",
+      "source_url": "https://pagefinancials.com/",
+      "original_dimensions": [
+        188,
+        90
+      ],
+      "published_dimensions": [
+        1024,
+        490
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "seamlesshr",
+      "name": "SeamlessHR",
+      "collection": "expansion",
+      "source_url": "https://seamlesshr.com/",
+      "original_dimensions": [
+        300,
+        62
+      ],
+      "published_dimensions": [
+        1024,
+        212
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "shoprite",
+      "name": "Shoprite",
+      "collection": "expansion",
+      "source_url": "https://shoprite.ng/",
+      "original_dimensions": [
+        199,
+        53
+      ],
+      "published_dimensions": [
+        1024,
+        273
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "sifca",
+      "name": "SIFCA",
+      "collection": "expansion",
+      "source_url": "https://groupesifca.com/",
+      "original_dimensions": [
+        313,
+        146
+      ],
+      "published_dimensions": [
+        1024,
+        478
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "slot",
+      "name": "Slot",
+      "collection": "expansion",
+      "source_url": "https://slot.ng/",
+      "original_dimensions": [
+        189,
+        64
+      ],
+      "published_dimensions": [
+        1024,
+        347
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "spar-nigeria",
+      "name": "SPAR Nigeria",
+      "collection": "expansion",
+      "source_url": "https://sparnigeria.com/",
+      "original_dimensions": [
+        278,
+        85
+      ],
+      "published_dimensions": [
+        1024,
+        313
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "spectranet",
+      "name": "Spectranet",
+      "collection": "expansion",
+      "source_url": "https://www.spectranet.com.ng/",
+      "original_dimensions": [
+        900,
+        357
+      ],
+      "published_dimensions": [
+        1024,
+        406
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "tvc-communications",
+      "name": "TVC Communications",
+      "collection": "expansion",
+      "source_url": "https://www.tvccommunications.tv/",
+      "original_dimensions": [
+        209,
+        37
+      ],
+      "published_dimensions": [
+        1024,
+        181
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    },
+    {
+      "slug": "venture-garden-group",
+      "name": "Venture Garden Group",
+      "collection": "expansion",
+      "source_url": "https://venturegardengroup.com/",
+      "original_dimensions": [
+        694,
+        129
+      ],
+      "published_dimensions": [
+        1024,
+        190
+      ],
+      "flags": [
+        "raster-enlarged"
+      ],
+      "disposition": "review-needed"
+    }
+  ]
+}

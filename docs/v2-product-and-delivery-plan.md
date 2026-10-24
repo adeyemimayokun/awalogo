@@ -2,13 +2,17 @@
 
 Approved product direction: 14 October 2026.
 
+Status reviewed: 18 October 2026. The architecture and owner workflows below are
+target direction, not all delivered capabilities. See Current implementation status
+and the [V2 guide](v2-guide.md) for the implemented preview.
+
 ## Product decisions
 
-V2 expands awalogo to all Nigerian brands. The website and Figma plugin share published assets. Visitors browse, download, request assets, and use a local download cart without an account. Accounts are required for brand management.
+V2 targets Nigerian companies across industries and African companies, not an assertion of complete coverage. V1 and the current Figma plugin share `/catalog/v1`; additional V2 companies and flags are web-only until a separate plugin compatibility release. Visitors browse, download, request assets, and use a local download bag without an account. Accounts are required for the planned brand-management workflow.
 
 The interface follows the restrained gallery direction of Icon Museum, Basicons, and Zona Logo, using an original neutral awalogo identity. V1 remains at its current URL throughout development. V2 is available at `/v2` and labeled Coming soon until an explicit launch decision.
 
-Initial brand materials include logos, colors, and PDF guidelines. Flags cover countries and territories with country codes and original rectangular proportions. HTML and React copying support both hosted image snippets and safe inline SVG.
+Initial implemented materials are logos and flags; colors and PDF guidelines remain planned. Flags cover countries and territories with country codes and standardized 4:3/square variants, not guaranteed official proportions. Logos support hosted HTML/React image snippets and safe inline SVG/JSX; flags support hosted snippets and raw SVG copying.
 
 Brand representatives verify a company-domain email and receive admin approval for their claim. Approved owners publish directly. Administrators can suspend publishing, revoke ownership, and restore earlier revisions. Every publication has an immutable audit record.
 
@@ -30,7 +34,7 @@ Produce a versioned V2 catalog and retain the V1 catalog for existing plugin cli
 - Hosted HTML/React image snippets work for every image format. Inline SVG copying uses validated sanitized XML and JSX conversion, with accessible labels and selected dimensions.
 - Persist download selections locally. ZIP bundles support up to 50 selections and 100 MB, provide progress and source metadata, and preserve the cart after errors.
 - Requests suggest existing matches before submission, accept optional artwork, persist before sending email, and return a private tracking link. Notification failures retry without losing or duplicating a request.
-- Country and territory flags live under `/v2/flags` with main navigation access, shared download cart, and shared code copying. Validate source licenses and original proportions before importing artwork.
+- Country and territory flags live under `/v2/flags` with main navigation access, a shared download bag, and code copying. Validate source licenses and clearly label standardized proportions before importing artwork.
 
 ## Brand and admin experience
 
@@ -59,11 +63,19 @@ Launch requires no critical security findings, documented capacity and backups, 
 
 ## Current implementation status
 
-The initial public V2 preview uses the existing real catalog and provides search, category filtering, selected logo versions, individual downloads, hosted HTML/React snippets, validated inline SVG/JSX, sharing, and a persistent ZIP download bag. A V2 request page suggests existing brands and displays private tracking links when database storage is configured.
+The V2 Coming soon preview combines 228 unchanged financial logos with 84 independent additions (312 companies), plus 249 flags. New company records retain industry, origin/headquarters where known, reviewed markets and source provenance. Historical 9mobile artwork is exposed as a non-official community-sourced previous T2 version, with normalized spaced-name discovery. Telecom coverage remains incomplete and tracked separately.
+
+Implemented browsing includes actual category labels, multiple categories, industry/market filters, popularity/name/newest sorting, and normalized search. Default logo and flag lists use 20-item pages, up to three previous/two next numbered links and first/last jumps. Filtered/search results are unpaginated. Similar-brand results use sourced affiliation/name matching; flags use name matching and region filters. Empty states are centered, with primary logo-request or flag-reset actions.
+
+Asset side panels provide available versions/formats, preview/download, hosted code, logo inline SVG/JSX, SVG copying, sharing and logo reports. Requests suggest existing brands and display private tracking links when configured. Reporting stays at the bottom of the logo panel and does not apply to flags.
+
+The floating bag is draggable, keyboard-movable and locally persistent, with asset-flight animations, a semantic count badge and an anchored collection. Pack into bag, Drop item and Drop all support mixed ZIPs, 50-item/100MB limits, preparation locks and an eight-second bulk undo invalidated by later mutations. Existing source/checksum checks remain.
+
+The preview has one-click theme switching, five languages (English, Hausa, Yoruba, Igbo and Pidgin), compact controls, light field focus borders, contextual search/bag/request shortcuts, and persisted Action sounds enabled after interaction unless muted. Translation drafts await fluent review. See the [behavior notes](v2-browse-improvements.md) and [guide](v2-guide.md).
 
 The supplied Supabase project `cyfhxmhhtvsvfhzmcoot` has the initial foundation schema. Vercel's Supabase integration separately provisioned `btrehjfxhqfwfpxrdyhl`; this integration-managed project is the active Production and Preview database. The same schema is applied there, with no existing data overwritten. Server-side request persistence, tracking, and admin status updates use the integration-provided `SUPABASE_URL` and `SUPABASE_SECRET_KEY`. Keep each URL paired with its own project's key. Local development should use a separate database or explicitly opt into the active project through ignored environment files. Live transaction tests verified own-brand access, cross-brand denial, private request denial, and suspended-brand write denial in the initial project and rolled back all test records.
 
-Brand colors, country flags, a new taxonomy, prerendered brand pages, adapted plugin UI, claim management screens, upload staging, and publication automation remain implementation work. Do not describe these flows as production ready before end-to-end verification.
+Brand colors, PDF guidelines, prerendered brand pages, adapted plugin UI, claim-management screens, owner upload staging and publication automation remain implementation work. The implemented taxonomy is the independent V2 industry/country model, not a completed owner platform. Database configuration notes above record earlier setup, not a fresh production verification. Live browser/audio/mobile and production smoke tests, translation review and explicit launch approval remain gates; automated tests/builds do not establish production readiness.
 
 ## References
 

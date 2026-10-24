@@ -4,9 +4,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "prebuild": "pnpm --dir ../.. catalog:generate",
-    "build": "vite build",
-    "predev": "pnpm --dir ../.. catalog:generate",
+    "prebuild": "pnpm --dir ../.. catalog:generate && pnpm --dir ../.. brands:publish && pnpm --dir ../.. brands:check",
+    "build": "node ../../scripts/generate-plugin-resources.mjs && vite build",
+    "predev": "pnpm --dir ../.. catalog:generate && pnpm --dir ../.. brands:publish",
     "dev": "vite --host 127.0.0.1",
     "typecheck": "tsc -p tsconfig.json"
   },
@@ -14,11 +14,11 @@
     "@awalogo/catalog-ui": "workspace:*",
     "@awalogo/core": "workspace:*",
     "@awalogo/institutions": "workspace:*",
+    "@boxicons/react": "1.0.3",
     "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.0.0",
     "@vitejs/plugin-react": "^4.3.4",
     "fflate": "0.8.2",
-    "lucide-react": "1.24.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "vite": "^6.0.7"

@@ -1,0 +1,62 @@
+[
+  {
+    "slug": "momo-payment-service-bank",
+    "expected_primary_checksum": "6792313f8af9b4d07bcf0988b687d8fca8d0976d5c2a1a4ec6ede0a0a68674cf",
+    "source_path": "assets/cca45c05ab43951879c3f9d4aa28cb60fb547be7710bea43a4d28c647165887d.png",
+    "source_checksum": "cca45c05ab43951879c3f9d4aa28cb60fb547be7710bea43a4d28c647165887d",
+    "website": "https://www.momo.ng/",
+    "source_url": "https://www.momo.ng/wp-content/uploads/2024/10/logo-yellow-1.png?x54108",
+    "preview_background": "dark",
+    "reviewed_at": "2026-10-19",
+    "visual_reviewed": true,
+    "review_notes": "User explicitly requested correction against momo.ng. Official MoMo PSB identity visually verified; the existing legacy artwork depicts MoMo Agent. Apply only as a V2 overlay, retaining the original record, slug, aliases and legacy asset bytes. The MTN-only footer mark is not substituted for MoMo."
+  },
+  {
+    "slug": "sparkle-microfinance-bank",
+    "expected_primary_checksum": "3ac62c610550da3657284386cdae627dc7e63f1fef07932f25238b03b7c28c19",
+    "source_path": "assets/7da7006765eb5a007c3f855920048e8cea0e850247f6c4a4012784287bc13f35.png",
+    "source_checksum": "7da7006765eb5a007c3f855920048e8cea0e850247f6c4a4012784287bc13f35",
+    "website": "https://sparkle.ng/",
+    "source_url": "https://sparkle.ng/#embedded-header-logo",
+    "preview_background": "light",
+    "reviewed_at": "2026-10-19",
+    "visual_reviewed": true,
+    "review_notes": "The original 160x159 footer mark was upscaled to 1024x1018 by the legacy generator. The official navigation embeds the full 603x159 PNG lockup. Extracted the original bytes, not a screenshot or traced vector; preserve V1 and apply only this reviewed V2 overlay."
+  },
+  {
+    "slug": "nomba",
+    "expected_primary_checksum": "4a44181d63047cf387cf73c9a0fa239145f8daab0ea85242a70fccb1719911f5",
+    "source_path": "assets/543c02a8406ed6a93a07bb2802c13b3819226a0e4e02395e9b1e47bbed75a270.png",
+    "source_checksum": "543c02a8406ed6a93a07bb2802c13b3819226a0e4e02395e9b1e47bbed75a270",
+    "website": "https://nomba.com/",
+    "source_url": "https://nomba.com/assets/7a1fa9176367d506f848c55210a5569d9989bb57.png",
+    "preview_background": "light",
+    "reviewed_at": "2026-10-19",
+    "visual_reviewed": true,
+    "review_notes": "The existing source was a favicon. Official header artwork provides the Nomba name with its symbol at 240x56. Use the original resolution without enlargement; retain all existing identity metadata and legacy files."
+  },
+  {
+    "slug": "ratefy",
+    "expected_primary_checksum": "f2d9ada8aae1f5c16db90feaa4d141598ca28b6c6640dcb90c8116855ebebade",
+    "source_path": "assets/c113b02a581fca7cc7542043c01d339ef91bcc99fa3100f65b0d37fb478007ba.webp",
+    "source_checksum": "c113b02a581fca7cc7542043c01d339ef91bcc99fa3100f65b0d37fb478007ba",
+    "website": "https://ratefy.co/",
+    "source_url": "https://ratefy.co/assets/ratefy-logo-BRs_H8TR.webp",
+    "preview_background": "dark",
+    "reviewed_at": "2026-10-19",
+    "visual_reviewed": true,
+    "review_notes": "The existing source was an icon-only raster. Official header provides a 1536x600 Ratefy wordmark. Reviewed the full identity, preserved its provided background and used downsampling only; retain V1 and all unrelated records."
+  },
+  {
+    "slug": "connectpoint-technology-solutions",
+    "expected_primary_checksum": "d4056f4a28d850fefc821e6097f5bac988569102dc83da7c491da2ed19d707a6",
+    "source_path": "assets/cdcbd77ee063326aae2ca8316864fb31767ebf8ea7b5947be48ea5482885aa11.png",
+    "source_checksum": "cdcbd77ee063326aae2ca8316864fb31767ebf8ea7b5947be48ea5482885aa11",
+    "website": "https://connectpoint.com.ng/",
+    "source_url": "https://connectpoint.com.ng/wp-content/uploads/2025/07/cropped-game-removebg-preview-3.png",
+    "preview_background": "dark",
+    "reviewed_at": "2026-10-19",
+    "visual_reviewed": true,
+    "review_notes": "The existing source was the ConnectPoint favicon. Official company header supplies a 500x149 symbol-and-name lockup with the recharge-services tagline. Visually reviewed against the same company's site; do not substitute partner logos or upscale."
+  }
+]

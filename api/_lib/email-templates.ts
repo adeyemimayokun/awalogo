@@ -1,10 +1,25 @@
 import type { PublicLogoRequest } from "./logo-requests.js";
+import type { LogoReport } from "./logo-report.js";
 
 export type EmailTemplate = {
   subject: string;
   text: string;
   html: string;
 };
+
+export function maintainerLogoReportTemplate(report: LogoReport, brandName: string): EmailTemplate {
+  const rows: Array<[string, string]> = [
+    ["Brand", brandName], ["Logo slug", report.slug], ["Version", report.variation],
+    ["Format", report.format.toUpperCase()], ["Reason", report.reason],
+    ["Note", report.note || "Not provided"], ["Official source", report.officialSource || "Not provided"],
+    ["Logo page", `https://www.awalogo.com/v2?brand=${encodeURIComponent(report.slug)}`], ["Report ID", report.submissionId]
+  ];
+  return {
+    subject: `Logo report: ${cleanSubject(brandName)} - ${report.reason}`,
+    text: ["A visitor reported an issue with an awalogo asset.", "", ...rows.map(([label, value]) => `${label}: ${value}`)].join("\n"),
+    html: emailLayout({ eyebrow: "Asset report", heading: brandName, intro: "A visitor reported an issue with this logo. Review the selected version and format before making changes.", content: detailRows(rows), footer: "This report was sent privately to awalogo maintainers. Reports do not automatically change or remove artwork." })
+  };
+}
 
 function escapeHtml(value: string): string {
   return value

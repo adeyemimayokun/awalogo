@@ -2,8 +2,10 @@ import type { PublicLogoRequest } from "./logo-requests.js";
 import {
   maintainerLogoRequestTemplate,
   requesterLogoRequestTemplate,
+  maintainerLogoReportTemplate,
   type EmailTemplate
 } from "./email-templates.js";
+import type { LogoReport } from "./logo-report.js";
 
 export type DeliveredLogoRequest = {
   id: string;
@@ -100,6 +102,7 @@ async function sendEmail(options: {
   tags: Array<{ name: string; value: string }>;
 }): Promise<void> {
   const response = await fetch("https://api.resend.com/emails", {
+    signal: AbortSignal.timeout(10000),
     method: "POST",
     headers: {
       Authorization: `Bearer ${requiredEnv("RESEND_API_KEY")}`,
@@ -121,6 +124,15 @@ async function sendEmail(options: {
     const detail = await response.text();
     throw new Error(`Private request email failed (${response.status}): ${detail.slice(0, 240)}`);
   }
+}
+
+export async function sendLogoReport(report: LogoReport, brandName: string): Promise<void> {
+  await sendEmail({
+    to: requiredEnv("LOGO_REQUEST_INBOX"),
+    idempotencyKey: `logo-report-${report.submissionId}`,
+    message: maintainerLogoReportTemplate(report, brandName),
+    tags: [{ name: "email_type", value: "logo_report" }, { name: "submission_id", value: report.submissionId }]
+  });
 }
 
 export async function sendPrivateLogoRequest(request: PublicLogoRequest, trackingPath?: string | null): Promise<void> {

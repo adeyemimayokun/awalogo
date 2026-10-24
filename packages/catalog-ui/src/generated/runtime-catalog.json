@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "catalog_version": "28d67eb1ae79df4e824a174d5c43588ff49a8d3b84f7c0d48091eb48bbe817aa",
+  "catalog_version": "8077f0e2463899acd5ad33ad059c1c9809eee09609f8565a5757cb1115bfb95b",
   "published_at": "2026-08-11",
   "items": [
     {
@@ -8899,11 +8899,11 @@
           {
             "type": "svg",
             "repository_path": "assets/interswitch.svg",
-            "url": "/catalog/v1/assets/0fec6ff606528d73b77e1406a8f57485309cab02fbe3a24d90a594521e04ca19.svg",
+            "url": "/catalog/v1/assets/decbd2fa81f43134cee0715d138dfb1a80d61fd08bb4cbf31f7373f791b0441c.svg",
             "mime_type": "image/svg+xml",
             "width": null,
             "height": null,
-            "checksum": "0fec6ff606528d73b77e1406a8f57485309cab02fbe3a24d90a594521e04ca19"
+            "checksum": "decbd2fa81f43134cee0715d138dfb1a80d61fd08bb4cbf31f7373f791b0441c"
           },
           {
             "type": "png",
@@ -9848,11 +9848,11 @@
               {
                 "type": "svg",
                 "repository_path": "assets/kuda-microfinance-bank-previous-2026-08-11.svg",
-                "url": "/catalog/v1/assets/21dd967ad9fef45face5c82a09b75081ddb74af6b621a5af8cde3e948ba7e679.svg",
+                "url": "/catalog/v1/assets/698bed9ce281f943abdf8b83ecae4aa4bdb378f55508cc707be5238b631ca4dc.svg",
                 "mime_type": "image/svg+xml",
                 "width": null,
                 "height": null,
-                "checksum": "21dd967ad9fef45face5c82a09b75081ddb74af6b621a5af8cde3e948ba7e679"
+                "checksum": "698bed9ce281f943abdf8b83ecae4aa4bdb378f55508cc707be5238b631ca4dc"
               },
               {
                 "type": "png",

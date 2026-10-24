@@ -1,0 +1,50 @@
+{
+  "variations": [
+    {
+      "slug": "t2-mobile",
+      "id": "9mobile-previous",
+      "name": "9mobile",
+      "brand_name": "9mobile",
+      "status": "needs-review",
+      "variation_status": "old",
+      "source_path": "assets/9mobile-previous.svg",
+      "source_checksum": "29be14135747d9a94270f78317e8a33ccb36a31a700d967dba4404e7adcb4759",
+      "source_type": "community-catalog",
+      "source_url": "https://github.com/josephajibodu/utility-providers-assets/blob/main/network-providers/9mobile.svg",
+      "identity_evidence": "https://t2mobile.com.ng/about-us",
+      "reviewer": "Codex assisted visual review",
+      "reviewed_at": "2026-10-18",
+      "visual_reviewed": true,
+      "review_notes": "Community-sourced historical 9mobile identity, not the current T2 logo. Source is not officially verified; trademarks remain with their respective owners.",
+      "formats": [
+        {
+          "type": "svg",
+          "url": "/catalog/v2/assets/29be14135747d9a94270f78317e8a33ccb36a31a700d967dba4404e7adcb4759.svg",
+          "checksum": "29be14135747d9a94270f78317e8a33ccb36a31a700d967dba4404e7adcb4759",
+          "mime_type": "image/svg+xml",
+          "width": 1000,
+          "height": 1000,
+          "repository_path": "assets/9mobile-previous.svg"
+        },
+        {
+          "type": "png",
+          "url": "/catalog/v2/assets/08d3872ffb246a6c7b85b237ff3d794de53b04456aa55b63644f9ce0aff4fa19.png",
+          "checksum": "08d3872ffb246a6c7b85b237ff3d794de53b04456aa55b63644f9ce0aff4fa19",
+          "mime_type": "image/png",
+          "width": 512,
+          "height": 512,
+          "repository_path": "assets/9mobile-previous.svg"
+        },
+        {
+          "type": "webp",
+          "url": "/catalog/v2/assets/56017b47517be58c636e101c693c96d6b494554f2294fa669ffcb10fb7311fdd.webp",
+          "checksum": "56017b47517be58c636e101c693c96d6b494554f2294fa669ffcb10fb7311fdd",
+          "mime_type": "image/webp",
+          "width": 512,
+          "height": 512,
+          "repository_path": "assets/9mobile-previous.svg"
+        }
+      ]
+    }
+  ]
+}
