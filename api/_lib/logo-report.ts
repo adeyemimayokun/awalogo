@@ -1,4 +1,5 @@
 import { adminStore, adminStoreConfigured } from './admin-store.js';
+import { previewDeliveryDisabled } from './preview-delivery.js';
 import { createHmac, randomUUID } from "node:crypto";
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { z } from "zod";
@@ -45,7 +46,11 @@ export async function handleLogoReport(request: VercelRequest, response: VercelR
   try {
     let stored=false;
     if(adminStoreConfigured()) { await adminStore('asset_reports?on_conflict=submission_id',{method:'POST',headers:{Prefer:'resolution=ignore-duplicates,return=minimal'},body:JSON.stringify({submission_id:report.submissionId,slug:report.slug,variation:report.variation,format:report.format,reason:report.reason,note:report.note,official_source:report.officialSource})});stored=true; }
-    try { await sendLogoReport(report, logo.name); } catch (error) { if(!stored) throw error; }
+    if (previewDeliveryDisabled()) {
+      if (!stored) throw new Error("Preview report storage is unavailable");
+    } else {
+      try { await sendLogoReport(report, logo.name); } catch (error) { if(!stored) throw error; }
+    }
     response.status(202).json({ ok: true, reportId: report.submissionId });
   } catch {
     response.status(503).json({ error: "Your report could not be delivered. Your details are still here; please try again shortly." });

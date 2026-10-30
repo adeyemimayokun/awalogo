@@ -58,6 +58,9 @@ The complete identity system and reusable asset pool are documented in
 
 ## Local Setup
 
+For server-side requests, reports, and metrics, see [Neon PostgreSQL setup](docs/neon.md).
+Catalog browsing and downloads do not require a database.
+
 ```bash
 corepack enable
 pnpm install

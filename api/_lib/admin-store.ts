@@ -1,10 +1,13 @@
+import { neonConfigured, neonStore } from "./neon-store.js";
+
 export function adminStoreConfigured() {
-  return Boolean(process.env.SUPABASE_URL && process.env.SUPABASE_SECRET_KEY);
+  return neonConfigured() || Boolean(process.env.SUPABASE_URL && process.env.SUPABASE_SECRET_KEY);
 }
 export async function adminStore<T>(
   path: string,
   init: RequestInit = {},
 ): Promise<T> {
+  if (neonConfigured()) return neonStore<T>(path, init);
   const origin = new URL(
     process.env.SUPABASE_URL ?? "https://unconfigured.invalid",
   );

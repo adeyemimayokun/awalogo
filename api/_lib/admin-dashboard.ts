@@ -100,7 +100,7 @@ async function stored(path: string) {
     return {
       state: "unconfigured",
       message:
-        "Configure the admin database and apply supabase/admin-dashboard.sql.",
+        "Configure the admin database and apply the matching database migrations (see docs/neon.md).",
     };
   try {
     const [table, queryString] = path.split("?");

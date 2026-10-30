@@ -1,5 +1,6 @@
 import { createHash, randomBytes } from "node:crypto";
 import type { PublicLogoRequest } from "./logo-requests.js";
+import { neonConfigured, neonStore } from "./neon-store.js";
 
 export type StoredAssetRequest = {
   submission_id: string;
@@ -16,10 +17,11 @@ export type StoredAssetRequest = {
 };
 
 export function requestStoreConfigured(): boolean {
-  return Boolean(process.env.SUPABASE_URL && process.env.SUPABASE_SECRET_KEY);
+  return neonConfigured() || Boolean(process.env.SUPABASE_URL && process.env.SUPABASE_SECRET_KEY);
 }
 
 async function requestStore<T>(path: string, options: RequestInit = {}): Promise<T> {
+  if (neonConfigured()) return neonStore<T>(`asset_requests${path}`, options);
   const origin = process.env.SUPABASE_URL?.trim();
   const secret = process.env.SUPABASE_SECRET_KEY?.trim();
   if (!origin || !secret) throw new Error("Request database is not configured");

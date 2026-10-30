@@ -4,11 +4,13 @@ import { z } from "zod";
 import runtimeCatalog from "../../packages/catalog-ui/src/generated/runtime-catalog.json";
 import expansion from "../../packages/brands/catalog.json";
 import { methodNotAllowed, requireSameOrigin } from "./http.js";
+import { neonConfigured, neonStore } from "./neon-store.js";
 
 const knownSlugs = new Set([...runtimeCatalog.items.map((item) => item.logo.slug), ...expansion.brands.map((brand) => brand.slug)]);
 const submission = z.object({ slugs: z.array(z.string().max(160).refine((slug) => knownSlugs.has(slug))).min(1).max(50) }).strict();
 
 async function store(path: string, options: RequestInit = {}) {
+  if (neonConfigured()) return neonStore(path, options);
   const secret = process.env.SUPABASE_SECRET_KEY?.trim();
   const origin = new URL(process.env.SUPABASE_URL ?? "https://unconfigured.invalid");
   if (!secret || origin.protocol !== "https:" || !origin.hostname.endsWith(".supabase.co")) throw new Error("Popularity storage unavailable");
@@ -38,9 +40,10 @@ export async function handlePopularity(request: VercelRequest, response: VercelR
   try {
     const address = request.headers["x-vercel-forwarded-for"];
     const ip = (Array.isArray(address) ? address[0] : address)?.split(",")[0]?.trim() || request.socket?.remoteAddress;
-    if (!ip || !process.env.SUPABASE_SECRET_KEY) throw new Error("Download counting unavailable");
+    const hashSecret = process.env.DOWNLOAD_HASH_SECRET || process.env.SUPABASE_SECRET_KEY;
+    if (!ip || !hashSecret) throw new Error("Download counting unavailable");
     // A daily, one-way network key limits repeats without storing IP addresses or cookies.
-    const visitor = createHmac("sha256", process.env.SUPABASE_SECRET_KEY).update(`${new Date().toISOString().slice(0, 10)}:${ip}`).digest("hex");
+    const visitor = createHmac("sha256", hashSecret).update(`${new Date().toISOString().slice(0, 10)}:${ip}`).digest("hex");
     await store("rpc/record_logo_downloads", { method: "POST", body: JSON.stringify({ requested_slugs: [...new Set(parsed.data.slugs)], network_key: visitor }) });
     response.status(202).json({ ok: true });
   } catch { response.status(503).json({ error: "Download counting is temporarily unavailable" }); }

@@ -14,3 +14,4 @@ packages/institutions/staging/
 .env.local
 .env.*.local
 apps/web/public/catalog/
+.neon

@@ -8,6 +8,7 @@ import { createRepositoryIssue, listRepositoryIssues } from "./_lib/github.js";
 import { methodNotAllowed, requireSameOrigin } from "./_lib/http.js";
 import { buildPublicIssue, publicLogoRequestSchema } from "./_lib/logo-requests.js";
 import { getAssetRequestStatus, requestStoreConfigured, saveAssetRequest } from "./_lib/request-store.js";
+import { previewDeliveryDisabled } from "./_lib/preview-delivery.js";
 import {
   appendPrivateRequestMetadata,
   readPrivateRequestMetadata,
@@ -50,6 +51,12 @@ export default async function handler(request: VercelRequest, response: VercelRe
       }
     }
     let emailDelivered = false;
+    if (previewDeliveryDisabled()) {
+      response.status(databaseStored ? 202 : 503).json(databaseStored
+        ? { ok: true, issue: null, emailDelivered: false, trackingUrl }
+        : { error: "Preview request storage is unavailable" });
+      return;
+    }
     try {
       await sendPrivateLogoRequest(submission, trackingUrl);
       emailDelivered = true;
