@@ -13,7 +13,9 @@ const path = process.argv[2];
 if (!path) throw new Error('Usage: node --env-file=<target> scripts/neon-import.mjs <private-source-snapshot.json>');
 if (!process.env.DATABASE_URL_UNPOOLED) throw new Error('Supply the target DATABASE_URL_UNPOOLED explicitly');
 const snapshot = JSON.parse(await readFile(path, 'utf8'));
-assert.equal(snapshot.projectId, 'cyfhxmhhtvsvfhzmcoot', 'Unexpected Supabase source');
+const sourceProject = process.env.SOURCE_SUPABASE_PROJECT_ID ?? 'cyfhxmhhtvsvfhzmcoot';
+assert(/^[a-z0-9]{20}$/.test(sourceProject), 'Invalid expected Supabase project ID');
+assert.equal(snapshot.projectId, sourceProject, 'Unexpected Supabase source');
 assert(Array.isArray(snapshot.tables), 'Missing source tables');
 const seen = new Set();
 for (const table of snapshot.tables) {

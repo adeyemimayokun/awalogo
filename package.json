@@ -10,6 +10,7 @@
     "db:migrate": "node scripts/neon-migrate.mjs",
     "db:smoke": "node scripts/neon-smoke.mjs",
     "db:smoke:staging": "node scripts/neon-staging-smoke.mjs",
+    "db:smoke:production": "node scripts/neon-production-smoke.mjs",
     "brands:research": "node scripts/research-brands.mjs",
     "brands:publish": "node scripts/publish-brands.mjs",
     "brands:check": "node scripts/publish-brands.mjs --check && tsx packages/brands/validate.ts && node scripts/brands-baseline.mjs",

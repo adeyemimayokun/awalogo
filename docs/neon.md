@@ -55,14 +55,59 @@ Vercel staging uses a dedicated Neon `staging` branch, not `production`.
 `DATABASE_URL`, `DOWNLOAD_HASH_SECRET`, and `DISABLE_PREVIEW_DELIVERY=true` are
 scoped to Vercel Preview / Git branch `staging`. The guard saves requests and
 reports to Neon but suppresses outbound email and GitHub issue mirroring in
-Preview only. It cannot suppress production delivery. Product analytics guards
-and the production deployment/database remain unchanged.
+Preview only. It cannot suppress production delivery. Product analytics and
+launch guards are unchanged. Production uses the separate Neon `production`
+branch; Vercel hosting, catalogs, and artwork remain unchanged.
 
-Before a production cutover, copy and verify that production database separately.
-The previous staging database is Supabase project `cyfhxmhhtvsvfhzmcoot`; do not
-assume it is the same database as Vercel's production integration. Leave old
-projects and credentials intact until the approved production migration is done.
-Keep `DATABASE_URL_UNPOOLED` local or in migration CI.
+Production's source is Supabase project `btrehjfxhqfwfpxrdyhl`, provisioned by
+Vercel as `supabase-byzantium-umbrella`. The previous staging database is the
+different Supabase project `cyfhxmhhtvsvfhzmcoot`. Never use the staging snapshot
+as proof that production is empty. Keep old projects and credentials intact for
+rollback; keep `DATABASE_URL_UNPOOLED` local or in migration CI.
+
+## Production Cutover
+
+The approved cutover on 2026-10-30 deployed application commit `8bf6c37` as
+`dpl_5oCn2k746SfoTgrbZARw5dsR2iHB` on `awalogo.com` and `www.awalogo.com`.
+The source contained one completed verification request and no brand ownership,
+auth user, or stored-object records. That request was preserved exactly; the
+post-cutover source and target counts/digests matched. The source had no report,
+plugin-metric, or download/event tables, so Neon's checked-in schema now provides
+them. The former production deployment `dpl_CWh3Y4QEMP8UTYMGmVvoLs949UXa` and
+Supabase project remain intact for a controlled rollback. Staging keeps its
+separate Preview deployment and database.
+
+Capture a fresh read-only production snapshot, inspect all application tables,
+and verify auth/storage usage separately. Use Vercel's existing Supabase SSO
+if the ordinary Supabase connection cannot access this Vercel-managed project.
+Keep snapshots under ignored `.vercel/` with mode 600, never in Git or logs.
+
+```sh
+neon env pull --branch production --service postgres --file .env.neon-production.local
+node --env-file=.env.neon-production.local scripts/neon-migrate.mjs
+SOURCE_SUPABASE_PROJECT_ID=btrehjfxhqfwfpxrdyhl node --env-file=.env.neon-production.local scripts/neon-import.mjs .vercel/source-production-snapshot.json
+```
+
+Set `DATABASE_URL`, `DOWNLOAD_HASH_SECRET`, and `NEON_BRANCH=production` only
+in Vercel Production. Do not copy Preview delivery-suppression settings or
+change analytics/launch flags. Build the staging-tested application commit
+using production variables with automatic custom-domain assignment disabled,
+then run `npm run db:smoke:production -- https://<production-deployment>.vercel.app`.
+Promote that tested production deployment, recheck the live domain, and take a
+final source snapshot after in-flight requests have drained. Import/verify any
+new source rows; review conflicts instead of overwriting newer Neon records.
+Restore the dedicated staging alias to its Preview deployment if production
+promotion moves the shared Git-branch alias.
+
+The production smoke test reads live APIs and checks a private synthetic tracking
+fixture. Other database function tests use a rolled-back transaction. It sends
+no email/GitHub notifications and removes its own fixture. Keep the source
+snapshot available locally for field-for-field historical record verification.
+
+Rollback uses the recorded previous production deployment and its existing
+Supabase variables. First preserve/reconcile any Neon writes made after cutover;
+blindly switching back can hide new requests. Do not delete or disconnect the old
+database as part of rollout.
 
 ## Data Copy
 
