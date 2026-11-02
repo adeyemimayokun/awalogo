@@ -9,6 +9,7 @@ describe("V2 first-visit tour launch gate", () => {
     expect(shouldStartTour("false", "https://preview.vercel.app/v2", false, true)).toBe(false);
   });
   it("waits for an explicit live release and an unseen visit", () => {
+    expect(shouldStartTour("true", "https://awalogo.com/", false)).toBe(true);
     expect(shouldStartTour("true", "https://awalogo.com/v2", false)).toBe(true);
     expect(shouldStartTour("true", "https://www.awalogo.com/v2/flags", false)).toBe(true);
     expect(shouldStartTour(undefined, "https://awalogo.com/v2", false)).toBe(false);
@@ -16,7 +17,7 @@ describe("V2 first-visit tour launch gate", () => {
     expect(shouldStartTour("true", "https://awalogo.com/v2", true)).toBe(false);
   });
   it("never auto-starts on staging, local, V1, inner pages or shared asset links", () => {
-    for (const url of ["http://localhost:5180/v2", "https://preview.vercel.app/v2", "https://awalogo.com/", "https://awalogo.com/v2/about", "https://awalogo.com/v2/requests", "https://awalogo.com/v2?brand=airtel-nigeria"]) {
+    for (const url of ["http://localhost:5180/v2", "https://preview.vercel.app/v2", "https://awalogo.com/v1", "https://awalogo.com/v2/about", "https://awalogo.com/v2/requests", "https://awalogo.com/v2?brand=airtel-nigeria"]) {
       expect(shouldStartTour("true", url, false)).toBe(false);
     }
   });

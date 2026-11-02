@@ -8,7 +8,7 @@ export function shouldStartTour(enabled: string | undefined, url: string, seen: 
   const page = new URL(url);
   const localPreview = development && ["localhost", "127.0.0.1", "[::1]"].includes(page.hostname);
   return (localPreview || enabled === "true" && ["https://awalogo.com", "https://www.awalogo.com"].includes(page.origin))
-    && ["/v2", "/v2/flags"].includes(page.pathname) && !page.search && !seen;
+    && ["/", "/v2", "/v2/flags"].includes(page.pathname) && !page.search && !seen;
 }
 const steps = [
   { target: ".v2-main .v2-search-wrap", title:"Find your next asset", copy:"Search by name and narrow the collection with filters." },

@@ -22,8 +22,13 @@
     {
       "source": "/v2/:path*",
       "headers": [
-        { "key": "X-Robots-Tag", "value": "noindex, nofollow" },
         { "key": "Referrer-Policy", "value": "no-referrer" }
+      ]
+    },
+    {
+      "source": "/v2/requests",
+      "headers": [
+        { "key": "X-Robots-Tag", "value": "noindex, nofollow" }
       ]
     },
     {
@@ -44,6 +49,8 @@
     }
   ],
   "rewrites": [
+    { "source": "/v1", "destination": "/index.html" },
+    { "source": "/v1/", "destination": "/index.html" },
     { "source": "/v2", "destination": "/index.html" },
     { "source": "/v2/:path*", "destination": "/index.html" },
     { "source": "/docs", "destination": "/index.html" },

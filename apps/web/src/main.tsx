@@ -5,16 +5,21 @@ import { SpeedInsights } from "@vercel/speed-insights/react";
 import { CatalogApp, DocsApp, NotFoundApp } from "@awalogo/catalog-ui";
 import aboutMarkdown from "../../../docs/content/about.md?raw";
 import { sanitizeAnalyticsEvent, shouldTrackAnalytics } from "./site-analytics";
+import { legacyPageUrl, webRoute } from "./web-route";
 
 const AdminApp = lazy(() => import("@awalogo/catalog-ui/admin").then((module) => ({
   default: module.AdminApp
 })));
 const V2App = lazy(() => import("./V2App"));
-const isV2Route = window.location.pathname === "/v2" || window.location.pathname.startsWith("/v2/");
+const legacyUrl = legacyPageUrl(window.location.pathname, window.location.search, window.location.hash);
+if (legacyUrl) window.location.replace(legacyUrl);
+const route = webRoute(legacyUrl ? "/v1" : window.location.pathname);
+const isV2Route = route === "v2";
 
-const isAdminRoute = window.location.pathname.startsWith("/admin");
-const isDocsRoute = window.location.pathname === "/docs" || window.location.pathname.startsWith("/docs/");
-const isCatalogRoute = window.location.pathname === "/";
+const isAdminRoute = route === "admin";
+const isDocsRoute = route === "docs";
+const isCatalogRoute = route === "v1";
+if (isCatalogRoute) document.title = "awalogo V1 | Nigerian Bank Logos";
 const analyticsEnabled = shouldTrackAnalytics({
   productionBuild:import.meta.env.PROD,
   enabled:import.meta.env.VITE_ENABLE_VERCEL_ANALYTICS,

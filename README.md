@@ -58,6 +58,9 @@ The complete identity system and reusable asset pool are documented in
 
 ## Local Setup
 
+The homepage serves V2. The original V1 interface is available at `/v1` through
+the V2 footer; existing `/v2` routes and catalog/download endpoints remain valid.
+
 For server-side requests, reports, and metrics, see [Neon PostgreSQL setup](docs/neon.md).
 Catalog browsing and downloads do not require a database.
 

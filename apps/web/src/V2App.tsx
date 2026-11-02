@@ -149,8 +149,9 @@ function V2Workspace() {
   }, [selected, selectedFlag, bagOpen, requestOpen, infoPage, reportOpen]);
   useEffect(() => { try { localStorage.setItem(BAG_KEY, JSON.stringify(bag)); } catch { /* Session still works when storage is unavailable. */ } }, [bag]);
   useEffect(() => {
-    const meta = document.createElement("meta"); meta.name = "robots"; meta.content = "noindex,nofollow"; document.head.append(meta);
-    const oldTitle = document.title; document.title = "awalogo V2 | Coming soon";
+    const meta = document.createElement("meta"); meta.name = "robots"; meta.content = "noindex,nofollow";
+    if (location.pathname === "/v2/requests") document.head.append(meta);
+    const oldTitle = document.title; document.title = "awalogo | Nigerian & African Brand Assets";
     return () => { meta.remove(); document.title = oldTitle; };
   }, []);
   useEffect(() => { if (!feedback) return; const timer = setTimeout(() => setFeedback(""), 4500); return () => clearTimeout(timer); }, [feedback]);
@@ -251,7 +252,7 @@ function V2Workspace() {
   function openRequest() { closePanels(); setRequestOpen(true); }
   function showResource(next: "logos" | "flags") {
     closePanels(); setAboutPage(false); setResource(next);
-    const path = next === "flags" ? "/v2/flags" : "/v2";
+    const path = next === "flags" ? "/v2/flags" : "/";
     if (location.pathname !== path || location.search) history.pushState(null, "", path);
   }
   useEffect(() => {
@@ -297,7 +298,7 @@ function V2Workspace() {
       </div>
       </div>
     </>}</main>}
-    <footer className="v2-footer"><span>{t("V2 / Coming soon")}</span><a href="/">{t("V1 interface")}<ArrowUpRight size={13} /></a><a href="/v2/requests" onClick={(event) => { if (!event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey) { event.preventDefault(); openRequest(); } }}>{t("Missing a brand? Request it")}<ArrowUpRight size={13} /></a></footer>
+    <footer className="v2-footer"><span>V2</span><a href="/v1">{t("V1 interface")}<ArrowUpRight size={13} /></a><a href="/v2/requests" onClick={(event) => { if (!event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey) { event.preventDefault(); openRequest(); } }}>{t("Missing a brand? Request it")}<ArrowUpRight size={13} /></a></footer>
     </div>
     {selected || selectedFlag || requestOpen || infoPage ? <div className="v2-backdrop" onMouseDown={(event) => { if (event.target === event.currentTarget) { closePanels(); } }}><aside ref={panelRef} className="v2-panel" role="dialog" aria-modal="true" aria-label={selectedFlag ? `${selectedFlag.name} flag` : reportOpen && selected ? `Report logo: ${selected.name}` : infoPage ? t(infoTitles[infoPage]) : requestOpen ? t("Request a brand") : selected?.name ?? "Download bag"}><button className="v2-close" aria-label={t("Close panel")} onClick={() => { closePanels(); }}><X size={22} /></button>
       {selectedFlag ? <FlagDetails busy={busy} key={selectedFlag.code} flag={selectedFlag} onAdd={add} onDownload={downloadFlag} onCopy={copy} readAsset={fetchAsset} /> : reportOpen && selected && asset ? <V2Report key={`${selected.slug}-${variation}-${asset.type}`} name={selected.name} slug={selected.slug} variation={variation} versionName={variation === "primary" ? t("Primary logo") : selected.variations.find((item) => item.id === variation)?.name ?? variation} format={asset.type} onBack={() => setReportOpen(false)} /> : infoPage ? <V2Info page={infoPage} onRequest={openRequest} onNewest={() => { showResource("logos"); setQuery(""); setCategory([]); setIndustry(""); setMarket(""); setSort("newest"); }} onBrand={(slug) => { const logo = logos.find((item) => item.slug === slug); if (logo) { closePanels(); open(logo); } }} /> : requestOpen ? <V2Request embedded onBrowse={closePanels} onSelectBrand={(slug) => { const logo = logos.find((item) => item.slug === slug); if (logo) { setRequestOpen(false); open(logo); } }} /> : <>

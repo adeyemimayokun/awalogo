@@ -92,7 +92,7 @@ function setSharedLogoLocation(logoSlug: string | null): void {
 }
 
 function buildLogoShareUrl(logoSlug: string, assetId: string): string {
-  const url = new URL("/", window.location.origin);
+  const url = new URL("/v1", window.location.origin);
   url.searchParams.set("logo", logoSlug);
   if (assetId !== "primary") url.searchParams.set("asset", assetId);
   return url.toString();

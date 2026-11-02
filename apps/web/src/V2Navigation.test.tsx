@@ -18,6 +18,8 @@ describe("V2 top navigation", () => {
     const $ = navigation();
     expect($("nav.v2-topnav").length).toBe(1);
     expect($(".v2-topnav-brand").text()).toContain("awalogo");
+    expect($(".v2-topnav-brand").attr("href")).toBe("/");
+    expect($('a[aria-label="Brand library"]').attr("href")).toBe("/");
     expect($(".v2-topnav-links").text()).toContain("Browse");
     expect($(".v2-topnav-links").text()).toContain("Flags");
     expect($('a[href^="https://www.figma.com/community/plugin/"]').length).toBe(1);

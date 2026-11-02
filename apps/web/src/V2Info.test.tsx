@@ -20,10 +20,11 @@ describe("V2 information and preview documentation", () => {
     expect($.text()).toContain("Sycamore");
     expect($('a[href="https://www.linkedin.com/in/adeyemimayokun/"]').text()).toBe("Adeyemi Mayokun");
   });
-  it("describes the expanded preview rather than a finance-only launched product", () => {
+  it("describes the expanded default website while preserving the legacy catalogs", () => {
     const $ = load(renderToStaticMarkup(<V2Info page="about" onBrand={noop} onNewest={noop} onRequest={noop} />));
     expect($.text()).toContain("Nigerian and African company logos");
-    expect($.text()).toContain("Coming soon");
+    expect($.text()).toContain("V2 is the main website");
+    expect($.text()).not.toContain("Coming soon");
     expect($.text()).toContain("current Figma plugin keep their existing catalogs");
   });
   it("documents pack/drop, flag workflows and preferences with a working docs anchor", () => {

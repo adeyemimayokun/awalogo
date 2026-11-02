@@ -58,9 +58,9 @@ export default function V2Navigation({ isRequest, category, categories, total, o
   return <nav ref={ref} className="v2-dock v2-topnav" aria-label={t("Workspace navigation")} onBlur={(event) => {
     if (event.relatedTarget && !event.currentTarget.contains(event.relatedTarget as Node)) setMenu(null);
   }}>
-    <a className="v2-topnav-brand" href="/v2" onClick={(event) => { if (!isRequest && !event.ctrlKey && !event.metaKey && !event.shiftKey && !event.altKey) { event.preventDefault(); setMenu(null); onLibrary(); } }}>awalogo <small>V2</small></a>
+    <a className="v2-topnav-brand" href="/" onClick={(event) => { if (!isRequest && !event.ctrlKey && !event.metaKey && !event.shiftKey && !event.altKey) { event.preventDefault(); setMenu(null); onLibrary(); } }}>awalogo <small>V2</small></a>
     <div className="v2-topnav-links">
-    <a className={`v2-dock-item${!isRequest && showCategories ? " active" : ""}`} title={t("Brand library")} aria-label={t("Brand library")} aria-current={!isRequest && showCategories ? "page" : undefined} href="/v2" onClick={(event) => { if (!isRequest && !event.ctrlKey && !event.metaKey && !event.shiftKey && !event.altKey) { event.preventDefault(); setMenu(null); onLibrary(); } }}><LayoutGrid size={18} /><span>{t("Browse")}</span></a>
+    <a className={`v2-dock-item${!isRequest && showCategories ? " active" : ""}`} title={t("Brand library")} aria-label={t("Brand library")} aria-current={!isRequest && showCategories ? "page" : undefined} href="/" onClick={(event) => { if (!isRequest && !event.ctrlKey && !event.metaKey && !event.shiftKey && !event.altKey) { event.preventDefault(); setMenu(null); onLibrary(); } }}><LayoutGrid size={18} /><span>{t("Browse")}</span></a>
     {!isRequest && showCategories ? <div className="v2-dock-group">
       <button className={`v2-dock-item${category.length > 0 ? " active" : ""}`} title={t("Categories")} aria-expanded={menu === "categories"} aria-controls="v2-dock-categories" onClick={() => setMenu(menu === "categories" ? null : "categories")}><SlidersHorizontal size={18} /><span>{t("Categories")}</span><ChevronDown size={13} />{category.length > 0 ? <i className="v2-dock-filter-dot" /> : null}</button>
       {menu === "categories" ? <div className="v2-dock-popover v2-category-picker" id="v2-dock-categories" aria-label={t("Select categories")}>
@@ -84,7 +84,7 @@ export default function V2Navigation({ isRequest, category, categories, total, o
     </div>
     <div className="v2-dock-group">
       <button className="v2-dock-item" title={t("More options")} aria-label={t("More options")} aria-expanded={menu === "more"} aria-controls="v2-dock-more" onClick={() => setMenu(menu === "more" ? null : "more")}><MoreHorizontal size={19} /></button>
-      {menu === "more" ? <div className="v2-dock-popover v2-dock-more" id="v2-dock-more"><strong>awalogo <small>{t("V2 / Coming soon")}</small></strong><p>{t("{count} brands in the library", { count: total })}</p>
+      {menu === "more" ? <div className="v2-dock-popover v2-dock-more" id="v2-dock-more"><strong>awalogo <small>V2</small></strong><p>{t("{count} brands in the library", { count: total })}</p>
         {onSound ? <button className="v2-dock-category" aria-pressed={sound} onClick={onSound}>{sound ? <Volume2 size={16} /> : <VolumeX size={16} />}{t("Action sounds")}</button> : null}
         <a href="https://www.figma.com/community/plugin/1661356348996631383" target="_blank" rel="noreferrer">{t("Figma plugin")}<ArrowUpRight size={15} /></a>
         <button className="v2-dock-category" onClick={() => { setMenu(null); onFlags(); }}>{t("Country flags")}</button>
@@ -92,7 +92,7 @@ export default function V2Navigation({ isRequest, category, categories, total, o
         {(["changelog", "about", "contribute", "help", "usage"] as const).map((page) => <button className="v2-dock-category" key={page} onClick={() => { setMenu(null); onInfo(page); }}>{t(({ changelog: "Changelog", about: "About awalogo", contribute: "Contribute", help: "Help & documentation", usage: "Trademark & usage" })[page])}</button>)}
         <a href="https://github.com/adeyemimayokun/awalogo" target="_blank" rel="noreferrer">GitHub <ArrowUpRight size={15} /></a>
         <button className="v2-dock-category" onClick={() => { setMenu(null); onInfo("updates"); }}>{t("Updates")}</button>
-        <a href="/">{t("Visit V1 interface")}<ArrowUpRight size={15} /></a></div> : null}
+        <a href="/v1">{t("Visit V1 interface")}<ArrowUpRight size={15} /></a></div> : null}
     </div>
     <button className={`v2-dock-item v2-topnav-request${isRequest ? " active" : ""}`} aria-keyshortcuts="Alt+R" title={`${t("Request a brand")} (Alt+R)`} aria-label={t("Request a brand")} onClick={() => { setMenu(null); if (!isRequest) onRequest(); }}><Plus size={18} /><span>{t("Request logo")}</span></button>
     </div>
