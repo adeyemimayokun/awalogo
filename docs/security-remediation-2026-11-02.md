@@ -95,3 +95,19 @@ The runtime login intentionally grants the trusted server its required row acces
 it is not a per-user tenant isolation system. HTTP authorization and private tokens
 remain mandatory. Rerun `pnpm security:audit`, `pnpm test`, `pnpm typecheck`,
 `npm run build` and the documented staging rehearsal before release.
+
+## Deployment Compatibility Follow-Up
+
+On 2026-11-03, a clean-checkout release build exposed an ignored-output dependency
+in the preservation cache. Existing reviewed output bytes are now versioned in
+`packages/brands/published-assets`, under their original checksums. Fresh builds
+restore those bytes without changing catalog records or re-rendering logos.
+Corrupt output still fails closed; only missing generated files use the archive.
+The clean release build and archive fallback regression test pass.
+
+Neon role creation was also verified through a real committed provisioning and
+TLS login on staging. Neon requires the generated password rather than a SCRAM
+verifier in role-creation SQL; the provisioner uses verified TLS, escapes the
+literal, and never prints credentials. The restricted role remains non-owner,
+NOBYPASSRLS, and NOCREATEROLE. Rollback-only rehearsals alone cannot establish
+compatibility with Neon's commit-time control-plane validation.

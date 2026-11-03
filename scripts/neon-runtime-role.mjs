@@ -31,7 +31,7 @@ const updateColumns = {
 };
 const ident = (s) => `"${s.replaceAll('"', '""')}"`;
 
-// Send only a SCRAM verifier, not the generated plaintext password, in SQL.
+// Standalone PostgreSQL accepts a verifier; Neon requires the password over TLS.
 export function scramVerifier(password, salt = randomBytes(16)) {
   const salted = pbkdf2Sync(password, salt, 4096, 32, 'sha256');
   const client = createHmac('sha256', salted).update('Client Key').digest();

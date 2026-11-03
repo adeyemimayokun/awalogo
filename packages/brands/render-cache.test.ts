@@ -39,6 +39,18 @@ describe("pinned published render cache", () => {
     await expect(cachedPublishedFormats(key, fingerprint, brand.formats, async () => Buffer.from("corrupt"))).rejects.toThrow(/checksum mismatch/);
     await expect(cachedPublishedFormats(key, fingerprint, brand.formats, async () => null)).rejects.toThrow(/checksum mismatch/);
   });
+  it("restores verified published bytes on a clean checkout without masking corruption", async () => {
+    const read = vi.fn(async (path: string) => {
+      if (path.startsWith("apps/web/public/")) throw Object.assign(new Error("missing generated output"), { code: "ENOENT" });
+      return readFile(path);
+    });
+    const result = await cachedPublishedFormats(key, fingerprint, brand.formats, read);
+    expect(result?.outputs).toHaveLength(brand.formats.length);
+    expect(read.mock.calls.some(([path]) => path.startsWith("packages/brands/published-assets/"))).toBe(true);
+    await expect(cachedPublishedFormats(key, fingerprint, brand.formats, async () => {
+      throw Object.assign(new Error("access denied"), { code: "EACCES" });
+    })).rejects.toThrow("access denied");
+  });
   it("checks normalized source bytes even on cache hits", async () => {
     await expect(cachedPublishedFormats(key, fingerprint, brand.formats, async () => Buffer.from("corrupt"), `assets/${"0".repeat(64)}.png`)).rejects.toThrow(/Normalized raster checksum mismatch/);
   });

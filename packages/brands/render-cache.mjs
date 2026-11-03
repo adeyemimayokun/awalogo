@@ -34,7 +34,14 @@ export async function cachedPublishedFormats(key, fingerprint, formats, read, no
   for (const format of formats) {
     if (!/^[a-f0-9]{64}$/.test(format.checksum) || format.url !== `/catalog/v2/assets/${format.checksum}.${format.type}` || !["svg", "png", "webp"].includes(format.type)) throw new Error("Invalid published output reference");
     const path = `apps/web/public${format.url}`;
-    const bytes = await read(path);
+    let bytes;
+    try { bytes = await read(path); }
+    catch (error) {
+      if (error.code !== "ENOENT" && !/^GitHub request failed \(404\)/.test(error.message)) throw error;
+    }
+    // Generated public outputs are ignored by Git. Fresh clones restore the
+    // reviewed bytes from this checksum-addressed archive, never a new render.
+    if (!bytes) bytes = await read(`packages/brands/published-assets/${format.checksum}.${format.type}`);
     if (!bytes || hash(bytes) !== format.checksum) throw new Error(`Published output checksum mismatch: ${path}`);
     if (format.type === "svg") validateSvgSecurity(bytes);
     outputs.push({ path, bytes });
