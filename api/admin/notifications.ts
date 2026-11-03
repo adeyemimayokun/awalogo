@@ -35,7 +35,7 @@ function serializeNotification(notification: RepositoryNotification) {
 export default async function handler(request: VercelRequest, response: VercelResponse): Promise<void> {
   if (request.method !== "GET" && request.method !== "PATCH") return methodNotAllowed(response, ["GET", "PATCH"]);
   if (request.method === "PATCH" && !requireSameOrigin(request, response)) return;
-  const admin = requireAdmin(request, response);
+  const admin = await requireAdmin(request, response);
   if (!admin) return;
   response.setHeader("Cache-Control", "no-store");
 

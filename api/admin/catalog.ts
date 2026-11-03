@@ -44,7 +44,7 @@ function bundledCatalogState(): {
 
 export default async function handler(request: VercelRequest, response: VercelResponse): Promise<void> {
   if (request.method !== "GET") return methodNotAllowed(response, ["GET"]);
-  const admin = requireAdmin(request, response);
+  const admin = await requireAdmin(request, response);
   if (!admin) return;
   response.setHeader("Cache-Control", "no-store");
   try {

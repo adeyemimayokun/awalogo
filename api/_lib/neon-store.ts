@@ -2,6 +2,7 @@ import { Pool, types } from "pg";
 import { attachDatabasePool } from "@vercel/functions";
 
 const tables = {
+  admin_session_revocations: "token_hash,expires_at",
   asset_requests: "submission_id,brand_name,website,category,contact_email,asset_url,notify_when_available,status,tracking_token_hash,github_issue_number,created_at,updated_at",
   asset_reports: "submission_id,slug,variation,format,reason,note,official_source,status,resolution_note,updated_by,created_at,updated_at",
   admin_plugin_snapshots: "id,count,source_url,observed_at,recorded_at,recorded_by",
@@ -9,6 +10,7 @@ const tables = {
   logo_download_totals: "slug,downloads",
 } as const;
 const procedures = {
+  revoke_admin_session: ["session_hash", "session_expiry"],
   record_logo_downloads: ["requested_slugs", "network_key"],
   record_product_event: ["event_id", "event_name", "resource_id", "event_format", "event_detail"],
   triage_asset_report: ["report_id", "next_status", "resolution", "actor"],

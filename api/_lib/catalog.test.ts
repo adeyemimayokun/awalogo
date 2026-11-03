@@ -32,6 +32,15 @@ function existingLogo(name: string, slug: string) {
 }
 
 describe("CMS catalog mutations", () => {
+  it.each(["moniepoint", "opay", "flutterwave"])("rejects protected seed %s before processing uploads", async (slug) => {
+    const mutation = mutationSchema.parse({operation:"add-logo",name:"Reserved logo",slug,categories:["fintech"],aliases:[],website:"https://example.invalid",sourceType:"community-catalog",svgBase64:Buffer.from("this is not SVG").toString("base64"),variations:[]});
+    await expect(buildMutationChanges(mutation, [], {}, structuredClone(manifest))).rejects.toThrow("locked core entry");
+  });
+  it("rejects artwork names colliding with another primary", async () => {
+    const logos=[existingLogo("Parent", "parent"),existingLogo("Parent Child", "parent-child")];
+    await expect(buildMutationChanges({operation:"add-variation",slug:"parent",variationId:"child",name:"Child",sourceUrl:"https://example.invalid",svgBase64:safeSvg},logos,{},structuredClone(manifest))).rejects.toThrow("Artwork path already belongs");
+    await expect(buildMutationChanges({operation:"add-logo",slug:"new",name:"New",categories:["fintech"],aliases:[],website:"https://example.invalid",sourceType:"community-catalog",svgBase64:safeSvg,variations:[{id:"primary",name:"Primary",svgBase64:safeSvg}]},[existingLogo("Other", "new-primary")],{},structuredClone(manifest))).rejects.toThrow("Artwork path already belongs");
+  });
   it("creates normalized source and derivative changes for a new logo", async () => {
     const result = await buildMutationChanges({
       operation: "add-logo",

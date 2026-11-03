@@ -4,6 +4,7 @@ import { pathToFileURL } from 'node:url';
 
 export const role = 'awalogo_runtime';
 export const grants = {
+  admin_session_revocations: ['SELECT', 'INSERT', 'DELETE'],
   asset_requests: ['SELECT', 'INSERT', 'UPDATE'],
   asset_reports: ['SELECT', 'INSERT', 'UPDATE'],
   admin_plugin_snapshots: ['SELECT', 'INSERT'],
@@ -16,6 +17,7 @@ export const grants = {
   logo_request_receipts: ['SELECT', 'INSERT', 'UPDATE', 'DELETE'],
 };
 export const functions = [
+  'revoke_admin_session(text,timestamp with time zone)',
   'record_product_event(uuid,text,text,text,text)',
   'triage_asset_report(uuid,text,text,text)',
   'record_logo_downloads(text[],text)',

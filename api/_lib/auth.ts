@@ -6,6 +6,7 @@ import {
   randomBytes,
   timingSafeEqual
 } from "node:crypto";
+import { isSessionRevoked, revokeSession } from "./session-revocation.js";
 import type { VercelRequest, VercelResponse } from "./vercel-types";
 
 const SESSION_COOKIE = "nbl_admin_session";
@@ -161,13 +162,34 @@ export function readSession(request: VercelRequest): AdminSession | null {
   }
 }
 
-export function requireAdmin(request: VercelRequest, response: VercelResponse): AdminSession | null {
+export async function requireAdmin(request: VercelRequest, response: VercelResponse): Promise<AdminSession | null> {
+  response.setHeader("Cache-Control", "no-store");
   const session = readSession(request);
   if (!session || (!session.local && !isAllowedAdmin(session.login))) {
     response.status(401).json({ error: "Admin authentication required" });
     return null;
   }
+  if (!session.local) {
+    try {
+      const token = parseCookies(request)[SESSION_COOKIE];
+      if (await isSessionRevoked(token)) {
+        response.status(401).json({ error: "Admin authentication required" });
+        return null;
+      }
+    } catch {
+      response.status(503).json({ error: "Admin session verification unavailable" });
+      return null;
+    }
+  }
   return session;
+}
+
+export async function logoutSession(request: VercelRequest, response: VercelResponse): Promise<void> {
+  const session = readSession(request);
+  if (session && !session.local) {
+    await revokeSession(parseCookies(request)[SESSION_COOKIE], session.exp);
+  }
+  clearSession(response);
 }
 
 export function clearSession(response: VercelResponse): void {

@@ -45,6 +45,8 @@ function adminRequest(): VercelRequest {
   } as VercelRequest;
 }
 
+vi.mock("../_lib/session-revocation.js", () => ({ isSessionRevoked: vi.fn().mockResolvedValue(false) }));
+
 const originalEnvironment = { ...process.env };
 
 describe("production admin read fallbacks", () => {

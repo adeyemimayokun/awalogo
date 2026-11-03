@@ -1,7 +1,5 @@
 import sharp from "sharp";
 import { load } from "cheerio";
-import { validateSvgSecurity } from "../../packages/validator/svg-security.mjs";
-import { cachedPublishedFormats, renderFingerprint, primaryRenderOptions } from "../../packages/brands/render-cache.mjs";
 import { createHash } from "node:crypto";
 import {
   readRepositoryFile,
@@ -17,6 +15,11 @@ export async function generateAdminOutputs(
   slug: string,
   token?: string,
 ) {
+  // Keep ESM helpers out of the CommonJS module initialization path.
+  const [{ validateSvgSecurity }, { cachedPublishedFormats, renderFingerprint, primaryRenderOptions }] = await Promise.all([
+    import("../../packages/validator/svg-security.mjs"),
+    import("../../packages/brands/render-cache.mjs"),
+  ]);
   const files = new Map(changes.map((c) => [c.path, c.content]));
   const bytes = async (path: string) =>
     files.has(path) ? files.get(path)! : readRepositoryFile(path, token);
