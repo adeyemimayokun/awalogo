@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@awalogo/core": "workspace:*",
-    "svgo": "3.3.5",
+    "svgo": "4.1.0",
     "zod": "4.6.7"
   },
   "devDependencies": {
