@@ -15,8 +15,8 @@ importers:
         specifier: 1.9.5
         version: 1.9.5
       '@neon/env':
-        specifier: 1.6.6
-        version: 1.6.6
+        specifier: 1.6.8
+        version: 1.6.8
       '@vercel/functions':
         specifier: 3.10.4
         version: 3.10.4
@@ -740,17 +740,25 @@ packages:
     os: [linux]
     libc: [glibc]
 
+  '@neon/config@1.10.0':
+    resolution: {integrity: sha512-Uvh9F6tY6HsZeEKU9Bd8WZVClBVc26xPGiLm11Zypox2hMiql/iof5VUsbf/18YaAx3Fw8dk1w1RsYWNEx12mw==}
+    engines: {node: '>=20.19.0'}
+
   '@neon/config@1.9.5':
     resolution: {integrity: sha512-KK105CxGBrcNGJfUgmjINKTykizGbWh9fdjkaEflls10Q8VsBSMt/AXagECH9spYr/mI8o/UCtr6AOMwpKTsRw==}
     engines: {node: '>=20.19.0'}
 
-  '@neon/env@1.6.6':
-    resolution: {integrity: sha512-8H3GyaAOFb6LjI/lipMoBKwyQbvP/u8XHQno6mtXGeRDmJIEeb5hjbh3bcdIMOWd/42h4GItuvhdk3qNwnQKXQ==}
+  '@neon/env@1.6.8':
+    resolution: {integrity: sha512-sQ1+EoI25zZpLjJCpj2PQnmGrPk5mx6nVNyAyVg5bvzVsTXs9vvj2YbVW8qR1YjXcgSZNoU/PFvhlWFBN+hrSg==}
     engines: {node: '>=20.19.0'}
     hasBin: true
 
   '@neon/sdk@7.6.0':
     resolution: {integrity: sha512-CqNhupvYjP2KeO8v7aMy5hcDQuo118+KsNGkZd8UUyjYpC+MpLH1eot4uzTjITGPXBZ6yrfwtqnByVJOtuAmqg==}
+    engines: {node: '>=20.19.0'}
+
+  '@neon/sdk@7.7.0':
+    resolution: {integrity: sha512-ncGRkf+E58UEJ3U4Y1MOo6f/fyjOqzjqa3If25uYfDK6VDmRdm7ylrpsENsdZZ3vVnAO6sDnRqMHS0jIisC8XA==}
     engines: {node: '>=20.19.0'}
 
   '@rolldown/pluginutils@1.0.0-rc.3':
@@ -2111,21 +2119,29 @@ snapshots:
   '@napi-rs/lzma-linux-x64-gnu@1.5.1':
     optional: true
 
+  '@neon/config@1.10.0':
+    dependencies:
+      '@neon/sdk': 7.7.0
+      jiti: 2.7.0
+      zod: 4.6.7
+
   '@neon/config@1.9.5':
     dependencies:
       '@neon/sdk': 7.6.0
       jiti: 2.7.0
       zod: 4.6.7
 
-  '@neon/env@1.6.6':
+  '@neon/env@1.6.8':
     dependencies:
-      '@neon/config': 1.9.5
+      '@neon/config': 1.10.0
       yargs: 18.2.0
       zod: 4.6.7
     optionalDependencies:
       '@napi-rs/keyring': 1.3.0
 
   '@neon/sdk@7.6.0': {}
+
+  '@neon/sdk@7.7.0': {}
 
   '@rolldown/pluginutils@1.0.0-rc.3': {}
 
