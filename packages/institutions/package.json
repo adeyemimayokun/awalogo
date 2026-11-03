@@ -5,11 +5,22 @@
   "license": "MIT",
   "type": "module",
   "sideEffects": false,
-  "exports": { ".": { "types": "./dist/src/index.d.ts", "import": "./dist/src/index.js" } },
-  "files": ["dist", "exports", "README.md"],
+  "exports": {
+    ".": {
+      "types": "./dist/src/index.d.ts",
+      "import": "./dist/src/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "exports",
+    "README.md"
+  ],
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
     "typecheck": "tsc -p tsconfig.json"
   },
-  "dependencies": { "zod": "^3.24.1" }
+  "dependencies": {
+    "zod": "4.6.7"
+  }
 }

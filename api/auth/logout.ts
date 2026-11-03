@@ -1,4 +1,4 @@
-import type { VercelRequest, VercelResponse } from "@vercel/node";
+import type { VercelRequest, VercelResponse } from "../_lib/vercel-types";
 import { clearSession } from "../_lib/auth.js";
 import { methodNotAllowed, requireSameOrigin } from "../_lib/http.js";
 

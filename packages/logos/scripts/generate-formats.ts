@@ -4,6 +4,7 @@ import { readFile, writeFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import sharp from "sharp";
+import { validateSvgSecurity } from "../../validator/svg-security.mjs";
 import { logoCatalog } from "../src/catalog";
 
 const packageRoot = join(dirname(fileURLToPath(import.meta.url)), "..");
@@ -39,6 +40,7 @@ for (const logo of logoCatalog) {
 
   for (const target of targets) {
     const source = await readFile(join(packageRoot, "src", target.sourcePath));
+    if (target.sourcePath.endsWith(".svg")) validateSvgSecurity(source);
     manifest.source_sha256[target.key] = createHash("sha256").update(source).digest("hex");
     const outputs = new Map<string, Buffer>([
       ["png", await render(source, "png")],

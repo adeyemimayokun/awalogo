@@ -1,4 +1,4 @@
-import type { VercelRequest, VercelResponse } from "@vercel/node";
+import type { VercelRequest, VercelResponse } from "../_lib/vercel-types";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import requestsHandler from "./requests";
 
@@ -27,6 +27,8 @@ function request(method: "GET" | "POST" | "PATCH", body?: unknown): VercelReques
     body,
     headers: {
       host: "127.0.0.1:5174",
+      origin: "http://127.0.0.1:5174",
+      "x-forwarded-proto": "http",
       "x-awalogo-local-admin": "1"
     },
     query: {}

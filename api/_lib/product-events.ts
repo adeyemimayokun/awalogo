@@ -1,4 +1,4 @@
-import type { VercelRequest, VercelResponse } from "@vercel/node";
+import type { VercelRequest, VercelResponse } from "./vercel-types";
 import { createHmac, randomUUID } from "node:crypto";
 import { productEventSchema } from "../../packages/admin/events.js";
 import { adminResources } from "./admin-resources.js";

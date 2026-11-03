@@ -1,7 +1,7 @@
 import { adminStore, adminStoreConfigured } from './admin-store.js';
 import { previewDeliveryDisabled } from './preview-delivery.js';
 import { createHmac, randomUUID } from "node:crypto";
-import type { VercelRequest, VercelResponse } from "@vercel/node";
+import type { VercelRequest, VercelResponse } from "./vercel-types";
 import { z } from "zod";
 import catalog from "../../packages/catalog-ui/src/generated/runtime-catalog.json";
 import expansion from "../../packages/brands/catalog.json";

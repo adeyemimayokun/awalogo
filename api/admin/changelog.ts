@@ -1,4 +1,4 @@
-import type { VercelRequest, VercelResponse } from "@vercel/node";
+import type { VercelRequest, VercelResponse } from "../_lib/vercel-types";
 import { ZodError } from "zod";
 import { requireAdmin } from "../_lib/auth.js";
 import { applyChangelogMutation, changelogMutationSchema, changelogSchema, type ChangelogRelease } from "../_lib/changelog.js";

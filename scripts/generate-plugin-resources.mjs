@@ -1,4 +1,5 @@
 import { readFile, mkdir, writeFile, copyFile } from "node:fs/promises";
+import { validateSvgSecurity } from "../packages/validator/svg-security.mjs";
 import { resolve } from "node:path";
 import { createHash } from "node:crypto";
 
@@ -21,6 +22,7 @@ async function formatsFor(formats) {
     const filename = asset.url.split("/").at(-1);
     const path = resolve(publicRoot, `.${asset.url}`);
     const bytes = await readFile(path);
+    if (asset.type === "svg") validateSvgSecurity(bytes);
     if (createHash("sha256").update(bytes).digest("hex") !== asset.checksum) throw new Error(`Checksum mismatch: ${asset.url}`);
     await copyFile(path, resolve(output, "assets", filename));
     return { ...asset, repository_path: `assets/${filename}`, url: `/catalog/plugin/v2/assets/${filename}` };

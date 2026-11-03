@@ -1,6 +1,6 @@
 import { dashboardMutation } from "../_lib/admin-dashboard.js";
 import { prepareResourceMutation } from "../_lib/admin-resource-mutations.js";
-import type { VercelRequest, VercelResponse } from "@vercel/node";
+import type { VercelRequest, VercelResponse } from "../_lib/vercel-types";
 import { ZodError } from "zod";
 import { requireAdmin } from "../_lib/auth.js";
 import { buildMutationChanges, catalogPaths, mutationSchema } from "../_lib/catalog.js";

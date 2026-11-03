@@ -37,6 +37,7 @@ function requiredEnv(name: string): string {
 
 async function resend<T>(path: string): Promise<T> {
   const response = await fetch(`https://api.resend.com${path}`, {
+    signal: AbortSignal.timeout(10000),
     headers: { Authorization: `Bearer ${requiredEnv("RESEND_API_KEY")}` }
   });
   if (!response.ok) {

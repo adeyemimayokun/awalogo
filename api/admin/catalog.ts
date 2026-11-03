@@ -1,5 +1,5 @@
 import { dashboardView } from "../_lib/admin-dashboard.js";
-import type { VercelRequest, VercelResponse } from "@vercel/node";
+import type { VercelRequest, VercelResponse } from "../_lib/vercel-types";
 import bundledCatalogJson from "../../packages/logos/src/promoted-catalog.json";
 import bundledVariationsJson from "../../packages/logos/src/variations.json";
 import { requireAdmin } from "../_lib/auth.js";

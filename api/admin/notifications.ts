@@ -1,4 +1,4 @@
-import type { VercelRequest, VercelResponse } from "@vercel/node";
+import type { VercelRequest, VercelResponse } from "../_lib/vercel-types";
 import { z } from "zod";
 import { requireAdmin } from "../_lib/auth.js";
 import {
@@ -7,9 +7,9 @@ import {
   markRepositoryNotificationRead,
   type RepositoryNotification
 } from "../_lib/github.js";
-import { jsonError, methodNotAllowed } from "../_lib/http.js";
+import { jsonError, methodNotAllowed, requireSameOrigin } from "../_lib/http.js";
 
-const updateSchema = z.object({ id: z.string().min(1) });
+const updateSchema = z.object({ id: z.string().regex(/^\d{1,30}$/) }).strict();
 
 function notificationUrl(notification: RepositoryNotification): string {
   const apiUrl = notification.subject.url;
@@ -34,6 +34,7 @@ function serializeNotification(notification: RepositoryNotification) {
 
 export default async function handler(request: VercelRequest, response: VercelResponse): Promise<void> {
   if (request.method !== "GET" && request.method !== "PATCH") return methodNotAllowed(response, ["GET", "PATCH"]);
+  if (request.method === "PATCH" && !requireSameOrigin(request, response)) return;
   const admin = requireAdmin(request, response);
   if (!admin) return;
   response.setHeader("Cache-Control", "no-store");

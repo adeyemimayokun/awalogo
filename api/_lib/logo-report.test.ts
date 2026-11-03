@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-import type { VercelRequest, VercelResponse } from "@vercel/node";
+import type { VercelRequest, VercelResponse } from "./vercel-types";
 import { handleLogoReport, logoReportSchema } from "./logo-report.js";
 import { sendLogoReport } from "./email.js";
 import { maintainerLogoReportTemplate } from "./email-templates.js";

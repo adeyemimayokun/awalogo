@@ -3,6 +3,7 @@
   "compilerOptions": {
     "composite": true,
     "types": [
+      "node",
       "vite/client",
       "react",
       "react-dom"

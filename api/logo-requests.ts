@@ -1,19 +1,16 @@
 import { handleProductEvents } from './_lib/product-events.js';
-import type { VercelRequest, VercelResponse } from "@vercel/node";
+import type { VercelRequest, VercelResponse } from "./_lib/vercel-types";
 import { ZodError } from "zod";
 import { handlePopularity } from "./_lib/popularity.js";
 import { handleLogoReport } from "./_lib/logo-report.js";
 import { sendPrivateLogoRequest } from "./_lib/email.js";
-import { createRepositoryIssue, listRepositoryIssues } from "./_lib/github.js";
+import { createRepositoryIssue } from "./_lib/github.js";
+import { claimLogoRequest, deployedRequests } from "./_lib/request-abuse.js";
 import { methodNotAllowed, requireSameOrigin } from "./_lib/http.js";
 import { buildPublicIssue, publicLogoRequestSchema } from "./_lib/logo-requests.js";
 import { getAssetRequestStatus, requestStoreConfigured, saveAssetRequest } from "./_lib/request-store.js";
 import { previewDeliveryDisabled } from "./_lib/preview-delivery.js";
-import {
-  appendPrivateRequestMetadata,
-  readPrivateRequestMetadata,
-  readSubmissionId
-} from "./_lib/request-metadata.js";
+import { appendPrivateRequestMetadata } from "./_lib/request-metadata.js";
 
 export const config = { api: { bodyParser: { sizeLimit: "64kb" } } };
 
@@ -38,25 +35,59 @@ export default async function handler(request: VercelRequest, response: VercelRe
   if (request.method !== "POST") return methodNotAllowed(response, ["GET", "POST"]);
   if (!requireSameOrigin(request, response)) return;
 
+  let activeClaim: Awaited<ReturnType<typeof claimLogoRequest>> | undefined;
+  let externalStarted = false;
   try {
     const submission = publicLogoRequestSchema.parse(request.body);
+    const claim = await claimLogoRequest(request, submission);
+    if (claim.kind === "accepted") activeClaim = claim;
+    if (claim.kind === "limited") {
+      response.setHeader("Retry-After", "86400");
+      response.status(429).json({ error: "Request limit reached. Please try again later." });
+      return;
+    }
+    if (claim.kind === "conflict") {
+      response.status(409).json({ error: "Submission already exists. Retry with the original tracking token and unchanged request." });
+      return;
+    }
+    if (claim.kind === "retry") {
+      if (!claim.reply || (deployedRequests() && !await getAssetRequestStatus(claim.token))) {
+        response.status(503).json({ error: "Request storage could not be verified. Please try again later.", trackingToken: claim.token });
+        return;
+      }
+      response.status(claim.reply.status).json({ ...claim.reply.body, trackingUrl: `/v2/requests?token=${encodeURIComponent(claim.token)}`, trackingToken: claim.token });
+      return;
+    }
+    if (claim.kind === "pending") {
+      response.setHeader("Retry-After", "5");
+      response.status(409).json({ error: "Request is still in progress. Retry with the same submission and tracking token.", trackingToken: claim.token });
+      return;
+    }
+    submission.trackingToken = claim.token;
     let databaseStored = false;
     let trackingUrl: string | null = null;
     if (requestStoreConfigured()) {
       try {
         trackingUrl = await saveAssetRequest(submission);
+        if (!trackingUrl) throw new Error("Request tracking ownership conflict");
         databaseStored = true;
       } catch (error) {
-        console.error("Request database persistence failed; trying private delivery", error);
+        console.error("Request database persistence failed", error);
+        if (deployedRequests()) throw error;
       }
     }
+    if (deployedRequests() && !databaseStored) throw new Error("Durable request storage is unavailable");
     let emailDelivered = false;
     if (previewDeliveryDisabled()) {
-      response.status(databaseStored ? 202 : 503).json(databaseStored
-        ? { ok: true, issue: null, emailDelivered: false, trackingUrl }
-        : { error: "Preview request storage is unavailable" });
+      if (!databaseStored) throw new Error("Preview request storage is unavailable");
+      const reply = { status: 202, body: { ok: true, issue: null, emailDelivered: false, trackingUrl, trackingToken: claim.token } };
+      await claim.finish(reply);
+      response.status(reply.status).json(reply.body);
       return;
     }
+    await claim.beginDelivery();
+    // From here onward, a timeout may hide a successful delivery. Never reclaim.
+    externalStarted = true;
     try {
       await sendPrivateLogoRequest(submission, trackingUrl);
       emailDelivered = true;
@@ -64,16 +95,8 @@ export default async function handler(request: VercelRequest, response: VercelRe
       console.error("Logo request maintainer email delivery failed", error);
     }
 
-    let existingIssue = null;
-    try {
-      existingIssue = (await listRepositoryIssues("logo-request"))
-        .find((item) => readSubmissionId(item.body) === submission.submissionId) ?? null;
-    } catch (error) {
-      console.error("Logo request duplicate check failed", error);
-    }
-
-    let createdIssue = existingIssue;
-    let metadataStored = existingIssue ? readPrivateRequestMetadata(existingIssue.body) !== null : false;
+    let createdIssue = null;
+    let metadataStored = false;
     if (!createdIssue) {
       const publicIssue = buildPublicIssue(submission);
       let issueBody = publicIssue.body;
@@ -111,20 +134,28 @@ export default async function handler(request: VercelRequest, response: VercelRe
       return;
     }
 
-    response.status(existingIssue ? 200 : createdIssue ? 201 : 202).json({
+    const reply = { status: createdIssue ? 201 : 202, body: {
       ok: true,
       issue: createdIssue ? { number: createdIssue.number, url: createdIssue.html_url } : null,
       emailDelivered,
-      trackingUrl
-    });
+      trackingUrl,
+      trackingToken: claim.token
+    } };
+    await claim.finish(reply);
+    response.status(reply.status).json(reply.body);
   } catch (error) {
+    if (activeClaim && !externalStarted) {
+      try { await activeClaim.releaseStorage(); }
+      catch { console.error("Request storage retry state could not be saved"); }
+    }
     if (error instanceof ZodError) {
       response.status(400).json({ error: error.issues[0]?.message ?? "Check the form and try again." });
       return;
     }
     console.error("Logo request persistence failed", error);
     response.status(503).json({
-      error: "We could not securely save your request right now. Please wait a moment and try again."
+      error: "We could not securely save your request right now. Please wait a moment and try again.",
+      ...(activeClaim ? { trackingToken: activeClaim.token } : {})
     });
   }
 }

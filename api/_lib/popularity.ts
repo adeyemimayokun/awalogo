@@ -1,5 +1,5 @@
 import { createHmac } from "node:crypto";
-import type { VercelRequest, VercelResponse } from "@vercel/node";
+import type { VercelRequest, VercelResponse } from "./vercel-types";
 import { z } from "zod";
 import runtimeCatalog from "../../packages/catalog-ui/src/generated/runtime-catalog.json";
 import expansion from "../../packages/brands/catalog.json";

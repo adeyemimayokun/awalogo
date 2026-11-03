@@ -1,4 +1,4 @@
-import type { VercelRequest, VercelResponse } from "@vercel/node";
+import type { VercelRequest, VercelResponse } from "../_lib/vercel-types";
 import { requireAdmin } from "../_lib/auth.js";
 import { isLocalRepositoryMode, readRepositoryFile } from "../_lib/github.js";
 import { jsonError, methodNotAllowed } from "../_lib/http.js";

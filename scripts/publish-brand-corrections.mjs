@@ -2,9 +2,11 @@ import { readFile, writeFile, mkdir } from "node:fs/promises";
 import { createHash } from "node:crypto";
 import { join, dirname } from "node:path";
 import sharp from "sharp";
+import { cachedPublishedFormats, renderFingerprint } from "../packages/brands/render-cache.mjs";
 
 export async function publishBrandCorrections(root, check) {
   const base=join(root,"packages/brands");
+  const previous=JSON.parse(await readFile(join(base,"asset-corrections.json"),"utf8"));
   const reviews=JSON.parse(await readFile(join(base,"research/asset-corrections.json"),"utf8"));
   const legacy=JSON.parse(await readFile(join(root,"packages/catalog-ui/src/generated/runtime-catalog.json"),"utf8")).items.map((item)=>item.logo);
   const corrections=[], seen=new Set();
@@ -20,6 +22,13 @@ export async function publishBrandCorrections(root, check) {
     for(const value of [review.website,review.source_url]) if(new URL(value).protocol!=="https:") throw new Error("HTTPS correction source required");
     const source=await readFile(join(base,review.source_path));
     if(hash(source)!==review.source_checksum) throw new Error("Correction source checksum mismatch");
+    const cached=await cachedPublishedFormats(`correction:${review.slug}`,renderFingerprint("correction",review.source_checksum,review.source_path.split(".").at(-1),{trimPadding:true,withoutEnlargement:true}),previous.corrections.find((row)=>row.slug===review.slug)?.formats,(path)=>readFile(join(root,path)));
+    if(cached) {
+      for(const item of cached.outputs) await output(join(root,item.path),item.bytes);
+      seen.add(review.slug);
+      corrections.push({...review,formats:cached.formats});
+      continue;
+    }
     const sourceMetadata=await sharp(source).metadata();
     if(!["png","webp"].includes(sourceMetadata.format) || !review.source_path.endsWith(`.${sourceMetadata.format}`)) throw new Error("Correction source format mismatch");
     const trimmed=await sharp(source).trim({threshold:4}).toBuffer();

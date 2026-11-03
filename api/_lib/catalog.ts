@@ -1,5 +1,6 @@
 import { createHash } from "node:crypto";
 import sharp from "sharp";
+import { validateSvgSecurity } from "../../packages/validator/svg-security.mjs";
 import { z } from "zod";
 import {
   institutionCategorySchema,
@@ -90,15 +91,7 @@ function prettyJson(value: unknown): Buffer {
 }
 
 function validateSvg(buffer: Buffer): Buffer {
-  const text = buffer.toString("utf8").trim();
-  if (!/^<svg[\s>]/i.test(text) && !/^<\?xml[\s\S]*?<svg[\s>]/i.test(text)) throw new Error("The uploaded file is not an SVG");
-  if (!/\bviewBox\s*=\s*["'][^"']+["']/i.test(text)) throw new Error("SVG must include a viewBox");
-  if (/<script\b|<foreignObject\b|<!doctype\b|<!entity\b|\bon[a-z]+\s*=|javascript:|data:text\/html/i.test(text)) {
-    throw new Error("SVG contains scripts or unsafe embedded content");
-  }
-  const externalReference = /(?:href|src)\s*=\s*["']\s*(?:https?:)?\/\//i;
-  if (externalReference.test(text) || /url\s*\(\s*["']?(?:https?:)?\/\//i.test(text)) throw new Error("SVG cannot load external resources");
-  return Buffer.from(text);
+  return validateSvgSecurity(buffer);
 }
 
 function decodeSvg(base64: string): Buffer {
@@ -197,7 +190,7 @@ export async function buildMutationChanges(
   context: { currentPrimarySource?: Buffer } = {}
 ): Promise<{ changes: FileChange[]; title: string; body: string }> {
   const catalog = logoCatalogSchema.parse(inputCatalog);
-  const variations = z.record(z.array(logoVariationSchema)).parse(inputVariations);
+  const variations = z.record(z.string(), z.array(logoVariationSchema)).parse(inputVariations);
   const manifest = structuredClone(inputManifest);
   const today = new Date().toISOString().slice(0, 10);
   const changes: FileChange[] = [];

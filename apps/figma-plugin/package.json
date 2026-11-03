@@ -16,21 +16,21 @@
     "typecheck": "tsc -p tsconfig.json"
   },
   "dependencies": {
-    "fflate": "0.8.2",
-    "zod": "^3.24.1",
     "@awalogo/catalog-ui": "workspace:*",
     "@awalogo/core": "workspace:*",
     "@awalogo/institutions": "workspace:*",
-    "@vitejs/plugin-react": "^4.3.4",
-    "lucide-react": "^1.24.0",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "vite": "^6.0.7"
+    "@vitejs/plugin-react": "5.2.0",
+    "fflate": "0.8.3",
+    "lucide-react": "^1.66.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "vite": "7.3.7",
+    "zod": "4.6.7"
   },
   "devDependencies": {
-    "@figma/plugin-typings": "^1.101.0",
-    "@types/react": "^19.0.2",
-    "@types/react-dom": "^19.0.2",
-    "typescript": "^5.7.2"
+    "@figma/plugin-typings": "^1.142.0",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "typescript": "^5.9.3"
   }
 }

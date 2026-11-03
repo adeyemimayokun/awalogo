@@ -1,4 +1,4 @@
-import type { VercelRequest } from "@vercel/node";
+import type { VercelRequest } from "./vercel-types";
 import { z } from "zod";
 import { adminStore, adminStoreConfigured } from "./admin-store.js";
 import { adminResources } from "./admin-resources.js";

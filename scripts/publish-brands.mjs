@@ -4,10 +4,12 @@ import { fileURLToPath } from "node:url";
 import { createHash } from "node:crypto";
 import { load } from "cheerio";
 import sharp from "sharp";
+import { validateSvgSecurity } from "../packages/validator/svg-security.mjs";
 import { normalizeIdentity } from "../packages/brands/identity.mjs";
 import { publishHistoricalBrands } from "./publish-historical-brands.mjs";
 import { publishBrandCorrections } from "./publish-brand-corrections.mjs";
 import { withoutRasterEnlargement } from "./lib/raster-quality.mjs";
+import { cachedPublishedFormats, renderFingerprint, primaryRenderOptions } from "../packages/brands/render-cache.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const packageRoot = join(root, "packages/brands");
@@ -15,6 +17,7 @@ const check = process.argv.includes("--check");
 const research = JSON.parse(await readFile(join(packageRoot, "research/manifest.json"), "utf8"));
 const reviews = JSON.parse(await readFile(join(packageRoot, "research/reviews.json"), "utf8"));
 const rasterCompatibility = JSON.parse(await readFile(join(packageRoot, "research/raster-scale-compatibility.json"), "utf8"));
+const previous = JSON.parse(await readFile(join(packageRoot, "catalog.json"), "utf8"));
 const legacy = JSON.parse(await readFile(join(root, "packages/catalog-ui/src/generated/runtime-catalog.json"), "utf8")).items.map((item) => item.logo);
 legacy.push(...JSON.parse(await readFile(join(root, "packages/logos/src/promoted-catalog.json"), "utf8")));
 const normalize = normalizeIdentity;
@@ -41,32 +44,34 @@ for (const review of reviews) {
   const approvedSource = `assets/${asset.checksum}.${asset.format}`;
   let source = await readFile(join(packageRoot, approvedSource)).catch(() => readFile(join(packageRoot, asset.path)));
   if (createHash("sha256").update(source).digest("hex") !== asset.checksum) throw new Error(`Staged checksum mismatch: ${entry.slug}`);
+  const renderOptions = primaryRenderOptions(review, asset, rasterCompatibility);
+  const cached = await cachedPublishedFormats(`primary:${entry.slug}`, renderFingerprint("primary", asset.checksum, asset.format, renderOptions), previous.brands.find((brand) => brand.slug === entry.slug)?.formats, (path) => readFile(join(root, path)), renderOptions.normalization);
+  if (asset.format === "svg" && !cached) validateSvgSecurity(source);
   await output(join(packageRoot, approvedSource), source);
   const sourceType = review.source_type || asset.source_type;
   if (sourceType === "community-catalog" && review.status !== "needs-review") throw new Error("Community artwork cannot be marked officially verified");
-  if (asset.format === "svg") {
+  if (!cached && asset.format === "svg") {
     const $ = load(source.toString("utf8"), { xmlMode: true });
     const svg = $("svg").first();
-    if (!svg.length || $("script,foreignObject,iframe,image").length) throw new Error(`Unsafe SVG: ${entry.slug}`);
-    for (const element of $("*").toArray()) for (const [key, value] of Object.entries(element.attribs || {})) if (/^on/i.test(key) || (/href|src/i.test(key) && !value.startsWith("#")) || /url\(\s*["']?(?!#)[^)]/i.test(value)) throw new Error(`Unsafe SVG reference: ${entry.slug}`);
     svg.attr("xmlns", "http://www.w3.org/2000/svg");
     source = Buffer.from($.xml(svg));
   }
-  if (review.trim_padding === true && asset.format !== "svg") {
+  if (!cached && review.trim_padding === true && asset.format !== "svg") {
     source = await sharp(source).trim({ threshold: 4 }).png().toBuffer();
   }
   // A reviewed PNG rendering can pin lossy decoder output without changing source provenance.
   const normalized = review.raster_normalization;
-  if (asset.format !== "svg" && normalized?.original_checksum === asset.checksum) {
+  if (!cached && asset.format !== "svg" && normalized?.original_checksum === asset.checksum) {
     if (!/^assets\/[a-f0-9]{64}\.png$/.test(normalized.path)) throw new Error("Invalid normalized raster path");
     source = await readFile(join(packageRoot, normalized.path));
     if (createHash("sha256").update(source).digest("hex") !== normalized.path.slice(7, -4)) throw new Error("Normalized raster checksum mismatch");
   }
-  const sourceHash = createHash("sha256").update(source).digest("hex");
+  const sourceHash = cached?.formats.find((format) => format.type === "svg")?.checksum ?? createHash("sha256").update(source).digest("hex");
   if (checksums.has(sourceHash)) throw new Error(`Duplicate artwork: ${entry.slug}`);
   checksums.add(sourceHash);
-  const formats = [];
-  for (const type of [...(asset.format === "svg" ? ["svg"] : []), "png", "webp"]) {
+  const formats = cached ? [...cached.formats] : [];
+  if (cached) for (const item of cached.outputs) await output(join(root, item.path), item.bytes);
+  for (const type of cached ? [] : [...(asset.format === "svg" ? ["svg"] : []), "png", "webp"]) {
     const renderer = sharp(source, { density: 144 }).resize({ width: 1024, height: 512, fit: "inside", withoutEnlargement: withoutRasterEnlargement(review, asset, rasterCompatibility) });
     const bytes = type === "svg" ? source : type === "png" ? await renderer.png().toBuffer() : await renderer.webp({ lossless: true, effort: 3 }).toBuffer();
     const checksum = createHash("sha256").update(bytes).digest("hex");

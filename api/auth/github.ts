@@ -1,4 +1,4 @@
-import type { VercelRequest, VercelResponse } from "@vercel/node";
+import type { VercelRequest, VercelResponse } from "../_lib/vercel-types";
 import { createOAuthState, oauthClientId } from "../_lib/auth.js";
 import { jsonError, methodNotAllowed, requestOrigin } from "../_lib/http.js";
 

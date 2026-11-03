@@ -63,16 +63,24 @@ the V2 footer; existing `/v2` routes and catalog/download endpoints remain valid
 
 For server-side requests, reports, and metrics, see [Neon PostgreSQL setup](docs/neon.md).
 Catalog browsing and downloads do not require a database.
+Use Node.js 22.13 or newer and pnpm 11.25.0, as pinned by the project.
 
 ```bash
 corepack enable
 pnpm install
-pnpm logos:formats
+pnpm logos:check-formats
+pnpm security:audit
 pnpm validate
 pnpm test
 pnpm build:web
 pnpm build:plugin
 ```
+
+Do not regenerate existing artwork when installing dependencies. Published output
+checksums are preserved across renderer security updates. See the
+[security remediation and release checklist](docs/security-remediation-2026-11-02.md)
+for the request-admission migration, private secret and restricted runtime-role
+requirements before deploying these changes.
 
 Refresh institution registers into a review-only staging area and regenerate committed exports with:
 

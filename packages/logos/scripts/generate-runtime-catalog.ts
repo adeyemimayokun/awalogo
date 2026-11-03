@@ -1,4 +1,5 @@
 import { createHash } from "node:crypto";
+import { validateSvgSecurity } from "../../validator/svg-security.mjs";
 import { mkdir, readFile, rm, writeFile } from "node:fs/promises";
 import { dirname, extname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -38,6 +39,7 @@ const assetCopies = new Map<string, Uint8Array>();
 
 async function runtimeAsset(format: LogoFormat): Promise<RuntimeAsset> {
   const bytes = await readFile(resolve(logoSourceRoot, format.path));
+  if (format.type === "svg") validateSvgSecurity(bytes);
   const checksum = sha256(bytes);
   const extension = extensionFor(format);
   const fileName = `${checksum}.${extension}`;

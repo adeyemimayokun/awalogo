@@ -15,7 +15,7 @@ describe("isolated V2 company expansion", () => {
     expect([...correctionBySlug.keys()]).toEqual(["momo-payment-service-bank", "sparkle-microfinance-bank", "nomba", "ratefy", "connectpoint-technology-solutions"]);
     expect(logos.slice(0, existing.length).filter((item)=>!correctionBySlug.has(item.slug))).toEqual(existing.filter((item)=>!correctionBySlug.has(item.slug)));
     expect(logos.length).toBe(existing.length + expansionBrands.length);
-  });
+  }, 30_000);
   it("researches exactly 60 Nigerian and five companies in each of eight hubs", () => {
     expect(campaign).toHaveLength(100);
     expect(research.entries.length).toBeGreaterThanOrEqual(100);

@@ -1,8 +1,9 @@
-import { describe, expect, it } from "vitest";
-import { sanitizeAnalyticsEvent, shouldTrackAnalytics } from "./site-analytics";
+import { afterEach, describe, expect, it, vi } from "vitest";
+import { sanitizeAnalyticsEvent, sanitizeSpeedInsightsEvent, shouldTrackAnalytics } from "./site-analytics";
 
 const enabled = { productionBuild:true, enabled:"true", url:"https://www.awalogo.com/v2" };
 describe("production visit analytics", () => {
+  afterEach(() => vi.unstubAllGlobals());
   it("tracks only enabled public production pages", () => {
     expect(shouldTrackAnalytics(enabled)).toBe(true);
     for (const url of ["https://awalogo.com/", "https://www.awalogo.com/docs", "https://www.awalogo.com/v2/flags"]) expect(shouldTrackAnalytics({ ...enabled, url })).toBe(true);
@@ -26,5 +27,25 @@ describe("production visit analytics", () => {
   it("fails closed for malformed URLs, preview events and custom events", () => {
     for (const url of ["invalid", "https://www.awalogo.com/%xx", "https://preview.vercel.app/v2"]) expect(sanitizeAnalyticsEvent({ type:"pageview", url })).toBeNull();
     expect(sanitizeAnalyticsEvent({ type:"event", url:enabled.url })).toBeNull();
+  });
+  it("applies private-route and URL scrubbing to performance events", () => {
+    for (const path of ["/admin", "/v2/requests/", "/v2/%72equests", "/%61dmin", "/v2//requests", "/%2fadmin"]) {
+      expect(sanitizeSpeedInsightsEvent({ type: "vital", url: `https://www.awalogo.com${path}?token=secret` })).toBeNull();
+    }
+    expect(sanitizeSpeedInsightsEvent({ type: "vital", url: "https://www.awalogo.com/v2?brand=opay#secret", route: "/v2?token=secret" }))
+      .toEqual({ type: "vital", url: "https://www.awalogo.com/v2", route: "/v2" });
+    expect(sanitizeSpeedInsightsEvent({ type: "vital", url: "https://preview.vercel.app/v2" })).toBeNull();
+  });
+  it("honors current privacy preferences at send time for both SDKs", () => {
+    for (const preference of [{ doNotTrack: "1" }, { globalPrivacyControl: true }]) {
+      vi.stubGlobal("navigator", preference);
+      expect(sanitizeAnalyticsEvent({ type: "pageview", url: enabled.url })).toBeNull();
+      expect(sanitizeSpeedInsightsEvent({ type: "vital", url: enabled.url })).toBeNull();
+    }
+  });
+  it("drops queued telemetry after navigating to a private page", () => {
+    vi.stubGlobal("window", { location: { href: "https://www.awalogo.com/v2/requests?token=secret" } });
+    expect(sanitizeAnalyticsEvent({ type: "pageview", url: enabled.url })).toBeNull();
+    expect(sanitizeSpeedInsightsEvent({ type: "vital", url: enabled.url })).toBeNull();
   });
 });

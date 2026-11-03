@@ -1,4 +1,4 @@
-import type { VercelRequest, VercelResponse } from "@vercel/node";
+import type { VercelRequest, VercelResponse } from "./vercel-types";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import { issueSession, readSession } from "./auth";
 
@@ -61,5 +61,14 @@ describe("admin sessions", () => {
       headers: { host: "awalogo.com", cookie: modified },
       query: {}
     } as VercelRequest)).toBeNull();
+  });
+
+  it("fails closed for malformed cookie encoding without throwing", () => {
+    expect(readSession({ headers: { host: "awalogo.com", cookie: "nbl_admin_session=%E0%A4%A" }, query: {} } as VercelRequest)).toBeNull();
+  });
+
+  it("refuses to issue encrypted sessions with a short secret", () => {
+    process.env.ADMIN_SESSION_SECRET = "short-secret";
+    expect(() => issueSession(response(), "maintainer", "https://example.com/avatar.png")).toThrow("at least 32 characters");
   });
 });

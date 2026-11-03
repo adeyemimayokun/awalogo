@@ -6,7 +6,7 @@ import {
   randomBytes,
   timingSafeEqual
 } from "node:crypto";
-import type { VercelRequest, VercelResponse } from "@vercel/node";
+import type { VercelRequest, VercelResponse } from "./vercel-types";
 
 const SESSION_COOKIE = "nbl_admin_session";
 const STATE_COOKIE = "nbl_oauth_state";
@@ -51,7 +51,11 @@ function parseCookies(request: VercelRequest): Record<string, string> {
     header.split(";").flatMap((part) => {
       const separator = part.indexOf("=");
       if (separator < 0) return [];
-      return [[part.slice(0, separator).trim(), decodeURIComponent(part.slice(separator + 1).trim())]];
+      try {
+        return [[part.slice(0, separator).trim(), decodeURIComponent(part.slice(separator + 1).trim())]];
+      } catch {
+        return [];
+      }
     })
   );
 }
@@ -63,7 +67,9 @@ function signature(payload: string): string {
 }
 
 function sessionKey(): Buffer {
-  return createHash("sha256").update(requiredEnv("ADMIN_SESSION_SECRET")).digest();
+  const secret = requiredEnv("ADMIN_SESSION_SECRET");
+  if (secret.length < 32) throw new Error("ADMIN_SESSION_SECRET must be at least 32 characters");
+  return createHash("sha256").update(secret).digest();
 }
 
 function sealSession(session: AdminSession): string {

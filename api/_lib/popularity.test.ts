@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-import type { VercelRequest, VercelResponse } from "@vercel/node";
+import type { VercelRequest, VercelResponse } from "./vercel-types";
 import { handlePopularity } from "./popularity.js";
 
 function request(method = "GET", body?: unknown, origin = "https://awalogo.com") {

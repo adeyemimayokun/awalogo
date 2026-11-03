@@ -1,11 +1,13 @@
 import { readFile, writeFile, mkdir } from "node:fs/promises";
 import { createHash } from "node:crypto";
 import { dirname, join } from "node:path";
-import { load } from "cheerio";
+import { validateSvgSecurity } from "../packages/validator/svg-security.mjs";
 import sharp from "sharp";
+import { cachedPublishedFormats, renderFingerprint } from "../packages/brands/render-cache.mjs";
 
 export async function publishHistoricalBrands(root, check) {
   const packageRoot = join(root, "packages/brands");
+  const previous = JSON.parse(await readFile(join(packageRoot, "historical-catalog.json"), "utf8"));
   const reviews = JSON.parse(
     await readFile(
       join(packageRoot, "research/historical-assets.json"),
@@ -54,25 +56,13 @@ export async function publishHistoricalBrands(root, check) {
       throw new Error(`Historical checksum mismatch: ${identity}`);
     const isSvg = review.source_path.endsWith(".svg");
     if (isSvg) {
-      const $ = load(source.toString(), { xmlMode: true });
-      if (
-        $("svg").length !== 1 ||
-        !$("svg").attr("viewBox") ||
-        $("script,foreignObject,iframe,image,style").length
-      )
-        throw new Error(`Unsafe historical SVG: ${identity}`);
-      for (const element of $("*").toArray())
-        for (const [name, value] of Object.entries(element.attribs ?? {})) {
-          if (
-            /^on/i.test(name) ||
-            (/href|src/i.test(name) && !value.startsWith("#")) ||
-            /url\(\s*["']?(?!#)[^)]/i.test(value)
-          )
-            throw new Error(`Unsafe historical SVG reference: ${identity}`);
-        }
+      validateSvgSecurity(source);
     }
-    const formats = [];
-    for (const type of [...(isSvg ? ["svg"] : []), "png", "webp"]) {
+    const sourceFormat = review.source_path.split(".").at(-1);
+    const cached = await cachedPublishedFormats(`historical:${identity}`, renderFingerprint("historical", review.source_checksum, sourceFormat, { withoutEnlargement: !isSvg }), previous.variations.find((row) => row.slug === review.slug && row.id === review.id)?.formats, (path) => readFile(join(root, path)));
+    const formats = cached ? [...cached.formats] : [];
+    if (cached) for (const item of cached.outputs) await output(join(root, item.path), item.bytes);
+    for (const type of cached ? [] : [...(isSvg ? ["svg"] : []), "png", "webp"]) {
       const render = sharp(source, { density: 144 }).resize({
         width: 1024,
         height: 512,

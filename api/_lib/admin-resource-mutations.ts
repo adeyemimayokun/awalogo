@@ -2,7 +2,7 @@ import { generateAdminOutputs } from "./admin-generate.js";
 import { z } from "zod";
 import { createHash } from "node:crypto";
 import sharp from "sharp";
-import { load } from "cheerio";
+import { validateSvgSecurity } from "../../packages/validator/svg-security.mjs";
 import { industries } from "../../packages/brands/schema.js";
 import {
   readRepositoryJson,
@@ -323,27 +323,7 @@ export async function safeArtwork(file: {
   if (!bytes.length || bytes.length > 2000000)
     throw new Error("Artwork must be under 2 MB");
   if (file.type === "svg") {
-    const text = bytes.toString("utf8");
-    if (/<!DOCTYPE|<!ENTITY/i.test(text))
-      throw new Error("Unsafe SVG declaration");
-    const $ = load(text, { xmlMode: true });
-    if (
-      $("svg").length !== 1 ||
-      !$("svg").attr("viewBox") ||
-      $("script,foreignObject,iframe,image,style,animate,set").length
-    )
-      throw new Error("Unsafe SVG");
-    for (const el of $("*").toArray())
-      for (const [k, v] of Object.entries(
-        (typeof el === "object" && el !== null && "attribs" in el ? el.attribs : {}) as Record<string, string>,
-      ))
-        if (
-          /^on/i.test(k) ||
-          (/href|src/i.test(k) && !v.startsWith("#")) ||
-          (/url\(/i.test(v) && /url\(\s*["']?(?!#)/i.test(v))
-        )
-          throw new Error("Unsafe SVG reference");
-    bytes = Buffer.from($.xml($("svg")));
+    bytes = validateSvgSecurity(bytes);
   }
   const meta = await sharp(bytes, { limitInputPixels: 40000000 }).metadata();
   if (

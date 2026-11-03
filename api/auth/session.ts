@@ -1,4 +1,4 @@
-import type { VercelRequest, VercelResponse } from "@vercel/node";
+import type { VercelRequest, VercelResponse } from "../_lib/vercel-types";
 import { isAllowedAdmin, readSession } from "../_lib/auth.js";
 import { methodNotAllowed } from "../_lib/http.js";
 

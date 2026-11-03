@@ -2,6 +2,7 @@ import { existsSync, readFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { optimize } from "svgo";
+import { validateSvgSecurity } from "../svg-security.mjs";
 import { logoCatalog, logoCatalogSchema, sourcingManifestSchema } from "../../logos/src";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -46,6 +47,10 @@ export function validateCatalog(): ValidationIssue[] {
         continue;
       }
       const bytes = readFileSync(formatPath);
+      if (format.type === "svg") {
+        try { validateSvgSecurity(bytes); }
+        catch (error) { issues.push({ slug: entry.slug, message: String(error) }); }
+      }
       if (format.type === "png" && !bytes.subarray(0, 8).equals(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]))) {
         issues.push({ slug: entry.slug, message: `${format.path} is not a valid PNG.` });
       }
@@ -86,6 +91,10 @@ export function validateCatalog(): ValidationIssue[] {
           continue;
         }
         const bytes = readFileSync(formatPath);
+        if (format.type === "svg") {
+          try { validateSvgSecurity(bytes); }
+          catch (error) { issues.push({ slug: variationSlug, message: String(error) }); }
+        }
         if (format.type === "png" && !bytes.subarray(0, 8).equals(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]))) {
           issues.push({ slug: variationSlug, message: `${format.path} is not a valid PNG.` });
         }

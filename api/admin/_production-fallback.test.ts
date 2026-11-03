@@ -1,4 +1,4 @@
-import type { VercelRequest, VercelResponse } from "@vercel/node";
+import type { VercelRequest, VercelResponse } from "../_lib/vercel-types";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { issueSession } from "../_lib/auth";
 import catalogHandler from "./catalog";

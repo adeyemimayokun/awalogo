@@ -1,4 +1,4 @@
-import type { VercelRequest, VercelResponse } from "@vercel/node";
+import type { VercelRequest, VercelResponse } from "../_lib/vercel-types";
 import { z } from "zod";
 import { requireAdmin } from "../_lib/auth.js";
 import { listDeliveredLogoRequests } from "../_lib/email.js";
@@ -10,7 +10,7 @@ import {
   type RepositoryIssue,
   updateRepositoryIssue
 } from "../_lib/github.js";
-import { jsonError, methodNotAllowed } from "../_lib/http.js";
+import { jsonError, methodNotAllowed, requireSameOrigin } from "../_lib/http.js";
 import { buildPublicIssue, publicLogoRequestSchema } from "../_lib/logo-requests.js";
 import {
   appendPrivateRequestMetadata,
@@ -147,6 +147,7 @@ export default async function handler(request: VercelRequest, response: VercelRe
   if (request.method !== "GET" && request.method !== "POST" && request.method !== "PATCH") {
     return methodNotAllowed(response, ["GET", "POST", "PATCH"]);
   }
+  if (request.method !== "GET" && !requireSameOrigin(request, response)) return;
   const admin = requireAdmin(request, response);
   if (!admin) return;
   response.setHeader("Cache-Control", "no-store");

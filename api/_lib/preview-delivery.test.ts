@@ -1,9 +1,10 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-import type { VercelRequest, VercelResponse } from "@vercel/node";
+import type { VercelRequest, VercelResponse } from "./vercel-types";
 import { previewDeliveryDisabled } from "./preview-delivery";
 
 const mocks = vi.hoisted(() => ({ save: vi.fn(), email: vi.fn(), issues: vi.fn(), configured: vi.fn(), reportStore: vi.fn() }));
 vi.mock("./request-store.js", () => ({ requestStoreConfigured: mocks.configured, saveAssetRequest: mocks.save, getAssetRequestStatus: vi.fn() }));
+vi.mock("./request-abuse.js", () => ({ claimLogoRequest: vi.fn(async () => ({ kind: "accepted", token: "a".repeat(43), finish: vi.fn(), releaseStorage: vi.fn(), beginDelivery: vi.fn() })), deployedRequests: () => true }));
 vi.mock("./admin-store.js", () => ({ adminStoreConfigured: mocks.configured, adminStore: mocks.reportStore }));
 vi.mock("./email.js", () => ({ sendPrivateLogoRequest: mocks.email, sendLogoReport: mocks.email }));
 vi.mock("./github.js", () => ({ createRepositoryIssue: mocks.issues, listRepositoryIssues: mocks.issues }));

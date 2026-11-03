@@ -200,6 +200,7 @@ function token(sessionToken?: string): string {
 async function github<T>(path: string, init: RequestInit = {}, sessionToken?: string): Promise<T> {
   const response = await fetch(`https://api.github.com${path}`, {
     ...init,
+    signal: init.signal ?? AbortSignal.timeout(10000),
     headers: {
       Accept: "application/vnd.github+json",
       Authorization: `Bearer ${token(sessionToken)}`,
@@ -331,13 +332,20 @@ export async function listRepositoryNotifications(sessionToken?: string): Promis
 }
 
 export async function markRepositoryNotificationRead(id: string, sessionToken?: string): Promise<void> {
+  if (!/^\d{1,30}$/.test(id)) throw new Error("Invalid notification ID");
   if (isLocalRepositoryMode()) {
     const current = localNotifications.get(id);
     if (!current) throw new Error(`Notification ${id} was not found`);
     localNotifications.set(id, { ...current, unread: false });
     return;
   }
-  await github<void>(`/notifications/threads/${encodeURIComponent(id)}`, { method: "PATCH" }, sessionToken);
+  const path = `/notifications/threads/${encodeURIComponent(id)}`;
+  const current = await github<RepositoryNotification>(path, {}, sessionToken);
+  const { owner, repo } = repository();
+  if (current.id !== id || current.repository?.full_name?.toLowerCase() !== `${owner}/${repo}`.toLowerCase()) {
+    throw new Error("Notification does not belong to this repository");
+  }
+  await github<void>(path, { method: "PATCH" }, sessionToken);
 }
 
 function branchName(action: string, slug: string): string {

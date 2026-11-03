@@ -69,7 +69,7 @@ describe("logo catalog validation", () => {
   it("has no validation issues", () => {
     expect(validateCatalog()).toEqual([]);
     expect(validateFintechSourcingManifest()).toEqual([]);
-  });
+  }, 30_000);
 
   it("provides PNG and WebP for every accepted logo and preserves available SVGs", () => {
     for (const logo of logoCatalog) {

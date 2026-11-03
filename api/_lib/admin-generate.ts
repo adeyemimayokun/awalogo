@@ -1,5 +1,7 @@
 import sharp from "sharp";
 import { load } from "cheerio";
+import { validateSvgSecurity } from "../../packages/validator/svg-security.mjs";
+import { cachedPublishedFormats, renderFingerprint, primaryRenderOptions } from "../../packages/brands/render-cache.mjs";
 import { createHash } from "node:crypto";
 import {
   readRepositoryFile,
@@ -32,6 +34,7 @@ export async function generateAdminOutputs(
     withoutEnlargement = false,
     historical = false,
   ) {
+    if (types.includes("svg")) validateSvgSecurity(source);
     const result = [];
     for (const type of types) {
       const render = sharp(source, { density: 144 }).resize({
@@ -90,16 +93,20 @@ export async function generateAdminOutputs(
       if (!source) throw new Error("Source artwork unavailable");
       if (createHash("sha256").update(source).digest("hex") !== asset.checksum)
         throw new Error("Source checksum mismatch");
+      const renderOptions = primaryRenderOptions(review, asset, compatibility);
+      const cached = await cachedPublishedFormats(`primary:${entry.slug}`, renderFingerprint("primary", asset.checksum, asset.format, renderOptions), old?.formats, bytes, renderOptions.normalization);
+      if (asset.format === "svg" && !cached) validateSvgSecurity(source);
+      if (cached) for (const item of cached.outputs) put(item.path, item.bytes);
       put(`packages/brands/${approved}`, source);
-      if (asset.format === "svg") {
+      if (!cached && asset.format === "svg") {
         const $ = load(source.toString("utf8"), { xmlMode: true });
         $("svg").attr("xmlns", "http://www.w3.org/2000/svg");
         source = Buffer.from($.xml($("svg").first()));
       }
-      if (review.trim_padding === true && asset.format !== "svg")
+      if (!cached && review.trim_padding === true && asset.format !== "svg")
         source = await sharp(source).trim({ threshold: 4 }).png().toBuffer();
       const normalized = review.raster_normalization;
-      if (asset.format !== "svg" && normalized?.original_checksum === asset.checksum) {
+      if (!cached && asset.format !== "svg" && normalized?.original_checksum === asset.checksum) {
         if (!/^assets\/[a-f0-9]{64}\.png$/.test(normalized.path)) throw new Error("Invalid normalized raster path");
         source = await bytes(`packages/brands/${normalized.path}`);
         if (!source) throw new Error("Normalized raster unavailable");
@@ -127,7 +134,7 @@ export async function generateAdminOutputs(
         review_notes: review.review_notes,
         evidence: review.evidence,
         batch: review.batch || "africa-100-01",
-        formats: await formats(
+        formats: cached?.formats ?? await formats(
           source,
           approved,
           [...(asset.format === "svg" ? ["svg"] : []), "png", "webp"],
@@ -159,6 +166,7 @@ export async function generateAdminOutputs(
     const reviews = await json(
       "packages/brands/research/historical-assets.json",
     );
+    const previous = await json("packages/brands/historical-catalog.json");
     const variations = [];
     for (const review of reviews) {
       const source = await bytes(`packages/brands/${review.source_path}`);
@@ -168,9 +176,13 @@ export async function generateAdminOutputs(
         review.source_checksum
       )
         throw new Error("Historical checksum mismatch");
+      const sourceFormat = review.source_path.split(".").at(-1);
+      if (sourceFormat === "svg") validateSvgSecurity(source);
+      const cached = await cachedPublishedFormats(`historical:${review.slug}:${review.id}`, renderFingerprint("historical", review.source_checksum, sourceFormat, { withoutEnlargement: sourceFormat !== "svg" }), previous.variations.find((row: Row) => row.slug === review.slug && row.id === review.id)?.formats, bytes);
+      if (cached) for (const item of cached.outputs) put(item.path, item.bytes);
       variations.push({
         ...review,
-        formats: await formats(
+        formats: cached?.formats ?? await formats(
           source,
           review.source_path,
           [

@@ -1,4 +1,4 @@
-import type { VercelRequest, VercelResponse } from "@vercel/node";
+import type { VercelRequest, VercelResponse } from "./vercel-types";
 
 export function methodNotAllowed(response: VercelResponse, allowed: string[]): void {
   response.setHeader("Allow", allowed.join(", "));

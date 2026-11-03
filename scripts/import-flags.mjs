@@ -1,4 +1,5 @@
 import { readFile, writeFile, mkdir } from "node:fs/promises";
+import { validateSvgSecurity } from "../packages/validator/svg-security.mjs";
 import { resolve, join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { createHash } from "node:crypto";
@@ -21,8 +22,7 @@ for (const row of rows.filter((row) => row.iso).sort((a, b) => a.name.localeComp
   const variants = [];
   for (const ratio of ["4x3", "1x1"]) {
     const svg = await readFile(join(source, "flags", ratio, `${row.code}.svg`));
-    const text = svg.toString("utf8");
-    if (!/<svg\b[^>]*xmlns="http:\/\/www.w3.org\/2000\/svg"/.test(text) || !/viewBox=/.test(text) || /<script\b|<foreignObject\b|\son\w+\s*=|(?:href|src)\s*=\s*["'](?!#)/i.test(text)) throw new Error(`Unsafe SVG: ${row.code}/${ratio}`);
+    validateSvgSecurity(svg);
     const formats = [];
     for (const type of ["svg", "png", "webp"]) {
       const image = sharp(svg).resize({ width: 640, height: 480, fit: "inside" });
