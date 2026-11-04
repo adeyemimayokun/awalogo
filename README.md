@@ -8,20 +8,23 @@ to Nigerian companies across industries, African companies, and country flags.
 
 Website: <https://awalogo.com>
 
+Integrating bank or fintech logos? Read the [For Developers guide](https://www.awalogo.com/developers)
+and try the [runnable Node.js example](examples/fintech-logos/README.md).
+
 The public website and Figma plugin are separate applications. V1 and the current
 plugin share `/catalog/v1`; V2 combines that catalog with independent additions.
 
 ## Status
 
-V1 and the current plugin remain available. V2 is an isolated **Coming soon**
-preview at `/v2`, not a production launch announcement. As of 18 October 2026:
+V2 is the default website at `/`. The original interface remains at `/v1`,
+and the current Figma plugin remains available. Historical coverage as of 18 October 2026:
 
 | Collection | Available | Distribution |
 | --- | --- | --- |
 | Existing financial logos | 228 | V1, current plugin, V2 |
 | Independent company additions | 84 | V2 only |
 | Combined company logos | 312 | V2 only |
-| Country/territory flags | 249 | V2 only, `/v2/flags` |
+| Country/territory flags | 249 | V2 only, `/flags` |
 
 Counts describe this repository snapshot, not an exhaustive company/operator registry.
 Official and reviewed community artwork retain distinct provenance. Flags use

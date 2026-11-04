@@ -12,7 +12,7 @@ export const config = { api: { bodyParser: { sizeLimit: "4mb" } } };
 export default async function handler(request: VercelRequest, response: VercelResponse): Promise<void> {
   if (request.method !== "POST") return methodNotAllowed(response, ["POST"]);
   if (!requireSameOrigin(request, response)) return;
-  const admin = requireAdmin(request, response);
+  const admin = await requireAdmin(request, response);
   if (!admin) return;
   try {
     if (typeof request.query.view === "string") {
@@ -65,6 +65,6 @@ export default async function handler(request: VercelRequest, response: VercelRe
       });
       return;
     }
-    jsonError(response, error, error instanceof Error && /already|not found|does not|Only logos|Confirmation|uploaded|SVG|primary|official source/.test(error.message) ? 400 : 500);
+    jsonError(response, error, error instanceof Error && /already|locked core entry|Artwork path|not found|does not|Only logos|Confirmation|uploaded|SVG|primary|official source/.test(error.message) ? 400 : 500);
   }
 }

@@ -36,8 +36,15 @@ export function dateRange(query: VercelRequest["query"]) {
       .slice(0, 10),
   };
 }
-const trafficCache = new Map<string, { at: number; data: unknown }>();
-async function traffic(since: string, until: string, by: string) {
+const analyticsRowLimit = 100;
+type TrafficResult = {
+  state: "ready" | "empty" | "stale" | "unavailable" | "unconfigured";
+  rows?: unknown[];
+  updatedAt?: string;
+  message?: string;
+};
+const trafficCache = new Map<string, { at: number; data: TrafficResult }>();
+async function traffic(since: string, until: string, by: string): Promise<TrafficResult> {
   const token = process.env.ADMIN_ANALYTICS_VERCEL_TOKEN;
   const project = process.env.ADMIN_ANALYTICS_PROJECT_ID;
   if (!token || !project)
@@ -51,7 +58,7 @@ async function traffic(since: string, until: string, by: string) {
     since,
     until,
     by,
-    limit: by === "day" ? "366" : "100",
+    limit: String(analyticsRowLimit),
     filter: "environment eq 'production'",
   });
   if (process.env.ADMIN_ANALYTICS_TEAM_ID)
@@ -74,7 +81,7 @@ async function traffic(since: string, until: string, by: string) {
     const payload = (await r.json()) as { data?: unknown[] };
     if (!Array.isArray(payload.data))
       throw new Error("Unexpected analytics response");
-    const data = {
+    const data: TrafficResult = {
       state: payload.data.length ? "ready" : "empty",
       rows: payload.data,
       updatedAt: new Date().toISOString(),
@@ -85,7 +92,7 @@ async function traffic(since: string, until: string, by: string) {
   } catch (e) {
     return cached
       ? {
-          ...(cached.data as object),
+          ...cached.data,
           state: "stale",
           message: "Refresh failed; showing the last successful result.",
         }
@@ -94,6 +101,30 @@ async function traffic(since: string, until: string, by: string) {
           message: e instanceof Error ? e.message : "Analytics unavailable",
         };
   }
+}
+async function dailyTraffic(since: string, until: string): Promise<TrafficResult> {
+  const dayMs = 86400000;
+  const lastDay = Date.parse(until);
+  const requests: Promise<TrafficResult>[] = [];
+  for (let start = Date.parse(since); start <= lastDay; start += analyticsRowLimit * dayMs) {
+    const end = Math.min(lastDay, start + (analyticsRowLimit - 1) * dayMs);
+    requests.push(traffic(
+      new Date(start).toISOString().slice(0, 10),
+      new Date(end).toISOString().slice(0, 10),
+      "day",
+    ));
+  }
+  const results = await Promise.all(requests);
+  const failure = results.find(({ rows }) => !rows);
+  if (failure) return failure;
+  const rows = results.flatMap(({ rows }) => rows ?? []);
+  const stale = results.find(({ state }) => state === "stale");
+  return {
+    state: stale ? "stale" : rows.length ? "ready" : "empty",
+    rows,
+    updatedAt: results.map(({ updatedAt }) => updatedAt ?? "").sort()[0],
+    message: stale?.message,
+  };
 }
 async function stored(path: string) {
   if (!adminStoreConfigured())
@@ -187,8 +218,10 @@ export async function dashboardView(
     ];
     const [panels, previous, totals, previousTotals, product, legacy] =
       await Promise.all([
-        Promise.all(groups.map((by) => traffic(range.since, range.until, by))),
-        traffic(range.previousSince, range.previousUntil, "day"),
+        Promise.all(groups.map((by) => by === "day"
+          ? dailyTraffic(range.since, range.until)
+          : traffic(range.since, range.until, by))),
+        dailyTraffic(range.previousSince, range.previousUntil),
         traffic(range.since, range.until, "environment"),
         traffic(range.previousSince, range.previousUntil, "environment"),
         stored(

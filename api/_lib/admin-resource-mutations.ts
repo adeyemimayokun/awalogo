@@ -2,7 +2,6 @@ import { generateAdminOutputs } from "./admin-generate.js";
 import { z } from "zod";
 import { createHash } from "node:crypto";
 import sharp from "sharp";
-import { validateSvgSecurity } from "../../packages/validator/svg-security.mjs";
 import { industries } from "../../packages/brands/schema.js";
 import {
   readRepositoryJson,
@@ -323,6 +322,7 @@ export async function safeArtwork(file: {
   if (!bytes.length || bytes.length > 2000000)
     throw new Error("Artwork must be under 2 MB");
   if (file.type === "svg") {
+    const { validateSvgSecurity } = await import("../../packages/validator/svg-security.mjs");
     bytes = validateSvgSecurity(bytes);
   }
   const meta = await sharp(bytes, { limitInputPixels: 40000000 }).metadata();

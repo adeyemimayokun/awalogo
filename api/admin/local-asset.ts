@@ -13,7 +13,7 @@ const mimeTypes: Record<string, string> = {
 
 export default async function handler(request: VercelRequest, response: VercelResponse): Promise<void> {
   if (request.method !== "GET") return methodNotAllowed(response, ["GET"]);
-  if (!isLocalRepositoryMode() || !requireAdmin(request, response)) return;
+  if (!isLocalRepositoryMode() || !(await requireAdmin(request, response))) return;
 
   const path = typeof request.query.path === "string" ? request.query.path : "";
   if (!assetPath.test(path)) {

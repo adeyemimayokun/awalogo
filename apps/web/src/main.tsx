@@ -5,13 +5,16 @@ import { SpeedInsights } from "@vercel/speed-insights/react";
 import { CatalogApp, DocsApp, NotFoundApp } from "@awalogo/catalog-ui";
 import aboutMarkdown from "../../../docs/content/about.md?raw";
 import { analyticsPrivacyOptOut, sanitizeAnalyticsEvent, sanitizeSpeedInsightsEvent, shouldTrackAnalytics } from "./site-analytics";
-import { legacyPageUrl, webRoute } from "./web-route";
+import { legacyPageUrl, v2RedirectUrl, webRoute } from "./web-route";
 
 const AdminApp = lazy(() => import("@awalogo/catalog-ui/admin").then((module) => ({
   default: module.AdminApp
 })));
 const V2App = lazy(() => import("./V2App"));
-const legacyUrl = legacyPageUrl(window.location.pathname, window.location.search, window.location.hash);
+const { pathname, search, hash } = window.location;
+const canonicalUrl = v2RedirectUrl(pathname, search, hash);
+if (canonicalUrl) window.history.replaceState(window.history.state, "", canonicalUrl);
+const legacyUrl = canonicalUrl ? null : legacyPageUrl(pathname, search, hash);
 if (legacyUrl) window.location.replace(legacyUrl);
 const route = webRoute(legacyUrl ? "/v1" : window.location.pathname);
 const isV2Route = route === "v2";

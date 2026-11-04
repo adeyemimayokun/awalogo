@@ -94,6 +94,7 @@ export const messages: Record<string, readonly [string, string, string, string]>
   "Trademark & usage": ["Alamar kasuwanci da amfani", "Àmì ìṣòwò àti lílò", "Akara azụmahịa na ojiji", "Trademark and usage"],
   "Visit V1 interface": ["Duba V1", "Lọ sí V1", "Gaa na V1", "Go to V1"],
   "V1 interface": ["Shafin V1", "Ojú-ìwé V1", "Ihu V1", "V1 interface"],
+  "For Developers": ["Ga Masu Haɓaka Manhaja", "Fún Àwọn Olùgbéejáde", "Maka Ndị Mmepe Ngwanrọ", "For Developers"],
   "V2 / Coming soon": ["V2 / Yana zuwa", "V2 / Ó ń bọ̀", "V2 / Ọ na-abịa", "V2 / E dey come"],
   "NIGERIAN & AFRICAN BRANDS": ["KAMFANONIN NAJERIYA DA AFIRKA", "ÀWỌN ILÉ-IṢẸ́ NÀÌJÍRÍÀ ÀTI ÁFÍRÍKÀ", "ỤLỌỌRỤ NIJIRỊA NA AFRỊKA", "NIGERIAN AND AFRICAN BRANDS"],
   "Good brands. Ready to use.": ["Tambura masu kyau. A shirye don amfani.", "Àmì ilé-iṣẹ́ tó dára. Ó ti ṣetán fún lílò.", "Akara ọma. Dị njikere iji.", "Better brands. Ready to use."],

@@ -19,7 +19,7 @@ function prettyJson(value: unknown): Buffer {
 export default async function handler(request: VercelRequest, response: VercelResponse): Promise<void> {
   if (request.method !== "GET" && request.method !== "POST") return methodNotAllowed(response, ["GET", "POST"]);
   if (request.method === "POST" && !requireSameOrigin(request, response)) return;
-  const admin = requireAdmin(request, response);
+  const admin = await requireAdmin(request, response);
   if (!admin) return;
   response.setHeader("Cache-Control", "no-store");
 

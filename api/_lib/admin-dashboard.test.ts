@@ -69,6 +69,12 @@ describe("dashboard boundaries", () => {
     );
     expect(b.code).toBe(403);
   });
+  it("rejects protected seed creation through the authenticated mutation route", async () => {
+    vi.stubEnv("VERCEL", ""); vi.stubEnv("AWALOGO_LOCAL_ADMIN_BYPASS", "1");
+    const r=response();
+    await mutateHandler({method:"POST",query:{},headers:{host:"localhost",origin:"http://localhost","x-forwarded-proto":"http","x-awalogo-local-admin":"1"},body:{operation:"add-logo",slug:"flutterwave",name:"Replacement",categories:["fintech"],aliases:[],website:"https://example.invalid",sourceType:"community-catalog",svgBase64:Buffer.from("not a valid SVG upload").toString("base64"),variations:[]}} as any,r);
+    expect(r.code).toBe(400); expect(r.body.error).toContain("locked core entry");
+  });
   it("rejects invented plugin sources and future observations", async () => {
     await expect(
       dashboardMutation(

@@ -30,6 +30,8 @@ import { zipSync, strToU8 } from "fflate";
 import { logos, correctionBySlug, expansionBySlug, expansionBrands, industries, matchesBrandScope, operatingMarketsFor, historicalArtworkFor, type LogoWithSvg } from "./v2-brand-data";
 import type { RuntimeAsset } from "../../../packages/catalog-ui/src/runtime-catalog";
 import "./v2.css";
+import { V2Developers } from "./V2Developers";
+import { publicPath } from "./web-route";
 import "./v2-expansion.css";
 import "./v2-fields.css";
 import "./v2-topnav.css";
@@ -76,10 +78,17 @@ export default function V2App() {
   return <V2LanguageProvider><V2Workspace /></V2LanguageProvider>;
 }
 
+function linkedFlag() {
+  if (publicPath(location.pathname) !== "/flags") return null;
+  const code = new URLSearchParams(location.search).get("flag")?.toLowerCase();
+  return flags.find((flag) => flag.code.toLowerCase() === code) ?? null;
+}
+
 function V2Workspace() {
   const { t, language } = useV2Language();
-  const [resource, setResource] = useState<"logos" | "flags">(() => location.pathname === "/v2/flags" ? "flags" : "logos");
-  const [selectedFlag, setSelectedFlag] = useState<CountryFlag | null>(() => location.pathname === "/v2/flags" ? flags.find((flag) => flag.code.toLowerCase() === new URLSearchParams(location.search).get("flag")?.toLowerCase()) ?? null : null);
+  const [path, setPath] = useState(() => publicPath(location.pathname));
+  const resource = path === "/flags" ? "flags" : "logos";
+  const [selectedFlag, setSelectedFlag] = useState<CountryFlag | null>(linkedFlag);
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState<string[]>([]);
   const [industry, setIndustry] = useState("");
@@ -122,7 +131,8 @@ function V2Workspace() {
   const [requestOpen, setRequestOpen] = useState(false);
   const [reportOpen, setReportOpen] = useState(false);
   const [infoPage, setInfoPage] = useState<InfoPage | null>(null);
-  const [aboutPage, setAboutPage] = useState(() => location.pathname === "/v2/about");
+  const aboutPage = path === "/about";
+  const developersPage = path === "/developers";
   const [theme, setTheme] = useState<"light" | "dark" | "system">(() => {
     try { const saved = localStorage.getItem("awalogo-v2-theme"); return saved === "light" || saved === "dark" ? saved : "system"; } catch { return "system"; }
   });
@@ -150,10 +160,10 @@ function V2Workspace() {
   useEffect(() => { try { localStorage.setItem(BAG_KEY, JSON.stringify(bag)); } catch { /* Session still works when storage is unavailable. */ } }, [bag]);
   useEffect(() => {
     const meta = document.createElement("meta"); meta.name = "robots"; meta.content = "noindex,nofollow";
-    if (location.pathname === "/v2/requests") document.head.append(meta);
-    const oldTitle = document.title; document.title = "awalogo | Nigerian & African Brand Assets";
+    if (path === "/requests") document.head.append(meta);
+    const oldTitle = document.title; document.title = developersPage ? "For Developers | awalogo" : "awalogo | Nigerian & African Brand Assets";
     return () => { meta.remove(); document.title = oldTitle; };
-  }, []);
+  }, [path, developersPage]);
   useEffect(() => { if (!feedback) return; const timer = setTimeout(() => setFeedback(""), 4500); return () => clearTimeout(timer); }, [feedback]);
   useEffect(() => { const escape = (event: KeyboardEvent) => { if (event.defaultPrevented || event.key !== "Escape") return; if (reportOpen) setReportOpen(false); else { setSelected(null); setBagOpen(false); setRequestOpen(false); setInfoPage(null); setSelectedFlag(null); } }; document.addEventListener("keydown", escape); return () => document.removeEventListener("keydown", escape); }, [reportOpen]);
   useEffect(() => {
@@ -236,7 +246,7 @@ function V2Workspace() {
     const name = historicalAsset?.brand_name ?? selected.name;
     return codeType === "html" ? `<img src="${escapeAttribute(url)}" alt="${escapeAttribute(name)} logo" width="160" loading="lazy" />` : `<img src=${JSON.stringify(url)} alt=${JSON.stringify(`${name} logo`)} width={160} loading="lazy" />`;
   }
-  const isRequest = location.pathname === "/v2/requests";
+  const isRequest = path === "/requests";
   const darkPreviewUrls = new Set(logos.flatMap((logo) => [
     ...(usesDarkLogoPreview(logo.slug) || correctionBySlug.get(logo.slug)?.preview_background === "dark" || expansionBySlug.get(logo.slug)?.preview_background === "dark" ? logo.formats.map((entry) => entry.url) : []),
     ...logo.variations.flatMap((entry) => usesDarkLogoPreview(`${logo.slug}-${entry.id}`) ? entry.formats.map((file) => file.url) : [])
@@ -247,16 +257,30 @@ function V2Workspace() {
   }
   const navigation = <V2Navigation isRequest={isRequest} showCategories={resource === "logos"} onFlags={() => showResource("flags")} category={category}
     categories={categoryOptions}
-    total={logos.length} theme={theme} onTheme={setTheme} sound={sound} onSound={() => { soundAction.current = true; if (sound) cancelActionSounds(); setSound(!sound); }} onSearch={() => { if (isRequest || aboutPage) { location.assign("/v2"); return; } closePanels(); requestAnimationFrame(() => document.querySelector<HTMLInputElement>(".v2-main .v2-search-wrap input")?.focus()); }} onInfo={(page) => { closePanels(); if (page === "about") { history.pushState(null, "", "/v2/about"); setAboutPage(true); window.scrollTo(0, 0); } else setInfoPage(page); }} onCategory={changeCategory} onRequest={openRequest} onLibrary={() => showResource("logos")} />;
+    total={logos.length} theme={theme} onTheme={setTheme} sound={sound} onSound={() => { soundAction.current = true; if (sound) cancelActionSounds(); setSound(!sound); }} onSearch={() => { if (isRequest || aboutPage || developersPage) { location.assign("/"); return; } closePanels(); requestAnimationFrame(() => document.querySelector<HTMLInputElement>(".v2-main .v2-search-wrap input")?.focus()); }} onInfo={(page) => { closePanels(); if (page === "about") { navigate("/about"); window.scrollTo(0, 0); } else setInfoPage(page); }} onCategory={changeCategory} onRequest={openRequest} onLibrary={() => showResource("logos")} />;
   function closePanels() { setSelectedFlag(null); setSelected(null); setBagOpen(false); setRequestOpen(false); setInfoPage(null); setReportOpen(false); }
   function openRequest() { closePanels(); setRequestOpen(true); }
+  function navigate(next: string) {
+    if (location.pathname !== next || location.search || location.hash) history.pushState(null, "", next);
+    setPath(next);
+  }
   function showResource(next: "logos" | "flags") {
-    closePanels(); setAboutPage(false); setResource(next);
-    const path = next === "flags" ? "/v2/flags" : "/";
-    if (location.pathname !== path || location.search) history.pushState(null, "", path);
+    closePanels();
+    navigate(next === "flags" ? "/flags" : "/");
   }
   useEffect(() => {
-    const back = () => { closePanels(); setAboutPage(location.pathname === "/v2/about"); setResource(location.pathname === "/v2/flags" ? "flags" : "logos"); };
+    const back = () => {
+      closePanels();
+      const next = publicPath(location.pathname);
+      const params = new URLSearchParams(location.search);
+      setPath(next);
+      setSelectedFlag(linkedFlag());
+      if (next === "/") {
+        setSelected(logos.find((logo) => logo.slug === params.get("brand")) ?? null);
+        setVariation(params.get("version") ?? "primary");
+        setFormat("svg");
+      }
+    };
     window.addEventListener("popstate", back); return () => window.removeEventListener("popstate", back);
   }, []);
   async function downloadFlag(asset: FlagAsset, name: string) {
@@ -283,7 +307,7 @@ function V2Workspace() {
     {navigation}
     <V2Tour />
     <div className="v2-workspace">
-{aboutPage ? <main className="v2-main v2-about-page"><a className="v2-about-back" href="/v2" onClick={(event) => { if (!event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey) { event.preventDefault(); showResource("logos"); } }}>{t("Brand library")}</a><V2Info page="about" fullPage onBrand={() => {}} onNewest={() => showResource("logos")} onRequest={openRequest} /></main> : isRequest ? <V2Request /> : <main className="v2-main">{resource === "flags" ? <V2Flags busy={busy} onSelect={(flag) => { closePanels(); trackProduct('panel-open',{resource:`flag:${flag.code}:4x3`}); setSelectedFlag(flag); }} onAdd={add} /> : <><V2Hero count={logos.length} bagCount={bag.length} query={query} searchRef={searchRef} categories={categoryOptions} selectedCategories={category} onQuery={setQuery} onCategory={changeCategory} onResults={() => { resultsHeading.current?.focus({ preventScroll:true }); resultsHeading.current?.scrollIntoView({ behavior:matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth", block:"start" }); }} onFlags={() => showResource("flags")} onBag={() => { closePanels(); setBagOpen(true); }} onRequest={openRequest} />
+{developersPage ? <V2Developers /> : aboutPage ? <main className="v2-main v2-about-page"><a className="v2-about-back" href="/" onClick={(event) => { if (!event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey) { event.preventDefault(); showResource("logos"); } }}>{t("Brand library")}</a><V2Info page="about" fullPage onBrand={() => {}} onNewest={() => showResource("logos")} onRequest={openRequest} /></main> : isRequest ? <V2Request /> : <main className="v2-main">{resource === "flags" ? <V2Flags busy={busy} onSelect={(flag) => { closePanels(); trackProduct('panel-open',{resource:`flag:${flag.code}:4x3`}); setSelectedFlag(flag); }} onAdd={add} /> : <><V2Hero count={logos.length} bagCount={bag.length} query={query} searchRef={searchRef} categories={categoryOptions} selectedCategories={category} onQuery={setQuery} onCategory={changeCategory} onResults={() => { resultsHeading.current?.focus({ preventScroll:true }); resultsHeading.current?.scrollIntoView({ behavior:matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth", block:"start" }); }} onFlags={() => showResource("flags")} onBag={() => { closePanels(); setBagOpen(true); }} onRequest={openRequest} />
       {category.length ? <div className="v2-filter-chips" aria-label={t("Selected categories")}>{category.map((value) => <button key={value} aria-label={`Remove ${t(value.replaceAll("-", " "))} filter`} onClick={() => changeCategory(value)}><span>{t(value.replaceAll("-", " "))}</span><X size={13} /></button>)}</div> : null}
       <div className="v2-library-layout">
       <div className="v2-library-results">
@@ -298,11 +322,11 @@ function V2Workspace() {
       </div>
       </div>
     </>}</main>}
-    <footer className="v2-footer"><span>V2</span><a href="/v1">{t("V1 interface")}<ArrowUpRight size={13} /></a><a href="/v2/requests" onClick={(event) => { if (!event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey) { event.preventDefault(); openRequest(); } }}>{t("Missing a brand? Request it")}<ArrowUpRight size={13} /></a></footer>
+    <footer className="v2-footer"><span>V2</span><a href="/v1">{t("V1 interface")}<ArrowUpRight size={13} /></a><a href="/developers">{t("For Developers")}</a><a href="/requests" onClick={(event) => { if (!event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey) { event.preventDefault(); openRequest(); } }}>{t("Missing a brand? Request it")}<ArrowUpRight size={13} /></a></footer>
     </div>
     {selected || selectedFlag || requestOpen || infoPage ? <div className="v2-backdrop" onMouseDown={(event) => { if (event.target === event.currentTarget) { closePanels(); } }}><aside ref={panelRef} className="v2-panel" role="dialog" aria-modal="true" aria-label={selectedFlag ? `${selectedFlag.name} flag` : reportOpen && selected ? `Report logo: ${selected.name}` : infoPage ? t(infoTitles[infoPage]) : requestOpen ? t("Request a brand") : selected?.name ?? "Download bag"}><button className="v2-close" aria-label={t("Close panel")} onClick={() => { closePanels(); }}><X size={22} /></button>
       {selectedFlag ? <FlagDetails busy={busy} key={selectedFlag.code} flag={selectedFlag} onAdd={add} onDownload={downloadFlag} onCopy={copy} readAsset={fetchAsset} /> : reportOpen && selected && asset ? <V2Report key={`${selected.slug}-${variation}-${asset.type}`} name={selected.name} slug={selected.slug} variation={variation} versionName={variation === "primary" ? t("Primary logo") : selected.variations.find((item) => item.id === variation)?.name ?? variation} format={asset.type} onBack={() => setReportOpen(false)} /> : infoPage ? <V2Info page={infoPage} onRequest={openRequest} onNewest={() => { showResource("logos"); setQuery(""); setCategory([]); setIndustry(""); setMarket(""); setSort("newest"); }} onBrand={(slug) => { const logo = logos.find((item) => item.slug === slug); if (logo) { closePanels(); open(logo); } }} /> : requestOpen ? <V2Request embedded onBrowse={closePanels} onSelectBrand={(slug) => { const logo = logos.find((item) => item.slug === slug); if (logo) { setRequestOpen(false); open(logo); } }} /> : <>
-      {selected ? <><p className="v2-eyebrow">{t(brandCategory(selected.slug, selected.category))}</p><h2>{selected.name}</h2>{formerBrandName(selected.slug) ? <p className="v2-brand-history">{t("Formerly {name}", { name: formerBrandName(selected.slug)! })}</p> : null}<div className="v2-detail-preview"><img src={preview(selectedFormats)} alt={`${selected.name} ${variation} logo`} /></div>{selected.variations.length > 0 ? <label className="v2-field">{t("Logo version")}<V2Select value={variation} onChange={(event) => { setVariation(event.target.value); setFormat(formatsFor({ slug: selected.slug, variation: event.target.value, format }).at(0)?.type ?? "svg"); }}><option value="primary">{t("Primary logo")}</option>{selected.variations.map((entry) => <option key={entry.id} value={entry.id}>{entry.name}{entry.status === "old" ? t(" (previous version)") : ""}</option>)}</V2Select></label> : null}<div className="v2-formats">{selectedFormats.map((entry) => <button className={asset?.type === entry.type ? "active" : ""} key={entry.type} onClick={() => setFormat(entry.type)}>{entry.type.toUpperCase()}</button>)}</div><div className="v2-actions"><button className="v2-primary" onClick={download}><ArrowDownToLine size={17} />{t("Download")} {asset?.type.toUpperCase()}</button><button disabled={busy} onClick={(event) => asset && add({ slug: selected.slug, variation, format: asset.type }, event.currentTarget)}><Plus size={17} />{t("Pack into bag")}</button></div><section className="v2-code"><div><h3><Code2 size={17} />{t("Use in your project")}</h3><div className="v2-code-language" role="group" aria-label="Code language">{(["html", "react"] as const).map((language) => <button key={language} type="button" aria-pressed={codeType === language} onClick={() => setCodeType(language)}>{language === "html" ? "HTML" : "React"}</button>)}</div></div><pre>{snippet()}</pre><button onClick={() => copy(snippet())}><Copy size={16} />{t("Copy")} {codeType === "html" ? "HTML" : "React"}</button>{asset?.type === "svg" ? <button onClick={copySvg}><Copy size={16} />{t("Copy SVG")}</button> : null}</section>{expansionBySlug.has(selected.slug) ? <section className="v2-brand-provenance"><h3>{t("Brand details")}</h3>{(["origin_country", "headquarters_country"] as const).map((field) => <p key={field}>{field === "origin_country" ? t("Origin") : t("Headquarters")}: {expansionBySlug.get(selected.slug)![field] ? new Intl.DisplayNames([language === "pcm" ? "en" : language], { type: "region" }).of(expansionBySlug.get(selected.slug)![field]!) : t("Not yet confirmed")}</p>)}<p>{t("Confirmed markets:")} {operatingMarketsFor(selected.slug).map((code) => new Intl.DisplayNames([language === "pcm" ? "en" : language], { type: "region" }).of(code)).join(", ")}</p><a href={historicalAsset?.source_url ?? selected.source_url} target="_blank" rel="noreferrer">{t("Artwork source")}<ExternalLink size={14} /></a><p>{historicalAsset ? t(historicalAsset.source_type==='community-catalog'?"Historical logo. Community-sourced; not officially verified.":"Historical logo. Sourced from an official publication.") : selected.status === "verified" ? t(expansionBySlug.get(selected.slug)?.source_type === "verified-pdf" ? "Sourced from an official filing." : "Sourced from the official website.") : t("Community artwork, manually reviewed. Not officially verified.")} {t("Trademarks belong to their respective owners.")}</p></section> : null}{correctionBySlug.has(selected.slug) ? <section className="v2-brand-provenance"><h3>{t("Artwork source")}</h3><p>{t("Sourced from the official website.")} {t("Trademarks belong to their respective owners.")}</p><a href={selected.source_url} target="_blank" rel="noreferrer">{t("Artwork source")}<ExternalLink size={14} /></a></section> : null}<div className="v2-source"><a href={selected.website} target="_blank" rel="noreferrer">{t(expansionBySlug.get(selected.slug)?.source_type === "community-catalog" ? "Brand reference" : "Official website")}<ExternalLink size={14} /></a><button onClick={() => copy(`${location.origin}/v2?brand=${selected.slug}${variation === "primary" ? "" : `&version=${encodeURIComponent(variation)}`}`, "Brand link copied")}><Copy size={14} />{t("Share brand")}</button></div></> : null}
+      {selected ? <><p className="v2-eyebrow">{t(brandCategory(selected.slug, selected.category))}</p><h2>{selected.name}</h2>{formerBrandName(selected.slug) ? <p className="v2-brand-history">{t("Formerly {name}", { name: formerBrandName(selected.slug)! })}</p> : null}<div className="v2-detail-preview"><img src={preview(selectedFormats)} alt={`${selected.name} ${variation} logo`} /></div>{selected.variations.length > 0 ? <label className="v2-field">{t("Logo version")}<V2Select value={variation} onChange={(event) => { setVariation(event.target.value); setFormat(formatsFor({ slug: selected.slug, variation: event.target.value, format }).at(0)?.type ?? "svg"); }}><option value="primary">{t("Primary logo")}</option>{selected.variations.map((entry) => <option key={entry.id} value={entry.id}>{entry.name}{entry.status === "old" ? t(" (previous version)") : ""}</option>)}</V2Select></label> : null}<div className="v2-formats">{selectedFormats.map((entry) => <button className={asset?.type === entry.type ? "active" : ""} key={entry.type} onClick={() => setFormat(entry.type)}>{entry.type.toUpperCase()}</button>)}</div><div className="v2-actions"><button className="v2-primary" onClick={download}><ArrowDownToLine size={17} />{t("Download")} {asset?.type.toUpperCase()}</button><button disabled={busy} onClick={(event) => asset && add({ slug: selected.slug, variation, format: asset.type }, event.currentTarget)}><Plus size={17} />{t("Pack into bag")}</button></div><section className="v2-code"><div><h3><Code2 size={17} />{t("Use in your project")}</h3><div className="v2-code-language" role="group" aria-label="Code language">{(["html", "react"] as const).map((language) => <button key={language} type="button" aria-pressed={codeType === language} onClick={() => setCodeType(language)}>{language === "html" ? "HTML" : "React"}</button>)}</div></div><pre>{snippet()}</pre><button onClick={() => copy(snippet())}><Copy size={16} />{t("Copy")} {codeType === "html" ? "HTML" : "React"}</button>{asset?.type === "svg" ? <button onClick={copySvg}><Copy size={16} />{t("Copy SVG")}</button> : null}</section>{expansionBySlug.has(selected.slug) ? <section className="v2-brand-provenance"><h3>{t("Brand details")}</h3>{(["origin_country", "headquarters_country"] as const).map((field) => <p key={field}>{field === "origin_country" ? t("Origin") : t("Headquarters")}: {expansionBySlug.get(selected.slug)![field] ? new Intl.DisplayNames([language === "pcm" ? "en" : language], { type: "region" }).of(expansionBySlug.get(selected.slug)![field]!) : t("Not yet confirmed")}</p>)}<p>{t("Confirmed markets:")} {operatingMarketsFor(selected.slug).map((code) => new Intl.DisplayNames([language === "pcm" ? "en" : language], { type: "region" }).of(code)).join(", ")}</p><a href={historicalAsset?.source_url ?? selected.source_url} target="_blank" rel="noreferrer">{t("Artwork source")}<ExternalLink size={14} /></a><p>{historicalAsset ? t(historicalAsset.source_type==='community-catalog'?"Historical logo. Community-sourced; not officially verified.":"Historical logo. Sourced from an official publication.") : selected.status === "verified" ? t(expansionBySlug.get(selected.slug)?.source_type === "verified-pdf" ? "Sourced from an official filing." : "Sourced from the official website.") : t("Community artwork, manually reviewed. Not officially verified.")} {t("Trademarks belong to their respective owners.")}</p></section> : null}{correctionBySlug.has(selected.slug) ? <section className="v2-brand-provenance"><h3>{t("Artwork source")}</h3><p>{t("Sourced from the official website.")} {t("Trademarks belong to their respective owners.")}</p><a href={selected.source_url} target="_blank" rel="noreferrer">{t("Artwork source")}<ExternalLink size={14} /></a></section> : null}<div className="v2-source"><a href={selected.website} target="_blank" rel="noreferrer">{t(expansionBySlug.get(selected.slug)?.source_type === "community-catalog" ? "Brand reference" : "Official website")}<ExternalLink size={14} /></a><button onClick={() => copy(`${location.origin}/?brand=${selected.slug}${variation === "primary" ? "" : `&version=${encodeURIComponent(variation)}`}`, "Brand link copied")}><Copy size={14} />{t("Share brand")}</button></div></> : null}
 
       {selected && asset?.type === "svg" ? <section className="v2-code"><div><h3>{t("Inline SVG code")}</h3><button onClick={() => setCodeMode((mode) => mode === "inline" ? "image" : "inline")}>{codeMode === "inline" ? t("Hide code") : t("Show code")}</button></div>{codeMode === "inline" ? <><p className="v2-eyebrow">{codeType === "react" ? "REACT JSX" : "HTML SVG"}</p>{codeError ? <p role="alert" className="v2-error">{t(codeError)}</p> : <pre>{inlineCode || t("Loading SVG...")}</pre>}<button disabled={!inlineCode} onClick={() => copy(inlineCode, `${codeType === "react" ? "JSX" : "Inline SVG"} copied`)}><Copy size={16} />{t("Copy inline code")}</button></> : null}</section> : null}
       {selected && asset && !reportOpen ? <section className="v2-report-entry"><div><strong>{t("Found an issue?")}</strong><p>{t("Help us keep this artwork accurate.")}</p></div><button onClick={() => setReportOpen(true)}><Flag size={16} />{t("Report logo")}</button></section> : null}

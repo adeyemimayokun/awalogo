@@ -1,15 +1,12 @@
 import type { VercelRequest, VercelResponse } from "../_lib/vercel-types";
-import { isAllowedAdmin, readSession } from "../_lib/auth.js";
+import { requireAdmin } from "../_lib/auth.js";
 import { methodNotAllowed } from "../_lib/http.js";
 
-export default function handler(request: VercelRequest, response: VercelResponse): void {
+export default async function handler(request: VercelRequest, response: VercelResponse): Promise<void> {
   if (request.method !== "GET") return methodNotAllowed(response, ["GET"]);
   response.setHeader("Cache-Control", "no-store");
-  const session = readSession(request);
-  if (!session || (!session.local && !isAllowedAdmin(session.login))) {
-    response.status(401).json({ authenticated: false });
-    return;
-  }
+  const session = await requireAdmin(request, response);
+  if (!session) return;
   response.status(200).json({
     authenticated: true,
     user: {

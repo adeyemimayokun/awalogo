@@ -40,13 +40,7 @@
       ]
     },
     {
-      "source": "/v2/:path*",
-      "headers": [
-        { "key": "Referrer-Policy", "value": "no-referrer" }
-      ]
-    },
-    {
-      "source": "/v2/requests",
+      "source": "/requests",
       "headers": [
         { "key": "X-Robots-Tag", "value": "noindex, nofollow" }
       ]
@@ -69,11 +63,14 @@
       ]
     }
   ],
+  "redirects": [
+    { "source": "/v2", "destination": "/", "permanent": true },
+    { "source": "/v2/:page(flags|about|requests|developers)", "destination": "/:page", "permanent": true }
+  ],
   "rewrites": [
     { "source": "/v1", "destination": "/index.html" },
     { "source": "/v1/", "destination": "/index.html" },
-    { "source": "/v2", "destination": "/index.html" },
-    { "source": "/v2/:path*", "destination": "/index.html" },
+    { "source": "/:page(flags|about|requests|developers)", "destination": "/index.html" },
     { "source": "/docs", "destination": "/index.html" },
     { "source": "/docs/:path*", "destination": "/index.html" },
     { "source": "/admin", "destination": "/index.html" },

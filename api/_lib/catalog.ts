@@ -1,6 +1,5 @@
 import { createHash } from "node:crypto";
 import sharp from "sharp";
-import { validateSvgSecurity } from "../../packages/validator/svg-security.mjs";
 import { z } from "zod";
 import {
   institutionCategorySchema,
@@ -90,11 +89,13 @@ function prettyJson(value: unknown): Buffer {
   return Buffer.from(`${JSON.stringify(value, null, 2)}\n`);
 }
 
-function validateSvg(buffer: Buffer): Buffer {
+async function validateSvg(buffer: Buffer): Promise<Buffer> {
+  // Vercel emits CommonJS handlers; load the shared ESM policy natively.
+  const { validateSvgSecurity } = await import("../../packages/validator/svg-security.mjs");
   return validateSvgSecurity(buffer);
 }
 
-function decodeSvg(base64: string): Buffer {
+async function decodeSvg(base64: string): Promise<Buffer> {
   const value = base64.includes(",") ? base64.slice(base64.indexOf(",") + 1) : base64;
   return validateSvg(Buffer.from(value, "base64"));
 }
@@ -194,14 +195,27 @@ export async function buildMutationChanges(
   const manifest = structuredClone(inputManifest);
   const today = new Date().toISOString().slice(0, 10);
   const changes: FileChange[] = [];
+  const reservedPaths = allReferencedPaths(catalog, variations);
+  for (const core of CORE_LOGO_SLUGS) {
+    reservedPaths.add(`sources/${core}.svg`);
+    for (const format of formats(core)) reservedPaths.add(format.path);
+  }
+  const reserveNewArtwork = (stem: string) => {
+    const paths = [`sources/${stem}.svg`, ...formats(stem).map((format) => format.path)];
+    if (paths.some((path) => reservedPaths.has(path))) throw new Error("Artwork path already belongs to another catalog entry");
+    paths.forEach((path) => reservedPaths.add(path));
+  };
 
   if (mutation.operation === "add-logo") {
+    // Seed artwork is outside the managed catalog and must stay reserved.
+    if ((CORE_LOGO_SLUGS as readonly string[]).includes(mutation.slug)) throw new Error("This logo is a locked core entry");
     if (catalog.some((entry) => entry.slug === mutation.slug)) throw new Error(`Logo "${mutation.slug}" already exists`);
     if (variations[mutation.slug]?.length) throw new Error(`Variation metadata for "${mutation.slug}" already exists`);
     if (mutation.sourceType !== "community-catalog" && !mutation.sourceUrl) {
       throw new Error("An official source URL is required for official logo sources");
     }
-    const svg = decodeSvg(mutation.svgBase64);
+    reserveNewArtwork(mutation.slug);
+    const svg = await decodeSvg(mutation.svgBase64);
     const rendered = await renderedFormats(svg);
     const entry = logoEntrySchema.parse({
       name: mutation.name,
@@ -227,7 +241,8 @@ export async function buildMutationChanges(
     const stagedVariations: LogoVariation[] = [];
     for (const variation of mutation.variations) {
       const fileStem = `${mutation.slug}-${variation.id}`;
-      const variationSvg = decodeSvg(variation.svgBase64);
+      reserveNewArtwork(fileStem);
+      const variationSvg = await decodeSvg(variation.svgBase64);
       const variationRendered = await renderedFormats(variationSvg);
       stagedVariations.push(logoVariationSchema.parse({
         id: variation.id,
@@ -253,7 +268,8 @@ export async function buildMutationChanges(
     const existing = variations[mutation.slug] ?? [];
     if (existing.some((entry) => entry.id === mutation.variationId)) throw new Error(`Variation "${mutation.variationId}" already exists`);
     const fileStem = `${mutation.slug}-${mutation.variationId}`;
-    const svg = decodeSvg(mutation.svgBase64);
+    reserveNewArtwork(fileStem);
+    const svg = await decodeSvg(mutation.svgBase64);
     const rendered = await renderedFormats(svg);
     existing.push(logoVariationSchema.parse({
       id: mutation.variationId,
@@ -286,9 +302,10 @@ export async function buildMutationChanges(
     }
     if (!context.currentPrimarySource) throw new Error("The current primary SVG could not be loaded");
 
-    const archivedSvg = validateSvg(context.currentPrimarySource);
+    const archivedSvg = await validateSvg(context.currentPrimarySource);
     const archivedRendered = await renderedFormats(archivedSvg);
     const archiveStem = `${mutation.slug}-${mutation.archiveId}`;
+    reserveNewArtwork(archiveStem);
     existing.push(logoVariationSchema.parse({
       id: mutation.archiveId,
       name: mutation.archiveName,
@@ -304,7 +321,7 @@ export async function buildMutationChanges(
     manifest.source_sha256[`${mutation.slug}/${mutation.archiveId}`] = createHash("sha256").update(archivedSvg).digest("hex");
     changes.push(...fileChanges(archiveStem, archivedSvg, archivedRendered.png, archivedRendered.webp));
 
-    const nextSvg = decodeSvg(mutation.svgBase64);
+    const nextSvg = await decodeSvg(mutation.svgBase64);
     const nextRendered = await renderedFormats(nextSvg);
     catalogEntry.source_url = mutation.sourceUrl ?? catalogEntry.website;
     catalogEntry.source_type = mutation.sourceType;

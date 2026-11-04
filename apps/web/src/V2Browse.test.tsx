@@ -11,7 +11,7 @@ afterEach(() => vi.unstubAllGlobals());
 describe("V2 browse integration", () => {
   it("only offers logo versions when alternative artwork exists", () => {
     for (const slug of ["momo-payment-service-bank", "t2-mobile"]) {
-      vi.stubGlobal("location", { pathname:"/v2", search:`?brand=${slug}`, origin:"http://localhost:5180" });
+      vi.stubGlobal("location", { pathname:"/", search:`?brand=${slug}`, origin:"http://localhost:5180" });
       vi.stubGlobal("localStorage", { getItem:() => null });
       vi.stubGlobal("matchMedia", () => ({ matches:false }));
       const $=load(renderToStaticMarkup(<V2App />));
@@ -21,7 +21,7 @@ describe("V2 browse integration", () => {
     }
   });
   it("renders 20 default results with accessible pagination and shortcuts", () => {
-    vi.stubGlobal("location", { pathname:"/v2", search:"" });
+    vi.stubGlobal("location", { pathname:"/", search:"" });
     vi.stubGlobal("localStorage", { getItem:() => null });
     vi.stubGlobal("matchMedia", () => ({ matches:false }));
     const $ = load(renderToStaticMarkup(<V2App />));

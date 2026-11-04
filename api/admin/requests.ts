@@ -148,7 +148,7 @@ export default async function handler(request: VercelRequest, response: VercelRe
     return methodNotAllowed(response, ["GET", "POST", "PATCH"]);
   }
   if (request.method !== "GET" && !requireSameOrigin(request, response)) return;
-  const admin = requireAdmin(request, response);
+  const admin = await requireAdmin(request, response);
   if (!admin) return;
   response.setHeader("Cache-Control", "no-store");
 

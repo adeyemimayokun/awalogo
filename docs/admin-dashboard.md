@@ -108,3 +108,25 @@ SELECT grants, and server-role access. All three write RPCs deny public executio
 A service-role deduplication check succeeded inside a rolled-back transaction.
 Security advisors reported only the expected informational notices for RLS tables
 with no public policies; this is intentional for service-role-only storage.
+
+## Session revocation (security update)
+
+Before deploying this update, apply `neon/migrations/003_admin_session_revocations.sql`
+using the existing migration owner on the selected database. Rehearse on staging
+first. Supabase-only deployments instead apply `supabase/admin-session-revocations.sql`.
+The restricted `awalogo_runtime` role receives SELECT/INSERT/DELETE only on the new
+revocation table and EXECUTE on its invoker routine; it receives no ownership,
+UPDATE permission, or broader database access. Fresh role provisioning includes
+these objects through `scripts/neon-runtime-role.mjs`.
+
+Every non-local authenticated request checks the shared revocation table without
+an instance cache. Logout persists a SHA-256 digest of the cookie until its original
+expiry before clearing the browser cookie. This also revokes existing encrypted or
+legacy signed sessions; no raw cookies/GitHub tokens are stored in the table.
+Expired revocations are removed by the logout routine. If session verification or
+revocation storage is unavailable, access/logout fails closed with a generic 503.
+Retain this additive table and routine on application rollback.
+
+Run `node --test scripts/admin-runtime.checks.mjs` to test the emitted CommonJS
+mutation entry point with require(ESM) disabled. Source-only tests do not exercise
+Vercel's module-loader boundary.

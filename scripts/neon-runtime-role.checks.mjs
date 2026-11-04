@@ -99,7 +99,9 @@ test('plan is offline, secret-free, explicit and non-owner', () => {
   for (const [table, ops] of Object.entries(grants)) {
     for (const op of ops) assert.ok(plan().some((sql) => sql.includes(`ON public.${table} FOR ${op} TO awalogo_runtime`)));
   }
-  assert.equal(functions.length, 4);
+  assert.equal(functions.length, 5);
+  assert.ok(functions.includes("revoke_admin_session(text,timestamp with time zone)"));
+  assert.deepEqual(grants.admin_session_revocations, ["SELECT", "INSERT", "DELETE"]);
   assert.ok(grants.logo_request_budgets.includes('DELETE'));
   assert.ok(grants.logo_request_receipts.includes('UPDATE'));
 });
