@@ -1,9 +1,9 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
-import { legacyPageUrl, webRoute } from "./web-route";
+import { legacyPageUrl, v2RedirectUrl, webRoute } from "./web-route";
 
 describe("public website versions", () => {
-  it.each(["/", "/v2", "/v2/", "/v2/flags", "/v2/about", "/v2/requests"])("serves V2 at %s", (path) => {
+  it.each(["/", "/flags", "/flags/", "/about", "/requests", "/developers"])("serves V2 at %s", (path) => {
     expect(webRoute(path)).toBe("v2");
   });
   it.each(["/v1", "/v1/"])("keeps the original interface at %s", (path) => {
@@ -29,7 +29,19 @@ describe("public website versions", () => {
     expect(config.rewrites).toContainEqual({ source: "/v1", destination: "/index.html" });
     expect(config.rewrites).toContainEqual({ source: "/v1/", destination: "/index.html" });
     expect(config.rewrites.some((route: { source: string }) => route.source.startsWith("/catalog"))).toBe(false);
-    expect(config.headers.find((entry: { source: string }) => entry.source === "/v2/:path*").headers.some((header: { key: string }) => header.key === "X-Robots-Tag")).toBe(false);
-    expect(config.headers.find((entry: { source: string }) => entry.source === "/v2/requests").headers).toContainEqual({ key: "X-Robots-Tag", value: "noindex, nofollow" });
+    expect(config.redirects).toContainEqual({ source: "/v2", destination: "/", permanent: true });
+    expect(config.redirects).toContainEqual({ source: "/v2/:page(flags|about|requests|developers)", destination: "/:page", permanent: true });
+    expect(config.headers.find((entry: { source: string }) => entry.source === "/requests").headers).toContainEqual({ key: "X-Robots-Tag", value: "noindex, nofollow" });
+  });
+  it.each([
+    ["/v2", "?brand=access-bank&version=old", "#preview", "/?brand=access-bank&version=old#preview"],
+    ["/v2/flags/", "?flag=ng", "#preview", "/flags?flag=ng#preview"],
+    ["/v2/requests", "?token=sample", "", "/requests?token=sample"],
+    ["/v2/about", "", "", "/about"],
+    ["/v2/developers", "", "", "/developers"],
+    ["/v2/unknown", "", "", null],
+    ["/catalog/v2/assets/logo.svg", "", "", null],
+  ])("canonicalizes %s without losing link state", (path, search, hash, expected) => {
+    expect(v2RedirectUrl(path, search, hash)).toBe(expected);
   });
 });

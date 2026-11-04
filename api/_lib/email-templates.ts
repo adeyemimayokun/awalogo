@@ -12,7 +12,7 @@ export function maintainerLogoReportTemplate(report: LogoReport, brandName: stri
     ["Brand", brandName], ["Logo slug", report.slug], ["Version", report.variation],
     ["Format", report.format.toUpperCase()], ["Reason", report.reason],
     ["Note", report.note || "Not provided"], ["Official source", report.officialSource || "Not provided"],
-    ["Logo page", `https://www.awalogo.com/v2?brand=${encodeURIComponent(report.slug)}`], ["Report ID", report.submissionId]
+    ["Logo page", `https://www.awalogo.com/?brand=${encodeURIComponent(report.slug)}`], ["Report ID", report.submissionId]
   ];
   return {
     subject: `Logo report: ${cleanSubject(brandName)} - ${report.reason}`,
@@ -107,7 +107,7 @@ export function maintainerLogoRequestTemplate(request: PublicLogoRequest): Email
 }
 
 export function requesterLogoRequestTemplate(request: PublicLogoRequest, trackingPath?: string | null): EmailTemplate {
-  const trackingUrl = trackingPath?.startsWith("/v2/requests?token=") ? `https://www.awalogo.com${trackingPath}` : null;
+  const trackingUrl = trackingPath?.startsWith("/requests?token=") ? `https://www.awalogo.com${trackingPath}` : null;
   const subject = `We received your ${cleanSubject(request.institutionName)} logo request`;
   const rows: Array<[string, string]> = [
     ["Company or product", request.institutionName],

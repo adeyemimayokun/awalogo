@@ -60,7 +60,7 @@ export async function saveAssetRequest(request: PublicLogoRequest): Promise<stri
   });
   const matching = await requestStore<Array<{ submission_id: string }>>(`?submission_id=eq.${encodeURIComponent(request.submissionId)}&tracking_token_hash=eq.${hash}&select=submission_id&limit=1`);
   if (!matching.length) return null;
-  return `/v2/requests?token=${encodeURIComponent(token)}`;
+  return `/requests?token=${encodeURIComponent(token)}`;
 }
 
 const privateColumns = "submission_id,brand_name,website,category,contact_email,asset_url,notify_when_available,status,github_issue_number,created_at,updated_at";

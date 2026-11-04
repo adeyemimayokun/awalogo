@@ -141,7 +141,7 @@ describe("website logo request persistence", () => {
     expect(status).toHaveBeenCalledWith(submission.trackingToken);
     expect(result.statusCode).toBe(stored ? 202 : 503);
     if (stored) expect(result.body).toMatchObject({ ok: true, issue: null, emailDelivered: false,
-      deliveryStatus: "unconfirmed", trackingUrl: `/v2/requests?token=${submission.trackingToken}` });
+      deliveryStatus: "unconfirmed", trackingUrl: `/requests?token=${submission.trackingToken}` });
     else expect(result.body).not.toHaveProperty("ok");
     expect(save).not.toHaveBeenCalled();
     expect(beginDelivery).not.toHaveBeenCalled();
@@ -166,7 +166,7 @@ describe("website logo request persistence", () => {
     vi.spyOn(abuse, "deployedRequests").mockReturnValue(true);
     vi.spyOn(store, "requestStoreConfigured").mockReturnValue(true);
     const save = vi.spyOn(store, "saveAssetRequest").mockRejectedValueOnce(new Error("store offline"))
-      .mockResolvedValue(`/v2/requests?token=${submission.trackingToken}`);
+      .mockResolvedValue(`/requests?token=${submission.trackingToken}`);
     vi.spyOn(store, "getAssetRequestStatus").mockResolvedValue({ brand_name: "Retry Finance", status: "pending", updated_at: "2026-11-02" });
     const req = publicRequest({ submissionId: "2648063d-cb8d-4583-a193-044d6f4c9dcd", institutionName: "Retry Finance", email: "storage-retry@example.com" });
     const failed = response();
@@ -214,7 +214,7 @@ describe("website logo request persistence", () => {
     expect(pending.body).not.toHaveProperty("ok");
     expect(save).toHaveBeenCalledOnce();
     expect(fetch).not.toHaveBeenCalled();
-    completeSave(`/v2/requests?token=${submission.trackingToken}`);
+    completeSave(`/requests?token=${submission.trackingToken}`);
     await running;
     expect(first.statusCode).toBe(201);
     expect(fetch).toHaveBeenCalledTimes(2);

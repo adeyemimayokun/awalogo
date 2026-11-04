@@ -27,7 +27,7 @@ describe("isolated preview delivery", () => {
   });
   it("saves preview requests without sending email or creating GitHub issues", async () => {
     vi.stubEnv("VERCEL_ENV", "preview"); vi.stubEnv("DISABLE_PREVIEW_DELIVERY", "true");
-    mocks.configured.mockReturnValue(true); mocks.save.mockResolvedValue("/v2/requests?token=test");
+    mocks.configured.mockReturnValue(true); mocks.save.mockResolvedValue("/requests?token=test");
     const res = response(); await handler(request(submission), res as unknown as VercelResponse);
     expect(res.code).toBe(202); expect(res.body).toMatchObject({ ok: true, emailDelivered: false, issue: null });
     expect(mocks.save).toHaveBeenCalled(); expect(mocks.email).not.toHaveBeenCalled(); expect(mocks.issues).not.toHaveBeenCalled();

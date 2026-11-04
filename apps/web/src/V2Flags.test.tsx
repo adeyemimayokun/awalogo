@@ -19,7 +19,7 @@ describe("flag browsing parity", () => {
   it("shares disabled packing and contextual navigation search", () => {
     const $ = load(renderToStaticMarkup(<V2Flags busy onSelect={() => {}} onAdd={() => {}} />));
     expect($('button[title="Pack into bag"]:disabled')).toHaveLength(20);
-    vi.stubGlobal("location", { pathname:"/v2/flags", search:"" });
+    vi.stubGlobal("location", { pathname:"/flags", search:"" });
     vi.stubGlobal("localStorage", { getItem:() => null });
     vi.stubGlobal("matchMedia", () => ({ matches:false }));
     const app = load(renderToStaticMarkup(<V2App />));

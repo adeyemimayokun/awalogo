@@ -222,6 +222,8 @@
 .v2-about-story section h2 { color:var(--muted); font-size:13px; font-weight:500; margin:0 0 12px; }
 .v2-about-story section p { margin:0 0 16px; }
 .v2-about-story section p:last-child { margin-bottom:0; }
+.v2-developers pre { max-width:100%; overflow:auto; padding:12px; border:1px solid var(--line); border-radius:8px; font-size:13px; }
+.v2-developers code { overflow-wrap:anywhere; }
 .v2-about-story a { display:inline-flex; align-items:center; gap:4px; text-underline-offset:4px; }
 .v2-about-links { display:flex; flex-wrap:wrap; gap:12px 28px; font-size:13px; padding-top:8px; }
 .v2-about-language { color:var(--muted); font-size:12px; }

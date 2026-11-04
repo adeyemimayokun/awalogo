@@ -55,7 +55,7 @@ export default async function handler(request: VercelRequest, response: VercelRe
         response.status(503).json({ error: "Request storage could not be verified. Please try again later.", trackingToken: claim.token });
         return;
       }
-      response.status(claim.reply.status).json({ ...claim.reply.body, trackingUrl: `/v2/requests?token=${encodeURIComponent(claim.token)}`, trackingToken: claim.token });
+      response.status(claim.reply.status).json({ ...claim.reply.body, trackingUrl: `/requests?token=${encodeURIComponent(claim.token)}`, trackingToken: claim.token });
       return;
     }
     if (claim.kind === "pending") {
