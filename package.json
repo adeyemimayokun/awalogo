@@ -76,7 +76,7 @@
     "sax": "1.6.1",
     "@neon/config": "1.9.5",
     "@neon/env": "1.6.6",
-    "@vercel/functions": "3.10.4",
+    "@vercel/functions": "3.11.0",
     "pg": "8.23.1"
   }
 }
