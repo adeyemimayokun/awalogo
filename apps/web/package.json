@@ -16,7 +16,7 @@
     "@awalogo/institutions": "workspace:*",
     "@boxicons/react": "1.0.3",
     "@vercel/analytics": "^2.0.1",
-    "@vercel/speed-insights": "^2.0.0",
+    "@vercel/speed-insights": "^2.1.0",
     "@vitejs/plugin-react": "5.2.0",
     "fflate": "0.8.3",
     "react": "^19.3.1",
