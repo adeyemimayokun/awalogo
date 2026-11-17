@@ -12,8 +12,8 @@ importers:
   .:
     dependencies:
       '@neon/config':
-        specifier: 1.9.5
-        version: 1.9.5
+        specifier: 1.14.0
+        version: 1.14.0
       '@neon/env':
         specifier: 1.6.6
         version: 1.6.6
@@ -740,6 +740,10 @@ packages:
     os: [linux]
     libc: [glibc]
 
+  '@neon/config@1.14.0':
+    resolution: {integrity: sha512-+B3N2Idf/Zs5shTQQKxU5v5jXmQZXAyCz56AsjBqBhTudGu81SyHXmCHM4Yv9nsj6itm+hQfqA6kg5rOGuBUkg==}
+    engines: {node: '>=20.19.0'}
+
   '@neon/config@1.9.5':
     resolution: {integrity: sha512-KK105CxGBrcNGJfUgmjINKTykizGbWh9fdjkaEflls10Q8VsBSMt/AXagECH9spYr/mI8o/UCtr6AOMwpKTsRw==}
     engines: {node: '>=20.19.0'}
@@ -748,6 +752,10 @@ packages:
     resolution: {integrity: sha512-8H3GyaAOFb6LjI/lipMoBKwyQbvP/u8XHQno6mtXGeRDmJIEeb5hjbh3bcdIMOWd/42h4GItuvhdk3qNwnQKXQ==}
     engines: {node: '>=20.19.0'}
     hasBin: true
+
+  '@neon/sdk@7.13.0':
+    resolution: {integrity: sha512-jJji3C+yJAOSMdK2trYnxhg2Zqh8J4FjUgiBK8B4pjVnhTfygIDjGw2JjxEbhO7hc9KfN/iMwhkO0WwmfH4H+Q==}
+    engines: {node: '>=20.19.0'}
 
   '@neon/sdk@7.6.0':
     resolution: {integrity: sha512-CqNhupvYjP2KeO8v7aMy5hcDQuo118+KsNGkZd8UUyjYpC+MpLH1eot4uzTjITGPXBZ6yrfwtqnByVJOtuAmqg==}
@@ -2111,6 +2119,12 @@ snapshots:
   '@napi-rs/lzma-linux-x64-gnu@1.5.1':
     optional: true
 
+  '@neon/config@1.14.0':
+    dependencies:
+      '@neon/sdk': 7.13.0
+      jiti: 2.7.0
+      zod: 4.6.7
+
   '@neon/config@1.9.5':
     dependencies:
       '@neon/sdk': 7.6.0
@@ -2124,6 +2138,8 @@ snapshots:
       zod: 4.6.7
     optionalDependencies:
       '@napi-rs/keyring': 1.3.0
+
+  '@neon/sdk@7.13.0': {}
 
   '@neon/sdk@7.6.0': {}
 
